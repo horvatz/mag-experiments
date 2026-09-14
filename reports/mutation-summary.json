@@ -1,0 +1,108 @@
+{
+  "date": "2026-09-14T22:15:45.552Z",
+  "baseline": {
+    "repository": "https://github.com/horvatz/mag-app.git",
+    "commit": "6b383a6e16c87e3f6b276b48d781b70ca2354c97",
+    "taskVersion": "P01/0.2"
+  },
+  "sourceHashes": {
+    "baseline.json": "ef73313c5aac8fabefa9e32112abe3f6c996bcf253eb6b1c37e5108244b0fb95",
+    "evaluation/P01/acceptance.spec.ts": "5c8e24daf1f31f3d84614b5aab468c887ef057e005d363e785af3d0541eabb7e",
+    "evaluation/P01/checks.ts": "f32f377b2ec964cf7f6af846a188fbb62dafebbe56a2b9330e749a5d02b49b12",
+    "evaluation/P01/mutations.mjs": "9b0470ad59f80f02720abda854b7f7cccd48c6206da780a2ec36f0ab74ab80af",
+    "evaluation/P01/test-plan.md": "0ae224ae88ca0ba62229ccc81fdba8b3526082cbcc98bd6e76491e22d5058aaf",
+    "package-lock.json": "5e3cae728c00882f4b8d93bb727b5e3ed26ef97f5ff3947b8e84f541825fd580",
+    "playwright.config.ts": "50803bdd8fe492c5295784c0ddb0efb87948109b534b811497fe5666cdc4d92b",
+    "reference/P01/overlay/src/App.tsx": "6f97f92983bad0d1afe507e42102e64ddc94b051656a7ae1f4c704165b10071b",
+    "reference/P01/overlay/src/styles.css": "2484644a959acba6ecf4769b8c666700c76f55475c0a391d204ecf8dfbcfd44f",
+    "reference/P01/overlay/src/TaskDetails.tsx": "770f974aa554317030ad96fe8c91f86f1ac07d5980b2138ad9a28fc888053749",
+    "reference/P01/overlay/src/TaskEditor.tsx": "a61cc83fcd1e25739a1e166e518315990e8a4323c99664613be24443cdebdc43",
+    "reference/P01/overlay/src/useResource.ts": "4412578542fc274ee7aa4cbbf13e04e030553378db8b338c25dd297d90b86ba1",
+    "scripts/check-mutations.mjs": "ec64fe2a70c8a9cbd8166d70d99b98841a8a27e13acf3b7b4360dfebbe6ac236",
+    "scripts/prepare-reference.mjs": "ef3e7dc727b8386a43b1cf5165155726a21f85d486145168544be3be9592265b",
+    "scripts/report-utils.mjs": "7aab8e22e3030730a7ff1b9771874ebf9f01c6979af7c71c1bfb9b454b44cc1d",
+    "scripts/start-app.mjs": "5a7be2a8f5d0fa7b8c601f5148d1e22ad24dce2fe6240342dd86eb1994fee0b1",
+    "scripts/verify-reference.mjs": "557a5c9b2fae293a29fec7d032c6cdc3a6bf2f5f5a2a5bc3562138f130a58679",
+    "support/types.ts": "27ecd2e574b2fa8c45e6f9bf5d9dec92a87e5d150008f64d9d126eee6474612b",
+    "tasks/P01/development.spec.ts": "9e8bf7b3720a79da80ab85c20aa08a995c4073a31d0c41ddce3545eac8135d8b",
+    "tasks/P01/instructions.md": "e95677353f839479eeb7a83fc207c32668803a1aa6e4813e50ba5c64ea040dc4",
+    "tasks/P01/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095"
+  },
+  "referenceChecks": 68,
+  "mutations": [
+    {
+      "id": "M01",
+      "name": "Autosave before confirmation",
+      "scenario": "E02",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 2\n+ Received  + 2\n\n@@ -1,9 +1,9 @@\n  Object {\n    \"nextMode\": \"success\",\n    \"pending\": 0,\n-   \"saveRequests\": 0,\n+   \"saveRequests\": 1,\n    \"tasks\": Array ["
+    },
+    {
+      "id": "M02",
+      "name": "Update the other task with the same title",
+      "scenario": "E08",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 4\n+ Received  + 4\n\n@@ -3,21 +3,21 @@\n      \"assignee\": \"Ana Novak\",\n      \"description\": \"Preglej besedila na začetni strani in preveri, ali jasno predstavijo naše storitve. Zabeleži predloge za izboljšave ter preveri pravilnost povezav.\",\n      \"dueDate\": \"2026-09-18\",\n      \"id\": \"web-01\",\n      \"projectId\": \"web\",\n-     \"status\": \"in_progress\","
+    },
+    {
+      "id": "M03",
+      "name": "Validate without removing edge whitespace",
+      "scenario": "E03",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toHaveAttribute",
+      "failure": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  getByRole('dialog').getByRole('textbox', { name: 'Naslov', exact: true })\nExpected: \"true\"\nReceived: \"\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" getByRole('dialog').getByRole('textbox', { name: 'Naslov', exact: true }) with timeout 5000ms\n  - waiting for getByRole('dialog').getByRole('textbox', { name: 'Naslov', exact: true })\n    - locator resolved to <input disabled value=\" \" name=\"title\" id=\"task-title\" autocomplete=\"off\" aria-required=\"true\"/>\n    13 × unexpected value \"null\""
+    },
+    {
+      "id": "M04",
+      "name": "Update only the local display",
+      "scenario": "E06",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 2\n+ Received  + 2\n\n@@ -3,12 +3,12 @@\n      \"assignee\": \"Ana Novak\",\n      \"description\": \"Preglej besedila na začetni strani in preveri, ali jasno predstavijo naše storitve. Zabeleži predloge za izboljšave ter preveri pravilnost povezav.\",\n      \"dueDate\": \"2026-09-18\",\n      \"id\": \"web-01\",\n      \"projectId\": \"web\",\n-     \"status\": \"done\","
+    },
+    {
+      "id": "M05",
+      "name": "Close and discard input on rejection",
+      "scenario": "E09",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toBeVisible",
+      "failure": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('dialog').getByRole('alert')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert') with timeout 5000ms\n  - waiting for getByRole('dialog').getByRole('alert')\n\n"
+    },
+    {
+      "id": "M06",
+      "name": "Send two updates for one save",
+      "scenario": "E10",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toBe",
+      "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 1\nReceived: 2\n\n  179 |     await page.keyboard.press('Enter')\n  180 |     const waiting = await snapshot(request)\n> 181 |     expect(waiting.saveRequests).toBe(before.saveRequests + 1)\n      |                                  ^\n  182 |     expect(waiting.tasks).toEqual(before.tasks)\n  183 |     await request.post('/__test/release', { data: { outcome } })\n  184 |     if (outcome === 'success') {"
+    },
+    {
+      "id": "M07",
+      "name": "Reuse a previous task draft",
+      "scenario": "E11",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toHaveValue",
+      "failure": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  getByRole('dialog').getByRole('textbox', { name: 'Naslov', exact: true })\nExpected: \"Pregled vsebine\"\nReceived: \"Prvo opravilo po spremembi\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveValue\" getByRole('dialog').getByRole('textbox', { name: 'Naslov', exact: true }) with timeout 5000ms\n  - waiting for getByRole('dialog').getByRole('textbox', { name: 'Naslov', exact: true })\n    14 × locator resolved to <input name=\"title\" id=\"task-title\" autocomplete=\"off\" aria-required=\"true\" value=\"Prvo opravilo po spremembi\"/>\n       - unexpected value \"Prvo opravilo po spremembi\""
+    },
+    {
+      "id": "M08",
+      "name": "Leave the board and counters stale after saving",
+      "scenario": "E06",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toContainText",
+      "failure": "Error: expect(locator).toContainText(expected) failed\n\nLocator: locator('[data-task-id=\"web-01\"]')\nExpected substring: \"Shranjena sprememba board\"\nReceived string:    \"web-01Shranjena sprememba tablePreglej besedila na začetni strani in preveri, ali jasno predstavijo naše storitve. Zabeleži predloge za izboljšave ter preveri pravilnost povezav.ANAna Novak18. sep. 2026\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toContainText\" locator('[data-task-id=\"web-01\"]') with timeout 5000ms\n  - waiting for locator('[data-task-id=\"web-01\"]')\n    14 × locator resolved to <li data-task-id=\"web-01\">…</li>\n       - unexpected value \"web-01Shranjena sprememba tablePreglej besedila na začetni strani in preveri, ali jasno predstavijo naše storitve. Zabeleži predloge za izboljšave ter preveri pravilnost povezav.ANAna Novak18. sep. 2026\""
+    }
+  ],
+  "detected": 8,
+  "total": 8
+}
