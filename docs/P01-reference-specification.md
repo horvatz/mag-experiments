@@ -48,12 +48,16 @@ Zgolj uspeh strežniškega preverjanja tako ne prikrije napačne odjemalčeve no
 | `TaskDetails.tsx` | Preklop med branjem in urejanjem, prikaz shranjenega zapisa ter vračanje fokusa. |
 | `App.tsx` | Po uspehu zamenja samo izbrano opravilo v podatkih trenutnega projekta. Oba pogleda in števci izhajajo iz istega seznama. |
 | `useResource.ts` | Sprejme nov potrjen zapis brez ponastavitve prikaza ali vmesnega optimističnega zapisa. |
-| `styles.css` | Videz polj, dejanj ter prikaza napake in čakanja. |
+| `editor.css` | Videz polj, dejanj ter prikaza napake in čakanja; uporablja barvne spremenljivke Folio. |
 
 Vsako odprtje urejanja ustvari nov obrazec. Začasni vnos se ne shranjuje v
 skupne podatke. Sinhrona zastavica pri pošiljanju prepreči podvojeno zahtevo
 tudi pred naslednjim prikazom onemogočenih gumbov. Bralni podatki se spremenijo
 šele po uspešnem odgovoru strežnika; odgovor vsebuje celotno opravilo.
+
+Postavitev Folio, logotip, tabla, skupne ikone in `styles.css` izhajajo iz
+iste osnovne različice kot naloga za agente. Referenca doda samo urejanje;
+potrjenega dizajna ne nadomesti z lastno kopijo slogov.
 
 Med urejanjem je zapiranje podrobnosti onemogočeno, da se delo zaključi z
 »Shrani« ali »Prekliči«. Obnašanje navigacije med odprtim urejanjem, drugih

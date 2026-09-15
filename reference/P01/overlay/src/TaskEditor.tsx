@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Save } from 'lucide-react'
 import type { Task, TaskStatus } from '../shared/types.ts'
 import { updateTask } from './api.ts'
+import './editor.css'
 
 function normalizeTitle(value: string) {
   return value.replace(/^[ \t\r\n]+|[ \t\r\n]+$/g, '')

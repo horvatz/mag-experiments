@@ -1,7 +1,10 @@
 # mag-experiments
 
 Gradivo in orodja za pripravo eksperimentov magistrske naloge. Prvi korak je
-P01: urejanje naslova in stanja opravila v aplikaciji `mag-app`.
+P01: urejanje naslova in stanja opravila v aplikaciji Folio (`mag-app`).
+
+Osnova in referenca uporabljata potrjeni dizajn Folio z lebdečim stranskim
+menijem. Natančna skupna različica je zapisana v `baseline.json`.
 
 Repozitorij vsebuje skupna navodila, razvojne teste, ločeno referenčno rešitev
 in končna preverjanja. Namenjen je avtorju raziskave. Agentom pri primerjavi
@@ -13,6 +16,8 @@ ne priključimo tega repozitorija ali nadrejene mape `mag`.
 - `tasks/P01/`: navodila v0.2, predloga specifikacije in štirje razvojni testi D01–D04.
 - `reference/P01/overlay/`: pet datotek, s katerimi iz osnovne aplikacije
   sestavimo referenčno rešitev; spremembe so omejene na uporabniški vmesnik.
+  Osnovni `styles.css` se prenese iz pripetega commita; `editor.css` doda
+  samo slog obrazca P01, brez podvajanja postavitve aplikacije.
 - `evaluation/P01/acceptance.spec.ts`: enajst ločenih končnih scenarijev E01–E11.
 - `evaluation/P01/mutations.mjs`: osem namernih napak za preverjanje testov.
 - `reports/`: povzetki opravljenih preverjanj z različicami in kontrolnimi vsotami virov.

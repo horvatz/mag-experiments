@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check, CheckCheck, ChevronRight, Circle, CircleDot, Columns3, FolderClosed, Layers, ListTodo, Table2 } from 'lucide-react'
+import { ArrowUpRight, Check, Columns3, FolderClosed, ListTodo, Table2 } from 'lucide-react'
 import type { Project, Task } from '../shared/types.ts'
 import { Avatar, LoadError, Loading, StatusBadge } from './components.tsx'
 import { formatDate } from './formatDate.ts'
@@ -16,24 +16,24 @@ function ProjectView({ project, taskId, view }: { project: Project; taskId: stri
   }
 
   return <>
-    <div className="project-heading">
-      <div className={`project-symbol symbol-${project.id === 'web' ? 'green' : 'purple'}`}><FolderClosed size={25} strokeWidth={1.7} aria-hidden="true" /></div>
-      <div><p className="eyebrow">Pregled projekta</p><h1>{project.name}</h1></div>
+    <div className="project-overview">
+      <div className="project-heading">
+        <h1>{project.name}</h1>
+        <p className="project-intro">Opravila, odgovornosti in roki na enem mestu.</p>
+      </div>
+      {tasks && <div className="summary-grid" aria-label="Pregled stanj opravil">
+        <div className="summary-item"><span className="summary-label">Pripravljeno</span><strong>{counts.todo}</strong></div>
+        <div className="summary-item"><span className="summary-label">V delu</span><strong>{counts.in_progress}</strong></div>
+        <div className="summary-item"><span className="summary-label">Končano</span><strong>{counts.done}</strong></div>
+      </div>}
     </div>
-    <p className="project-intro">Opravila, odgovornosti in roki na enem mestu.</p>
 
     {loading && <Loading label="Nalaganje opravil …" />}
     {error && <LoadError message={error} retry={retry} />}
     {tasks && <>
-      <div className="summary-grid" aria-label="Pregled stanj opravil">
-        <div className="summary-item"><span className="summary-icon summary-todo"><Circle size={18} aria-hidden="true" /></span><div><span className="summary-label">Pripravljeno</span><strong>{counts.todo}</strong></div></div>
-        <div className="summary-item"><span className="summary-icon summary-progress"><CircleDot size={18} aria-hidden="true" /></span><div><span className="summary-label">V delu</span><strong>{counts.in_progress}</strong></div></div>
-        <div className="summary-item"><span className="summary-icon summary-done"><CheckCheck size={19} aria-hidden="true" /></span><div><span className="summary-label">Končano</span><strong>{counts.done}</strong></div></div>
-      </div>
-
       <section className="task-section" aria-labelledby="tasks-title">
         <div className="section-heading">
-          <div><ListTodo size={19} aria-hidden="true" /><h2 id="tasks-title">Opravila</h2><span className="count-badge">{tasks.length}</span></div>
+          <div><ListTodo className="section-icon" size={17} strokeWidth={1.6} aria-hidden="true" /><h2 id="tasks-title">Opravila</h2><span className="count-badge">{tasks.length}</span></div>
           <div className="view-switch" role="group" aria-label="Prikaz opravil">
             <button type="button" aria-pressed={view === 'table'} onClick={() => { window.location.hash = projectUrl(project.id) }}><Table2 size={15} aria-hidden="true" />Preglednica</button>
             <button type="button" aria-pressed={view === 'board'} onClick={() => { window.location.hash = projectUrl(project.id, 'board') }}><Columns3 size={15} aria-hidden="true" />Tabla</button>
@@ -52,7 +52,7 @@ function ProjectView({ project, taskId, view }: { project: Project; taskId: stri
             </tr>)}</tbody>
           </table>
         </div>}
-        {tasks.length > 0 && <div className="table-footer"><span><span className="footer-dot" aria-hidden="true" />Pregled vseh opravil projekta</span><span>{counts.done} / {tasks.length} končanih</span></div>}
+        {tasks.length > 0 && <div className="table-footer"><span>Pregled vseh opravil projekta</span><span>{counts.done} / {tasks.length} končanih</span></div>}
       </section>
     </>}
     {taskId && <TaskDetails key={taskId} project={project} taskId={taskId} view={view} onSaved={(saved) => {
@@ -70,24 +70,24 @@ export function App() {
 
   return <div className="app-shell">
     <a className="skip-link" href="#main-content" onClick={(event) => { event.preventDefault(); document.getElementById('main-content')?.focus() }}>Preskoči na vsebino</a>
-    <aside className="sidebar">
-      <a className="brand" href={projectUrl(projects?.[0]?.id ?? 'web', view)} aria-label="Prostor – začetna stran"><img src="/favicon.svg" alt="" width="33" height="33" /><span>prostor<span className="brand-period">.</span></span></a>
-      <div className="workspace-label"><Layers size={16} aria-hidden="true" /><span>Delovni prostor</span></div>
-      <nav className="project-nav" aria-label="Projekti"><p className="nav-label">Projekti{projects && <span>{projects.length}</span>}</p>
-        {projects?.map((entry, index) => <a key={entry.id} href={projectUrl(entry.id, view)} className={`project-nav-link ${project?.id === entry.id ? 'active' : ''}`} aria-current={project?.id === entry.id ? 'page' : undefined}><span className={`project-dot dot-${index % 2}`} aria-hidden="true" /><span>{entry.name}</span>{project?.id === entry.id && <ChevronRight size={15} aria-hidden="true" />}</a>)}
-      </nav>
-      <div className="sidebar-footer"><span className="workspace-avatar"><Layers size={18} aria-hidden="true" /></span><div><strong>Skupni projekti</strong><span>Prostor za dobro delo</span></div></div>
+    <aside className="app-sidebar" aria-label="Delovni prostor">
+      <a className="brand" href={projectUrl(projects?.[0]?.id ?? 'web', view)} aria-label="Folio – začetna stran"><img src="/favicon.svg" alt="" width="28" height="28" /><span>Folio</span></a>
+      <div className="sidebar-projects">
+        <p className="nav-label">Projekti</p>
+        <nav className="project-nav" aria-label="Projekti">
+          {projects?.map((entry) => <a key={entry.id} href={projectUrl(entry.id, view)} className={`project-nav-link ${project?.id === entry.id ? 'active' : ''}`} aria-current={project?.id === entry.id ? 'page' : undefined}><FolderClosed size={15} strokeWidth={1.6} aria-hidden="true" /><span>{entry.name}</span></a>)}
+        </nav>
+      </div>
+      <span className="workspace-label">Delovni prostor</span>
     </aside>
 
     <div className="workspace">
-      <header className="topbar"><div className="breadcrumb"><FolderClosed size={15} aria-hidden="true" /><span>Projekti</span>{project && <><ChevronRight size={13} aria-hidden="true" /><span>{project.name}</span></>}</div><span className="topbar-note">Vse na svojem mestu.</span></header>
       <main id="main-content" tabIndex={-1}>
         {loading && <Loading label="Nalaganje projektov …" />}
         {error && <LoadError message={error} retry={retry} />}
-        {projects && !project && <div className="state-message"><FolderClosed size={30} aria-hidden="true" /><h1>Projekt ne obstaja</h1><p>Izberi enega od projektov v seznamu.</p>{projects[0] && <a className="button" href={projectUrl(projects[0].id, view)}>Nazaj na projekte</a>}</div>}
+        {projects && !project && <div className="state-message"><FolderClosed size={30} aria-hidden="true" /><h1>Projekt ne obstaja</h1><p>Izberi enega od projektov v navigaciji.</p>{projects[0] && <a className="button" href={projectUrl(projects[0].id, view)}>Nazaj na projekte</a>}</div>}
         {project && <ProjectView key={project.id} project={project} taskId={route?.taskId ?? null} view={view} />}
       </main>
-      <footer className="workspace-footer"><span>PROSTOR</span><span>Manj iskanja. Več pregleda.</span></footer>
     </div>
   </div>
 }

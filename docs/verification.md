@@ -5,7 +5,12 @@ sloga kode in gradnja so prav tako uspešni. Uporabljeni sta Node.js 24.11.1
 in zaklenjena zbirka odvisnosti osnovne aplikacije.
 
 Izhodišče: `horvatz/mag-app`, commit
-`6b383a6e16c87e3f6b276b48d781b70ca2354c97`; navodila P01 v0.2.
+`6dc1193f32a1fc00722fbc0983907d32b908cb51`; navodila P01 v0.2.
+
+Izhodišče vsebuje potrjeni dizajn Folio z lebdečim stranskim menijem,
+nežnimi modrimi poudarki in kompaktnimi karticami. Referenca uporablja
+isti `styles.css` kot osnovna aplikacija, `editor.css` pa doda samo slog
+urejanja P01. Zahteve, strežnik in testni scenariji so ostali enaki.
 
 | Sklop | Uspešne izvedbe |
 | --- | ---: |
@@ -16,7 +21,8 @@ Izhodišče: `horvatz/mag-app`, commit
 
 Vsak test je začel s svežimi podatki. Preverjanja so bila izvedena zaporedno
 v Chromiumu, brez samodejnega ponavljanja neuspelih testov. Namizni prikaz
-je meril 1440 × 960, mobilni 390 × 664. Ročno pregledani posnetki obrazca
+je meril 1440 × 960, mobilni 390 × 664. Dodatni posnetki za vizualni pregled
+merijo 1440 × 960 in 390 × 844. Pregledani posnetki obrazca
 in napake ne kažejo prekrivanja ali vodoravnega prelivanja; shranjeni so v
 `docs/preview/`. Emulacija ni preverjanje na fizičnem telefonu ali v Safariju.
 
