@@ -1,4 +1,4 @@
-# Preverjanje P01, 15. september 2026
+# Preverjanje reference P01, 16. september 2026
 
 Referenčna rešitev je uspešno prestala vseh 68 preverjanj. Preverjanje tipov,
 sloga kode in gradnja so prav tako uspešni. Uporabljeni sta Node.js 24.11.1
@@ -49,10 +49,11 @@ vsebujeta enake kontrolne vsote preverjenih virov. Celotni lokalni izpisi
 in sledi so izključeni iz Gita.
 
 Ti rezultati potrjujejo uporabnost meril na referenci in osmih konkretnih
-napakah. Ne dokazujejo popolnosti testov. Agentne izvedbe A/B/C še niso
-bile opravljene; rezultati niso primerjava postopkov razvoja.
+napakah. Ne dokazujejo popolnosti testov. Ločen prvi pilot
+postopka A je zdaj opravljen; njegov rezultat je v
+[poročilu P01-A-001](../runs/P01-A-001/report.md). Rezultati v zgornjih tabelah
+se nanašajo na referenco in namerno napačne različice.
 
-Pred prvo izvedbo potrebujemo izolirano okolje z dovoljenim gradivom,
-preverjanje predanih sprememb, določene pozive in model ter skupne omejitve
-časa in porabe. Lokalni strežnik in ločene mape so trenutno namenjeni
-pripravi meril.
+Izvoz dovoljenega gradiva, lokalno omejeno okolje, beleženje in preverjanje
+predaje so opisani v [protokolu pilota](pilot-protocol.md). Primerjava vseh
+treh postopkov še ni opravljena.

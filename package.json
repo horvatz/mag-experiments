@@ -14,7 +14,14 @@
     "test:evaluation": "playwright test --project=evaluation-desktop --project=evaluation-mobile",
     "test:mutations": "node scripts/check-mutations.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "playwright test"
+    "test": "playwright test",
+    "pilot:prepare": "node scripts/prepare-pilot.mjs",
+    "pilot:browser": "node scripts/pilot-browser.mjs",
+    "pilot:preflight": "node scripts/preflight-pilot.mjs",
+    "pilot:run": "node scripts/run-pilot.mjs",
+    "pilot:evaluate": "node scripts/evaluate-pilot.mjs",
+    "pilot:archive": "node scripts/archive-pilot.mjs",
+    "test:runner": "node --test scripts/pilot-utils.test.mjs"
   },
   "dependencies": {
     "lucide-react": "1.46.0",

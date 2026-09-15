@@ -108,13 +108,18 @@ in `.work/mutation-traces`.
 To preveri osem konkretnih napak. Ne dokazuje popolnosti testov ali pravilnosti
 za vsa mogoča stanja. Izvirna referenca ostane ločena od napačnih kopij.
 
-## Pred prvo izvedbo A, B ali C
+## Prvi pilot A je izveden
 
-Pripraviti je treba še izvoz dovoljenega gradiva, izolirano izvajalno okolje
-brez dostopa do reference in končnih testov ter preverjanje dovoljenih sprememb
-ob predaji. Ločene mape in zaseben GitHub repozitorij same po sebi ne pomenijo
-izolacije procesa. Trenutni lokalni strežnik je orodje za pripravo in preverjanje.
+En agent je na nalogi P01 v 13 minutah in 21 sekundah pripravil specifikacijo,
+implementacijo urejanja in lastne teste. Neodvisna ocena je uspešna: 68/68
+preverjanj, od tega 22 izvedb skritih končnih scenarijev. Spremembe so ostale
+znotraj dovoljenih datotek. Osnovna aplikacija mag-app je nespremenjena.
 
-Pred zagonom določimo model, pozive, skupne omejitve, pravila ustavitve in
-beleženje porabe. Modelskih izvedb A/B/C in primerjalnih rezultatov v tem
-repozitoriju še ni. P01 ostaja pilotna naloga.
+[Poročilo P01-A-001](runs/P01-A-001/report.md) vsebuje rezultat, čas in porabo;
+ob njem so predaja, navodila, nastavitve in dnevniki.
+[Protokol pilota](docs/pilot-protocol.md) opisuje izvoz gradiva, omejitve
+dostopa, testni brskalnik, ustavitev in preverjanje predaje.
+
+To je en poskus postopka A, ne primerjava A/B/C. Naslednji korak sta priprava
+postopkov B in C ter določitev skupnih omejitev porabe pred njuno primerjavo.
+P01 ostaja pilotna naloga.
