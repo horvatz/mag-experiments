@@ -6,6 +6,11 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { clientEnvironment, configArguments, digest, inventory, changes } from './pilot-utils.mjs'
 
+if (/^P01-B-\d{3}$/.test(process.argv[2] || '')) {
+  await import('./run-pilot-b.mjs')
+  process.exit(0)
+}
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'
 assert.match(id, /^P01-A-\d{3}$/)
@@ -33,7 +38,7 @@ async function listening(port) {
 const hiddenPorts = [5183, 3111, 5184, 3112]
 assert.ok(!(await Promise.all(hiddenPorts.map(listening))).some(Boolean), 'Close reference/evaluation servers first')
 assert.ok(await listening(9223), 'Start the isolated pilot browser first')
-const binary = realpathSync(resolve(process.env.HOME, '.local/bin/codex'))
+const binary = manifest.cli || realpathSync(resolve(process.env.HOME, '.local/bin/codex'))
 const args = ['exec', '--ignore-user-config', '--ignore-rules', '--ephemeral', '--skip-git-repo-check',
   '--json', '--color', 'never', '-C', app, ...configArguments(config), '-']
 const metadata = { id, startedAt: new Date().toISOString(), model: config.model,

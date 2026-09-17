@@ -108,7 +108,7 @@ in `.work/mutation-traces`.
 To preveri osem konkretnih napak. Ne dokazuje popolnosti testov ali pravilnosti
 za vsa mogoča stanja. Izvirna referenca ostane ločena od napačnih kopij.
 
-## Prvi pilot A je izveden
+## Piloti P01
 
 En agent je na nalogi P01 v 13 minutah in 21 sekundah pripravil specifikacijo,
 implementacijo urejanja in lastne teste. Neodvisna ocena je uspešna: 68/68
@@ -120,6 +120,12 @@ ob njem so predaja, navodila, nastavitve in dnevniki.
 [Protokol pilota](docs/pilot-protocol.md) opisuje izvoz gradiva, omejitve
 dostopa, testni brskalnik, ustavitev in preverjanje predaje.
 
-To je en poskus postopka A, ne primerjava A/B/C. Naslednji korak sta priprava
-postopkov B in C ter določitev skupnih omejitev porabe pred njuno primerjavo.
-P01 ostaja pilotna naloga.
+Izvedena sta tudi dva poskusa B. Prvi se je ustavil brez predaje specifikacije.
+V drugem so tekle vse tri vloge in koda je opravila vseh 68 neodvisnih
+preverjanj, vendar pregledovalec ni pravočasno oddal poročila. Celoten
+postopek B zato še ni uspešno zaključen.
+
+[Poročilo B-002](runs/P01-B-002/report.md), [protokol B](docs/pilot-b-protocol.md)
+in [pregled vseh pilotov](docs/pilot-results.md) ohranjajo tudi neuspešne
+predaje ter spremembo časovne razporeditve. Naslednji korak je izboljšava
+predaj pri B; C in glavne meritve še niso izvedeni. P01 ostaja pilotna naloga.

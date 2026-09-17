@@ -8,9 +8,10 @@ import { digest, editable, inventory } from './pilot-utils.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'
-assert.match(id, /^P01-A-\d{3}$/)
+assert.match(id, /^P01-[AB]-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
 const execution = JSON.parse(readFileSync(resolve(run, 'execution.json'), 'utf8'))
+const usageObservation = existsSync(resolve(run, 'usage-observation.json')) ? JSON.parse(readFileSync(resolve(run, 'usage-observation.json'), 'utf8')) : null
 assert.notEqual(execution.status, 'running', 'Never evaluate or expose hidden tests during agent execution')
 assert.ok(existsSync(resolve(run, 'submission/src')), 'Missing frozen submission')
 assert.ok(!existsSync(resolve(run, 'evaluation-summary.json')), 'Do not overwrite an evaluation')
@@ -67,7 +68,8 @@ assert.deepEqual(inventory(resolve(run, 'submission')), before, 'Evaluation modi
 const summary = {
   id, evaluatedAt: new Date().toISOString(), baseline: manifest.baseline, procedure: manifest.procedure,
   model: manifest.model, reasoningEffort: manifest.reasoningEffort,
-  executionStatus: execution.status, elapsedSeconds: execution.elapsedSeconds, usage: execution.usage,
+  executionStatus: execution.status, elapsedSeconds: execution.elapsedSeconds, usage: usageObservation?.complete ? usageObservation.usage : execution.usage,
+  ...(execution.phases ? { phases: execution.phases, review: execution.review, usageNote: usageObservation?.complete ? usageObservation.method : execution.usageNote } : {}),
   allowedChanges: execution.allowedChanges, checks: results, groups, tests,
   completeTestRun: tests.length === 68 && (raw?.errors.length ?? 1) === 0,
   allChecksPassed: execution.status === 'completed' && execution.allowedChanges && results.every((item) => item.passed) && tests.length === 68 && tests.every((test) => test.status === 'expected') && raw.errors.length === 0,

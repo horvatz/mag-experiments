@@ -1,0 +1,64 @@
+{
+  "id": "P01-B-001",
+  "recordedAt": "2026-09-17T18:48:26.339Z",
+  "baseline": {
+    "repository": "https://github.com/horvatz/mag-app.git",
+    "commit": "6dc1193f32a1fc00722fbc0983907d32b908cb51",
+    "taskVersion": "P01/0.2"
+  },
+  "procedure": "B",
+  "model": "gpt-6-astra",
+  "reasoningEffort": "xhigh",
+  "executionStatus": "missing_specification",
+  "elapsedSeconds": 181.165,
+  "usage": null,
+  "usageNote": "Raw CLI usage is recorded per phase. Aggregate is withheld if a resumed session requires reconciliation or any phase lacks a final usage event.",
+  "allowedChanges": true,
+  "phases": [
+    {
+      "name": "specification",
+      "role": "specification",
+      "resumed": false,
+      "startedAt": "2026-09-17T18:44:19.742Z",
+      "limitSeconds": 180,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a0b0af-16ce-79f0-b4e9-fa66cb1aa1be",
+      "finishedAt": "2026-09-17T18:47:19.783Z",
+      "elapsedSeconds": 180.04,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    }
+  ],
+  "checks": [
+    {
+      "name": "lint",
+      "passed": false,
+      "status": "not_run"
+    },
+    {
+      "name": "types",
+      "passed": false,
+      "status": "not_run"
+    },
+    {
+      "name": "build",
+      "passed": false,
+      "status": "not_run"
+    },
+    {
+      "name": "tests",
+      "passed": false,
+      "status": "not_run"
+    }
+  ],
+  "groups": {},
+  "tests": [],
+  "completeTestRun": false,
+  "allChecksPassed": false,
+  "evaluationPerformed": false,
+  "reason": "Stopped after specification phase reached 180 seconds without creating specification.md. Implementation and review did not start. No P01 implementation was submitted; final tests were not run. Baseline had passed 38 preflight checks."
+}

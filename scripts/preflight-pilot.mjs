@@ -3,11 +3,14 @@ import { readFileSync, realpathSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { clientEnvironment, configArguments } from './pilot-utils.mjs'
+import { roleCanEdit } from './procedure-b.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const run = resolve(root, '.work/pilots', process.argv[2] || 'P01-A-001')
 const app = resolve(run, 'app')
 const config = JSON.parse(readFileSync(resolve(run, 'config.json'), 'utf8'))
+const manifest = JSON.parse(readFileSync(resolve(run, 'manifest.json'), 'utf8'))
+const cli = manifest.cli || realpathSync(resolve(process.env.HOME, '.local/bin/codex'))
 const env = clientEnvironment(config)
 // Open attempts never print file contents, including when a boundary is wrong.
 const code = [
@@ -22,13 +25,28 @@ const code = [
   "console.log(JSON.stringify({filesystem: checks, allowedReadWrite: true, protectedInfrastructure: true}));",
 ].join('\n')
 const args = ['sandbox', ...configArguments(config), '-P', 'pilot', '-C', app, process.execPath, '-e', code]
-const output = execFileSync(realpathSync(resolve(process.env.HOME, '.local/bin/codex')), args, { cwd: app, env, encoding: 'utf8', timeout: 30_000 })
+const output = execFileSync(cli, args, { cwd: app, env, encoding: 'utf8', timeout: 30_000 })
 writeFileSync(resolve(run, 'preflight-filesystem.json'), output)
 console.log(output.trim())
-const cli = realpathSync(resolve(process.env.HOME, '.local/bin/codex'))
 const snapshot = execFileSync(cli, ['debug', 'prompt-input', ...configArguments(config)], { cwd: app, env, encoding: 'utf8', timeout: 30_000 })
 if (snapshot.includes('### Available skills')) throw new Error('Host skill catalog was not disabled')
 writeFileSync(resolve(run, 'preflight-prompt.json'), snapshot)
+if (manifest.procedure === 'B') {
+  const protocol = JSON.parse(readFileSync(resolve(run, 'procedure-b.json'), 'utf8'))
+  const roles = []
+  for (const [role, roleConfig] of Object.entries(protocol.configs)) {
+    const probes = ['src/preflight.tmp', 'tests/agent/preflight.tmp', 'docs/agent/preflight.tmp', 'docs/agent/specification.md', 'docs/agent/specification-history.md', 'docs/agent/review.md', 'docs/agent/review.json']
+      .map((path) => ({ path, allowed: roleCanEdit(role, path) }))
+    const probe = `const fs=require('node:fs'),assert=require('node:assert/strict');for(const p of ${JSON.stringify(probes)}){assert.ok(!fs.existsSync(p.path),'Probe must not overwrite existing file');let allowed=false;try{fs.writeFileSync(p.path,'probe');allowed=true;fs.unlinkSync(p.path)}catch(e){if(!['EPERM','EACCES'].includes(e.code))throw e}assert.equal(allowed,p.allowed,p.path)}console.log('Role boundary passed')`
+    execFileSync(cli, ['sandbox', ...configArguments(roleConfig), '-P', 'pilot', '-C', app, process.execPath, '-e', probe], { cwd: app, env, encoding: 'utf8', timeout: 30_000 })
+    const rolePrompt = execFileSync(cli, ['debug', 'prompt-input', ...configArguments(roleConfig)], { cwd: app, env, encoding: 'utf8', timeout: 30_000 })
+    if (rolePrompt.includes('### Available skills')) throw new Error('Host skills exposed to ' + role)
+    writeFileSync(resolve(run, 'preflight-prompt-' + role + '.json'), rolePrompt)
+    roles.push({ role, passed: true, probes })
+  }
+  writeFileSync(resolve(run, 'preflight-roles.json'), JSON.stringify(roles, null, 2) + '\n')
+  console.log('All three role boundaries passed.')
+}
 const runtimeArgs = ['sandbox', ...configArguments(config), '-P', 'pilot', '-C', app,
   '/bin/sh', '-c', 'npm run lint && npm run build && npx playwright test --project=api --project=desktop --project=mobile']
 try {

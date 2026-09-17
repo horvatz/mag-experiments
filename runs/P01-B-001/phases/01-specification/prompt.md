@@ -1,0 +1,9 @@
+To je pilot P01 po postopku B: trije ločeni agenti zaporedno pripravijo specifikacijo, implementacijo in pregled. Vsak ima svojo zgodovino pogovora. Predaja med vlogami poteka samo prek datotek; pri popravkih se nadaljuje seja prvotnega avtorja. Skupni čas vseh faz, tudi predaj, je največ 20 minut. Ne zaganjaj drugih agentov.
+
+Preberi PROJECT_RULES.md, task/instructions.md in task/specification-template.md. Izvirne zahteve so obvezne tudi, če jih predana specifikacija izpusti. Referenčna rešitev in končni testi niso dostopni. Ohraniti moraš obstoječi dizajn. To je svež izvoz brez zgodovine Git. Ne spreminjaj odvisnosti, infrastrukture ali skupnih testov.
+
+Odvisnosti in Chromium so nameščeni. npm run check preveri kodo in vse dostopne teste (38 osnovnih preverjanj, 8 razvojnih preverjanj P01 in lastne teste v tests/agent/). Samo skupne razvojne teste zaženeš z npx playwright test --project=development-desktop --project=development-mobile. Testi uporabljajo vrata 5174/3102. Za ročni ogled uporabi WEB_PORT=5193 API_PORT=3123 npm run dev. Za lastne skripte preberi wsEndpoint iz task/browser.json in uporabi chromium.connect(wsEndpoint); chromium.launch() v tem okolju ne deluje. Dostop do javnega interneta je blokiran. Uporabljaj samo lokalne storitve te naloge. Omejitve okolja zabeleži in uporabi drug dovoljen način.
+
+Tvoja vloga je priprava specifikacije. Preglej začetno aplikacijo in razčleni zahteve po skupni predlogi. Zapiši docs/agent/specification.md. Po potrebi vodi docs/agent/specification-history.md. To sta edini datoteki, ki ju smeš spreminjati. Ne implementiraj rešitve. Specifikacija naj bo dovolj jasna za drugega agenta in naj vsebuje preverljive pogoje. Za to fazo imaš največ 3 minute; zaključi prej, ko je specifikacija pripravljena.
+
+Ta faza ima ob zagonu največ 180 sekund. Do skupne omejitve ostaja 1199 sekund. Zapiši predajo pravočasno.

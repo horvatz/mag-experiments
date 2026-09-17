@@ -55,5 +55,8 @@ postopka A je zdaj opravljen; njegov rezultat je v
 se nanašajo na referenco in namerno napačne različice.
 
 Izvoz dovoljenega gradiva, lokalno omejeno okolje, beleženje in preverjanje
-predaje so opisani v [protokolu pilota](pilot-protocol.md). Primerjava vseh
+predaje so opisani v [protokolu pilota](pilot-protocol.md). Poskusa B in
+razliko med uspehom kode ter neuspešno predajo dokumentira
+[pregled pilotov](pilot-results.md). Tudi koda B-002 je opravila 68/68
+preverjanj, celoten postopek pa se ni pravilno zaključil. Primerjava vseh
 treh postopkov še ni opravljena.

@@ -4,6 +4,36 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { test } from 'node:test'
 import { changes, configArguments, inventory } from './pilot-utils.mjs'
+import { parseReview, phaseBudget, roleCanEdit } from './procedure-b.mjs'
+
+test('B reserves review and correction time within one shared deadline', () => {
+  assert.equal(phaseBudget('specification', 1200), 300)
+  assert.equal(phaseBudget('implementation', 1100), 800)
+  assert.equal(phaseBudget('implementation', 250), 0)
+  assert.equal(phaseBudget('review', 300), 180)
+  assert.equal(phaseBudget('review', 80), 0)
+  assert.equal(phaseBudget('specification-repair', 75), 45)
+  assert.equal(phaseBudget('implementation-repair', 29), 29)
+  assert.equal(phaseBudget('implementation-repair', -2), 0)
+})
+
+test('B keeps specification, code and review ownership separate', () => {
+  assert.equal(roleCanEdit('specification', 'src/App.tsx'), false)
+  assert.equal(roleCanEdit('specification', 'docs/agent/specification.md'), true)
+  assert.equal(roleCanEdit('implementation', 'docs/agent/specification.md'), false)
+  assert.equal(roleCanEdit('implementation', 'docs/agent/review.json'), false)
+  assert.equal(roleCanEdit('implementation', 'src/App.tsx'), true)
+  assert.equal(roleCanEdit('review', 'tests/agent/example.spec.ts'), false)
+  assert.equal(roleCanEdit('review', 'docs/agent/review.json'), true)
+  assert.equal(roleCanEdit('review', 'server/http.ts'), false)
+})
+
+test('B does not interpret missing or inconsistent review feedback as approval', () => {
+  assert.throws(() => parseReview({ summary: 'OK', findings: [] }))
+  assert.throws(() => parseReview({ specificationChangesRequired: false, codeChangesRequired: false, summary: 'issue', findings: [{ target: 'implementation', requirement: 'R06', problem: 'Cancel saves', requestedChange: 'Preserve data' }] }))
+  const valid = { specificationChangesRequired: false, codeChangesRequired: true, summary: 'issue', findings: [{ target: 'implementation', requirement: 'R06', problem: 'Cancel saves', requestedChange: 'Preserve data' }] }
+  assert.deepEqual(parseReview(valid), valid)
+})
 
 test('handoff detects forbidden edits, deletions and new files while allowing task code', () => {
   const root = mkdtempSync(join(tmpdir(), 'mag-handoff-'))
