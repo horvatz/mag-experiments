@@ -5,7 +5,7 @@ import { homedir } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import { digest, inventory } from './pilot-utils.mjs'
 import { configureBrowser } from './pilot-browser.mjs'
-import { roles, roleConfiguration, prompts, workflow } from './procedure-b.mjs'
+import { roles, roleConfiguration, prompts, workflow, reviewSchema } from './procedure-b.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'
@@ -71,10 +71,21 @@ const prompt = `Izvedi pilotno nalogo P01 samostojno po postopku A (en agent).\n
 const runPrompt = procedure === 'A' ? prompt : 'Postopek B: specification → implementation → review → po potrebi specification-repair → implementation-repair. Pozivi in nastavitve posameznih vlog so v procedure-b.json.\n'
 writeFileSync(resolve(run, 'prompt.md'), runPrompt)
 let procedureB
+let protocolSourceHashes
 if (procedure === 'B') {
-  procedureB = { workflow, prompts, configs: Object.fromEntries(roles.map((role) => [role, roleConfiguration(config, app, role)])) }
+  writeFileSync(resolve(app, 'task/review-schema.json'), JSON.stringify(reviewSchema, null, 2) + '\n')
+  writeFileSync(resolve(app, 'task/time-budget.mjs'), `const phase = Number(process.env.MAG_PHASE_DEADLINE_MS)\nconst run = Number(process.env.MAG_RUN_DEADLINE_MS)\nif (!Number.isFinite(phase) || !Number.isFinite(run)) throw new Error('No active phase clock')\nconst seconds = (end) => Math.max(0, Math.floor((end - Date.now()) / 1000))\nconsole.log(JSON.stringify({ phaseSecondsRemaining: seconds(phase), totalSecondsRemaining: seconds(run), phaseDeadlineUTC: new Date(phase).toISOString() }))\n`)
+  procedureB = { workflow, prompts, reviewSchema, configs: Object.fromEntries(roles.map((role) => [role, roleConfiguration(config, app, role)])) }
   writeFileSync(resolve(run, 'procedure-b.json'), JSON.stringify(procedureB, null, 2) + '\n')
+  mkdirSync(resolve(run, 'protocol'))
+  protocolSourceHashes = {}
+  for (const file of ['prepare-pilot.mjs', 'preflight-pilot.mjs', 'run-pilot.mjs', 'run-pilot-b.mjs', 'pilot-utils.mjs', 'procedure-b.mjs', 'pilot-browser.mjs', 'evaluate-pilot.mjs', 'archive-pilot.mjs', 'reconcile-pilot-usage.mjs']) {
+    cpSync(resolve(root, 'scripts', file), resolve(run, 'protocol', file))
+    protocolSourceHashes['scripts/' + file] = digest(readFileSync(resolve(root, 'scripts', file)))
+  }
+  cpSync(resolve(root, 'docs/pilot-b-protocol.md'), resolve(run, 'protocol/pilot-b-protocol.md'))
 }
 const manifest = { id, createdAt: new Date().toISOString(), baseline, procedure, task: 'P01', limitSeconds: 1200, model: config.model, reasoningEffort: config.model_reasoning_effort, node: process.version, platform: process.platform, architecture: process.arch, cli, cliVersion: execFileSync(cli, ['--version'], { encoding: 'utf8' }).trim(), setup: 'P01 shared development projects added to exported Playwright configuration', promptSha256: digest(runPrompt), configSha256: digest(JSON.stringify(config)), browserProfileSha256: digest(readFileSync(resolve(run, 'browser.sb'))), ...(procedureB ? { procedureBSha256: digest(JSON.stringify(procedureB)) } : {}), files: inventory(app) }
+if (protocolSourceHashes) manifest.protocolSourceHashes = protocolSourceHashes
 writeFileSync(resolve(run, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n')
 console.log(`Prepared ${id}: ${Object.keys(manifest.files).length} files, no reference or evaluation export. Model run has not started.`)

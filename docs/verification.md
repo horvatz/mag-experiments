@@ -1,4 +1,9 @@
-# Preverjanje reference P01, 16. september 2026
+# Preverjanje reference P01
+
+Ponovno preverjeno 20. septembra 2026 po pripravi protokola B/0.3:
+68/68 preverjanj reference in 8/8 zaznanih namernih napak. Vsebinske
+zahteve in testi ostajajo enaki; poročili vsebujeta aktualne kontrolne
+vsote izvajalnika. Deset enotskih testov izvajalnika je prav tako uspešnih.
 
 Referenčna rešitev je uspešno prestala vseh 68 preverjanj. Preverjanje tipov,
 sloga kode in gradnja so prav tako uspešni. Uporabljeni sta Node.js 24.11.1
@@ -55,8 +60,8 @@ postopka A je zdaj opravljen; njegov rezultat je v
 se nanašajo na referenco in namerno napačne različice.
 
 Izvoz dovoljenega gradiva, lokalno omejeno okolje, beleženje in preverjanje
-predaje so opisani v [protokolu pilota](pilot-protocol.md). Poskusa B in
-razliko med uspehom kode ter neuspešno predajo dokumentira
-[pregled pilotov](pilot-results.md). Tudi koda B-002 je opravila 68/68
-preverjanj, celoten postopek pa se ni pravilno zaključil. Primerjava vseh
-treh postopkov še ni opravljena.
+predaje so opisani v [protokolu pilota](pilot-protocol.md). Poskuse B in
+razliko med uspehom kode ter zaključkom predaje dokumentira
+[pregled pilotov](pilot-results.md). Koda B-002 je opravila 68/68 preverjanj,
+celoten postopek pa se ni pravilno zaključil. Pri B-003 so uspešne vse tri
+predaje in vseh 68 preverjanj. Primerjava vseh treh postopkov še ni opravljena.

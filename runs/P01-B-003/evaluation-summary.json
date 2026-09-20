@@ -1,0 +1,721 @@
+{
+  "id": "P01-B-003",
+  "evaluatedAt": "2026-09-20T13:25:44.402Z",
+  "baseline": {
+    "repository": "https://github.com/horvatz/mag-app.git",
+    "commit": "6dc1193f32a1fc00722fbc0983907d32b908cb51",
+    "taskVersion": "P01/0.2"
+  },
+  "procedure": "B",
+  "model": "gpt-6-astra",
+  "reasoningEffort": "xhigh",
+  "executionStatus": "completed",
+  "elapsedSeconds": 911.185,
+  "usage": {
+    "input_tokens": 894913,
+    "cached_input_tokens": 715648,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 26574,
+    "reasoning_output_tokens": 3860
+  },
+  "phases": [
+    {
+      "name": "specification",
+      "role": "specification",
+      "resumed": false,
+      "startedAt": "2026-09-20T13:09:22.969Z",
+      "limitSeconds": 360,
+      "status": "completed",
+      "usage": {
+        "input_tokens": 176937,
+        "cached_input_tokens": 130304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7581,
+        "reasoning_output_tokens": 809
+      },
+      "threadId": "01a0beef-860a-75d2-ad21-c432509a6962",
+      "finishedAt": "2026-09-20T13:13:33.906Z",
+      "elapsedSeconds": 250.939,
+      "exitCode": 0,
+      "signal": null,
+      "fileChanges": [
+        {
+          "path": "docs/agent/specification-history.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/specification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "implementation",
+      "role": "implementation",
+      "resumed": false,
+      "startedAt": "2026-09-20T13:13:35.038Z",
+      "limitSeconds": 587.906,
+      "status": "completed",
+      "usage": {
+        "input_tokens": 358146,
+        "cached_input_tokens": 314752,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 12809,
+        "reasoning_output_tokens": 1979
+      },
+      "threadId": "01a0bef3-5ebb-74e3-bb48-1a6f73ef6c44",
+      "finishedAt": "2026-09-20T13:20:47.205Z",
+      "elapsedSeconds": 432.171,
+      "exitCode": 0,
+      "signal": null,
+      "fileChanges": [
+        {
+          "path": "docs/agent/check.log",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/editing-1440.png",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/editing-390.png",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/validation-1440.png",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/validation-390.png",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/verification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/visual-check.json",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/App.tsx",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/TaskDetails.tsx",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/styles.css",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/useResource.ts",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "tests/agent/editing.spec.ts",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "tests/agent/visual-inspection.mjs",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "review",
+      "role": "review",
+      "resumed": false,
+      "startedAt": "2026-09-20T13:20:48.408Z",
+      "limitSeconds": 394.56,
+      "status": "completed",
+      "usage": {
+        "input_tokens": 359830,
+        "cached_input_tokens": 270592,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6184,
+        "reasoning_output_tokens": 1072
+      },
+      "threadId": "01a0bef9-f936-7a40-a45c-9df23bb7584f",
+      "finishedAt": "2026-09-20T13:24:32.988Z",
+      "elapsedSeconds": 224.582,
+      "exitCode": 0,
+      "signal": null,
+      "handoffSource": "reviewer_structured_final_response",
+      "handoffSha256": "8162e07577c70a6c0a0aad6351ebfa3c15eb6e05425988841361ba2072b798a3",
+      "fileChanges": [
+        {
+          "path": "docs/agent/review.json",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/review.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    }
+  ],
+  "review": {
+    "complete": true,
+    "checkedRequirements": [
+      "R01",
+      "R02",
+      "R03",
+      "R04",
+      "R05",
+      "R06",
+      "R07",
+      "R08",
+      "R09",
+      "R10"
+    ],
+    "unverified": [
+      "Testov in aplikacije nisem ponovno zagnal; uspešni lint, tipi, gradnja in 51 testov so rezultati implementerjevega zagona v check.log, katerega vsebino sem pregledal.",
+      "Vizualno sem pregledal shranjena posnetka pri 1440 in 390 pikah; interakcij, meritev iz visual-check.json in primerjave pik z izhodiščem nisem ponovno preverjal.",
+      "Skriti končni testi, drugi brskalniki in fizične mobilne naprave niso preverjeni. Okolje omejuje dostop na izvoz in lokalne storitve; Chromium zahteva chromium.connect(wsEndpoint)."
+    ],
+    "specificationChangesRequired": false,
+    "codeChangesRequired": false,
+    "summary": "Neodvisni pregled R01–R10 v specifikaciji, kodi, testih in verification.md ni pokazal konkretnih odstopanj. Spremembe specifikacije ali implementacije niso zahtevane; podrobna sledljivost je v review.md.",
+    "findings": []
+  },
+  "usageNote": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+  "allowedChanges": true,
+  "checks": [
+    {
+      "name": "lint",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.849,
+      "passed": true
+    },
+    {
+      "name": "types",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.708,
+      "passed": true
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.395,
+      "passed": true
+    },
+    {
+      "name": "tests",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 34.789,
+      "passed": true
+    }
+  ],
+  "groups": {
+    "regression": {
+      "passed": 38,
+      "total": 38
+    },
+    "development": {
+      "passed": 8,
+      "total": 8
+    },
+    "holdout": {
+      "passed": 22,
+      "total": 22
+    }
+  },
+  "tests": [
+    {
+      "title": "fixture IDs are unique and each project has three tasks",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "a successful update changes only the chosen record and fields",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"\",\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\" \\t\\r\\n\",\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\",\"status\":\"unknown\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":42,\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\",\"status\":\"done\",\"projectId\":\"launch\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: null",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "rejected save writes nothing and the next request can succeed",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "held request remains unchanged until released with success",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "held request remains unchanged until released with reject",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "reset cancels a pending save and restores a previously changed record",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "normal server does not expose test controls",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "projects show their own tasks and all three states",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "projects show their own tasks and all three states",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "duplicate titles open by ID, with complete details and keyboard dismissal",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "duplicate titles open by ID, with complete details and keyboard dismissal",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "direct task links survive refresh and browser back closes details",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "direct task links survive refresh and browser back closes details",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "a saved API change survives browser refresh and project navigation",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "a saved API change survives browser refresh and project navigation",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "unknown locations and task IDs show a recoverable state",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "unknown locations and task IDs show a recoverable state",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects can be retried",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects can be retried",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects/web/tasks can be retried",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects/web/tasks can be retried",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty project keeps the navigation and shows an empty state",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty project keeps the navigation and shows an empty state",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "switching project during loading never shows the previous project tasks",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "switching project during loading never shows the previous project tasks",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board navigation preserves the view and opens duplicate titles by ID without writes",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board navigation preserves the view and opens duplicate titles by ID without writes",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board reflects saved states on refresh, including empty columns and duplicate titles",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board reflects saved states on refresh, including empty columns and duplicate titles",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty board keeps all columns and supports switching back to the table",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty board keeps all columns and supports switching back to the table",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D01: odpiranje urejanja pokaže shranjene podatke",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D01: odpiranje urejanja pokaže shranjene podatke",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D02: uspešno shranjevanje posodobi preglednico in podrobnosti",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D02: uspešno shranjevanje posodobi preglednico in podrobnosti",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D03: preklic zavrže vnos in ne pošlje zahteve",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D03: preklic zavrže vnos in ne pošlje zahteve",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D04: prazen naslov pokaže napako, veljaven popravek jo odstrani",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D04: prazen naslov pokaže napako, veljaven popravek jo odstrani",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E01: istoimenska opravila se odpirajo po identifikatorju [R01]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E01: istoimenska opravila se odpirajo po identifikatorju [R01]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E02: začasni vnos ne spremeni podatkov ali bralnih prikazov [R02]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E02: začasni vnos ne spremeni podatkov ali bralnih prikazov [R02]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E03: prazni in beli vnosi ostanejo lokalni, popravek odstrani napako [R03]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E03: prazni in beli vnosi ostanejo lokalni, popravek odstrani napako [R03]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E04: normalizacija ohrani notranje presledke in druge znake [R03,R05]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E04: normalizacija ohrani notranje presledke in druge znake [R03,R05]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E05: vseh šest prehodov in shranjevanje brez spremembe stanja [R04,R05]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E05: vseh šest prehodov in shranjevanje brez spremembe stanja [R04,R05]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E06: uspeh posodobi vse prikaze in preživi osvežitev [R05]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E06: uspeh posodobi vse prikaze in preživi osvežitev [R05]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E07: preklic po veljavnem in neveljavnem vnosu omogoči sveže urejanje [R06]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E07: preklic po veljavnem in neveljavnem vnosu omogoči sveže urejanje [R06]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E08: spremeni se samo izbrani zapis in dovoljeni polji [R07]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E08: spremeni se samo izbrani zapis in dovoljeni polji [R07]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E09: zavrnitev ohrani vnos in podatke ter dovoli ponovni poskus [R08]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E09: zavrnitev ohrani vnos in podatke ter dovoli ponovni poskus [R08]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E10: čakanje onemogoči kontrole in podvajanje zahteve [R09]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E10: čakanje onemogoči kontrole in podvajanje zahteve [R09]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E11: po uspehu in preklicu drugo opravilo dobi svež obrazec [R10]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E11: po uspehu in preklicu drugo opravilo dobi svež obrazec [R10]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    }
+  ],
+  "completeTestRun": true,
+  "allChecksPassed": true,
+  "evaluatorSourceHashes": {
+    "baseline.json": "4c7f3cbcc5e9f37b2398c8ec2c47544486939615a37d6c8bd6ae4634bce27e0a",
+    "evaluation/P01/acceptance.spec.ts": "5c8e24daf1f31f3d84614b5aab468c887ef057e005d363e785af3d0541eabb7e",
+    "evaluation/P01/checks.ts": "f32f377b2ec964cf7f6af846a188fbb62dafebbe56a2b9330e749a5d02b49b12",
+    "evaluation/P01/mutations.mjs": "9b0470ad59f80f02720abda854b7f7cccd48c6206da780a2ec36f0ab74ab80af",
+    "evaluation/P01/test-plan.md": "0ae224ae88ca0ba62229ccc81fdba8b3526082cbcc98bd6e76491e22d5058aaf",
+    "package-lock.json": "5e3cae728c00882f4b8d93bb727b5e3ed26ef97f5ff3947b8e84f541825fd580",
+    "playwright.config.ts": "50803bdd8fe492c5295784c0ddb0efb87948109b534b811497fe5666cdc4d92b",
+    "reference/P01/overlay/src/App.tsx": "297671820e2ad1c9f02ccc681010a777338f10c4c34d37b498940276f97f62e8",
+    "reference/P01/overlay/src/editor.css": "6a223a9455d0e1f6fb35968c8303d413ec074e3fcf1b5d757fe57b790b2253bc",
+    "reference/P01/overlay/src/TaskDetails.tsx": "770f974aa554317030ad96fe8c91f86f1ac07d5980b2138ad9a28fc888053749",
+    "reference/P01/overlay/src/TaskEditor.tsx": "2f368f3acd7336c346e516762182f9ff7e41cf6870f6f6e6c9834bd2b6261d6b",
+    "reference/P01/overlay/src/useResource.ts": "4412578542fc274ee7aa4cbbf13e04e030553378db8b338c25dd297d90b86ba1",
+    "scripts/archive-pilot.mjs": "451c4d5b1d38c56746d775f9bc7b078e0242a7ddb95306c4c3acf185c5f92940",
+    "scripts/check-mutations.mjs": "ec64fe2a70c8a9cbd8166d70d99b98841a8a27e13acf3b7b4360dfebbe6ac236",
+    "scripts/evaluate-pilot.mjs": "2b94e773f23f40e29549f2b2c6ac9ed9c51d510331936e0ffbfcaa85557198ee",
+    "scripts/pilot-browser.mjs": "982ec2d755af905e0a434c513e7bc3a298abe9deb958e137b68ff4532c7c5c26",
+    "scripts/pilot-utils.mjs": "72a7d2fe01226910e97fae4c5a8a35c4773c330aaa547b24971e43f0f89fdd1b",
+    "scripts/pilot-utils.test.mjs": "2106f5dd649777659739ce93d07abb51965aecbc4de6c371f825b1c91b43e642",
+    "scripts/preflight-pilot.mjs": "06a1c91a15a89acc980e5cf4f98090cde7ba1f4a982aa920ce0fde09bc39ac2a",
+    "scripts/prepare-pilot.mjs": "7421c8985675c23b02b8459bb8d8f6a160ecaf54faa7791d3e2ea58242161ed3",
+    "scripts/prepare-reference.mjs": "ef3e7dc727b8386a43b1cf5165155726a21f85d486145168544be3be9592265b",
+    "scripts/procedure-b.mjs": "f6b0d429d20dd247ca5012828c6d146446f13a2f07317583934b8746247495b8",
+    "scripts/reconcile-pilot-usage.mjs": "b2271829495ac82c79d13d5ea7913a6d1dbad1d0bb5f42e82734ea08f014754b",
+    "scripts/report-utils.mjs": "7aab8e22e3030730a7ff1b9771874ebf9f01c6979af7c71c1bfb9b454b44cc1d",
+    "scripts/run-pilot-b.mjs": "cf693aed0dafc8cd1bfe0e057fcc0b53bfc85195771ca63af63732de1863ef5d",
+    "scripts/run-pilot.mjs": "7a51a73a505b3c0d903037970cbf7d554c14cde567ca7277bfb5622d3e231237",
+    "scripts/start-app.mjs": "5a7be2a8f5d0fa7b8c601f5148d1e22ad24dce2fe6240342dd86eb1994fee0b1",
+    "scripts/verify-reference.mjs": "557a5c9b2fae293a29fec7d032c6cdc3a6bf2f5f5a2a5bc3562138f130a58679",
+    "support/types.ts": "27ecd2e574b2fa8c45e6f9bf5d9dec92a87e5d150008f64d9d126eee6474612b",
+    "tasks/P01/development.spec.ts": "9e8bf7b3720a79da80ab85c20aa08a995c4073a31d0c41ddce3545eac8135d8b",
+    "tasks/P01/instructions.md": "e95677353f839479eeb7a83fc207c32668803a1aa6e4813e50ba5c64ea040dc4",
+    "tasks/P01/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095"
+  },
+  "submissionSha256": "b81e737f36964346288318ce720d3361fea033b58e6bb40f28125f4310f62250",
+  "limitations": [
+    "One pilot run, not a comparison of A/B/C.",
+    "Mobile tests emulate a phone in Chromium.",
+    "Recorded subscription token usage is not a monetary cost."
+  ]
+}

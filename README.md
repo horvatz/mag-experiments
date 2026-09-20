@@ -120,12 +120,15 @@ ob njem so predaja, navodila, nastavitve in dnevniki.
 [Protokol pilota](docs/pilot-protocol.md) opisuje izvoz gradiva, omejitve
 dostopa, testni brskalnik, ustavitev in preverjanje predaje.
 
-Izvedena sta tudi dva poskusa B. Prvi se je ustavil brez predaje specifikacije.
-V drugem so tekle vse tri vloge in koda je opravila vseh 68 neodvisnih
-preverjanj, vendar pregledovalec ni pravočasno oddal poročila. Celoten
-postopek B zato še ni uspešno zaključen.
+Izvedeni so trije poskusi B. Prvi se je ustavil brez specifikacije, drugi
+brez končne predaje pregledovalca. Tretji se je po izboljšavi predaj in
+časovne razporeditve uspešno zaključil v 15 minutah in 11 sekundah. Vse
+tri vloge so oddale predajo, koda pa je opravila 68/68 neodvisnih preverjanj.
+Popravki po pregledu niso bili zahtevani; nadaljevanje prvotnih sej je
+preverjeno s simulacijo izvajalnika, še ne v dejanski fazi popravljanja.
 
-[Poročilo B-002](runs/P01-B-002/report.md), [protokol B](docs/pilot-b-protocol.md)
+[Poročilo B-003](runs/P01-B-003/report.md), [protokol B](docs/pilot-b-protocol.md)
 in [pregled vseh pilotov](docs/pilot-results.md) ohranjajo tudi neuspešne
-predaje ter spremembo časovne razporeditve. Naslednji korak je izboljšava
-predaj pri B; C in glavne meritve še niso izvedeni. P01 ostaja pilotna naloga.
+poskuse ter spremembe protokola. Naslednji korak je priprava C; pred
+glavnimi meritvami ostajata preverjanje popravkov po predaji in potrditev
+merjenja porabe ob prekinitvah. P01 ostaja pilotna naloga.

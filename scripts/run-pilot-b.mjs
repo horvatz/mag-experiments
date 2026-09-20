@@ -6,7 +6,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { gzipSync } from 'node:zlib'
 import { clientEnvironment, configArguments, digest, inventory, changes } from './pilot-utils.mjs'
-import { phaseBudget, parseReview, roleCanEdit } from './procedure-b.mjs'
+import { phaseBudget, parseReview, roleCanEdit, workerArguments, runBWorkflow } from './procedure-b.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2]
@@ -23,6 +23,8 @@ assert.equal(digest(JSON.stringify(base)), manifest.configSha256)
 assert.equal(digest(readFileSync(resolve(run, 'prompt.md'))), manifest.promptSha256)
 assert.equal(digest(readFileSync(resolve(run, 'browser.sb'))), manifest.browserProfileSha256)
 assert.equal(manifest.procedure, 'B')
+assert.equal(protocol.workflow.version, 'B/0.3', 'Run the frozen runner for older protocol versions')
+for (const [path, hash] of Object.entries(manifest.protocolSourceHashes || {})) assert.equal(digest(readFileSync(resolve(root, path))), hash, 'Runner changed after preparation: ' + path)
 assert.deepEqual(inventory(app), manifest.files, 'Export changed after preparation')
 assert.ok(readFileSync(resolve(run, 'preflight-runtime.log'), 'utf8').includes('38 passed'))
 assert.ok(readJSON('preflight-filesystem.json').filesystem.every((item) => item.blocked))
@@ -49,6 +51,7 @@ const metadata = { id, procedure: 'B', startedAt: new Date().toISOString(), mode
   usage: null, monetaryCost: null, costNote: 'Existing ChatGPT login; token usage is not an API invoice.' }
 writeJSON('execution.json', metadata)
 const started = performance.now()
+const runDeadline = Date.now() + manifest.limitSeconds * 1000
 const remaining = () => Math.max(0, manifest.limitSeconds - (performance.now() - started) / 1000)
 let stopped
 let active
@@ -62,15 +65,17 @@ async function phase(name, role, resume = false) {
   const before = inventory(app)
   const folder = resolve(run, 'phases', String(metadata.phases.length + 1).padStart(2, '0') + '-' + name)
   mkdirSync(folder)
-  const config = protocol.configs[role]
-  const prompt = protocol.prompts[name] + `\nTa faza ima ob zagonu največ ${Math.floor(seconds)} sekund. Do skupne omejitve ostaja ${Math.floor(remaining())} sekund. Zapiši predajo pravočasno.\n`
+  const config = structuredClone(protocol.configs[role])
+  const phaseDeadline = Math.min(runDeadline, Date.now() + seconds * 1000)
+  Object.assign(config['shell_environment_policy.set'], { MAG_PHASE_DEADLINE_MS: String(phaseDeadline), MAG_RUN_DEADLINE_MS: String(runDeadline) })
+  const prompt = protocol.prompts[name] + `\nTa faza ima največ ${Math.floor(seconds)} sekund, do ${new Date(phaseDeadline).toISOString()}. Do skupne omejitve ostaja ${Math.floor(remaining())} sekund. Preostanek preveri z node task/time-budget.mjs. Zadnjo minuto nameni predaji in končnemu odgovoru.\n`
   writeFileSync(resolve(folder, 'prompt.md'), prompt)
   writeFileSync(resolve(folder, 'config.json'), JSON.stringify(config, null, 2) + '\n')
-  const options = ['--ignore-user-config', '--ignore-rules', '--skip-git-repo-check', '--json', ...configArguments(config)]
   assert.ok(!resume || metadata.sessions[role], 'Cannot resume a role without its own session')
   // Persist only these three sessions so a correction retains its author's
   // history. Tools still cannot read any host session or credential files.
-  const args = resume ? ['exec', 'resume', ...options, metadata.sessions[role], '-'] : ['exec', ...options, '--color', 'never', '-C', app, '-']
+  const args = workerArguments({ configArgs: configArguments(config), app, session: resume ? metadata.sessions[role] : undefined,
+    review: role === 'review', schema: resolve(app, 'task/review-schema.json'), output: resolve(folder, 'final-response.json') })
   const record = { name, role, resumed: resume, startedAt: new Date().toISOString(), limitSeconds: Number(seconds.toFixed(3)), status: 'running', usage: null }
   metadata.phases.push(record)
   writeJSON('execution.json', metadata)
@@ -134,6 +139,18 @@ async function phase(name, role, resume = false) {
   record.elapsedSeconds = Number(((performance.now() - phaseStarted) / 1000).toFixed(3))
   record.status = reason || (completed && result.exitCode === 0 && !failed ? 'completed' : 'execution_failed')
   Object.assign(record, result)
+  // This is a byte-for-byte transport of the reviewer's structured final
+  // answer, not a review authored or repaired by the experiment operator.
+  if (role === 'review' && record.status === 'completed' && existsSync(resolve(folder, 'final-response.json'))) {
+    try {
+      const response = readFileSync(resolve(folder, 'final-response.json'))
+      parseReview(JSON.parse(response))
+      writeFileSync(resolve(app, 'docs/agent/review.json'), response)
+      record.handoffSource = 'reviewer_structured_final_response'
+      record.handoffSha256 = digest(response)
+    } catch (error) { record.handoffError = error.message }
+  }
+  if (role === 'review' && record.status === 'completed' && !record.handoffSource) record.handoffError ??= 'Missing structured final review'
   const after = inventory(app)
   record.fileChanges = changes(before, after).map((item) => ({ ...item, roleAllowed: roleCanEdit(role, item.path) }))
   record.allowedChanges = record.fileChanges.every((item) => item.roleAllowed)
@@ -144,22 +161,18 @@ async function phase(name, role, resume = false) {
   writeJSON('execution.json', metadata)
   console.log(name + ': ' + record.status + ', ' + record.elapsedSeconds + 's')
   if (!record.allowedChanges || record.rejectedSymlinks.length) stopped ??= 'role_boundary_violation'
+  else if (record.handoffError) stopped ??= 'invalid_review_handoff'
   else if (record.status === 'execution_failed' || record.status === 'wrong_session') stopped ??= record.status
   return !stopped
 }
 
 try {
-  if (await phase('specification', 'specification')) {
-    if (!existsSync(resolve(app, 'docs/agent/specification.md'))) stopped = 'missing_specification'
-    else if (await phase('implementation', 'implementation')) {
-      if (await phase('review', 'review')) {
-        try { metadata.review = parseReview(JSON.parse(readFileSync(resolve(app, 'docs/agent/review.json'), 'utf8'))) }
-        catch (error) { stopped = 'invalid_review_handoff'; metadata.handoffError = error.message }
-        if (!stopped && metadata.review.specificationChangesRequired) await phase('specification-repair', 'specification', true)
-        if (!stopped && (metadata.review.codeChangesRequired || metadata.review.specificationChangesRequired)) await phase('implementation-repair', 'implementation', true)
-      }
-    }
-  }
+  const outcome = await runBWorkflow({ phase,
+    hasSpecification: () => existsSync(resolve(app, 'docs/agent/specification.md')) && readFileSync(resolve(app, 'docs/agent/specification.md'), 'utf8').trim().length > 0,
+    getReview: () => JSON.parse(readFileSync(resolve(app, 'docs/agent/review.json'), 'utf8')) })
+  if (outcome.review) metadata.review = outcome.review
+  if (outcome.error) metadata.handoffError = outcome.error
+  if (outcome.status !== 'completed') stopped ??= outcome.status
 } catch (error) { stopped ??= 'runner_error'; metadata.error = error.stack }
 finally { clearTimeout(deadline) }
 metadata.finishedAt = new Date().toISOString()
