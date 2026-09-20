@@ -1,10 +1,85 @@
 import assert from 'node:assert/strict'
-import { mkdtempSync, mkdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
+import { cpSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { test } from 'node:test'
-import { changes, configArguments, inventory } from './pilot-utils.mjs'
+import { changes, configArguments, inventory, editable } from './pilot-utils.mjs'
 import { parseReview, phaseBudget, roleCanEdit, runBWorkflow, workerArguments } from './procedure-b.mjs'
+import { stageCanEdit, parseConvergence, runCWorkflow, phaseBudget as cBudget, assertLocalSkillCatalog } from './procedure-c.mjs'
+
+test('C accepts exactly its local Spec Kit skills and rejects host or extra catalogs', () => {
+  const names = ['analyze', 'checklist', 'clarify', 'constitution', 'converge', 'implement', 'plan', 'specify', 'tasks', 'taskstoissues']
+  const text = '### Skill roots\n- `r0` = `/export/.agents/skills`\n### Available skills\n' + names.map(name => '- speckit-' + name + ': Description (file: r0/speckit-' + name + '/SKILL.md)').join('\n') + '\n</skills_instructions>'
+  const snapshot = value => JSON.stringify([{ content: [{ type: 'input_text', text: value }] }])
+  assert.doesNotThrow(() => assertLocalSkillCatalog(snapshot(text), '/export'))
+  assert.throws(() => assertLocalSkillCatalog(snapshot(text.replace('/export/.agents/skills', '/host/.agents/skills')), '/export'))
+  assert.throws(() => assertLocalSkillCatalog(snapshot(text.replace('### Available skills', '- `r1` = `/host/skills`\n### Available skills')), '/export'))
+})
+
+test('C preserves shared code boundaries while allowing only its two process metadata files', () => {
+  for (const path of ['.specify/feature.json', '.specify/memory/constitution.md']) {
+    assert.equal(editable(path), false)
+    assert.equal(editable(path, 'C'), true)
+  }
+  assert.equal(editable('.agents/skills/speckit-plan/SKILL.md', 'C'), false)
+  assert.equal(editable('.specify/templates/spec-template.md', 'C'), false)
+  assert.equal(stageCanEdit('plan', 'src/App.tsx'), false)
+  assert.equal(stageCanEdit('implement', 'src/App.tsx'), true)
+  assert.equal(stageCanEdit('implement', '.specify/memory/constitution.md'), false)
+  assert.equal(stageCanEdit('converge', 'docs/agent/P01/spec.md'), false)
+  assert.equal(stageCanEdit('converge', 'docs/agent/P01/tasks.md'), true)
+  assert.equal(cBudget('implement', 300), 180)
+  assert.equal(cBudget('implement', 90), 0)
+})
+
+test('C rejects approval of unfinished tasks and enforces append-only convergence', () => {
+  const done = '- [x] T001 Implement feature\n'
+  const report = { outcome: 'converged', summary: 'Checked', unverified: [] }
+  assert.deepEqual(parseConvergence(report, done, done), report)
+  assert.throws(() => parseConvergence(report, '- [ ] T001 Pending\n', '- [ ] T001 Pending\n'))
+  assert.throws(() => parseConvergence(report, '- [ ] [T001] Pending\n', '- [ ] [T001] Pending\n'))
+  assert.throws(() => parseConvergence(report, done, done + '\n'))
+  const more = { ...report, outcome: 'tasks_appended' }
+  assert.deepEqual(parseConvergence(more, done, done + '- [ ] T002 Address gap\n'), more)
+  assert.deepEqual(parseConvergence(more, done, done + '- [ ] [T002] Address gap\n'), more)
+  assert.throws(() => parseConvergence(more, done, '- [ ] T001 Replaced\n'))
+  assert.throws(() => parseConvergence(more, done, done))
+})
+
+test('C runs the official steps in order and returns appended work to the same pipeline', async () => {
+  const calls = [], reports = [{ outcome: 'tasks_appended' }, { outcome: 'converged' }]
+  const status = await runCWorkflow({ phase: async stage => { calls.push(stage); return true }, getConvergence: () => reports.shift() })
+  assert.equal(status, 'completed')
+  assert.deepEqual(calls, ['constitution', 'specify', 'plan', 'tasks', 'implement', 'converge', 'implement', 'converge'])
+})
+
+test('C stops on failed handoffs and preserves unresolved convergence after the allowed repair pass', async () => {
+  const calls = []
+  assert.equal(await runCWorkflow({ phase: async stage => { calls.push(stage); return stage !== 'plan' }, getConvergence: () => { throw Error('Must not converge') } }), 'phase_stopped')
+  assert.deepEqual(calls, ['constitution', 'specify', 'plan'])
+  assert.equal(await runCWorkflow({ phase: async () => true, getConvergence: () => ({ outcome: 'tasks_appended' }) }), 'convergence_incomplete')
+  assert.equal(await runCWorkflow({ phase: async () => true, getConvergence: () => ({ outcome: 'blocked' }) }), 'convergence_blocked')
+})
+
+test('pinned Spec Kit scripts resolve feature and task artifacts without Git or external services', () => {
+  for (const variant of ['spec-kit-1.0.8', 'spec-kit-1.0.8-lean']) {
+  const root = mkdtempSync(join(tmpdir(), 'mag-speckit-'))
+  try {
+    cpSync(new URL('../vendor/' + variant + '/.specify', import.meta.url), join(root, '.specify'), { recursive: true })
+    mkdirSync(join(root, 'docs/agent/P01'), { recursive: true })
+    writeFileSync(join(root, 'docs/agent/P01/spec.md'), '# Test specification\n')
+    const runtime = process.env.MAG_SPECKIT_RUNTIME || new URL('../.work/tools/spec-kit-cli-1.0.8', import.meta.url).pathname
+    const env = { ...process.env, PATH: runtime + '/bin:' + process.env.PATH, PYTHONDONTWRITEBYTECODE: '1', SPECIFY_INIT_DIR: root, SPECIFY_FEATURE_DIRECTORY: 'docs/agent/P01' }
+    const run = (name, ...args) => JSON.parse(execFileSync('/bin/bash', [join(root, '.specify/scripts/bash', name), ...args], { cwd: root, env, encoding: 'utf8' }))
+    assert.ok(run('resolve-template.sh', 'spec-template', '--json').TEMPLATE_CONTENT.includes('Feature Specification'))
+    const plan = run('setup-plan.sh', '--json')
+    assert.equal(plan.FEATURE_DIR, root + '/docs/agent/P01')
+    assert.equal(JSON.parse(readFileSync(join(root, '.specify/feature.json'))).feature_directory, 'docs/agent/P01')
+    assert.ok(run('setup-tasks.sh', '--json').TASKS_TEMPLATE_CONTENT.includes('Tasks'))
+  } finally { rmSync(root, { recursive: true, force: true }) }
+  }
+})
 
 const completedReview = (findings = []) => ({ complete: true, checkedRequirements: Array.from({ length: 10 }, (_, i) => 'R' + String(i + 1).padStart(2, '0')), unverified: [], specificationChangesRequired: findings.some(x => x.target === 'specification'), codeChangesRequired: findings.some(x => x.target === 'implementation'), summary: 'Reviewed all requirements', findings })
 

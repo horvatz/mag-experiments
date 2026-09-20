@@ -6,17 +6,17 @@ import { gzipSync } from 'node:zlib'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'
-assert.match(id, /^P01-[AB]-\d{3}$/)
+assert.match(id, /^P01-[ABC]-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
 const target = resolve(root, 'runs', id)
 assert.ok(!existsSync(target), 'Do not overwrite a recorded run')
 const summary = JSON.parse(readFileSync(resolve(run, 'evaluation-summary.json'), 'utf8'))
 assert.notEqual(summary.executionStatus, 'running')
 mkdirSync(target, { recursive: true })
-for (const file of ['execution.json', 'evaluation-summary.json', 'usage-observation.json', 'prompt.md', 'config.json', 'procedure-b.json', 'browser.sb', 'last-message.md', 'preflight-filesystem.json', 'preflight-roles.json', 'preflight-runtime.log', 'network-audit.json']) {
+for (const file of ['execution.json', 'evaluation-summary.json', 'usage-observation.json', 'prompt.md', 'config.json', 'procedure-b.json', 'procedure-c.json', 'spec-kit-provenance.json', 'browser.sb', 'last-message.md', 'preflight-filesystem.json', 'preflight-roles.json', 'preflight-c.json', 'preflight-runtime.log', 'network-audit.json']) {
   if (existsSync(resolve(run, file))) cpSync(resolve(run, file), resolve(target, file))
 }
-for (const file of ['manifest.json', 'final-inventory.json', 'events.jsonl', 'stderr.log', 'preflight-prompt.json', 'evaluation-results.json']) {
+for (const file of ['manifest.json', 'final-inventory.json', 'events.jsonl', 'stderr.log', 'preflight-prompt.json', 'evaluation-results.json', 'spec-kit-runtime.json']) {
   if (existsSync(resolve(run, file))) writeFileSync(resolve(target, file + '.gz'), gzipSync(readFileSync(resolve(run, file))))
 }
 for (const name of ['lint', 'types', 'build', 'tests']) {
@@ -31,20 +31,24 @@ if (existsSync(resolve(run, 'phases'))) {
     const path = resolve(target, 'phases', folder, file)
     if (existsSync(path)) { writeFileSync(path + '.gz', gzipSync(readFileSync(path))); rmSync(path) }
   }
-  for (const role of ['specification', 'implementation', 'review']) {
+  for (const role of ['specification', 'implementation', 'review', 'constitution', 'specify', 'plan', 'tasks', 'implement', 'converge']) {
     const name = 'preflight-prompt-' + role + '.json'
     if (existsSync(resolve(run, name))) writeFileSync(resolve(target, name + '.gz'), gzipSync(readFileSync(resolve(run, name))))
   }
 }
 mkdirSync(resolve(target, 'input-overrides'))
 for (const file of ['AGENTS.md', 'playwright.config.ts', 'task']) cpSync(resolve(run, 'app', file), resolve(target, 'input-overrides', file), { recursive: true })
+if (summary.procedure === 'C') {
+  const manifest = JSON.parse(readFileSync(resolve(run, 'manifest.json'), 'utf8'))
+  cpSync(resolve(root, 'vendor', manifest.specKitVendor || 'spec-kit-1.0.8'), resolve(target, 'spec-kit-at-launch'), { recursive: true })
+}
 const minutes = Math.floor(summary.elapsedSeconds / 60)
 const seconds = Math.round(summary.elapsedSeconds % 60)
 const group = (name) => summary.groups[name] ? summary.groups[name].passed + '/' + summary.groups[name].total : 'ni podatka'
 const text = [
   '# Pilot P01, postopek ' + summary.procedure,
   '',
-  summary.procedure === 'B' ? 'Trije agenti so si zaporedno predali pripravo specifikacije, implementacijo in pregled. Morebitne popravke opravita prvotna avtorja.' : 'En agent je iz navodil pripravil specifikacijo, implementacijo urejanja opravila in lastna preverjanja.',
+  summary.procedure === 'B' ? 'Trije agenti so si zaporedno predali pripravo specifikacije, implementacijo in pregled. Morebitne popravke opravita prvotna avtorja.' : summary.procedure === 'C' ? 'En agent je v isti seji izvajal uradne korake Spec Kit 1.0.8: constitution, specify, plan, tasks, implement in converge.' : 'En agent je iz navodil pripravil specifikacijo, implementacijo urejanja opravila in lastna preverjanja.',
   'Referenčne rešitve in končnih testov med delom ni imel na voljo.',
   '',
   '| Podatek | Rezultat |', '| --- | --- |',
@@ -68,7 +72,7 @@ const text = [
     ...summary.phases.map((phase) => '| ' + phase.name + ' | ' + phase.elapsedSeconds + ' s | ' + phase.status + ' |'), '',
     'Vsaka mapa v phases/ vsebuje točen poziv, nastavitve, rezultate, stisnjen dnevnik in predajo ob koncu faze.',
     'Skupni čas vključuje tudi samodejne predaje med fazami.', '',
-    '[Vnaprej določen protokol B](../../docs/pilot-b-protocol.md) opisuje vloge, omejitve in obravnavo popravkov.', '',] : []),
+    '[Vnaprej določen protokol ' + summary.procedure + '](../../docs/pilot-' + summary.procedure.toLowerCase() + '-protocol.md) opisuje korake, omejitve in obravnavo popravkov.', '',] : []),
   'Rezultat velja za eno izvedbo pilotne naloge. Ne dokazuje prednosti postopka ' + summary.procedure + ', popolnosti testov ali pravilnosti za vsa mogoča stanja.',
   'Mobilna preverjanja so emulacija v Chromiumu.',
   '',

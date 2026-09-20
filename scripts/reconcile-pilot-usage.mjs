@@ -6,10 +6,10 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 // Researcher-side only, after the model has stopped. Read usage events from
-// the three exact session IDs, never credentials or unrelated conversations.
+// the recorded session IDs, never credentials or unrelated conversations.
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2]
-assert.match(id, /^P01-B-\d{3}$/)
+assert.match(id, /^P01-[BC]-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
 const execution = JSON.parse(readFileSync(resolve(run, 'execution.json'), 'utf8'))
 assert.notEqual(execution.status, 'running')

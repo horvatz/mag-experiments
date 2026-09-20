@@ -10,6 +10,10 @@ if (/^P01-B-\d{3}$/.test(process.argv[2] || '')) {
   await import('./run-pilot-b.mjs')
   process.exit(0)
 }
+if (/^P01-C-\d{3}$/.test(process.argv[2] || '')) {
+  await import('./run-pilot-c.mjs')
+  process.exit(0)
+}
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'

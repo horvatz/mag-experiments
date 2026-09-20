@@ -1,0 +1,49 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:25191) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:25218) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:25219) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [agent] › tests/agent/P01.spec.ts:9:1 › A01: isolation, transitions, views, persistence and identity (5.1s)
+
+
+  1) [agent] › tests/agent/P01.spec.ts:9:1 › A01: isolation, transitions, views, persistence and identity 
+
+    Test timeout of 5000ms exceeded.
+
+    Error: locator.click: Test timeout of 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uredi', exact: true })
+
+
+      4 | async function edit(page: Page, id = 'web-02') {
+      5 |   await page.goto(`/#/projects/web/tasks/${id}`)
+    > 6 |   await page.getByRole('button', { name: 'Uredi', exact: true }).click()
+        |                                                                  ^
+      7 | }
+      8 | test.beforeEach(async ({ request }) => { await request.post('/__test/reset') })
+      9 | test('A01: isolation, transitions, views, persistence and identity', async ({ page, request }) => {
+        at edit (/Users/zan/Documents/mag/experiments/.work/pilots/P01-C-001/app/tests/agent/P01.spec.ts:6:66)
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P01-C-001/app/tests/agent/P01.spec.ts:11:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-P01-A01-isolation-tr-919ad-ws-persistence-and-identity-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-P01-A01-isolation-tr-919ad-ws-persistence-and-identity-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-P01-A01-isolation-tr-919ad-ws-persistence-and-identity-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-P01-A01-isolation-tr-919ad-ws-persistence-and-identity-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [agent] › tests/agent/P01.spec.ts:9:1 › A01: isolation, transitions, views, persistence and identity 

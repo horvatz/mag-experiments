@@ -6,10 +6,11 @@ import { fileURLToPath } from 'node:url'
 import { digest, inventory } from './pilot-utils.mjs'
 import { configureBrowser } from './pilot-browser.mjs'
 import { roles, roleConfiguration, prompts, workflow, reviewSchema } from './procedure-b.mjs'
+import * as procedureC from './procedure-c.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'
-if (!/^P01-[AB]-\d{3}$/.test(id)) throw new Error('Expected an unused ID such as P01-A-001 or P01-B-001.')
+if (!/^P01-[ABC]-\d{3}$/.test(id)) throw new Error('Expected an unused ID such as P01-A-001, P01-B-001 or P01-C-001.')
 const procedure = id.split('-')[1]
 const cli = realpathSync(process.env.MAG_PILOT_CODEX || resolve(homedir(), '.local/bin/codex'))
 const run = resolve(root, '.work/pilots', id)
@@ -66,26 +67,65 @@ const config = {
   { encoding: 'utf8' }).trim().split('\n').filter(Boolean).map((path) => ({ path, enabled: false })),
   project_doc_max_bytes: 32768,
 }
+if (procedure === 'C') {
+  const vendor = resolve(root, 'vendor', procedureC.vendorName)
+  const runtime = resolve(process.env.MAG_SPECKIT_RUNTIME || resolve(root, '.work/tools/spec-kit-cli-1.0.8'))
+  const python = realpathSync(resolve(runtime, 'bin/python'))
+  execFileSync(resolve(runtime, 'bin/python'), ['-c', 'import yaml; assert yaml.__version__ == "6.0.3"'], { env: { ...process.env, PYTHONDONTWRITEBYTECODE: '1' } })
+  permissions.filesystem[runtime] = 'read'
+  permissions.filesystem[dirname(dirname(python))] = 'read'
+  // macOS mktemp without a template can prefer the host's Darwin temp path
+  // over TMPDIR inside Seatbelt. Keep Spec Kit's temporary files in the export.
+  const compatibility = resolve(app, '.pilot-tools')
+  mkdirSync(compatibility)
+  writeFileSync(resolve(compatibility, 'mktemp'), '#!/bin/sh\nif [ "$#" -eq 0 ]; then\n  exec /usr/bin/mktemp "${TMPDIR:?}/tmp.XXXXXX"\nfi\nexec /usr/bin/mktemp "$@"\n', { mode: 0o755 })
+  config['shell_environment_policy.set'].PATH = `${compatibility}:${nodeRoot}/bin:${runtime}/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin`
+  config['shell_environment_policy.set'].PYTHONDONTWRITEBYTECODE = '1'
+  const provenance = JSON.parse(readFileSync(resolve(vendor, 'provenance.json'), 'utf8'))
+  for (const [path, entry] of Object.entries(provenance.scaffold)) {
+    if (entry.kind !== 'file' || digest(readFileSync(resolve(vendor, path))) !== entry.sha256) throw new Error('Spec Kit scaffold changed: ' + path)
+  }
+  for (const path of ['.specify', '.agents']) cpSync(resolve(vendor, path), resolve(app, path), { recursive: true })
+  writeFileSync(resolve(app, '.specify/feature.json'), '{}\n')
+  mkdirSync(resolve(app, procedureC.feature), { recursive: true })
+  permissions.filesystem[app]['.specify/memory/constitution.md'] = 'write'
+  permissions.filesystem[app]['.specify/feature.json'] = 'write'
+  Object.assign(config['shell_environment_policy.set'], { SPECIFY_INIT_DIR: app, SPECIFY_FEATURE_DIRECTORY: procedureC.feature })
+  writeFileSync(resolve(app, 'AGENTS.md'), '# Pilot P01, procedure C\n\nRead PROJECT_RULES.md and task/instructions.md. One persistent agent runs the official local Spec Kit skills in order. Do not launch agents.\nThe runner explicitly names the local SKILL.md for each step; host skills are disabled.\nApplication writes remain limited to src/, tests/agent/ and docs/agent/. Additionally, the C process may update .specify/memory/constitution.md and .specify/feature.json. All other Spec Kit files are read-only.\nThe feature directory is docs/agent/P01. Dependencies and Chromium are installed. Do not use other projects, connectors, remote repositories or Git branches.\n')
+  writeFileSync(resolve(run, 'spec-kit-provenance.json'), JSON.stringify(provenance, null, 2) + '\n')
+  writeFileSync(resolve(run, 'spec-kit-runtime.json'), JSON.stringify({ runtime, python, pythonVersion: execFileSync(resolve(runtime, 'bin/python'), ['--version'], { encoding: 'utf8' }).trim(), packageVersions: readFileSync(resolve(vendor, 'setup-requirements.txt'), 'utf8'), files: inventory(runtime) }, null, 2) + '\n')
+  writeFileSync(resolve(app, 'task/convergence-schema.json'), JSON.stringify(procedureC.convergenceSchema, null, 2) + '\n')
+}
 writeFileSync(resolve(run, 'config.json'), JSON.stringify(config, null, 2) + '\n')
 const prompt = `Izvedi pilotno nalogo P01 samostojno po postopku A (en agent).\n\nPreberi PROJECT_RULES.md, task/instructions.md in task/specification-template.md. Najprej pripravi specifikacijo v docs/agent/specification.md, nato implementiraj zahteve in preveri rešitev. Ob spremembi specifikacije ohrani kratek zapis popravka. Lastne teste dodajaj v tests/agent/. V docs/agent/verification.md zapiši dejansko izvedena preverjanja, rezultate, povezave z zahtevami ter omejitve.\n\nNa voljo imaš največ 20 minut od začetka tega zagona; čas vključuje specifikacijo, kodo in preverjanje. Končaj prej, ko opraviš nalogo. Končna predaja je stanje datotek ob koncu tvojega odgovora oziroma ob časovni omejitvi. Reši tudi zahteve, ki jih skupni razvojni testi morda ne zajamejo.\n\nOdvisnosti in Chromium so nameščeni. npm run check izvede preverjanje kode in vse dostopne teste (38 preverjanj izhodišča, 8 razvojnih preverjanj P01 in tvoje dodatne teste). Samo skupne razvojne teste lahko zaženeš z npx playwright test --project=development-desktop --project=development-mobile. Testi imajo lastni strežnik na vratih 5174/3102. Za ročni ogled uporabi WEB_PORT=5193 API_PORT=3123 npm run dev. Testi so že nastavljeni na ločen Chromium. Za lastne skripte preberi wsEndpoint iz task/browser.json in uporabi chromium.connect(wsEndpoint); chromium.launch() znotraj tega okolja ne deluje. Dostop do javnega interneta je blokiran. Uporabljaj samo lokalne storitve te naloge.\n\nSpreminjaj samo src/, tests/agent/ in docs/agent/. To je svež izvoz brez zgodovine Git. Ne dodajaj odvisnosti, ne spreminjaj infrastrukture ali skupnih testov in ne zaganjaj drugih agentov. Če kakšen korak zaradi omejitev okolja ne deluje, to jasno zabeleži in nadaljuj z drugim dovoljenim načinom. Na koncu kratko povzemaj rezultat in neizpolnjene zahteve.\n`
-const runPrompt = procedure === 'A' ? prompt : 'Postopek B: specification → implementation → review → po potrebi specification-repair → implementation-repair. Pozivi in nastavitve posameznih vlog so v procedure-b.json.\n'
+const runPrompt = procedure === 'A' ? prompt : procedure === 'B' ? 'Postopek B: specification → implementation → review → po potrebi specification-repair → implementation-repair. Pozivi in nastavitve posameznih vlog so v procedure-b.json.\n' : 'Postopek C: ena seja, uradni Spec Kit 1.0.8; constitution → specify → plan → tasks → implement → converge. Ob novih nalogah največ ena dodatna implementacija in converge v isti skupni časovni meji. Pozivi in nastavitve so v procedure-c.json.\n'
 writeFileSync(resolve(run, 'prompt.md'), runPrompt)
 let procedureB
+let cProtocol
 let protocolSourceHashes
+if (procedure !== 'A') writeFileSync(resolve(app, 'task/time-budget.mjs'), `const phase = Number(process.env.MAG_PHASE_DEADLINE_MS)\nconst run = Number(process.env.MAG_RUN_DEADLINE_MS)\nif (!Number.isFinite(phase) || !Number.isFinite(run)) throw new Error('No active phase clock')\nconst seconds = (end) => Math.max(0, Math.floor((end - Date.now()) / 1000))\nconsole.log(JSON.stringify({ phaseSecondsRemaining: seconds(phase), totalSecondsRemaining: seconds(run), phaseDeadlineUTC: new Date(phase).toISOString() }))\n`)
 if (procedure === 'B') {
   writeFileSync(resolve(app, 'task/review-schema.json'), JSON.stringify(reviewSchema, null, 2) + '\n')
-  writeFileSync(resolve(app, 'task/time-budget.mjs'), `const phase = Number(process.env.MAG_PHASE_DEADLINE_MS)\nconst run = Number(process.env.MAG_RUN_DEADLINE_MS)\nif (!Number.isFinite(phase) || !Number.isFinite(run)) throw new Error('No active phase clock')\nconst seconds = (end) => Math.max(0, Math.floor((end - Date.now()) / 1000))\nconsole.log(JSON.stringify({ phaseSecondsRemaining: seconds(phase), totalSecondsRemaining: seconds(run), phaseDeadlineUTC: new Date(phase).toISOString() }))\n`)
   procedureB = { workflow, prompts, reviewSchema, configs: Object.fromEntries(roles.map((role) => [role, roleConfiguration(config, app, role)])) }
   writeFileSync(resolve(run, 'procedure-b.json'), JSON.stringify(procedureB, null, 2) + '\n')
+}
+if (procedure === 'C') {
+  cProtocol = { workflow: procedureC.workflow, prompts: procedureC.prompts, convergenceSchema: procedureC.convergenceSchema,
+    configs: Object.fromEntries(procedureC.stages.map(stage => [stage, procedureC.stageConfiguration(config, app, stage)])) }
+  writeFileSync(resolve(run, 'procedure-c.json'), JSON.stringify(cProtocol, null, 2) + '\n')
+}
+if (procedure !== 'A') {
   mkdirSync(resolve(run, 'protocol'))
   protocolSourceHashes = {}
-  for (const file of ['prepare-pilot.mjs', 'preflight-pilot.mjs', 'run-pilot.mjs', 'run-pilot-b.mjs', 'pilot-utils.mjs', 'procedure-b.mjs', 'pilot-browser.mjs', 'evaluate-pilot.mjs', 'archive-pilot.mjs', 'reconcile-pilot-usage.mjs']) {
+  for (const file of ['prepare-pilot.mjs', 'preflight-pilot.mjs', 'run-pilot.mjs', 'run-pilot-b.mjs', 'pilot-utils.mjs', 'procedure-b.mjs', 'pilot-browser.mjs', 'evaluate-pilot.mjs', 'archive-pilot.mjs', 'reconcile-pilot-usage.mjs', ...(procedure === 'C' ? ['procedure-c.mjs', 'run-pilot-c.mjs', 'report-utils.mjs'] : [])]) {
     cpSync(resolve(root, 'scripts', file), resolve(run, 'protocol', file))
     protocolSourceHashes['scripts/' + file] = digest(readFileSync(resolve(root, 'scripts', file)))
   }
-  cpSync(resolve(root, 'docs/pilot-b-protocol.md'), resolve(run, 'protocol/pilot-b-protocol.md'))
+  const doc = 'pilot-' + procedure.toLowerCase() + '-protocol.md'
+  cpSync(resolve(root, 'docs', doc), resolve(run, 'protocol', doc))
 }
 const manifest = { id, createdAt: new Date().toISOString(), baseline, procedure, task: 'P01', limitSeconds: 1200, model: config.model, reasoningEffort: config.model_reasoning_effort, node: process.version, platform: process.platform, architecture: process.arch, cli, cliVersion: execFileSync(cli, ['--version'], { encoding: 'utf8' }).trim(), setup: 'P01 shared development projects added to exported Playwright configuration', promptSha256: digest(runPrompt), configSha256: digest(JSON.stringify(config)), browserProfileSha256: digest(readFileSync(resolve(run, 'browser.sb'))), ...(procedureB ? { procedureBSha256: digest(JSON.stringify(procedureB)) } : {}), files: inventory(app) }
 if (protocolSourceHashes) manifest.protocolSourceHashes = protocolSourceHashes
+if (cProtocol) { manifest.procedureCSha256 = digest(JSON.stringify(cProtocol)); manifest.specKitVendor = procedureC.vendorName; manifest.specKitRuntimeSha256 = digest(readFileSync(resolve(run, 'spec-kit-runtime.json'))) }
 writeFileSync(resolve(run, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n')
 console.log(`Prepared ${id}: ${Object.keys(manifest.files).length} files, no reference or evaluation export. Model run has not started.`)

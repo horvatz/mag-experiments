@@ -8,7 +8,7 @@ import { digest, editable, inventory } from './pilot-utils.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'
-assert.match(id, /^P01-[AB]-\d{3}$/)
+assert.match(id, /^P01-[ABC]-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
 const execution = JSON.parse(readFileSync(resolve(run, 'execution.json'), 'utf8'))
 const usageObservation = existsSync(resolve(run, 'usage-observation.json')) ? JSON.parse(readFileSync(resolve(run, 'usage-observation.json'), 'utf8')) : null
@@ -18,7 +18,7 @@ assert.ok(!existsSync(resolve(run, 'evaluation-summary.json')), 'Do not overwrit
 const manifest = JSON.parse(readFileSync(resolve(run, 'manifest.json'), 'utf8'))
 assert.deepEqual(manifest.baseline, JSON.parse(readFileSync(resolve(root, 'baseline.json'), 'utf8')), 'Baseline changed since preparation')
 const finalInventory = JSON.parse(readFileSync(resolve(run, 'final-inventory.json'), 'utf8'))
-const expectedSubmission = Object.fromEntries(Object.entries(finalInventory).filter(([path]) => editable(path)))
+const expectedSubmission = Object.fromEntries(Object.entries(finalInventory).filter(([path]) => editable(path, manifest.procedure)))
 assert.deepEqual(inventory(resolve(run, 'submission')), expectedSubmission, 'Frozen submission changed')
 for (const entry of Object.values(expectedSubmission)) {
   assert.equal(entry.kind, 'file', 'Symlinks are not accepted in submitted code')
@@ -69,7 +69,7 @@ const summary = {
   id, evaluatedAt: new Date().toISOString(), baseline: manifest.baseline, procedure: manifest.procedure,
   model: manifest.model, reasoningEffort: manifest.reasoningEffort,
   executionStatus: execution.status, elapsedSeconds: execution.elapsedSeconds, usage: usageObservation?.complete ? usageObservation.usage : execution.usage,
-  ...(execution.phases ? { phases: execution.phases, review: execution.review, usageNote: usageObservation?.complete ? usageObservation.method : execution.usageNote } : {}),
+  ...(execution.phases ? { phases: execution.phases, review: execution.review, convergence: execution.convergence, usageNote: usageObservation?.complete ? usageObservation.method : execution.usageNote } : {}),
   allowedChanges: execution.allowedChanges, checks: results, groups, tests,
   completeTestRun: tests.length === 68 && (raw?.errors.length ?? 1) === 0,
   allChecksPassed: execution.status === 'completed' && execution.allowedChanges && results.every((item) => item.passed) && tests.length === 68 && tests.every((test) => test.status === 'expected') && raw.errors.length === 0,

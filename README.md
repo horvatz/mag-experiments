@@ -129,6 +129,19 @@ preverjeno s simulacijo izvajalnika, še ne v dejanski fazi popravljanja.
 
 [Poročilo B-003](runs/P01-B-003/report.md), [protokol B](docs/pilot-b-protocol.md)
 in [pregled vseh pilotov](docs/pilot-results.md) ohranjajo tudi neuspešne
-poskuse ter spremembe protokola. Naslednji korak je priprava C; pred
-glavnimi meritvami ostajata preverjanje popravkov po predaji in potrditev
-merjenja porabe ob prekinitvah. P01 ostaja pilotna naloga.
+poskuse ter spremembe protokola.
+
+Opravljena sta tudi dva poskusa C s Spec Kit. Prvi je opravil 68/68
+preverjanj kode, vendar ni zaključil predaje implementacije. Drugi je
+z uradnim presetom Lean uspešno zaključil vseh šest korakov v 15 minutah
+in 52 sekundah ter opravil vseh 68 neodvisnih preverjanj. Celotna poraba
+je zabeležena. [Poročilo C-002](runs/P01-C-002/report.md),
+[protokol C](docs/pilot-c-protocol.md) in [priprava okolja C](docs/pilot-c-setup.md)
+vsebujejo podrobnosti in omejitve.
+
+**P01 je zaključen kot prvi pilot vseh treh postopkov.**
+[Skupni pregled](docs/pilot-results.md) vsebuje vseh šest poskusov in
+naslednje korake. P01 ne določa zmagovalca: med umerjanjem sta se
+protokola B in C spreminjala. Naslednja je zahtevnejša pilotna naloga
+P02; pred glavnimi meritvami ostajata dejanski preizkus popravkov po
+pregledu in potrditev merjenja porabe ob prekinitvah.

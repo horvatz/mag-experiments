@@ -1,9 +1,10 @@
 # Preverjanje reference P01
 
-Ponovno preverjeno 20. septembra 2026 po pripravi protokola B/0.3:
+Ponovno preverjeno 20. septembra 2026 po izvedbi protokolov B/0.3 in C/0.2:
 68/68 preverjanj reference in 8/8 zaznanih namernih napak. Vsebinske
 zahteve in testi ostajajo enaki; poročili vsebujeta aktualne kontrolne
-vsote izvajalnika. Deset enotskih testov izvajalnika je prav tako uspešnih.
+vsote izvajalnika in obeh pripetih predlog Spec Kit. Šestnajst enotskih
+testov izvajalnika je prav tako uspešnih.
 
 Referenčna rešitev je uspešno prestala vseh 68 preverjanj. Preverjanje tipov,
 sloga kode in gradnja so prav tako uspešni. Uporabljeni sta Node.js 24.11.1
@@ -64,4 +65,7 @@ predaje so opisani v [protokolu pilota](pilot-protocol.md). Poskuse B in
 razliko med uspehom kode ter zaključkom predaje dokumentira
 [pregled pilotov](pilot-results.md). Koda B-002 je opravila 68/68 preverjanj,
 celoten postopek pa se ni pravilno zaključil. Pri B-003 so uspešne vse tri
-predaje in vseh 68 preverjanj. Primerjava vseh treh postopkov še ni opravljena.
+predaje in vseh 68 preverjanj. Tudi C-001 je opravil 68/68 preverjanj kode,
+vendar ni zaključil predaje. Pri C-002 so uspešni vseh šest korakov Spec Kit
+in vseh 68 neodvisnih preverjanj. P01 je zaključen kot prvi pilot A, B in C;
+to še ni glavna raziskovalna primerjava.

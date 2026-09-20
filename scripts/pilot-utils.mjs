@@ -2,7 +2,9 @@ import { createHash } from 'node:crypto'
 import { lstatSync, readdirSync, readFileSync, readlinkSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-export const editable = (name) => ['src/', 'tests/agent/', 'docs/agent/'].some((prefix) => name.startsWith(prefix))
+export const cMetadata = ['.specify/memory/constitution.md', '.specify/feature.json']
+export const submissionPaths = (procedure) => ['src', 'tests/agent', 'docs/agent', ...(procedure === 'C' ? cMetadata : [])]
+export const editable = (name, procedure = 'A') => ['src/', 'tests/agent/', 'docs/agent/'].some((prefix) => name.startsWith(prefix)) || (procedure === 'C' && cMetadata.includes(name))
 export const generated = (name) => ['.tmp/', '.vite/', 'dist/', 'test-results/', 'playwright-report/', 'node_modules/.vite/', 'node_modules/.vite-temp/'].some((prefix) => name.startsWith(prefix))
 export const digest = (value) => createHash('sha256').update(value).digest('hex')
 
@@ -30,10 +32,10 @@ export function inventory(root) {
   return files
 }
 
-export function changes(before, after) {
+export function changes(before, after, procedure = 'A') {
   return [...new Set([...Object.keys(before), ...Object.keys(after)])].sort()
     .filter((path) => JSON.stringify(before[path]) !== JSON.stringify(after[path]))
-    .map((path) => ({ path, allowed: editable(path), kind: !before[path] ? 'added' : !after[path] ? 'deleted' : 'modified' }))
+    .map((path) => ({ path, allowed: editable(path, procedure), kind: !before[path] ? 'added' : !after[path] ? 'deleted' : 'modified' }))
 }
 
 // All settings are passed explicitly; neither a personal config file nor a new
