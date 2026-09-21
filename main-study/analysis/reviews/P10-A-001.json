@@ -1,0 +1,48 @@
+{
+  "id": "P10-A-001",
+  "reviewedAt": "2026-09-22",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija skladno obravnava vseh 12 zahtev, identiteto po ID-jih, globalne sosede tudi na tabli, prazne in enočlenske projekte, omejitev 20 korakov ter življenjsko dobo ob menjavi pogleda, podrobnosti, projekta in osvežitvi. Izrecno loči veljavni reset od dejanja brez učinka pri začetnem redu in nepraznem skladu ponovitev.",
+      "evidence": ["runs/P10-A-001/submission/docs/agent/specification.md"]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Model (I,P,U,R) podaja preverljive prehode za premik, undo, redo in reset ter identiteto pri neveljavnem dejanju. Določene so permutacije brez izgube in podvajanja, omejitev sklada, stabilni podseznami po stanju in globalna mesta. Formalizacija določa tudi ohranitev redo pri neveljavnem premiku ali resetu brez učinka.",
+      "evidence": ["runs/P10-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Vsaka R ima povezavo do konkretnega dela modela ali prikaza, imenovanih D/A scenarijev in dejanskega dnevnika. Končni dnevnik potrjuje 55 uspešnih preverjanj (38 izhodišče, 8 skupnih, 9 lastnih). Zapis ohrani prejšnji zastoj pri tipih in jasno razmeji ročni pregled, dodatni modelni test ter nedostopne skrite teste. Omejitve 600-koračnega vzorca in mobilne emulacije so izrecne.",
+      "evidence": ["runs/P10-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost", "runs/P10-A-001/submission/docs/agent/verification.md", "runs/P10-A-001/submission/docs/agent/check-final.log", "runs/P10-A-001/submission/docs/agent/check-types-failed.log"]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti reducer loči permutacije in sklada od objektov Task. TaskList upravlja življenjsko dobo stanja ter izpelje projekcijo iz ID-jev, TaskOrderControls deli kontrole med pogledoma, TaskBoard zgolj filtrira urejene podatke in izpelje globalna mesta. Ključ projekta v App zagotovi ponastavitev ob menjavi projekta. Podvajanje prehodov je omejeno s skupnim commit; neveljavni prehodi vrnejo izvirno stanje.",
+      "evidence": ["runs/P10-A-001/submission/src/taskOrder.ts", "runs/P10-A-001/submission/src/TaskList.tsx", "runs/P10-A-001/submission/src/TaskOrderControls.tsx", "runs/P10-A-001/submission/src/TaskBoard.tsx", "runs/P10-A-001/submission/src/App.tsx"]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "Lastni scenariji preverijo vseh 20 dosegljivih undo/redo korakov po 21 različnih premikih, ponastavitev pri polnem skladu, neveljavne akcije z nepraznim redo, stabilne stolpce, življenjsko dobo obeh skladov, 0/1 opravilo, posebni ID in 390 px. Reducer primerjajo s časovnico in kazalcem skozi 600 determinističnih dejanj ter zamrznejo stare strukture za preverjanje nespremenljivosti. To dopolni UI teste z drugače organiziranim orakljem; ne predstavlja izčrpnega dokaza. Vseh devet lastnih preverjanj je v končnem uspešnem zagonu.",
+      "evidence": ["runs/P10-A-001/submission/tests/agent/order.spec.ts", "runs/P10-A-001/submission/docs/agent/check-final.log"]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena je uspešna 70/70; v pregledani končni oddaji ni potrjene napake. To ni dokaz pravilnosti za vse možne vhode.",
+  "developmentFailureExample": {
+    "description": "Po dodajanju lastnih testov je preverjanje tipov javilo tri TS2339 v oraklju, ker unija OrderAction ni omogočala pričakovanega zoženja. Agent je razcepil nemutacijska dejanja v ločene diskriminirane različice in nato uspešno ponovil celotni pregled s 55 testi. V neuspešnem zagonu testi še niso stekli; to je razvojna tipovna napaka, ne neuspeh končne funkcionalne ocene.",
+    "evidence": ["runs/P10-A-001/submission/docs/agent/check-types-failed.log", "runs/P10-A-001/submission/src/taskOrder.ts", "runs/P10-A-001/submission/docs/agent/check-final.log"]
+  }
+}

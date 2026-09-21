@@ -13,12 +13,14 @@ ne popravljajo in ne vračajo povratnih informacij v merjene seje.
 | `results.md` | Človeku berljiv povzetek istega izračuna |
 | `run-data.csv` | Vseh 72 načrtovanih ID-jev; nearhivirane vrstice imajo prazne meritve |
 | `requirement-data.csv` | 72 × 12 načrtovanih zahtev; prazna meritev ni nič oziroma false |
+| `test-data.csv` | Vsak dejanski zapis neodvisnega testa z izvirnim statusom, projekcijo zaslona oziroma API in napakami |
 | `phase-data.csv` | Dejanske faze posameznih arhiviranih postopkov; predaje so ločena časovna razlika |
 | `reviews/<ID>.json` | Vsebinska presoja vnaprej izbrane ponovitve 001, po petih dimenzijah |
 | `content-review.md` | Pregled dejansko opravljenih presoj z utemeljitvami |
 | `anomalies.json` | Neuspešni ali nepopolni izidi; ohranjeni izvirni statusi in sporočila testov |
 | `integrity-audit.json` | Kontrola zamrznjenih virov, uporabljenega ocenjevalca in vsake datoteke arhiva |
 | `figures/` | Grafi PNG/SVG in zapis podatkovnega posnetka ter različic knjižnic |
+| `diagnostics/` | Jasno ločeni raziskovalni pregledi po oddaji; ne spreminjajo primarnih meril |
 | `writing-guide.md` | Povezava gradiva z magistrsko in omejitve dovoljenih sklepov |
 
 Časovni podatki so v sekundah; čas na grafu je v minutah. Datumi s `Z`
@@ -33,7 +35,8 @@ ne živa prikaza.
 - `execution_status`: izvirni status izvajalnika, npr. `completed` ali
   status prekinitve. Ne prevajaj vseh različnih neuspehov v »napaka kode«.
 - `requirements_demonstrated` / `demonstrated_fraction`: primarni izid
-  zamrznjenega analizatorja; oba sprejemna prikaza morata uspeti, spremembe
+  zamrznjenega analizatorja; sprejemna testa pri namizni in mobilni
+  velikosti morata uspeti, spremembe
   pa morajo biti dovoljene. Imenovalec je 12.
 - `requirements_observed`: koliko zahtev ima pripadajoča rezultata obeh
   sprejemnih prikazov v ocenjevalnem zapisu. Izvirni status vsakega testa
@@ -51,6 +54,11 @@ ne živa prikaza.
 - `phase-data.csv`: pri A je celotno delo združeno v eno vrstico.
   Pri B/C imajo faze dejanska imena; dodatna vrstica
   `handoffs-and-orchestration` je razlika med skupnim časom in vsoto faz.
+- `test-data.csv` ohrani izvirna `project` in `status` iz neodvisne ocene;
+  `errors_json` vsebuje izvirno polje sporočil v obliki JSON. Izvoz ne
+  dodaja zapisov še neizvedenih testov in ne vključuje agentovih lastnih
+  razvojnih testov. `expected` je uspešen pričakovani izid; drugih
+  statusov, denimo preskoka, ne združuj samodejno v potrjeno napako.
 
 CSV uporablja UTF-8, vejico, dvojne narekovaje in CRLF. Prazno polje je
 manjkajoča meritev; pred analizo ga ne zamenjaj z ničlo. Načrtovani ID-ji

@@ -1,0 +1,51 @@
+{
+  "id": "P10-C-001",
+  "reviewedAt": "2026-09-22",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija pokrije R01–R12 s splošno domeno 0/1/>10 opravil, identiteto po ID-jih in enakimi naslovi. Izrecno določi globalne sosede tudi med stolpci, največ 20 posnetkov, ponastavitev kot novo dejanje in ohranitev redo pri dejanju brez učinka. Določeni so življenjska doba, lokalnost, nespremenjeni podatki in natančne dostopne oznake novih kontrol.",
+      "evidence": ["runs/P10-C-001/submission/docs/agent/P10/spec.md"]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "P1–P8 opredelijo začetno stanje, permutacije, celotne posnetke in nespremenljivost podatkov ter natančne prehode obeh skladov pri move/undo/redo/reset. Predikati pokrijejo neveljavne indekse, omejitev zgodovine, stabilno filtriranje table in ponastavitve ob navigaciji. Scenariji S1–S6 so povezani s temi splošnimi pravili.",
+      "evidence": ["runs/P10-C-001/submission/docs/agent/P10/spec.md#model-in-pravila-spremembe-stanja"]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Osrednja tabela poveže vseh 12 zahtev s P/S pogoji, konkretnimi simboli ter poimenovanimi M/A/D testi. Končni dnevnik dejansko vsebuje 58 uspešnih preverjanj. Ohranjena sta prejšnja neuspeha, jasno sta označena nedostopnost skritih testov in omejitev pregleda obsega po časih datotek. Converge izrecno pove, da ni ponavljal testov, in ne predstavlja dodatnega neodvisnega testnega zagona.",
+      "evidence": ["runs/P10-C-001/submission/docs/agent/verification.md", "runs/P10-C-001/submission/docs/agent/P10/check.log", "runs/P10-C-001/submission/docs/agent/P10/check-first.log", "runs/P10-C-001/submission/docs/agent/P10/check-second.log", "runs/P10-C-001/submission/docs/agent/convergence.json"]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti reducer upravlja ID-je in sklada; ProjectTasks vsebuje lokalno stanje ter projekcijo na izvorne objekte. TaskOrderControls je skupen obema pogledoma, tabla pa izpelje globalna mesta pred filtriranjem. Ključ projekta določa ponastavitev. Dodana komponenta ostane v App.tsx, vendar je odgovornost stanja ločena od nalaganja in podrobnosti; prehodi niso podvojeni v prikazih.",
+      "evidence": ["runs/P10-C-001/submission/src/taskOrder.ts", "runs/P10-C-001/submission/src/App.tsx", "runs/P10-C-001/submission/src/TaskOrderControls.tsx", "runs/P10-C-001/submission/src/TaskBoard.tsx"]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "Pet modelnih in sedem uporabniških preverjanj pokrije nespremenljivost zamrznjenih struktur, 21 različnih modelnih premikov in vsak od 20 undo/redo korakov, neveljavne akcije z redo, razveljavljivi reset, mejo zgodovine prek UI, oba pogleda, navigacijo, prazne projekte ter tipkovnico pri 390 px. Po popravkih testov je celotni pregled ponovljen in uspešen. UI ponavljanje premikov uporablja dve stanji, modelni test pa različne permutacije. Lastni podatki ne vključujejo ID-ja s presledkom; dodatni pregled je pri tem odkril podedovano omejitev dostopnega imena kartice, ločeno od zahtevnih lastnosti zgodovine in zamrznjene funkcionalne ocene.",
+      "evidence": ["runs/P10-C-001/submission/tests/agent/taskOrder.spec.ts", "runs/P10-C-001/submission/tests/agent/P10.spec.ts", "runs/P10-C-001/submission/docs/agent/P10/check.log", "main-study/analysis/diagnostics/board-accessibility.json", "main-study/analysis/diagnostics/README.md"]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Dodatni pregled po oddaji: pri ID-ju 'id with space' se sklici aria-labelledby na kartici ne razrešijo in dostopno ime pade nazaj na celotno vsebino povezave. Isto omejitev ima nespremenjeno izhodišče; A v tej ponovitvi uporabi neposredni aria-label. Gre za podedovano omejitev dostopnosti, ne za dokaz neuspeha permutacij ali navigacije.",
+    "evidence": ["runs/P10-C-001/submission/src/TaskBoard.tsx", "main-study/analysis/diagnostics/board-accessibility.json", "main-study/analysis/diagnostics/README.md"]
+  },
+  "finalFailureNote": "Zamrznjena neodvisna ocena ostaja uspešna 70/70 in 12/12. Ločen raziskovalni pregled statično izrisane kartice je potrdil nerazrešene sklice aria-labelledby za ID s presledkom; omejitev obstaja tudi v izhodišču. Ta naknadni pregled ni del primarnega merila in ni preizkus navigacije ali bralnika zaslona.",
+  "developmentFailureExample": {
+    "description": "Prvi check je obstal pri TS2353 zaradi nepodprte možnosti disabled v dveh lastnih trditvah. Drugi je dosegel 57/58; test A06 je po miškini navigaciji napačno pričakoval vidni fokus po programskem focus(). Agent je uporabil podprto toBeEnabled({enabled}) in pravo Tab/Shift+Tab navigacijo, ohranil preverjanje obrisa ter ponovil celotni check z izidom 58/58. Popravka sta bila v lastnih testih.",
+    "evidence": ["runs/P10-C-001/submission/docs/agent/P10/check-first.log", "runs/P10-C-001/submission/docs/agent/P10/check-second.log", "runs/P10-C-001/submission/tests/agent/P10.spec.ts", "runs/P10-C-001/submission/docs/agent/P10/check.log"]
+  }
+}

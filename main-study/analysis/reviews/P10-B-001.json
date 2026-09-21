@@ -1,0 +1,48 @@
+{
+  "id": "P10-B-001",
+  "reviewedAt": "2026-09-22",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Predana specifikacija pokrije vseh 12 zahtev, poljubne enkratne ID-je, globalne sosede na tabli, oba sklada, mejo 20 in razveljavljivo ponastavitev. Konkretno razmeji no-op od nove veje, stanje že izvornega reda od praznih skladov ter življenjsko dobo ob navigaciji, projektu in osvežitvi. Scenariji vključijo tudi napako podrobnosti z ohranitvijo zgodovine.",
+      "evidence": ["runs/P10-B-001/submission/docs/agent/specification.md"]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Model T/O/P/U/R/M opredeli inicializacijo, polne nespremenljive posnetke, enakost zaporedij in invarianto ID-jev. Za vsako dejanje so preverljivi predpogoji ter rezultat obeh skladov; določeni so tail20, globalna mesta in stabilni podseznami table. S02 poda konkretne pričakovane permutacije, S04 pa pot do meje zgodovine in nazaj.",
+      "evidence": ["runs/P10-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Specifikatorjeva tabela je pravilno označena kot načrt in ostane v njegovi lasti; končna tabela v verification.md poveže vsako R s simboli ter dejanskimi D/S testi in check.log. Dnevnik potrdi 53 uspešnih preverjanj. Implementator jasno označi manjkajoči primer napake podrobnosti; pregledovalec ga dodatno izvede v štirih kombinacijah pogleda in širine. Dogodek item_18 v arhivu pregledovalca potrjuje štiri PASS in izhod 0, celotnega check pa pregledovalec odkrito ne ponovi.",
+      "evidence": ["runs/P10-B-001/submission/docs/agent/specification.md", "runs/P10-B-001/submission/docs/agent/verification.md", "runs/P10-B-001/submission/docs/agent/check.log", "runs/P10-B-001/submission/docs/agent/review.md", "runs/P10-B-001/phases/03-review/events.jsonl.gz"]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Samostojni reducer upravlja original/present/undo/redo in skupno omejevanje zgodovine. ProjectTasks se namesti po nalaganju, hrani ID-je ter izpelje Task objekte; projektni ključ loči življenjsko dobo. Skupne kontrole so uporabljene v preglednici in tabli, globalna mesta nastanejo pred filtriranjem stolpcev. Neposredno dostopno ime kartice ohrani naslove in ID-je tudi s presledki. Nalaganje in podrobnosti ostaneta ločena od zgodovine.",
+      "evidence": ["runs/P10-B-001/submission/src/taskOrder.ts", "runs/P10-B-001/submission/src/App.tsx", "runs/P10-B-001/submission/src/TaskOrderControls.tsx", "runs/P10-B-001/submission/src/TaskBoard.tsx"]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "Sedem testov združi dva modelna in pet brskalniških scenarijev: neveljavna dejanja z redo, 21 premikov in 20 undo/redo, reset pri polni zgodovini, točne permutacije, posebne ID-je, podrobnosti ter 0/1 opravilo in mobilni UI. Modelni test zgodovine primerja shranjene dejanske posnetke; dodatne UI trditve preverijo konkretna zaporedja, globalna mesta in oba sklada. Pregledovalec posebej dopolni preizkus 503/retry v obeh pogledih in širinah, z API zapisi, napakami strani in geometrijo. Te štiri preverbe so ločene od 53 testov implementatorja in od končnih 70.",
+      "evidence": ["runs/P10-B-001/submission/tests/agent/order.spec.ts", "runs/P10-B-001/submission/docs/agent/check.log", "runs/P10-B-001/submission/docs/agent/review.md", "runs/P10-B-001/phases/03-review/events.jsonl.gz"]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena je uspešna 70/70; v pregledani končni oddaji ni potrjene napake. To ni dokaz pravilnosti za vse možne vhode.",
+  "developmentFailureExample": {
+    "description": "Implementatorjev prvi check je obstal zaradi nepodprte možnosti disabled v lastnem testu; popravil jo je v toBeEnabled({enabled}) in ponovil celotni pregled s 53 uspešnimi testi. Pregledovalčev prvi dodatni preizkus je napačno vrnil 503 le za en GET; zaradi razvojnega StrictMode je naslednji GET že uspel. Simulacijo je spremenil v trajen 503 do izrecnega ponovnega poskusa. Končni dodatni zagon ima štiri PASS; aplikacijska koda se zaradi teh napak testiranja ni spreminjala.",
+    "evidence": ["runs/P10-B-001/submission/docs/agent/check-first.log", "runs/P10-B-001/submission/docs/agent/check.log", "runs/P10-B-001/submission/docs/agent/review.md", "runs/P10-B-001/phases/03-review/events.jsonl.gz"]
+  }
+}

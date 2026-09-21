@@ -9,7 +9,7 @@ const dir = dirname(fileURLToPath(import.meta.url)), root = resolve(dir, '../..'
 const read = file => JSON.parse(readFileSync(file, 'utf8'))
 const data = read(resolve(dir, 'results.json')), schedule = read(resolve(root, 'main-study/schedule.json'))
 const frozen = read(resolve(root, 'main-study/frozen-inputs.json')), hash = file => createHash('sha256').update(readFileSync(file)).digest('hex')
-const records = new Map(data.data.map(r => [r.id, r])), reviews = [], anomalies = [], audited = [], statuses = {}, phaseRows = []
+const records = new Map(data.data.map(r => [r.id, r])), reviews = [], anomalies = [], audited = [], statuses = {}, phaseRows = [], testRows = []
 const dimensions = ['specificationCoverage', 'predicatesInvariants', 'traceability', 'codeOrganization', 'ownChecks']
 const labels = ['Pokritost specifikacije', 'Predikati/invariante', 'Sledljivost', 'Organizacija kode', 'Lastna preverjanja']
 const walk = dir => readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(resolve(dir, e.name)) : [resolve(dir, e.name)])
@@ -39,6 +39,7 @@ for (const row of data.data) {
   const elapsedPhases = phases.reduce((sum, p) => sum + (p.elapsedSeconds ?? 0), 0)
   if (execution.phases?.length) phaseRows.push([row.id, row.task, row.procedure, row.repetition, null, 'handoffs-and-orchestration', execution.status, null, null, Math.max(0, execution.elapsedSeconds - elapsedPhases)])
   const failedTests = summary.tests.filter(t => t.status !== 'expected').map(({ title, project, status, errors }) => ({ title, project, status, errors }))
+  for (const test of summary.tests) testRows.push([row.id, row.task, row.procedure, row.repetition, test.project, test.title, test.status, JSON.stringify(test.errors ?? []), row.evidence])
   if (!row.strictSuccess || failedTests.length) anomalies.push({ id: row.id, executionStatus: row.executionStatus, allowedChanges: row.allowedChanges, completeTestRun: row.completeTestRun, checks: row.checks, failedTests, evidence: row.evidence })
   audited.push({ id: row.id, files: Object.keys(marker.files).length, startedAt: execution.startedAt, finishedAt: execution.finishedAt, archiveCompletedAt: marker.completedAt, markerSha256: hash(resolve(folder, 'archive-complete.json')) })
   const reviewFile = resolve(dir, 'reviews', `${row.id}.json`)
@@ -58,6 +59,7 @@ const snapshot = { generatedAt: new Date().toISOString(), sourceGeneratedAt: dat
 writeFileSync(resolve(dir, 'integrity-audit.json'), JSON.stringify(snapshot, null, 2) + '\n')
 writeFileSync(resolve(dir, 'anomalies.json'), JSON.stringify({ ...snapshot, audited: undefined, anomalies }, null, 2) + '\n')
 const csv = rows => rows.map(row => row.map(value => value === null || value === undefined ? '' : `"${String(value).replaceAll('"', '""')}"`).join(',')).join('\r\n') + '\r\n'
+writeFileSync(resolve(dir, 'test-data.csv'), csv([['id', 'task', 'procedure', 'repetition', 'project', 'title', 'status', 'errors_json', 'evidence'], ...testRows]))
 writeFileSync(resolve(dir, 'phase-data.csv'), csv([['id', 'task', 'procedure', 'repetition', 'phase_order', 'phase', 'status', 'started_at_utc', 'finished_at_utc', 'elapsed_seconds'], ...phaseRows]))
 const headers = ['id', 'task', 'procedure', 'repetition', 'block', 'position', 'archived', 'execution_status', 'elapsed_seconds', 'requirements_demonstrated', 'requirements_observed', 'requirement_total', 'demonstrated_fraction', 'strict_success', 'allowed_changes', 'complete_test_run', 'usage_complete', 'input_tokens', 'cached_input_tokens', 'output_tokens', 'reasoning_output_tokens', 'observed_input_lower_bound', 'observed_output_lower_bound', 'own_test_files', 'changed_files', 'evidence']
 writeFileSync(resolve(dir, 'run-data.csv'), csv([headers, ...schedule.runs.map(r => {

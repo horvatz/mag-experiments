@@ -26,6 +26,7 @@ Prejšnji različici sta ohranjeni v `naloga/zapiski/pred-glavnimi-meritvami-202
 | Čas in poraba | `execution.json`, `usage-observation.json`, `evaluation-summary.json` v arhivu | Celoten modelski čas, faze, popolna poraba ali opažena spodnja meja |
 | Vsebinska presoja | [Zamrznjena rubrika](../../docs/main-rubric.md), `reviews/<ID>.json` | Pet ločenih ocen z utemeljitvami in konkretnimi dokazi |
 | Primeri za razpravo | Oddana specifikacija, lastni testi, dnevniki ter neodvisna ocena iste izvedbe | Konkretna razlika med zahtevami, razvojnim preverjanjem in končnim vedenjem |
+| Dodatni pregled po oddaji | [Raziskovalni pregledi](diagnostics/README.md) | Konkretna omejitev, njen izbor in poreklo; ločeno od zamrznjenega merila |
 
 Poti oblike `runs/<ID>/` so relativne imeniku `experiments`. Tak arhiv
 vsebuje tudi `archive-complete.json`: inventar in zgoščene vrednosti datotek.
@@ -69,6 +70,9 @@ Vrednosti iz surovega arhiva imajo prednost pred ročno prepisano številko.
   rezultat velja za fizične naprave, druge modele ali poljubne projekte.
 - Referenčnih 560/560 in zaznanih 48/48 namernih napak sta preverjanje
   infrastrukture. Ne vključuj ju v uspešnost merjenih modelskih rešitev.
+- Naknadno izbranega diagnostičnega primera ne predstavljaj kot dodatni
+  vnaprej določen test. Pri opaženi omejitvi preveri tudi izhodišče;
+  podedovana omejitev ni nujno regresija, ki jo je uvedel postopek.
 
 ## Preostalo avtorsko delo
 
