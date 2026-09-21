@@ -1,0 +1,18 @@
+Najprej bom prebral pravila in zahteve ter zapisal specifikacijo. Nato bom samostojno implementiral rešitev, izvedel preverjanja in v dokumentaciji navedel rezultate ter morebitne omejitve.
+
+Zahteve določajo skupno stran za preglednico in tablo: opravila je treba najprej filtrirati, nato izbrati odsek in ga šele nato razporediti v stolpce. Stanje bom hranil v obstoječem pogledu projekta, kar omogoča ohranitev ob podrobnostih in ponastavitev ob menjavi projekta. Dodatni testi bodo pokrili tudi prazne rezultate, več kot deset opravil, števce in mobilni prikaz.
+
+Osnovna implementacija je pripravljena; prvo celotno preverjanje že teče. Povzetek še vedno šteje vsa opravila projekta, preglednica in tabla pa dobita isti filtrirani odsek. Zdaj dodajam preverjanja robnih primerov in ohranitve stanja, ki jih razvojni testi ne pokrivajo.
+
+Celotno preverjanje je uspešno: 38 izhodiščnih, 8 razvojnih in 10 dodatnih testov. Pregledal sem tudi posnetke namiznega in mobilnega prikaza; pri širini 390 px stran ostane znotraj zaslona. Pred zaključkom preverjam še dostopno ime kartice pri ID-ju s presledkom in dopolnjujem sledljivost vseh zahtev.
+
+Preverjanje je odkrilo, da presledek v ID-ju poruši dostopno ime kartice zaradi vezave `aria-labelledby`. To sem popravil brez spremembe ID-ja ali povezave. Ponovni `npm run check` je uspešen z vsemi 56 testi; zdaj zaključujem zapis preverjanj in omejitev.
+
+P05 je izveden samostojno po postopku A. Implementirane so zahteve R01–R12.
+
+`npm run check` je uspešen: preverjanje kode, gradnja in **56/56 testov**.
+
+Dokumentacija: [specifikacija](docs/agent/specification.md) in [preverjanja](docs/agent/verification.md).
+
+Ni znanih neizpolnjenih zahtev. Nedostopni končni testi niso bili izvedeni.
+{"status":"completed","elapsedSeconds":625.664,"allowedChanges":true,"usage":{"input_tokens":781624,"cached_input_tokens":714112,"cache_write_input_tokens":0,"output_tokens":19134,"reasoning_output_tokens":4344}}

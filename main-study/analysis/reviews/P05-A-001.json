@@ -1,0 +1,48 @@
+{
+  "id": "P05-A-001",
+  "reviewedAt": "2026-09-21",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija pokrije R01–R12, filter pred razrezom, globalni odsek v obeh pogledih, različno osnovo projektnih in stolpčnih števcev, prazno stanje ter ponastavitve. Konkretno loči notranjo stran 1 od prikazanega praznega stanja 0/0.",
+      "evidence": ["runs/P05-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Definirani so T, F, N, k, število strani, indeks odseka ter prazni primer. Preverljivi predikati opišejo neprekrivanje strani, onemogočene robove, prehode stanja, enakost ID-jev pogledov in obe vrsti števcev.",
+      "evidence": ["runs/P05-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Tabela povezuje vsako R z imenovanimi A/D testi, konkretnimi spremenljivkami oziroma deli kode in dnevnikom. Dnevnik dejansko zaključi 56 passed; ločen zapis odkrito ohrani neuspeh A08 pred popravilom in pove, da so vizualni posnetki pred zadnjo spremembo. Skritih testov ne prikazuje kot agentov dosežek.",
+      "evidence": ["runs/P05-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost", "runs/P05-A-001/submission/docs/agent/verification.md", "runs/P05-A-001/submission/docs/agent/check.log", "runs/P05-A-001/submission/docs/agent/id-accessibility-before.log"]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Tri lokalna stanja v ProjectView so ločena od izpeljanih filteredTasks, pageCount, visibleTasks in robnih zastavic. Oba prikaza dobita isti odsek; TaskBoard samo združi prejeti seznam. Ponastavitev projekta uporablja njegov ključ, brez podvojenega stanja ali sinhronizacijskih učinkov. JSX je zgoščen, a nova logika je enotna in za obseg naloge sledljiva.",
+      "evidence": ["runs/P05-A-001/submission/src/App.tsx:11", "runs/P05-A-001/submission/src/App.tsx:78", "runs/P05-A-001/submission/src/App.tsx:122", "runs/P05-A-001/submission/src/TaskBoard.tsx:13"]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "Deset lastnih scenarijev preveri 13 neurejenih ID-jev, celotne razdelitve 2/5/10, onemogočene klike, ponastavitev še veljavne strani, nefiltrirane skupne števce, prazen in enočlenski projekt, zgodovino/podrobnosti ter ID s presledkom in rezerviranimi znaki. A08 je dejansko odkril napako dostopnega imena, ki jo je agent popravil. Lastni scenariji niso vsi izvedeni dvakrat po napravah; A08 posebej preveri širino 390 px.",
+      "evidence": ["runs/P05-A-001/submission/tests/agent/P05.spec.ts", "runs/P05-A-001/submission/docs/agent/id-accessibility-before.log", "runs/P05-A-001/submission/docs/agent/check.log"]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena je uspešna 70/70; v pregledani končni oddaji ni potrjene napake. To ni dokaz pravilnosti za vse možne vhode.",
+  "developmentFailureExample": {
+    "description": "Lastni A08 z ID-jem č /2?x=#% je pred popravilom razkril neustrezno aria-labelledby povezavo. Končna kartica uporablja neposredno aria-label; končna lastna in neodvisna preverjanja uspejo.",
+    "evidence": ["runs/P05-A-001/submission/docs/agent/id-accessibility-before.log", "runs/P05-A-001/submission/src/TaskBoard.tsx:25"]
+  }
+}

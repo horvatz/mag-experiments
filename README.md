@@ -1,7 +1,7 @@
 # mag-experiments
 
-Gradivo in orodja za pripravo eksperimentov magistrske naloge. Prvi korak je
-P01: urejanje naslova in stanja opravila v aplikaciji Folio (`mag-app`).
+Gradivo, merjene oddaje in orodja za eksperimente magistrske naloge nad
+aplikacijo Folio (`mag-app`). P01/P02 sta pilota, P03–P10 glavna zbirka.
 
 Osnova in referenca uporabljata potrjeni dizajn Folio z lebdečim stranskim
 menijem. Natančna skupna različica je zapisana v `baseline.json`.
@@ -21,7 +21,10 @@ Tehnična kvalifikacija povratnih zank B/C in prekinitve je zaključena;
 - [Protokol M/1.0](docs/main-protocol.md) in [vnaprejšnja rubrika](docs/main-rubric.md).
 - [Vrstni red 72 izvedb](main-study/schedule.json).
 - [Trenutna zbirka in rezultati](main-study/analysis/results.md).
-- `main-study/frozen-inputs.json` je dokaz zamrznitve, ko ta datoteka obstaja.
+- [Vodnik za pisanje](main-study/analysis/writing-guide.md) in [vsebinska presoja](main-study/analysis/content-review.md).
+- [Podatki posameznih izvedb](main-study/analysis/run-data.csv), [zahteve](main-study/analysis/requirement-data.csv) in [grafi](main-study/analysis/figures/).
+- [Preverjanje celovitosti](main-study/analysis/integrity-audit.json) in [neuspehi oziroma nepopolne ocene](main-study/analysis/anomalies.json).
+- `main-study/frozen-inputs.json` dokazuje zamrznitev 21. septembra 2026 pred prvim modelskim dogodkom; revizija priprave je `7742a88`.
 
 Vsaka glavna referenca ima 70 preverjanj in šest prevodljivih namernih
 napak. Delovne kopije so izločene iz Gita; zaključene oddaje, dogodki,

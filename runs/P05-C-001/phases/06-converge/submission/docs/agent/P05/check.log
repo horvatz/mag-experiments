@@ -1,0 +1,220 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 check
+> npm run lint && npm run build && npm test
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 lint
+> eslint .
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 build
+> npm run typecheck && vite build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 typecheck
+> tsc --noEmit
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 1875 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.36 kB
+dist/assets/index-TtzBYg_Y.css   13.37 kB │ gzip:  3.64 kB
+dist/assets/index-CDgt5wHE.js   241.28 kB │ gzip: 75.14 kB
+
+✓ built in 76ms
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 test
+> playwright test
+
+[WebServer] (node:48711) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:48749) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 56 tests using 1 worker
+
+(node:48750) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [api] › tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (36ms)
+  ✓   2 [api] › tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (9ms)
+  ✓   3 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (5ms)
+  ✓   4 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (7ms)
+  ✓   5 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (4ms)
+  ✓   6 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (7ms)
+  ✓   7 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (4ms)
+  ✓   8 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (4ms)
+  ✓   9 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [api] › tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (10ms)
+  ✓  11 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with success (13ms)
+  ✓  12 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [api] › tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (7ms)
+  ✓  14 [api] › tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:48752) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [desktop] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (422ms)
+  ✓  16 [desktop] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (492ms)
+  ✓  17 [desktop] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (545ms)
+  ✓  18 [desktop] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (671ms)
+  ✓  19 [desktop] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (475ms)
+  ✓  20 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (357ms)
+  ✓  21 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (381ms)
+  ✓  22 [desktop] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (341ms)
+  ✓  23 [desktop] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (337ms)
+  ✓  24 [desktop] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (904ms)
+  ✓  25 [desktop] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (599ms)
+  ✓  26 [desktop] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (409ms)
+(node:48768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  27 [mobile] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (386ms)
+  ✓  28 [mobile] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (479ms)
+  ✓  29 [mobile] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (534ms)
+  ✓  30 [mobile] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (718ms)
+  ✓  31 [mobile] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (498ms)
+  ✓  32 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (391ms)
+  ✓  33 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (406ms)
+  ✓  34 [mobile] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (359ms)
+  ✓  35 [mobile] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (362ms)
+  ✓  36 [mobile] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (898ms)
+  ✓  37 [mobile] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (687ms)
+  ✓  38 [mobile] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (461ms)
+(node:48793) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  39 [development-desktop] › tests/development/P05.spec.ts:2:1 › D01: page size and next page (329ms)
+  ✓  40 [development-desktop] › tests/development/P05.spec.ts:3:1 › D02: last page and status (342ms)
+  ✓  41 [development-desktop] › tests/development/P05.spec.ts:4:1 › D03: filter before global board page (388ms)
+  ✓  42 [development-desktop] › tests/development/P05.spec.ts:5:1 › D04: size change resets and no writes (374ms)
+(node:48800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [development-mobile] › tests/development/P05.spec.ts:2:1 › D01: page size and next page (382ms)
+  ✓  44 [development-mobile] › tests/development/P05.spec.ts:3:1 › D02: last page and status (376ms)
+  ✓  45 [development-mobile] › tests/development/P05.spec.ts:4:1 › D03: filter before global board page (406ms)
+  ✓  46 [development-mobile] › tests/development/P05.spec.ts:5:1 › D04: size change resets and no writes (359ms)
+(node:48806) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  47 [agent] › tests/agent/P05.spec.ts:19:3 › P01: ordered pages and all navigation, size 2 (722ms)
+  ✓  48 [agent] › tests/agent/P05.spec.ts:19:3 › P01: ordered pages and all navigation, size 5 (521ms)
+  ✘  49 [agent] › tests/agent/P05.spec.ts:19:3 › P01: ordered pages and all navigation, size 10 (30.1s)
+(node:48832) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  50 [agent] › tests/agent/P05.spec.ts:59:1 › P01: changing size resets a still-valid second page (473ms)
+  ✘  51 [agent] › tests/agent/P05.spec.ts:73:1 › P02: filters precede paging, preserve views/details, and count the correct scope (30.2s)
+(node:49073) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  52 [agent] › tests/agent/P05.spec.ts:125:1 › P03: project changes and reload reset local state without URL or storage (777ms)
+  ✓  53 [agent] › tests/agent/P05.spec.ts:154:3 › P04: empty and singleton projects, count 0 (555ms)
+  ✓  54 [agent] › tests/agent/P05.spec.ts:154:3 › P04: empty and singleton projects, count 1 (571ms)
+  ✓  55 [agent] › tests/agent/P05.spec.ts:178:1 › P04: a nonmatching filter resets the page and removing it starts at one (352ms)
+  ✓  56 [agent] › tests/agent/P05.spec.ts:191:1 › P05: mobile controls, keyboard focus and read-only data (533ms)
+
+
+  1) [agent] › tests/agent/P05.spec.ts:19:3 › P01: ordered pages and all navigation, size 10 ───────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Prva stran', exact: true })
+        - locator resolved to <button disabled type="button" class="button">Prva stran</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+          - waiting 100ms
+        57 × waiting for element to be visible, enabled and stable
+           - element is not enabled
+         - retrying click action
+           - waiting 500ms
+
+
+       at development/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/.work/pilots/P05-C-001/app/tests/development/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P05-C-001/app/tests/agent/P05.spec.ts:52:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-P05-P01-ordered-pages-and-all-navigation-size-10-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-P05-P01-ordered-pages-and-all-navigation-size-10-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-P05-P01-ordered-pages-and-all-navigation-size-10-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-P05-P01-ordered-pages-and-all-navigation-size-10-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [agent] › tests/agent/P05.spec.ts:73:1 › P02: filters precede paging, preserve views/details, and count the correct scope 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Zadnja stran', exact: true })
+        - locator resolved to <button disabled type="button" class="button">Zadnja stran</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+          - waiting 100ms
+        56 × waiting for element to be visible, enabled and stable
+           - element is not enabled
+         - retrying click action
+           - waiting 500ms
+
+
+       at development/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/.work/pilots/P05-C-001/app/tests/development/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P05-C-001/app/tests/agent/P05.spec.ts:82:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-P05-P02-filters-prec-8997e-and-count-the-correct-scope-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-P05-P02-filters-prec-8997e-and-count-the-correct-scope-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-P05-P02-filters-prec-8997e-and-count-the-correct-scope-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-P05-P02-filters-prec-8997e-and-count-the-correct-scope-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [agent] › tests/agent/P05.spec.ts:19:3 › P01: ordered pages and all navigation, size 10 ────────
+    [agent] › tests/agent/P05.spec.ts:73:1 › P02: filters precede paging, preserve views/details, and count the correct scope 
+  54 passed (1.4m)
+EXIT_CODE=1

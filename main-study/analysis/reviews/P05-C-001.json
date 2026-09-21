@@ -1,0 +1,48 @@
+{
+  "id": "P05-C-001",
+  "reviewedAt": "2026-09-22",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija P05/spec.md skladno pokrije R01–R12, domeno 0/1/več elementov, ločitev celotnega/filtriranega/vidnega polja, prazno stanje, oba pogleda, ponastavitve in ohranitev podatkov. Štirje uporabniški scenariji konkretno povežejo zahteve, ne uvajajo dodatnih meril zunaj naloge.",
+      "evidence": ["runs/P05-C-001/submission/docs/agent/P05/spec.md"]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Definicije F, V, Y, X, A in B ločijo all in prazni primer. Izrecno so zapisani disjunktnost in popolna konkatenacija strani, relativni vrstni red stolpcev, različna osnova števcev, identitetni prehodi ob podrobnostih ter robna omogočenost gumbov.",
+      "evidence": ["runs/P05-C-001/submission/docs/agent/P05/spec.md#model-in-predikati"]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Specifikacija poveže vseh 12 zahtev z izvedbeno tabelo, dejanskimi imeni lastnih testov, deli kode in dvema dnevnikoma preverjanja. Zapis pošteno loči prvi neuspešni celotni zagon (54 uspehov, dve napaki lastnih korakov) od ciljnega ponovnega zagona desetih testov. Ne trdi, da je zadnji celotni npm run check uspel. Convergence.json razkrije, da korak converge ni ponovno izvajal testov.",
+      "evidence": ["runs/P05-C-001/submission/docs/agent/verification.md#sledljivost-r01r12", "runs/P05-C-001/submission/docs/agent/P05/check.log", "runs/P05-C-001/submission/docs/agent/P05/agent-recheck.log", "runs/P05-C-001/submission/docs/agent/convergence.json"]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "ProjectView hrani samo tri neodvisna lokalna stanja, odsek in števce pa izpelje brez vzporednih kopij. Ločena dogodka changePageSize/changeFilter jasno zagotavljata ponastavitev strani. Preglednica in nespremenjeni TaskBoard uporabljata isti visibleTasks. Načrt šestih odločitev se ujema s končno omejeno spremembo App.tsx in slogov.",
+      "evidence": ["runs/P05-C-001/submission/src/App.tsx:13", "runs/P05-C-001/submission/src/App.tsx:25", "runs/P05-C-001/submission/docs/agent/P05/plan.md#odločitve-in-podatkovni-tok"]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "Deset lastnih scenarijev preveri vse odseke 13 opravil pri 2/5/10, robne gumbe, še veljavno prejšnjo stran, filtre in števce, podrobnosti ter fokus, projekte/osvežitev, 0/1 element in neujemajoči filter. Mobilni scenarij preveri tipkovnico in fokus, pomočnik readonly pa odsotnost zapisov in širjenje dokumenta; dodana je primerjava stanja podatkov. Popravka dveh neveljavnih klikov v lastnem testu sta ohranjena in vseh deset je dejansko ponovno uspelo. To ni izčrpno preverjanje domene.",
+      "evidence": ["runs/P05-C-001/submission/tests/agent/P05.spec.ts", "runs/P05-C-001/input-overrides/tests/development/helpers.ts:68", "runs/P05-C-001/submission/docs/agent/P05/check.log", "runs/P05-C-001/submission/docs/agent/P05/agent-recheck.log"]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena je uspešna 70/70; v pregledani končni oddaji ni potrjene napake po uporabljenih merilih. To ne dokazuje pravilnosti za vse vhode.",
+  "developmentFailureExample": {
+    "description": "Dva lastna testna koraka sta kliknila pravilno onemogočena navigacijska gumba (Prva stran pri velikosti 10 in Zadnja stran v zaporedju filtrov). Agent je popravil koraka, ohranil trditve o ciljnih ID-jih in robovih ter uspešno ponovil lastne teste, brez spremembe produkcijske kode.",
+    "evidence": ["runs/P05-C-001/submission/docs/agent/P05/check.log", "runs/P05-C-001/submission/docs/agent/P05/agent-recheck.log"]
+  }
+}
