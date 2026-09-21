@@ -12,12 +12,13 @@ import { pilotTask, taskPrompts, exportPublicTask } from './pilot-tasks.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'
-if (!/^P0[12]-[ABC]-\d{3}$/.test(id)) throw new Error('Expected an unused ID such as P01-A-001, P01-B-001 or P01-C-001.')
+if (!/^P(?:0[1-9]|10)-[ABC]-\d{3}$/.test(id)) throw new Error('Expected an unused ID such as P01-A-001, P01-B-001 or P01-C-001.')
 const procedure = id.split('-')[1]
 const task = pilotTask(id)
 const reviewForTask = structuredClone(reviewSchema)
 reviewForTask.properties.checkedRequirements.items.enum = task.requirements
-const cli = realpathSync(process.env.MAG_PILOT_CODEX || resolve(homedir(), '.local/bin/codex'))
+const cli = realpathSync(process.env.MAG_PILOT_CODEX || resolve(homedir(), task.main ? '.codex/packages/standalone/releases/0.154.0-aarch64-apple-darwin/bin/codex' : '.local/bin/codex'))
+if (task.main && (process.version !== 'v24.11.1' || execFileSync(cli, ['--version'], { encoding: 'utf8' }).trim() !== 'codex-cli 0.154.0')) throw Error('Main study requires pinned Node 24.11.1 and Codex CLI 0.154.0')
 const run = resolve(root, '.work/pilots', id)
 if (existsSync(run)) throw new Error(`Refusing to overwrite ${run}`)
 const app = resolve(run, 'app')
@@ -107,7 +108,7 @@ writeFileSync(resolve(run, 'config.json'), JSON.stringify(config, null, 2) + '\n
 const promptTemplate = `Izvedi pilotno nalogo P01 samostojno po postopku A (en agent).\n\nPreberi PROJECT_RULES.md, task/instructions.md in task/specification-template.md. Najprej pripravi specifikacijo v docs/agent/specification.md, nato implementiraj zahteve in preveri rešitev. Ob spremembi specifikacije ohrani kratek zapis popravka. Lastne teste dodajaj v tests/agent/. V docs/agent/verification.md zapiši dejansko izvedena preverjanja, rezultate, povezave z zahtevami ter omejitve.\n\nNa voljo imaš največ 20 minut od začetka tega zagona; čas vključuje specifikacijo, kodo in preverjanje. Končaj prej, ko opraviš nalogo. Končna predaja je stanje datotek ob koncu tvojega odgovora oziroma ob časovni omejitvi. Reši tudi zahteve, ki jih skupni razvojni testi morda ne zajamejo.\n\nOdvisnosti in Chromium so nameščeni. npm run check izvede preverjanje kode in vse dostopne teste (38 preverjanj izhodišča, 8 razvojnih preverjanj P01 in tvoje dodatne teste). Samo skupne razvojne teste lahko zaženeš z npx playwright test --project=development-desktop --project=development-mobile. Testi imajo lastni strežnik na vratih 5174/3102. Za ročni ogled uporabi WEB_PORT=5193 API_PORT=3123 npm run dev. Testi so že nastavljeni na ločen Chromium. Za lastne skripte preberi wsEndpoint iz task/browser.json in uporabi chromium.connect(wsEndpoint); chromium.launch() znotraj tega okolja ne deluje. Dostop do javnega interneta je blokiran. Uporabljaj samo lokalne storitve te naloge.\n\nSpreminjaj samo src/, tests/agent/ in docs/agent/. To je svež izvoz brez zgodovine Git. Ne dodajaj odvisnosti, ne spreminjaj infrastrukture ali skupnih testov in ne zaganjaj drugih agentov. Če kakšen korak zaradi omejitev okolja ne deluje, to jasno zabeleži in nadaljuj z drugim dovoljenim načinom. Na koncu kratko povzemaj rezultat in neizpolnjene zahteve.\n`
 const prompt = taskPrompts({ prompt: promptTemplate }, task).prompt
 writeFileSync(resolve(app, 'AGENTS.md'), taskPrompts({ text: readFileSync(resolve(app, 'AGENTS.md'), 'utf8') }, task).text)
-if (task.name === 'P02') writeFileSync(resolve(app, 'PROJECT_RULES.md'), readFileSync(resolve(app, 'PROJECT_RULES.md'), 'utf8').replaceAll('P01', task.name))
+if (task.name !== 'P01') writeFileSync(resolve(app, 'PROJECT_RULES.md'), readFileSync(resolve(app, 'PROJECT_RULES.md'), 'utf8').replaceAll('P01', task.name))
 const runPrompt = procedure === 'A' ? prompt : procedure === 'B' ? 'Postopek B: specification → implementation → review → po potrebi specification-repair → implementation-repair. Pozivi in nastavitve posameznih vlog so v procedure-b.json.\n' : 'Postopek C: ena seja, uradni Spec Kit 1.0.8; constitution → specify → plan → tasks → implement → converge. Ob novih nalogah največ ena dodatna implementacija in converge v isti skupni časovni meji. Pozivi in nastavitve so v procedure-c.json.\n'
 writeFileSync(resolve(run, 'prompt.md'), runPrompt)
 let procedureB
@@ -134,6 +135,7 @@ if (procedure === 'C') {
   const doc = procedure === 'A' ? 'pilot-protocol.md' : 'pilot-' + procedure.toLowerCase() + '-protocol.md'
   cpSync(resolve(root, 'docs', doc), resolve(run, 'protocol', doc))
   if (task.name === 'P02') cpSync(resolve(root, 'docs/p02-pilot-protocol.md'), resolve(run, 'protocol/p02-pilot-protocol.md'))
+  if (task.main) for (const file of ['main-protocol.md', 'main-rubric.md']) cpSync(resolve(root, 'docs', file), resolve(run, 'protocol', file))
 }
 const manifest = { id, createdAt: new Date().toISOString(), baseline, procedure, task: task.name, limitSeconds: 1200, model: config.model, reasoningEffort: config.model_reasoning_effort, node: process.version, platform: process.platform, architecture: process.arch, cli, cliVersion: execFileSync(cli, ['--version'], { encoding: 'utf8' }).trim(), setup: task.name + ' public task and development projects exported; private evaluation excluded', promptSha256: digest(runPrompt), configSha256: digest(JSON.stringify(config)), browserProfileSha256: digest(readFileSync(resolve(run, 'browser.sb'))), ...(procedureB ? { procedureBSha256: digest(JSON.stringify(procedureB)) } : {}), files: inventory(app) }
 manifest.evaluatorSourceHashes = sourceHashes(root)

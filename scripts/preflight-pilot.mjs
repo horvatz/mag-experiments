@@ -24,7 +24,7 @@ const code = [
   "fs.readFileSync('task/instructions.md');",
   "fs.writeFileSync('docs/agent/preflight.txt', 'temporary boundary probe');",
   "fs.unlinkSync('docs/agent/preflight.txt');",
-  ...[...protectedTaskFiles(root, pilotTask('P01')), ...protectedTaskFiles(root, pilotTask('P02')), resolve(root, '../naloga/zapiski/stanje-projekta.md'), resolve(process.env.HOME, '.codex/auth.json')].map((path) => 'denied(' + JSON.stringify(path) + ');'),
+  ...[...Array.from({ length: 10 }, (_, i) => pilotTask('P' + String(i + 1).padStart(2, '0'))).flatMap(task => protectedTaskFiles(root, task)), resolve(root, '../naloga/zapiski/stanje-projekta.md'), resolve(process.env.HOME, '.codex/auth.json')].map((path) => 'denied(' + JSON.stringify(path) + ');'),
   "try { fs.writeFileSync('server/preflight.txt', 'no'); throw new Error('Unexpected infrastructure write access') } catch(e) { assert.ok(['EPERM','EACCES'].includes(e.code)) }",
   "console.log(JSON.stringify({filesystem: checks, allowedReadWrite: true, protectedInfrastructure: true}));",
 ].join('\n')

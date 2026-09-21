@@ -1,0 +1,1 @@
+{"outcome":"tasks_appended","summary":"Javni test je padel (izhod 1): shift prišteva 2 namesto 1. V tasks.md je pripeta T003 pod Phase 1: Convergence; koda ostaja nespremenjena. Naslednji korak: speckit-implement. Kontrolna beseda: copper-birch-63.","unverified":["Izvajanje testa se je ustavilo pri R01, zato preverjanja R02 niso bila izvedena."]}

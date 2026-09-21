@@ -15,7 +15,27 @@ test('task selection validates IDs and keeps P01 and P02 evaluation counts disti
   assert.equal(p02.totalChecks, 72)
   assert.equal(Object.values(p02.counts).reduce((sum, count) => sum + count, 0), 72)
   assert.equal(p02.requirements.at(-1), 'R12')
-  for (const id of ['../P02', 'P03-A-001', 'P02-D-001', 'P02-A-1', 'P02-A-001/extra']) assert.throws(() => pilotTask(id))
+  for (const id of ['../P02', 'P11-A-001', 'P00', 'P02-D-001', 'P02-A-1', 'P02-A-001/extra']) assert.throws(() => pilotTask(id))
+})
+
+test('all eight main tasks have independent 70-check configurations and complete public exports', () => {
+  const root = new URL('../', import.meta.url).pathname
+  for (let number = 3; number <= 10; number++) {
+    const name = 'P' + String(number).padStart(2, '0'), task = pilotTask(name + '-C-003')
+    assert.equal(task.main, true)
+    assert.equal(task.totalChecks, 70)
+    assert.equal(Object.values(task.counts).reduce((a, b) => a + b, 0), 70)
+    assert.equal(task.requirements.length, 12)
+    assert.deepEqual(task.prepareArgs, ['prepare', name])
+    assert.equal(task.baselineDirectory, `.work/${name}/baseline`)
+    const app = mkdtempSync(join(tmpdir(), 'mag-main-export-'))
+    try {
+      exportPublicTask(root, app, task)
+      assert.deepEqual(readFileSync(join(app, 'tests/development/helpers.ts')), readFileSync(join(root, 'tasks', name, 'helpers.ts')))
+      for (const path of ['reference', 'evaluation', 'reports', 'runs']) assert.equal(existsSync(join(app, path)), false)
+      for (const source of [bPrompts, cPrompts]) for (const text of Object.values(taskPrompts(source, task))) assert.ok(!text.includes('P01') && !text.includes('R01–R10'))
+    } finally { rmSync(app, { recursive: true, force: true }) }
+  }
 })
 
 test('P02 public export preserves helper imports without leaking private research files', () => {

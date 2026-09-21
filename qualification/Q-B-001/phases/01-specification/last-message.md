@@ -1,0 +1,1 @@
+Pripravljena je [specification.md](/Users/zan/Documents/mag/experiments/.work/pilots/P02-B-901/app/docs/agent/specification.md) z zahtevama R01 in R02 ter točno zahtevano vrstico Q01. Kode nisem spreminjal; testa nisem izvajal.

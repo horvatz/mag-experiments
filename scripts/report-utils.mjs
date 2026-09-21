@@ -7,7 +7,7 @@ export function collectSpecs(suites) {
 }
 
 export function sourceHashes(root) {
-  const paths = ['baseline.json', 'package-lock.json', 'playwright.config.ts', 'playwright.p02.config.ts', 'tasks', 'evaluation', 'reference', 'support', 'scripts', 'vendor']
+  const paths = ['baseline.json', 'package-lock.json', 'playwright.config.ts', 'playwright.p02.config.ts', 'playwright.main.config.ts', 'tasks', 'evaluation', 'reference', 'support', 'scripts', 'vendor']
   const hashes = {}
   function add(file) {
     hashes[relative(root, file)] = createHash('sha256').update(readFileSync(file)).digest('hex')

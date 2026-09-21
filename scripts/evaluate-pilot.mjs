@@ -9,7 +9,7 @@ import { digest, editable, inventory } from './pilot-utils.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'
-assert.match(id, /^P0[12]-[ABC]-\d{3}$/)
+assert.match(id, /^P(?:0[1-9]|10)-[ABC]-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
 const task = pilotTask(id)
 const execution = JSON.parse(readFileSync(resolve(run, 'execution.json'), 'utf8'))
@@ -42,8 +42,8 @@ function check(name, executable, args, cwd = root) {
   const fd = openSync(log, 'wx')
   const started = performance.now()
   const result = spawnSync(executable, args, {
-    cwd, timeout: 180_000, stdio: ['ignore', fd, fd],
-    env: { ...process.env, CI: '1', APP_UNDER_TEST: candidate, P01_REPORT_FILE: resolve(run, 'evaluation-results.json'), P01_OUTPUT_DIR: resolve(run, 'evaluation-artifacts'), P02_REPORT_FILE: resolve(run, 'evaluation-results.json'), P02_OUTPUT_DIR: resolve(run, 'evaluation-artifacts') },
+    cwd, timeout: name === 'tests' && task.main ? 900_000 : 180_000, stdio: ['ignore', fd, fd],
+    env: { ...process.env, CI: '1', APP_UNDER_TEST: candidate, MAG_TASK: task.name, MAIN_REPORT_FILE: resolve(run, 'evaluation-results.json'), MAIN_OUTPUT_DIR: resolve(run, 'evaluation-artifacts'), P01_REPORT_FILE: resolve(run, 'evaluation-results.json'), P01_OUTPUT_DIR: resolve(run, 'evaluation-artifacts'), P02_REPORT_FILE: resolve(run, 'evaluation-results.json'), P02_OUTPUT_DIR: resolve(run, 'evaluation-artifacts') },
   })
   closeSync(fd)
   const item = { name, exitCode: result.status, signal: result.signal, error: result.error?.message, elapsedSeconds: Number(((performance.now() - started) / 1000).toFixed(3)), passed: result.status === 0 }
@@ -72,13 +72,14 @@ const expectedProjects = Object.entries(task.counts).every(([project, count]) =>
 const summary = {
   id, task: task.name, evaluatedAt: new Date().toISOString(), baseline: manifest.baseline, procedure: manifest.procedure,
   model: manifest.model, reasoningEffort: manifest.reasoningEffort,
-  executionStatus: execution.status, elapsedSeconds: execution.elapsedSeconds, usage: usageObservation?.complete ? usageObservation.usage : execution.usage,
+  executionStatus: execution.status, elapsedSeconds: execution.elapsedSeconds, usage: usageObservation ? usageObservation.usage : execution.usage,
+  usageComplete: usageObservation?.complete ?? Boolean(execution.usage), observedUsageBeforeInterruption: usageObservation?.observedUsageBeforeInterruption ?? null,
   ...(execution.phases ? { phases: execution.phases, review: execution.review, convergence: execution.convergence, usageNote: usageObservation?.complete ? usageObservation.method : execution.usageNote } : {}),
   allowedChanges: execution.allowedChanges, checks: results, groups, tests,
   completeTestRun: tests.length === task.totalChecks && expectedProjects && (raw?.errors.length ?? 1) === 0,
   allChecksPassed: execution.status === 'completed' && execution.allowedChanges && results.every((item) => item.passed) && tests.length === task.totalChecks && expectedProjects && tests.every((test) => test.status === 'expected') && raw.errors.length === 0,
   evaluatorSourceHashes: sourceHashes(root), submissionSha256: digest(JSON.stringify(before)),
-  limitations: ['One pilot run, not a comparison of A/B/C.', 'Mobile tests emulate a phone in Chromium.', 'Recorded subscription token usage is not a monetary cost.'],
+  limitations: [task.main ? 'One main-study run; comparisons require the predeclared task/repetition blocks.' : 'One pilot run, not a comparison of A/B/C.', 'Mobile tests emulate a phone in Chromium.', 'Recorded subscription token usage is not a monetary cost.'],
 }
 writeFileSync(resolve(run, 'evaluation-summary.json'), JSON.stringify(summary, null, 2) + '\n')
 console.log(JSON.stringify({ id, allChecksPassed: summary.allChecksPassed, groups }))

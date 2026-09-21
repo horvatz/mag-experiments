@@ -12,12 +12,14 @@ export function configureBrowser(app, run) {
   const token = randomUUID()
   const tmp = resolve(app, '.tmp/browser')
   mkdirSync(tmp, { recursive: true })
-  writeFileSync(resolve(app, 'task/browser.json'), JSON.stringify({ wsEndpoint: 'ws://127.0.0.1:' + port + '/' + token, port, token }) + '\n')
+  const downloadsPath = resolve(tmp, 'downloads')
+  mkdirSync(downloadsPath, { recursive: true })
+  writeFileSync(resolve(app, 'task/browser.json'), JSON.stringify({ wsEndpoint: 'ws://127.0.0.1:' + port + '/' + token, port, token, downloadsPath }) + '\n')
   const server = [
     "import { chromium } from 'playwright';",
     "import { readFileSync } from 'node:fs';",
-    "const {port,token} = JSON.parse(readFileSync(new URL('./browser.json',import.meta.url),'utf8'));",
-    "const server = await chromium.launchServer({headless:true,host:'127.0.0.1',port,wsPath:'/'+token});",
+    "const {port,token,downloadsPath} = JSON.parse(readFileSync(new URL('./browser.json',import.meta.url),'utf8'));",
+    "const server = await chromium.launchServer({headless:true,host:'127.0.0.1',port,wsPath:'/'+token,downloadsPath});",
     "console.log('Pilot browser ready');",
     "process.once('SIGTERM', async () => { await server.close(); process.exit(0) });",
     "process.once('SIGINT', async () => { await server.close(); process.exit(0) });",
@@ -32,9 +34,17 @@ export function configureBrowser(app, run) {
   // It cannot browse file:// copies of the hidden reference or evaluator.
   const readable = ['/System', '/usr', '/bin', '/sbin', '/dev', '/private/etc', '/private/var/db/timezone', '/Library/Fonts',
     dirname(dirname(realpathSync(process.execPath))), resolve(homedir(), 'Library/Caches/ms-playwright'), app]
+  // Chromium on macOS creates a randomly named intermediate download file in
+  // Darwin's native temp directory even with an explicit downloadsPath/TMPDIR.
+  // Permit only this exact native filename pattern to be written. Do not grant
+  // data reads of the host temp directory or writes to other names/subfolders.
+  const nativeTmp = realpathSync(execFileSync('/usr/bin/getconf', ['DARWIN_USER_TEMP_DIR'], { encoding: 'utf8' }).trim())
+  const escapedTmp = nativeTmp.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  // Seatbelt's regex subset does not implement the {6} repetition syntax.
+  const nativeDownloadPattern = '^' + escapedTmp + '/\\.org\\.chromium\\.Chromium\\.' + '[A-Za-z0-9]'.repeat(6) + '$'
   const profile = ['(version 1)', '(allow default)',
     '(deny file-read-data (require-not (require-any (literal "/") ' + readable.map((path) => '(subpath ' + JSON.stringify(path) + ')').join(' ') + ')))',
-    '(deny file-write* (require-not (require-any (subpath ' + JSON.stringify(tmp) + ') (subpath "/dev"))))',
+    '(deny file-write* (require-not (require-any (subpath ' + JSON.stringify(tmp) + ') (subpath "/dev") (regex ' + JSON.stringify(nativeDownloadPattern) + '))))',
     "(deny network*)",
     "(allow network-bind (local ip \"*:9223\"))",
     "(allow network-inbound (local ip \"localhost:9223\"))",
@@ -50,7 +60,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const app = resolve(run, 'app')
   const config = JSON.parse(readFileSync(resolve(run, 'config.json'), 'utf8'))
   const env = { ...clientEnvironment(config), TMPDIR: resolve(app, '.tmp/browser') }
-  const denied = [...protectedTaskFiles(root, pilotTask('P01')), ...protectedTaskFiles(root, pilotTask('P02')), resolve(homedir(), '.codex/auth.json')]
+  const denied = [...Array.from({ length: 10 }, (_, i) => pilotTask('P' + String(i + 1).padStart(2, '0'))).flatMap(task => protectedTaskFiles(root, task)), resolve(homedir(), '.codex/auth.json')]
   const code = "const fs=require('node:fs'); for(const p of " + JSON.stringify(denied) +
     ") { let denied=false;try{const f=fs.openSync(p,'r');fs.closeSync(f)}catch(e){denied=['EPERM','EACCES'].includes(e.code)}if(!denied)throw Error('Browser boundary failed: '+p) } console.log('Browser filesystem boundary passed')"
   const prefix = ['-f', resolve(run, 'browser.sb'), process.execPath]

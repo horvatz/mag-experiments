@@ -11,7 +11,7 @@ import { phaseBudget, parseReview, roleCanEdit, workerArguments, runBWorkflow } 
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2]
-assert.match(id, /^P0[12]-B-\d{3}$/)
+assert.match(id, /^P(?:0[1-9]|10)-B-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
 const app = resolve(run, 'app')
 const task = pilotTask(id)

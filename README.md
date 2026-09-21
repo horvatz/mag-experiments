@@ -10,6 +10,27 @@ Repozitorij vsebuje skupna navodila, razvojne teste, ločeno referenčno rešite
 in končna preverjanja. Namenjen je avtorju raziskave. Agentom pri primerjavi
 ne priključimo tega repozitorija ali nadrejene mape `mag`.
 
+## Glavna raziskava P03–P10
+
+Po naročilu avtorja je obseg glavne zbirke 8 nalog × 3 postopki × 3
+ponovitve = 72 izvedb. P01/P02 sta zaključena pilota in ostajata ločena.
+Tehnična kvalifikacija povratnih zank B/C in prekinitve je zaključena;
+[rezultati kvalifikacije](docs/qualification-results.md) vsebujejo dokazila.
+
+- [Načrt in osem nalog](docs/main-experiment-plan.md).
+- [Protokol M/1.0](docs/main-protocol.md) in [vnaprejšnja rubrika](docs/main-rubric.md).
+- [Vrstni red 72 izvedb](main-study/schedule.json).
+- [Trenutna zbirka in rezultati](main-study/analysis/results.md).
+- `main-study/frozen-inputs.json` je dokaz zamrznitve, ko ta datoteka obstaja.
+
+Vsaka glavna referenca ima 70 preverjanj in šest prevodljivih namernih
+napak. Delovne kopije so izločene iz Gita; zaključene oddaje, dogodki,
+neodvisne ocene in uporabljeni protokoli se ohranijo v `runs/<ID>/`.
+`main-study/status.json` in `active.json` pokažeta napredek čakalne vrste.
+Za raziskovalca: `node scripts/main-study.mjs status`, po zamrznitvi
+`node scripts/main-study.mjs run`; nadaljevanje ne ponavlja merjenih ID-jev.
+Spodnji razdelki ohranjajo navodila in zgodovino pilotov.
+
 ## Kaj je pripravljeno
 
 - `baseline.json`: natančni commit začetne aplikacije in različica P01.
