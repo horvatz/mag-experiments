@@ -1,0 +1,291 @@
+{
+  "task": "P02",
+  "recordedAt": "2026-09-20T23:43:41.609Z",
+  "protocol": "P02/1",
+  "model": "gpt-6-astra",
+  "reasoningEffort": "xhigh",
+  "cliVersion": "codex-cli 0.154.0",
+  "limitSeconds": 1200,
+  "measurementRuns": 3,
+  "allProceduresCompleted": true,
+  "allEvaluationsPassed": true,
+  "allUsageComplete": true,
+  "integrity": {
+    "originalManifestHashesMatch": true,
+    "archivedSubmissionsMatchEvaluation": true,
+    "evaluatorSourcesUnchanged": true,
+    "frozenSourceFiles": 125,
+    "commonInputsIdentical": true,
+    "commonInputFiles": 16
+  },
+  "runs": [
+    {
+      "id": "P02-A-001",
+      "status": "completed",
+      "elapsedSeconds": 976.425,
+      "allChecksPassed": true,
+      "completeTestRun": true,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 26,
+          "total": 26
+        }
+      },
+      "allowedChanges": true,
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "review": null,
+      "convergence": null,
+      "usageComplete": true,
+      "usage": {
+        "input_tokens": 1410352,
+        "cached_input_tokens": 1325696,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 29533,
+        "reasoning_output_tokens": 7552
+      },
+      "usageMethod": "Final CLI turn.completed event from the single completed session.",
+      "submissionSha256": "8f83c764086e97a8d83535e2ed751577c29f33f0486716754b867c4635a8c477",
+      "manifestSha256": "377b8f8c93c2952863fce35d6b582f3e6e5ab6e5799a6e2685eb8f381f5f3da2",
+      "executionSha256": "5d6c86e22d391a0efd29dfe813d47ae72e385a1b57336da8bddc9ab381599326",
+      "evaluationSha256": "d3a9d3c953f26a55d8af352e25690fa66694657240c39cbc5928ed35cd092898",
+      "report": "runs/P02-A-001/report.md"
+    },
+    {
+      "id": "P02-B-001",
+      "procedure": "B",
+      "status": "completed",
+      "elapsedSeconds": 971.686,
+      "allChecksPassed": true,
+      "completeTestRun": true,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 26,
+          "total": 26
+        }
+      },
+      "allowedChanges": true,
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "phases": [
+        {
+          "name": "specification",
+          "status": "completed",
+          "resumed": false,
+          "elapsedSeconds": 272.755
+        },
+        {
+          "name": "implementation",
+          "status": "completed",
+          "resumed": false,
+          "elapsedSeconds": 514.733
+        },
+        {
+          "name": "review",
+          "status": "completed",
+          "resumed": false,
+          "elapsedSeconds": 182.676
+        }
+      ],
+      "review": {
+        "complete": true,
+        "checkedRequirements": [
+          "R01",
+          "R02",
+          "R03",
+          "R04",
+          "R05",
+          "R06",
+          "R07",
+          "R08",
+          "R09",
+          "R10",
+          "R11",
+          "R12"
+        ],
+        "unverified": [
+          "Pregledovalec ni ponovno izvedel npm run check; rezultat 57 uspešnih testov ter uspešen lint, tipi in gradnja izhajajo iz pregledanega implementerjevega docs/agent/check-final.log.",
+          "Izvorni posnetki predogled/ niso izvoženi. Videz je pregledan glede na docs/dizajn.md in implementerjeva posnetka pri 1440/390 px; neposredna primerjava z izhodiščnimi posnetki ni opravljena.",
+          "Ročni preizkus z bralnikom zaslona in vse kombinacije velikosti zaslona niso preverjeni."
+        ],
+        "specificationChangesRequired": false,
+        "codeChangesRequired": false,
+        "summary": "Neodvisni pregled specifikacije, kode, testov in verification.md glede na R01–R12 je končan. Konkretnih odstopanj ni; popravki niso zahtevani.",
+        "findings": []
+      },
+      "convergence": null,
+      "usageComplete": true,
+      "usage": {
+        "input_tokens": 1020321,
+        "cached_input_tokens": 878080,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 29307,
+        "reasoning_output_tokens": 4286
+      },
+      "usageMethod": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+      "submissionSha256": "a279c36c0d17b221abded8f53f539a7dba394a971ac098df9cc9804f7f4325de",
+      "manifestSha256": "6a0bc835cbc4d4e83fe2a0e5345a096acf14453908c3795e36fda70413a13f8d",
+      "executionSha256": "a709087eca8b1c26380ae52a917bfd881b2cf5138bb1e55ae8821f8cb6908b85",
+      "evaluationSha256": "90abf30df0411c94c46820320948b36b462fc564c8737eba465fb0138ae7a073",
+      "report": "runs/P02-B-001/report.md"
+    },
+    {
+      "id": "P02-C-001",
+      "procedure": "C",
+      "status": "completed",
+      "elapsedSeconds": 1056.676,
+      "allChecksPassed": true,
+      "completeTestRun": true,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 26,
+          "total": 26
+        }
+      },
+      "allowedChanges": true,
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "phases": [
+        {
+          "name": "constitution",
+          "status": "completed",
+          "resumed": false,
+          "elapsedSeconds": 95.51
+        },
+        {
+          "name": "specify",
+          "status": "completed",
+          "resumed": true,
+          "elapsedSeconds": 191.698
+        },
+        {
+          "name": "plan",
+          "status": "completed",
+          "resumed": true,
+          "elapsedSeconds": 105.518
+        },
+        {
+          "name": "tasks",
+          "status": "completed",
+          "resumed": true,
+          "elapsedSeconds": 77.85
+        },
+        {
+          "name": "implement",
+          "status": "completed",
+          "resumed": true,
+          "elapsedSeconds": 477.244
+        },
+        {
+          "name": "converge",
+          "status": "completed",
+          "resumed": true,
+          "elapsedSeconds": 105.262
+        }
+      ],
+      "review": null,
+      "convergence": {
+        "outcome": "converged",
+        "summary": "Pregled R01–R12, 8 scenarijev, 9 predikatov, 5 odločitev načrta, 5 načel ustave in T001–T010 ni pokazal vrzeli. Obstoječa dokazila potrjujejo uspešen npm run check in 55 testov; v tem koraku testov nisem ponavljal. Koda in tasks.md sta ostala nespremenjena. Dodatna implementacija ni potrebna; rešitev je pripravljena za končni pregled.",
+        "unverified": [
+          "Nedostopni končni testi niso bili izvedeni."
+        ]
+      },
+      "usageComplete": true,
+      "usage": {
+        "input_tokens": 2444380,
+        "cached_input_tokens": 2175488,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 31828,
+        "reasoning_output_tokens": 4727
+      },
+      "usageMethod": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+      "submissionSha256": "da5591115eca2823a97df9bdd9604b1e6afc46b833b8f8acad09de9c76413326",
+      "manifestSha256": "e91052047103aa3872fb9e2a4dda9e4726676046141824c7553d7816a9a7d49c",
+      "executionSha256": "89a85f4ccfefe2c76606681420436a9eea4d454d621cf2bd7939df68cd9a8798",
+      "evaluationSha256": "acd9613a36648b4e2e452338631ccc484b9f53a86c1ace033ea90babf34a801c",
+      "report": "runs/P02-C-001/report.md"
+    }
+  ],
+  "limitations": [
+    "One pilot per procedure; no statistical comparison or general winner.",
+    "All submitted solutions passed this test set; it did not distinguish functional correctness here.",
+    "No reviewer-requested corrections in B or C; actual correction handoffs remain untested.",
+    "No interruption in these three runs; complete usage here does not validate interrupted usage.",
+    "Subscription tokens are not a monetary cost; no API or euro cost is inferred.",
+    "Human code-quality and traceability rubric has not yet been applied.",
+    "Mobile checks use Chromium emulation, not physical phones or Safari."
+  ]
+}

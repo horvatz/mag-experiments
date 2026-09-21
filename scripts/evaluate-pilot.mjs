@@ -1,3 +1,4 @@
+import { pilotTask, assertTaskBaseline } from './pilot-tasks.mjs'
 import assert from 'node:assert/strict'
 import { execFileSync, spawnSync } from 'node:child_process'
 import { closeSync, cpSync, existsSync, mkdirSync, openSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
@@ -8,30 +9,32 @@ import { digest, editable, inventory } from './pilot-utils.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'
-assert.match(id, /^P01-[ABC]-\d{3}$/)
+assert.match(id, /^P0[12]-[ABC]-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
+const task = pilotTask(id)
 const execution = JSON.parse(readFileSync(resolve(run, 'execution.json'), 'utf8'))
 const usageObservation = existsSync(resolve(run, 'usage-observation.json')) ? JSON.parse(readFileSync(resolve(run, 'usage-observation.json'), 'utf8')) : null
 assert.notEqual(execution.status, 'running', 'Never evaluate or expose hidden tests during agent execution')
 assert.ok(existsSync(resolve(run, 'submission/src')), 'Missing frozen submission')
 assert.ok(!existsSync(resolve(run, 'evaluation-summary.json')), 'Do not overwrite an evaluation')
 const manifest = JSON.parse(readFileSync(resolve(run, 'manifest.json'), 'utf8'))
-assert.deepEqual(manifest.baseline, JSON.parse(readFileSync(resolve(root, 'baseline.json'), 'utf8')), 'Baseline changed since preparation')
+assertTaskBaseline(root, manifest, task)
+if (manifest.evaluatorSourceHashes) assert.deepEqual(sourceHashes(root), manifest.evaluatorSourceHashes, 'Evaluator or task sources changed since preparation')
 const finalInventory = JSON.parse(readFileSync(resolve(run, 'final-inventory.json'), 'utf8'))
 const expectedSubmission = Object.fromEntries(Object.entries(finalInventory).filter(([path]) => editable(path, manifest.procedure)))
 assert.deepEqual(inventory(resolve(run, 'submission')), expectedSubmission, 'Frozen submission changed')
 for (const entry of Object.values(expectedSubmission)) {
   assert.equal(entry.kind, 'file', 'Symlinks are not accepted in submitted code')
 }
-execFileSync(process.execPath, [resolve(root, 'scripts/prepare-reference.mjs')], { cwd: root, stdio: 'inherit' })
+execFileSync(process.execPath, [resolve(root, task.prepareScript), ...task.prepareArgs], { cwd: root, stdio: 'inherit' })
 const candidate = resolve(run, 'candidate')
 assert.ok(!existsSync(candidate), 'Candidate directory already exists')
-cpSync(resolve(root, '.work/baseline'), candidate, { recursive: true })
+cpSync(resolve(root, task.baselineDirectory), candidate, { recursive: true })
 rmSync(resolve(candidate, 'src'), { recursive: true })
 for (const path of ['src', 'tests/agent', 'docs/agent']) cpSync(resolve(run, 'submission', path), resolve(candidate, path), { recursive: true })
 // Preserve the public task files for agent-authored imports. Server, fixtures,
 // shared types, dependencies and the actual evaluator remain researcher-owned.
-for (const path of ['task', 'tests/development']) cpSync(resolve(run, 'app', path), resolve(candidate, path), { recursive: true })
+for (const path of ['task', 'tests/development', ...(task.name === 'P02' ? ['support'] : [])]) cpSync(resolve(run, 'app', path), resolve(candidate, path), { recursive: true })
 const before = inventory(resolve(run, 'submission'))
 const results = []
 function check(name, executable, args, cwd = root) {
@@ -40,7 +43,7 @@ function check(name, executable, args, cwd = root) {
   const started = performance.now()
   const result = spawnSync(executable, args, {
     cwd, timeout: 180_000, stdio: ['ignore', fd, fd],
-    env: { ...process.env, CI: '1', APP_UNDER_TEST: candidate, P01_REPORT_FILE: resolve(run, 'evaluation-results.json'), P01_OUTPUT_DIR: resolve(run, 'evaluation-artifacts') },
+    env: { ...process.env, CI: '1', APP_UNDER_TEST: candidate, P01_REPORT_FILE: resolve(run, 'evaluation-results.json'), P01_OUTPUT_DIR: resolve(run, 'evaluation-artifacts'), P02_REPORT_FILE: resolve(run, 'evaluation-results.json'), P02_OUTPUT_DIR: resolve(run, 'evaluation-artifacts') },
   })
   closeSync(fd)
   const item = { name, exitCode: result.status, signal: result.signal, error: result.error?.message, elapsedSeconds: Number(((performance.now() - started) / 1000).toFixed(3)), passed: result.status === 0 }
@@ -51,7 +54,7 @@ const module = (name) => resolve(root, 'node_modules', name)
 check('lint', process.execPath, [module('eslint/bin/eslint.js'), '.', '--ignore-pattern', '.vite/**'], candidate)
 check('types', process.execPath, [module('typescript/bin/tsc'), '--noEmit'], candidate)
 check('build', process.execPath, [module('vite/bin/vite.js'), 'build'], candidate)
-check('tests', process.execPath, [module('@playwright/test/cli.js'), 'test'])
+check('tests', process.execPath, [module('@playwright/test/cli.js'), 'test', '--config=' + task.playwrightConfig])
 const raw = existsSync(resolve(run, 'evaluation-results.json')) ? JSON.parse(readFileSync(resolve(run, 'evaluation-results.json'), 'utf8')) : null
 const tests = raw ? collectSpecs(raw.suites).flatMap((spec) => spec.tests.map((test) => ({
   title: spec.title, project: test.projectName, status: test.status,
@@ -65,14 +68,15 @@ for (const test of tests) {
   if (test.status === 'expected') groups[group].passed++
 }
 assert.deepEqual(inventory(resolve(run, 'submission')), before, 'Evaluation modified the frozen submission')
+const expectedProjects = Object.entries(task.counts).every(([project, count]) => tests.filter(test => test.project === project).length === count)
 const summary = {
-  id, evaluatedAt: new Date().toISOString(), baseline: manifest.baseline, procedure: manifest.procedure,
+  id, task: task.name, evaluatedAt: new Date().toISOString(), baseline: manifest.baseline, procedure: manifest.procedure,
   model: manifest.model, reasoningEffort: manifest.reasoningEffort,
   executionStatus: execution.status, elapsedSeconds: execution.elapsedSeconds, usage: usageObservation?.complete ? usageObservation.usage : execution.usage,
   ...(execution.phases ? { phases: execution.phases, review: execution.review, convergence: execution.convergence, usageNote: usageObservation?.complete ? usageObservation.method : execution.usageNote } : {}),
   allowedChanges: execution.allowedChanges, checks: results, groups, tests,
-  completeTestRun: tests.length === 68 && (raw?.errors.length ?? 1) === 0,
-  allChecksPassed: execution.status === 'completed' && execution.allowedChanges && results.every((item) => item.passed) && tests.length === 68 && tests.every((test) => test.status === 'expected') && raw.errors.length === 0,
+  completeTestRun: tests.length === task.totalChecks && expectedProjects && (raw?.errors.length ?? 1) === 0,
+  allChecksPassed: execution.status === 'completed' && execution.allowedChanges && results.every((item) => item.passed) && tests.length === task.totalChecks && expectedProjects && tests.every((test) => test.status === 'expected') && raw.errors.length === 0,
   evaluatorSourceHashes: sourceHashes(root), submissionSha256: digest(JSON.stringify(before)),
   limitations: ['One pilot run, not a comparison of A/B/C.', 'Mobile tests emulate a phone in Chromium.', 'Recorded subscription token usage is not a monetary cost.'],
 }

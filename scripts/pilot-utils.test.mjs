@@ -1,12 +1,66 @@
 import assert from 'node:assert/strict'
-import { cpSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
+import { cpSync, existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { test } from 'node:test'
 import { changes, configArguments, inventory, editable } from './pilot-utils.mjs'
-import { parseReview, phaseBudget, roleCanEdit, runBWorkflow, workerArguments } from './procedure-b.mjs'
-import { stageCanEdit, parseConvergence, runCWorkflow, phaseBudget as cBudget, assertLocalSkillCatalog } from './procedure-c.mjs'
+import { parseReview, phaseBudget, roleCanEdit, runBWorkflow, workerArguments, prompts as bPrompts } from './procedure-b.mjs'
+import { stageCanEdit, stageConfiguration, parseConvergence, runCWorkflow, phaseBudget as cBudget, assertLocalSkillCatalog, prompts as cPrompts } from './procedure-c.mjs'
+import { pilotTask, taskPrompts, exportPublicTask } from './pilot-tasks.mjs'
+
+test('task selection validates IDs and keeps P01 and P02 evaluation counts distinct', () => {
+  assert.equal(pilotTask('P01-A-001').totalChecks, 68)
+  const p02 = pilotTask('P02-C-001')
+  assert.equal(p02.totalChecks, 72)
+  assert.equal(Object.values(p02.counts).reduce((sum, count) => sum + count, 0), 72)
+  assert.equal(p02.requirements.at(-1), 'R12')
+  for (const id of ['../P02', 'P03-A-001', 'P02-D-001', 'P02-A-1', 'P02-A-001/extra']) assert.throws(() => pilotTask(id))
+})
+
+test('P02 public export preserves helper imports without leaking private research files', () => {
+  const app = mkdtempSync(join(tmpdir(), 'mag-p02-export-'))
+  const root = new URL('../', import.meta.url).pathname
+  try {
+    exportPublicTask(root, app, pilotTask('P02'))
+    for (const [source, exported] of [['tasks/P02/instructions.md', 'task/instructions.md'], ['tasks/P02/development.spec.ts', 'tests/development/P02.spec.ts'], ['tasks/P02/helpers.ts', 'tests/development/helpers.ts'], ['support/types.ts', 'support/types.ts']]) {
+      assert.deepEqual(readFileSync(join(app, exported)), readFileSync(join(root, source)))
+    }
+    for (const path of ['reference', 'evaluation', 'reports', 'runs', 'scripts', 'tasks/P01']) assert.equal(existsSync(join(app, path)), false)
+  } finally { rmSync(app, { recursive: true, force: true }) }
+})
+
+test('P02 role prompts and review validation include R11 and R12', () => {
+  const task = pilotTask('P02')
+  for (const source of [bPrompts, cPrompts]) {
+    const prompts = taskPrompts(source, task)
+    for (const text of Object.values(prompts)) { assert.ok(!text.includes('P01')); assert.ok(!text.includes('R01–R10')) }
+    assert.ok(Object.values(prompts).some(text => text.includes('R01–R12')))
+  }
+  const review = { complete: true, checkedRequirements: task.requirements, unverified: [], specificationChangesRequired: false, codeChangesRequired: false, summary: 'All requirements checked', findings: [] }
+  assert.equal(parseReview(review, task.requirements), review)
+  assert.throws(() => parseReview({ ...review, checkedRequirements: task.requirements.slice(0, 10) }, task.requirements))
+  assert.throws(() => parseReview({ ...review, checkedRequirements: [...task.requirements, 'R12'] }, task.requirements))
+})
+
+test('P02 convergence can append its own tasks but cannot edit P01 or application code', () => {
+  const task = pilotTask('P02')
+  assert.equal(stageCanEdit('converge', 'docs/agent/P02/tasks.md', task.feature), true)
+  for (const path of ['docs/agent/P01/tasks.md', 'docs/agent/P02/spec.md', 'src/App.tsx']) assert.equal(stageCanEdit('converge', path, task.feature), false)
+  const base = { 'permissions.pilot': { filesystem: { '/app': {} } } }
+  const config = stageConfiguration(base, '/app', 'converge', task.feature)
+  assert.equal(config['permissions.pilot'].filesystem['/app']['docs/agent/P02/tasks.md'], 'write')
+  assert.equal(config['permissions.pilot'].filesystem['/app'].src, 'read')
+  assert.deepEqual(base['permissions.pilot'].filesystem['/app'], {})
+})
+
+test('P02 review hands R12 corrections back to both original authors', async () => {
+  const calls = [], task = pilotTask('P02')
+  const review = { complete: true, checkedRequirements: task.requirements, unverified: [], specificationChangesRequired: true, codeChangesRequired: true, summary: 'R12 needs corrections', findings: ['specification', 'implementation'].map(target => ({ target, requirement: 'R12', problem: 'Other fields changed', requestedChange: 'Preserve other fields' })) }
+  const outcome = await runBWorkflow({ requirements: task.requirements, phase: async (...args) => { calls.push(args); return true }, hasSpecification: () => true, getReview: () => review })
+  assert.equal(outcome.status, 'completed')
+  assert.deepEqual(calls.slice(-2), [['specification-repair', 'specification', true], ['implementation-repair', 'implementation', true]])
+})
 
 test('C accepts exactly its local Spec Kit skills and rejects host or extra catalogs', () => {
   const names = ['analyze', 'checklist', 'clarify', 'constitution', 'converge', 'implement', 'plan', 'specify', 'tasks', 'taskstoissues']

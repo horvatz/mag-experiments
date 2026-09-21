@@ -4,7 +4,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import { createServer } from 'vite'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const baseline = resolve(root, '.work/baseline')
+const baseline = resolve(process.env.BASELINE_UNDER_TEST || resolve(root, '.work/baseline'))
 const candidate = resolve(process.env.APP_UNDER_TEST || resolve(root, '.work/reference'))
 if (!existsSync(resolve(candidate, 'index.html'))) throw new Error('Run npm run prepare:reference first.')
 // Infrastructure and fixtures always come from the pinned baseline, never the candidate.

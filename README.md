@@ -142,6 +142,37 @@ vsebujejo podrobnosti in omejitve.
 **P01 je zaključen kot prvi pilot vseh treh postopkov.**
 [Skupni pregled](docs/pilot-results.md) vsebuje vseh šest poskusov in
 naslednje korake. P01 ne določa zmagovalca: med umerjanjem sta se
-protokola B in C spreminjala. Naslednja je zahtevnejša pilotna naloga
-P02; pred glavnimi meritvami ostajata dejanski preizkus popravkov po
-pregledu in potrditev merjenja porabe ob prekinitvah.
+protokola B in C spreminjala. Pred glavnimi meritvami ostajata dejanski
+preizkus popravkov po pregledu in potrditev merjenja porabe ob prekinitvah.
+
+## Pilot P02: množična sprememba stanja
+
+21. septembra 2026 so pripravljeni navodila P02 v0.1 z dvanajstimi zahtevami,
+ločena referenca, štirje razvojni in trinajst končnih scenarijev. Naloga
+uporablja isto osnovno aplikacijo kot P01, brez njegove rešitve. Preverja
+izbor več opravil, delni uspeh, zakasnjene odgovore, ponavljanje samo
+neuspelih zapisov in nespremenljivost drugih podatkov.
+
+Referenca je opravila **72/72 preverjanj**, slog, tipe in gradnjo. Testi so
+zaznali **10/10 namernih napak**. Dodatna veljavna zaporedna izvedba je
+opravila 13/13 končnih scenarijev na računalniškem prikazu. To so preverjanja
+reference in meril; rezultate agentov poročamo ločeno.
+
+- [Navodila P02](tasks/P02/instructions.md)
+- [Referenčna pravila in sledljivost](docs/P02-reference-specification.md)
+- [Dokazila in posnetki](docs/p02-verification.md)
+- [Priprava, ukazi in naslednji koraki](docs/p02-setup.md)
+- [Protokol P02/1](docs/p02-pilot-protocol.md)
+- [Izvedbe in rezultati P02](docs/p02-results.md)
+
+Preverjanje: `npm run test:p02`, nato `npm run test:p02:mutations`.
+Predogled reference: `npm run dev:p02`, naslov `http://127.0.0.1:5185`.
+P02 uporablja lastne delovne kopije in poročila. Izvajalnik podpira vse
+tri postopke za P01 in P02; tehnična kopija brez modela je v izolaciji
+opravila 46/46 javnih preverjanj. Vsi trije pilotski postopki so zaključeni
+po vnaprej določenem protokolu z enakimi vhodi in največ 20 minutami na
+postopek: A v 16 min 16 s, B v 16 min 12 s, C v 17 min 37 s.
+Vsaka oddaja je opravila 72/72 neodvisnih preverjanj; poraba je popolno
+zabeležena. B in C nista zahtevala dodatnega kroga popravkov.
+To so trije piloti, ne glavne meritve ali dokaz prednosti posameznega
+postopka. [Pregled P02](docs/p02-results.md) določa preostala preverjanja.

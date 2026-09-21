@@ -1,0 +1,823 @@
+{
+  "id": "P02-B-001",
+  "task": "P02",
+  "evaluatedAt": "2026-09-20T23:24:02.815Z",
+  "baseline": {
+    "repository": "https://github.com/horvatz/mag-app.git",
+    "commit": "6dc1193f32a1fc00722fbc0983907d32b908cb51",
+    "taskVersion": "P02/0.1"
+  },
+  "procedure": "B",
+  "model": "gpt-6-astra",
+  "reasoningEffort": "xhigh",
+  "executionStatus": "completed",
+  "elapsedSeconds": 971.686,
+  "usage": {
+    "input_tokens": 1020321,
+    "cached_input_tokens": 878080,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 29307,
+    "reasoning_output_tokens": 4286
+  },
+  "phases": [
+    {
+      "name": "specification",
+      "role": "specification",
+      "resumed": false,
+      "startedAt": "2026-09-20T23:06:51.505Z",
+      "limitSeconds": 360,
+      "status": "completed",
+      "usage": {
+        "input_tokens": 127932,
+        "cached_input_tokens": 93568,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 8565,
+        "reasoning_output_tokens": 951
+      },
+      "threadId": "01a0c112-87bb-7421-be54-156f5ccb1f49",
+      "finishedAt": "2026-09-20T23:11:24.262Z",
+      "elapsedSeconds": 272.755,
+      "exitCode": 0,
+      "signal": null,
+      "fileChanges": [
+        {
+          "path": "docs/agent/specification-history.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/specification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "implementation",
+      "role": "implementation",
+      "resumed": false,
+      "startedAt": "2026-09-20T23:11:24.761Z",
+      "limitSeconds": 566.714,
+      "status": "completed",
+      "usage": {
+        "input_tokens": 555756,
+        "cached_input_tokens": 502144,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 15828,
+        "reasoning_output_tokens": 1885
+      },
+      "threadId": "01a0c116-b06e-7fd3-8e30-78b95a65edff",
+      "finishedAt": "2026-09-20T23:19:59.497Z",
+      "elapsedSeconds": 514.733,
+      "exitCode": 0,
+      "signal": null,
+      "fileChanges": [
+        {
+          "path": "docs/agent/check-final.log",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/check.log",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/verification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/App.tsx",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/BulkTaskControls.tsx",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/TaskBoard.tsx",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/styles.css",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/useBulkTaskStatus.ts",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/useResource.ts",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "tests/agent/bulk-status.spec.ts",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "review",
+      "role": "review",
+      "resumed": false,
+      "startedAt": "2026-09-20T23:19:59.993Z",
+      "limitSeconds": 291.486,
+      "status": "completed",
+      "usage": {
+        "input_tokens": 336633,
+        "cached_input_tokens": 282368,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4914,
+        "reasoning_output_tokens": 1450
+      },
+      "threadId": "01a0c11e-8d0d-7a80-8074-0135334beecf",
+      "finishedAt": "2026-09-20T23:23:02.671Z",
+      "elapsedSeconds": 182.676,
+      "exitCode": 0,
+      "signal": null,
+      "handoffSource": "reviewer_structured_final_response",
+      "handoffSha256": "1dc37dba935daf084da0b00cbb75640c550bee61cf330035ff2d000f8d421285",
+      "fileChanges": [
+        {
+          "path": "docs/agent/review.json",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/review.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    }
+  ],
+  "review": {
+    "complete": true,
+    "checkedRequirements": [
+      "R01",
+      "R02",
+      "R03",
+      "R04",
+      "R05",
+      "R06",
+      "R07",
+      "R08",
+      "R09",
+      "R10",
+      "R11",
+      "R12"
+    ],
+    "unverified": [
+      "Pregledovalec ni ponovno izvedel npm run check; rezultat 57 uspešnih testov ter uspešen lint, tipi in gradnja izhajajo iz pregledanega implementerjevega docs/agent/check-final.log.",
+      "Izvorni posnetki predogled/ niso izvoženi. Videz je pregledan glede na docs/dizajn.md in implementerjeva posnetka pri 1440/390 px; neposredna primerjava z izhodiščnimi posnetki ni opravljena.",
+      "Ročni preizkus z bralnikom zaslona in vse kombinacije velikosti zaslona niso preverjeni."
+    ],
+    "specificationChangesRequired": false,
+    "codeChangesRequired": false,
+    "summary": "Neodvisni pregled specifikacije, kode, testov in verification.md glede na R01–R12 je končan. Konkretnih odstopanj ni; popravki niso zahtevani.",
+    "findings": []
+  },
+  "usageNote": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+  "allowedChanges": true,
+  "checks": [
+    {
+      "name": "lint",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.434,
+      "passed": true
+    },
+    {
+      "name": "types",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.614,
+      "passed": true
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.137,
+      "passed": true
+    },
+    {
+      "name": "tests",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 31.868,
+      "passed": true
+    }
+  ],
+  "groups": {
+    "regression": {
+      "passed": 38,
+      "total": 38
+    },
+    "development": {
+      "passed": 8,
+      "total": 8
+    },
+    "holdout": {
+      "passed": 26,
+      "total": 26
+    }
+  },
+  "tests": [
+    {
+      "title": "fixture IDs are unique and each project has three tasks",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "a successful update changes only the chosen record and fields",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"\",\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\" \\t\\r\\n\",\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\",\"status\":\"unknown\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":42,\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\",\"status\":\"done\",\"projectId\":\"launch\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: null",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "rejected save writes nothing and the next request can succeed",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "held request remains unchanged until released with success",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "held request remains unchanged until released with reject",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "reset cancels a pending save and restores a previously changed record",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "normal server does not expose test controls",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "projects show their own tasks and all three states",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "projects show their own tasks and all three states",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "duplicate titles open by ID, with complete details and keyboard dismissal",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "duplicate titles open by ID, with complete details and keyboard dismissal",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "direct task links survive refresh and browser back closes details",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "direct task links survive refresh and browser back closes details",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "a saved API change survives browser refresh and project navigation",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "a saved API change survives browser refresh and project navigation",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "unknown locations and task IDs show a recoverable state",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "unknown locations and task IDs show a recoverable state",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects can be retried",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects can be retried",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects/web/tasks can be retried",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects/web/tasks can be retried",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty project keeps the navigation and shows an empty state",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty project keeps the navigation and shows an empty state",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "switching project during loading never shows the previous project tasks",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "switching project during loading never shows the previous project tasks",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board navigation preserves the view and opens duplicate titles by ID without writes",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board navigation preserves the view and opens duplicate titles by ID without writes",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board reflects saved states on refresh, including empty columns and duplicate titles",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board reflects saved states on refresh, including empty columns and duplicate titles",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty board keeps all columns and supports switching back to the table",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty board keeps all columns and supports switching back to the table",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D01: izbor in čiščenje ne shranjujeta podatkov",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D01: izbor in čiščenje ne shranjujeta podatkov",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D02: dve izbrani opravili se shranita neodvisno",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D02: dve izbrani opravili se shranita neodvisno",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D03: delna napaka omogoči ponovitev samo neuspelega opravila",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D03: delna napaka omogoči ponovitev samo neuspelega opravila",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D04: čakanje zaklene kontrole in ohrani nepotrjene podatke",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D04: čakanje zaklene kontrole in ohrani nepotrjene podatke",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E01: izbor po ID, tipkovnica in ohranitev med pogledoma [R01,R02,R03]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E01: izbor po ID, tipkovnica in ohranitev med pogledoma [R01,R02,R03]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E02: skupni izbor je omejen na projekt in deluje tudi pri praznem seznamu [R02,R12]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E02: skupni izbor je omejen na projekt in deluje tudi pri praznem seznamu [R02,R12]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E03: cilj in izbor sta obvezna, osnutek ter čiščenje ne pišeta [R04,R11]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E03: cilj in izbor sta obvezna, osnutek ter čiščenje ne pišeta [R04,R11]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E04: vsi prehodi, tudi enako stanje, po ena zahteva in ohranitev drugih polj [R05,R06,R09,R12]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E04: vsi prehodi, tudi enako stanje, po ena zahteva in ohranitev drugih polj [R05,R06,R09,R12]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E05: istoimenski neizbrani zapis in drugi projekt ostaneta nedotaknjena [R01,R05,R12]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E05: istoimenski neizbrani zapis in drugi projekt ostaneta nedotaknjena [R01,R05,R12]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E06: zadržane zahteve zaklenejo vnos, hitri pritiski ne podvajajo [R04,R05,R10]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E06: zadržane zahteve zaklenejo vnos, hitri pritiski ne podvajajo [R04,R05,R10]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E07: več delnih neuspehov, pravilna sporočila in ponavljanje samo preostalih [R07,R08,R09,R10]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E07: več delnih neuspehov, pravilna sporočila in ponavljanje samo preostalih [R07,R08,R09,R10]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E08: potrjeni uspeh je viden pred poznejšo zavrnitvijo [R06,R07,R10]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E08: potrjeni uspeh je viden pred poznejšo zavrnitvijo [R06,R07,R10]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E09: popolna zavrnitev in zadržana ponovitev brez podvajanja [R07,R08,R09,R10]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E09: popolna zavrnitev in zadržana ponovitev brez podvajanja [R07,R08,R09,R10]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E10: čiščenje po delnem uspehu ne razveljavi zapisov in omogoči nov začetek [R09,R11]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E10: čiščenje po delnem uspehu ne razveljavi zapisov in omogoči nov začetek [R09,R11]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E11: delni rezultat in cilj ostaneta pri preklopu, ponovitev s table [R03,R06,R08]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E11: delni rezultat in cilj ostaneta pri preklopu, ponovitev s table [R03,R06,R08]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E12: menjava projekta odstrani izbor in napake, uspešni zapisi ostanejo [R03,R11,R12]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E12: menjava projekta odstrani izbor in napake, uspešni zapisi ostanejo [R03,R11,R12]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E13: osvežitev, podrobnosti in števci po delnem uspehu [R03,R06,R12]",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E13: osvežitev, podrobnosti in števci po delnem uspehu [R03,R06,R12]",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    }
+  ],
+  "completeTestRun": true,
+  "allChecksPassed": true,
+  "evaluatorSourceHashes": {
+    "baseline.json": "4c7f3cbcc5e9f37b2398c8ec2c47544486939615a37d6c8bd6ae4634bce27e0a",
+    "evaluation/P01/acceptance.spec.ts": "5c8e24daf1f31f3d84614b5aab468c887ef057e005d363e785af3d0541eabb7e",
+    "evaluation/P01/checks.ts": "f32f377b2ec964cf7f6af846a188fbb62dafebbe56a2b9330e749a5d02b49b12",
+    "evaluation/P01/mutations.mjs": "9b0470ad59f80f02720abda854b7f7cccd48c6206da780a2ec36f0ab74ab80af",
+    "evaluation/P01/test-plan.md": "0ae224ae88ca0ba62229ccc81fdba8b3526082cbcc98bd6e76491e22d5058aaf",
+    "evaluation/P02/acceptance.spec.ts": "65986abcbdc0684726a750d11681cdff021c7345b0454f8b5d40fbf6f177dd4a",
+    "evaluation/P02/mutations.mjs": "c69d15cbb19a2faa6d36d98a62bb756e2bde83a471cdb5829ffe80287799ceea",
+    "package-lock.json": "5e3cae728c00882f4b8d93bb727b5e3ed26ef97f5ff3947b8e84f541825fd580",
+    "playwright.config.ts": "50803bdd8fe492c5295784c0ddb0efb87948109b534b811497fe5666cdc4d92b",
+    "playwright.p02.config.ts": "e62bef5e484937fc2202e9f1f2f8b71648f56546f0349a098e02e6f0fbd222d9",
+    "reference/P01/overlay/src/App.tsx": "297671820e2ad1c9f02ccc681010a777338f10c4c34d37b498940276f97f62e8",
+    "reference/P01/overlay/src/editor.css": "6a223a9455d0e1f6fb35968c8303d413ec074e3fcf1b5d757fe57b790b2253bc",
+    "reference/P01/overlay/src/TaskDetails.tsx": "770f974aa554317030ad96fe8c91f86f1ac07d5980b2138ad9a28fc888053749",
+    "reference/P01/overlay/src/TaskEditor.tsx": "2f368f3acd7336c346e516762182f9ff7e41cf6870f6f6e6c9834bd2b6261d6b",
+    "reference/P01/overlay/src/useResource.ts": "4412578542fc274ee7aa4cbbf13e04e030553378db8b338c25dd297d90b86ba1",
+    "reference/P02/overlay/src/App.tsx": "cf9bb5b64aeb8d8b80ced85458b5c79cb4f1550a57dd630d3adacd2f39d302d7",
+    "reference/P02/overlay/src/bulk.css": "0c7b23536024a7c09b6dda36ee11dabf1f15e31ded571faf6d321dcbd5b1bb6f",
+    "reference/P02/overlay/src/BulkToolbar.tsx": "0e6c8914e7e167570979ec360f713bddc27c617c30d78920f06df7d4be12006b",
+    "reference/P02/overlay/src/TaskBoard.tsx": "cd56ad7178ca7f955a6998ebefeadabaf237bb0dd527e99e7dcc6c29d2911635",
+    "reference/P02/overlay/src/useBulkTasks.ts": "1d758a34b9104460cde0e508270b7ea71074e38b8930dda494405b33ba6c0eed",
+    "reference/P02/overlay/src/useResource.ts": "e503096d0c8bef22f7776aa92000d178ef9527b16c945550c35829a202c05eba",
+    "scripts/archive-pilot.mjs": "af458bfdb680188726f46898efca0da5d116b2fbc47902163bfe7a59bf7ec054",
+    "scripts/check-mutations.mjs": "ec64fe2a70c8a9cbd8166d70d99b98841a8a27e13acf3b7b4360dfebbe6ac236",
+    "scripts/evaluate-pilot.mjs": "f86de1d6cff71d9ce69b7712f78de048fcd777203c63b9e4c05df324499a1d7b",
+    "scripts/p02.mjs": "928b30cfa075894d5e4b5113f05600a779e578986b48ca6f1a096797508ac579",
+    "scripts/pilot-browser.mjs": "ea31cc35c64ef836284a634faca814a6e80e089a3acea16bdfced93cbf1f9aba",
+    "scripts/pilot-tasks.mjs": "de27791aefcf6c1df3c62ca5366e4a1c4b6379ba8ff49b4b64993b36054ad4c3",
+    "scripts/pilot-utils.mjs": "9ec6f35572ef986962e98d246c92ad2b70d8fffdf7a853fa05315ded32fca231",
+    "scripts/pilot-utils.test.mjs": "20ccc2dcd2b7b55d3b96c47eaf8194d1f623547b5146d1d331627b8eb8a0c702",
+    "scripts/preflight-pilot.mjs": "500e12a02bc81c5b0457cccda7770bb8c9410a1eb570dd699541e3d3624812c9",
+    "scripts/prepare-pilot.mjs": "4d01a7642cd43237b62ef21f7d6516264fce1290853178999563ee21f4976c72",
+    "scripts/prepare-reference.mjs": "ef3e7dc727b8386a43b1cf5165155726a21f85d486145168544be3be9592265b",
+    "scripts/procedure-b.mjs": "63d177166059ee4c47c65b2fab10069448acd2cda8af45d7c7417200b033d56f",
+    "scripts/procedure-c.mjs": "403d24273bb401558cc459d7810501f15e0f84a17d060f065de147967427f7cc",
+    "scripts/reconcile-pilot-usage.mjs": "5675f42d0df3f39d20f8d30d6dccf27753c64eb6368aebc2a5dc34b71c589aeb",
+    "scripts/report-utils.mjs": "915b5d422b035946820ee377ba00e06fdeac77723c88286e0e8af0382642829a",
+    "scripts/run-pilot-b.mjs": "6a7db4db7ce98ad2e69119c62c089bd63edac6cae479969ea174270f5e075494",
+    "scripts/run-pilot-c.mjs": "f47aa3a9216c2840952b2293318d58fe8b0181844315dceaa6f98fcd5dd6bea5",
+    "scripts/run-pilot.mjs": "962aebaf7a9c306e655b2ee65fc617993b3fd6b853a080ce4689cf1c38fb600c",
+    "scripts/start-app.mjs": "4e8b6bc1f40985384db605e409898fd03632d119614f391924229cd91fc2d90b",
+    "scripts/start-p02.mjs": "2a90f896037149efb18dace8e6d25ca89a841d8f972f16543c6a4facea18beb7",
+    "scripts/verify-reference.mjs": "557a5c9b2fae293a29fec7d032c6cdc3a6bf2f5f5a2a5bc3562138f130a58679",
+    "support/types.ts": "27ecd2e574b2fa8c45e6f9bf5d9dec92a87e5d150008f64d9d126eee6474612b",
+    "tasks/P01/development.spec.ts": "9e8bf7b3720a79da80ab85c20aa08a995c4073a31d0c41ddce3545eac8135d8b",
+    "tasks/P01/instructions.md": "e95677353f839479eeb7a83fc207c32668803a1aa6e4813e50ba5c64ea040dc4",
+    "tasks/P01/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "tasks/P02/baseline.json": "0c7e283c6fa98df6b4490f2a64b2d749aebdec49037b263ccd487bedb297f134",
+    "tasks/P02/development.spec.ts": "165adf8385d32f008b3b786d42b3558826382bbd4a9a8244fd05fb65d7718962",
+    "tasks/P02/helpers.ts": "ca32a8a47bd9ade681c5f1eb44f05e83a7a23a131c42131c2c33f9a1420018a6",
+    "tasks/P02/instructions.md": "44867f8d6f7b2525ab7af146cf86284f1e6c9dbf9f790c1241364d4a828dd056",
+    "tasks/P02/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-analyze/SKILL.md": "0b3261b13cc33537f24b3e1f6d5320694c348302c385d0046dc6b958cf2db6cb",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-checklist/SKILL.md": "7ac5cba31a27151a1a7b73f691bd478d42750ce2dd734701a07eb0e235ffbd94",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-clarify/SKILL.md": "f6acfbc82c96c0d91b2429fd0b51ce7df7f94b003d1b73acc54470d48bcc455e",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-constitution/SKILL.md": "1d1e7309b160d58ca45550e7afd2ec363fbeae6ff878daa775519b359e4cb966",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-converge/SKILL.md": "ba0b853dba470f414cdf9eae53200b8468bd639ecd92549a6d4e533af3da7521",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-implement/SKILL.md": "067b84a7cf042d9e5d9103735e237a814acf3da21a622dd9eecf6cd709220d0e",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-plan/SKILL.md": "5a5b0f811e49c55d3643f9a3915d03990fa8d308f13f6a3017101c2772742762",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-specify/SKILL.md": "4b9a371177b4b1ad60ea8204b62a6da3cb6ca375bae0f92cd08888de87a4ba04",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-tasks/SKILL.md": "1ce843e74629c61f49d82f13f59ca1624e6d86c74ab5e35b8ae59b33e5d7362c",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-taskstoissues/SKILL.md": "a349d410c180385215bf5180b13319bd8259199267af24917f4f4d0adcbb6ad2",
+    "vendor/spec-kit-1.0.8-lean/.specify/.gitignore": "8c908410d177a1ef3d0dee16d7ad55f2ac3333df3104c4d4adee1c9b82f1dbc1",
+    "vendor/spec-kit-1.0.8-lean/.specify/init-options.json": "1243c2f2ca87a00d64ceeea65bc881eed5e4e6bad2087111c882d2b3a1db058e",
+    "vendor/spec-kit-1.0.8-lean/.specify/integration.json": "d716503b4926d1e57b285cfc73992e21f182fdcf0070a6b0fadd2b3e4561fd21",
+    "vendor/spec-kit-1.0.8-lean/.specify/integrations/codex.manifest.json": "21924421d403f8a975d7a1e8a40135d5e2097f97aea814284922a212a12cbc8f",
+    "vendor/spec-kit-1.0.8-lean/.specify/integrations/speckit.manifest.json": "710cef86c46aa1b0dcc60791e80d55c04bb1b8cefbdc17d8cc1f9f5c8b04518c",
+    "vendor/spec-kit-1.0.8-lean/.specify/memory/.constitution-template.json": "8fc4b39294bae0c10d59547ad7d415b6f0e890d656cbf7171dd567f4e9054711",
+    "vendor/spec-kit-1.0.8-lean/.specify/memory/constitution.md": "ce7549540fa45543cca797a150201d868e64495fdff39dc38246fb17bd4024b3",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/.registry": "21ad948ebc7c035163d9982f9cf4e24893fe232067f328ccf44995a9a6a4335c",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/commands/speckit.constitution.md": "56ca2ffc2938d04285adc8e0a7cc33164d7f0b8538d5b8aa70791de6ddb9f0a0",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/commands/speckit.implement.md": "d50654ebfad997092a939d7020e546c48be47aa676c7ddeb90eb70b5cf20767c",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/commands/speckit.plan.md": "d4dbd594dc8ea9853583353cfc556ac419ffedf2300c207d4ce75c24debe2ab9",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/commands/speckit.specify.md": "9d68997ce418cc3293f66f946681bed0a33328c64a05757c0554ded19eec0ce2",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/commands/speckit.tasks.md": "b363acd5cdbc3312b2fa03c763913515947feb214702281fe13355401ebd0210",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/preset.yml": "d316b3ad5f41988d51fe2b7faedab9c942edc68b44cf6970d5e26ef5a8522751",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/README.md": "7f7291892edc0fadcc18a027c7bc06ff6767ce08f21039876cd7f455be200536",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/check-prerequisites.sh": "13be175548848bd84e96a90cf9be87665c2e68603b2eaa3e19187e7ca8b4fcb0",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/common.sh": "fdfebd1274594eb3fbfccdf7968d5dd1243aaf244daf262d7c9d0c012c5d21a6",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/create-new-feature.sh": "f4244c6cf95025e5726669938e9152d4a557cc7c1e8b027a43cb4de72677da16",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/resolve-template.sh": "829e227096abc8bf0889889ec9f792f503ca5d395b7836a8a7eb739ee75214e7",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/setup-plan.sh": "d0bd298c026446f3c63167130d65e49e4aa4485de6bef18bcdfd57b19aa0de96",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/setup-tasks.sh": "0350b2def158c4dc333cd888fc5a3b10785b3d5c2cf936f93e910242ea9d507d",
+    "vendor/spec-kit-1.0.8-lean/.specify/templates/checklist-template.md": "70bbc48e884fab372ffb09e83e78ff983e28b69caebf8cd9964a02b6836683ac",
+    "vendor/spec-kit-1.0.8-lean/.specify/templates/constitution-template.md": "ce7549540fa45543cca797a150201d868e64495fdff39dc38246fb17bd4024b3",
+    "vendor/spec-kit-1.0.8-lean/.specify/templates/plan-template.md": "a828ad6206526574ab3fc99be6d0154588cb1c9774c5919d71b81ab5b2dbffa0",
+    "vendor/spec-kit-1.0.8-lean/.specify/templates/spec-template.md": "3945437fc35cd30a5b2bf7beea680337c3516826d3efa5a6b92c4a7eca1ba28e",
+    "vendor/spec-kit-1.0.8-lean/.specify/templates/tasks-template.md": "b0f527d41e546af0c31903e04f9b20965b6b497b573792198f663a64ce128863",
+    "vendor/spec-kit-1.0.8-lean/.specify/workflows/speckit/workflow.yml": "177761c5e7df28126beea043b5cb45aeaf7958090c022dc11ac71399422fcfbc",
+    "vendor/spec-kit-1.0.8-lean/.specify/workflows/workflow-registry.json": "babb2e21b11fffa0f104495c3973656207d0fc2610ae255ab114eff8dc718393",
+    "vendor/spec-kit-1.0.8-lean/LICENSE": "2510b446bc1f0cf9702453075d20cd88631e20e5642658edb7325d9c1eb534f7",
+    "vendor/spec-kit-1.0.8-lean/provenance.json": "2c54187df8c1f419ac013ab2d221dfd7f4c6d331479e913613078643c9e1c0f3",
+    "vendor/spec-kit-1.0.8-lean/setup-requirements.txt": "35dd32de5b80040e004c59d23224c18805f25f8b5c65b39bf3c96e67d062327f",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-analyze/SKILL.md": "0b3261b13cc33537f24b3e1f6d5320694c348302c385d0046dc6b958cf2db6cb",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-checklist/SKILL.md": "7ac5cba31a27151a1a7b73f691bd478d42750ce2dd734701a07eb0e235ffbd94",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-clarify/SKILL.md": "f6acfbc82c96c0d91b2429fd0b51ce7df7f94b003d1b73acc54470d48bcc455e",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-constitution/SKILL.md": "b2a6a979ef7511812b60cde4adb6f1c4a8b1b57314ea2f1861ebc3f4796bf377",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-converge/SKILL.md": "ba0b853dba470f414cdf9eae53200b8468bd639ecd92549a6d4e533af3da7521",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-implement/SKILL.md": "848a5c9eff7b99e348927cbde6c35378de9fea3fd317941f58fa0b0b79301eec",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-plan/SKILL.md": "db2406adfa50103fc04ca8109ac934cd715086fba64365fb404630a88c62bda5",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-specify/SKILL.md": "a505028de7f6489878696d6656c7d057f3a66119ebb8c0cc82d69fabb7b344ff",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-tasks/SKILL.md": "1086d7885df1188d00e7d5eb4715e678b4340b893e8f24ae748d823b13599a56",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-taskstoissues/SKILL.md": "a349d410c180385215bf5180b13319bd8259199267af24917f4f4d0adcbb6ad2",
+    "vendor/spec-kit-1.0.8/.specify/.gitignore": "8c908410d177a1ef3d0dee16d7ad55f2ac3333df3104c4d4adee1c9b82f1dbc1",
+    "vendor/spec-kit-1.0.8/.specify/init-options.json": "1243c2f2ca87a00d64ceeea65bc881eed5e4e6bad2087111c882d2b3a1db058e",
+    "vendor/spec-kit-1.0.8/.specify/integration.json": "d716503b4926d1e57b285cfc73992e21f182fdcf0070a6b0fadd2b3e4561fd21",
+    "vendor/spec-kit-1.0.8/.specify/integrations/codex.manifest.json": "8639c4f3493d99ab35d01e1260ffb1b16de7926ea8d900e4dad10f6187e8b51e",
+    "vendor/spec-kit-1.0.8/.specify/integrations/speckit.manifest.json": "4d991e0164b715326ce7c14d6fd1099458d681a0d097a384c75b754d31abbf76",
+    "vendor/spec-kit-1.0.8/.specify/memory/.constitution-template.json": "8fc4b39294bae0c10d59547ad7d415b6f0e890d656cbf7171dd567f4e9054711",
+    "vendor/spec-kit-1.0.8/.specify/memory/constitution.md": "ce7549540fa45543cca797a150201d868e64495fdff39dc38246fb17bd4024b3",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/check-prerequisites.sh": "13be175548848bd84e96a90cf9be87665c2e68603b2eaa3e19187e7ca8b4fcb0",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/common.sh": "fdfebd1274594eb3fbfccdf7968d5dd1243aaf244daf262d7c9d0c012c5d21a6",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/create-new-feature.sh": "f4244c6cf95025e5726669938e9152d4a557cc7c1e8b027a43cb4de72677da16",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/resolve-template.sh": "829e227096abc8bf0889889ec9f792f503ca5d395b7836a8a7eb739ee75214e7",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/setup-plan.sh": "d0bd298c026446f3c63167130d65e49e4aa4485de6bef18bcdfd57b19aa0de96",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/setup-tasks.sh": "0350b2def158c4dc333cd888fc5a3b10785b3d5c2cf936f93e910242ea9d507d",
+    "vendor/spec-kit-1.0.8/.specify/templates/checklist-template.md": "70bbc48e884fab372ffb09e83e78ff983e28b69caebf8cd9964a02b6836683ac",
+    "vendor/spec-kit-1.0.8/.specify/templates/constitution-template.md": "ce7549540fa45543cca797a150201d868e64495fdff39dc38246fb17bd4024b3",
+    "vendor/spec-kit-1.0.8/.specify/templates/plan-template.md": "a828ad6206526574ab3fc99be6d0154588cb1c9774c5919d71b81ab5b2dbffa0",
+    "vendor/spec-kit-1.0.8/.specify/templates/spec-template.md": "3945437fc35cd30a5b2bf7beea680337c3516826d3efa5a6b92c4a7eca1ba28e",
+    "vendor/spec-kit-1.0.8/.specify/templates/tasks-template.md": "b0f527d41e546af0c31903e04f9b20965b6b497b573792198f663a64ce128863",
+    "vendor/spec-kit-1.0.8/.specify/workflows/speckit/workflow.yml": "177761c5e7df28126beea043b5cb45aeaf7958090c022dc11ac71399422fcfbc",
+    "vendor/spec-kit-1.0.8/.specify/workflows/workflow-registry.json": "be54b02f3d66a36738dfef19afdf3c9c458de943ae3f3c5a2e9fe661d3e3ae16",
+    "vendor/spec-kit-1.0.8/LICENSE": "2510b446bc1f0cf9702453075d20cd88631e20e5642658edb7325d9c1eb534f7",
+    "vendor/spec-kit-1.0.8/provenance.json": "62e4491e0093b01dc4bb2e0ce3d8057bdaad9d8a5bbdc5e10c86313e4066f804",
+    "vendor/spec-kit-1.0.8/setup-requirements.txt": "35dd32de5b80040e004c59d23224c18805f25f8b5c65b39bf3c96e67d062327f"
+  },
+  "submissionSha256": "a279c36c0d17b221abded8f53f539a7dba394a971ac098df9cc9804f7f4325de",
+  "limitations": [
+    "One pilot run, not a comparison of A/B/C.",
+    "Mobile tests emulate a phone in Chromium.",
+    "Recorded subscription token usage is not a monetary cost."
+  ]
+}

@@ -1,3 +1,4 @@
+import { pilotTask, protectedTaskFiles } from './pilot-tasks.mjs'
 import { randomUUID } from 'node:crypto'
 import { execFileSync, spawn } from 'node:child_process'
 import { mkdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs'
@@ -49,7 +50,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const app = resolve(run, 'app')
   const config = JSON.parse(readFileSync(resolve(run, 'config.json'), 'utf8'))
   const env = { ...clientEnvironment(config), TMPDIR: resolve(app, '.tmp/browser') }
-  const denied = [resolve(root, 'evaluation/P01/acceptance.spec.ts'), resolve(root, 'reference/P01/overlay/src/TaskEditor.tsx'), resolve(homedir(), '.codex/auth.json')]
+  const denied = [...protectedTaskFiles(root, pilotTask('P01')), ...protectedTaskFiles(root, pilotTask('P02')), resolve(homedir(), '.codex/auth.json')]
   const code = "const fs=require('node:fs'); for(const p of " + JSON.stringify(denied) +
     ") { let denied=false;try{const f=fs.openSync(p,'r');fs.closeSync(f)}catch(e){denied=['EPERM','EACCES'].includes(e.code)}if(!denied)throw Error('Browser boundary failed: '+p) } console.log('Browser filesystem boundary passed')"
   const prefix = ['-f', resolve(run, 'browser.sb'), process.execPath]

@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url'
 // the recorded session IDs, never credentials or unrelated conversations.
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2]
-assert.match(id, /^P01-[BC]-\d{3}$/)
+assert.match(id, /^P0[12]-[BC]-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
 const execution = JSON.parse(readFileSync(resolve(run, 'execution.json'), 'utf8'))
 assert.notEqual(execution.status, 'running')

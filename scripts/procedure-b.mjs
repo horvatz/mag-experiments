@@ -44,10 +44,10 @@ export function phaseBudget(phase, remaining, policy = workflow) {
   throw new Error('Unknown phase: ' + phase)
 }
 
-export function parseReview(value) {
+export function parseReview(value, requirements = Array.from({ length: 10 }, (_, i) => 'R' + String(i + 1).padStart(2, '0'))) {
   assert.ok(value && typeof value === 'object')
   assert.equal(value.complete, true, 'A draft is not a completed review')
-  assert.deepEqual([...value.checkedRequirements].sort(), Array.from({ length: 10 }, (_, i) => 'R' + String(i + 1).padStart(2, '0')), 'The reviewer must assess all ten requirements')
+  assert.deepEqual([...value.checkedRequirements].sort(), requirements, 'The reviewer must assess every task requirement exactly once')
   assert.ok(Array.isArray(value.unverified) && value.unverified.every((item) => typeof item === 'string'))
   for (const key of ['specificationChangesRequired', 'codeChangesRequired']) assert.equal(typeof value[key], 'boolean', 'Missing boolean ' + key)
   assert.equal(typeof value.summary, 'string')
@@ -83,13 +83,13 @@ export function workerArguments({ configArgs, app, session, review = false, sche
 }
 
 // Control flow is deterministic and testable without spending model tokens.
-export async function runBWorkflow({ phase, hasSpecification, getReview }) {
+export async function runBWorkflow({ phase, hasSpecification, getReview, requirements }) {
   if (!await phase('specification', 'specification')) return { status: 'phase_stopped' }
   if (!hasSpecification()) return { status: 'missing_specification' }
   if (!await phase('implementation', 'implementation')) return { status: 'phase_stopped' }
   if (!await phase('review', 'review')) return { status: 'phase_stopped' }
   let review
-  try { review = parseReview(getReview()) }
+  try { review = parseReview(getReview(), requirements) }
   catch (error) { return { status: 'invalid_review_handoff', error: error.message } }
   if (review.specificationChangesRequired && !await phase('specification-repair', 'specification', true)) return { status: 'phase_stopped', review }
   if ((review.codeChangesRequired || review.specificationChangesRequired) && !await phase('implementation-repair', 'implementation', true)) return { status: 'phase_stopped', review }
