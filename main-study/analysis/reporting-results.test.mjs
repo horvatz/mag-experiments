@@ -15,6 +15,7 @@ test('missing duration stays unknown without changing functional evidence or sou
 test('a known zero is different from missing, and a missing repetition withholds its time comparison',()=>{
   const source=structuredClone(raw)
   source.data=source.byTask.flatMap(g=>[1,2,3].map(repetition=>({id:`${g.task}-${g.procedure}-${String(repetition).padStart(3,'0')}`,task:g.task,procedure:g.procedure,repetition,elapsedSeconds:30})))
+  source.groups.forEach(g=>{g.archived=24})
   source.data.find(x=>x.id==='P06-C-001').elapsedSeconds=null
   source.comparisons=[{first:'A',second:'B',metric:'meanElapsedSeconds'}, {first:'A',second:'C',metric:'meanElapsedSeconds'}, {first:'A',second:'C',metric:'meanDemonstratedFraction'}]
   const r=buildReportingResults(source)
