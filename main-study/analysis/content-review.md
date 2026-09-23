@@ -227,6 +227,8 @@ Dokazi: [P06.spec.ts](../../runs/P06-C-001/submission/tests/agent/P06.spec.ts), 
 
 Končna napaka: Infrastrukturna prekinitev in nedokončana predaja; koda prestane 70/70. Celotna poraba in točen čas sta neznana, opaženi tokeni so le spodnja meja. Arhivski samodejni report.md pri null času izpiše 0 min: tega ne uporabljaj kot meritev; merodajen je null v execution/evaluation JSON ter reporting-results.json.
 
+Opomba o razvojnem poteku: V pregledanih dokazih ni potrjenega neuspešnega testnega zagona ali popravka funkcionalne napake. Zaključnih zapisov zaradi prekinitve ni dovoljeno dopolnjevati v imenu merjenega agenta.
+
 ## P06-B-001
 
 **Pokritost specifikacije: 2/2.** Vseh R01–R12 ima jasne pogoje in S1–S7. Specifikacija razloči kanonične kolone od vrstnega reda klikov, izvorno zaporedje od skupin na tabli ter izvozni filter od prikaza. Pokrije nič kolon/vrstic, obe ločili, navedbo vseh celic, BOM, CRLF in natančno nevtralizacijo brez širšega whitespace ali Unicode normalizacije; ohranitev in ponastavitve nastavitev so izrecne.
@@ -250,6 +252,8 @@ Dokazi: [csv.ts](../../runs/P06-B-001/submission/src/csv.ts), [CsvExport.tsx](..
 Dokazi: [csv.spec.ts](../../runs/P06-B-001/submission/tests/agent/csv.spec.ts), [check.log](../../runs/P06-B-001/submission/docs/agent/check.log), [review.md](../../runs/P06-B-001/submission/docs/agent/review.md), [events.jsonl.gz](../../runs/P06-B-001/phases/03-review/events.jsonl.gz).
 
 Končna napaka: Neodvisna ocena je uspešna 70/70; postopek je zaključen, obseg dovoljen in poraba popolna. V pregledanih končnih dokazih ni potrjene funkcionalne napake. To ne dokazuje pravilnosti za vso domeno ali vse brskalnike.
+
+Opomba o razvojnem poteku: Prvi celotni testni zagon in dodatno preverjanje pregledovalca sta uspela; popravljalnih predaj ni bilo. git status/diff v izolaciji ni deloval zaradi xcrun in je odkrito naveden kot okoljska omejitev, ne kot napaka aplikacije.
 
 ## P08-A-001
 
@@ -275,6 +279,8 @@ Dokazi: [deadlines.spec.ts](../../runs/P08-A-001/submission/tests/agent/deadline
 
 Končna napaka: Neodvisna ocena je uspešna 70/70; postopek je zaključen, obseg dovoljen in poraba popolna. V pregledanih končnih dokazih ni potrjene funkcionalne napake. Mobilna in časovnopasovna preverjanja so omejena na Chromium.
 
+Opomba o razvojnem poteku: Surovi check.log potrjuje uspešen celoten zagon. V pregledanih dokazih ni potrjenega neuspešnega razvojnega testa ali popravka napake; zadnji lint sledi dodatku pomožne vizualne skripte in dokumentacije, ne popravku aplikacije.
+
 ## P08-C-001
 
 **Pokritost specifikacije: 2/2.** Vseh R01–R12 ima jasne sprejemne pogoje: fiksna začetna referenca, prednost done, meje petih skupin, koledarski dnevi, celotni števci in stabilni izbor. Posebej so opredeljeni prazno polje z zadnjo veljavno referenco, preklopi pogledov, ponastavitve projekta/osvežitve, prazni projekti/skupine, bralne podrobnosti in nespremenjeni podatki. Ločena sta vrstni red preglednice in vrstni red znotraj stolpcev table.
@@ -298,6 +304,8 @@ Dokazi: [deadlines.ts](../../runs/P08-C-001/submission/src/deadlines.ts), [App.t
 Dokazi: [P08.spec.ts](../../runs/P08-C-001/submission/tests/agent/P08.spec.ts), [check.log](../../runs/P08-C-001/submission/docs/agent/P08/check.log), [capture-check.log](../../runs/P08-C-001/submission/docs/agent/P08/capture-check.log).
 
 Končna napaka: Neodvisna ocena potrdi 70/70, 12/12 zahtev in strogi uspeh. Postopek je zaključen, obseg dovoljen in poraba popolna. V pregledanih končnih dokazih ni potrjene funkcionalne napake; preverjanja so omejena na navedene primere v Chromiumu.
+
+Opomba o razvojnem poteku: Celotni zagon je uspel 53/53. Prvi mobilni posnetek je zaradi drsenja deloma prekrila lepljiva navigacija; model je dodal pomik na vrh pred zajemom in uspešno ponovil A05. To je popravek dokaznega zajema, brez spremembe aplikacijske kode ali potrjenega neuspešnega funkcionalnega testa.
 
 ## P08-B-001
 
@@ -323,4 +331,6 @@ Dokazi: [deadlines.spec.ts](../../runs/P08-B-001/submission/tests/agent/deadline
 
 Končna napaka: Neodvisna ocena potrdi 70/70 in 12/12 zahtev; postopek je zaključen s popolno porabo, dovoljenimi spremembami in strogim uspehom. V pregledanih končnih dokazih ni potrjene funkcionalne napake; to ni izčrpen dokaz celotne domene.
 
-Razvojni popravek: undefined
+Razvojni popravek: Prvi celotni zagon je dosegel 46/52. S1/S3/S4 niso našli natančne oznake ovitega selecta prek getByLabel; aplikacijski oznaki sta nato ločeni od kontrol z label/htmlFor. Trije časovnopasovni S2 so pri zaporednem obisku istega fragmenta ohranili stare naložene testne podatke. Testna priprava zdaj najprej obišče about:blank in odstrani prejšnje prestrezanje GET. Prilagojena je tudi tipkovnična pot skozi notranje dele datumskega polja. Po teh spremembah celotni check uspe 52/52; klasifikator rokov ni bil spremenjen.
+
+Opomba o razvojnem poteku: Ohranjena check.log in check-final.log ločita neuspešno testno iskanje/pripravo od končnega izida. Neuspeh git status zaradi manjkajočega xcrun je omejitev izoliranega okolja in ni potrjena funkcionalna napaka aplikacije.

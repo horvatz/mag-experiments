@@ -52,6 +52,14 @@ for (const row of data.data) {
       assert.ok([0, 1, 2].includes(dimension.score)); assert.ok(dimension.rationale.length > 40); assert.ok(dimension.evidence.length)
       for (const evidence of dimension.evidence) assert.ok(existsSync(resolve(root, evidence.split('#')[0].replace(/:\d+$/, ''))), `Missing review evidence: ${evidence}`)
     }
+    for (const key of ['finalFailureExample', 'developmentFailureExample']) {
+      const example = review[key]
+      if (example == null) continue
+      assert.equal(typeof example.description, 'string', `Missing example description: ${row.id}/${key}`)
+      assert.ok(example.description.length > 20)
+      assert.ok(Array.isArray(example.evidence) && example.evidence.length, `Missing example evidence: ${row.id}/${key}`)
+      for (const evidence of example.evidence) assert.ok(existsSync(resolve(root, evidence.split('#')[0].replace(/:\d+$/, ''))), `Missing example evidence: ${evidence}`)
+    }
     reviews.push(review)
   }
 }
@@ -94,6 +102,7 @@ for (const review of reviews) {
   review.dimensions.forEach((d, i) => md.push(`**${labels[i]}: ${d.score}/2.** ${d.rationale}`, '', `Dokazi: ${d.evidence.map(e => `[${e.split('/').at(-1)}](../../${e.replace(/:(\d+)$/, '#L$1')})`).join(', ')}.`, ''))
   md.push(`Končna napaka: ${review.finalFailureNote ?? review.finalFailureExample?.description ?? 'glej izvirno presojo'}`, '')
   if (review.developmentFailureExample) md.push(`Razvojni popravek: ${review.developmentFailureExample.description}`, '')
+  if (review.developmentFailureNote) md.push(`Opomba o razvojnem poteku: ${review.developmentFailureNote}`, '')
 }
 writeFileSync(resolve(dir, 'content-review.md'), md.join('\n'))
 
@@ -106,7 +115,7 @@ const countText = `Število arhiviranih glavnih izvedb ob ${tex(when)}: ${data.a
 writeFileSync(resolve(generated, 'stanje-meritev.tex'), `% Generated from main-study/analysis/reporting-results.json; do not edit numbers manually.\n${countText}\n${data.complete ? 'Vse načrtovane izvedbe so arhivirane; posamezne neznane meritve ostanejo označene kot manjkajoče.' : 'Zbirka je nepopolna. Naslednje vrednosti so sprotni opis, ne uravnotežena končna primerjava postopkov.'}\nStatusi postopkov: ${Object.entries(statuses).map(([status, n]) => `\\texttt{${tex(status)}}: ${n}`).join(', ') || 'še ni arhiviranih izvedb'}.\nPiloti P01/P02 in kvalifikacija niso vključeni.\n`)
 const table = (caption, label, columns, header, rows, note) => ['\\begin{table}[htbp]', '\\centering', '\\small', `\\caption{${caption}}`, `\\label{${label}}`, `\\begin{tabular}{${columns}}`, '\\toprule', header + ' \\\\', '\\midrule', ...rows.map(r => r + ' \\\\'), '\\bottomrule', '\\end{tabular}', note ? `\\par\\smallskip\\parbox{0.95\\textwidth}{\\footnotesize ${note}}` : '', '\\end{table}', ''].join('\n')
 writeFileSync(resolve(generated, 'povzetek-meritev.tex'), table('Opisni povzetek arhiviranih glavnih izvedb.', 'tab:dejanske-meritve', '@{}lrrrrr@{}', 'Postopek & $n$/24 & Strogi uspehi & Delež zahtev & Čas (s) & Poraba znana',
-  data.groups.map(g => `${g.procedure} & ${g.archived} & ${g.strictSuccesses} & ${num(g.meanDemonstratedFraction)} & ${num(g.meanElapsedSeconds)} & ${g.completeUsageCount}`),
+  data.groups.map(g => `${g.procedure} & ${g.archived} & ${g.strictSuccesses} & ${num(g.meanDemonstratedFraction, 3)} & ${num(g.meanElapsedSeconds)} & ${g.completeUsageCount}`),
   'Časovno povprečje manjka, če vsaj en točni čas ni znan; manjkajoča vrednost ni nič. Pri nepopolni zbirki se lahko sestava nalog in ponovitev med postopki razlikuje.'))
 writeFileSync(resolve(generated, 'poraba-meritev.tex'), table('Tokeni samo izvedb s popolno izmerjeno porabo.', 'tab:dejanska-poraba', '@{}lrrr@{}', 'Postopek & Popolno izmerjenih & Vhodni tokeni & Izhodni tokeni',
   data.groups.map(g => `${g.procedure} & ${g.completeUsageCount}/${g.archived} & ${num(g.meanInputTokensCompleteOnly, 0)} & ${num(g.meanOutputTokensCompleteOnly, 0)}`),

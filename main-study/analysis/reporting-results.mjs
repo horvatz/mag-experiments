@@ -26,14 +26,14 @@ export function reportingResults() {
   const data=buildReportingResults(JSON.parse(readFileSync(resolve(dir,'results.json'),'utf8')))
   const missing=data.durationReporting.missing
   writeFileSync(resolve(dir,'reporting-results.json'),JSON.stringify(data,null,2)+'\n')
-  const fmt=x=>x==null?'—':x.toFixed(2)
+  const fmt=(x,digits=2)=>x==null?'—':x.toFixed(digits)
   const metricLabel=metric=>metric==='meanDemonstratedFraction'?'Delež dokazanih zahtev (0–1)':'Čas (s)'
   const lines=[
     '# Rezultati za pisanje', '',
     `Podatkovni posnetek: ${data.generatedAt}. Arhiviranih ${data.archived}/${data.planned}. ${data.complete?'Vse načrtovane izvedbe so arhivirane; posamezne meritve so lahko manjkajoče.':'Nepopolna zbirka; skupinski podatki so sprotni opis, brez končnega sklepanja.'}`, '',
     '| Postopek | Arhivi | Strogi uspehi | Delež zahtev | Čas s | Znani časi |',
     '| --- | --- | --- | --- | --- | --- |',
-    ...data.groups.map(g=>`| ${g.procedure} | ${g.archived}/${g.planned} | ${g.strictSuccesses} | ${fmt(g.meanDemonstratedFraction)} | ${fmt(g.meanElapsedSeconds)} | ${g.knownDurationCount}/${g.archived} |`), '',
+    ...data.groups.map(g=>`| ${g.procedure} | ${g.archived}/${g.planned} | ${g.strictSuccesses} | ${fmt(g.meanDemonstratedFraction,3)} | ${fmt(g.meanElapsedSeconds)} | ${g.knownDurationCount}/${g.archived} |`), '',
     'Dokazana zahteva potrebuje uspeh obeh sprejemnih prikazov in dovoljen obseg sprememb. Neopaženo preverjanje ni potrjena funkcionalna napaka. Strogi uspeh dodatno zahteva zaključen postopek, lint, tipe, gradnjo in vseh 70 preverjanj.', '',
     '## Posamezne izvedbe', '',
     '| Izvedba | Status postopka | Dokazane zahteve | Opažene zahteve | Čas s | Strogi uspeh |',
@@ -48,7 +48,7 @@ export function reportingResults() {
     ...(data.complete?[
       '| Primerjava | Mera | Povprečna razlika | 95 % percentilni interval |',
       '| --- | --- | --- | --- |',
-      ...data.comparisons.map(c=>`| ${c.first} − ${c.second} | ${metricLabel(c.metric)} | ${fmt(c.meanDifference)} | ${fmt(c.lower)} do ${fmt(c.upper)} |`), '',
+      ...data.comparisons.map(c=>`| ${c.first} − ${c.second} | ${metricLabel(c.metric)} | ${fmt(c.meanDifference,3)} | ${fmt(c.lower,3)} do ${fmt(c.upper,3)} |`), '',
       'Razlika pomeni prvi postopek minus drugi. Najprej se povprečijo tri ponovitve po nalogi/postopku, nato se ponovno vzorči osem parov nalog s predpisanim semenom in 20.000 ponovitvami. Intervali so opisni; testni izidi niso neodvisne naloge.'
     ]:['Primerjave se izračunajo šele ob vseh 72 arhivih. Neuravnotežen sprotni vzorec ne določa končne razlike med postopki.']), '',
     ...data.withheldComparisons.map(c=>`Zadržana primerjava: ${c.first}–${c.second}, ${metricLabel(c.metric)}; manjka točen čas vsaj ene zahtevane ponovitve.`), '',
