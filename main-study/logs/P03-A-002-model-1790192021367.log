@@ -1,0 +1,16 @@
+Najprej bom prebral pravila in zahteve ter zapisal specifikacijo. Nato bom samostojno izvedel spremembe, preveril rešitev in dokumentiral rezultate ter morebitne omejitve.
+
+Zahteve vključujejo tudi natančno Unicode iskanje, ločeno stanje filtrov za vsak projekt in razlikovanje med praznim projektom ter praznim rezultatom. Obstoječa aplikacija že ločuje projekte po ID-ju; na to bom vezal filtre in isti filtrirani seznam uporabil v obeh pogledih.
+
+Specifikacija je zapisana, osnovna izvedba filtrov pa pripravljena. Prvi skupni pregled že teče. Dodajam teste za primere, ki jih razvojni testi ne pokrivajo: iskanje po več poljih, dobesedna ločila, podobna imena oseb, ponastavitev ob menjavi projekta in prazne projekte.
+
+Vseh 46 skupnih preverjanj je uspelo. Dodatni testi so našli napako v moji testni predpostavki: Reactov razvojni StrictMode ponovi bralno zahtevo za podrobnosti. Popravljam test, da preverja dovoljeni endpoint in odsotnost zapisov, nato bom ponovil pregled in preveril še videz pri 390 pikah.
+
+Končni `npm run check` je uspešen: 53/53 testov, lint, preverjanje tipov in produkcijska gradnja. Vizualni pregled pri 1440 in 390 pikah potrjuje ohranjen videz Folio in drsenje znotraj obeh pogledov. Dopolnjujem še sledljivost R01–R12 ter zapis rezultatov in omejitev.
+
+Implementirane so zahteve R01–R12. `npm run check` je uspešen: lint, gradnja in **53/53 testov**. Preverjen je tudi prikaz pri 390 pikah.
+
+Dokumentacija: [specifikacija](docs/agent/specification.md) in [rezultati preverjanj](docs/agent/verification.md).
+
+Znanih neizpolnjenih zahtev ni. Skriti končni testi niso bili dostopni.
+{"status":"completed","elapsedSeconds":640.42,"allowedChanges":true,"usage":{"input_tokens":759808,"cached_input_tokens":694912,"cache_write_input_tokens":0,"output_tokens":19912,"reasoning_output_tokens":3144}}

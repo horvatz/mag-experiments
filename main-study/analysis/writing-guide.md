@@ -26,6 +26,7 @@ Prejšnji različici sta ohranjeni v `naloga/zapiski/pred-glavnimi-meritvami-202
 | Čas in poraba | `execution.json`, `usage-observation.json`, `evaluation-summary.json` v arhivu | Celoten modelski čas, faze, popolna poraba ali opažena spodnja meja |
 | Vsebinska presoja | [Zamrznjena rubrika](../../docs/main-rubric.md), `reviews/<ID>.json` | Pet ločenih ocen z utemeljitvami in konkretnimi dokazi |
 | Primeri za razpravo | Oddana specifikacija, lastni testi, dnevniki ter neodvisna ocena iste izvedbe | Konkretna razlika med zahtevami, razvojnim preverjanjem in končnim vedenjem |
+| Dodatni razvojni primeri | [Izbrani primeri iz drugih ponovitev](development-cases.md) | Naknadni opis konkretnega popravka; ne nova vsebinska ocena ali merilo pogostosti |
 | Dodatni pregled po oddaji | [Raziskovalni pregledi](diagnostics/README.md) | Konkretna omejitev, njen izbor in poreklo; ločeno od zamrznjenega merila |
 
 Poti oblike `runs/<ID>/` so relativne imeniku `experiments`. Tak arhiv
