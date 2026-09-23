@@ -71,3 +71,45 @@ Dokazi: [začetna napaka tipov](../../runs/P05-B-002/submission/docs/agent/check
 [pregledovalčev zapis](../../runs/P05-B-002/submission/docs/agent/review.md),
 [surovi dogodki pregleda, item_21](../../runs/P05-B-002/phases/03-review/events.jsonl.gz),
 [neodvisna ocena](../../runs/P05-B-002/evaluation-summary.json).
+
+## P10–B–003: dodatno preverjanje napake podrobnosti z zgodovino
+
+Implementer je predal 53/53 uspešnih testov, vendar kombinacijo napake
+nalaganja podrobnosti z nepraznima zgodovinama izrecno označil kot še
+neavtomatizirano. Pregledovalec je zato izvedel svoj scenarij pri 390 × 844
+pikah, s štirimi opravili enakega naslova in različnimi ID-ji.
+Dva premika in ena razveljavitev ustvarijo vrstni red `[b,a,c,d]`,
+eno razveljavitev in eno ponovitev. Scenarij zahteva, da napaka GET 503,
+ponovni poskus in zapiranje podrobnosti v obeh pogledih ohranijo to stanje.
+Nato preveri ponovitev, dve razveljavitvi, globalna mesta, končni vrstni red,
+širino strani in odsotnost zapisovalnih zahtev ter napak JavaScript.
+
+Prva izvedba, surovi dogodek **item_32**, se konča z izhodom 1: injekcija
+vrne 503 samo prvi zahtevi za posamezni ID, naslednjim pa že uspešne
+podatke. Pričakovano sporočilo napake ni vidno; izpis pokaže naložene
+podrobnosti b. Pregledovalec pojav poveže z razvojnim StrictMode in
+ponovnim GET. V naslednjem poskusu je priprava spremenjena tako, da za b
+vrača napako do izrecne sprostitve tik pred klikom »Poskusi znova«,
+za a pa napako ohrani do zapiranja podrobnosti. Aplikacija ostane
+nespremenjena. **item_34** potrdi `PASS`, izhod 0, brez razširitve strani,
+zapisov API ali dogodkov `pageerror`. Celotnega zagona 53 testov
+pregledovalec ne ponovi in ne zahteva popravkov kode ali specifikacije.
+
+Ločen implementerjev prvi zagon je dosegel 52/53 zaradi pričakovanja
+vidnega tipkovničnega fokusa takoj po programskem `focus()` po kliku.
+Končni test uporablja dejanski Tab/Shift+Tab, preveri viden obris in
+aktivacijo z Enter. Ohranjena sta oba dnevnika; končni zagon je 53/53,
+poznejša neodvisna ocena 70/70 in 12/12 zahtev s strogim uspehom.
+
+Primer kaže dopolnitev priznane vrzeli ter popravek priprave lastnega
+preverjanja. Ne dokazuje odkrite napake končne aplikacije ali vzročnega
+izboljšanja postopka B. Izbran je naknadno, zunaj formalne presoje 001;
+ne povečuje števila vsebinsko ocenjenih oddaj ali neodvisnih eksperimentov.
+
+Dokazi: [prvotni razvojni zagon](../../runs/P10-B-003/submission/docs/agent/check-first.log),
+[končni test fokusa](../../runs/P10-B-003/submission/tests/agent/order.spec.ts#L114),
+[končni razvojni zagon](../../runs/P10-B-003/submission/docs/agent/check.log),
+[predaja](../../runs/P10-B-003/submission/docs/agent/verification.md),
+[pregledovalčev zapis](../../runs/P10-B-003/submission/docs/agent/review.md),
+[surovi dogodki pregleda, item_32 in item_34](../../runs/P10-B-003/phases/03-review/events.jsonl.gz),
+[neodvisna ocena](../../runs/P10-B-003/evaluation-summary.json).

@@ -1,0 +1,4 @@
+# Zgodovina specifikacije P10
+
+- **v0 — začetni zapis, 2026-09-23 UTC:** po branju `PROJECT_RULES.md`, `task/instructions.md` in skupne predloge shranjen uporaben osnutek z vsemi R01–R12, domeno in začetnimi sprejemnimi pogoji. Koda in testi v tem trenutku še niso bili pregledani.
+- **v1 — predaja, 2026-09-23 UTC:** po statičnem branju `shared/types.ts`, relevantnih datotek `src/`, `docs/dizajn.md`, razvojnih testov in Playwright konfiguracije dopolnjeni prehodi P/U/R, meja 20, ohranjanje zgodovine pri neveljavnih dejanjih, razveljavljiv reset, globalni red table, življenjska doba projekta, natančne dostopne oznake in sledljivost vseh R01–R12. Dodani načrtovani scenariji S1–S8 ter jasno ločeni obstoječi D01–D04. Implementacija, aplikacija, testi in vizualni pregled niso bili izvedeni; njihova izvedba in dokazi so predani naslednjima vlogama. Avtor je pisal samo `specification.md` in ta dokument.

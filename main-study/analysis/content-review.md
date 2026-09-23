@@ -2,7 +2,7 @@
 
 **AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.
 
-Vsebinsko ocenjenih je 14/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Za 1 izbranih oddaj je dokumentirana nezmožnost ocene; ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
+Vsebinsko ocenjenih je 14/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Število izbranih oddaj z dokumentirano nezmožnostjo ocene: 1; njihove ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
 
 | Oddaja | Status presoje | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |
 | --- | --- | --- | --- | --- | --- | --- |

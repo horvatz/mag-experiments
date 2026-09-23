@@ -100,7 +100,7 @@ writeFileSync(resolve(dir, 'requirement-data.csv'), csv([['id', 'task', 'procedu
   }))]))
 const missingReviews = schedule.runs.filter(r => r.repetition === 1 && !reviews.some(v => v.id === r.id)).map(r => r.id)
 const md = ['# Vsebinska presoja glavnih oddaj', '', '**AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.', '',
-  `Vsebinsko ocenjenih je ${ratedReviews.length}/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Za ${unavailableReviews.length} izbranih oddaj je dokumentirana nezmožnost ocene; ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.`, '',
+  `Vsebinsko ocenjenih je ${ratedReviews.length}/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Število izbranih oddaj z dokumentirano nezmožnostjo ocene: ${unavailableReviews.length}; njihove ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.`, '',
   '| Oddaja | Status presoje | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |', '| --- | --- | --- | --- | --- | --- | --- |',
   ...reviews.map(r => `| [${r.id}](reviews/${r.id}.json) | ${isRated(r) ? 'ocenjeno' : 'ocena ni mogoča'} | ${r.dimensions.map(d => d.score ?? '—').join(' | ')} |`), '',
   `Še neobravnavane izbrane oddaje: ${missingReviews.length ? missingReviews.join(', ') : 'ni'}.`, '']
