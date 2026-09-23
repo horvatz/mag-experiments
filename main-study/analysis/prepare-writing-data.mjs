@@ -13,6 +13,7 @@ const frozen = read(resolve(root, 'main-study/frozen-inputs.json')), hash = file
 const records = new Map(data.data.map(r => [r.id, r])), reviews = [], anomalies = [], audited = [], statuses = {}, phaseRows = [], testRows = []
 const dimensions = ['specificationCoverage', 'predicatesInvariants', 'traceability', 'codeOrganization', 'ownChecks']
 const labels = ['Pokritost specifikacije', 'Predikati/invariante', 'Sledljivost', 'Organizacija kode', 'Lastna preverjanja']
+const isRated = review => review.reviewStatus !== 'unavailable'
 const walk = dir => readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(resolve(dir, e.name)) : [resolve(dir, e.name)])
 for (const [name, expected] of Object.entries(frozen.sources)) assert.equal(hash(resolve(root, name)), expected, `Changed frozen source: ${name}`)
 assert.equal(schedule.runs.length, 72); assert.equal(records.size, data.archived)
@@ -47,9 +48,13 @@ for (const row of data.data) {
   if (row.repetition === 1 && existsSync(reviewFile)) {
     const review = read(reviewFile)
     assert.equal(review.id, row.id); assert.equal(review.method, 'AI-podprta, neslepa vsebinska presoja')
+    assert.ok([undefined, 'rated', 'unavailable'].includes(review.reviewStatus))
+    if (!isRated(review)) assert.ok(typeof review.unavailableReason === 'string' && review.unavailableReason.length > 40)
     assert.deepEqual(review.dimensions.map(d => d.dimension), dimensions)
     for (const dimension of review.dimensions) {
-      assert.ok([0, 1, 2].includes(dimension.score)); assert.ok(dimension.rationale.length > 40); assert.ok(dimension.evidence.length)
+      if (isRated(review)) assert.ok([0, 1, 2].includes(dimension.score))
+      else assert.equal(dimension.score, null, 'Unavailable content assessment must not be scored as zero')
+      assert.ok(dimension.rationale.length > 40); assert.ok(dimension.evidence.length)
       for (const evidence of dimension.evidence) assert.ok(existsSync(resolve(root, evidence.split('#')[0].replace(/:\d+$/, ''))), `Missing review evidence: ${evidence}`)
     }
     for (const key of ['finalFailureExample', 'developmentFailureExample']) {
@@ -63,17 +68,19 @@ for (const row of data.data) {
     reviews.push(review)
   }
 }
+const ratedReviews = reviews.filter(isRated), unavailableReviews = reviews.filter(r => !isRated(r))
 const snapshot = { generatedAt: new Date().toISOString(), sourceGeneratedAt: data.generatedAt, archived: data.archived, planned: 72, complete: data.complete,
-  frozenInputsUnchanged: true, archiveIntegrity: true, audited, executionStatuses: statuses, reviewed: reviews.length, reviewPlanned: 24 }
+  frozenInputsUnchanged: true, archiveIntegrity: true, audited, executionStatuses: statuses, reviewed: ratedReviews.length, reviewUnavailable: unavailableReviews.length, reviewResolved: reviews.length, reviewPlanned: 24 }
 writeFileSync(resolve(dir, 'integrity-audit.json'), JSON.stringify(snapshot, null, 2) + '\n')
 writeFileSync(resolve(dir, 'anomalies.json'), JSON.stringify({ ...snapshot, audited: undefined, anomalies }, null, 2) + '\n')
 const csv = rows => rows.map(row => row.map(value => value === null || value === undefined ? '' : `"${String(value).replaceAll('"', '""')}"`).join(',')).join('\r\n') + '\r\n'
 writeFileSync(resolve(dir, 'review-data.csv'), csv([
-  ['id', 'task', 'procedure', 'repetition', 'archived', 'reviewed', ...dimensions, 'method', 'reviewer', 'reviewed_at', 'human_review', 'inter_rater_agreement', 'evidence'],
+  ['id', 'task', 'procedure', 'repetition', 'archived', 'reviewed', ...dimensions, 'method', 'reviewer', 'reviewed_at', 'human_review', 'inter_rater_agreement', 'evidence', 'review_status', 'unavailable_reason'],
   ...schedule.runs.filter(r => r.repetition === 1).map(r => {
     const review = reviews.find(v => v.id === r.id)
-    return [r.id, r.task, r.procedure, r.repetition, records.has(r.id), Boolean(review), ...dimensions.map(d => review?.dimensions.find(x => x.dimension === d)?.score),
-      review?.method, review?.reviewer, review?.reviewedAt, review?.humanReview, review?.interRaterAgreement, review ? `main-study/analysis/reviews/${r.id}.json` : null]
+    return [r.id, r.task, r.procedure, r.repetition, records.has(r.id), Boolean(review && isRated(review)), ...dimensions.map(d => review?.dimensions.find(x => x.dimension === d)?.score),
+      review?.method, review?.reviewer, review?.reviewedAt, review?.humanReview, review?.interRaterAgreement, review ? `main-study/analysis/reviews/${r.id}.json` : null,
+      review ? (isRated(review) ? 'rated' : 'unavailable') : 'pending', review?.unavailableReason]
   })
 ]))
 writeFileSync(resolve(dir, 'test-data.csv'), csv([['id', 'task', 'procedure', 'repetition', 'project', 'title', 'status', 'errors_json', 'evidence'], ...testRows]))
@@ -93,13 +100,14 @@ writeFileSync(resolve(dir, 'requirement-data.csv'), csv([['id', 'task', 'procedu
   }))]))
 const missingReviews = schedule.runs.filter(r => r.repetition === 1 && !reviews.some(v => v.id === r.id)).map(r => r.id)
 const md = ['# Vsebinska presoja glavnih oddaj', '', '**AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.', '',
-  `Pregledanih je ${reviews.length}/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Ocene po dimenzijah se ne seštevajo v skupno kakovost.`, '',
-  '| Oddaja | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |', '| --- | --- | --- | --- | --- | --- |',
-  ...reviews.map(r => `| [${r.id}](reviews/${r.id}.json) | ${r.dimensions.map(d => d.score).join(' | ')} |`), '',
-  `Brez zaključene presoje: ${missingReviews.length ? missingReviews.join(', ') : 'ni manjkajočih'}.`, '']
+  `Vsebinsko ocenjenih je ${ratedReviews.length}/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Za ${unavailableReviews.length} izbranih oddaj je dokumentirana nezmožnost ocene; ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.`, '',
+  '| Oddaja | Status presoje | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |', '| --- | --- | --- | --- | --- | --- | --- |',
+  ...reviews.map(r => `| [${r.id}](reviews/${r.id}.json) | ${isRated(r) ? 'ocenjeno' : 'ocena ni mogoča'} | ${r.dimensions.map(d => d.score ?? '—').join(' | ')} |`), '',
+  `Še neobravnavane izbrane oddaje: ${missingReviews.length ? missingReviews.join(', ') : 'ni'}.`, '']
 for (const review of reviews) {
   md.push(`## ${review.id}`, '')
-  review.dimensions.forEach((d, i) => md.push(`**${labels[i]}: ${d.score}/2.** ${d.rationale}`, '', `Dokazi: ${d.evidence.map(e => `[${e.split('/').at(-1)}](../../${e.replace(/:(\d+)$/, '#L$1')})`).join(', ')}.`, ''))
+  if (!isRated(review)) md.push(`**Vsebinska ocena ni mogoča.** ${review.unavailableReason}`, '')
+  review.dimensions.forEach((d, i) => md.push(`**${labels[i]}: ${d.score === null ? 'manjkajoče' : `${d.score}/2`}.** ${d.rationale}`, '', `Dokazi: ${d.evidence.map(e => `[${e.split('/').at(-1)}](../../${e.replace(/:(\d+)$/, '#L$1')})`).join(', ')}.`, ''))
   md.push(`Končna napaka: ${review.finalFailureNote ?? review.finalFailureExample?.description ?? 'glej izvirno presojo'}`, '')
   if (review.developmentFailureExample) md.push(`Razvojni popravek: ${review.developmentFailureExample.description}`, '')
   if (review.developmentFailureNote) md.push(`Opomba o razvojnem poteku: ${review.developmentFailureNote}`, '')
@@ -123,5 +131,5 @@ writeFileSync(resolve(generated, 'poraba-meritev.tex'), table('Tokeni samo izved
 writeFileSync(resolve(generated, 'primerjave-meritev.tex'), data.complete ? table('Parne razlike med postopki po osmih nalogah.', 'tab:parne-razlike', '@{}llrrr@{}', 'Par & Mera & Razlika & Spodnja meja & Zgornja meja',
   data.comparisons.map(c => `${c.first}--${c.second} & ${c.metric === 'meanElapsedSeconds' ? 'Čas (s)' : 'Delež zahtev'} & ${num(c.meanDifference, 3)} & ${num(c.lower, 3)} & ${num(c.upper, 3)}`),
   'Opisni 95-odstotni percentilni intervali iz 20.000 ponovnih vzorcev osmih nalog. Najprej so povprečene tri ponovitve vsakega postopka pri isti nalogi. Časovne primerjave z manjkajočo ponovitveno meritvijo so zadržane.') : 'Parne razlike in intervali še niso izračunani, ker vseh 72 izvedb še ni arhiviranih.\n')
-writeFileSync(resolve(generated, 'presoja-meritev.tex'), `Opravljena je AI-podprta, neslepa vsebinska presoja ${reviews.length} od 24 vnaprej izbranih oddaj. Posamezne utemeljitve in povezave do dokazov so v spremljajoči zbirki \\texttt{main-study/analysis/content-review.md}. Neodvisna človeška presoja in soglasje med ocenjevalci nista izmerjena.\n`)
-console.log(JSON.stringify({ archived: data.archived, integrity: true, reviewed: reviews.length, anomalies: anomalies.length, snapshot: when }))
+writeFileSync(resolve(generated, 'presoja-meritev.tex'), `Opravljena je AI-podprta, neslepa vsebinska presoja ${ratedReviews.length} od 24 vnaprej izbranih oddaj. Število izbranih oddaj brez možnosti vsebinske ocene: ${unavailableReviews.length}; njihove ocene ostanejo manjkajoče in se ne nadomestijo z ničlo ali drugo ponovitvijo. Posamezne utemeljitve in povezave do dokazov so v spremljajoči zbirki \\texttt{main-study/analysis/content-review.md}. Neodvisna človeška presoja in soglasje med ocenjevalci nista izmerjena.\n`)
+console.log(JSON.stringify({ archived: data.archived, integrity: true, reviewed: ratedReviews.length, reviewUnavailable: unavailableReviews.length, anomalies: anomalies.length, snapshot: when }))

@@ -1,10 +1,10 @@
 # Rezultati za pisanje
 
-Podatkovni posnetek: 2026-09-23T21:52:41.125Z. Arhiviranih 23/72. Nepopolna zbirka; skupinski podatki so sprotni opis, brez končnega sklepanja.
+Podatkovni posnetek: 2026-09-23T22:07:39.414Z. Arhiviranih 25/72. Nepopolna zbirka; skupinski podatki so sprotni opis, brez končnega sklepanja.
 
 | Postopek | Arhivi | Strogi uspehi | Delež zahtev | Čas s | Znani časi |
 | --- | --- | --- | --- | --- | --- |
-| A | 7/24 | 7 | 1.000 | 655.66 | 7/7 |
+| A | 9/24 | 8 | 0.889 | 577.70 | 9/9 |
 | B | 8/24 | 8 | 1.000 | 925.78 | 8/8 |
 | C | 8/24 | 7 | 1.000 | — | 7/8 |
 
@@ -37,12 +37,14 @@ Dokazana zahteva potrebuje uspeh obeh sprejemnih prikazov in dovoljen obseg spre
 | [P04-C-003](../../runs/P04-C-003/evaluation-summary.json) | completed | 12/12 | 12/12 | 944.94 | da |
 | [P05-B-002](../../runs/P05-B-002/evaluation-summary.json) | completed | 12/12 | 12/12 | 1038.16 | da |
 | [P05-C-002](../../runs/P05-C-002/evaluation-summary.json) | completed | 12/12 | 12/12 | 1110.15 | da |
+| [P05-A-002](../../runs/P05-A-002/evaluation-summary.json) | completed | 12/12 | 12/12 | 596.37 | da |
+| [P03-A-001](../../runs/P03-A-001/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 13.29 | ne |
 
 ## Popolno zabeležena poraba
 
 | Postopek | Popolni zapisi / arhivi | Povprečni vhodni tokeni | Povprečni izhodni tokeni |
 | --- | --- | --- | --- |
-| A | 7/7 | 770756.29 | 20143.86 |
+| A | 8/9 | 762106.00 | 19924.75 |
 | B | 8/8 | 1109885.88 | 27353.13 |
 | C | 7/8 | 2837279.43 | 29473.86 |
 
@@ -56,6 +58,8 @@ Primerjave se izračunajo šele ob vseh 72 arhivih. Neuravnotežen sprotni vzore
 ## Manjkajoče meritve in viri
 
 Manjkajoči točni časi: P06-C-001. Neznan čas ni nič. Prizadeta povprečja in parne časovne primerjave niso prikazane; funkcionalni izidi in imenovalci ostajajo nespremenjeni.
+
+P03-A-001 se je ustavil zaradi omejitve uporabe storitve pred spremembami datotek. Njegov znani kratki čas ni čas uspešne rešitve; neodvisno je ocenjeno ohranjeno izhodišče. Začeti poskus ostane v primarni analizi, manjkajoča vsebinska ocena pa se ne nadomesti z ničlo ali drugo ponovitvijo. Po uporabnikovi ročni ponastavitvi se je nadaljevalo pri P03-B-001. [Razlog in arhivska dokazila](reviews/P03-A-001.json).
 
 Zamrznjeni analizator v results.json pri seštevanju obravnava null kot nič; njegovih prizadetih časovnih agregatov ne uporabljaj. Ta ločen prikaz napako obravnave manjkajočih vrednosti izrecno popravi brez sprememb zamrznjene kode ali meritev. Pri obnovljeni P06-C-001 finishedAt pomeni raziskovalčevo finalizacijo, ne potrjenega konca modela.
 

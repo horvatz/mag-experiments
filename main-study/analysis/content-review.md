@@ -2,24 +2,25 @@
 
 **AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.
 
-Pregledanih je 12/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Ocene po dimenzijah se ne seštevajo v skupno kakovost.
+Vsebinsko ocenjenih je 12/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Za 1 izbranih oddaj je dokumentirana nezmožnost ocene; ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
 
-| Oddaja | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |
-| --- | --- | --- | --- | --- | --- |
-| [P05-A-001](reviews/P05-A-001.json) | 2 | 2 | 2 | 2 | 2 |
-| [P05-B-001](reviews/P05-B-001.json) | 2 | 2 | 2 | 2 | 2 |
-| [P05-C-001](reviews/P05-C-001.json) | 2 | 2 | 2 | 2 | 2 |
-| [P10-A-001](reviews/P10-A-001.json) | 2 | 2 | 2 | 2 | 2 |
-| [P10-C-001](reviews/P10-C-001.json) | 2 | 2 | 2 | 2 | 2 |
-| [P10-B-001](reviews/P10-B-001.json) | 2 | 2 | 2 | 2 | 2 |
-| [P06-A-001](reviews/P06-A-001.json) | 2 | 2 | 2 | 2 | 2 |
-| [P06-C-001](reviews/P06-C-001.json) | 2 | 2 | 1 | 2 | 2 |
-| [P06-B-001](reviews/P06-B-001.json) | 2 | 2 | 2 | 2 | 2 |
-| [P08-A-001](reviews/P08-A-001.json) | 2 | 2 | 2 | 2 | 2 |
-| [P08-C-001](reviews/P08-C-001.json) | 2 | 2 | 2 | 2 | 2 |
-| [P08-B-001](reviews/P08-B-001.json) | 2 | 2 | 2 | 2 | 2 |
+| Oddaja | Status presoje | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |
+| --- | --- | --- | --- | --- | --- | --- |
+| [P05-A-001](reviews/P05-A-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P05-B-001](reviews/P05-B-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P05-C-001](reviews/P05-C-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P10-A-001](reviews/P10-A-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P10-C-001](reviews/P10-C-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P10-B-001](reviews/P10-B-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P06-A-001](reviews/P06-A-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P06-C-001](reviews/P06-C-001.json) | ocenjeno | 2 | 2 | 1 | 2 | 2 |
+| [P06-B-001](reviews/P06-B-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P08-A-001](reviews/P08-A-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P08-C-001](reviews/P08-C-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P08-B-001](reviews/P08-B-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P03-A-001](reviews/P03-A-001.json) | ocena ni mogoča | — | — | — | — | — |
 
-Brez zaključene presoje: P03-A-001, P03-B-001, P03-C-001, P07-A-001, P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
+Še neobravnavane izbrane oddaje: P03-B-001, P03-C-001, P07-A-001, P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
 
 ## P05-A-001
 
@@ -334,3 +335,31 @@ Končna napaka: Neodvisna ocena potrdi 70/70 in 12/12 zahtev; postopek je zaklju
 Razvojni popravek: Prvi celotni zagon je dosegel 46/52. S1/S3/S4 niso našli natančne oznake ovitega selecta prek getByLabel; aplikacijski oznaki sta nato ločeni od kontrol z label/htmlFor. Trije časovnopasovni S2 so pri zaporednem obisku istega fragmenta ohranili stare naložene testne podatke. Testna priprava zdaj najprej obišče about:blank in odstrani prejšnje prestrezanje GET. Prilagojena je tudi tipkovnična pot skozi notranje dele datumskega polja. Po teh spremembah celotni check uspe 52/52; klasifikator rokov ni bil spremenjen.
 
 Opomba o razvojnem poteku: Ohranjena check.log in check-final.log ločita neuspešno testno iskanje/pripravo od končnega izida. Neuspeh git status zaradi manjkajočega xcrun je omejitev izoliranega okolja in ni potrjena funkcionalna napaka aplikacije.
+
+## P03-A-001
+
+**Vsebinska ocena ni mogoča.** Omejitev uporabe storitve je prekinila izvedbo po 13,293 s pred nastankom avtorske specifikacije, sprememb kode ali lastnih testov (fileChanges=[]). Ohranjeno je izhodišče, ne ocenljiva rešitev P03. Po vnaprej določeni rubriki vseh pet vsebinskih ocen ostane manjkajočih; funkcionalni izid in začeti ID ostaneta v primarni analizi.
+
+**Pokritost specifikacije: manjkajoče.** Specifikacija ni nastala: model se je ustavil zaradi omejitve storitve, arhiv ne vsebuje avtorskih dokumentov. Pokritosti ne ocenjujemo z ničlo.
+
+Dokazi: [execution.json](../../runs/P03-A-001/execution.json), [events.jsonl.gz](../../runs/P03-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P03-A-001/archive-complete.json).
+
+**Predikati/invariante: manjkajoče.** Ni oddanih predikatov ali invariant, ker storitev ni dovolila nadaljevanja začetega dela. Odsotna avtorska oddaja je označena kot manjkajoča ocena.
+
+Dokazi: [execution.json](../../runs/P03-A-001/execution.json), [events.jsonl.gz](../../runs/P03-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P03-A-001/archive-complete.json).
+
+**Sledljivost: manjkajoče.** Ni oddanega verifikacijskega zapisa ali matrike zahteva–koda–test. Raziskovalčeva ocena izhodišča ne nadomešča agentove predaje, zato vsebinska ocena manjka.
+
+Dokazi: [execution.json](../../runs/P03-A-001/execution.json), [events.jsonl.gz](../../runs/P03-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P03-A-001/archive-complete.json).
+
+**Organizacija kode: manjkajoče.** Izvajalnik potrjuje nič spremenjenih datotek; arhivirana koda je izhodišče brez implementacije P03. Organizacije izhodišča ne pripišemo kot avtorsko kakovost te prekinjene oddaje.
+
+Dokazi: [execution.json](../../runs/P03-A-001/execution.json), [events.jsonl.gz](../../runs/P03-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P03-A-001/archive-complete.json).
+
+**Lastna preverjanja: manjkajoče.** Lastni testi niso nastali in model ni izvedel svojega preverjanja. Poznejših neodvisnih testov ne obravnavamo kot agentove lastne dokaze; ocena ostane manjkajoča.
+
+Dokazi: [execution.json](../../runs/P03-A-001/execution.json), [events.jsonl.gz](../../runs/P03-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P03-A-001/archive-complete.json).
+
+Končna napaka: Postopek execution_failed zaradi izrecnega dogodka usage limit, brez sprememb datotek. Neodvisno 38/70 in 0/12, strogi uspeh false. Čas 13,293 s je znan; celotna poraba je null, opažena spodnja meja 10474 vhodnih / 204 izhodnih tokenov. Kratek prekinjeni čas ni čas uspešne rešitve in ne utemeljuje vzročnega sklepa o postopku A.
+
+Opomba o razvojnem poteku: Model ni prišel do implementacije ali lastnega testnega zagona. Vrstni red je obstal po arhiviranju; po uporabnikovi ročni ponastavitvi je nadaljevanje pri P03-B-001, brez ponovitve P03-A-001.

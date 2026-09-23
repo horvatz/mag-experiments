@@ -77,6 +77,11 @@ in imenovalec 12 so znani tudi pri še nearhiviranih izvedbah.
 `reviewed=false` pomeni prazne ocene, ne ničelnih ocen. `human_review` in
 `inter_rater_agreement` ostajata prazna; AI-podprta presoja ne ustvari
 človeške presoje. Dokazi in utemeljitve so v povezani datoteki JSON.
+`review_status` loči `rated`, `unavailable` in `pending`. Pri `unavailable`
+je nezmožnost ocene že vsebinsko preverjena in pojasnjena v
+`unavailable_reason`, vseh pet ocen pa ostane praznih. Tak primer se ne
+zamenja z drugo ponovitvijo. `integrity-audit.json` loči `reviewed`
+(številčno ocenjene), `reviewUnavailable` in `reviewResolved` (vsota obeh).
 
 ## Obnova iz arhivov
 
@@ -123,3 +128,19 @@ z nepopolnimi zahtevanimi ponovitvami niso ocenjene. Faza implementacije
 in predaje P06-C nimajo izmišljenega trajanja. Ta odmik zaradi infrastrukture
 mora ostati izrecna omejitev v magistrski; iz nedokončane predaje ne sledi
 vzročni sklep o postopku C.
+
+## Omejitev storitve pri P03-A-001 in nadaljevanje
+
+P03-A-001 je končal kot `execution_failed` po 13,293 s z izrecnim dogodkom
+omejitve uporabe. Ni spremenil nobene datoteke; arhiv vsebuje izhodišče.
+Neodvisno preverjanje je dejansko izvedeno: 38/38 regresijskih, 0/8 razvojnih
+in 0/24 sprejemnih scenarijev, 0/12 dokazanih ter 12 opaženih zahtev.
+Čas je znan in ostane v primarni analizi, vendar ne pomeni časa uspešne
+rešitve. Celotna poraba je null, opažena poraba pa le spodnja meja.
+
+Vsebinska ocena po rubriki ni mogoča, ker avtorska rešitev ni nastala.
+Razlog in dokazi so v `reviews/P03-A-001.json`; ocene so null, ne nič.
+Po uporabnikovi ročni ponastavitvi omejitve je 24. septembra po lokalnem
+času vrsta nadaljevala pri P03-B-001. Potrdilo je v
+`../resume-2026-09-24.json`. P03-A-001 se ne ponovi ali izloči. Iz te
+prekinitve ni mogoče sklepati na slabšo implementacijsko sposobnost A.

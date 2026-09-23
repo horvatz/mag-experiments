@@ -50,6 +50,8 @@ Vrednosti iz surovega arhiva imajo prednost pred ročno prepisano številko.
 5. **Vsebinska kakovost.** Poročaj pet dimenzij posebej za vnaprej izbrano
    ponovitev 001, z manjkajočimi ocenami in razlago presoje. Ocenjevalec Codex
    pomeni AI-podprto, neslepo presojo. Človeških ocen ali soglasja ni.
+   Loči še neopravljeno presojo od dokumentirane nezmožnosti ocene
+   (`review_status=pending` oziroma `unavailable`). Nobena ni ocena 0.
 6. **Konkretni primeri.** Izberi razložljiv neuspeh, če obstaja, oziroma
    jasno označen razvojni popravek. Razvojna napaka, popravljena pred oddajo,
    ni napaka končne rešitve. Za vsak primer poveži navodilo, kodo, test in izid.
@@ -94,3 +96,14 @@ Ohranjena koda je prestala 70/70, postopek ni zaključen; to sta ločena izida.
 Iz ene infrastrukturno prekinjene predaje ni mogoče sklepati na vzrok
 v postopku C. Oddaja se ohrani v funkcionalnem imenovalcu in izbranem
 vzorcu vsebinske presoje. Model ni bil ponovljen.
+
+## Omejitev uporabe pri P03-A-001
+
+P03-A-001 se je ustavil zaradi omejitve storitve po 13,293 s, brez sprememb
+datotek. Neodvisna ocena izhodišča je 38/70 in 0/12; vsebinske ocene
+manjkajo, ker ni nastala avtorska rešitev. Kratkega časa ne razlagaj kot
+hitre uspešne rešitve, izida pa ne kot dokaza, da je A ustvaril slabšo
+kodo. Začeti poskus ostane v zamrznjeni analizi in ni nadomeščen z drugo
+ponovitvijo. Po uporabnikovi ročni ponastavitvi je sledil P03-B-001.
+Dokazi so v [zapisu nezmožnosti presoje](reviews/P03-A-001.json) in
+[arhivirani izvedbi](../../runs/P03-A-001/execution.json).

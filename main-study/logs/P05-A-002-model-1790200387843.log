@@ -1,0 +1,18 @@
+Najprej bom prebral pravila in zahteve ter zapisal specifikacijo. Nato bom samostojno izvedel spremembe, preveril rešitev in dokumentiral rezultate znotraj 20-minutne omejitve.
+
+Straničenje bom vezal na trenutni projekt: najprej filter, nato en skupen odsek za preglednico in tablo. Obstoječa komponenta projekta omogoča, da se izbira ohrani pri podrobnostih in preklopu pogleda ter ponastavi ob menjavi projekta. Dodatni testi bodo zajeli tudi več kot deset opravil, prazne rezultate in vse navigacijske gumbe.
+
+Implementacija je prestala vseh 46 skupnih preverjanj, vključno s preverjanjem tipov in gradnjo. Dodal sem še sedem testov za robne primere: zaporedje 23 opravil, vse filtre in premike, ohranitev izbire pri podrobnostih, ponastavitve ter uporabo pri širini 390 pik.
+
+Vizualni pregled potrjuje, da nove kontrole sledijo videzu Folio in pri širini 390 pik ne razširijo strani. Pri dodatnih testih sem popravil nezdružljiv argument Playwrightove trditve; zadnji celotni zagon zdaj vključuje tudi te teste. Neuspešni vmesni zagon bo zabeležen v poročilu.
+
+Končni `npm run check` je uspešen: vseh 53 testov je opravljenih. Specifikacijo in poročilo sem dopolnil s sledljivostjo vseh R01–R12, dnevniki zagonov in posnetki obeh pogledov. Znanih neizpolnjenih zahtev ni; skriti testi in drugi brskalniki ostajajo nepreverjeni.
+
+Pilot P05 je zaključen samostojno, znotraj 20 minut. Implementirana sta straničenje in filter z zahtevami R01–R12.
+
+`npm run check`: **53/53 testov uspešnih**, preverjanje tipov in gradnja uspešna.
+
+Dokumentacija: [specifikacija](docs/agent/specification.md) in [poročilo preverjanja](docs/agent/verification.md).
+
+Znanih neizpolnjenih zahtev ni. Skriti testi in drugi brskalniki niso bili preverjeni.
+{"status":"completed","elapsedSeconds":596.372,"allowedChanges":true,"usage":{"input_tokens":701554,"cached_input_tokens":627968,"cache_write_input_tokens":0,"output_tokens":18391,"reasoning_output_tokens":2905}}

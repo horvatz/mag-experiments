@@ -54,6 +54,9 @@ export function reportingResults() {
     ...data.withheldComparisons.map(c=>`Zadržana primerjava: ${c.first}–${c.second}, ${metricLabel(c.metric)}; manjka točen čas vsaj ene zahtevane ponovitve.`), '',
     '## Manjkajoče meritve in viri', '',
     `Manjkajoči točni časi: ${missing.join(', ')||'ni'}. Neznan čas ni nič. Prizadeta povprečja in parne časovne primerjave niso prikazane; funkcionalni izidi in imenovalci ostajajo nespremenjeni.`, '',
+    ...(data.data.some(r=>r.id==='P03-A-001') ? [
+      'P03-A-001 se je ustavil zaradi omejitve uporabe storitve pred spremembami datotek. Njegov znani kratki čas ni čas uspešne rešitve; neodvisno je ocenjeno ohranjeno izhodišče. Začeti poskus ostane v primarni analizi, manjkajoča vsebinska ocena pa se ne nadomesti z ničlo ali drugo ponovitvijo. Po uporabnikovi ročni ponastavitvi se je nadaljevalo pri P03-B-001. [Razlog in arhivska dokazila](reviews/P03-A-001.json).', ''
+    ] : []),
     'Zamrznjeni analizator v results.json pri seštevanju obravnava null kot nič; njegovih prizadetih časovnih agregatov ne uporabljaj. Ta ločen prikaz napako obravnave manjkajočih vrednosti izrecno popravi brez sprememb zamrznjene kode ali meritev. Pri obnovljeni P06-C-001 finishedAt pomeni raziskovalčevo finalizacijo, ne potrjenega konca modela.', '',
     'Podrobni podatki so v [reporting-results.json](reporting-results.json) in [run-data.csv](run-data.csv). [Vsebinska presoja](content-review.md) poroča pet dimenzij ločeno; AI-podprta neslepa presoja nima človeških ocen ali izmerjenega soglasja. [Vodnik za pisanje](writing-guide.md) povezuje gradivo z magistrsko.', ''
   ]
