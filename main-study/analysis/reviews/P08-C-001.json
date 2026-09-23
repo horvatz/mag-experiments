@@ -1,0 +1,41 @@
+{
+  "id": "P08-C-001",
+  "reviewedAt": "2026-09-23",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage", "score": 2,
+      "rationale": "Vseh R01–R12 ima jasne sprejemne pogoje: fiksna začetna referenca, prednost done, meje petih skupin, koledarski dnevi, celotni števci in stabilni izbor. Posebej so opredeljeni prazno polje z zadnjo veljavno referenco, preklopi pogledov, ponastavitve projekta/osvežitve, prazni projekti/skupine, bralne podrobnosti in nespremenjeni podatki. Ločena sta vrstni red preglednice in vrstni red znotraj stolpcev table.",
+      "evidence": ["runs/P08-C-001/submission/docs/agent/P08/spec.md"]
+    },
+    {
+      "dimension": "predicatesInvariants", "score": 2,
+      "rationale": "G(t,r) je disjunktna razdelitev po statusu in razliki koledarskih dni Δ. C šteje celotni projekt neodvisno od filtra, vsota petih števcev je |T|, V določa stabilno filtriranje. Tabela prehodov (x,r,f) preverljivo loči vsebino polja in zadnjo veljavno referenco, določi ohranitev ob preklopu ter ponastavitev. Nespremenjenost T in enakost množic ID-jev obeh pogledov sta izrecni invarianti.",
+      "evidence": ["runs/P08-C-001/submission/docs/agent/P08/spec.md#zahteve-in-pravila"]
+    },
+    {
+      "dimension": "traceability", "score": 2,
+      "rationale": "Specifikacija 1.1 poveže vseh 12 zahtev z osrednjo matriko zahteva–pogoj–test–koda–izid v verification.md. Dnevnika potrdita 53/53 (38+8+7) in ponovni A05 po popravku zajema. T001–T009 so označene zaključene, načrt dokumentira preimenovanje osrednjega dokazila. Convergence izrecno poroča o pregledu obstoječih dokazov brez novega zagona testov in brez sprememb aplikacije. Nedostopni testi ter omejenost vzorca so odkrito navedeni.",
+      "evidence": ["runs/P08-C-001/submission/docs/agent/P08/spec.md", "runs/P08-C-001/submission/docs/agent/verification.md", "runs/P08-C-001/submission/docs/agent/P08/tasks.md", "runs/P08-C-001/submission/docs/agent/P08/plan.md", "runs/P08-C-001/submission/docs/agent/P08/check.log", "runs/P08-C-001/submission/docs/agent/P08/capture-check.log", "runs/P08-C-001/submission/docs/agent/convergence.json"]
+    },
+    {
+      "dimension": "codeOrganization", "score": 2,
+      "rationale": "Modul deadlines.ts loči koledarsko validacijo, čisto razvrščanje in izpeljavo števcev/vidnih podatkov. deadlineOverview v enem prehodu ustvarja nove rezultate brez mutacije vhodov. ProjectView hrani le dateInput, referenceDate in filter; oba pogleda uporabita iste visible, prvotni povzetek stanj pa celotni projekt. Obstoječi ključ projekta zagotovi ponastavitev, kontrole so neposredno vezane na projektno stanje. Ni trajne shrambe, novih zapisovalnih poti ali podvajanja pravil med pogledoma.",
+      "evidence": ["runs/P08-C-001/submission/src/deadlines.ts", "runs/P08-C-001/submission/src/App.tsx", "runs/P08-C-001/submission/src/styles.css"]
+    },
+    {
+      "dimension": "ownChecks", "score": 2,
+      "rationale": "Sedem uspešnih lastnih preverjanj uporablja neodvisne pričakovane ID-je: 13 nesortiranih opravil z enakimi Unicode naslovi, uro 2040, vse filtre, prednost done, meje −1/0/+1/+7/+8, stabilen vrstni red in enake ID-je obeh pogledov. A02 dejansko uporabi tri ločene časovne pasove ter štiri koledarske primere: prestopni februar, novo leto in oba evropska prehoda DST; ameriških prehodov iz teh datumov ne sklepamo. A03 preveri prazno polje po spremenjeni referenci, ohranjeni filter, projekte in osvežitev ter URL/shrambo. A04/A05 dodata oba prazna projekta, eno opravilo, prazno skupino z vrnitvijo, bralne podrobnosti in širino 390 pik. Testi ne uvažajo produkcijskega klasifikatorja kot orakelj.",
+      "evidence": ["runs/P08-C-001/submission/tests/agent/P08.spec.ts", "runs/P08-C-001/submission/docs/agent/P08/check.log", "runs/P08-C-001/submission/docs/agent/P08/capture-check.log"]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena potrdi 70/70, 12/12 zahtev in strogi uspeh. Postopek je zaključen, obseg dovoljen in poraba popolna. V pregledanih končnih dokazih ni potrjene funkcionalne napake; preverjanja so omejena na navedene primere v Chromiumu.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Celotni zagon je uspel 53/53. Prvi mobilni posnetek je zaradi drsenja deloma prekrila lepljiva navigacija; model je dodal pomik na vrh pred zajemom in uspešno ponovil A05. To je popravek dokaznega zajema, brez spremembe aplikacijske kode ali potrjenega neuspešnega funkcionalnega testa."
+}

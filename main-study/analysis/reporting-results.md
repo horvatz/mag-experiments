@@ -1,12 +1,12 @@
 # Rezultati za pisanje
 
-Arhiviranih 10/72. Nepopolna zbirka; brez končnega sklepanja.
+Arhiviranih 11/72. Nepopolna zbirka; brez končnega sklepanja.
 
 | Postopek | Arhivi | Strogi uspehi | Delež zahtev | Čas s | Znani časi |
 | --- | --- | --- | --- | --- | --- |
 | A | 4/24 | 4 | 1.00 | 633.50 | 4/4 |
 | B | 3/24 | 3 | 1.00 | 962.61 | 3/3 |
-| C | 3/24 | 2 | 1.00 | — | 2/3 |
+| C | 4/24 | 3 | 1.00 | — | 3/4 |
 
 Manjkajoči točni časi: P06-C-001. Neznan čas ni nič. Prizadeta povprečja in parne časovne primerjave niso prikazane; funkcionalni izidi in imenovalci ostajajo nespremenjeni.
 
