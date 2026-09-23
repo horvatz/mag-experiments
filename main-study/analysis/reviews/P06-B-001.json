@@ -1,0 +1,41 @@
+{
+  "id": "P06-B-001",
+  "reviewedAt": "2026-09-23",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage", "score": 2,
+      "rationale": "Vseh R01–R12 ima jasne pogoje in S1–S7. Specifikacija razloči kanonične kolone od vrstnega reda klikov, izvorno zaporedje od skupin na tabli ter izvozni filter od prikaza. Pokrije nič kolon/vrstic, obe ločili, navedbo vseh celic, BOM, CRLF in natančno nevtralizacijo brez širšega whitespace ali Unicode normalizacije; ohranitev in ponastavitve nastavitev so izrecne.",
+      "evidence": ["runs/P06-B-001/submission/docs/agent/specification.md"]
+    },
+    {
+      "dimension": "predicatesInvariants", "score": 2,
+      "rationale": "E0, C, V in canExport določajo stanje, stabilno izbiro in omogočenost, N/Q pa natančno transformacijo in celotno CSV datoteko. Enačbe preklop(E)=E, menjava(E)=E0, osvežitev(E)=E0 in izvoz(E)=E omogočajo preverjanje življenjskega cikla. Invarianta ohrani T in bralne prikaze; primeri za NBSP in apostrof razmejijo domensko pravilo od širše normalizacije.",
+      "evidence": ["runs/P06-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"]
+    },
+    {
+      "dimension": "traceability", "score": 2,
+      "rationale": "Začetna specifikacija ostaja pošteno označena kot načrt prvotnega avtorja, izvedbena tabela v verification.md pa poveže vseh 12 zahtev z dejanskimi funkcijami, imenovanimi S/D testi in check.log. Dnevnik potrjuje prvi uspešni sklop 53. Pregledovalec jasno loči prevzete rezultate od svojega dodatnega brskalniškega preverjanja; njegov PASS je potrjen v surovem dogodku item_21. Odkrito navede, da ni ponovil celotnega check in ni mogel uporabiti git diff. Povezava na generirano HTML poročilo ni del trajnega arhiva, vendar je celoten testni dnevnik shranjen.",
+      "evidence": ["runs/P06-B-001/submission/docs/agent/specification.md", "runs/P06-B-001/submission/docs/agent/verification.md", "runs/P06-B-001/submission/docs/agent/check.log", "runs/P06-B-001/submission/docs/agent/review.md", "runs/P06-B-001/submission/docs/agent/review.json", "runs/P06-B-001/phases/03-review/events.jsonl.gz"]
+    },
+    {
+      "dimension": "codeOrganization", "score": 2,
+      "rationale": "serializeCsv je čista funkcija s kanoničnimi kolonami in ločenima quote/quoteValue. CsvExport hrani le izbor, ločilo in filter, število ustreznih vrstic ter enabled pa izpelje iz trenutnih podatkov. Prenos uporablja dodatno varovalo null, odstrani povezavo in sprosti URL. Stalna vključitev v ProjectView z obstoječim ključem projekta zagotavlja življenjski cikel brez trajne shrambe ali mutiranja virov.",
+      "evidence": ["runs/P06-B-001/submission/src/csv.ts", "runs/P06-B-001/submission/src/CsvExport.tsx", "runs/P06-B-001/submission/src/App.tsx"]
+    },
+    {
+      "dimension": "ownChecks", "score": 2,
+      "rationale": "Sedem lastnih testov pokrije ročno pričakovane bajte, Unicode in notranje prelome, vse sprožilce formul in varne proti-primere, zamrznjene vhode, 13 nesortiranih vrstic, praznine, vse filtre, ponastavitve, oba pogleda, lokalni prenos brez omrežnih zahtev in mobilno tipkovnico. Vseh sedem je v uspešnem sklopu 53. Pregledovalec dodatno izvede štiri prenose surovih Buffer bajtov pri 390 px s 13 prepletenimi stanji; potrdi drugačen vrstni red DOM table in nespremenjen CSV, obe ločili, obrnjeno izbiro kolon, prazna projekta, ponastavitve ter nič zapisov, testnih kontrol ali pageerror. Njegov orakelj neposredno določi apostrofa iz vhodov in ne uvozi produkcijskega serializatorja.",
+      "evidence": ["runs/P06-B-001/submission/tests/agent/csv.spec.ts", "runs/P06-B-001/submission/docs/agent/check.log", "runs/P06-B-001/submission/docs/agent/review.md", "runs/P06-B-001/phases/03-review/events.jsonl.gz"]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena je uspešna 70/70; postopek je zaključen, obseg dovoljen in poraba popolna. V pregledanih končnih dokazih ni potrjene funkcionalne napake. To ne dokazuje pravilnosti za vso domeno ali vse brskalnike.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Prvi celotni testni zagon in dodatno preverjanje pregledovalca sta uspela; popravljalnih predaj ni bilo. git status/diff v izolaciji ni deloval zaradi xcrun in je odkrito naveden kot okoljska omejitev, ne kot napaka aplikacije."
+}
