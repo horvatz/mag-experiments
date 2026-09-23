@@ -4,7 +4,7 @@
 
 Končni obseg je **P03–P10: osem nalog, A/B/C, tri ponovitve, 72 izvedb**.
 P01 in P02 sta zaključena pilota in ne vstopata v glavno primerjavo.
-Trenutno število dejansko arhiviranih izvedb je vedno v [zbirnih rezultatih](results.md).
+Trenutno število dejansko arhiviranih izvedb je vedno v [zbirnih rezultatih za pisanje](reporting-results.md).
 Število 72 v metodologiji pomeni načrt, dokler ta zbirka ni popolna.
 
 Metodologija je usklajena z zamrznjenim protokolom v
@@ -22,7 +22,7 @@ Prejšnji različici sta ohranjeni v `naloga/zapiski/pred-glavnimi-meritvami-202
 | Pilot | [P01](../../docs/pilot-results.md), [P02](../../docs/p02-results.md) | Razvoj in preverjanje postopkov pred glavno raziskavo |
 | Kvalifikacija | [Q-B/Q-C/Q-I](../../docs/qualification-results.md) | Dejanski povratni popravki in obravnava prekinjene porabe |
 | Potek meritev | [Razpored](../schedule.json), [zamrznjeni vhodi](../frozen-inputs.json), `runs/<ID>/execution.json` | Vrstni red, model in časovna meja; konkretne faze in statusi |
-| Funkcionalni rezultati | [Zbirka](results.json), `runs/<ID>/evaluation-summary.json` | Dokazane zahteve, regresije, strogi uspeh in napake |
+| Funkcionalni rezultati | [Zbirka za pisanje](reporting-results.json), `runs/<ID>/evaluation-summary.json` | Dokazane zahteve, regresije, strogi uspeh in napake |
 | Čas in poraba | `execution.json`, `usage-observation.json`, `evaluation-summary.json` v arhivu | Celoten modelski čas, faze, popolna poraba ali opažena spodnja meja |
 | Vsebinska presoja | [Zamrznjena rubrika](../../docs/main-rubric.md), `reviews/<ID>.json` | Pet ločenih ocen z utemeljitvami in konkretnimi dokazi |
 | Primeri za razpravo | Oddana specifikacija, lastni testi, dnevniki ter neodvisna ocena iste izvedbe | Konkretna razlika med zahtevami, razvojnim preverjanjem in končnim vedenjem |
