@@ -27,6 +27,36 @@ export function reportingResults() {
   const missing=data.durationReporting.missing
   writeFileSync(resolve(dir,'reporting-results.json'),JSON.stringify(data,null,2)+'\n')
   const fmt=x=>x==null?'—':x.toFixed(2)
-  writeFileSync(resolve(dir,'reporting-results.md'),['# Rezultati za pisanje', '', `Arhiviranih ${data.archived}/72. ${data.complete?'Zbirka izvedb je popolna.':'Nepopolna zbirka; brez končnega sklepanja.'}`, '', '| Postopek | Arhivi | Strogi uspehi | Delež zahtev | Čas s | Znani časi |','| --- | --- | --- | --- | --- | --- |', ...data.groups.map(g=>`| ${g.procedure} | ${g.archived}/24 | ${g.strictSuccesses} | ${fmt(g.meanDemonstratedFraction)} | ${fmt(g.meanElapsedSeconds)} | ${g.knownDurationCount}/${g.archived} |`),'',`Manjkajoči točni časi: ${missing.join(', ')||'ni'}. Neznan čas ni nič. Prizadeta povprečja in parne časovne primerjave niso prikazane; funkcionalni izidi in imenovalci ostajajo nespremenjeni.`, '', 'Zamrznjeni analizator v results.json pri seštevanju obravnava null kot nič; njegovih prizadetih časovnih agregatov ne uporabljaj. Ta ločen prikaz napako obravnave manjkajočih vrednosti izrecno popravi brez sprememb zamrznjene kode ali meritev.', '', ...data.withheldComparisons.map(c=>`Zadržana primerjava: ${c.first}–${c.second}, ${c.metric}.`),''].join('\n'))
+  const metricLabel=metric=>metric==='meanDemonstratedFraction'?'Delež dokazanih zahtev (0–1)':'Čas (s)'
+  const lines=[
+    '# Rezultati za pisanje', '',
+    `Podatkovni posnetek: ${data.generatedAt}. Arhiviranih ${data.archived}/${data.planned}. ${data.complete?'Vse načrtovane izvedbe so arhivirane; posamezne meritve so lahko manjkajoče.':'Nepopolna zbirka; skupinski podatki so sprotni opis, brez končnega sklepanja.'}`, '',
+    '| Postopek | Arhivi | Strogi uspehi | Delež zahtev | Čas s | Znani časi |',
+    '| --- | --- | --- | --- | --- | --- |',
+    ...data.groups.map(g=>`| ${g.procedure} | ${g.archived}/${g.planned} | ${g.strictSuccesses} | ${fmt(g.meanDemonstratedFraction)} | ${fmt(g.meanElapsedSeconds)} | ${g.knownDurationCount}/${g.archived} |`), '',
+    'Dokazana zahteva potrebuje uspeh obeh sprejemnih prikazov in dovoljen obseg sprememb. Neopaženo preverjanje ni potrjena funkcionalna napaka. Strogi uspeh dodatno zahteva zaključen postopek, lint, tipe, gradnjo in vseh 70 preverjanj.', '',
+    '## Posamezne izvedbe', '',
+    '| Izvedba | Status postopka | Dokazane zahteve | Opažene zahteve | Čas s | Strogi uspeh |',
+    '| --- | --- | --- | --- | --- | --- |',
+    ...data.data.map(r=>`| [${r.id}](../../runs/${r.id}/evaluation-summary.json) | ${r.executionStatus} | ${r.score.passed}/12 | ${r.score.observed}/12 | ${fmt(r.elapsedSeconds)} | ${r.strictSuccess?'da':'ne'} |`), '',
+    '## Popolno zabeležena poraba', '',
+    '| Postopek | Popolni zapisi / arhivi | Povprečni vhodni tokeni | Povprečni izhodni tokeni |',
+    '| --- | --- | --- | --- |',
+    ...data.groups.map(g=>`| ${g.procedure} | ${g.completeUsageCount}/${g.archived} | ${fmt(g.meanInputTokensCompleteOnly)} | ${fmt(g.meanOutputTokensCompleteOnly)} |`), '',
+    'Ta povprečja vključujejo samo popolno zabeleženo porabo in so ob manjkajočih zapisih lahko selektivna. Predpomnjeni tokeni so že vključeni v vhodne, reasoning tokeni v izhodne. Zadnja opažena poraba prekinjenih izvedb je ločena spodnja meja v JSON/CSV, ne nadomestilo celotne porabe. Tokeni niso denarni strošek.', '',
+    '## Parne razlike po nalogah', '',
+    ...(data.complete?[
+      '| Primerjava | Mera | Povprečna razlika | 95 % percentilni interval |',
+      '| --- | --- | --- | --- |',
+      ...data.comparisons.map(c=>`| ${c.first} − ${c.second} | ${metricLabel(c.metric)} | ${fmt(c.meanDifference)} | ${fmt(c.lower)} do ${fmt(c.upper)} |`), '',
+      'Razlika pomeni prvi postopek minus drugi. Najprej se povprečijo tri ponovitve po nalogi/postopku, nato se ponovno vzorči osem parov nalog s predpisanim semenom in 20.000 ponovitvami. Intervali so opisni; testni izidi niso neodvisne naloge.'
+    ]:['Primerjave se izračunajo šele ob vseh 72 arhivih. Neuravnotežen sprotni vzorec ne določa končne razlike med postopki.']), '',
+    ...data.withheldComparisons.map(c=>`Zadržana primerjava: ${c.first}–${c.second}, ${metricLabel(c.metric)}; manjka točen čas vsaj ene zahtevane ponovitve.`), '',
+    '## Manjkajoče meritve in viri', '',
+    `Manjkajoči točni časi: ${missing.join(', ')||'ni'}. Neznan čas ni nič. Prizadeta povprečja in parne časovne primerjave niso prikazane; funkcionalni izidi in imenovalci ostajajo nespremenjeni.`, '',
+    'Zamrznjeni analizator v results.json pri seštevanju obravnava null kot nič; njegovih prizadetih časovnih agregatov ne uporabljaj. Ta ločen prikaz napako obravnave manjkajočih vrednosti izrecno popravi brez sprememb zamrznjene kode ali meritev. Pri obnovljeni P06-C-001 finishedAt pomeni raziskovalčevo finalizacijo, ne potrjenega konca modela.', '',
+    'Podrobni podatki so v [reporting-results.json](reporting-results.json) in [run-data.csv](run-data.csv). [Vsebinska presoja](content-review.md) poroča pet dimenzij ločeno; AI-podprta neslepa presoja nima človeških ocen ali izmerjenega soglasja. [Vodnik za pisanje](writing-guide.md) povezuje gradivo z magistrsko.', ''
+  ]
+  writeFileSync(resolve(dir,'reporting-results.md'),lines.join('\n'))
   return data
 }
