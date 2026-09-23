@@ -1,0 +1,44 @@
+{
+  "id": "P06-C-001",
+  "reviewedAt": "2026-09-23",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha. Ocenjena je ohranjena oddaja prekinjene izvedbe brez nadaljevanja modela.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage", "score": 2,
+      "rationale": "Specifikacija jasno pokrije R01–R12, kanonični vrstni red kolon, stabilni filter samo izvoza, praznine, ime in BOM, obe ločili, navedbo in CRLF ter nevtralizacijo pred navedbo. Loči preklop pogleda od ponastavitve projekta/osvežitve in opredeli odsotnost zapisovalnih stranskih učinkov. Meja domene ID-jev in datumov ter nezaznana odpoved brskalnikovega shranjevanja sta izrecni.",
+      "evidence": ["runs/P06-C-001/submission/docs/agent/P06/spec.md"]
+    },
+    {
+      "dimension": "predicatesInvariants", "score": 2,
+      "rationale": "K, H, E, D, canExport, N in Q določajo preverljive funkcije in predikate. Definicija UTF-8 datoteke vključuje BOM in zadnji CRLF; pravilo N razlikuje dovoljene začetne znake od drugih presledkov. Tabela prehodov določa, katere spremenljivke se ohranijo pri preklopu, izvozu ter menjavi projekta. Invarianta ohranja izvorne vrednosti in vrstni red T.",
+      "evidence": ["runs/P06-C-001/submission/docs/agent/P06/spec.md#simboli-in-predikati"]
+    },
+    {
+      "dimension": "traceability", "score": 1,
+      "rationale": "Predhodna specifikacija poveže vseh 12 zahtev s preverljivimi S01–S07, načrt in T002–T006 pa jih povežejo z datotekami in dodatnimi testi. Končna sledljivost ni dopolnjena: vseh 12 vrstic še navaja Ni izvedeno, verification.md ne zapiše dejanskega uspeha, T007/T008 ostaneta odprta in konvergence ni. Surovi check.log, check.exit in fazni dogodki potrjujejo 54 uspešnih testov; gre za delne povezave in nedokončano predajo po infrastrukturni prekinitvi, ne za izmišljene uspešne dokaze.",
+      "evidence": ["runs/P06-C-001/submission/docs/agent/P06/spec.md", "runs/P06-C-001/submission/docs/agent/P06/tasks.md", "runs/P06-C-001/submission/docs/agent/verification.md", "runs/P06-C-001/submission/docs/agent/P06/check.log", "runs/P06-C-001/submission/docs/agent/P06/check.exit", "runs/P06-C-001/phases/05-implement/events.jsonl.gz"]
+    },
+    {
+      "dimension": "codeOrganization", "score": 2,
+      "rationale": "Čista createCsv loči kanonične kolone, stabilno filtriranje, nevtralizacijo in navedbo od prenosa. CsvExport vsebuje tri lokalne nastavitve, izpelje omogočenost in še enkrat varuje prazni izvoz v obdelovalniku. Vključitev pred razcepom pogledov ter obstoječi ključ ProjectView ohranita nastavitve med pogledoma in jih ponastavita ob projektu. Ni mutacij vhodov ali nove trajne shrambe; začasna povezava se odstrani in URL sprosti.",
+      "evidence": ["runs/P06-C-001/submission/src/csv.ts", "runs/P06-C-001/submission/src/CsvExport.tsx", "runs/P06-C-001/submission/src/App.tsx"]
+    },
+    {
+      "dimension": "ownChecks", "score": 2,
+      "rationale": "Osem testov vsebuje ročno zapisane pričakovane nize, ne produkcijskega serializatorja kot oraklja prenosa. A01/A02 pokrijeta vse sprožilce in negativne NBSP/VT/FF primere, zamrznjene vhode, Unicode, citate in mešane prelome. A03–A08 pokrijejo dejanski prenos za obe ločili, BOM, praznine, 13 nesortiranih vrstic, vse filtre, nespremenjen prikaz/povzetek, oba pogleda, zaporedne spremembe, ponastavitve, brez novih strani/zapisov ter mobilni fokus in širino prek readonly. Surovi dnevnik potrjuje vseh osem v uspešnem sklopu 54. Primerjava bajtov pri prenosu pretvori UTF-8 dekodirano besedilo nazaj v Buffer; ne preverja poljubnega neveljavnega kodiranja.",
+      "evidence": ["runs/P06-C-001/submission/tests/agent/P06.spec.ts", "runs/P06-C-001/input-overrides/tests/development/helpers.ts", "runs/P06-C-001/submission/docs/agent/P06/check.log"]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Postopek je ostal v implementaciji brez zaključnega dogodka, končne sledljivosti in koraka converge. Raziskovalec je ob nadaljevanju potrdil odsotnost procesov ter arhiviral obstoječe delo brez ponovnega modelskega poskusa. Točen čas prekinitve in vzrok sta neznana. Funkcionalni neuspeh aplikacije ni potrjen: neodvisna ocena ima 70/70, 12/12 in dovoljene spremembe; strogi uspeh je false zaradi nedokončanega postopka.",
+    "evidence": ["runs/P06-C-001/execution.json", "runs/P06-C-001/evaluation-summary.json", "main-study/analysis/recovery/P06-C-001/recovery.json"]
+  },
+  "finalFailureNote": "Infrastrukturna prekinitev in nedokončana predaja; koda prestane 70/70. Celotna poraba in točen čas sta neznana, opaženi tokeni so le spodnja meja. Arhivski samodejni report.md pri null času izpiše 0 min: tega ne uporabljaj kot meritev; merodajen je null v execution/evaluation JSON ter reporting-results.json.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "V pregledanih dokazih ni potrjenega neuspešnega testnega zagona ali popravka funkcionalne napake. Zaključnih zapisov zaradi prekinitve ni dovoljeno dopolnjevati v imenu merjenega agenta."
+}

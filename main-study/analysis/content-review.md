@@ -2,7 +2,7 @@
 
 **AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.
 
-Pregledanih je 7/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Ocene po dimenzijah se ne seštevajo v skupno kakovost.
+Pregledanih je 8/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Ocene po dimenzijah se ne seštevajo v skupno kakovost.
 
 | Oddaja | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |
 | --- | --- | --- | --- | --- | --- |
@@ -13,8 +13,9 @@ Pregledanih je 7/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/
 | [P10-C-001](reviews/P10-C-001.json) | 2 | 2 | 2 | 2 | 2 |
 | [P10-B-001](reviews/P10-B-001.json) | 2 | 2 | 2 | 2 | 2 |
 | [P06-A-001](reviews/P06-A-001.json) | 2 | 2 | 2 | 2 | 2 |
+| [P06-C-001](reviews/P06-C-001.json) | 2 | 2 | 1 | 2 | 2 |
 
-Brez zaključene presoje: P06-C-001, P06-B-001, P08-A-001, P08-C-001, P08-B-001, P03-A-001, P03-B-001, P03-C-001, P07-A-001, P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
+Brez zaključene presoje: P06-B-001, P08-A-001, P08-C-001, P08-B-001, P03-A-001, P03-B-001, P03-C-001, P07-A-001, P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
 
 ## P05-A-001
 
@@ -197,3 +198,27 @@ Dokazi: [csv.spec.ts](../../runs/P06-A-001/submission/tests/agent/csv.spec.ts), 
 Končna napaka: Neodvisna ocena je uspešna 70/70; v pregledani končni oddaji ni potrjene napake. To ni dokaz pravilnosti za vse možne vhode.
 
 Razvojni popravek: Pomožni vizualni zajem sprva ni počakal na preklop v tablo in je napačno označil posnetek preglednice. Agent je dodal čakanje na regijo Tabla opravil in ponovno ustvaril končne posnetke. Gre za popravek dokazila oziroma pomožne skripte; oba celotna testna zagona sta bila uspešna in aplikacija zaradi tega ni bila popravljena.
+
+## P06-C-001
+
+**Pokritost specifikacije: 2/2.** Specifikacija jasno pokrije R01–R12, kanonični vrstni red kolon, stabilni filter samo izvoza, praznine, ime in BOM, obe ločili, navedbo in CRLF ter nevtralizacijo pred navedbo. Loči preklop pogleda od ponastavitve projekta/osvežitve in opredeli odsotnost zapisovalnih stranskih učinkov. Meja domene ID-jev in datumov ter nezaznana odpoved brskalnikovega shranjevanja sta izrecni.
+
+Dokazi: [spec.md](../../runs/P06-C-001/submission/docs/agent/P06/spec.md).
+
+**Predikati/invariante: 2/2.** K, H, E, D, canExport, N in Q določajo preverljive funkcije in predikate. Definicija UTF-8 datoteke vključuje BOM in zadnji CRLF; pravilo N razlikuje dovoljene začetne znake od drugih presledkov. Tabela prehodov določa, katere spremenljivke se ohranijo pri preklopu, izvozu ter menjavi projekta. Invarianta ohranja izvorne vrednosti in vrstni red T.
+
+Dokazi: [spec.md#simboli-in-predikati](../../runs/P06-C-001/submission/docs/agent/P06/spec.md#simboli-in-predikati).
+
+**Sledljivost: 1/2.** Predhodna specifikacija poveže vseh 12 zahtev s preverljivimi S01–S07, načrt in T002–T006 pa jih povežejo z datotekami in dodatnimi testi. Končna sledljivost ni dopolnjena: vseh 12 vrstic še navaja Ni izvedeno, verification.md ne zapiše dejanskega uspeha, T007/T008 ostaneta odprta in konvergence ni. Surovi check.log, check.exit in fazni dogodki potrjujejo 54 uspešnih testov; gre za delne povezave in nedokončano predajo po infrastrukturni prekinitvi, ne za izmišljene uspešne dokaze.
+
+Dokazi: [spec.md](../../runs/P06-C-001/submission/docs/agent/P06/spec.md), [tasks.md](../../runs/P06-C-001/submission/docs/agent/P06/tasks.md), [verification.md](../../runs/P06-C-001/submission/docs/agent/verification.md), [check.log](../../runs/P06-C-001/submission/docs/agent/P06/check.log), [check.exit](../../runs/P06-C-001/submission/docs/agent/P06/check.exit), [events.jsonl.gz](../../runs/P06-C-001/phases/05-implement/events.jsonl.gz).
+
+**Organizacija kode: 2/2.** Čista createCsv loči kanonične kolone, stabilno filtriranje, nevtralizacijo in navedbo od prenosa. CsvExport vsebuje tri lokalne nastavitve, izpelje omogočenost in še enkrat varuje prazni izvoz v obdelovalniku. Vključitev pred razcepom pogledov ter obstoječi ključ ProjectView ohranita nastavitve med pogledoma in jih ponastavita ob projektu. Ni mutacij vhodov ali nove trajne shrambe; začasna povezava se odstrani in URL sprosti.
+
+Dokazi: [csv.ts](../../runs/P06-C-001/submission/src/csv.ts), [CsvExport.tsx](../../runs/P06-C-001/submission/src/CsvExport.tsx), [App.tsx](../../runs/P06-C-001/submission/src/App.tsx).
+
+**Lastna preverjanja: 2/2.** Osem testov vsebuje ročno zapisane pričakovane nize, ne produkcijskega serializatorja kot oraklja prenosa. A01/A02 pokrijeta vse sprožilce in negativne NBSP/VT/FF primere, zamrznjene vhode, Unicode, citate in mešane prelome. A03–A08 pokrijejo dejanski prenos za obe ločili, BOM, praznine, 13 nesortiranih vrstic, vse filtre, nespremenjen prikaz/povzetek, oba pogleda, zaporedne spremembe, ponastavitve, brez novih strani/zapisov ter mobilni fokus in širino prek readonly. Surovi dnevnik potrjuje vseh osem v uspešnem sklopu 54. Primerjava bajtov pri prenosu pretvori UTF-8 dekodirano besedilo nazaj v Buffer; ne preverja poljubnega neveljavnega kodiranja.
+
+Dokazi: [P06.spec.ts](../../runs/P06-C-001/submission/tests/agent/P06.spec.ts), [helpers.ts](../../runs/P06-C-001/input-overrides/tests/development/helpers.ts), [check.log](../../runs/P06-C-001/submission/docs/agent/P06/check.log).
+
+Končna napaka: Infrastrukturna prekinitev in nedokončana predaja; koda prestane 70/70. Celotna poraba in točen čas sta neznana, opaženi tokeni so le spodnja meja. Arhivski samodejni report.md pri null času izpiše 0 min: tega ne uporabljaj kot meritev; merodajen je null v execution/evaluation JSON ter reporting-results.json.

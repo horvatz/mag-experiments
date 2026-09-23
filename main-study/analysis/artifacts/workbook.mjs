@@ -8,7 +8,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const out = resolve(root, 'outputs/01a0c0dd-8558-70e1-8ed7-03605027f3bd')
 const qa = resolve(root, 'main-study/analysis/artifacts/qa')
 await fs.mkdir(out, { recursive: true }); await fs.mkdir(qa, { recursive: true })
-const result = JSON.parse(await fs.readFile(resolve(root, 'main-study/analysis/results.json'), 'utf8'))
+const result = JSON.parse(await fs.readFile(resolve(root, 'main-study/analysis/reporting-results.json'), 'utf8'))
 const schedule = JSON.parse(await fs.readFile(resolve(root, 'main-study/schedule.json'), 'utf8'))
 assert.equal(schedule.runs.length, 72)
 const byId = new Map(result.data.map(row => [row.id, row]))
@@ -68,7 +68,7 @@ for (const [index, procedure] of ['A', 'B', 'C'].entries()) {
     `=COUNTIFS('Izvedbe'!$C$2:$C$73,A${row},'Izvedbe'!$F$2:$F$73,1)`,
     `=SUMIFS('Izvedbe'!$K$2:$K$73,'Izvedbe'!$C$2:$C$73,A${row})`,
     `=IF(B${row}=0,"",SUMIFS('Izvedbe'!$J$2:$J$73,'Izvedbe'!$C$2:$C$73,A${row},'Izvedbe'!$F$2:$F$73,1)/B${row})`,
-    `=IF(B${row}=0,"",SUMIFS('Izvedbe'!$G$2:$G$73,'Izvedbe'!$C$2:$C$73,A${row},'Izvedbe'!$F$2:$F$73,1)/B${row}/60)`,
+    `=IF(OR(B${row}=0,COUNTIFS('Izvedbe'!$C$2:$C$73,A${row},'Izvedbe'!$F$2:$F$73,1,'Izvedbe'!$G$2:$G$73,"<>")<>B${row}),"",SUMIFS('Izvedbe'!$G$2:$G$73,'Izvedbe'!$C$2:$C$73,A${row},'Izvedbe'!$F$2:$F$73,1)/B${row}/60)`,
     `=COUNTIFS('Izvedbe'!$C$2:$C$73,A${row},'Izvedbe'!$L$2:$L$73,1)`,
     `=IF(F${row}=0,"",SUMIFS('Izvedbe'!$M$2:$M$73,'Izvedbe'!$C$2:$C$73,A${row},'Izvedbe'!$L$2:$L$73,1)/F${row})`,
     `=IF(F${row}=0,"",SUMIFS('Izvedbe'!$O$2:$O$73,'Izvedbe'!$C$2:$C$73,A${row},'Izvedbe'!$L$2:$L$73,1)/F${row})`
@@ -77,6 +77,8 @@ for (const [index, procedure] of ['A', 'B', 'C'].entries()) {
 overview.getRange('D7:D9').setNumberFormat('0.0%')
 overview.getRange('E7:E9').setNumberFormat('0.00')
 overview.getRange('G7:H9').setNumberFormat('#,##0')
+overview.getRange('A10').values = [['Časovno povprečje manjka, če vsaj en točni čas ni znan; neznan čas ni nič.']]
+overview.getRange('A10:H10').format.font = { name: 'Arial', size: 10, color: muted }
 overview.getRange('A11').values = [['¹ Povprečje le izvedb s popolno porabo; imenovalec je v stolpcu F. Manjkajoča poraba ni nič.']]
 overview.getRange('A12').values = [['Vhod vključuje predpomnjene tokene. Opažene spodnje meje prekinjenih izvedb so ločene na listu Izvedbe.']]
 overview.getRange('A14:H14').values = [['Naloga', 'A: n / 3', 'A: delež zahtev', 'B: n / 3', 'B: delež zahtev', 'C: n / 3', 'C: delež zahtev', 'Celoten blok?']]
@@ -96,7 +98,7 @@ overview.getRange('A24:H24').format.font = { name: 'Arial', size: 11, bold: true
 if (result.complete) {
   overview.getRange('A25:E25').values = [['Primerjava', 'Mera', 'Razlika', 'Spodnja meja', 'Zgornja meja']]
   heading(overview, 'A25:E25')
-  overview.getRange('A26:E31').values = result.comparisons.map(c => [`${c.first} − ${c.second}`, c.metric === 'meanElapsedSeconds' ? 'Čas (s)' : 'Delež zahtev', c.meanDifference, c.lower, c.upper])
+  overview.getRange(`A26:E${25 + result.comparisons.length}`).values = result.comparisons.map(c => [`${c.first} − ${c.second}`, c.metric === 'meanElapsedSeconds' ? 'Čas (s)' : 'Delež zahtev', c.meanDifference, c.lower, c.upper])
   overview.getRange('C26:E31').setNumberFormat('0.000')
 } else overview.getRange('A25').values = [['Še niso izračunani: zahtevajo vseh 72 arhiviranih izvedb.']]
 const notes = [
@@ -106,7 +108,7 @@ const notes = [
   'P01, P02 in kvalifikacija so izločeni iz glavne primerjave. Vse začete glavne izvedbe se ohranijo.',
   'Analiza najprej povpreči tri ponovitve naloge. Intervali vzorčijo osem nalog, 20.000-krat.',
   'Poraba uporablja naročnino; tokeni niso denarni strošek. Preglednica ne vsebuje človeških ocen.',
-  'Vir: main-study/analysis/results.json; razpored: main-study/schedule.json; dokazi ob vsaki izvedbi.',
+  'Vir: main-study/analysis/reporting-results.json; razpored: main-study/schedule.json; dokazi ob vsaki izvedbi.',
   'Metodološka pravila: docs/main-protocol.md in docs/main-rubric.md (zamrznjeno pred meritvami).'
 ]
 overview.getRange('A34').values = [['Branje podatkov']]
@@ -119,7 +121,7 @@ const values = overview.getRange('B7:H9').values
 for (let i = 0; i < 3; i++) {
   const g = result.groups[i], v = values[i]
   assert.equal(v[0], g.archived); assert.equal(v[1], g.strictSuccesses); assert.equal(v[4], g.completeUsageCount)
-  if (g.archived) { assert.ok(Math.abs(v[2] - g.meanDemonstratedFraction) < 1e-12); assert.ok(Math.abs(v[3] - g.meanElapsedSeconds / 60) < 1e-9) }
+  if (g.archived) { assert.ok(Math.abs(v[2] - g.meanDemonstratedFraction) < 1e-12); if (g.meanElapsedSeconds === null) assert.ok(v[3] === '' || v[3] === null); else assert.ok(Math.abs(v[3] - g.meanElapsedSeconds / 60) < 1e-9) }
   if (g.completeUsageCount) { assert.ok(Math.abs(v[5] - g.meanInputTokensCompleteOnly) < 1e-6); assert.ok(Math.abs(v[6] - g.meanOutputTokensCompleteOnly) < 1e-6) }
 }
 for (const r of result.byTask) {

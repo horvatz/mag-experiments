@@ -83,3 +83,29 @@ Za nadaljevanje meritev se uporablja **obstoječa čakalna vrsta**, ne ta
 analizni imenik. Že začetih ID-jev ne ponavljaj in ne zamenjuj zamrznjenih
 meril. Med modelskim delom ne zaganjaj referenčnih ali ocenjevalnih
 strežnikov; dostopne vhode in orodja za modele vodi izolirani izvajalnik.
+
+## Nadaljevanje 23. septembra: neznan čas prekinjene izvedbe
+
+P06-C-001 je bil najden brez živega izvajalnika, končnega dogodka ali
+arhiva. Ohranjeni so prvotni zapis, časovno označeni števci in obnovitvena
+sled v `recovery/P06-C-001/`. Model ni bil ponovno zagnan, oddaja ni bila
+popravljena. Obstoječa koda je zamrznjena in neodvisno ocenjena. Status je
+`infrastructure_interrupted`; točen čas je **null**, celotna poraba je
+**null**, zadnja opažena poraba pa ločena spodnja meja. `finishedAt` v tej
+izvedbi označuje raziskovalčevo finalizacijo, ne dejanskega konca modela.
+
+Za pisanje uporabljaj **`reporting-results.json` in `reporting-results.md`**.
+Zamrznjeni analizator v `results.json` ob seštevanju pretvori null v nič;
+njegova prizadeta časovna povprečja so zato neveljavna. Zamrznjenih vhodov
+in arhivov nismo spreminjali. Ločena poročevalska plast zadrži povprečje,
+če katera zahtevana meritev časa manjka, in prizadete parne časovne
+primerjave. Funkcionalni izidi ter vsi njihovi imenovalci so nespremenjeni.
+Ne gre za novo merilo ali nadomestno izvedbo. Tudi avtomatični arhivski
+`report.md` pri null času izpiše 0 min; ta izpis ni meritev. JSON ohrani null.
+
+CSV, preglednica, grafi in TeX uporabljajo poročevalsko plast. Prazen čas
+ni nič; graf neznani čas izpusti in pove njihovo število. Primerjave časa
+z nepopolnimi zahtevanimi ponovitvami niso ocenjene. Faza implementacije
+in predaje P06-C nimajo izmišljenega trajanja. Ta odmik zaradi infrastrukture
+mora ostati izrecna omejitev v magistrski; iz nedokončane predaje ne sledi
+vzročni sklep o postopku C.

@@ -9,7 +9,7 @@ from matplotlib.colors import ListedColormap
 from matplotlib.lines import Line2D
 
 root = Path(__file__).resolve().parents[3]
-data = json.loads((root / 'main-study/analysis/results.json').read_text())
+data = json.loads((root / 'main-study/analysis/reporting-results.json').read_text())
 out = root / 'main-study/analysis/figures'
 out.mkdir(parents=True, exist_ok=True)
 plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 10, 'axes.titlesize': 13,
@@ -59,12 +59,14 @@ save(fig, 'dokazane-zahteve')
 
 fig, ax = plt.subplots(figsize=(10.5, 5.4))
 for r in data['data']:
+    if r['elapsedSeconds'] is None:
+        continue
     x = tasks.index(r['task']) + (procedures.index(r['procedure'])-1)*.22 + (r['repetition']-2)*.045
     ax.scatter(x, r['elapsedSeconds']/60, color=colors[r['procedure']], s=52,
                marker='o' if r['executionStatus']=='completed' else 'X', edgecolors='white', linewidth=.5, zorder=3)
 ax.axhline(20, ls='--', color='#8E3E44', lw=1, label='Časovna meja 20 min')
 ax.set_xticks(range(8), tasks); ax.set_xlim(-.6, 7.6)
-max_time = max([20.0]+[r['elapsedSeconds']/60 for r in data['data']])
+max_time = max([20.0]+[r['elapsedSeconds']/60 for r in data['data'] if r['elapsedSeconds'] is not None])
 ax.set_ylim(0, max_time+1.4)
 ax.set_ylabel('Celoten modelski čas (min)')
 ax.set_title(f'Čas posameznih izvedb — {scope}', loc='left', pad=14)
@@ -74,11 +76,11 @@ legend = [Line2D([0],[0], marker='o', linestyle='', color=colors[p], label=p) fo
 legend += [Line2D([0],[0], marker='X', linestyle='', color='#555555', label='Nezaključen postopek'), Line2D([0],[0], linestyle='--', color='#8E3E44', label='Meja 20 min')]
 ax.legend(handles=legend, loc='upper center', bbox_to_anchor=(.5,-.09), ncol=5, frameon=False, fontsize=9)
 fig.subplots_adjust(bottom=.27)
-fig.text(.125, .072, note + ' Priprava in neodvisna ocena sta izključeni.', fontsize=9)
+fig.text(.125, .072, note + ' Neznani časi niso prikazani: ' + str(len(data['durationReporting']['missing'])) + '.', fontsize=9)
 fig.text(.125, .035, 'Vir: execution.json posameznih arhivov; ' + snapshot, fontsize=8, color='#596678')
 save(fig, 'cas-izvedb')
 
-(out / 'provenance.json').write_text(json.dumps({'source': 'main-study/analysis/results.json', 'sourceGeneratedAt': data['generatedAt'],
+(out / 'provenance.json').write_text(json.dumps({'source': 'main-study/analysis/reporting-results.json', 'sourceGeneratedAt': data['generatedAt'],
     'archived': data['archived'], 'complete': data['complete'], 'matplotlib': matplotlib.__version__, 'numpy': np.__version__,
     'figures': ['dokazane-zahteve.png', 'dokazane-zahteve.svg', 'cas-izvedb.png', 'cas-izvedb.svg'],
     'note': 'Only measured archived values; blank cells are not zero. No inferential intervals on partial data.'}, indent=2)+'\n')

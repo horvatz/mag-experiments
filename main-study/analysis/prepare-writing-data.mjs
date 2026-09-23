@@ -4,10 +4,11 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import assert from 'node:assert/strict'
 import { digest, inventory } from '../../scripts/pilot-utils.mjs'
+import { reportingResults } from './reporting-results.mjs'
 
 const dir = dirname(fileURLToPath(import.meta.url)), root = resolve(dir, '../..'), thesis = resolve(root, '../naloga/latex')
 const read = file => JSON.parse(readFileSync(file, 'utf8'))
-const data = read(resolve(dir, 'results.json')), schedule = read(resolve(root, 'main-study/schedule.json'))
+const data = reportingResults(), schedule = read(resolve(root, 'main-study/schedule.json'))
 const frozen = read(resolve(root, 'main-study/frozen-inputs.json')), hash = file => createHash('sha256').update(readFileSync(file)).digest('hex')
 const records = new Map(data.data.map(r => [r.id, r])), reviews = [], anomalies = [], audited = [], statuses = {}, phaseRows = [], testRows = []
 const dimensions = ['specificationCoverage', 'predicatesInvariants', 'traceability', 'codeOrganization', 'ownChecks']
@@ -37,7 +38,7 @@ for (const row of data.data) {
   const phases = execution.phases?.length ? execution.phases : [{ name: 'combined-agent-work', status: execution.status, startedAt: execution.startedAt, finishedAt: execution.finishedAt, elapsedSeconds: execution.elapsedSeconds }]
   for (const [index, phase] of phases.entries()) phaseRows.push([row.id, row.task, row.procedure, row.repetition, index + 1, phase.name, phase.status, phase.startedAt, phase.finishedAt, phase.elapsedSeconds])
   const elapsedPhases = phases.reduce((sum, p) => sum + (p.elapsedSeconds ?? 0), 0)
-  if (execution.phases?.length) phaseRows.push([row.id, row.task, row.procedure, row.repetition, null, 'handoffs-and-orchestration', execution.status, null, null, Math.max(0, execution.elapsedSeconds - elapsedPhases)])
+  if (execution.phases?.length) phaseRows.push([row.id, row.task, row.procedure, row.repetition, null, 'handoffs-and-orchestration', execution.status, null, null, Number.isFinite(execution.elapsedSeconds) && phases.every(p => Number.isFinite(p.elapsedSeconds)) ? Math.max(0, execution.elapsedSeconds - elapsedPhases) : null])
   const failedTests = summary.tests.filter(t => t.status !== 'expected').map(({ title, project, status, errors }) => ({ title, project, status, errors }))
   for (const test of summary.tests) testRows.push([row.id, row.task, row.procedure, row.repetition, test.project, test.title, test.status, JSON.stringify(test.errors ?? []), row.evidence])
   if (!row.strictSuccess || failedTests.length) anomalies.push({ id: row.id, executionStatus: row.executionStatus, allowedChanges: row.allowedChanges, completeTestRun: row.completeTestRun, checks: row.checks, failedTests, evidence: row.evidence })
@@ -98,12 +99,12 @@ writeFileSync(resolve(generated, 'stanje-meritev.tex'), `% Generated from main-s
 const table = (caption, label, columns, header, rows, note) => ['\\begin{table}[htbp]', '\\centering', '\\small', `\\caption{${caption}}`, `\\label{${label}}`, `\\begin{tabular}{${columns}}`, '\\toprule', header + ' \\\\', '\\midrule', ...rows.map(r => r + ' \\\\'), '\\bottomrule', '\\end{tabular}', note ? `\\par\\smallskip\\parbox{0.95\\textwidth}{\\footnotesize ${note}}` : '', '\\end{table}', ''].join('\n')
 writeFileSync(resolve(generated, 'povzetek-meritev.tex'), table('Opisni povzetek arhiviranih glavnih izvedb.', 'tab:dejanske-meritve', '@{}lrrrrr@{}', 'Postopek & $n$/24 & Strogi uspehi & Delež zahtev & Čas (s) & Poraba znana',
   data.groups.map(g => `${g.procedure} & ${g.archived} & ${g.strictSuccesses} & ${num(g.meanDemonstratedFraction)} & ${num(g.meanElapsedSeconds)} & ${g.completeUsageCount}`),
-  'Delež zahtev in čas sta povprečji arhiviranih izvedb. Pri nepopolni zbirki se sestava nalog in ponovitev med postopki razlikuje.'))
+  'Časovno povprečje manjka, če vsaj en točni čas ni znan; manjkajoča vrednost ni nič. Pri nepopolni zbirki se sestava nalog in ponovitev med postopki razlikuje.'))
 writeFileSync(resolve(generated, 'poraba-meritev.tex'), table('Tokeni samo izvedb s popolno izmerjeno porabo.', 'tab:dejanska-poraba', '@{}lrrr@{}', 'Postopek & Popolno izmerjenih & Vhodni tokeni & Izhodni tokeni',
   data.groups.map(g => `${g.procedure} & ${g.completeUsageCount}/${g.archived} & ${num(g.meanInputTokensCompleteOnly, 0)} & ${num(g.meanOutputTokensCompleteOnly, 0)}`),
   'Povprečja imajo naveden imenovalec in so lahko selektivna. Predpomnjeni tokeni so že vključeni v vhodne. Manjkajoča celotna poraba ni nič; opažene spodnje meje so v spremljajoči zbirki.'))
 writeFileSync(resolve(generated, 'primerjave-meritev.tex'), data.complete ? table('Parne razlike med postopki po osmih nalogah.', 'tab:parne-razlike', '@{}llrrr@{}', 'Par & Mera & Razlika & Spodnja meja & Zgornja meja',
   data.comparisons.map(c => `${c.first}--${c.second} & ${c.metric === 'meanElapsedSeconds' ? 'Čas (s)' : 'Delež zahtev'} & ${num(c.meanDifference, 3)} & ${num(c.lower, 3)} & ${num(c.upper, 3)}`),
-  'Opisni 95-odstotni percentilni intervali iz 20.000 ponovnih vzorcev osmih nalog. Najprej so povprečene tri ponovitve vsakega postopka pri isti nalogi.') : 'Parne razlike in intervali še niso izračunani, ker vseh 72 izvedb še ni arhiviranih.\n')
+  'Opisni 95-odstotni percentilni intervali iz 20.000 ponovnih vzorcev osmih nalog. Najprej so povprečene tri ponovitve vsakega postopka pri isti nalogi. Časovne primerjave z manjkajočo ponovitveno meritvijo so zadržane.') : 'Parne razlike in intervali še niso izračunani, ker vseh 72 izvedb še ni arhiviranih.\n')
 writeFileSync(resolve(generated, 'presoja-meritev.tex'), `Opravljena je AI-podprta, neslepa vsebinska presoja ${reviews.length} od 24 vnaprej izbranih oddaj. Posamezne utemeljitve in povezave do dokazov so v spremljajoči zbirki \\texttt{main-study/analysis/content-review.md}. Neodvisna človeška presoja in soglasje med ocenjevalci nista izmerjena.\n`)
 console.log(JSON.stringify({ archived: data.archived, integrity: true, reviewed: reviews.length, anomalies: anomalies.length, snapshot: when }))

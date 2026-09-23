@@ -80,3 +80,16 @@ Rezultate poveži z raziskovalnimi vprašanji iz uvoda, izberi jasne primere
 in preveri skladnost sklepov s podatki. Literatura, interpretacija,
 neodvisna človeška presoja in končna jezikovna ureditev ostanejo ločeni
 avtorski koraki. Zbirka ne more nadomestiti mentorjeve presoje zasnove.
+
+## Neznan čas pri obnovi P06-C-001
+
+Za številčne rezultate uporabi reporting-results.json/md, ne prizadetih
+časovnih agregatov zamrznjenega results.json. Po infrastrukturni prekinitvi
+P06-C-001 točnega trajanja ni mogoče potrditi; neznan čas ostane null in
+prizadete povprečne/parne časovne primerjave so zadržane. Arhivski report.md
+null čas samodejno izpiše kot 0 min, kar ni veljavna meritev. Obnovitvena
+sled, omejitve in odprta predaja so v recovery/P06-C-001/ ter presoji.
+Ohranjena koda je prestala 70/70, postopek ni zaključen; to sta ločena izida.
+Iz ene infrastrukturno prekinjene predaje ni mogoče sklepati na vzrok
+v postopku C. Oddaja se ohrani v funkcionalnem imenovalcu in izbranem
+vzorcu vsebinske presoje. Model ni bil ponovljen.
