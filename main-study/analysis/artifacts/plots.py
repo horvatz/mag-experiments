@@ -20,7 +20,7 @@ colors = {'A': '#275DAD', 'B': '#B85D19', 'C': '#527E40'}
 lookup = {r['id']: r for r in data['data']}
 snapshot = data['generatedAt'].replace('T', ' ')[:19] + ' UTC'
 scope = f"{data['archived']}/72 arhiviranih izvedb"
-note = 'Popolna zbirka.' if data['complete'] else 'Nepopolna zbirka; brez končne primerjave postopkov.'
+note = 'Vse izvedbe so arhivirane.' if data['complete'] else 'Nepopolna zbirka; brez končne primerjave postopkov.'
 
 def save(fig, name):
     for ext in ['png', 'svg']:

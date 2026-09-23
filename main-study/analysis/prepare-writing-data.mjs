@@ -60,6 +60,14 @@ const snapshot = { generatedAt: new Date().toISOString(), sourceGeneratedAt: dat
 writeFileSync(resolve(dir, 'integrity-audit.json'), JSON.stringify(snapshot, null, 2) + '\n')
 writeFileSync(resolve(dir, 'anomalies.json'), JSON.stringify({ ...snapshot, audited: undefined, anomalies }, null, 2) + '\n')
 const csv = rows => rows.map(row => row.map(value => value === null || value === undefined ? '' : `"${String(value).replaceAll('"', '""')}"`).join(',')).join('\r\n') + '\r\n'
+writeFileSync(resolve(dir, 'review-data.csv'), csv([
+  ['id', 'task', 'procedure', 'repetition', 'archived', 'reviewed', ...dimensions, 'method', 'reviewer', 'reviewed_at', 'human_review', 'inter_rater_agreement', 'evidence'],
+  ...schedule.runs.filter(r => r.repetition === 1).map(r => {
+    const review = reviews.find(v => v.id === r.id)
+    return [r.id, r.task, r.procedure, r.repetition, records.has(r.id), Boolean(review), ...dimensions.map(d => review?.dimensions.find(x => x.dimension === d)?.score),
+      review?.method, review?.reviewer, review?.reviewedAt, review?.humanReview, review?.interRaterAgreement, review ? `main-study/analysis/reviews/${r.id}.json` : null]
+  })
+]))
 writeFileSync(resolve(dir, 'test-data.csv'), csv([['id', 'task', 'procedure', 'repetition', 'project', 'title', 'status', 'errors_json', 'evidence'], ...testRows]))
 writeFileSync(resolve(dir, 'phase-data.csv'), csv([['id', 'task', 'procedure', 'repetition', 'phase_order', 'phase', 'status', 'started_at_utc', 'finished_at_utc', 'elapsed_seconds'], ...phaseRows]))
 const headers = ['id', 'task', 'procedure', 'repetition', 'block', 'position', 'archived', 'execution_status', 'elapsed_seconds', 'requirements_demonstrated', 'requirements_observed', 'requirement_total', 'demonstrated_fraction', 'strict_success', 'allowed_changes', 'complete_test_run', 'usage_complete', 'input_tokens', 'cached_input_tokens', 'output_tokens', 'reasoning_output_tokens', 'observed_input_lower_bound', 'observed_output_lower_bound', 'own_test_files', 'changed_files', 'evidence']
@@ -95,7 +103,7 @@ const tex = value => String(value).replace(/[\\{}%&#_$]/g, ch => ({ '\\': '\\tex
 const num = (value, digits = 2) => value === null || value === undefined ? '--' : value.toFixed(digits).replace('.', '{,}')
 const when = data.generatedAt.replace('T', ' ').slice(0, 19) + ' UTC'
 const countText = `Število arhiviranih glavnih izvedb ob ${tex(when)}: ${data.archived} od 72 vnaprej določenih.`
-writeFileSync(resolve(generated, 'stanje-meritev.tex'), `% Generated from main-study/analysis/results.json; do not edit numbers manually.\n${countText}\n${data.complete ? 'Zbirka je popolna.' : 'Zbirka je nepopolna. Naslednje vrednosti so sprotni opis, ne uravnotežena končna primerjava postopkov.'}\nStatusi postopkov: ${Object.entries(statuses).map(([status, n]) => `\\texttt{${tex(status)}}: ${n}`).join(', ') || 'še ni arhiviranih izvedb'}.\nPiloti P01/P02 in kvalifikacija niso vključeni.\n`)
+writeFileSync(resolve(generated, 'stanje-meritev.tex'), `% Generated from main-study/analysis/results.json; do not edit numbers manually.\n${countText}\n${data.complete ? 'Vse načrtovane izvedbe so arhivirane; posamezne neznane meritve ostanejo označene kot manjkajoče.' : 'Zbirka je nepopolna. Naslednje vrednosti so sprotni opis, ne uravnotežena končna primerjava postopkov.'}\nStatusi postopkov: ${Object.entries(statuses).map(([status, n]) => `\\texttt{${tex(status)}}: ${n}`).join(', ') || 'še ni arhiviranih izvedb'}.\nPiloti P01/P02 in kvalifikacija niso vključeni.\n`)
 const table = (caption, label, columns, header, rows, note) => ['\\begin{table}[htbp]', '\\centering', '\\small', `\\caption{${caption}}`, `\\label{${label}}`, `\\begin{tabular}{${columns}}`, '\\toprule', header + ' \\\\', '\\midrule', ...rows.map(r => r + ' \\\\'), '\\bottomrule', '\\end{tabular}', note ? `\\par\\smallskip\\parbox{0.95\\textwidth}{\\footnotesize ${note}}` : '', '\\end{table}', ''].join('\n')
 writeFileSync(resolve(generated, 'povzetek-meritev.tex'), table('Opisni povzetek arhiviranih glavnih izvedb.', 'tab:dejanske-meritve', '@{}lrrrrr@{}', 'Postopek & $n$/24 & Strogi uspehi & Delež zahtev & Čas (s) & Poraba znana',
   data.groups.map(g => `${g.procedure} & ${g.archived} & ${g.strictSuccesses} & ${num(g.meanDemonstratedFraction)} & ${num(g.meanElapsedSeconds)} & ${g.completeUsageCount}`),

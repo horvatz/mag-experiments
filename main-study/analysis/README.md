@@ -23,6 +23,7 @@ ne popravljajo in ne vračajo povratnih informacij v merjene seje.
 | `phase-data.csv` | Dejanske faze posameznih arhiviranih postopkov; predaje so ločena časovna razlika |
 | `reviews/<ID>.json` | Vsebinska presoja vnaprej izbrane ponovitve 001, po petih dimenzijah |
 | `content-review.md` | Pregled dejansko opravljenih presoj z utemeljitvami |
+| `review-data.csv` | Vseh 24 vnaprej izbranih oddaj, pet ločenih ocen in identiteta presoje; manjkajoča ocena ostane prazna |
 | `anomalies.json` | Neuspešni ali nepopolni izidi; ohranjeni izvirni statusi in sporočila testov |
 | `integrity-audit.json` | Kontrola zamrznjenih virov, uporabljenega ocenjevalca in vsake datoteke arhiva |
 | `figures/` | Grafi PNG/SVG in zapis podatkovnega posnetka ter različic knjižnic |
@@ -69,6 +70,12 @@ ne živa prikaza.
 CSV uporablja UTF-8, vejico, dvojne narekovaje in CRLF. Prazno polje je
 manjkajoča meritev; pred analizo ga ne zamenjaj z ničlo. Načrtovani ID-ji
 in imenovalec 12 so znani tudi pri še nearhiviranih izvedbah.
+
+`review-data.csv` vsebuje eno vrstico na vnaprej izbrano oddajo ponovitve
+001. Pet ordinalnih dimenzij 0–2 ostane ločenih, brez skupnega seštevka.
+`reviewed=false` pomeni prazne ocene, ne ničelnih ocen. `human_review` in
+`inter_rater_agreement` ostajata prazna; AI-podprta presoja ne ustvari
+človeške presoje. Dokazi in utemeljitve so v povezani datoteki JSON.
 
 ## Obnova iz arhivov
 

@@ -32,7 +32,7 @@ overview.getRange('A2:H2').format.font = { name: 'Arial', size: 16, bold: true, 
 overview.getRange('A2:H2').format.rowHeight = 32
 overview.getRange('A2:H2').format.borders = { bottom: { style: 'thin', color: accent } }
 overview.getRange('A3').values = [[`${result.archived}/72 arhiviranih • stanje ${result.generatedAt.replace('T', ' ').slice(0, 19)} UTC`]]
-overview.getRange('A4').values = [[result.complete ? 'Popolna zbirka; primerjave upoštevajo povprečja osmih nalog.' : 'Nepopolna zbirka. Spodnji podatki so sprotni opis; postopki še niso uravnoteženo primerljivi.']]
+overview.getRange('A4').values = [[result.complete ? 'Vse izvedbe so arhivirane; primerjave z manjkajočimi zahtevanimi meritvami so zadržane.' : 'Nepopolna zbirka. Spodnji podatki so sprotni opis; postopki še niso uravnoteženo primerljivi.']]
 overview.getRange('A3:H4').format.font = { name: 'Arial', size: 10, color: muted }
 overview.getRange('A6:H6').values = [['Postopek', 'Arhivirano / 24', 'Strogi uspehi', 'Dokazane zahteve', 'Povpr. čas (min)', 'Popolna poraba, n', 'Vhodni tokeni¹', 'Izhodni tokeni¹']]
 heading(overview, 'A6:H6')
