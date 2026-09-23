@@ -1,0 +1,16 @@
+Najprej bom prebral pravila in predlogo ter zapisal specifikacijo. Nato bom samostojno izvedel spremembe, preveril rešitev in dokumentiral rezultate ter morebitne omejitve.
+
+Zahteve ločujejo besedilo datumskega polja od zadnjega veljavnega datuma za preračun. To stanje bom ohranil tudi pri preklopu med preglednico in tablo. Razvojni testi pokrivajo le del zahtev, zato bom dodal preverjanja koledarskih mej, ponastavitve, praznih skupin in števcev.
+
+Implementacija je pripravljena: skupine se računajo iz koledarskih dni v UTC, števci zajemajo celoten projekt, oba prikaza pa uporabljata isti filter. Začel sem celotno preverjanje; lastni testi pokrivajo tudi prestopna leta, prehode poletnega časa, večje nabore podatkov in širino 390 pik.
+
+Celotni `npm run check` je uspešen: vseh 54 testov je opravljenih, skupaj s preverjanjem kode in gradnjo. Ogledal sem si tudi namizni in mobilni prikaz; pri širini 390 pik stran ne sega čez zaslon, prazno datumsko polje pa ohrani prejšnji preračun. Zdaj dopolnjujem sledljivost zahtev in končno poročilo.
+
+P08 je izveden samostojno po postopku A. Implementirane so zahteve R01–R12.
+
+`npm run check` je uspešen: **54/54 testov**. Preverjen je tudi prikaz pri širini 390 pik.
+
+Dokumentacija: [specifikacija](docs/agent/specification.md) in [poročilo preverjanja](docs/agent/verification.md).
+
+Ni znanih neizpolnjenih zahtev. Nedostopni končni testi niso bili izvedeni.
+{"status":"completed","elapsedSeconds":638.937,"allowedChanges":true,"usage":{"input_tokens":543267,"cached_input_tokens":476800,"cache_write_input_tokens":0,"output_tokens":19843,"reasoning_output_tokens":2613}}

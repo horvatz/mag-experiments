@@ -42,7 +42,7 @@ for (const row of data.data) {
   const failedTests = summary.tests.filter(t => t.status !== 'expected').map(({ title, project, status, errors }) => ({ title, project, status, errors }))
   for (const test of summary.tests) testRows.push([row.id, row.task, row.procedure, row.repetition, test.project, test.title, test.status, JSON.stringify(test.errors ?? []), row.evidence])
   if (!row.strictSuccess || failedTests.length) anomalies.push({ id: row.id, executionStatus: row.executionStatus, allowedChanges: row.allowedChanges, completeTestRun: row.completeTestRun, checks: row.checks, failedTests, evidence: row.evidence })
-  audited.push({ id: row.id, files: Object.keys(marker.files).length, startedAt: execution.startedAt, finishedAt: execution.finishedAt, archiveCompletedAt: marker.completedAt, markerSha256: hash(resolve(folder, 'archive-complete.json')) })
+  audited.push({ id: row.id, files: Object.keys(marker.files).length, startedAt: execution.startedAt, finishedAt: execution.finishedAt, ...(execution.finishedAtMeaning ? { finishedAtMeaning: execution.finishedAtMeaning } : {}), archiveCompletedAt: marker.completedAt, markerSha256: hash(resolve(folder, 'archive-complete.json')) })
   const reviewFile = resolve(dir, 'reviews', `${row.id}.json`)
   if (row.repetition === 1 && existsSync(reviewFile)) {
     const review = read(reviewFile)

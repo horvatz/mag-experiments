@@ -1,10 +1,10 @@
 # Rezultati za pisanje
 
-Arhiviranih 9/72. Nepopolna zbirka; brez končnega sklepanja.
+Arhiviranih 10/72. Nepopolna zbirka; brez končnega sklepanja.
 
 | Postopek | Arhivi | Strogi uspehi | Delež zahtev | Čas s | Znani časi |
 | --- | --- | --- | --- | --- | --- |
-| A | 3/24 | 3 | 1.00 | 631.69 | 3/3 |
+| A | 4/24 | 4 | 1.00 | 633.50 | 4/4 |
 | B | 3/24 | 3 | 1.00 | 962.61 | 3/3 |
 | C | 3/24 | 2 | 1.00 | — | 2/3 |
 

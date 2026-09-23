@@ -1,5 +1,10 @@
 # Analiza in gradivo za pisanje
 
+**Za pisanje uporabljaj `reporting-results.json` in `reporting-results.md`.**
+Poročanje izrecno ohrani neznani čas prekinjene P06-C-001 kot manjkajoč;
+prizadeti časovni agregati zamrznjenega `results.json/md` niso uporabni.
+Funkcionalni izidi in imenovalci so v obeh prikazih enaki.
+
 Ta imenik vsebuje **izpeljana gradiva**, ne vhodov za merjene agente.
 Merila in primarni izračun so zamrznjeni v protokolu M/1.0 in reviziji
 `7742a88`. Izvirne oddaje ostanejo v `runs/`; tukajšnje posodobitve jih
@@ -11,6 +16,7 @@ ne popravljajo in ne vračajo povratnih informacij v merjene seje.
 | --- | --- |
 | `results.json` | Primarni zbirni izračun iz zamrznjenega analizatorja, le arhivirane izvedbe |
 | `results.md` | Človeku berljiv povzetek istega izračuna |
+| `reporting-results.json/md` | Rezultati za pisanje; neznani časi ostanejo manjkajoči, prizadete časovne primerjave so zadržane |
 | `run-data.csv` | Vseh 72 načrtovanih ID-jev; nearhivirane vrstice imajo prazne meritve |
 | `requirement-data.csv` | 72 × 12 načrtovanih zahtev; prazna meritev ni nič oziroma false |
 | `test-data.csv` | Vsak dejanski zapis neodvisnega testa z izvirnim statusom, projekcijo zaslona oziroma API in napakami |

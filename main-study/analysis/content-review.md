@@ -2,7 +2,7 @@
 
 **AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.
 
-Pregledanih je 9/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Ocene po dimenzijah se ne seštevajo v skupno kakovost.
+Pregledanih je 10/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Ocene po dimenzijah se ne seštevajo v skupno kakovost.
 
 | Oddaja | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |
 | --- | --- | --- | --- | --- | --- |
@@ -15,8 +15,9 @@ Pregledanih je 9/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/
 | [P06-A-001](reviews/P06-A-001.json) | 2 | 2 | 2 | 2 | 2 |
 | [P06-C-001](reviews/P06-C-001.json) | 2 | 2 | 1 | 2 | 2 |
 | [P06-B-001](reviews/P06-B-001.json) | 2 | 2 | 2 | 2 | 2 |
+| [P08-A-001](reviews/P08-A-001.json) | 2 | 2 | 2 | 2 | 2 |
 
-Brez zaključene presoje: P08-A-001, P08-C-001, P08-B-001, P03-A-001, P03-B-001, P03-C-001, P07-A-001, P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
+Brez zaključene presoje: P08-C-001, P08-B-001, P03-A-001, P03-B-001, P03-C-001, P07-A-001, P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
 
 ## P05-A-001
 
@@ -247,3 +248,27 @@ Dokazi: [csv.ts](../../runs/P06-B-001/submission/src/csv.ts), [CsvExport.tsx](..
 Dokazi: [csv.spec.ts](../../runs/P06-B-001/submission/tests/agent/csv.spec.ts), [check.log](../../runs/P06-B-001/submission/docs/agent/check.log), [review.md](../../runs/P06-B-001/submission/docs/agent/review.md), [events.jsonl.gz](../../runs/P06-B-001/phases/03-review/events.jsonl.gz).
 
 Končna napaka: Neodvisna ocena je uspešna 70/70; postopek je zaključen, obseg dovoljen in poraba popolna. V pregledanih končnih dokazih ni potrjene funkcionalne napake. To ne dokazuje pravilnosti za vso domeno ali vse brskalnike.
+
+## P08-A-001
+
+**Pokritost specifikacije: 2/2.** R01–R12 so jasno pokrite: izrecni začetni datum, prednost done, vse meje petih disjunktnih skupin, koledarski dnevi brez lokalnega časa, števci celotnega projekta ter stabilni filtrirani prikaz. Specifikacija loči besedilo polja od zadnjega veljavnega datuma, ohrani filter ob preračunu in stanje ob preklopu, določi ponastavitve ter različna prazna stanja. Odkrito opiše, da HTML polje lahko neveljaven vnos vrne kot prazno vrednost.
+
+Dokazi: [specification.md](../../runs/P08-A-001/submission/docs/agent/specification.md).
+
+**Predikati/invariante: 2/2.** Gdone/Goverdue/Gtoday/Gweek/Glater uporabljajo razliko koledarskih dni in negacijo done. Izrecna sta natanko ena skupina na opravilo ter vsota števcev |T|, neodvisna od filtra. visible določa stabilno filtriranje in enako množico ID-jev obeh pogledov. Prehodi (x,r,f) za veljaven/neveljaven datum, preklop ter ponastavitev neposredno omogočajo preverjanje ključne lastnosti zadržanega preračuna.
+
+Dokazi: [specification.md#zahteve-in-pravila](../../runs/P08-A-001/submission/docs/agent/specification.md#zahteve-in-pravila).
+
+**Sledljivost: 2/2.** Specifikacija 1.1 dopolni vseh 12 vrstic z dejansko kodo, imenovanimi A/D testi in dnevniki brez spremembe sprejemnih pogojev. verification.md podrobno razloči 38+8+8, zadnji lint po dodani skripti in štiri zajete prikaze; odkrito pove, kateri posnetki so bili vizualno pregledani in kateri le zajeti. check.log potrdi 54/54 in manual-review.json širine/ID-je/brez zapisov. Ne trdi, da je izvedel nedostopne teste, druge brskalnike ali vse časovne pasove.
+
+Dokazi: [specification.md](../../runs/P08-A-001/submission/docs/agent/specification.md), [verification.md](../../runs/P08-A-001/submission/docs/agent/verification.md), [check.log](../../runs/P08-A-001/submission/docs/agent/check.log), [final-lint.log](../../runs/P08-A-001/submission/docs/agent/final-lint.log), [manual-review.json](../../runs/P08-A-001/submission/docs/agent/manual-review.json).
+
+**Organizacija kode: 2/2.** calendarDay validira koledarski niz in vrne UTC dan; groupDeadlines čisto izpelje skupine z zgodnjo prednostjo done. ProjectView hrani le dateInput, referenceDate in filter; skupine, števci in vidni podatki so izpeljani. DeadlineControls je prikazna komponenta s podatki in obravnavalniki, medtem ko obstoječi ključ projekta zagotovi ponastavitev. Oba pogleda dobita iste vidne podatke, prvotni povzetek stanj pa ostane vezan na celoten projekt. Ni nove trajne shrambe ali zapisovalne poti.
+
+Dokazi: [deadlines.ts](../../runs/P08-A-001/submission/src/deadlines.ts), [DeadlineControls.tsx](../../runs/P08-A-001/submission/src/DeadlineControls.tsx), [App.tsx](../../runs/P08-A-001/submission/src/App.tsx).
+
+**Lastna preverjanja: 2/2.** Osem lastnih preverjanj (A01–A05 in trije A06) uporablja vnaprej pričakovane ID-je in mejne koledarske nize. A01 pokrije mesece, novo leto, 1900/2000, 0099→0100, prednost done, particijo in neveljavne datume. Brskalniški testi vključijo 15 nesortiranih opravil z enakimi Unicode naslovi, uro naprave 2042, vse filtre, nespremenjene števce, prazen vnos po spremenjenem datumu, prazne projekte/skupine, ohranitev podatkov, tipkovnične podrobnosti, URL/shrambo in ponastavitve. A06 dejansko ustvari ločene kontekste Los Angeles/Ljubljana/Kiritimati ter preveri šest koledarskih primerov v obeh pogledih pri 390 px. Vseh osem je v uspešnem sklopu 54; ne predstavljajo izčrpnega dokaza za vso domeno.
+
+Dokazi: [deadlines.spec.ts](../../runs/P08-A-001/submission/tests/agent/deadlines.spec.ts), [check.log](../../runs/P08-A-001/submission/docs/agent/check.log), [manual-review.mjs](../../runs/P08-A-001/submission/tests/agent/manual-review.mjs), [manual-review.json](../../runs/P08-A-001/submission/docs/agent/manual-review.json).
+
+Končna napaka: Neodvisna ocena je uspešna 70/70; postopek je zaključen, obseg dovoljen in poraba popolna. V pregledanih končnih dokazih ni potrjene funkcionalne napake. Mobilna in časovnopasovna preverjanja so omejena na Chromium.
