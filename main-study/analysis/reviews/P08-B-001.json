@@ -1,0 +1,41 @@
+{
+  "id": "P08-B-001",
+  "reviewedAt": "2026-09-23",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage", "score": 2,
+      "rationale": "Predana specifikacija jasno določi vseh R01–R12, koledarsko domeno, prednost done, meje petih skupin, celotne števce in stabilne filtrirane podatke. Razloči vrstni red znotraj statusnih stolpcev od množice ID-jev obeh pogledov, vsebino polja od veljavne reference, prazno skupino od praznega projekta ter ohranitev pogleda od ponastavitve projekta. Predlagani S1–S5 so izrecno načrt, ne trditev o že opravljenih testih.",
+      "evidence": ["runs/P08-B-001/submission/docs/agent/specification.md", "runs/P08-B-001/submission/docs/agent/specification-history.md"]
+    },
+    {
+      "dimension": "predicatesInvariants", "score": 2,
+      "rationale": "g(t,r) poda disjunktno razvrstitev prek razlike koledarskih dni in prednosti statusa. C(k), vsota |T| ter stabilni V so ločeni od izbora filtra; oba pogleda ohranita isto množico ID-jev. Prehodi (d,r,f) določajo prazno polje brez izgube zadnjega veljavnega izračuna, spremembo filtra ter projektno/osvežitveno ponastavitev. Nespremenjenost podatkov in odsotnost nove trajne shrambe sta izrecni.",
+      "evidence": ["runs/P08-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"]
+    },
+    {
+      "dimension": "traceability", "score": 2,
+      "rationale": "Začetna specifikacija ostane predaja prvotnega avtorja, implementerjeva končna matrika pa vsako R poveže s simboli/vrsticami kode, imenovanimi S/D testi in dejanskimi dnevniki. verification.md jasno ohrani prvi 46/52 in zadnji 52/52, popravek oznak ter priprave testnih podatkov in omejitev xcrun. Pregledovalec loči pregled predanega dnevnika in treh slik od lastnih 38 trditev koledarske logike; surovi item_27 v fazi review potrdi PASS in izhod 0. Ne zatrjuje novega celotnega ali živega brskalniškega zagona.",
+      "evidence": ["runs/P08-B-001/submission/docs/agent/verification.md", "runs/P08-B-001/submission/docs/agent/check.log", "runs/P08-B-001/submission/docs/agent/check-final.log", "runs/P08-B-001/submission/docs/agent/review.json", "runs/P08-B-001/phases/03-review/events.jsonl.gz"]
+    },
+    {
+      "dimension": "codeOrganization", "score": 2,
+      "rationale": "deadlines.ts loči validacijo koledarskega datuma in čisti klasifikator od Reactovega prikaza. ProjectView hrani tri neodvisna stanja; števci in stabilno vidno zaporedje nastanejo ob renderju iz izvornih opravil. filter hkrati povečuje svež lokalni objekt števcev pred odločitvijo o vidnosti, brez mutacije Task ali trajnih stranskih učinkov. Oba pogleda dobita iste visibleTasks, prvotni statusni povzetek pa celoten projekt. Ključ projekta zagotovi ponastavitev; ni podvojene klasifikacije v tabli in preglednici.",
+      "evidence": ["runs/P08-B-001/submission/src/deadlines.ts", "runs/P08-B-001/submission/src/App.tsx", "runs/P08-B-001/submission/src/styles.css"]
+    },
+    {
+      "dimension": "ownChecks", "score": 2,
+      "rationale": "Šest končno uspešnih testov pokrije 12 nesortiranih opravil z enakimi Unicode naslovi, vse skupine, prednost done, točni vrstni red v stolpcih, particijo, izvorne datume ter tipkovnične podrobnosti. S3 uporablja uro 2037, spreminja filter tudi ob praznem datumu in preveri zadržane števce, preklop, projekt/osvežitev ter URL/shrambo. S4/S5 pokrije oba prazna projekta, eno dolgo Unicode opravilo, prazno skupino in 390 px. Trije dejanski pasovi UTC/Ljubljana/Los Angeles vključujejo osem neodvisno navedenih mej, tudi oba evropska in ameriška prehoda DST. Pregledovalec doda 38 trditev za zgodnja leta, 1900/2000/2100, leto 9999 in neveljavne datume. Prvotni neuspehi ostanejo dokumentirani; zadnji celotni zagon potrdi 52/52.",
+      "evidence": ["runs/P08-B-001/submission/tests/agent/deadlines.spec.ts", "runs/P08-B-001/submission/docs/agent/check-final.log", "runs/P08-B-001/submission/docs/agent/review.json", "runs/P08-B-001/phases/03-review/events.jsonl.gz"]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena potrdi 70/70 in 12/12 zahtev; postopek je zaključen s popolno porabo, dovoljenimi spremembami in strogim uspehom. V pregledanih končnih dokazih ni potrjene funkcionalne napake; to ni izčrpen dokaz celotne domene.",
+  "developmentFailureExample": "Prvi celotni zagon je dosegel 46/52. S1/S3/S4 niso našli natančne oznake ovitega selecta prek getByLabel; aplikacijski oznaki sta nato ločeni od kontrol z label/htmlFor. Trije časovnopasovni S2 so pri zaporednem obisku istega fragmenta ohranili stare naložene testne podatke. Testna priprava zdaj najprej obišče about:blank in odstrani prejšnje prestrezanje GET. Prilagojena je tudi tipkovnična pot skozi notranje dele datumskega polja. Po teh spremembah celotni check uspe 52/52; klasifikator rokov ni bil spremenjen.",
+  "developmentFailureNote": "Ohranjena check.log in check-final.log ločita neuspešno testno iskanje/pripravo od končnega izida. Neuspeh git status zaradi manjkajočega xcrun je omejitev izoliranega okolja in ni potrjena funkcionalna napaka aplikacije."
+}

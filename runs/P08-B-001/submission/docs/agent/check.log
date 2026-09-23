@@ -1,0 +1,358 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 check
+> npm run lint && npm run build && npm test
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 lint
+> eslint .
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 build
+> npm run typecheck && vite build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 typecheck
+> tsc --noEmit
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 1876 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.36 kB
+dist/assets/index-D749_e7W.css   13.62 kB │ gzip:  3.70 kB
+dist/assets/index-DyrR8okv.js   241.30 kB │ gzip: 75.32 kB
+
+✓ built in 109ms
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 test
+> playwright test
+
+[WebServer] (node:620) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 52 tests using 1 worker
+
+(node:678) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [api] › tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (41ms)
+  ✓   2 [api] › tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (10ms)
+  ✓   3 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (5ms)
+  ✓   4 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (7ms)
+  ✓   5 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (12ms)
+  ✓   7 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (4ms)
+  ✓   8 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (5ms)
+  ✓   9 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [api] › tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (11ms)
+  ✓  11 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with success (14ms)
+  ✓  12 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [api] › tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (7ms)
+  ✓  14 [api] › tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [desktop] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (472ms)
+  ✓  16 [desktop] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (487ms)
+  ✓  17 [desktop] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (550ms)
+  ✓  18 [desktop] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (683ms)
+  ✓  19 [desktop] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (499ms)
+  ✓  20 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (359ms)
+  ✓  21 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (356ms)
+  ✓  22 [desktop] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (360ms)
+  ✓  23 [desktop] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (346ms)
+  ✓  24 [desktop] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (886ms)
+  ✓  25 [desktop] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (598ms)
+  ✓  26 [desktop] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (440ms)
+(node:708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  27 [mobile] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (386ms)
+  ✓  28 [mobile] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (511ms)
+  ✓  29 [mobile] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (557ms)
+  ✓  30 [mobile] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (726ms)
+  ✓  31 [mobile] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (510ms)
+  ✓  32 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (406ms)
+  ✓  33 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (405ms)
+  ✓  34 [mobile] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (374ms)
+  ✓  35 [mobile] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (401ms)
+  ✓  36 [mobile] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (903ms)
+  ✓  37 [mobile] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (688ms)
+  ✓  38 [mobile] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (478ms)
+(node:742) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  39 [development-desktop] › tests/development/P08.spec.ts:2:1 › D01: fixed anchor and overdue tasks (299ms)
+  ✓  40 [development-desktop] › tests/development/P08.spec.ts:3:1 › D02: inclusive week boundary (290ms)
+  ✓  41 [development-desktop] › tests/development/P08.spec.ts:4:1 › D03: empty draft retains last valid classification (320ms)
+  ✓  42 [development-desktop] › tests/development/P08.spec.ts:5:1 › D04: done group, board and no writes (391ms)
+(node:753) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [development-mobile] › tests/development/P08.spec.ts:2:1 › D01: fixed anchor and overdue tasks (330ms)
+  ✓  44 [development-mobile] › tests/development/P08.spec.ts:3:1 › D02: inclusive week boundary (328ms)
+  ✓  45 [development-mobile] › tests/development/P08.spec.ts:4:1 › D03: empty draft retains last valid classification (341ms)
+  ✓  46 [development-mobile] › tests/development/P08.spec.ts:5:1 › D04: done group, board and no writes (410ms)
+(node:763) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  47 [agent] › tests/agent/deadlines.spec.ts:24:1 › S1: complete disjoint partition, stable IDs, done precedence, both views and read-only details (5.3s)
+(node:772) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  48 [agent] › tests/agent/deadlines.spec.ts:66:1 › S3: invalid draft, recalculation, view preservation, project and refresh reset, no persistence (5.3s)
+(node:808) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  49 [agent] › tests/agent/deadlines.spec.ts:119:1 › S4/S5: empty projects and empty groups recover on a 390 px viewport (5.9s)
+(node:1065) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  50 [agent] › tests/agent/deadlines.spec.ts:163:5 › S2: calendar in UTC › month, year, leap February and daylight saving boundaries (5.4s)
+(node:1296) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  51 [agent] › tests/agent/deadlines.spec.ts:163:5 › S2: calendar in Europe/Ljubljana › month, year, leap February and daylight saving boundaries (5.4s)
+(node:1303) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  52 [agent] › tests/agent/deadlines.spec.ts:163:5 › S2: calendar in America/Los_Angeles › month, year, leap February and daylight saving boundaries (5.4s)
+
+
+  1) [agent] › tests/agent/deadlines.spec.ts:24:1 › S1: complete disjoint partition, stable IDs, done precedence, both views and read-only details 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Pogled rokov', { exact: true })
+    Expected: "all"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Pogled rokov', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Pogled rokov', { exact: true })
+
+
+      24 | test('S1: complete disjoint partition, stable IDs, done precedence, both views and read-only details', async ({ page }) => {
+      25 |   const writes = await mount(page, records)
+    > 26 |   await expect(page.getByLabel('Pogled rokov', { exact: true })).toHaveValue('all')
+         |                                                                  ^
+      27 |   await expectIds(page, records.map(task => task.id))
+      28 |   const expected = {
+      29 |     overdue: ['past-open', 'past-older'], today: ['today-open', 'today-progress'],
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P08-B-001/app/tests/agent/deadlines.spec.ts:26:66
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S1-complet-0162e-views-and-read-only-details-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-deadlines-S1-complet-0162e-views-and-read-only-details-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S1-complet-0162e-views-and-read-only-details-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-deadlines-S1-complet-0162e-views-and-read-only-details-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [agent] › tests/agent/deadlines.spec.ts:66:1 › S3: invalid draft, recalculation, view preservation, project and refresh reset, no persistence 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Pogled rokov', { exact: true })
+    Expected: "week"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Pogled rokov', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Pogled rokov', { exact: true })
+
+
+      74 |   await select(page, 'Pogled rokov', 'week')
+      75 |   await date.fill('2026-09-22')
+    > 76 |   await expect(filter).toHaveValue('week')
+         |                        ^
+      77 |   await expectIds(page, ['late-open', 'week-last'])
+      78 |   await counts(page, [4, 1, 2, 1, 4])
+      79 |   await date.fill('')
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P08-B-001/app/tests/agent/deadlines.spec.ts:76:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S3-invalid-8ac1c-efresh-reset-no-persistence-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-deadlines-S3-invalid-8ac1c-efresh-reset-no-persistence-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S3-invalid-8ac1c-efresh-reset-no-persistence-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-deadlines-S3-invalid-8ac1c-efresh-reset-no-persistence-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [agent] › tests/agent/deadlines.spec.ts:119:1 › S4/S5: empty projects and empty groups recover on a 390 px viewport 
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator: getByLabel('Pogled rokov', { exact: true })
+    Expected: focused
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeFocused" getByLabel('Pogled rokov', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Pogled rokov', { exact: true })
+
+
+      144 |   await page.getByLabel('Referenčni datum', { exact: true }).focus()
+      145 |   await page.keyboard.press('Tab')
+    > 146 |   await expect(page.getByLabel('Pogled rokov', { exact: true })).toBeFocused()
+          |                                                                  ^
+      147 | })
+      148 |
+      149 | const boundaries = [
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P08-B-001/app/tests/agent/deadlines.spec.ts:146:66
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S4-S5-empt-f9a6e-ecover-on-a-390-px-viewport-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-deadlines-S4-S5-empt-f9a6e-ecover-on-a-390-px-viewport-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S4-S5-empt-f9a6e-ecover-on-a-390-px-viewport-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-deadlines-S4-S5-empt-f9a6e-ecover-on-a-390-px-viewport-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [agent] › tests/agent/deadlines.spec.ts:163:5 › S2: calendar in UTC › month, year, leap February and daylight saving boundaries 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  getByLabel('Število rokov overdue', { exact: true })
+    Expected: "0"
+    Received: "3"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" getByLabel('Število rokov overdue', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Število rokov overdue', { exact: true })
+        14 × locator resolved to <strong aria-label="Število rokov overdue">3</strong>
+           - unexpected value "3"
+
+
+      19 | const groups = ['overdue', 'today', 'week', 'later', 'done'] as const
+      20 | async function counts(page: Page, values: number[]) {
+    > 21 |   for (const [index, key] of groups.entries()) await expect(page.getByLabel(`Število rokov ${key}`, { exact: true })).toHaveText(String(values[index]))
+         |                                                                                                                       ^
+      22 | }
+      23 |
+      24 | test('S1: complete disjoint partition, stable IDs, done precedence, both views and read-only details', async ({ page }) => {
+        at counts (/Users/zan/Documents/mag/experiments/.work/pilots/P08-B-001/app/tests/agent/deadlines.spec.ts:21:119)
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P08-B-001/app/tests/agent/deadlines.spec.ts:167:15
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S2-calenda-b63b9--daylight-saving-boundaries-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-deadlines-S2-calenda-b63b9--daylight-saving-boundaries-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S2-calenda-b63b9--daylight-saving-boundaries-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-deadlines-S2-calenda-b63b9--daylight-saving-boundaries-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [agent] › tests/agent/deadlines.spec.ts:163:5 › S2: calendar in Europe/Ljubljana › month, year, leap February and daylight saving boundaries 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  getByLabel('Število rokov overdue', { exact: true })
+    Expected: "0"
+    Received: "3"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" getByLabel('Število rokov overdue', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Število rokov overdue', { exact: true })
+        14 × locator resolved to <strong aria-label="Število rokov overdue">3</strong>
+           - unexpected value "3"
+
+
+      19 | const groups = ['overdue', 'today', 'week', 'later', 'done'] as const
+      20 | async function counts(page: Page, values: number[]) {
+    > 21 |   for (const [index, key] of groups.entries()) await expect(page.getByLabel(`Število rokov ${key}`, { exact: true })).toHaveText(String(values[index]))
+         |                                                                                                                       ^
+      22 | }
+      23 |
+      24 | test('S1: complete disjoint partition, stable IDs, done precedence, both views and read-only details', async ({ page }) => {
+        at counts (/Users/zan/Documents/mag/experiments/.work/pilots/P08-B-001/app/tests/agent/deadlines.spec.ts:21:119)
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P08-B-001/app/tests/agent/deadlines.spec.ts:167:15
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S2-calenda-20edb--daylight-saving-boundaries-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-deadlines-S2-calenda-20edb--daylight-saving-boundaries-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S2-calenda-20edb--daylight-saving-boundaries-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-deadlines-S2-calenda-20edb--daylight-saving-boundaries-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [agent] › tests/agent/deadlines.spec.ts:163:5 › S2: calendar in America/Los_Angeles › month, year, leap February and daylight saving boundaries 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  getByLabel('Število rokov overdue', { exact: true })
+    Expected: "0"
+    Received: "3"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" getByLabel('Število rokov overdue', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Število rokov overdue', { exact: true })
+        14 × locator resolved to <strong aria-label="Število rokov overdue">3</strong>
+           - unexpected value "3"
+
+
+      19 | const groups = ['overdue', 'today', 'week', 'later', 'done'] as const
+      20 | async function counts(page: Page, values: number[]) {
+    > 21 |   for (const [index, key] of groups.entries()) await expect(page.getByLabel(`Število rokov ${key}`, { exact: true })).toHaveText(String(values[index]))
+         |                                                                                                                       ^
+      22 | }
+      23 |
+      24 | test('S1: complete disjoint partition, stable IDs, done precedence, both views and read-only details', async ({ page }) => {
+        at counts (/Users/zan/Documents/mag/experiments/.work/pilots/P08-B-001/app/tests/agent/deadlines.spec.ts:21:119)
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P08-B-001/app/tests/agent/deadlines.spec.ts:167:15
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S2-calenda-750f5--daylight-saving-boundaries-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-deadlines-S2-calenda-750f5--daylight-saving-boundaries-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-deadlines-S2-calenda-750f5--daylight-saving-boundaries-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-deadlines-S2-calenda-750f5--daylight-saving-boundaries-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    [agent] › tests/agent/deadlines.spec.ts:24:1 › S1: complete disjoint partition, stable IDs, done precedence, both views and read-only details 
+    [agent] › tests/agent/deadlines.spec.ts:66:1 › S3: invalid draft, recalculation, view preservation, project and refresh reset, no persistence 
+    [agent] › tests/agent/deadlines.spec.ts:119:1 › S4/S5: empty projects and empty groups recover on a 390 px viewport 
+    [agent] › tests/agent/deadlines.spec.ts:163:5 › S2: calendar in UTC › month, year, leap February and daylight saving boundaries 
+    [agent] › tests/agent/deadlines.spec.ts:163:5 › S2: calendar in Europe/Ljubljana › month, year, leap February and daylight saving boundaries 
+    [agent] › tests/agent/deadlines.spec.ts:163:5 › S2: calendar in America/Los_Angeles › month, year, leap February and daylight saving boundaries 
+  46 passed (50.7s)
