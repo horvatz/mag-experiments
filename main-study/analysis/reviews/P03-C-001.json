@@ -1,0 +1,67 @@
+{
+  "id": "P03-C-001",
+  "reviewedAt": "2026-09-24",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija skladno zajame vseh R01–R12 in bistvene robove: poljubno število opravil, enake naslove, Unicode, dobesedne besede, točno osebo, ločena izvora možnosti oseb in števcev ter obe vrsti praznine. Natančno določi pogodbo kontrol in življenjsko dobo filtrov, ohrani nalaganje/napake ter ne razširi dogovorjene sočasnosti. Izvedeni S01–S08 so ločeni od splošnih pravil; zgodovina razlikuje načrt 1.0 od dokazil različice 1.1.",
+      "evidence": [
+        "runs/P03-C-001/submission/docs/agent/P03/spec.md",
+        "runs/P03-C-001/submission/docs/agent/P03/plan.md"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "norm, H, W, search in match določijo točno območje odstranjenih znamenj, konjunkcijo vseh dobesednih besed in neodvisno natančno primerjavo osebe. V ostane stabilno podzaporedje T(p); A(p), N/M in C(k) imajo nedvoumne izvore. Tabela prehodov poda spremembo ene kontrole, ohranitev ob menjavi pogleda in F0 ob projektu/osvežitvi/čiščenju. T_after=T_before, prepoved pisanja in odsotnost trajnega zapisa so preverljive ohranjene lastnosti.",
+      "evidence": [
+        "runs/P03-C-001/submission/docs/agent/P03/spec.md#predikati-in-spremembe-stanja"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "verification.md vsebuje celotno matriko zahteva–predikat–dejanski S/D test–simbol kode–dokaz. Check.log ohrani ukaz, čas, izhod 0 in vseh 56 uspešnih testov; deset lastnih ustreza osmim scenarijem, saj imata S06 in S08 po dve različici. Prazna imena so pošteno označena kot statično preverjena zunaj neprazne domene, slike kot vizualni pregled. Vseh osem nalog je zaključenih. Convergence.json in dogodki faze 06 potrjujejo pregled kode ter že shranjenih dokazov brez ponovnega zagona testov ali dodatne implementacije.",
+      "evidence": [
+        "runs/P03-C-001/submission/docs/agent/verification.md",
+        "runs/P03-C-001/submission/docs/agent/P03/evidence/check.log",
+        "runs/P03-C-001/submission/docs/agent/P03/tasks.md",
+        "runs/P03-C-001/submission/docs/agent/convergence.json",
+        "runs/P03-C-001/phases/06-converge/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti taskFilters.ts sprejme readonly seznam, zavrne neustrezno stanje/osebo ter nato uporabi normalizirano iskanje, brez mutacije ali podvojene logike pogledov. ProjectView hrani en objekt filtrov; možnosti oseb in M izpelje iz izvornih tasks, oba pogleda in števce pa iz enega visibleTasks. Projektni key ohrani preprosto ponastavitev brez sinhronizacijskih učinkov. CSS omeji spremembe na nove kontrole in obstoječe odzivne prelome; tabla, podrobnosti in strežnik ostanejo ponovno uporabljeni.",
+      "evidence": [
+        "runs/P03-C-001/submission/src/taskFilters.ts",
+        "runs/P03-C-001/submission/src/App.tsx",
+        "runs/P03-C-001/submission/src/styles.css",
+        "runs/P03-C-001/submission/docs/agent/P03/plan.md"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "Deset uspešnih lastnih testov preveri 14 nesortiranih opravil, en zapis drugega projekta, oba prazna projekta, enake naslove, vsa iskalna polja, sestavljeni/razstavljeni Unicode, negativno manjkajočo besedo in dobesedna ločila. Preveri tri filtre, nespremenjene možnosti oseb, projekt A→B→A, reload, URL/shrambo, urejeni kartici v istem stolpcu, števce in čiščenje. S07 uporablja zamrznjene podatke, preveri identiteto referenc in pomembno negativno mejo U+1AB0, ki se ne sme odstraniti. S08 dejansko teče pri 1440/390, odpira podrobnosti po različnih ID-jih ter preveri širino, dolgo ime in odsotnost pisanja/testnih kontrol iz aplikacije. Pričakovanja niso izračunana s produkcijskim filtrom.",
+      "evidence": [
+        "runs/P03-C-001/submission/tests/agent/P03.spec.ts",
+        "runs/P03-C-001/submission/docs/agent/P03/evidence/check.log",
+        "runs/P03-C-001/submission/docs/agent/P03/evidence/folio-390-board.png",
+        "runs/P03-C-001/submission/docs/agent/P03/evidence/folio-1440-table.png"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena potrdi 70/70 in 12/12 zahtev, dovoljen obseg, zaključen postopek in popolno porabo. V pregledanih končnih dokazih ni potrjene funkcionalne napake; to ni izčrpen dokaz vseh podatkov iz domene.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Prvi celotni zagon uspe 56/56 v 21,7 s; ni zabeleženega popravljanja neuspešnega funkcionalnega testa. V fazi specify manjka orodje rg (exit 127), nato se pregled virov nadaljuje; to je omejitev orodja, ne funkcionalna napaka aplikacije. Korak converge ne izvaja novega testnega zagona."
+}
