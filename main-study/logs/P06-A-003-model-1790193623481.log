@@ -1,0 +1,18 @@
+Najprej bom prebral pravila in zahteve ter pripravil specifikacijo. Nato bom rešitev implementiral, preveril in v dokumentacijo zapisal rezultate ter morebitne omejitve.
+
+Izvoz bo imel lastne nastavitve, zato filter ne bo spreminjal prikazanih opravil. Obstoječa vezava pogleda na ID projekta omogoča ponastavitev ob menjavi projekta; dodatno bom preveril prazne rezultate, vrstni red kolon, posebne znake in nevtralizacijo formul.
+
+Specifikacija in prva implementacija sta pripravljeni. CSV se ustvari lokalno v brskalniku, z BOM, zaključki CRLF in navedbo vseh celic. Dodajam teste za robne primere ter preverjanje, da izvozne nastavitve ne vplivajo na podatke ali obstoječe poglede.
+
+Celoten `npm run check` je uspel: 38 izhodiščnih, 8 razvojnih in 10 dodatnih preverjanj. Dodatni testi so potrdili tudi prazne projekte, ponastavitve nastavitev, enake bajte v obeh pogledih ter ohranitev posebnih znakov. Preverim še videz pri namizni in mobilni širini ter dopolnim končno poročilo.
+
+Tudi po manjši slogovni uskladitvi gumba je vseh 56 preverjanj uspešnih. Strežnik za ročni ogled je po spremembi še vračal stare sloge, zato sem ga ponovno zagnal; končne posnetke preverjam na osveženi različici.
+
+Implementiran je nastavljiv izvoz CSV po zahtevah R01–R12.
+
+`npm run check`: **56/56 uspešnih preverjanj**. Preverjen je tudi videz pri širini 390 px.
+
+Dokumentacija: [specifikacija](docs/agent/specification.md) in [poročilo preverjanja](docs/agent/verification.md).
+
+Znanih neizpolnjenih zahtev ni. Nedostopni končni testi niso bili izvedeni.
+{"status":"completed","elapsedSeconds":792.318,"allowedChanges":true,"usage":{"input_tokens":1058702,"cached_input_tokens":980480,"cache_write_input_tokens":0,"output_tokens":24076,"reasoning_output_tokens":4450}}
