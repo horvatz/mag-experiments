@@ -2,7 +2,7 @@
 
 **AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.
 
-Vsebinsko ocenjenih je 12/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Za 1 izbranih oddaj je dokumentirana nezmožnost ocene; ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
+Vsebinsko ocenjenih je 13/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Za 1 izbranih oddaj je dokumentirana nezmožnost ocene; ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
 
 | Oddaja | Status presoje | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -19,8 +19,9 @@ Vsebinsko ocenjenih je 12/24 vnaprej določenih oddaj (ponovitev 001 za P03–P1
 | [P08-C-001](reviews/P08-C-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 | [P08-B-001](reviews/P08-B-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 | [P03-A-001](reviews/P03-A-001.json) | ocena ni mogoča | — | — | — | — | — |
+| [P03-B-001](reviews/P03-B-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 
-Še neobravnavane izbrane oddaje: P03-B-001, P03-C-001, P07-A-001, P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
+Še neobravnavane izbrane oddaje: P03-C-001, P07-A-001, P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
 
 ## P05-A-001
 
@@ -363,3 +364,29 @@ Dokazi: [execution.json](../../runs/P03-A-001/execution.json), [events.jsonl.gz]
 Končna napaka: Postopek execution_failed zaradi izrecnega dogodka usage limit, brez sprememb datotek. Neodvisno 38/70 in 0/12, strogi uspeh false. Čas 13,293 s je znan; celotna poraba je null, opažena spodnja meja 10474 vhodnih / 204 izhodnih tokenov. Kratek prekinjeni čas ni čas uspešne rešitve in ne utemeljuje vzročnega sklepa o postopku A.
 
 Opomba o razvojnem poteku: Model ni prišel do implementacije ali lastnega testnega zagona. Vrstni red je obstal po arhiviranju; po uporabnikovi ročni ponastavitvi je nadaljevanje pri P03-B-001, brez ponovitve P03-A-001.
+
+## P03-B-001
+
+**Pokritost specifikacije: 2/2.** Specifikacija jasno obravnava vseh R01–R12 ter domeno 0/1/več kot 10 opravil, podvojene naslove, Unicode in ločila. Razlikuje normalizirano iskanje od natančne izbire osebe, celoten projekt od vidnega seznama, prazni projekt od nič zadetkov ter množico ID-jev table od vrstnega reda znotraj stolpcev. Predlagane S1–S7 in začetno matriko izrecno označi kot še neizvedene; ne zoži zahtev na razvojne primere.
+
+Dokazi: [specification.md](../../runs/P03-B-001/submission/docs/agent/specification.md), [specification-history.md](../../runs/P03-B-001/submission/docs/agent/specification-history.md).
+
+**Predikati/invariante: 2/2.** norm, H, W in ustreza natančno določijo NFD/U+0300–U+036F, vse dobesedne besede ter konjunkcijo stanja in točne osebe. V je stabilno podzaporedje T_p brez mutacije; A_p izhaja iz celotnega projekta, N/M in C_k iz jasno ločenih množic. Preverljivi prehodi določijo F0 ob menjavi projekta, osvežitvi in čiščenju ter ohranitev filtrov ob menjavi pogleda. Praznina je razločena s pogoji M=0 in M>0 ter N=0.
+
+Dokazi: [specification.md#zahteve-in-pravila](../../runs/P03-B-001/submission/docs/agent/specification.md#zahteve-in-pravila).
+
+**Sledljivost: 2/2.** Končna matrika verification.md poveže vsako zahtevo s simboli/vrsticami kode, konkretnimi A/D testi in check.log s 53/53. Ohrani začetni načrt in jasno navede, da implementer ni dinamično preveril vrstnega reda več kartic na stolpec. Pregledovalec to vrzel dopolni z lastno skripto; surovi item_17 potrdi 15 zapisov, 9 zadetkov, natančni filter na 5, širino 390 in exit 0. review.md/json ločita ta zagon od branega celotnega dnevnika, ki ni bil ponovno izveden. Omejitve slikovne primerjave, Chromium in xcrun so odkrite.
+
+Dokazi: [verification.md](../../runs/P03-B-001/submission/docs/agent/verification.md), [check.log](../../runs/P03-B-001/submission/docs/agent/check.log), [review.md](../../runs/P03-B-001/submission/docs/agent/review.md), [review.json](../../runs/P03-B-001/submission/docs/agent/review.json), [events.jsonl.gz](../../runs/P03-B-001/phases/03-review/events.jsonl.gz).
+
+**Organizacija kode: 2/2.** taskFilters.ts loči čisto filtriranje od prikaza. ProjectView hrani eno sestavljeno stanje treh kontrol, izpelje visibleTasks in iz celotnega odgovora ločeno izračuna osebe ter imenovalec. Isti vidni seznam napaja preglednico, tablo in števce; ni podvojenih iskalnih pravil. Obstoječi projektni key zagotovi ponastavitev, filter ohrani vrstni red in zapisov ne spreminja. Odzivne kontrole so omejene na pripadajoče CSS razrede brez sprememb strežnika, navigacijskih pravil ali trajne shrambe.
+
+Dokazi: [taskFilters.ts](../../runs/P03-B-001/submission/src/taskFilters.ts), [App.tsx](../../runs/P03-B-001/submission/src/App.tsx), [TaskBoard.tsx](../../runs/P03-B-001/submission/src/TaskBoard.tsx), [styles.css](../../runs/P03-B-001/submission/src/styles.css).
+
+**Lastna preverjanja: 2/2.** Sedem lastnih testov vsebuje 13 nesortiranih opravil, ločene zadetke vseh štirih polj, Unicode, negativno manjkajočo besedo, dobesedna ločila, točna podobna imena in vse tri filtre. Preveri projekt A→B→A, osvežitev obeh pogledov, URL/shrambo, oba prazna projekta, en dolg zapis pri 390 px, podrobnosti po ID, Escape/fokus in nespremenjene zamrznjene podatke. Prvi celotni zagon uspe 53/53. Pregledovalec dodatno izvede mobilni scenarij s 15 novimi zapisi, tremi zadetki na stolpec ter sestavljenim/razstavljenim imenom; to ni le ponovitev istega testa. Dokazila vključujejo dejanske rezultate in jasno označene omejitve.
+
+Dokazi: [filters.spec.ts](../../runs/P03-B-001/submission/tests/agent/filters.spec.ts), [check.log](../../runs/P03-B-001/submission/docs/agent/check.log), [review.md](../../runs/P03-B-001/submission/docs/agent/review.md), [events.jsonl.gz](../../runs/P03-B-001/phases/03-review/events.jsonl.gz), [mobile-table.png](../../runs/P03-B-001/submission/docs/agent/mobile-table.png), [desktop-board.png](../../runs/P03-B-001/submission/docs/agent/desktop-board.png).
+
+Končna napaka: Neodvisno preverjanje potrdi 70/70 in 12/12 zahtev, dovoljen obseg, zaključen postopek ter popolno porabo. V pregledanih končnih dokazih ni potrjene funkcionalne napake; to ni dokaz pravilnosti za celotno domeno.
+
+Opomba o razvojnem poteku: Predani prvi celotni check.log je uspešen 53/53; ni dokumentiranega razvojnega funkcionalnega neuspeha. Neizvedljivo preverjanje Git zaradi manjkajočega xcrun je okoljska omejitev. Pregledovalčev dodatni scenarij dopolni priznano vrzel v dinamičnem preverjanju vrstnega reda, brez spremembe specifikacije ali kode.
