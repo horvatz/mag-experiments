@@ -1,0 +1,205 @@
+import type { Page } from '@playwright/test'
+import { test, expect, mount, makeTask, expectIds, select, board, table, click, project, details, summary, columnIds, readonly } from '../development/helpers.ts'
+import { defaultFilters, filterTasks } from '../../src/taskFilters.ts'
+
+const records = [
+  makeTask('č-9', { title: 'Čas pregled', description: 'Končni zapis .* [x]', assignee: 'Živa Črt' }),
+  makeTask('b-2', { title: 'Čas pregled', description: 'Drug opis', assignee: 'Ziva Crt', status: 'in_progress' }),
+  makeTask('a-1', { title: 'Druga naloga', description: 'C\u030cas zaključek', assignee: 'Živa Črt', status: 'done' }),
+  ...Array.from({ length: 10 }, (_, i) => makeTask(`item-${10 - i}`, { title: `Dopolnilo ${i}`, description: 'Običajno besedilo' })),
+  makeTask('other-1', { projectId: 'launch', title: 'Drug projekt', assignee: 'Samo Drug' }),
+]
+const webOrder = records.filter(task => task.projectId === 'web').map(task => task.id)
+const search = (page: Page) => page.getByRole('searchbox', { name: 'Išči opravila', exact: true })
+const result = (page: Page) => page.getByRole('status', { name: 'Rezultati filtriranja' })
+async function defaults(page: Page) {
+  await expect(search(page)).toHaveValue('')
+  await expect(page.getByRole('combobox', { name: 'Filter stanja', exact: true })).toHaveValue('all')
+  await expect(page.getByRole('combobox', { name: 'Filter odgovorne osebe', exact: true })).toHaveValue('all')
+}
+
+// Expected IDs are explicit scenario outcomes, independent of the production predicate.
+test('A01: defaults, all search fields, Unicode, literal words and stable ordering', async ({ page }) => {
+  await mount(page, records)
+  await defaults(page)
+  await expectIds(page, webOrder)
+  await expect(result(page)).toHaveText('Prikazano: 13 od 13.')
+  const cases: [string, string[]][] = [
+    ['C-9', ['č-9']], ['CAS', ['č-9', 'b-2', 'a-1']], ['c\u030cas', ['č-9', 'b-2', 'a-1']],
+    ['KONCNI', ['č-9']], ['ziva', ['č-9', 'b-2', 'a-1']],
+    ['  ZIVA\t CAS  ', ['č-9', 'b-2', 'a-1']], ['koncni cas ziva', ['č-9']],
+    ['ZIVA CAS KONCNI', ['č-9']], ['.*', ['č-9']], ['[x]', ['č-9']], ['^$', []], [' \t ', webOrder],
+  ]
+  for (const [query, ids] of cases) {
+    await search(page).fill(query)
+    await expectIds(page, ids)
+  }
+  await click(page, 'Počisti filtre')
+  await defaults(page)
+  await expectIds(page, webOrder)
+})
+
+test('A02: AND filters, exact people and complete distinct options', async ({ page }) => {
+  await mount(page, records)
+  const people = page.getByRole('combobox', { name: 'Filter odgovorne osebe', exact: true })
+  const expectedPeople = ['all', 'Živa Črt', 'Ziva Crt', 'Ana Novak']
+  await expect(people.locator('option')).toHaveCount(4)
+  expect(await people.locator('option').evaluateAll(options => options.map(option => (option as HTMLOptionElement).value))).toEqual(expectedPeople)
+  await search(page).fill('cas')
+  await select(page, 'Filter stanja', 'todo')
+  await select(page, 'Filter odgovorne osebe', 'Živa Črt')
+  await expectIds(page, ['č-9'])
+  expect(await people.locator('option').evaluateAll(options => options.map(option => (option as HTMLOptionElement).value))).toEqual(expectedPeople)
+  await select(page, 'Filter odgovorne osebe', 'Ziva Crt')
+  await expectIds(page, [])
+  await select(page, 'Filter stanja', 'in_progress')
+  await expectIds(page, ['b-2'])
+  await select(page, 'Filter stanja', 'all')
+  await expectIds(page, ['b-2'])
+  await click(page, 'Počisti filtre')
+  await defaults(page)
+  await expectIds(page, webOrder)
+})
+
+test('A03: same IDs in both views, preserved controls, column order and result counts', async ({ page }) => {
+  await mount(page, records)
+  await search(page).fill('cas')
+  await select(page, 'Filter odgovorne osebe', 'Živa Črt')
+  await expectIds(page, ['č-9', 'a-1'])
+  await expect(result(page)).toHaveText('Prikazano: 2 od 13.')
+  await summary(page, [1, 0, 1])
+  await board(page)
+  await expectIds(page, ['č-9', 'a-1'], false)
+  await columnIds(page, 'Pripravljeno', ['č-9'])
+  await columnIds(page, 'V delu', [])
+  await columnIds(page, 'Končano', ['a-1'])
+  await expect(page.locator('.column-count')).toHaveText(['1', '0', '1'])
+  await select(page, 'Filter stanja', 'done')
+  await expectIds(page, ['a-1'])
+  await summary(page, [0, 0, 1])
+  await table(page)
+  await expect(search(page)).toHaveValue('cas')
+  await expect(page.getByRole('combobox', { name: 'Filter stanja', exact: true })).toHaveValue('done')
+  await expect(page.getByRole('combobox', { name: 'Filter odgovorne osebe', exact: true })).toHaveValue('Živa Črt')
+  await expectIds(page, ['a-1'])
+  await expect(result(page)).toHaveText('Prikazano: 1 od 13.')
+  await click(page, 'Počisti filtre')
+  await board(page)
+  await columnIds(page, 'Pripravljeno', ['č-9', ...webOrder.slice(3)])
+})
+
+test('A04: project changes and reload reset filters without URL or storage persistence', async ({ page }) => {
+  await mount(page, records)
+  const storage = () => page.evaluate(() => ({ local: { ...localStorage }, session: { ...sessionStorage }, cookie: document.cookie }))
+  const before = await storage()
+  const url = page.url()
+  await search(page).fill('cas')
+  await select(page, 'Filter stanja', 'todo')
+  await select(page, 'Filter odgovorne osebe', 'Živa Črt')
+  expect(page.url()).toBe(url)
+  expect(await storage()).toEqual(before)
+  await board(page)
+  await project(page, 'launch')
+  await defaults(page)
+  await expectIds(page, ['other-1'])
+  await expect(page.getByRole('combobox', { name: 'Filter odgovorne osebe', exact: true }).locator('option')).toHaveText(['Vse osebe', 'Samo Drug'])
+  await project(page, 'web')
+  await defaults(page)
+  await expectIds(page, webOrder, false)
+  await search(page).fill('cas')
+  await select(page, 'Filter stanja', 'done')
+  await select(page, 'Filter odgovorne osebe', 'Živa Črt')
+  await expectIds(page, ['a-1'])
+  await page.reload()
+  await defaults(page)
+  await expectIds(page, webOrder, false)
+  expect(await storage()).toEqual(before)
+  expect(page.url()).toBe(url + '?view=board')
+})
+
+test('A05: no matches in both views remains recoverable with one clear action', async ({ page }) => {
+  await mount(page, records)
+  await search(page).fill('nič takega')
+  await select(page, 'Filter stanja', 'done')
+  await select(page, 'Filter odgovorne osebe', 'Živa Črt')
+  await expectIds(page, [])
+  await expect(result(page)).toHaveText('Prikazano: 0 od 13.')
+  await expect(page.getByText('Ni zadetkov.', { exact: true })).toBeVisible()
+  await summary(page, [0, 0, 0])
+  await board(page)
+  await expect(page.getByText('Ni zadetkov.', { exact: true })).toBeVisible()
+  await expect(page.locator('.column-count')).toHaveText(['0', '0', '0'])
+  await table(page)
+  await click(page, 'Počisti filtre')
+  await defaults(page)
+  await expectIds(page, webOrder)
+  await expect(page.getByText('Ni zadetkov.', { exact: true })).toHaveCount(0)
+})
+
+test('A06: empty projects differ from no matches and single task remains supported', async ({ page }) => {
+  await mount(page, [makeTask('single', { title: 'Eno opravilo' })])
+  await expectIds(page, ['single'])
+  await expect(result(page)).toHaveText('Prikazano: 1 od 1.')
+  await search(page).fill('missing')
+  await select(page, 'Filter stanja', 'done')
+  await select(page, 'Filter odgovorne osebe', 'Ana Novak')
+  await project(page, 'launch')
+  await defaults(page)
+  await expect(result(page)).toHaveText('Prikazano: 0 od 0.')
+  await expect(page.getByRole('heading', { name: 'V tem projektu še ni opravil' })).toBeVisible()
+  await expect(page.getByText('Ni zadetkov.', { exact: true })).toHaveCount(0)
+  await expect(page.getByRole('combobox', { name: 'Filter odgovorne osebe', exact: true }).locator('option')).toHaveCount(1)
+  await board(page)
+  await expect(page.locator('.column-count')).toHaveText(['0', '0', '0'])
+  await search(page).fill('anything')
+  await expect(result(page)).toHaveText('Prikazano: 0 od 0.')
+  await expect(page.getByText('Ni zadetkov.', { exact: true })).toHaveCount(0)
+  await project(page, 'web')
+  await defaults(page)
+  await expectIds(page, ['single'])
+})
+
+test('A07: read-only details, unchanged data, keyboard controls and narrow Folio', async ({ page }) => {
+  const writes = await mount(page, records)
+  const testControlRequests: string[] = []
+  page.on('request', request => { if (new URL(request.url()).pathname.startsWith('/__test/')) testControlRequests.push(request.url()) })
+  const before = await page.evaluate(async () => (await fetch('/api/projects/web/tasks')).json())
+  await page.setViewportSize({ width: 1440, height: 960 })
+  await search(page).fill('pregled')
+  await expectIds(page, ['č-9', 'b-2'])
+  await details(page, 'b-2')
+  await expect(search(page)).toHaveValue('pregled')
+  await page.screenshot({ path: 'docs/agent/P03/desktop.png', fullPage: true })
+  await page.setViewportSize({ width: 390, height: 844 })
+  await search(page).focus()
+  await expect(search(page)).toBeFocused()
+  expect(await search(page).evaluate(element => getComputedStyle(element).outlineStyle)).not.toBe('none')
+  await select(page, 'Filter stanja', 'in_progress')
+  await select(page, 'Filter odgovorne osebe', 'Ziva Crt')
+  await expectIds(page, ['b-2'])
+  await readonly(page, writes)
+  await page.screenshot({ path: 'docs/agent/P03/mobile-table.png', fullPage: true })
+  await board(page)
+  await expectIds(page, ['b-2'])
+  await readonly(page, writes)
+  await details(page, 'b-2')
+  await page.screenshot({ path: 'docs/agent/P03/mobile-board.png', fullPage: true })
+  await click(page, 'Počisti filtre')
+  await expectIds(page, webOrder, false)
+  await table(page)
+  await expectIds(page, webOrder)
+  const after = await page.evaluate(async () => (await fetch('/api/projects/web/tasks')).json())
+  expect(after).toEqual(before)
+  expect(testControlRequests).toEqual([])
+  await readonly(page, writes)
+})
+
+test('A08: filtering does not mutate frozen source records or their order', () => {
+  const source = Object.freeze(records.map(task => Object.freeze({ ...task })))
+  const before = JSON.stringify(source)
+  const filtered = filterTasks(source, { query: 'CAS', status: 'all', assignee: 'Živa Črt' })
+  expect(filtered.map(task => task.id)).toEqual(['č-9', 'a-1'])
+  expect(filtered[0]).toBe(source[0])
+  expect(JSON.stringify(source)).toBe(before)
+  expect(filterTasks(source, defaultFilters)).toEqual(source)
+})
