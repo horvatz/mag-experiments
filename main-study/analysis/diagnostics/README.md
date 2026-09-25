@@ -37,3 +37,37 @@ Prvi zagon pomožnega pregledovalnika je odpovedal zaradi dveh lokalnih
 kopij React. Po uskladitvi izrisovalnika s komponento je nastal priloženi
 zapis. To je napaka raziskovalčevega pomožnega orodja, ne merjena napaka
 kateregakoli postopka.
+
+## Pot do referenčnih slik Folio
+
+25. septembra je ob pregledu P08-B-002 opažena razlika med dejansko
+uporabo `docs/predogled/telefon.png` in predhodnima poročiloma P10-B-003
+ter P08-B-003, ki omenjata manjkajoči `predogled/`. Naknadni pregled
+izvirnih izvoznih inventarjev vseh **35 takrat arhiviranih izvedb**
+potrdi šest referenčnih slik pod **`docs/predogled/`** pri vsaki izvedbi.
+Slika `telefon.png` ima v vseh 35 isti SHA-256. Imenika `predogled/`
+neposredno v korenu aplikacije ni. Strojni dokaz s potmi in zgoščenimi
+vrednostmi je v [design-reference-paths.json](design-reference-paths.json).
+
+Neuspešno iskanje `predogled/` iz korena aplikacije torej ni dokaz,
+da referenčne slike v izvozu niso bile dostopne. Trditev P10-B-003 o
+manjkajočih izvornih slikah je nepravilna razlaga omejitve njegovega
+pregleda; tudi P08-B-003 je spregledal dejansko pot. Njuna zapisa o
+neizvedeni primerjavi z izvirnimi slikami ostaneta dokaz, kaj sta
+pregledovalca opravila oziroma izpustila. Ne predstavljamo pa tega kot
+napake izvoza ali kot odsotnosti vhodnih slik.
+
+Dokazi: [P10-B-003, zapis pregleda](../../../runs/P10-B-003/submission/docs/agent/review.md),
+[P08-B-003, zapis pregleda](../../../runs/P08-B-003/submission/docs/agent/review.md),
+[P08-B-002, dejanska uporaba poti](../../../runs/P08-B-002/submission/docs/agent/review.md)
+in pripadajoči `manifest.json.gz` vsake izvedbe, povezani v JSON.
+P03-B-001 je pravilno dokumentiral primerjavo z `docs/predogled/`;
+njegova omejitev se nanaša na odsotno avtomatsko primerjavo slik in ni
+enak primer. Formalne presoje zato niso spremenjene. P10-B-003 in
+P08-B-003 sta zunaj vnaprej izbranega vzorca 001.
+
+Pregled inventarjev ni nov funkcionalni test, ne spreminja primarnih
+izidov in ne popravlja arhivov. Gre za razjasnitev porekla dokazov;
+iz dveh naknadno opaženih primerov ne sklepamo na pogostost takih
+omejitev med postopki. Nobena ugotovitev ni bila posredovana merjenim
+agentom.

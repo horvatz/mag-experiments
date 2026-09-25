@@ -7,6 +7,11 @@ sklepati na pogostost napak posameznega postopka. Vzorec 24 presoj in njegove
 ocene ostanejo nespremenjeni; njihovi primeri so v [vsebinski presoji](content-review.md).
 Raziskovalec ni popravljal ali ponovno izvajal oddaj.
 
+Pri branju omejitev v predajah P10-B-003 in P08-B-003 upoštevaj
+[naknadno preverjeno pojasnilo poti do referenčnih slik](diagnostics/README.md#pot-do-referenčnih-slik-folio):
+slike so bile izvožene pod `docs/predogled/`, ne pod `predogled/` v korenu.
+Opustitev primerjave ni bila posledica manjkajočih izvoznih slik.
+
 ## P03–A–002: napačna predpostavka testa o številu bralnih zahtev
 
 Prvi skupni razvojni zagon je uspel 46/46. Po dodatku sedmih lastnih testov
