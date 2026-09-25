@@ -7,6 +7,10 @@ P01 in P02 sta zaključena pilota in ne vstopata v glavno primerjavo.
 Trenutno število dejansko arhiviranih izvedb je vedno v [zbirnih rezultatih za pisanje](reporting-results.md).
 Število 72 v metodologiji pomeni načrt, dokler ta zbirka ni popolna.
 
+Za obravnavo posamezne naloge odpri [kazalo dokazov po nalogah](evidence-map.md).
+Vseh devet načrtovanih izvedb iste naloge je zbranih skupaj, s povezavami
+na neodvisni izid, proces, porabo, kodo, predajo in vsebinsko presojo 001.
+
 Metodologija je usklajena z zamrznjenim protokolom v
 [poglavju 5](../../../naloga/latex/poglavja/05-metodologija.tex).
 Razdelka 4.6 in 4.7 v [opisu okolja](../../../naloga/latex/poglavja/04-zasnova-in-izvedba.tex)

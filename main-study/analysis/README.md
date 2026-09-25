@@ -32,6 +32,7 @@ ne popravljajo in ne vračajo povratnih informacij v merjene seje.
 | `figures/` | Grafi PNG/SVG in zapis podatkovnega posnetka ter različic knjižnic |
 | `diagnostics/` | Jasno ločeni raziskovalni pregledi po oddaji; ne spreminjajo primarnih meril |
 | `writing-guide.md` | Povezava gradiva z magistrsko in omejitve dovoljenih sklepov |
+| `evidence-map.md` | Kazalo vseh ponovitev po osmih nalogah z neposrednimi povezavami do ocen, procesov, kode, predaj in izbranih presoj |
 
 Časovni podatki so v sekundah; čas na grafu je v minutah. Datumi s `Z`
 so v UTC. `generatedAt` pomeni čas izdelave posnetka, ne nujno konec
