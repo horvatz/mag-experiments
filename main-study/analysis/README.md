@@ -99,6 +99,13 @@ Ta korak posodobi tudi številčne vložke `naloga/latex/generirano/`,
 vključno z ločeno porazdelitvijo ocen in opisom formalnih povratnih korakov.
 Nobeden od obeh ukazov ne zažene nove merjene izvedbe.
 
+Pred oddajo gradiva za pisanje poženi še
+`node main-study/analysis/audit-review-links.mjs`. Preveri datoteke ter
+navedene vrstice in naslove v dokazih vseh dimenzij in primerov napak;
+zapis z zgoščenimi vrednostmi presoj shrani v
+`artifacts/qa/review-evidence-fragments.json`. To je pregled povezav,
+ne nova vsebinska ocena ali dokaz pravilnosti navedene trditve.
+
 Grafi ohranijo posamezne ponovitve: dokazane zahteve, celoten čas ter
 ločena vhodna/izhodna poraba samo popolnih zapisov. Neznani časi in
 nepopolna poraba so izpuščeni z izrecno opombo, ne nadomeščeni z ničlo.
