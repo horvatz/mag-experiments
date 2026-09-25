@@ -94,6 +94,9 @@ Ta korak posodobi tudi številčne vložke `naloga/latex/generirano/`,
 vključno z ločeno porazdelitvijo ocen in opisom formalnih povratnih korakov.
 Nobeden od obeh ukazov ne zažene nove merjene izvedbe.
 
+Grafi ohranijo posamezne ponovitve: dokazane zahteve, celoten čas ter
+ločena vhodna/izhodna poraba samo popolnih zapisov. Neznani časi in
+nepopolna poraba so izpuščeni z izrecno opombo, ne nadomeščeni z ničlo.
 Grafi nastanejo z `artifacts/plots.py`; različice so v
 `artifacts/requirements-plots.txt`. Preglednica nastane z
 `artifacts/workbook.mjs` in knjižnico `@oai/artifact-tool` v nameščenem

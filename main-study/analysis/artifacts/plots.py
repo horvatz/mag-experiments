@@ -80,8 +80,35 @@ fig.text(.125, .072, note + ' Neznani časi niso prikazani: ' + str(len(data['du
 fig.text(.125, .035, 'Vir: execution.json posameznih arhivov; ' + snapshot, fontsize=8, color='#596678')
 save(fig, 'cas-izvedb')
 
+# Complete usage only. Cached/reasoning tokens are subsets, never extra totals.
+usage_rows = [r for r in data['data'] if r['usageComplete'] and r['usage'] is not None]
+missing_usage = [r['id'] for r in data['data'] if not r['usageComplete'] or r['usage'] is None]
+fig, axes = plt.subplots(2, 1, figsize=(10.5, 7.4), sharex=True)
+for ax, key, scale, ylabel in zip(axes, ['input_tokens', 'output_tokens'], [1_000_000, 1000],
+                                 ['Vhodni tokeni (milijoni)', 'Izhodni tokeni (tisoči)']):
+    for r in usage_rows:
+        x = tasks.index(r['task']) + (procedures.index(r['procedure'])-1)*.22 + (r['repetition']-2)*.045
+        ax.scatter(x, r['usage'][key]/scale, color=colors[r['procedure']], s=52,
+                   edgecolors='white', linewidth=.5, zorder=3)
+    ax.set_ylabel(ylabel)
+    ax.set_ylim(bottom=0)
+    ax.grid(axis='y', color='#E2E5EA', lw=.7); ax.set_axisbelow(True)
+    ax.spines[['top','right']].set_visible(False)
+axes[0].set_title(f'Popolno zabeležena poraba — {scope}', loc='left', pad=14)
+axes[1].set_xticks(range(8), tasks); axes[1].set_xlim(-.6, 7.6)
+axes[1].legend(handles=[Line2D([0],[0], marker='o', linestyle='', color=colors[p], label=p) for p in procedures],
+               loc='upper center', bbox_to_anchor=(.5,-.14), ncol=3, frameon=False, fontsize=9)
+fig.subplots_adjust(bottom=.24, hspace=.22)
+fig.text(.125, .105, f"Popolni zapisi: {len(usage_rows)}/{data['archived']}. Izpuščeni nepopolni zapisi: " + (', '.join(missing_usage) or 'ni') + '.', fontsize=9)
+fig.text(.125, .075, 'Predpomnjeni tokeni so vključeni v vhodne; reasoning v izhodne. Tokeni niso denarni strošek.', fontsize=9)
+fig.text(.125, .045, note, fontsize=9)
+fig.text(.125, .018, 'Vir: usklajena poraba točnih merjenih sej; ' + snapshot, fontsize=8, color='#596678')
+save(fig, 'poraba-izvedb')
+
 (out / 'provenance.json').write_text(json.dumps({'source': 'main-study/analysis/reporting-results.json', 'sourceGeneratedAt': data['generatedAt'],
     'archived': data['archived'], 'complete': data['complete'], 'matplotlib': matplotlib.__version__, 'numpy': np.__version__,
-    'figures': ['dokazane-zahteve.png', 'dokazane-zahteve.svg', 'cas-izvedb.png', 'cas-izvedb.svg'],
+    'usageFigure': {'includedIds': [r['id'] for r in usage_rows], 'excludedIncompleteIds': missing_usage,
+                    'units': {'input_tokens': 'millions', 'output_tokens': 'thousands'}, 'cachedAndReasoningAreSubsets': True},
+    'figures': ['dokazane-zahteve.png', 'dokazane-zahteve.svg', 'cas-izvedb.png', 'cas-izvedb.svg', 'poraba-izvedb.png', 'poraba-izvedb.svg'],
     'note': 'Only measured archived values; blank cells are not zero. No inferential intervals on partial data.'}, indent=2)+'\n')
 print(json.dumps({'archived': data['archived'], 'output': str(out)}))
