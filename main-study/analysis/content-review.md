@@ -2,7 +2,7 @@
 
 **AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.
 
-Vsebinsko ocenjenih je 14/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Število izbranih oddaj z dokumentirano nezmožnostjo ocene: 1; njihove ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
+Vsebinsko ocenjenih je 15/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Število izbranih oddaj z dokumentirano nezmožnostjo ocene: 1; njihove ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
 
 | Oddaja | Status presoje | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -21,24 +21,25 @@ Vsebinsko ocenjenih je 14/24 vnaprej določenih oddaj (ponovitev 001 za P03–P1
 | [P03-A-001](reviews/P03-A-001.json) | ocena ni mogoča | — | — | — | — | — |
 | [P03-B-001](reviews/P03-B-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 | [P03-C-001](reviews/P03-C-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P07-A-001](reviews/P07-A-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 
-Še neobravnavane izbrane oddaje: P07-A-001, P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
+Še neobravnavane izbrane oddaje: P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
 
 ## Porazdelitev ocen po dimenzijah
 
 Vsaka trojica navaja število ocen 0 / 1 / 2. Manjkajoče in še neopravljene presoje niso ocena 0. Števila so opisna; dimenzij ne seštevamo in ne računamo skupne ocene kakovosti.
 
-A: 4/8 številčno ocenjenih, 1 brez možnosti ocene, 3 še neobravnavanih.
+A: 5/8 številčno ocenjenih, 1 brez možnosti ocene, 2 še neobravnavanih.
 B: 5/8 številčno ocenjenih, 0 brez možnosti ocene, 3 še neobravnavanih.
 C: 5/8 številčno ocenjenih, 0 brez možnosti ocene, 3 še neobravnavanih.
 
 | Dimenzija | A: 0 / 1 / 2 | B: 0 / 1 / 2 | C: 0 / 1 / 2 |
 | --- | --- | --- | --- |
-| Pokritost specifikacije | 0 / 0 / 4 | 0 / 0 / 5 | 0 / 0 / 5 |
-| Predikati/invariante | 0 / 0 / 4 | 0 / 0 / 5 | 0 / 0 / 5 |
-| Sledljivost | 0 / 0 / 4 | 0 / 0 / 5 | 0 / 1 / 4 |
-| Organizacija kode | 0 / 0 / 4 | 0 / 0 / 5 | 0 / 0 / 5 |
-| Lastna preverjanja | 0 / 0 / 4 | 0 / 0 / 5 | 0 / 0 / 5 |
+| Pokritost specifikacije | 0 / 0 / 5 | 0 / 0 / 5 | 0 / 0 / 5 |
+| Predikati/invariante | 0 / 0 / 5 | 0 / 0 / 5 | 0 / 0 / 5 |
+| Sledljivost | 0 / 0 / 5 | 0 / 0 / 5 | 0 / 1 / 4 |
+| Organizacija kode | 0 / 0 / 5 | 0 / 0 / 5 | 0 / 0 / 5 |
+| Lastna preverjanja | 0 / 0 / 5 | 0 / 0 / 5 | 0 / 0 / 5 |
 
 ## P05-A-001
 
@@ -433,3 +434,29 @@ Dokazi: [P03.spec.ts](../../runs/P03-C-001/submission/tests/agent/P03.spec.ts), 
 Končna napaka: Neodvisna ocena potrdi 70/70 in 12/12 zahtev, dovoljen obseg, zaključen postopek in popolno porabo. V pregledanih končnih dokazih ni potrjene funkcionalne napake; to ni izčrpen dokaz vseh podatkov iz domene.
 
 Opomba o razvojnem poteku: Prvi celotni zagon uspe 56/56 v 21,7 s; ni zabeleženega popravljanja neuspešnega funkcionalnega testa. V fazi specify manjka orodje rg (exit 127), nato se pregled virov nadaljuje; to je omejitev orodja, ne funkcionalna napaka aplikacije. Korak converge ne izvaja novega testnega zagona.
+
+## P07-A-001
+
+**Pokritost specifikacije: 2/2.** Specifikacija jasno zajame vseh R01–R12: globalne ID-je, projektni filter, stabilni vrstni red, celotni projekt pri odstranitvi in imenovalcu, oba pogleda ter podrobnosti. Loči neveljavno vsebino od nedostopne shrambe, ohrani neznane nize, določi UTF-16 zapis in nadomestitev ob dogodku brez povratnega pisanja. Prazna tabla, posebni znaki v ID-ju, izjeme in meja sočasnosti so izrecno obravnavani. Zgodovina loči začetno specifikacijo od dopolnitve z dokazi.
+
+Dokazi: [specification.md](../../runs/P07-A-001/submission/docs/agent/specification.md), [verification.md](../../runs/P07-A-001/submission/docs/agent/verification.md).
+
+**Predikati/invariante: 2/2.** D(s), S(F), I(T), V, X in M imajo preverljivo definicijo. Simetrična razlika določi preklop, F\I(T) odstranitev celega projekta, q=false ponastavitev in stabilna podsekvenca filtriranje. Zapis ima enkratne nize v privzetem vrstnem redu UTF-16; inicializacija in storage ne zapisujeta. Menjava pogleda ohrani F/q, menjava projekta ohrani F, izjema zapisa pa ne razveljavi pomnilniškega prehoda. Nespremenjen API ostane jasno omejena invarianta.
+
+Dokazi: [specification.md](../../runs/P07-A-001/submission/docs/agent/specification.md).
+
+**Sledljivost: 2/2.** Obe dokumentaciji omogočata sledenje R01–R12 do predikata, imen A/D, konkretnega simbola kode in dejanskega dnevnika. Vseh 43 lokalnih povezav v obeh dokumentih obstaja. Surova item_11 in item_16 potrdita izhod 0 obeh check; dnevniki potrjujejo 46/46 in 69/69, torej 23 lastnih testov iz devetih parametriziranih scenarijev. Ročni dnevnik in slike podpirajo širino 390 px in viden fokus. Chromium, simulirana kvota, nedostopni končni testi in neizvedena fizična/bralniška preverjanja so odkrito omejeni.
+
+Dokazi: [specification.md](../../runs/P07-A-001/submission/docs/agent/specification.md), [verification.md](../../runs/P07-A-001/submission/docs/agent/verification.md), [check-initial.log](../../runs/P07-A-001/submission/docs/agent/check-initial.log), [check-final.log](../../runs/P07-A-001/submission/docs/agent/check-final.log), [manual-review.log](../../runs/P07-A-001/submission/docs/agent/manual-review.log), [events.jsonl.gz](../../runs/P07-A-001/events.jsonl.gz).
+
+**Organizacija kode: 2/2.** useFavorites loči varno dekodiranje, začetno branje, skupni zapis in sprejem storage dogodka; aktualna množica v ref omogoči zaporedna dejanja, prehodi klonirajo Set, opozorilo je trajno za sejo. App hrani globalni hook in projektni filter v ključeni ProjectView, X/M pa izpelje iz izvornih tasks. En visibleTasks hrani oba pogleda. FavoriteButton je skupen semantični gumb zunaj povezave; tabla neposredno sestavi dostopno ime za neobičajne ID-je. CSS doda omejene kontrole in prostor gumbu, ohrani obstoječe prelome in notranje drsenje.
+
+Dokazi: [useFavorites.ts](../../runs/P07-A-001/submission/src/useFavorites.ts), [FavoriteButton.tsx](../../runs/P07-A-001/submission/src/FavoriteButton.tsx), [App.tsx](../../runs/P07-A-001/submission/src/App.tsx), [TaskBoard.tsx](../../runs/P07-A-001/submission/src/TaskBoard.tsx), [styles.css](../../runs/P07-A-001/submission/src/styles.css).
+
+**Lastna preverjanja: 2/2.** 23 uspešnih lastnih testov vključuje 12 neveljavnih začetnih zapisov, natančen UTF-16 pričakovani seznam z emojijem/U+E000/praznim nizom, prepoved začetnega prepisovanja, 13 nesortiranih opravil in enake naslove z različnimi ID-ji. Preveri neobičajni ID, dobesedno besedilo, prestopni datum, števce, celotno projektno odstranitev ob filtru in ohranitev drugega projekta/neznanih ID-jev. Dodatno pokrije 0/1 opravilo pri 390 px, sintetične storage dogodke in dejanska dva zavihka brez odmevnih zapisov, tri ločene izjeme shrambe z uporabnim pomnilnikom, Space/fokus in nespremenjeno dejansko stanje API-ja. Pričakovanja niso izpeljana s produkcijskim dekoderjem.
+
+Dokazi: [favorites.spec.ts](../../runs/P07-A-001/submission/tests/agent/favorites.spec.ts), [check-final.log](../../runs/P07-A-001/submission/docs/agent/check-final.log), [mobile-focus.png](../../runs/P07-A-001/submission/docs/agent/mobile-focus.png), [mobile-0-board.png](../../runs/P07-A-001/submission/docs/agent/mobile-0-board.png), [desktop-board.png](../../runs/P07-A-001/submission/docs/agent/desktop-board.png).
+
+Končna napaka: Neodvisna ocena potrdi 70/70 in 12/12 zahtev, dovoljen obseg, zaključen postopek in popolno porabo. V pregledanih končnih dokazih ni potrjene funkcionalne napake; to ni izčrpen dokaz vseh vhodov iz domene.
+
+Opomba o razvojnem poteku: Prvi celotni check uspe 46/46 v 17,1 s, končni z lastnimi testi 69/69 v 28,0 s. Pregledani surovi dogodki ne vsebujejo neuspešnega zaključenega ukaza ali dokumentiranega popravljanja neuspešnega funkcionalnega testa. Po končnem check so dopolnjeni dokumenti in vizualna dokazila; formalna presoja ne izvaja nove merjene izvedbe.

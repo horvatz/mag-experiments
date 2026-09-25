@@ -1,0 +1,70 @@
+{
+  "id": "P07-A-001",
+  "reviewedAt": "2026-09-25",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija jasno zajame vseh R01–R12: globalne ID-je, projektni filter, stabilni vrstni red, celotni projekt pri odstranitvi in imenovalcu, oba pogleda ter podrobnosti. Loči neveljavno vsebino od nedostopne shrambe, ohrani neznane nize, določi UTF-16 zapis in nadomestitev ob dogodku brez povratnega pisanja. Prazna tabla, posebni znaki v ID-ju, izjeme in meja sočasnosti so izrecno obravnavani. Zgodovina loči začetno specifikacijo od dopolnitve z dokazi.",
+      "evidence": [
+        "runs/P07-A-001/submission/docs/agent/specification.md",
+        "runs/P07-A-001/submission/docs/agent/verification.md"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "D(s), S(F), I(T), V, X in M imajo preverljivo definicijo. Simetrična razlika določi preklop, F\\I(T) odstranitev celega projekta, q=false ponastavitev in stabilna podsekvenca filtriranje. Zapis ima enkratne nize v privzetem vrstnem redu UTF-16; inicializacija in storage ne zapisujeta. Menjava pogleda ohrani F/q, menjava projekta ohrani F, izjema zapisa pa ne razveljavi pomnilniškega prehoda. Nespremenjen API ostane jasno omejena invarianta.",
+      "evidence": [
+        "runs/P07-A-001/submission/docs/agent/specification.md"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Obe dokumentaciji omogočata sledenje R01–R12 do predikata, imen A/D, konkretnega simbola kode in dejanskega dnevnika. Vseh 43 lokalnih povezav v obeh dokumentih obstaja. Surova item_11 in item_16 potrdita izhod 0 obeh check; dnevniki potrjujejo 46/46 in 69/69, torej 23 lastnih testov iz devetih parametriziranih scenarijev. Ročni dnevnik in slike podpirajo širino 390 px in viden fokus. Chromium, simulirana kvota, nedostopni končni testi in neizvedena fizična/bralniška preverjanja so odkrito omejeni.",
+      "evidence": [
+        "runs/P07-A-001/submission/docs/agent/specification.md",
+        "runs/P07-A-001/submission/docs/agent/verification.md",
+        "runs/P07-A-001/submission/docs/agent/check-initial.log",
+        "runs/P07-A-001/submission/docs/agent/check-final.log",
+        "runs/P07-A-001/submission/docs/agent/manual-review.log",
+        "runs/P07-A-001/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "useFavorites loči varno dekodiranje, začetno branje, skupni zapis in sprejem storage dogodka; aktualna množica v ref omogoči zaporedna dejanja, prehodi klonirajo Set, opozorilo je trajno za sejo. App hrani globalni hook in projektni filter v ključeni ProjectView, X/M pa izpelje iz izvornih tasks. En visibleTasks hrani oba pogleda. FavoriteButton je skupen semantični gumb zunaj povezave; tabla neposredno sestavi dostopno ime za neobičajne ID-je. CSS doda omejene kontrole in prostor gumbu, ohrani obstoječe prelome in notranje drsenje.",
+      "evidence": [
+        "runs/P07-A-001/submission/src/useFavorites.ts",
+        "runs/P07-A-001/submission/src/FavoriteButton.tsx",
+        "runs/P07-A-001/submission/src/App.tsx",
+        "runs/P07-A-001/submission/src/TaskBoard.tsx",
+        "runs/P07-A-001/submission/src/styles.css"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "23 uspešnih lastnih testov vključuje 12 neveljavnih začetnih zapisov, natančen UTF-16 pričakovani seznam z emojijem/U+E000/praznim nizom, prepoved začetnega prepisovanja, 13 nesortiranih opravil in enake naslove z različnimi ID-ji. Preveri neobičajni ID, dobesedno besedilo, prestopni datum, števce, celotno projektno odstranitev ob filtru in ohranitev drugega projekta/neznanih ID-jev. Dodatno pokrije 0/1 opravilo pri 390 px, sintetične storage dogodke in dejanska dva zavihka brez odmevnih zapisov, tri ločene izjeme shrambe z uporabnim pomnilnikom, Space/fokus in nespremenjeno dejansko stanje API-ja. Pričakovanja niso izpeljana s produkcijskim dekoderjem.",
+      "evidence": [
+        "runs/P07-A-001/submission/tests/agent/favorites.spec.ts",
+        "runs/P07-A-001/submission/docs/agent/check-final.log",
+        "runs/P07-A-001/submission/docs/agent/mobile-focus.png",
+        "runs/P07-A-001/submission/docs/agent/mobile-0-board.png",
+        "runs/P07-A-001/submission/docs/agent/desktop-board.png"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena potrdi 70/70 in 12/12 zahtev, dovoljen obseg, zaključen postopek in popolno porabo. V pregledanih končnih dokazih ni potrjene funkcionalne napake; to ni izčrpen dokaz vseh vhodov iz domene.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Prvi celotni check uspe 46/46 v 17,1 s, končni z lastnimi testi 69/69 v 28,0 s. Pregledani surovi dogodki ne vsebujejo neuspešnega zaključenega ukaza ali dokumentiranega popravljanja neuspešnega funkcionalnega testa. Po končnem check so dopolnjeni dokumenti in vizualna dokazila; formalna presoja ne izvaja nove merjene izvedbe."
+}

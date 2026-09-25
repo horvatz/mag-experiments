@@ -1,10 +1,9 @@
 {
-  "generatedAt": "2026-09-25T21:11:47.441Z",
+  "generatedAt": "2026-09-25T21:23:43.142Z",
   "complete": false,
-  "archived": 48,
+  "archived": 49,
   "planned": 72,
   "missing": [
-    "P07-A-001",
     "P07-B-001",
     "P07-C-001",
     "P06-C-002",
@@ -32,14 +31,14 @@
   "groups": [
     {
       "procedure": "A",
-      "archived": 16,
+      "archived": 17,
       "planned": 24,
-      "strictSuccesses": 15,
-      "meanDemonstratedFraction": 0.9375,
-      "meanElapsedSeconds": 612.757375,
-      "completeUsageCount": 15,
-      "meanInputTokensCompleteOnly": 756093.3333333334,
-      "meanOutputTokensCompleteOnly": 20021.066666666666
+      "strictSuccesses": 16,
+      "meanDemonstratedFraction": 0.9411764705882353,
+      "meanElapsedSeconds": 615.4935294117648,
+      "completeUsageCount": 16,
+      "meanInputTokensCompleteOnly": 746636.6875,
+      "meanOutputTokensCompleteOnly": 20056.625
     },
     {
       "procedure": "B",
@@ -152,9 +151,9 @@
     {
       "task": "P07",
       "procedure": "A",
-      "count": 2,
+      "count": 3,
       "meanDemonstratedFraction": 1,
-      "meanElapsedSeconds": 646.735
+      "meanElapsedSeconds": 650.9140000000001
     },
     {
       "task": "P07",
@@ -7088,6 +7087,133 @@
       "ownTestFiles": 1,
       "contentReviewSample": false,
       "evidence": "runs/P05-B-003/evaluation-summary.json"
+    },
+    {
+      "id": "P07-A-001",
+      "task": "P07",
+      "procedure": "A",
+      "repetition": 1,
+      "block": 17,
+      "position": 1,
+      "executionStatus": "completed",
+      "elapsedSeconds": 659.272,
+      "strictSuccess": true,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": true,
+            "observed": true
+          }
+        ],
+        "passed": 12,
+        "observed": 12,
+        "total": 12,
+        "fraction": 1
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "usage": {
+        "input_tokens": 604787,
+        "cached_input_tokens": 539008,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 20590,
+        "reasoning_output_tokens": 4210
+      },
+      "usageComplete": true,
+      "observedUsageBeforeInterruption": null,
+      "phases": [],
+      "changedFiles": 20,
+      "ownTestFiles": 1,
+      "contentReviewSample": true,
+      "evidence": "runs/P07-A-001/evaluation-summary.json"
     }
   ]
 }

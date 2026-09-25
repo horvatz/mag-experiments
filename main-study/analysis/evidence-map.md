@@ -1,6 +1,6 @@
 # Kazalo dokazov po nalogah
 
-Posnetek 2026-09-25T21:11:47.441Z: 48/72 arhivov.
+Posnetek 2026-09-25T21:23:43.142Z: 49/72 arhivov.
 
 Kazalo povezuje vnaprej določene naloge z vsemi tremi ponovitvami. Vrstni red spodaj je po postopku in ponovitvi; dejanski vrstni red meritev je v [zamrznjenem razporedu](../schedule.json). Nearhivirana vrstica lahko pravkar teče; to kaže [aktivno stanje](../active.json).
 
@@ -100,7 +100,7 @@ Vsebinske presoje izbranih oddaj:
 
 | Izvedba | Status | Zahteve | Strogi uspeh | Čas (s) | Dokazi |
 | --- | --- | --- | --- | --- | --- |
-| P07-A-001 | še ni arhiva | — | — | — | — |
+| P07-A-001 | completed | 12/12 | da | 659,272 | [ocena](../../runs/P07-A-001/evaluation-summary.json) · [proces](../../runs/P07-A-001/execution.json) · [poraba](../../runs/P07-A-001/usage-observation.json) · [koda](../../runs/P07-A-001/submission/src/App.tsx) · [predaja](../../runs/P07-A-001/submission/docs/agent/verification.md) |
 | P07-A-002 | completed | 12/12 | da | 640,296 | [ocena](../../runs/P07-A-002/evaluation-summary.json) · [proces](../../runs/P07-A-002/execution.json) · [poraba](../../runs/P07-A-002/usage-observation.json) · [koda](../../runs/P07-A-002/submission/src/App.tsx) · [predaja](../../runs/P07-A-002/submission/docs/agent/verification.md) |
 | P07-A-003 | completed | 12/12 | da | 653,174 | [ocena](../../runs/P07-A-003/evaluation-summary.json) · [proces](../../runs/P07-A-003/execution.json) · [poraba](../../runs/P07-A-003/usage-observation.json) · [koda](../../runs/P07-A-003/submission/src/App.tsx) · [predaja](../../runs/P07-A-003/submission/docs/agent/verification.md) |
 | P07-B-001 | še ni arhiva | — | — | — | — |
@@ -112,7 +112,7 @@ Vsebinske presoje izbranih oddaj:
 
 Vsebinske presoje izbranih oddaj:
 
-- P07-A-001: presoja še ni opravljena.
+- [P07-A-001](reviews/P07-A-001.json): pet ločenih ocen z utemeljitvami in konkretnimi dokazi.
 - P07-B-001: presoja še ni opravljena.
 - P07-C-001: presoja še ni opravljena.
 
