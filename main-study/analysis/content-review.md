@@ -2,7 +2,7 @@
 
 **AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.
 
-Vsebinsko ocenjenih je 15/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Število izbranih oddaj z dokumentirano nezmožnostjo ocene: 1; njihove ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
+Vsebinsko ocenjenih je 16/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Število izbranih oddaj z dokumentirano nezmožnostjo ocene: 1; njihove ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
 
 | Oddaja | Status presoje | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -22,24 +22,25 @@ Vsebinsko ocenjenih je 15/24 vnaprej določenih oddaj (ponovitev 001 za P03–P1
 | [P03-B-001](reviews/P03-B-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 | [P03-C-001](reviews/P03-C-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 | [P07-A-001](reviews/P07-A-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P07-B-001](reviews/P07-B-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 
-Še neobravnavane izbrane oddaje: P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
+Še neobravnavane izbrane oddaje: P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
 
 ## Porazdelitev ocen po dimenzijah
 
 Vsaka trojica navaja število ocen 0 / 1 / 2. Manjkajoče in še neopravljene presoje niso ocena 0. Števila so opisna; dimenzij ne seštevamo in ne računamo skupne ocene kakovosti.
 
 A: 5/8 številčno ocenjenih, 1 brez možnosti ocene, 2 še neobravnavanih.
-B: 5/8 številčno ocenjenih, 0 brez možnosti ocene, 3 še neobravnavanih.
+B: 6/8 številčno ocenjenih, 0 brez možnosti ocene, 2 še neobravnavanih.
 C: 5/8 številčno ocenjenih, 0 brez možnosti ocene, 3 še neobravnavanih.
 
 | Dimenzija | A: 0 / 1 / 2 | B: 0 / 1 / 2 | C: 0 / 1 / 2 |
 | --- | --- | --- | --- |
-| Pokritost specifikacije | 0 / 0 / 5 | 0 / 0 / 5 | 0 / 0 / 5 |
-| Predikati/invariante | 0 / 0 / 5 | 0 / 0 / 5 | 0 / 0 / 5 |
-| Sledljivost | 0 / 0 / 5 | 0 / 0 / 5 | 0 / 1 / 4 |
-| Organizacija kode | 0 / 0 / 5 | 0 / 0 / 5 | 0 / 0 / 5 |
-| Lastna preverjanja | 0 / 0 / 5 | 0 / 0 / 5 | 0 / 0 / 5 |
+| Pokritost specifikacije | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 5 |
+| Predikati/invariante | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 5 |
+| Sledljivost | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 1 / 4 |
+| Organizacija kode | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 5 |
+| Lastna preverjanja | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 5 |
 
 ## P05-A-001
 
@@ -460,3 +461,31 @@ Dokazi: [favorites.spec.ts](../../runs/P07-A-001/submission/tests/agent/favorite
 Končna napaka: Neodvisna ocena potrdi 70/70 in 12/12 zahtev, dovoljen obseg, zaključen postopek in popolno porabo. V pregledanih končnih dokazih ni potrjene funkcionalne napake; to ni izčrpen dokaz vseh vhodov iz domene.
 
 Opomba o razvojnem poteku: Prvi celotni check uspe 46/46 v 17,1 s, končni z lastnimi testi 69/69 v 28,0 s. Pregledani surovi dogodki ne vsebujejo neuspešnega zaključenega ukaza ali dokumentiranega popravljanja neuspešnega funkcionalnega testa. Po končnem check so dopolnjeni dokumenti in vizualna dokazila; formalna presoja ne izvaja nove merjene izvedbe.
+
+## P07-B-001
+
+**Pokritost specifikacije: 2/2.** Specifikacija jasno opredeli vseh R01–R12 in podatkovno domeno: poljubno število, enake naslove, posebne ID-je, neznane nize in globalnost množice. Loči neveljavno vsebino od izjeme dostopa, določi natančen zapis, prazni stanji, življenjsko dobo filtra, projektno odstranjevanje, števce in mejo sočasnosti. Opis izhodiščnih mest kode je izrecno načrt; izvedene dokaze prevzame implementerjev dokument brez spreminjanja avtorstva specifikacije.
+
+Dokazi: [specification.md](../../runs/P07-B-001/submission/docs/agent/specification.md), [specification-history.md](../../runs/P07-B-001/submission/docs/agent/specification-history.md).
+
+**Predikati/invariante: 2/2.** P1–P5 natančno določijo validacijo celotnega zapisa, simetrično razliko, kanonični zapis UTF-16, stabilno filtriranje, X/M iz celotnega projekta in razliko F∖Iₚ. Dogodek pravilnega ključa nadomesti množico brez združevanja/zapisa; drugi ključ ne učinkuje. Projekt in osvežitev ponastavita le ustrezno stanje, neveljavna vsebina se ne prepiše, izjema ohrani pomnilniško dejanje. Nespremenjeni podatki/API in ohranjena razvrstitev so preverljive invariante.
+
+Dokazi: [specification.md#zahteve-in-pravila](../../runs/P07-B-001/submission/docs/agent/specification.md#zahteve-in-pravila).
+
+**Sledljivost: 2/2.** Specifikacija poveže R–P–načrtovani S/D in jasno pove, da sama testov ni izvajala; implementation.md sklene celotno povezavo s končnimi simboli, dejanskimi imeni in check.log. Izvirni neuspešni/prekinjeni zagon je ohranjen; končni dnevnik potrdi 67/67 in 21 lastnih primerov. Review.md loči branje dnevnika od dodatnega lastnega scenarija; surovi 03-review item_31 z izhodom 0 potrdi objavljeni PASS. Slike in visual-check.json odkrito pojasnijo ponovni zajem namizne table. Vse lokalne dokumentne povezave obstajajo; skriti testi, Chromium in okoljske omejitve so označeni.
+
+Dokazi: [specification.md](../../runs/P07-B-001/submission/docs/agent/specification.md), [implementation.md](../../runs/P07-B-001/submission/docs/agent/implementation.md), [verification.md](../../runs/P07-B-001/submission/docs/agent/verification.md), [check-initial.log](../../runs/P07-B-001/submission/docs/agent/check-initial.log), [check.log](../../runs/P07-B-001/submission/docs/agent/check.log), [review.md](../../runs/P07-B-001/submission/docs/agent/review.md), [review.json](../../runs/P07-B-001/submission/docs/agent/review.json), [visual-check.json](../../runs/P07-B-001/submission/docs/agent/visual-check.json), [events.jsonl.gz](../../runs/P07-B-001/phases/03-review/events.jsonl.gz).
+
+**Organizacija kode: 2/2.** Hook useFavorites združi globalno množico in opozorilo, loči čisti parser od branja, zapisa in poslušalca dogodkov s čiščenjem. Lokalni prehodi kopirajo Set; prejemnik ne piše in opozorilo ostane v seji. ProjectView s ključem projekta hrani samo filter, izpelje en visibleTasks za oba pogleda in X/M ter odstranjevanje iz celotnih tasks. FavoriteButton je ponovno uporabljen zunaj povezav. Tabla ohrani stolpce, neposredno dostopno ime pa podpira posebne ID-je. CSS doda omejene kontrolne sloge brez podvajanja podatkovnega toka ali sprememb strežnika.
+
+Dokazi: [useFavorites.ts](../../runs/P07-B-001/submission/src/useFavorites.ts), [FavoriteButton.tsx](../../runs/P07-B-001/submission/src/FavoriteButton.tsx), [App.tsx](../../runs/P07-B-001/submission/src/App.tsx), [TaskBoard.tsx](../../runs/P07-B-001/submission/src/TaskBoard.tsx), [styles.css](../../runs/P07-B-001/submission/src/styles.css).
+
+**Lastna preverjanja: 2/2.** 21 uspešnih lastnih primerov pokrije oba pogleda s posebnim ID-jem in enakim naslovom, Space/pravilen dialog/fokus, točen UTF-16 zapis z emojijem/U+E000, deset neveljavnih začetnih oblik brez prepisovanja, 13 nesortiranih opravil, 0/1 pri 390 px in projektno odstranjevanje z ohranitvijo drugih/neznanih ID-jev. Preveri števec celotnega projekta proti vidnim stolpcem, obnovitev in ponastavitev filtra, sintetično nadomestitev/null/drugi ključ brez odmeva ter tri ločene izjeme shrambe z nadaljnjim delom v pomnilniku. Pregledovalec dodatno dejansko izvede dva zavihka, preveri globoko enakost API podatkov, nič zapisov in oba ozka pogleda. Pričakovanja niso izpeljana s produkcijskim parserjem.
+
+Dokazi: [favorites.spec.ts](../../runs/P07-B-001/submission/tests/agent/favorites.spec.ts), [check.log](../../runs/P07-B-001/submission/docs/agent/check.log), [review.md](../../runs/P07-B-001/submission/docs/agent/review.md), [desktop-board.png](../../runs/P07-B-001/submission/docs/agent/desktop-board.png), [mobile-table.png](../../runs/P07-B-001/submission/docs/agent/mobile-table.png), [events.jsonl.gz](../../runs/P07-B-001/phases/03-review/events.jsonl.gz).
+
+Končna napaka: Neodvisna ocena potrdi 70/70 in 12/12 zahtev, dovoljen obseg, zaključen postopek in popolno porabo. Pregledovalec ne zahteva popravkov; v pregledanih končnih dokazih ni potrjene funkcionalne napake. To ni izčrpen dokaz vseh vhodov iz domene.
+
+Razvojni popravek: Prvi lastni zagon je pričakoval pet opravil v razvojnem projektu, čeprav jih javna testna zbirka vsebuje osem; prikaz aplikacije je bil pravilen. Check-initial.log ohrani 48 uspešnih, 8 neuspešnih, 1 prekinjen in 10 neizvedenih testov. Popravljeno je pričakovanje imenovalca v lastnih testih, nato celotni check uspe 67/67. To je napaka testa, ne dokazana napaka končne aplikacije.
+
+Opomba o razvojnem poteku: Neuspešna sistemska Git in Python ukaza zaradi manjkajočega xcrun sta ločeni omejitvi okolja. Namizna tabla je ponovno zajeta po čakanju na zaključeno navigacijo. Pregledovalec izvede dodaten omejen scenarij, ne ponavlja celotnega check; formalnih povratnih popravkov ni.
