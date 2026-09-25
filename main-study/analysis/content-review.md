@@ -2,7 +2,7 @@
 
 **AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.
 
-Vsebinsko ocenjenih je 16/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Število izbranih oddaj z dokumentirano nezmožnostjo ocene: 1; njihove ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
+Vsebinsko ocenjenih je 17/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Število izbranih oddaj z dokumentirano nezmožnostjo ocene: 1; njihove ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
 
 | Oddaja | Status presoje | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -23,8 +23,9 @@ Vsebinsko ocenjenih je 16/24 vnaprej določenih oddaj (ponovitev 001 za P03–P1
 | [P03-C-001](reviews/P03-C-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 | [P07-A-001](reviews/P07-A-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 | [P07-B-001](reviews/P07-B-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P07-C-001](reviews/P07-C-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 
-Še neobravnavane izbrane oddaje: P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
+Še neobravnavane izbrane oddaje: P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
 
 ## Porazdelitev ocen po dimenzijah
 
@@ -32,15 +33,15 @@ Vsaka trojica navaja število ocen 0 / 1 / 2. Manjkajoče in še neopravljene pr
 
 A: 5/8 številčno ocenjenih, 1 brez možnosti ocene, 2 še neobravnavanih.
 B: 6/8 številčno ocenjenih, 0 brez možnosti ocene, 2 še neobravnavanih.
-C: 5/8 številčno ocenjenih, 0 brez možnosti ocene, 3 še neobravnavanih.
+C: 6/8 številčno ocenjenih, 0 brez možnosti ocene, 2 še neobravnavanih.
 
 | Dimenzija | A: 0 / 1 / 2 | B: 0 / 1 / 2 | C: 0 / 1 / 2 |
 | --- | --- | --- | --- |
-| Pokritost specifikacije | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 5 |
-| Predikati/invariante | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 5 |
-| Sledljivost | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 1 / 4 |
-| Organizacija kode | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 5 |
-| Lastna preverjanja | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 5 |
+| Pokritost specifikacije | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 6 |
+| Predikati/invariante | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 6 |
+| Sledljivost | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 1 / 5 |
+| Organizacija kode | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 6 |
+| Lastna preverjanja | 0 / 0 / 5 | 0 / 0 / 6 | 0 / 0 / 6 |
 
 ## P05-A-001
 
@@ -489,3 +490,29 @@ Končna napaka: Neodvisna ocena potrdi 70/70 in 12/12 zahtev, dovoljen obseg, za
 Razvojni popravek: Prvi lastni zagon je pričakoval pet opravil v razvojnem projektu, čeprav jih javna testna zbirka vsebuje osem; prikaz aplikacije je bil pravilen. Check-initial.log ohrani 48 uspešnih, 8 neuspešnih, 1 prekinjen in 10 neizvedenih testov. Popravljeno je pričakovanje imenovalca v lastnih testih, nato celotni check uspe 67/67. To je napaka testa, ne dokazana napaka končne aplikacije.
 
 Opomba o razvojnem poteku: Neuspešna sistemska Git in Python ukaza zaradi manjkajočega xcrun sta ločeni omejitvi okolja. Namizna tabla je ponovno zajeta po čakanju na zaključeno navigacijo. Pregledovalec izvede dodaten omejen scenarij, ne ponavlja celotnega check; formalnih povratnih popravkov ni.
+
+## P07-C-001
+
+**Pokritost specifikacije: 2/2.** Specifikacija skladno zajame vseh R01–R12 ter globalno množico, lokalni filter, oba pogleda, identiteto ID, poljubno velikost in prazna projekta. Jasno loči neveljavno vsebino od izjeme dostopa, ohranja neznane ID-je, določi kanonični UTF-16 zapis, projektno odstranjevanje in izvore števcev. Obravnava podrobnosti, življenjsko dobo stanja, nedostopno shrambo in mejo sočasnosti. Zgodovina loči začetno specifikacijo od nadomestitve načrtovane sledljivosti s končnimi dokazi, brez spremembe sprejemnih pogojev.
+
+Dokazi: [spec.md](../../runs/P07-C-001/submission/docs/agent/P07/spec.md), [plan.md](../../runs/P07-C-001/submission/docs/agent/P07/plan.md).
+
+**Predikati/invariante: 2/2.** Model P/T/I/F/q/v/W poda veljavnost celotnega zapisa, decode(null), inicializacijo brez pisanja, simetrično razliko, F\I(P) in disabled natanko pri praznem preseku. V ostane stabilna podsekvenca, X/M izhajata iz celotnega projekta, stolpci iz vidnega seznama. Prehodi ločijo pogled, projekt in osvežitev; storage zamenja F brez odmeva, napaka zapisa ohrani novo pomnilniško stanje. Lokalnost izrecno prepove API zapise in spremembe polj opravil.
+
+Dokazi: [spec.md#model-stanja-in-predikati](../../runs/P07-C-001/submission/docs/agent/P07/spec.md#model-stanja-in-predikati).
+
+**Sledljivost: 2/2.** Specifikacija poveže izvedbeni del neposredno na matriko v verification.md; vsaka R ima pogoj, S/A/D scenarij, končni simbol kode in dejanski dokaz. Dnevnik in surovi 05-implement item_8 potrdita uspešni check 66/66 v 27,2 s; 20 lastnih testov ustreza osmim predponam z matrikami. Navedena vrstica 47 res zapisuje kanonični JSON. Devet nalog je zaključenih; converge zgolj pregleda obstoječe dokaze in ohrani tasks.md, brez ponovitve ali nove implementacije. Sintetični storage in odsotnost dejanskega preverjanja dveh zavihkov sta izrecno označena; skriti testi niso predstavljeni kot izvedeni.
+
+Dokazi: [spec.md](../../runs/P07-C-001/submission/docs/agent/P07/spec.md), [verification.md#sledljivost-zahtev](../../runs/P07-C-001/submission/docs/agent/verification.md#sledljivost-zahtev), [check.log](../../runs/P07-C-001/submission/docs/agent/P07/check.log), [tasks.md](../../runs/P07-C-001/submission/docs/agent/P07/tasks.md), [convergence.json](../../runs/P07-C-001/submission/docs/agent/convergence.json), [events.jsonl.gz](../../runs/P07-C-001/phases/05-implement/events.jsonl.gz), [events.jsonl.gz](../../runs/P07-C-001/phases/06-converge/events.jsonl.gz).
+
+**Organizacija kode: 2/2.** useFavorites loči čisti dekoder, začetno branje, uporabniški zapis in storage poslušalec s čiščenjem. Najnovejši objekt v ref podpira zaporedna dejanja, Set se kopira, zapis je zunaj updaterja in opozorilo ostane v seji. App hrani en globalni hook, ključena ProjectView lokalni filter; oba pogleda dobita isti izpeljani seznam, števec in odstranjevanje pa celotne tasks. FavoriteButton je skupen, semantičen in zunaj povezav. CSS omeji dodatke na kontrole/gumb/opozorilo in obstoječi mobilni prelom. Podedovana konstrukcija ARIA z neobdelanim ID-jem je posebej navedena kot meja, ne kot nova regresija.
+
+Dokazi: [useFavorites.ts](../../runs/P07-C-001/submission/src/useFavorites.ts), [FavoriteButton.tsx](../../runs/P07-C-001/submission/src/FavoriteButton.tsx), [App.tsx](../../runs/P07-C-001/submission/src/App.tsx), [TaskBoard.tsx](../../runs/P07-C-001/submission/src/TaskBoard.tsx), [styles.css](../../runs/P07-C-001/submission/src/styles.css), [TaskBoard.tsx](../../runs/P03-A-001/submission/src/TaskBoard.tsx).
+
+**Lastna preverjanja: 2/2.** 20 uspešnih lastnih testov preveri 13 nesortiranih opravil in tuji projekt, enake naslove, Unicode ID-je, prazen niz/emoji/U+E000 v izrecnem pričakovanju zapisa, dvojnike/neznane ID-je ter reload brez ponovnega sejanja. Pokrije oba prazna projekta, projekt z enim tujem opravilom, filtriranje in odstranitev zadnjega v obeh pogledih, podrobnosti/Escape, projektno brisanje, števce, 11 neveljavnih začetnih oblik in celo matriko storage dogodkov brez odmeva. Tri izjeme shrambe ohranijo pomnilniško delo, A05 preveri Space, širino 390, odsotnost zapisov in nespremenjen odgovor API-ja. Posnetki podpirajo oba prikaza. Dejanski medzavihkovni prenos in ID-ji s presledki niso dodatno preverjeni; to omejitev ohranimo kljub obsežnim negativnim/mejnim testom.
+
+Dokazi: [P07.spec.ts](../../runs/P07-C-001/submission/tests/agent/P07.spec.ts), [check.log](../../runs/P07-C-001/submission/docs/agent/P07/check.log), [desktop-board.png](../../runs/P07-C-001/submission/docs/agent/P07/desktop-board.png), [mobile-table.png](../../runs/P07-C-001/submission/docs/agent/P07/mobile-table.png), [convergence.json](../../runs/P07-C-001/submission/docs/agent/convergence.json).
+
+Končna napaka: Neodvisna ocena potrdi 70/70 in 12/12 zahtev, dovoljen obseg, zaključen postopek in popolno porabo. V tem pregledu ni dodatno potrjene funkcionalne napake. Statična primerjava pokaže, da TaskBoard ohrani izhodiščni aria-labelledby z neobdelanim task.id, enako kot nespremenjeno izhodišče v P03-A-001. Znana podedovana občutljivost takih IDREF na presledke zato ni odpravljena; za to oddajo ni izveden dodaten brskalniški preizkus in primarni izid ni spremenjen. 70/70 ni izčrpen dokaz vseh vhodov.
+
+Opomba o razvojnem poteku: Prvi celotni check uspe 66/66 v 27,2 s. Pregledani surovi dogodki nimajo neuspešnega zaključenega ukaza ali dokumentiranega popravljanja neuspešnega testa. Converge traja 72,113 s, pregleda že shranjene rezultate in ne izvaja testov ali dodatne implementacije.
