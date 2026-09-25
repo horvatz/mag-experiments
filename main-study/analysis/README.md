@@ -44,6 +44,10 @@ ne živa prikaza.
   ne pove, ali pravkar teče; trenutno aktivnost kaže `main-study/active.json`.
 - `execution_status`: izvirni status izvajalnika, npr. `completed` ali
   status prekinitve. Ne prevajaj vseh različnih neuspehov v »napaka kode«.
+- `completed_with_phase_time_limit`: zaporedje je prišlo do konca, vendar
+  vsaj ena faza nima normalnega zaključka. To ne izpolni pogoja za strogi
+  uspeh; funkcionalni izidi in znani čas se še vedno poročajo. P04-B-002
+  ponazarja dejansko spremenjen dokument v časovno prekinjeni fazi.
 - `requirements_demonstrated` / `demonstrated_fraction`: primarni izid
   zamrznjenega analizatorja; sprejemna testa pri namizni in mobilni
   velikosti morata uspeti, spremembe

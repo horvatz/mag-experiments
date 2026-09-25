@@ -1,0 +1,18 @@
+Najprej bom prebral pravila in zahteve ter zapisal specifikacijo. Nato bom izvedel spremembe, zagnal preverjanja in dokumentiral rezultate ter morebitne omejitve.
+
+Zahteve določajo stabilno razvrščanje z neodvisnima smerema in ohranitvijo izvornega zaporedja pri izenačenju. Obstoječa navigacija že omogoča lokalno stanje projekta; oba pogleda bosta uporabljala isto razvrščeno polje, štiri kontrole pa bodo sledile videzu Folio.
+
+Specifikacija je zapisana, implementacija pa pripravljena za preverjanje. Razvrščanje uporablja kopijo polja in izvorne indekse za izenačenja. Dodajam teste za Unicode, neodvisni smeri, prazne projekte, ponastavitve in odpiranje podrobnosti po ID-ju; skupno preverjanje že teče.
+
+Prvi zagon je uspešen: preverjanje kode, gradnja ter vseh 38 izhodiščnih in 8 razvojnih preverjanj. Zdaj teče še celoten sklop z dodatnimi testi, ki preverjajo tudi 100 kombinacij nastavitev, 13 opravil z enakimi naslovi in oba pogleda pri širini 390 pik.
+
+Končno preverjanje je uspešno: vseh 61 testov je opravljenih, vključno s 15 dodatnimi. Pregledana posnetka mobilne preglednice in namizne table kažeta ustrezno postavitev kontrol in viden fokus. Dopolnjujem še sledljivost R01–R12 ter zapis rezultatov in omejitev.
+
+Implementirano stabilno razvrščanje z dvema ključema, ponastavitve in ohranjanje nastavitev med pogledoma.
+
+`npm run check` je uspešen: **61/61 testov**.
+
+Pripravljena sta [specifikacija](/Users/zan/Documents/mag/experiments/.work/pilots/P04-A-002/app/docs/agent/specification.md) in [poročilo preverjanja](/Users/zan/Documents/mag/experiments/.work/pilots/P04-A-002/app/docs/agent/verification.md).
+
+Znanih neizpolnjenih zahtev ni. Nedostopni končni testi niso bili izvedeni.
+{"status":"completed","elapsedSeconds":622.467,"allowedChanges":true,"usage":{"input_tokens":753191,"cached_input_tokens":652672,"cache_write_input_tokens":0,"output_tokens":19105,"reasoning_output_tokens":4081}}

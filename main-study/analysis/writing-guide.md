@@ -108,3 +108,19 @@ kodo. Začeti poskus ostane v zamrznjeni analizi in ni nadomeščen z drugo
 ponovitvijo. Po uporabnikovi ročni ponastavitvi je sledil P03-B-001.
 Dokazi so v [zapisu nezmožnosti presoje](reviews/P03-A-001.json) in
 [arhivirani izvedbi](../../runs/P03-A-001/execution.json).
+
+## Fazna omejitev in dokumentacijski popravek P04-B-002
+
+`completed_with_phase_time_limit` pomeni, da se je zaporedje nadaljevalo,
+vendar vsaj ena faza ni normalno zaključena. P04-B-002 ima dve taki fazi,
+70/70 neodvisnih preverjanj ter 12/12 zahtev, vendar nima strogega uspeha.
+Čas 1109,156 s je znan, celotna poraba pa po skupnem pravilu ostane
+manjkajoča. Opaženi tokeni so le spodnja meja. Izvedba ostane v analizi.
+
+Začeti/zaključeni popravljalni koraki v `process-summary.json` so procesni
+števci: specifikator je dokument dejansko dopolnil, vendar je faza dosegla
+časovno mejo, zato ne šteje kot normalno zaključena. Povratni implementer
+je preveril dopolnitev dokumentov brez spreminjanja kode ali ponovitve
+funkcionalnih testov. Ta primer ni dodatna ordinalna ocena in ne dokazuje
+vzročnega izboljšanja kode zaradi pregleda. Dokazi, primerjava datotek in
+omejitev arhiviranja slike so v [razvojnem primeru](development-cases.md#p04b002-dejanski-povratni-popravek-specifikacije-ob-faznih-omejitvah).
