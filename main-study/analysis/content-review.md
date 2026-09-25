@@ -24,6 +24,22 @@ Vsebinsko ocenjenih je 14/24 vnaprej določenih oddaj (ponovitev 001 za P03–P1
 
 Še neobravnavane izbrane oddaje: P07-A-001, P07-B-001, P07-C-001, P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
 
+## Porazdelitev ocen po dimenzijah
+
+Vsaka trojica navaja število ocen 0 / 1 / 2. Manjkajoče in še neopravljene presoje niso ocena 0. Števila so opisna; dimenzij ne seštevamo in ne računamo skupne ocene kakovosti.
+
+A: 4/8 številčno ocenjenih, 1 brez možnosti ocene, 3 še neobravnavanih.
+B: 5/8 številčno ocenjenih, 0 brez možnosti ocene, 3 še neobravnavanih.
+C: 5/8 številčno ocenjenih, 0 brez možnosti ocene, 3 še neobravnavanih.
+
+| Dimenzija | A: 0 / 1 / 2 | B: 0 / 1 / 2 | C: 0 / 1 / 2 |
+| --- | --- | --- | --- |
+| Pokritost specifikacije | 0 / 0 / 4 | 0 / 0 / 5 | 0 / 0 / 5 |
+| Predikati/invariante | 0 / 0 / 4 | 0 / 0 / 5 | 0 / 0 / 5 |
+| Sledljivost | 0 / 0 / 4 | 0 / 0 / 5 | 0 / 1 / 4 |
+| Organizacija kode | 0 / 0 / 4 | 0 / 0 / 5 | 0 / 0 / 5 |
+| Lastna preverjanja | 0 / 0 / 4 | 0 / 0 / 5 | 0 / 0 / 5 |
+
 ## P05-A-001
 
 **Pokritost specifikacije: 2/2.** Specifikacija pokrije R01–R12, filter pred razrezom, globalni odsek v obeh pogledih, različno osnovo projektnih in stolpčnih števcev, prazno stanje ter ponastavitve. Konkretno loči notranjo stran 1 od prikazanega praznega stanja 0/0.

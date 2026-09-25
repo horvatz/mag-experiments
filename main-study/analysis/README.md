@@ -25,6 +25,7 @@ ne popravljajo in ne vračajo povratnih informacij v merjene seje.
 | `content-review.md` | Pregled dejansko opravljenih presoj z utemeljitvami |
 | `development-cases.md` | Naknadno izbrani razvojni primeri zunaj vzorca 001; brez dodatnih ocen ali sklepov o pogostosti |
 | `review-data.csv` | Vseh 24 vnaprej izbranih oddaj, pet ločenih ocen in identiteta presoje; manjkajoča ocena ostane prazna |
+| `review-distribution.json` | Števila ocen 0/1/2 ločeno za pet dimenzij in A/B/C; neocenljive ter čakajoče presoje so ločene |
 | `anomalies.json` | Neuspešni ali nepopolni izidi; ohranjeni izvirni statusi in sporočila testov |
 | `integrity-audit.json` | Kontrola zamrznjenih virov, uporabljenega ocenjevalca in vsake datoteke arhiva |
 | `figures/` | Grafi PNG/SVG in zapis podatkovnega posnetka ter različic knjižnic |
