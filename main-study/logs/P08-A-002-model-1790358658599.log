@@ -1,0 +1,18 @@
+Najprej bom prebral pravila in zahteve ter zapisal specifikacijo. Nato bom rešitev implementiral, preveril in v dokumentaciji navedel dejanske rezultate ter morebitne omejitve.
+
+Zahteve določajo ločen vnos datuma in zadnji veljavni datum za preračun. Stanje bom vezal na trenutni projekt, tako da se bo ob preklopu preglednice in table ohranilo, ob menjavi projekta pa ponastavilo. Lastni testi bodo zajeli tudi koledarske meje, prazne projekte in nespremenljivost števcev.
+
+Osnovna implementacija je pripravljena: pet skupin se izračuna iz vseh opravil projekta, isti filtrirani seznam pa uporabljata preglednica in tabla. Datumski izračun uporablja koledarske dneve brez lokalnega časa. Zdaj dodajam preverjanja za prestopna leta, časovne pasove, ponastavitve in prazne skupine.
+
+Prvi zagon je uspešno opravil vseh 38 preverjanj izhodišča in vseh 8 razvojnih preverjanj P08. Trije lastni testi so padli pri drugem zaporednem naboru datumov; preverjam, ali testni pripomoček res naloži nove podatke. Pri vizualnem ogledu se stran pri širini 390 pik ni razširila.
+
+Končni `npm run check` je uspešen: 54 od 54 testov. Napako v lastnih testih je povzročila ponovna navigacija na isti URL z razpršilcem, ki ni znova naložila testnih podatkov; po popravku testne priprave prestanejo vse koledarske meje v treh časovnih pasovih. Tudi vizualni pregled obeh prikazov je opravljen. Dokončujem sledljivost zahtev in zapis preverjanj.
+
+P08 je izveden po postopku A: dodani so koledarske skupine, števci, filtriranje in pravilno ohranjanje oziroma ponastavljanje stanja.
+
+`npm run check`: **54/54 testov uspešnih**. Preverjen je tudi prikaz pri širini 390 pik.
+
+Dokumentacija: [specifikacija](/Users/zan/Documents/mag/experiments/.work/pilots/P08-A-002/app/docs/agent/specification.md) in [rezultati preverjanja](/Users/zan/Documents/mag/experiments/.work/pilots/P08-A-002/app/docs/agent/verification.md).
+
+Znanih neizpolnjenih zahtev ni. Skriti končni testi niso bili dostopni.
+{"status":"completed","elapsedSeconds":712.19,"allowedChanges":true,"usage":{"input_tokens":811737,"cached_input_tokens":739584,"cache_write_input_tokens":0,"output_tokens":21919,"reasoning_output_tokens":4855}}

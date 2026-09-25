@@ -160,3 +160,36 @@ Dokazi: [prvi razvojni zagon](../../runs/P08-B-003/submission/docs/agent/check-i
 [pregledovalčev zapis](../../runs/P08-B-003/submission/docs/agent/review.md),
 [surovi dogodki pregleda, item_18](../../runs/P08-B-003/phases/03-review/events.jsonl.gz),
 [neodvisna ocena](../../runs/P08-B-003/evaluation-summary.json).
+
+## P08: trije izbrani primeri ponovnega nalaganja testnih podatkov
+
+Podoben zaplet priprave koledarskih testov je dokumentiran v treh
+naknadno pregledanih oddajah različnih postopkov. Lastni test je znotraj
+iste strani večkrat klical skupni `mount` z istim URL-jem z razpršilcem
+in spremenjenimi prestreženimi podatki. Naslednji primer je obdržal podatke
+prejšnjega, zato neuspeh ni sam po sebi dokaz napačne razvrstitve rokov.
+Predaje pojasnjujejo to razliko; končni testi izrecno zagotovijo novo stran
+oziroma novo nalaganje. Izvirni skupni pripomoček ni bil spremenjen.
+
+| Oddaja | Prvi celotni zagon | Popravek priprave | Končni celotni zagon |
+| --- | --- | --- | --- |
+| P08-A-002 | 51/54; trije A02 neuspešni | `about:blank`, odstranitev starih prestrezanj in preverjanje dejansko naloženega roka | 54/54, 26,6 s |
+| P08-B-003 | 50/53; trije A05 neuspešni | nova stran za vsak koledarski primer, nato zapiranje strani | 53/53, 25,9 s |
+| P08-C-002 | 51/54; trije A02 neuspešni | `about:blank` pred vsakim novim primerom | 54/54, 23,7 s |
+
+Vsi trije končni arhivi imajo tudi 70/70 neodvisnih preverjanj in 12/12
+zahtev. To so primeri razlikovanja med pripravo testa in funkcionalno
+napako; ne gre za tri napake končnih rešitev ali formalne povratne korake
+po pregledu. Izbor je naknaden in ni sistematičen popis vseh razvojnih
+zagonov, zato tabela ne meri pogostosti napak ali prednosti katerega
+postopka. Vnaprej določene presoje ponovitve 001 ostanejo ločene.
+
+Dokazi za A: [prvi dnevnik](../../runs/P08-A-002/submission/docs/agent/check-first.log),
+[končni test](../../runs/P08-A-002/submission/tests/agent/deadlines.spec.ts#L80),
+[končni dnevnik](../../runs/P08-A-002/submission/docs/agent/check.log),
+[predaja](../../runs/P08-A-002/submission/docs/agent/verification.md).
+Dokazi za B so navedeni v prejšnjem primeru. Dokazi za C:
+[prvi dnevnik](../../runs/P08-C-002/submission/docs/agent/P08/check.log),
+[končni test](../../runs/P08-C-002/submission/tests/agent/P08.spec.ts#L73),
+[končni dnevnik](../../runs/P08-C-002/submission/docs/agent/P08/check-final.log),
+[predaja](../../runs/P08-C-002/submission/docs/agent/verification.md).
