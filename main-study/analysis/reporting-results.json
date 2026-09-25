@@ -1,10 +1,9 @@
 {
-  "generatedAt": "2026-09-25T17:17:28.610Z",
+  "generatedAt": "2026-09-25T17:36:19.600Z",
   "complete": false,
-  "archived": 33,
+  "archived": 34,
   "planned": 72,
   "missing": [
-    "P08-C-002",
     "P08-B-002",
     "P08-A-002",
     "P04-C-002",
@@ -71,15 +70,15 @@
     },
     {
       "procedure": "C",
-      "archived": 11,
+      "archived": 12,
       "planned": 24,
-      "strictSuccesses": 10,
+      "strictSuccesses": 11,
       "meanDemonstratedFraction": 1,
       "meanElapsedSeconds": null,
-      "completeUsageCount": 10,
-      "meanInputTokensCompleteOnly": 2774439.6,
-      "meanOutputTokensCompleteOnly": 29291.7,
-      "knownDurationCount": 10
+      "completeUsageCount": 11,
+      "meanInputTokensCompleteOnly": 2769072.727272727,
+      "meanOutputTokensCompleteOnly": 29309.636363636364,
+      "knownDurationCount": 11
     }
   ],
   "byTask": [
@@ -222,10 +221,10 @@
     {
       "task": "P08",
       "procedure": "C",
-      "count": 2,
+      "count": 3,
       "meanDemonstratedFraction": 1,
-      "meanElapsedSeconds": 1001.7004999999999,
-      "knownDurationCount": 2
+      "meanElapsedSeconds": 1026.367,
+      "knownDurationCount": 3
     },
     {
       "task": "P09",
@@ -4980,6 +4979,164 @@
       "ownTestFiles": 1,
       "contentReviewSample": false,
       "evidence": "runs/P08-C-003/evaluation-summary.json"
+    },
+    {
+      "id": "P08-C-002",
+      "task": "P08",
+      "procedure": "C",
+      "repetition": 2,
+      "block": 12,
+      "position": 1,
+      "executionStatus": "completed",
+      "elapsedSeconds": 1075.7,
+      "strictSuccess": true,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": true,
+            "observed": true
+          }
+        ],
+        "passed": 12,
+        "observed": 12,
+        "total": 12,
+        "fraction": 1
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "usage": {
+        "input_tokens": 2715404,
+        "cached_input_tokens": 2381056,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 29489,
+        "reasoning_output_tokens": 5185
+      },
+      "usageComplete": true,
+      "observedUsageBeforeInterruption": null,
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 92.188,
+          "status": "completed"
+        },
+        {
+          "name": "specify",
+          "elapsedSeconds": 146.491,
+          "status": "completed"
+        },
+        {
+          "name": "plan",
+          "elapsedSeconds": 108.558,
+          "status": "completed"
+        },
+        {
+          "name": "tasks",
+          "elapsedSeconds": 70.123,
+          "status": "completed"
+        },
+        {
+          "name": "implement",
+          "elapsedSeconds": 556.197,
+          "status": "completed"
+        },
+        {
+          "name": "converge",
+          "elapsedSeconds": 98.492,
+          "status": "completed"
+        }
+      ],
+      "changedFiles": 16,
+      "ownTestFiles": 1,
+      "contentReviewSample": false,
+      "evidence": "runs/P08-C-002/evaluation-summary.json"
     }
   ],
   "withheldComparisons": [],

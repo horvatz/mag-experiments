@@ -1,0 +1,25 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 test
+> playwright test --project=agent
+
+[WebServer] (node:63423) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:63450) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:63451) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [agent] › tests/agent/P08.spec.ts:26:1 › A01: fixed date, complete disjoint groups, stable order and full counts (1.1s)
+  ✓  2 [agent] › tests/agent/P08.spec.ts:64:5 › America/Los_Angeles › A02: calendar boundaries across month, year, leap February and DST (1.2s)
+  ✓  3 [agent] › tests/agent/P08.spec.ts:64:5 › Europe/Ljubljana › A02: calendar boundaries across month, year, leap February and DST (1.2s)
+  ✓  4 [agent] › tests/agent/P08.spec.ts:64:5 › Pacific/Kiritimati › A02: calendar boundaries across month, year, leap February and DST (1.2s)
+  ✓  5 [agent] › tests/agent/P08.spec.ts:90:1 › A03: valid and empty dates retain active filter across both views (535ms)
+  ✓  6 [agent] › tests/agent/P08.spec.ts:117:1 › A04: project changes and reload reset filters without storage or URL state (744ms)
+  ✓  7 [agent] › tests/agent/P08.spec.ts:141:1 › A05: empty projects and single-task empty groups stay usable in both views (588ms)
+  ✓  8 [agent] › tests/agent/P08.spec.ts:163:1 › A06: 390px Folio, Unicode details, accessible controls and no writes (549ms)
+
+  8 passed (7.7s)
