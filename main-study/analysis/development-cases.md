@@ -113,3 +113,45 @@ Dokazi: [prvotni razvojni zagon](../../runs/P10-B-003/submission/docs/agent/chec
 [pregledovalčev zapis](../../runs/P10-B-003/submission/docs/agent/review.md),
 [surovi dogodki pregleda, item_32 in item_34](../../runs/P10-B-003/phases/03-review/events.jsonl.gz),
 [neodvisna ocena](../../runs/P10-B-003/evaluation-summary.json).
+
+## P08–B–003: pregledovalčev ločen koledarski izračun
+
+Implementerjev prvi celotni zagon je dosegel 50/53. Trije koledarski testi
+so pri različnih časovnih pasovih pričakovali 0 zamujenih opravil, prejeli
+pa 4. Predaja to pripiše ponovni uporabi iste strani ob menjavi testnih
+podatkov. Končna različica ustvari novo stran za vsak primer, jo po njem
+zapre in ohrani preverjanje natančnih števcev ter ID-jev. Celotni zagon
+nato uspe 53/53 v 25,9 s, vključno s sedmimi lastnimi testi. Trije od njih
+izvedejo sedem koledarskih primerov v UTC, Europe/Ljubljana in
+America/New_York.
+
+Pregledovalec je dodal neposredno preverjanje funkcij `deadlines.ts`
+z referenčnim premikanjem dneva, meseca in leta po gregorijanskih pravilih,
+brez uporabe `Date` v referenčnem izračunu. Obravnaval je 18 izbranih let,
+šest mesecev, tri izbire dneva, osem odmikov in tri statuse opravila.
+Vključeni so zgodnja leta, prestopna stoletja ter neprestopna 0100, 1900
+in 2100. Primeri zunaj let 0001–9999 so izpuščeni. Surovi dogodek
+**item_18** faze `03-review` potrdi izhod 0 in
+`{"result":"passed","anchors":324,"classifications":7743}`.
+
+Število 324 pomeni iteracije izhodišča, ne 324 različnih datumov:
+v neprestopnem februarju sta 28. dan in zadnji dan meseca isti datum.
+Iz ukaza je razvidnih **312 različnih izhodiščnih datumov** ter
+12 ponovitev. 7.743 je število preverjenih razvrstitev, ne toliko
+neodvisnih eksperimentov ali vnaprej določenih sprejemnih testov.
+Pregled zajema tudi števce, šest neveljavnih vnosov in prazen seznam.
+
+Pregledovalec ni ponovno izvedel celotnega brskalniškega preverjanja,
+ni spremenil aplikacije ali zahteval popravkov. Poznejša neodvisna ocena
+je 70/70 in 12/12 zahtev s strogim uspehom. Ta naknadno izbrani primer
+ponazarja dodatno preverjanje z drugačnim načinom izračuna, ne potrjene
+napake aplikacije ali vzročnega izboljšanja postopka B. Ne nadomešča
+ocene ponovitve 001 in ne dokazuje pravilnosti celotne domene datumov.
+
+Dokazi: [prvi razvojni zagon](../../runs/P08-B-003/submission/docs/agent/check-initial.log),
+[končni koledarski testi](../../runs/P08-B-003/submission/tests/agent/deadlines.spec.ts#L145),
+[končni razvojni zagon](../../runs/P08-B-003/submission/docs/agent/check.log),
+[predaja](../../runs/P08-B-003/submission/docs/agent/verification.md),
+[pregledovalčev zapis](../../runs/P08-B-003/submission/docs/agent/review.md),
+[surovi dogodki pregleda, item_18](../../runs/P08-B-003/phases/03-review/events.jsonl.gz),
+[neodvisna ocena](../../runs/P08-B-003/evaluation-summary.json).
