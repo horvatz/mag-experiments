@@ -70,7 +70,7 @@ for (const row of data.data) {
   }
 }
 const ratedReviews = reviews.filter(isRated), unavailableReviews = reviews.filter(r => !isRated(r))
-writeProcessSummary(data, root, dir)
+const processSummary = writeProcessSummary(data, root, dir)
 const reviewDistribution = ['A', 'B', 'C'].map(procedure => {
   const selected = schedule.runs.filter(r => r.repetition === 1 && r.procedure === procedure)
   const selectedReviews = reviews.filter(r => selected.some(s => s.id === r.id))
@@ -157,6 +157,14 @@ writeFileSync(resolve(generated, 'poraba-meritev.tex'), table('Tokeni samo izved
 writeFileSync(resolve(generated, 'primerjave-meritev.tex'), data.complete ? table('Parne razlike med postopki po osmih nalogah.', 'tab:parne-razlike', '@{}llrrr@{}', 'Par & Mera & Razlika & Spodnja meja & Zgornja meja',
   data.comparisons.map(c => `${c.first}--${c.second} & ${c.metric === 'meanElapsedSeconds' ? 'Čas (s)' : 'Delež zahtev'} & ${num(c.meanDifference, 3)} & ${num(c.lower, 3)} & ${num(c.upper, 3)}`),
   'Opisni 95-odstotni percentilni intervali iz 20.000 ponovnih vzorcev osmih nalog. Najprej so povprečene tri ponovitve vsakega postopka pri isti nalogi. Časovne primerjave z manjkajočo ponovitveno meritvijo so zadržane.') : 'Parne razlike in intervali še niso izračunani, ker vseh 72 izvedb še ni arhiviranih.\n')
+const bp = processSummary.B, cp = processSummary.C
+writeFileSync(resolve(generated, 'potek-popravljanja.tex'), [
+  '% Generated from archived formal handoffs; no manual counts.',
+  'Pri postopku B je število arhiviranih izvedb ' + bp.archived + ', potrjenih strukturiranih predaj pregleda pa ' + bp.validatedReviews + '. Brez potrjene predaje je ' + bp.withoutValidatedReview + ' izvedb. Število predaj z zahtevo za popravek specifikacije je ' + bp.runsRequestingSpecificationRepair + ', z zahtevo za popravek kode pa ' + bp.runsRequestingCodeRepair + '. Začeti/zaključeni povratni koraki specifikacije: ' + bp.specificationRepairsStarted + '/' + bp.specificationRepairsCompleted + '; implementacije: ' + bp.implementationRepairsStarted + '/' + bp.implementationRepairsCompleted + '.', '',
+  'Pri postopku C je število arhiviranih izvedb ' + cp.archived + '. Potrjenih predaj konvergence je ' + cp.validatedConvergencePasses + ', izvedb brez take predaje pa ' + cp.withoutValidatedConvergence + '. Posamezne predaje imajo naslednje izide: \\texttt{converged} ' + cp.outcomes.converged + ', \\texttt{tasks\\_appended} ' + cp.outcomes.tasks_appended + ' in \\texttt{blocked} ' + cp.outcomes.blocked + '. Začete/zaključene dodatne implementacije: ' + cp.additionalImplementationStarted + '/' + cp.additionalImplementationCompleted + '.', '',
+  'Števci opisujejo formalne korake izvajalnika. Potrjena predaja pomeni zaključen korak s sprejetim strukturiranim odgovorom, katerega zgoščena vrednost se ujema z arhivom. Posamezna izvedba C lahko vsebuje dve predaji konvergence. Odsotna predaja ne pomeni potrditve odsotnosti napak. Zahteva za popravek specifikacije pri B sproži tudi vrnitev implementerju; po popravkih protokol ne načrtuje drugega formalnega pregleda.', '',
+  'Popravki kode ali testov znotraj ene faze niso vključeni med povratne korake. Postopek A nima ločenega pregleda ali konvergence. Števcev zato ne razlagamo kot primerljivih ocen kakovosti, števila razvojnih napak ali vzročnega učinka postopka. Dokazi za vsako predajo so v spremljajočem zapisu \\texttt{process-summary.json}.', ''
+].join('\n'))
 writeFileSync(resolve(generated, 'presoja-meritev.tex'), `Opravljena je AI-podprta, neslepa vsebinska presoja ${ratedReviews.length} od 24 vnaprej izbranih oddaj. Število izbranih oddaj brez možnosti vsebinske ocene: ${unavailableReviews.length}; njihove ocene ostanejo manjkajoče in se ne nadomestijo z ničlo ali drugo ponovitvijo. Posamezne utemeljitve in povezave do dokazov so v spremljajoči zbirki \\texttt{main-study/analysis/content-review.md}. Neodvisna človeška presoja in soglasje med ocenjevalci nista izmerjena.\n`)
 writeFileSync(resolve(generated, 'porazdelitev-presoj.tex'), table('Porazdelitev vsebinskih ocen po ločenih dimenzijah.', 'tab:porazdelitev-presoj', '@{}lrrr@{}', 'Dimenzija & A: 0 / 1 / 2 & B: 0 / 1 / 2 & C: 0 / 1 / 2',
   dimensions.map((dimension, index) => `${labels[index]} & ${reviewDistribution.map(g => g.dimensions.find(d => d.dimension === dimension).counts.join(' / ')).join(' & ')}`),

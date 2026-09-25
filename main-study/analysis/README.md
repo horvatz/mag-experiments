@@ -90,7 +90,8 @@ zamenja z drugo ponovitvijo. `integrity-audit.json` loči `reviewed`
 Primarni izračun ustvari `node scripts/analyze-main.mjs`. Dodatno gradivo
 in preverjanje celovitosti ustvari
 `node main-study/analysis/prepare-writing-data.mjs`.
-Ta korak posodobi tudi številčne vložke `naloga/latex/generirano/`.
+Ta korak posodobi tudi številčne vložke `naloga/latex/generirano/`,
+vključno z ločeno porazdelitvijo ocen in opisom formalnih povratnih korakov.
 Nobeden od obeh ukazov ne zažene nove merjene izvedbe.
 
 Grafi nastanejo z `artifacts/plots.py`; različice so v
