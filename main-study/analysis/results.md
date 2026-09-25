@@ -1,12 +1,12 @@
 # Glavna zbirka P03–P10
 
-Arhiviranih je 36 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
+Arhiviranih je 37 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
 
 | Postopek | Arhivirano | Strogi uspehi | Dokazane zahteve, povprečni delež | Čas, povprečje s | Popolna poraba |
 | --- | --- | --- | --- | --- | --- |
 | A | 12/24 | 11 | 0.92 | 603.57 | 11/12 |
 | B | 12/24 | 12 | 1.00 | 925.17 | 12/12 |
-| C | 12/24 | 11 | 1.00 | 935.94 | 11/12 |
+| C | 13/24 | 12 | 1.00 | 942.45 | 12/13 |
 
 Vsaka zahteva potrebuje uspeh na obeh velikostih zaslona. Neopaženo preverjanje pomeni nedokazano zahtevo, ne potrjene funkcionalne napake. Strogi uspeh zahteva še zaključek postopka, dovoljene spremembe, lint, tipe, gradnjo in vseh 70 preverjanj.
 
@@ -50,5 +50,6 @@ Vhodni tokeni vključujejo predpomnjene, izhodni vključujejo reasoning. Nepopol
 | [P08-C-002](../../runs/P08-C-002/report.md) | completed | 12/12 | 12/12 | 1075.7 | da |
 | [P08-B-002](../../runs/P08-B-002/report.md) | completed | 12/12 | 12/12 | 808.362 | da |
 | [P08-A-002](../../runs/P08-A-002/report.md) | completed | 12/12 | 12/12 | 712.19 | da |
+| [P04-C-002](../../runs/P04-C-002/report.md) | completed | 12/12 | 12/12 | 1020.453 | da |
 
 Vsebinska rubrika, človeška presoja in pisanje interpretacije so ločeni koraki; prisotnost testov ali dokumentov ni samodejna ocena njihove kakovosti.
