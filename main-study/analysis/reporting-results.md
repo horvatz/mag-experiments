@@ -1,10 +1,10 @@
 # Rezultati za pisanje
 
-Podatkovni posnetek: 2026-09-25T19:08:54.387Z. Arhiviranih 40/72. Nepopolna zbirka; skupinski podatki so sprotni opis, brez končnega sklepanja.
+Podatkovni posnetek: 2026-09-25T19:20:44.956Z. Arhiviranih 41/72. Nepopolna zbirka; skupinski podatki so sprotni opis, brez končnega sklepanja.
 
 | Postopek | Arhivi | Strogi uspehi | Delež zahtev | Čas s | Znani časi |
 | --- | --- | --- | --- | --- | --- |
-| A | 13/24 | 12 | 0.923 | 605.02 | 13/13 |
+| A | 14/24 | 13 | 0.929 | 608.46 | 14/14 |
 | B | 13/24 | 12 | 1.000 | 939.33 | 13/13 |
 | C | 14/24 | 13 | 1.000 | — | 13/14 |
 
@@ -54,12 +54,13 @@ Dokazana zahteva potrebuje uspeh obeh sprejemnih prikazov in dovoljen obseg spre
 | [P04-B-002](../../runs/P04-B-002/evaluation-summary.json) | completed_with_phase_time_limit | 12/12 | 12/12 | 1109.16 | ne |
 | [P04-A-002](../../runs/P04-A-002/evaluation-summary.json) | completed | 12/12 | 12/12 | 622.47 | da |
 | [P07-C-003](../../runs/P07-C-003/evaluation-summary.json) | completed | 12/12 | 12/12 | 961.05 | da |
+| [P07-A-003](../../runs/P07-A-003/evaluation-summary.json) | completed | 12/12 | 12/12 | 653.17 | da |
 
 ## Popolno zabeležena poraba
 
 | Postopek | Popolni zapisi / arhivi | Povprečni vhodni tokeni | Povprečni izhodni tokeni |
 | --- | --- | --- | --- |
-| A | 12/13 | 750993.58 | 20136.42 |
+| A | 13/14 | 758758.15 | 20086.77 |
 | B | 12/13 | 1112662.17 | 27428.50 |
 | C | 13/14 | 2793723.69 | 29159.38 |
 
