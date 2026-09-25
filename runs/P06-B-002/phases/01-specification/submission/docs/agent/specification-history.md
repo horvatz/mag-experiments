@@ -1,0 +1,5 @@
+# Zgodovina specifikacije P06
+
+- **v0 — začetni zapis:** Po branju `PROJECT_RULES.md`, `task/instructions.md` in `task/specification-template.md` shranjen uporaben osnutek `specification.md` z vsemi R01–R12, privzetimi nastavitvami in omejitvami vloge.
+- **v1 — predaja implementerju:** Po statičnem branju `shared/types.ts`, izvorne kode, `docs/dizajn.md` in razvojnih testov dodani predikati CSV in stanja, točna dostopna imena, podatkovne predpostavke, integracijske točke, tabela sledljivosti za vseh dvanajst zahtev ter dopolnilni scenariji S01–S06. Potrjeno, da je življenjski cikel `ProjectView` že vezan na ID projekta; izvoz mora uporabljati izvorne vrednosti in zaporedje API. Razvojni testi D01–D04 imajo samo delno pokritost.
+- **Stanje preverjanja:** Izvedeno samo branje in pisanje specifikacije. Noben test, zagon aplikacije ali vizualni pregled ni bil izveden. Implementer naj rezultate in končno povezavo R → koda → dokaz vpiše v svoje dokumente; specifikacijo in njeno zgodovino popravlja prvotni avtor v nadaljevani seji.

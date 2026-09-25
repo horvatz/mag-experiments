@@ -1,6 +1,6 @@
 # Kazalo dokazov po nalogah
 
-Posnetek 2026-09-25T22:15:02.293Z: 52/72 arhivov.
+Posnetek 2026-09-25T22:31:20.275Z: 53/72 arhivov.
 
 Kazalo povezuje vnaprej določene naloge z vsemi tremi ponovitvami. Vrstni red spodaj je po postopku in ponovitvi; dejanski vrstni red meritev je v [zamrznjenem razporedu](../schedule.json). Nearhivirana vrstica lahko pravkar teče; to kaže [aktivno stanje](../active.json).
 
@@ -82,7 +82,7 @@ Vsebinske presoje izbranih oddaj:
 | P06-A-002 | še ni arhiva | — | — | — | — |
 | P06-A-003 | completed | 12/12 | da | 792,318 | [ocena](../../runs/P06-A-003/evaluation-summary.json) · [proces](../../runs/P06-A-003/execution.json) · [poraba](../../runs/P06-A-003/usage-observation.json) · [koda](../../runs/P06-A-003/submission/src/App.tsx) · [predaja](../../runs/P06-A-003/submission/docs/agent/verification.md) |
 | P06-B-001 | completed | 12/12 | da | 926,627 | [ocena](../../runs/P06-B-001/evaluation-summary.json) · [proces](../../runs/P06-B-001/execution.json) · [poraba](../../runs/P06-B-001/usage-observation.json) · [koda](../../runs/P06-B-001/submission/src/App.tsx) · [predaja](../../runs/P06-B-001/submission/docs/agent/verification.md) |
-| P06-B-002 | še ni arhiva | — | — | — | — |
+| P06-B-002 | completed | 12/12 | da | 921,614 | [ocena](../../runs/P06-B-002/evaluation-summary.json) · [proces](../../runs/P06-B-002/execution.json) · [poraba](../../runs/P06-B-002/usage-observation.json) · [koda](../../runs/P06-B-002/submission/src/App.tsx) · [predaja](../../runs/P06-B-002/submission/docs/agent/verification.md) |
 | P06-B-003 | completed | 12/12 | da | 851,587 | [ocena](../../runs/P06-B-003/evaluation-summary.json) · [proces](../../runs/P06-B-003/execution.json) · [poraba](../../runs/P06-B-003/usage-observation.json) · [koda](../../runs/P06-B-003/submission/src/App.tsx) · [predaja](../../runs/P06-B-003/submission/docs/agent/verification.md) |
 | P06-C-001 | infrastructure_interrupted | 12/12 | ne | — | [ocena](../../runs/P06-C-001/evaluation-summary.json) · [proces](../../runs/P06-C-001/execution.json) · [poraba](../../runs/P06-C-001/usage-observation.json) · [koda](../../runs/P06-C-001/submission/src/App.tsx) · [predaja](../../runs/P06-C-001/submission/docs/agent/verification.md) |
 | P06-C-002 | completed | 12/12 | da | 974,600 | [ocena](../../runs/P06-C-002/evaluation-summary.json) · [proces](../../runs/P06-C-002/execution.json) · [poraba](../../runs/P06-C-002/usage-observation.json) · [koda](../../runs/P06-C-002/submission/src/App.tsx) · [predaja](../../runs/P06-C-002/submission/docs/agent/verification.md) |
