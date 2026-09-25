@@ -253,3 +253,38 @@ Dokazi: [začetna specifikacija po prekinitvi](../../runs/P04-B-002/phases/01-sp
 [proces in časi](../../runs/P04-B-002/execution.json),
 [neodvisna ocena](../../runs/P04-B-002/evaluation-summary.json),
 [delno opažena poraba](../../runs/P04-B-002/usage-observation.json).
+
+## P07–C–003: popravek podedovanih sklicev pri ID-ju s presledkom
+
+Prvi skupni zagon je uspešno opravil lint, ustavil pa ga je TS2684 v
+lastnem testu izjem shrambe: združena podpisa `getItem`/`setItem` nista
+ustrezala klicu z določenim `this`. Testni prestreznik je bil popravljen z
+`Reflect.apply`. Brskalniški testi v tem prvem zagonu še niso tekli.
+Naslednji celotni zagon je uspel 66/66 v 26,0 s.
+
+Model je nato pri pregledu domene ID-jev opazil surove identifikatorje
+DOM v `aria-labelledby` kartic. Pri presledku se sklic razdeli na več
+imen. Spremenil je samo sestavljanje DOM oznak in njihovih sklicev z
+`encodeURIComponent`; podatkovni ID in navigacija ostaneta nespremenjena.
+A07 je dopolnil z ID-ji oblike `č /0?&` ter s preverjanjem natančnega
+imena povezave. Končni celotni zagon je uspel 66/66 v 26,5 s, neodvisna
+ocena pa 70/70 in 12/12 s strogim uspehom. Converge je pregledal dokazila,
+brez novega popravka ali ponovitve testov.
+
+To je popravek aplikacijske kode med razvojem, vendar izhodiščne omejitve,
+ne novo uvedene regresije. SHA-256 začetne komponente v arhivu se ujema
+z izvirnim izvoznim manifestom in nespremenjenim izhodiščem prej opravljenega
+[ločeno označenega pregleda dostopnosti](diagnostics/README.md#dostopno-ime-kartice-pri-id-ju-s-presledkom).
+Nova primerjava ni dodatno brskalniško merjenje ali preizkus bralnika
+zaslona. Izbrana je naknadno; ne spreminja primarnih meril, ne ocenjuje
+ponovitve 003 po rubriki 001 in ne dokazuje splošne prednosti postopka C.
+
+Dokazi: [napaka tipov](../../runs/P07-C-003/submission/docs/agent/P07/check.log),
+[zagon pred dopolnitvijo](../../runs/P07-C-003/submission/docs/agent/P07/check-final.log),
+[začetna komponenta](../../runs/P07-C-003/phases/01-constitution/submission/src/TaskBoard.tsx),
+[končna komponenta](../../runs/P07-C-003/submission/src/TaskBoard.tsx),
+[končni A07](../../runs/P07-C-003/submission/tests/agent/P07.spec.ts#L183),
+[končni zagon](../../runs/P07-C-003/submission/docs/agent/P07/check-verified.log),
+[zapis poteka](../../runs/P07-C-003/submission/docs/agent/verification.md),
+[primerjava zgoščenih vrednosti](diagnostics/P07-C-003-accessibility.json),
+[neodvisna ocena](../../runs/P07-C-003/evaluation-summary.json).

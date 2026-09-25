@@ -82,3 +82,19 @@ okolju in brez spreminjanja prekopirana v
 [Provenance](P04-B-002/provenance.json) loči čas zadnje spremembe izvorne datoteke, čas naknadnega
 shranjevanja, izvor in SHA-256. Gre za dodatno prilogo po oddaji;
 izvirni arhiv ni dopolnjen in slika ni ponovno ustvarjena.
+
+## Opaženi popravek iste izhodiščne omejitve v P07-C-003
+
+P07-C-003 je med implementacijo sam popravil DOM identifikatorje in
+sklice `aria-labelledby` z `encodeURIComponent(task.id)`. Raziskovalčevega
+prejšnjega diagnostičnega rezultata ni prejel. Končni lastni A07 uporablja
+ID-je s presledkom, Unicode in URL ločili ter preveri natančno dostopno
+ime povezave; zagon po spremembi potrdi 66/66.
+
+[Primerjava virov in shranjenih dokazov](P07-C-003-accessibility.json)
+potrdi, da začetni TaskBoard v arhivu po SHA-256 ustreza prvotnemu
+izvozu in izhodišču starega diagnostičnega pregleda. Zato surovi sklici
+s presledki niso nova regresija P07-C-003. Podatkovni ID-ji ostanejo
+nespremenjeni. To je pregled kode in že izvedenih testov; tabela starega
+brskalniškega pregleda ne dobiva nove vrstice, ker P07-C-003 z istim
+raziskovalčevim orodjem ni bil ponovno izmerjen.

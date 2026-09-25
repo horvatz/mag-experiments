@@ -1,12 +1,12 @@
 # Rezultati za pisanje
 
-Podatkovni posnetek: 2026-09-25T18:51:52.786Z. Arhiviranih 39/72. Nepopolna zbirka; skupinski podatki so sprotni opis, brez končnega sklepanja.
+Podatkovni posnetek: 2026-09-25T19:08:54.387Z. Arhiviranih 40/72. Nepopolna zbirka; skupinski podatki so sprotni opis, brez končnega sklepanja.
 
 | Postopek | Arhivi | Strogi uspehi | Delež zahtev | Čas s | Znani časi |
 | --- | --- | --- | --- | --- | --- |
 | A | 13/24 | 12 | 0.923 | 605.02 | 13/13 |
 | B | 13/24 | 12 | 1.000 | 939.33 | 13/13 |
-| C | 13/24 | 12 | 1.000 | — | 12/13 |
+| C | 14/24 | 13 | 1.000 | — | 13/14 |
 
 Dokazana zahteva potrebuje uspeh obeh sprejemnih prikazov in dovoljen obseg sprememb. Neopaženo preverjanje ni potrjena funkcionalna napaka. Strogi uspeh dodatno zahteva zaključen postopek, lint, tipe, gradnjo in vseh 70 preverjanj.
 
@@ -53,6 +53,7 @@ Dokazana zahteva potrebuje uspeh obeh sprejemnih prikazov in dovoljen obseg spre
 | [P04-C-002](../../runs/P04-C-002/evaluation-summary.json) | completed | 12/12 | 12/12 | 1020.45 | da |
 | [P04-B-002](../../runs/P04-B-002/evaluation-summary.json) | completed_with_phase_time_limit | 12/12 | 12/12 | 1109.16 | ne |
 | [P04-A-002](../../runs/P04-A-002/evaluation-summary.json) | completed | 12/12 | 12/12 | 622.47 | da |
+| [P07-C-003](../../runs/P07-C-003/evaluation-summary.json) | completed | 12/12 | 12/12 | 961.05 | da |
 
 ## Popolno zabeležena poraba
 
@@ -60,7 +61,7 @@ Dokazana zahteva potrebuje uspeh obeh sprejemnih prikazov in dovoljen obseg spre
 | --- | --- | --- | --- |
 | A | 12/13 | 750993.58 | 20136.42 |
 | B | 12/13 | 1112662.17 | 27428.50 |
-| C | 12/13 | 2811983.17 | 29298.50 |
+| C | 13/14 | 2793723.69 | 29159.38 |
 
 Ta povprečja vključujejo samo popolno zabeleženo porabo in so ob manjkajočih zapisih lahko selektivna. Predpomnjeni tokeni so že vključeni v vhodne, reasoning tokeni v izhodne. Zadnja opažena poraba prekinjenih izvedb je ločena spodnja meja v JSON/CSV, ne nadomestilo celotne porabe. Tokeni niso denarni strošek.
 

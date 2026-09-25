@@ -1,10 +1,9 @@
 {
-  "generatedAt": "2026-09-25T18:51:52.786Z",
+  "generatedAt": "2026-09-25T19:08:54.387Z",
   "complete": false,
-  "archived": 39,
+  "archived": 40,
   "planned": 72,
   "missing": [
-    "P07-C-003",
     "P07-A-003",
     "P07-B-003",
     "P07-B-002",
@@ -63,14 +62,14 @@
     },
     {
       "procedure": "C",
-      "archived": 13,
+      "archived": 14,
       "planned": 24,
-      "strictSuccesses": 12,
+      "strictSuccesses": 13,
       "meanDemonstratedFraction": 1,
-      "meanElapsedSeconds": 942.4453846153847,
-      "completeUsageCount": 12,
-      "meanInputTokensCompleteOnly": 2811983.1666666665,
-      "meanOutputTokensCompleteOnly": 29298.5
+      "meanElapsedSeconds": 943.7741428571429,
+      "completeUsageCount": 13,
+      "meanInputTokensCompleteOnly": 2793723.6923076925,
+      "meanOutputTokensCompleteOnly": 29159.384615384617
     }
   ],
   "byTask": [
@@ -175,9 +174,9 @@
     {
       "task": "P07",
       "procedure": "C",
-      "count": 0,
-      "meanDemonstratedFraction": null,
-      "meanElapsedSeconds": null
+      "count": 1,
+      "meanDemonstratedFraction": 1,
+      "meanElapsedSeconds": 961.048
     },
     {
       "task": "P08",
@@ -5813,6 +5812,164 @@
       "ownTestFiles": 2,
       "contentReviewSample": false,
       "evidence": "runs/P04-A-002/evaluation-summary.json"
+    },
+    {
+      "id": "P07-C-003",
+      "task": "P07",
+      "procedure": "C",
+      "repetition": 3,
+      "block": 14,
+      "position": 1,
+      "executionStatus": "completed",
+      "elapsedSeconds": 961.048,
+      "strictSuccess": true,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": true,
+            "observed": true
+          }
+        ],
+        "passed": 12,
+        "observed": 12,
+        "total": 12,
+        "fraction": 1
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "usage": {
+        "input_tokens": 2574610,
+        "cached_input_tokens": 2314496,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 27490,
+        "reasoning_output_tokens": 3578
+      },
+      "usageComplete": true,
+      "observedUsageBeforeInterruption": null,
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 83.953,
+          "status": "completed"
+        },
+        {
+          "name": "specify",
+          "elapsedSeconds": 156.026,
+          "status": "completed"
+        },
+        {
+          "name": "plan",
+          "elapsedSeconds": 108.651,
+          "status": "completed"
+        },
+        {
+          "name": "tasks",
+          "elapsedSeconds": 68.273,
+          "status": "completed"
+        },
+        {
+          "name": "implement",
+          "elapsedSeconds": 456.11,
+          "status": "completed"
+        },
+        {
+          "name": "converge",
+          "elapsedSeconds": 84.828,
+          "status": "completed"
+        }
+      ],
+      "changedFiles": 22,
+      "ownTestFiles": 1,
+      "contentReviewSample": false,
+      "evidence": "runs/P07-C-003/evaluation-summary.json"
     }
   ]
 }
