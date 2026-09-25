@@ -1,6 +1,6 @@
 # Kazalo dokazov po nalogah
 
-Posnetek 2026-09-25T20:44:36.515Z: 46/72 arhivov.
+Posnetek 2026-09-25T20:56:13.640Z: 47/72 arhivov.
 
 Kazalo povezuje vnaprej določene naloge z vsemi tremi ponovitvami. Vrstni red spodaj je po postopku in ponovitvi; dejanski vrstni red meritev je v [zamrznjenem razporedu](../schedule.json). Nearhivirana vrstica lahko pravkar teče; to kaže [aktivno stanje](../active.json).
 
@@ -58,7 +58,7 @@ Vsebinske presoje izbranih oddaj:
 | --- | --- | --- | --- | --- | --- |
 | P05-A-001 | completed | 12/12 | da | 625,664 | [ocena](../../runs/P05-A-001/evaluation-summary.json) · [proces](../../runs/P05-A-001/execution.json) · [poraba](../../runs/P05-A-001/usage-observation.json) · [koda](../../runs/P05-A-001/submission/src/App.tsx) · [predaja](../../runs/P05-A-001/submission/docs/agent/verification.md) |
 | P05-A-002 | completed | 12/12 | da | 596,372 | [ocena](../../runs/P05-A-002/evaluation-summary.json) · [proces](../../runs/P05-A-002/execution.json) · [poraba](../../runs/P05-A-002/usage-observation.json) · [koda](../../runs/P05-A-002/submission/src/App.tsx) · [predaja](../../runs/P05-A-002/submission/docs/agent/verification.md) |
-| P05-A-003 | še ni arhiva | — | — | — | — |
+| P05-A-003 | completed | 12/12 | da | 645,330 | [ocena](../../runs/P05-A-003/evaluation-summary.json) · [proces](../../runs/P05-A-003/execution.json) · [poraba](../../runs/P05-A-003/usage-observation.json) · [koda](../../runs/P05-A-003/submission/src/App.tsx) · [predaja](../../runs/P05-A-003/submission/docs/agent/verification.md) |
 | P05-B-001 | completed | 12/12 | da | 933,300 | [ocena](../../runs/P05-B-001/evaluation-summary.json) · [proces](../../runs/P05-B-001/execution.json) · [poraba](../../runs/P05-B-001/usage-observation.json) · [koda](../../runs/P05-B-001/submission/src/App.tsx) · [predaja](../../runs/P05-B-001/submission/docs/agent/verification.md) |
 | P05-B-002 | completed | 12/12 | da | 1038,164 | [ocena](../../runs/P05-B-002/evaluation-summary.json) · [proces](../../runs/P05-B-002/execution.json) · [poraba](../../runs/P05-B-002/usage-observation.json) · [koda](../../runs/P05-B-002/submission/src/App.tsx) · [predaja](../../runs/P05-B-002/submission/docs/agent/verification.md) |
 | P05-B-003 | še ni arhiva | — | — | — | — |

@@ -1,6 +1,6 @@
 # Zabeležene predaje in povratni koraki
 
-Posnetek 2026-09-25T20:44:36.515Z; 46/72 arhivov. Nepopolna zbirka; opis trenutno arhiviranih izvedb.
+Posnetek 2026-09-25T20:56:13.640Z; 47/72 arhivov. Nepopolna zbirka; opis trenutno arhiviranih izvedb.
 
 Štejemo samo formalne faze in predaje izvajalnika. Popravki kode, testnih pričakovanj ali priprave podatkov znotraj ene faze niso povratni korak izvajalnika. Ti števci niso število razvojnih napak, potrjenih funkcionalnih napak ali ocena kakovosti. A nima ločenega pregledovalca oziroma konvergence; zanj ne navajamo navidezno primerljivih ničel.
 

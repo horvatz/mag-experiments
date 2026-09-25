@@ -1,0 +1,20 @@
+Najprej bom prebral pravila in zahteve ter pripravil specifikacijo. Nato bom samostojno izvedel spremembe, preveril rešitev in zapisal rezultate ter morebitne omejitve.
+
+Zahteve predvidevajo lokalno stanje za trenutni projekt in filter pred straničenjem. Oba pogleda bosta prejela isti odsek opravil, pregled stanj pa bo še naprej štel celoten projekt. Dodatno bom preveril prazne rezultate, več kot deset opravil, ohranitev nastavitev ob podrobnostih ter ponastavitev ob menjavi projekta in osvežitvi.
+
+Implementacija je pripravljena in prvi celotni pregled že teče. Dodajam teste za razdelitev 23 opravil brez izgub ali podvojitev, vse filtre, prazne rezultate, pravilne števce table ter ohranitev in ponastavitev nastavitev.
+
+Prvi pregled je uspešno prestal vseh 46 skupnih preverjanj, vključno s preverjanjem tipov, lintom in gradnjo. Zdaj teče še 10 dodatnih testov za robne primere in uporabo pri širini 390 pik.
+
+Pri pregledu posnetkov sta preglednica in tabla pri 390 pikah ostali znotraj širine strani, brez napak JavaScripta. En dodatni test je imel napačno pričakovano porazdelitev stanj; popravil sem testni podatek. Celotno preverjanje zdaj ponavljam, aplikacijska koda pa ni potrebovala popravka.
+
+Končni `npm run check` je uspešen: vseh 56 testov je opravljenih, skupaj z lintom, preverjanjem tipov in gradnjo. Dopolnjujem še dokumentacijo s povezavami med R01–R12, kodo in dokazi. Znane neizpolnjene zahteve niso ostale; nedostopnih končnih testov nisem izvajal.
+
+Izvedene so zahteve R01–R12: straničenje, filtri, pravilni števci ter ohranitev in ponastavitev nastavitev.
+
+`npm run check` je uspešen: **56/56 testov**, lint, preverjanje tipov in gradnja. Preverjen je tudi prikaz pri 390 px.
+
+Dokumentacija: [specifikacija](/Users/zan/Documents/mag/experiments/.work/pilots/P05-A-003/app/docs/agent/specification.md) in [preverjanje z dokazi](/Users/zan/Documents/mag/experiments/.work/pilots/P05-A-003/app/docs/agent/verification.md).
+
+Znanih neizpolnjenih zahtev ni. Nedostopni končni testi niso bili izvedeni.
+{"status":"completed","elapsedSeconds":645.33,"allowedChanges":true,"usage":{"input_tokens":782768,"cached_input_tokens":724096,"cache_write_input_tokens":0,"output_tokens":19593,"reasoning_output_tokens":3364}}
