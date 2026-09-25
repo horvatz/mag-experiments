@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-25T18:21:33.193Z",
-  "sourceGeneratedAt": "2026-09-25T18:21:18.226Z",
-  "archived": 37,
+  "generatedAt": "2026-09-25T18:41:06.122Z",
+  "sourceGeneratedAt": "2026-09-25T18:40:40.543Z",
+  "archived": 38,
   "planned": 72,
   "complete": false,
   "frozenInputsUnchanged": true,
@@ -9,7 +9,8 @@
   "executionStatuses": {
     "completed": 35,
     "infrastructure_interrupted": 1,
-    "execution_failed": 1
+    "execution_failed": 1,
+    "completed_with_phase_time_limit": 1
   },
   "reviewed": 14,
   "reviewUnavailable": 1,
@@ -324,6 +325,32 @@
         }
       ],
       "evidence": "runs/P03-A-001/evaluation-summary.json"
+    },
+    {
+      "id": "P04-B-002",
+      "executionStatus": "completed_with_phase_time_limit",
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "failedTests": [],
+      "evidence": "runs/P04-B-002/evaluation-summary.json"
     }
   ]
 }

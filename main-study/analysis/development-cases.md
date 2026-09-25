@@ -193,3 +193,63 @@ Dokazi za B so navedeni v prejšnjem primeru. Dokazi za C:
 [končni test](../../runs/P08-C-002/submission/tests/agent/P08.spec.ts#L73),
 [končni dnevnik](../../runs/P08-C-002/submission/docs/agent/P08/check-final.log),
 [predaja](../../runs/P08-C-002/submission/docs/agent/verification.md).
+
+## P04–B–002: dejanski povratni popravek specifikacije ob faznih omejitvah
+
+Začetna specifikacija je po 360,040 s dosegla svojo časovno mejo. Ohranjeni
+osnutek je vseboval sprejemne pogoje R01–R12, vendar še ne konkretnih
+predikatov in sledljivosti. Implementer je obvezne pogoje dopolnil v
+`verification.md`, pripravil kodo ter prvi uspešni zagon 52/52 testov
+(20,6 s; šest lastnih testov). Pregledovalec je potrdil eno dokumentacijsko
+ugotovitev za specifikatorja: specifikacija ostaja osnutek in ne povezuje
+že obstoječih dokazil. `specificationChangesRequired=true`,
+`codeChangesRequired=false`; funkcionalnega odstopanja ni ugotovil.
+
+Izvajalnik je nadaljeval izvirno sejo specifikatorja. Njegov popravek je
+po 90,050 s prav tako dosegel fazno mejo, vendar sta dopolnjena specifikacija
+in zgodovina dejansko shranjeni. Končni dokument ima formalna pravila,
+ločene vrstice R01–R12 ter povezave na predikate, sledljivost in rezultate
+implementerja. Nato je nadaljeval izvirni implementer: v 119,193 s je
+obravnaval ugotovitev in preveril dokumentacijske povezave. Surovi
+**item_8 v fazi 05-implementation-repair** potrdi izhod 0 in štiri izpise
+PASS. Sedem povezav in sidra je preveril v tedanjem delovnem okolju;
+testov funkcionalnosti ni ponovil. Drugega formalnega pregleda protokol
+ne predvideva.
+
+Primerjava SHA-256 vseh 12 datotek `src/` in ene lastne testne datoteke
+med koncem prve implementacije in končno oddajo potrdi nespremenjenost
+kode in testov. Popravek ni zahteval njihove spremembe. Faza popravka
+specifikacije zato šteje kot **začeta, a ne normalno zaključena**, čeprav
+je dokument spremenjen; povratni korak implementerja je zaključen.
+Trditev zgodovine »predaja zaključena« ne nadomesti procesnega statusa.
+
+Končni status je `completed_with_phase_time_limit`, skupni čas
+1109,156 s. Neodvisna ocena je **70/70 in 12/12**, dovoljeni obseg je
+potrjen, strogi uspeh pa je negativen zaradi prekinjenih faz. Celotna
+poraba ostane manjkajoča; opažena spodnja meja je 960745 vhodnih in
+29808 izhodnih tokenov (814080 predpomnjenih in 3537 reasoning sta
+podmnožici). To ni posledica omejitve naročnine. Oddaja ni ponovljena.
+
+Primer je izbran naknadno zaradi dokumentiranega formalnega popravka in
+razlike med procesnim ter funkcionalnim izidom. Ne dokazuje vzročnega
+vpliva pregleda na pravilnost kode ali splošne prednosti postopka B.
+Ni dodatna ordinalna ocena: ponovitev 002 ostaja zunaj vzorca 001.
+
+Omejitev arhiva: mobilna slika je nastala v `test-results/`, ki ni del
+zamrznjene oddaje, zato povezava nanjo znotraj arhivirane specifikacije
+ni prenosljiva. Preživela izvirna slika je naknadno prekopirana v
+[ločeno diagnostično prilogo](diagnostics/P04-B-002/p04-mobile-board.png),
+z [navedenim poreklom in hashom](diagnostics/P04-B-002/provenance.json).
+Ni ponovno ustvarjena in ni naknadno vstavljena v zamrznjeni arhiv.
+
+Dokazi: [začetna specifikacija po prekinitvi](../../runs/P04-B-002/phases/01-specification/submission/docs/agent/specification.md),
+[prvi zagon](../../runs/P04-B-002/submission/docs/agent/check.log),
+[strukturirani pregled](../../runs/P04-B-002/phases/03-review/final-response.json),
+[končna specifikacija](../../runs/P04-B-002/submission/docs/agent/specification.md),
+[zgodovina](../../runs/P04-B-002/submission/docs/agent/specification-history.md),
+[zapis implementerja](../../runs/P04-B-002/submission/docs/agent/verification.md),
+[novi dnevnik preverjanja dokumentov](../../runs/P04-B-002/submission/docs/agent/review-response-check.log),
+[surovi item_8](../../runs/P04-B-002/phases/05-implementation-repair/events.jsonl.gz),
+[proces in časi](../../runs/P04-B-002/execution.json),
+[neodvisna ocena](../../runs/P04-B-002/evaluation-summary.json),
+[delno opažena poraba](../../runs/P04-B-002/usage-observation.json).

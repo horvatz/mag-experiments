@@ -52,7 +52,7 @@ runs.getRange('J2:J73').formulas = schedule.runs.map((_, i) => [`=IF(F${i + 2}=0
 runs.getRange('A1:U73').format.columnWidth = 17
 runs.getRange('A1:A73').format.columnWidth = 19
 runs.getRange('B1:D73').format.columnWidth = 12
-runs.getRange('E1:E73').format.columnWidth = 22
+runs.getRange('E1:E73').format.columnWidth = 32
 runs.getRange('V1:V73').format.columnWidth = 3
 runs.getRange('W1:W73').format.columnWidth = 105
 runs.getRange('G2:G73').setNumberFormat('0.000')
@@ -111,12 +111,13 @@ const notes = [
   'Vir: main-study/analysis/reporting-results.json; razpored: main-study/schedule.json; dokazi ob vsaki izvedbi.',
   'Metodološka pravila: docs/main-protocol.md in docs/main-rubric.md (zamrznjeno pred meritvami).',
   'P03-A-001: omejitev storitve pred implementacijo, 13,293 s in 0/12. To ni čas uspešne rešitve.',
-  'P06-C-001: infrastrukturna prekinitev, 12/12; točen čas neznan. Obe prekinitvi ostaneta v analizi.'
+  'P06-C-001: infrastrukturna prekinitev, 12/12; točen čas neznan. Prekinitev ostane v analizi.',
+  'P04-B-002: 12/12, vendar dve časovno prekinjeni fazi. Brez strogega uspeha; celotna poraba neznana.'
 ]
 overview.getRange('A34').values = [['Branje podatkov']]
 overview.getRange('A34:H34').format.font = { name: 'Arial', size: 11, bold: true, color: accent }
 notes.forEach((note, i) => { overview.getRange(`A${35+i}`).values = [[note]] })
-overview.getRange('A35:H44').format.font = { name: 'Arial', size: 10, color: muted }
+overview.getRange('A35:H45').format.font = { name: 'Arial', size: 10, color: muted }
 overview.freezePanes.freezeRows(6)
 wb.recalculate()
 const values = overview.getRange('B7:H9').values
@@ -150,7 +151,8 @@ for (const sheet of [overview, runs]) for (const row of sheet.getUsedRange().val
 const errors = await wb.inspect({ kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#NUM!', options: { useRegex: true, maxResults: 100 }, maxChars: 4000 })
 await fs.writeFile(resolve(qa, 'formula-errors.json'), JSON.stringify(errors, null, 2))
 await fs.writeFile(resolve(qa, 'summary-inspection.json'), JSON.stringify(await wb.inspect({ kind: 'table', range: 'Pregled!A6:H9', include: 'values,formulas', tableMaxRows: 5, tableMaxCols: 8, maxChars: 6000 }), null, 2))
-for (const [sheetName, range, name] of [['Pregled', 'A1:H27', 'pregled'], ['Pregled', 'A33:H45', 'pojasnila'], ['Izvedbe', 'A1:K9', 'izvedbe-izidi'], ['Izvedbe', 'L1:U9', 'izvedbe-poraba'], ['Izvedbe', 'V1:W9', 'izvedbe-viri']]) {
+const lastArchivedRow = Math.max(2, ...schedule.runs.map((r, i) => byId.has(r.id) ? i + 2 : 2))
+for (const [sheetName, range, name] of [['Pregled', 'A1:H27', 'pregled'], ['Pregled', 'A33:H45', 'pojasnila'], ['Izvedbe', 'A1:K9', 'izvedbe-izidi'], ['Izvedbe', 'L1:U9', 'izvedbe-poraba'], ['Izvedbe', 'V1:W9', 'izvedbe-viri'], ['Izvedbe', `A${Math.max(2,lastArchivedRow-3)}:K${Math.min(73,lastArchivedRow+1)}`, 'izvedbe-zadnje']]) {
   const preview = await wb.render({ sheetName, range, scale: 1.2, format: 'png' })
   await fs.writeFile(resolve(qa, `${name}.png`), new Uint8Array(await preview.arrayBuffer()))
 }

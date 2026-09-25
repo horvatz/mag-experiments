@@ -71,3 +71,14 @@ izidov in ne popravlja arhivov. Gre za razjasnitev porekla dokazov;
 iz dveh naknadno opaženih primerov ne sklepamo na pogostost takih
 omejitev med postopki. Nobena ugotovitev ni bila posredovana merjenim
 agentom.
+
+## Naknadno ohranjena mobilna slika P04-B-002
+
+Arhivirani dokumenti P04-B-002 navajajo `test-results/p04-mobile-board.png`.
+Ta pot ni vključena v izvirni arhiv, zato tam navedena slikovna povezava
+ni prenosljiva. Slika je bila po arhiviranju najdena v ohranjenem delovnem
+okolju in brez spreminjanja prekopirana v
+[P04-B-002/p04-mobile-board.png](P04-B-002/p04-mobile-board.png).
+[Provenance](P04-B-002/provenance.json) loči čas zadnje spremembe izvorne datoteke, čas naknadnega
+shranjevanja, izvor in SHA-256. Gre za dodatno prilogo po oddaji;
+izvirni arhiv ni dopolnjen in slika ni ponovno ustvarjena.
