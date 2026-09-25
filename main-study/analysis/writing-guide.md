@@ -24,6 +24,7 @@ Prejšnji različici sta ohranjeni v `naloga/zapiski/pred-glavnimi-meritvami-202
 | Potek meritev | [Razpored](../schedule.json), [zamrznjeni vhodi](../frozen-inputs.json), `runs/<ID>/execution.json` | Vrstni red, model in časovna meja; konkretne faze in statusi |
 | Funkcionalni rezultati | [Zbirka za pisanje](reporting-results.json), `runs/<ID>/evaluation-summary.json` | Dokazane zahteve, regresije, strogi uspeh in napake |
 | Čas in poraba | `execution.json`, `usage-observation.json`, `evaluation-summary.json` v arhivu | Celoten modelski čas, faze, popolna poraba ali opažena spodnja meja |
+| Formalne predaje in popravki | [Povzetek procesnih zapisov](process-summary.md), `phase-data.csv` | Začeti in zaključeni povratni koraki B/C ter potrjene predaje; ločeno od popravkov testov in kode znotraj faz |
 | Vsebinska presoja | [Zamrznjena rubrika](../../docs/main-rubric.md), `reviews/<ID>.json` | Pet ločenih ocen z utemeljitvami in konkretnimi dokazi |
 | Primeri za razpravo | Oddana specifikacija, lastni testi, dnevniki ter neodvisna ocena iste izvedbe | Konkretna razlika med zahtevami, razvojnim preverjanjem in končnim vedenjem |
 | Dodatni razvojni primeri | [Izbrani primeri iz drugih ponovitev](development-cases.md) | Naknadni opis konkretnega popravka; ne nova vsebinska ocena ali merilo pogostosti |

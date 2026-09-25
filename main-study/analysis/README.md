@@ -21,6 +21,7 @@ ne popravljajo in ne vračajo povratnih informacij v merjene seje.
 | `requirement-data.csv` | 72 × 12 načrtovanih zahtev; prazna meritev ni nič oziroma false |
 | `test-data.csv` | Vsak dejanski zapis neodvisnega testa z izvirnim statusom, projekcijo zaslona oziroma API in napakami |
 | `phase-data.csv` | Dejanske faze posameznih arhiviranih postopkov; predaje so ločena časovna razlika |
+| `process-summary.json/md` | Formalne predaje in povratni koraki B/C; ne šteje razvojnih popravkov znotraj faz ali napak kode |
 | `reviews/<ID>.json` | Vsebinska presoja vnaprej izbrane ponovitve 001, po petih dimenzijah |
 | `content-review.md` | Pregled dejansko opravljenih presoj z utemeljitvami |
 | `development-cases.md` | Naknadno izbrani razvojni primeri zunaj vzorca 001; brez dodatnih ocen ali sklepov o pogostosti |

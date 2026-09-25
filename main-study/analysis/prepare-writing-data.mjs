@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import assert from 'node:assert/strict'
 import { digest, inventory } from '../../scripts/pilot-utils.mjs'
 import { reportingResults } from './reporting-results.mjs'
+import { writeProcessSummary } from './process-summary.mjs'
 
 const dir = dirname(fileURLToPath(import.meta.url)), root = resolve(dir, '../..'), thesis = resolve(root, '../naloga/latex')
 const read = file => JSON.parse(readFileSync(file, 'utf8'))
@@ -69,6 +70,7 @@ for (const row of data.data) {
   }
 }
 const ratedReviews = reviews.filter(isRated), unavailableReviews = reviews.filter(r => !isRated(r))
+writeProcessSummary(data, root, dir)
 const reviewDistribution = ['A', 'B', 'C'].map(procedure => {
   const selected = schedule.runs.filter(r => r.repetition === 1 && r.procedure === procedure)
   const selectedReviews = reviews.filter(r => selected.some(s => s.id === r.id))
