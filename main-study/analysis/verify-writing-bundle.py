@@ -130,10 +130,19 @@ pdf = ROOT.parent / 'naloga/latex/magistrska.pdf'
 xlsx = Path(workbook_qa['output'])
 assert pdf.exists() and xlsx.exists()
 assert pdf.stat().st_mtime >= (ANALYSIS / 'reporting-results.json').stat().st_mtime
+visual = read(ANALYSIS / 'visual-verification.json')
+assert visual['sourceGeneratedAt'] == result['generatedAt']
+assert visual['archived'] == 72 and visual['passed']
+assert visual['pdfSha256'] == sha(pdf)
+assert visual['workbookSha256'] == sha(xlsx)
+assert visual['pdfPagesInspected'] and visual['workbookPreviewsInspected']
+for name, expected in visual['figureSha256'].items():
+    assert sha(ANALYSIS / 'figures' / name) == expected
 outputs = [pdf, xlsx] + [ANALYSIS / name for name in [
     'reporting-results.json', 'reporting-results.md', 'run-data.csv',
     'requirement-data.csv', 'test-data.csv', 'phase-data.csv', 'review-data.csv',
-    'content-review.md', 'development-cases.md', 'writing-guide.md']]
+    'content-review.md', 'development-cases.md', 'writing-guide.md',
+    'zakljucni-povzetek.md', 'visual-verification.json']]
 outputs += sorted((ANALYSIS / 'figures').glob('*.png'))
 outputs += sorted((ANALYSIS / 'figures').glob('*.svg'))
 receipt = {
@@ -146,7 +155,7 @@ receipt = {
     'rawMeasurementsPreserved': True, 'frozenInputsUnchanged': True,
     'csvValuesMatchedArchives': True, 'missingValuesPreserved': True,
     'derivedArtifactsUseSameSnapshot': True,
-    'visualQA': 'Separate researcher inspection of rendered final PDF, workbook and charts is required.',
+    'visualQA': 'Separate researcher inspection recorded in visual-verification.json; artifact hashes match.',
     'sha256': {str(path): sha(path) for path in outputs},
 }
 (ANALYSIS / 'final-verification.json').write_text(json.dumps(receipt, indent=2) + '\n')

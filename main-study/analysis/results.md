@@ -1,11 +1,11 @@
 # Glavna zbirka P03–P10
 
-Arhiviranih je 71 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
+Arhiviranih je 72 od 72 vnaprej določenih izvedb. Zbirka je popolna.
 
 | Postopek | Arhivirano | Strogi uspehi | Dokazane zahteve, povprečni delež | Čas, povprečje s | Popolna poraba |
 | --- | --- | --- | --- | --- | --- |
 | A | 24/24 | 19 | 0.79 | 530.11 | 19/24 |
-| B | 23/24 | 18 | 0.83 | 786.98 | 18/23 |
+| B | 24/24 | 19 | 0.83 | 794.58 | 19/24 |
 | C | 24/24 | 19 | 0.83 | 811.49 | 19/24 |
 
 Vsaka zahteva potrebuje uspeh na obeh velikostih zaslona. Neopaženo preverjanje pomeni nedokazano zahtevo, ne potrjene funkcionalne napake. Strogi uspeh zahteva še zaključek postopka, dovoljene spremembe, lint, tipe, gradnjo in vseh 70 preverjanj.
@@ -85,5 +85,19 @@ Vhodni tokeni vključujejo predpomnjene, izhodni vključujejo reasoning. Nepopol
 | [P10-A-002](../../runs/P10-A-002/report.md) | completed | 12/12 | 12/12 | 682.126 | da |
 | [P09-C-003](../../runs/P09-C-003/report.md) | completed | 12/12 | 12/12 | 1118.993 | da |
 | [P09-A-003](../../runs/P09-A-003/report.md) | completed | 12/12 | 12/12 | 803.131 | da |
+| [P09-B-003](../../runs/P09-B-003/report.md) | completed | 12/12 | 12/12 | 969.582 | da |
+
+## Parne razlike po nalogah
+
+| Primerjava | Mera | Razlika | 95 % percentilni interval |
+| --- | --- | --- | --- |
+| A − B | meanDemonstratedFraction | -0.04 | -0.13 do 0.00 |
+| A − B | meanElapsedSeconds | -264.47 | -325.62 do -191.56 |
+| A − C | meanDemonstratedFraction | -0.04 | -0.13 do 0.00 |
+| A − C | meanElapsedSeconds | -281.38 | -383.65 do -162.56 |
+| B − C | meanDemonstratedFraction | 0.00 | 0.00 do 0.00 |
+| B − C | meanElapsedSeconds | -16.91 | -85.49 do 69.32 |
+
+Opisni intervali ponovno vzorčijo osem nalog; ne posameznih zahtev ali testov. Seme in 20.000 ponovitev sta določena pred meritvami.
 
 Vsebinska rubrika, človeška presoja in pisanje interpretacije so ločeni koraki; prisotnost testov ali dokumentov ni samodejna ocena njihove kakovosti.

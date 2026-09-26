@@ -1,6 +1,6 @@
 # Kazalo dokazov po nalogah
 
-Posnetek 2026-09-26T10:24:18.325Z: 71/72 arhivov.
+Posnetek 2026-09-26T10:41:26.311Z: 72/72 arhivov.
 
 Kazalo povezuje vnaprej določene naloge z vsemi tremi ponovitvami. Vrstni red spodaj je po postopku in ponovitvi; dejanski vrstni red meritev je v [zamrznjenem razporedu](../schedule.json). Nearhivirana vrstica lahko pravkar teče; to kaže [aktivno stanje](../active.json).
 
@@ -149,7 +149,7 @@ Vsebinske presoje izbranih oddaj:
 | P09-A-003 | completed | 12/12 | da | 803,131 | [ocena](../../runs/P09-A-003/evaluation-summary.json) · [proces](../../runs/P09-A-003/execution.json) · [poraba](../../runs/P09-A-003/usage-observation.json) · [koda](../../runs/P09-A-003/submission/src/App.tsx) · [predaja](../../runs/P09-A-003/submission/docs/agent/verification.md) |
 | P09-B-001 | execution_failed | 0/12 | ne | 31,358 | [ocena](../../runs/P09-B-001/evaluation-summary.json) · [proces](../../runs/P09-B-001/execution.json) · [poraba](../../runs/P09-B-001/usage-observation.json) · [koda](../../runs/P09-B-001/submission/src/App.tsx) |
 | P09-B-002 | execution_failed | 0/12 | ne | 32,131 | [ocena](../../runs/P09-B-002/evaluation-summary.json) · [proces](../../runs/P09-B-002/execution.json) · [poraba](../../runs/P09-B-002/usage-observation.json) · [koda](../../runs/P09-B-002/submission/src/App.tsx) |
-| P09-B-003 | še ni arhiva | — | — | — | — |
+| P09-B-003 | completed | 12/12 | da | 969,582 | [ocena](../../runs/P09-B-003/evaluation-summary.json) · [proces](../../runs/P09-B-003/execution.json) · [poraba](../../runs/P09-B-003/usage-observation.json) · [koda](../../runs/P09-B-003/submission/src/App.tsx) · [predaja](../../runs/P09-B-003/submission/docs/agent/verification.md) |
 | P09-C-001 | execution_failed | 0/12 | ne | 32,777 | [ocena](../../runs/P09-C-001/evaluation-summary.json) · [proces](../../runs/P09-C-001/execution.json) · [poraba](../../runs/P09-C-001/usage-observation.json) · [koda](../../runs/P09-C-001/submission/src/App.tsx) |
 | P09-C-002 | execution_failed | 0/12 | ne | 30,795 | [ocena](../../runs/P09-C-002/evaluation-summary.json) · [proces](../../runs/P09-C-002/execution.json) · [poraba](../../runs/P09-C-002/usage-observation.json) · [koda](../../runs/P09-C-002/submission/src/App.tsx) |
 | P09-C-003 | completed | 12/12 | da | 1118,993 | [ocena](../../runs/P09-C-003/evaluation-summary.json) · [proces](../../runs/P09-C-003/execution.json) · [poraba](../../runs/P09-C-003/usage-observation.json) · [koda](../../runs/P09-C-003/submission/src/App.tsx) · [predaja](../../runs/P09-C-003/submission/docs/agent/verification.md) |

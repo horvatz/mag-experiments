@@ -1,11 +1,11 @@
 # Rezultati za pisanje
 
-Podatkovni posnetek: 2026-09-26T10:24:18.325Z. Arhiviranih 71/72. Nepopolna zbirka; skupinski podatki so sprotni opis, brez končnega sklepanja.
+Podatkovni posnetek: 2026-09-26T10:41:26.311Z. Arhiviranih 72/72. Vse načrtovane izvedbe so arhivirane; posamezne meritve so lahko manjkajoče.
 
 | Postopek | Arhivi | Strogi uspehi | Delež zahtev | Čas s | Znani časi |
 | --- | --- | --- | --- | --- | --- |
 | A | 24/24 | 19 | 0.792 | 530.11 | 24/24 |
-| B | 23/24 | 18 | 0.826 | 786.98 | 23/23 |
+| B | 24/24 | 19 | 0.833 | 794.58 | 24/24 |
 | C | 24/24 | 19 | 0.833 | — | 23/24 |
 
 Dokazana zahteva potrebuje uspeh obeh sprejemnih prikazov in dovoljen obseg sprememb. Neopaženo preverjanje ni potrjena funkcionalna napaka. Strogi uspeh dodatno zahteva zaključen postopek, lint, tipe, gradnjo in vseh 70 preverjanj.
@@ -85,21 +85,31 @@ Dokazana zahteva potrebuje uspeh obeh sprejemnih prikazov in dovoljen obseg spre
 | [P10-A-002](../../runs/P10-A-002/evaluation-summary.json) | completed | 12/12 | 12/12 | 682.13 | da |
 | [P09-C-003](../../runs/P09-C-003/evaluation-summary.json) | completed | 12/12 | 12/12 | 1118.99 | da |
 | [P09-A-003](../../runs/P09-A-003/evaluation-summary.json) | completed | 12/12 | 12/12 | 803.13 | da |
+| [P09-B-003](../../runs/P09-B-003/evaluation-summary.json) | completed | 12/12 | 12/12 | 969.58 | da |
 
 ## Popolno zabeležena poraba
 
 | Postopek | Popolni zapisi / arhivi | Povprečni vhodni tokeni | Povprečni izhodni tokeni |
 | --- | --- | --- | --- |
 | A | 19/24 | 752234.47 | 20176.74 |
-| B | 18/23 | 1146951.33 | 27786.22 |
+| B | 19/24 | 1140359.63 | 27873.32 |
 | C | 19/24 | 2794804.00 | 29235.58 |
 
 Ta povprečja vključujejo samo popolno zabeleženo porabo in so ob manjkajočih zapisih lahko selektivna. Predpomnjeni tokeni so že vključeni v vhodne, reasoning tokeni v izhodne. Zadnja opažena poraba prekinjenih izvedb je ločena spodnja meja v JSON/CSV, ne nadomestilo celotne porabe. Tokeni niso denarni strošek.
 
 ## Parne razlike po nalogah
 
-Primerjave se izračunajo šele ob vseh 72 arhivih. Neuravnotežen sprotni vzorec ne določa končne razlike med postopki.
+| Primerjava | Mera | Povprečna razlika | 95 % percentilni interval |
+| --- | --- | --- | --- |
+| A − B | Delež dokazanih zahtev (0–1) | -0.042 | -0.125 do 0.000 |
+| A − B | Čas (s) | -264.470 | -325.616 do -191.562 |
+| A − C | Delež dokazanih zahtev (0–1) | -0.042 | -0.125 do 0.000 |
+| B − C | Delež dokazanih zahtev (0–1) | 0.000 | 0.000 do 0.000 |
 
+Razlika pomeni prvi postopek minus drugi. Najprej se povprečijo tri ponovitve po nalogi/postopku, nato se ponovno vzorči osem parov nalog s predpisanim semenom in 20.000 ponovitvami. Intervali so opisni; testni izidi niso neodvisne naloge.
+
+Zadržana primerjava: A–C, Čas (s); manjka točen čas vsaj ene zahtevane ponovitve.
+Zadržana primerjava: B–C, Čas (s); manjka točen čas vsaj ene zahtevane ponovitve.
 
 ## Manjkajoče meritve in viri
 

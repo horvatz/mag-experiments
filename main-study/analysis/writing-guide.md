@@ -4,8 +4,10 @@
 
 Končni obseg je **P03–P10: osem nalog, A/B/C, tri ponovitve, 72 izvedb**.
 P01 in P02 sta zaključena pilota in ne vstopata v glavno primerjavo.
-Trenutno število dejansko arhiviranih izvedb je vedno v [zbirnih rezultatih za pisanje](reporting-results.md).
-Število 72 v metodologiji pomeni načrt, dokler ta zbirka ni popolna.
+**Vseh 72 izvedb je arhiviranih; eksperimentalna vrsta je zaključena.**
+[Zaključni povzetek](zakljucni-povzetek.md) vsebuje glavne številke,
+razlago prekinitev in povezave do gradiva. Podrobnosti so v
+[zbirnih rezultatih za pisanje](reporting-results.md).
 
 Za obravnavo posamezne naloge odpri [kazalo dokazov po nalogah](evidence-map.md).
 Vseh devet načrtovanih izvedb iste naloge je zbranih skupaj, s povezavami

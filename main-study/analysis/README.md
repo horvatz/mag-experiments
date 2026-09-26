@@ -1,5 +1,10 @@
 # Analiza in gradivo za pisanje
 
+**Glavna zbirka je zaključena: 72/72 arhivov, 57 strogih uspehov.**
+Za začetek odpri [zaključni povzetek](zakljucni-povzetek.md), nato
+[vodnik za pisanje](writing-guide.md). Vseh 24 izbranih oddaj je
+obravnavanih: 17 ocenjenih in 7 neocenljivih zaradi odsotne avtorske rešitve.
+
 **Za pisanje uporabljaj `reporting-results.json` in `reporting-results.md`.**
 Poročanje izrecno ohrani neznani čas prekinjene P06-C-001 kot manjkajoč;
 prizadeti časovni agregati zamrznjenega `results.json/md` niso uporabni.
@@ -117,11 +122,14 @@ povratna sprememba enega vhoda ter pregled izračunanih celic in slik.
 TeX dokument se nato prevede z obstoječim `naloga/latex/scripts/build.sh`.
 
 Po vseh 72 arhivih, osvežitvi gradiva, pregledu povezav in končnem prevodu
-poženi še `verify-writing-bundle.py`. Primerja CSV z izvornimi ocenami,
+vizualno preglej končni PDF, grafe in predoglede preglednice. Dejanski
+pregled ter zgoščene vrednosti pregledanih izvozov zabeleži v
+`visual-verification.json`; pripravi tudi `zakljucni-povzetek.md`.
+Nato poženi `verify-writing-bundle.py`. Primerja CSV z izvornimi ocenami,
 preveri manjkajoče vrednosti, vseh 24 obravnavanih presoj in skupni
 podatkovni posnetek preglednice/grafov ter zapiše zgoščene vrednosti izvozov
-v `final-verification.json`. Vizualni pregled končnega PDF in preglednice
-je ločen obvezen korak; skript ga ne nadomesti.
+v `final-verification.json`. Preveri tudi, da se potrdilo vizualnega pregleda
+nanaša na iste datoteke. Sam skript ne izvaja vizualne presoje.
 
 Po incidentu 401 se nadaljuje z `node main-study/analysis/recovery/run-guarded.mjs`.
 Ta operatorjev ovoj uporablja iste zamrznjene pripravljalne, merjene in
