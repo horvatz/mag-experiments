@@ -1,12 +1,12 @@
 # Glavna zbirka P03–P10
 
-Arhiviranih je 53 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
+Arhiviranih je 66 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
 
 | Postopek | Arhivirano | Strogi uspehi | Dokazane zahteve, povprečni delež | Čas, povprečje s | Popolna poraba |
 | --- | --- | --- | --- | --- | --- |
-| A | 17/24 | 16 | 0.94 | 615.49 | 16/17 |
-| B | 18/24 | 17 | 1.00 | 943.09 | 17/18 |
-| C | 18/24 | 17 | 1.00 | 958.00 | 17/18 |
+| A | 22/24 | 17 | 0.77 | 510.79 | 17/22 |
+| B | 22/24 | 17 | 0.82 | 777.39 | 17/22 |
+| C | 22/24 | 17 | 0.82 | 789.63 | 17/22 |
 
 Vsaka zahteva potrebuje uspeh na obeh velikostih zaslona. Neopaženo preverjanje pomeni nedokazano zahtevo, ne potrjene funkcionalne napake. Strogi uspeh zahteva še zaključek postopka, dovoljene spremembe, lint, tipe, gradnjo in vseh 70 preverjanj.
 
@@ -67,5 +67,18 @@ Vhodni tokeni vključujejo predpomnjene, izhodni vključujejo reasoning. Nepopol
 | [P07-C-001](../../runs/P07-C-001/report.md) | completed | 12/12 | 12/12 | 896.5 | da |
 | [P06-C-002](../../runs/P06-C-002/report.md) | completed | 12/12 | 12/12 | 974.6 | da |
 | [P06-B-002](../../runs/P06-B-002/report.md) | completed | 12/12 | 12/12 | 921.614 | da |
+| [P06-A-002](../../runs/P06-A-002/report.md) | completed | 12/12 | 12/12 | 650.136 | da |
+| [P09-A-001](../../runs/P09-A-001/report.md) | execution_failed | 0/12 | 12/12 | 30.753 | ne |
+| [P09-B-001](../../runs/P09-B-001/report.md) | execution_failed | 0/12 | 12/12 | 31.358 | ne |
+| [P09-C-001](../../runs/P09-C-001/report.md) | execution_failed | 0/12 | 12/12 | 32.777 | ne |
+| [P04-A-001](../../runs/P04-A-001/report.md) | execution_failed | 0/12 | 12/12 | 31.412 | ne |
+| [P04-C-001](../../runs/P04-C-001/report.md) | execution_failed | 0/12 | 12/12 | 31.008 | ne |
+| [P04-B-001](../../runs/P04-B-001/report.md) | execution_failed | 0/12 | 12/12 | 31.772 | ne |
+| [P03-C-003](../../runs/P03-C-003/report.md) | execution_failed | 0/12 | 12/12 | 33.297 | ne |
+| [P03-A-003](../../runs/P03-A-003/report.md) | execution_failed | 0/12 | 12/12 | 30.705 | ne |
+| [P03-B-003](../../runs/P03-B-003/report.md) | execution_failed | 0/12 | 12/12 | 31.678 | ne |
+| [P09-B-002](../../runs/P09-B-002/report.md) | execution_failed | 0/12 | 12/12 | 32.131 | ne |
+| [P09-C-002](../../runs/P09-C-002/report.md) | execution_failed | 0/12 | 12/12 | 30.795 | ne |
+| [P09-A-002](../../runs/P09-A-002/report.md) | execution_failed | 0/12 | 12/12 | 31.081 | ne |
 
 Vsebinska rubrika, človeška presoja in pisanje interpretacije so ločeni koraki; prisotnost testov ali dokumentov ni samodejna ocena njihove kakovosti.

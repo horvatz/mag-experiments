@@ -128,3 +128,25 @@ je preveril dopolnitev dokumentov brez spreminjanja kode ali ponovitve
 funkcionalnih testov. Ta primer ni dodatna ordinalna ocena in ne dokazuje
 vzročnega izboljšanja kode zaradi pregleda. Dokazi, primerjava datotek in
 omejitev arhiviranja slike so v [razvojnem primeru](development-cases.md#p04b002-dejanski-povratni-popravek-specifikacije-ob-faznih-omejitvah).
+
+## Napaka dostopa v dvanajstih zaporednih poskusih
+
+[Preverjeni incident 401](diagnostics/authentication-incident-2026-09-25.json)
+obsega P09-A/B/C-001/002, P04-A/B/C-001 in P03-A/B/C-003. Pri vseh je
+potrjeno: brez avtorskega izhoda, ukazov ali sprememb datotek, 38/70,
+0/12, status execution_failed, brez potrjene porabe. Vsi ostanejo v
+primarnih imenovalcih. Kratki časi niso časi implementacije; ne uporabljaj
+jih kot dokaz hitrosti. Vsebinske ocene šestih prizadetih 001 oddaj so
+unavailable, ne ničelne. Skupaj je obravnavanih vseh 24 izbranih oddaj:
+17 ocenjenih, 7 neocenljivih (vključno s P03-A-001).
+
+Po štirje prizadeti poskusi na postopek ne pomenijo, da je incident
+nepomemben: pri P09 je za vsak postopek ostala le ponovitev 003 z možnostjo
+implementacije. Ne sklepaj na sposobnosti postopkov iz zavrnjene prijave.
+Morebitno dodatno analizo po izločanju označi kot naknadno občutljivostno
+analizo; primarne zbirke ali vnaprej izbranih oddaj ne zamenjaj.
+
+Obnova uporablja isti merjeni model, različico CLI, proračune in zamrznjene
+skripte. Zunanje operativno varovalo v `recovery/run-guarded.mjs` preveri
+dostop pred novim ID-jem in po arhiviranju ustavi vrsto ob napaki prijave
+ali omejitvi storitve. Diagnostični preizkusi niso eksperimentalne meritve.

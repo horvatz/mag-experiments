@@ -1,0 +1,9 @@
+Izvedi pilotno nalogo P03 samostojno po postopku A (en agent).
+
+Preberi PROJECT_RULES.md, task/instructions.md in task/specification-template.md. Najprej pripravi specifikacijo v docs/agent/specification.md, nato implementiraj zahteve in preveri rešitev. Ob spremembi specifikacije ohrani kratek zapis popravka. Lastne teste dodajaj v tests/agent/. V docs/agent/verification.md zapiši dejansko izvedena preverjanja, rezultate, povezave z zahtevami ter omejitve.
+
+Na voljo imaš največ 20 minut od začetka tega zagona; čas vključuje specifikacijo, kodo in preverjanje. Končaj prej, ko opraviš nalogo. Končna predaja je stanje datotek ob koncu tvojega odgovora oziroma ob časovni omejitvi. Reši tudi zahteve, ki jih skupni razvojni testi morda ne zajamejo.
+
+Odvisnosti in Chromium so nameščeni. npm run check izvede preverjanje kode in vse dostopne teste (38 preverjanj izhodišča, 8 razvojnih preverjanj P03 in tvoje dodatne teste). Samo skupne razvojne teste lahko zaženeš z npx playwright test --project=development-desktop --project=development-mobile. Testi imajo lastni strežnik na vratih 5174/3102. Za ročni ogled uporabi WEB_PORT=5193 API_PORT=3123 npm run dev. Testi so že nastavljeni na ločen Chromium. Za lastne skripte preberi wsEndpoint iz task/browser.json in uporabi chromium.connect(wsEndpoint); chromium.launch() znotraj tega okolja ne deluje. Dostop do javnega interneta je blokiran. Uporabljaj samo lokalne storitve te naloge.
+
+Spreminjaj samo src/, tests/agent/ in docs/agent/. To je svež izvoz brez zgodovine Git. Ne dodajaj odvisnosti, ne spreminjaj infrastrukture ali skupnih testov in ne zaganjaj drugih agentov. Če kakšen korak zaradi omejitev okolja ne deluje, to jasno zabeleži in nadaljuj z drugim dovoljenim načinom. Na koncu kratko povzemaj rezultat in neizpolnjene zahteve.

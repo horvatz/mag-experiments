@@ -1,6 +1,6 @@
 # Kazalo dokazov po nalogah
 
-Posnetek 2026-09-25T22:31:20.275Z: 53/72 arhivov.
+Posnetek 2026-09-25T23:32:36.197Z: 66/72 arhivov.
 
 Kazalo povezuje vnaprej določene naloge z vsemi tremi ponovitvami. Vrstni red spodaj je po postopku in ponovitvi; dejanski vrstni red meritev je v [zamrznjenem razporedu](../schedule.json). Nearhivirana vrstica lahko pravkar teče; to kaže [aktivno stanje](../active.json).
 
@@ -14,13 +14,13 @@ Zahteve pomenijo neodvisno dokazane R01–R12, strogi uspeh pa dodatno zahteva z
 | --- | --- | --- | --- | --- | --- |
 | P03-A-001 | execution_failed | 0/12 | ne | 13,293 | [ocena](../../runs/P03-A-001/evaluation-summary.json) · [proces](../../runs/P03-A-001/execution.json) · [poraba](../../runs/P03-A-001/usage-observation.json) · [koda](../../runs/P03-A-001/submission/src/App.tsx) |
 | P03-A-002 | completed | 12/12 | da | 640,420 | [ocena](../../runs/P03-A-002/evaluation-summary.json) · [proces](../../runs/P03-A-002/execution.json) · [poraba](../../runs/P03-A-002/usage-observation.json) · [koda](../../runs/P03-A-002/submission/src/App.tsx) · [predaja](../../runs/P03-A-002/submission/docs/agent/verification.md) |
-| P03-A-003 | še ni arhiva | — | — | — | — |
+| P03-A-003 | execution_failed | 0/12 | ne | 30,705 | [ocena](../../runs/P03-A-003/evaluation-summary.json) · [proces](../../runs/P03-A-003/execution.json) · [poraba](../../runs/P03-A-003/usage-observation.json) · [koda](../../runs/P03-A-003/submission/src/App.tsx) |
 | P03-B-001 | completed | 12/12 | da | 906,533 | [ocena](../../runs/P03-B-001/evaluation-summary.json) · [proces](../../runs/P03-B-001/execution.json) · [poraba](../../runs/P03-B-001/usage-observation.json) · [koda](../../runs/P03-B-001/submission/src/App.tsx) · [predaja](../../runs/P03-B-001/submission/docs/agent/verification.md) |
 | P03-B-002 | completed | 12/12 | da | 816,332 | [ocena](../../runs/P03-B-002/evaluation-summary.json) · [proces](../../runs/P03-B-002/execution.json) · [poraba](../../runs/P03-B-002/usage-observation.json) · [koda](../../runs/P03-B-002/submission/src/App.tsx) · [predaja](../../runs/P03-B-002/submission/docs/agent/verification.md) |
-| P03-B-003 | še ni arhiva | — | — | — | — |
+| P03-B-003 | execution_failed | 0/12 | ne | 31,678 | [ocena](../../runs/P03-B-003/evaluation-summary.json) · [proces](../../runs/P03-B-003/execution.json) · [poraba](../../runs/P03-B-003/usage-observation.json) · [koda](../../runs/P03-B-003/submission/src/App.tsx) |
 | P03-C-001 | completed | 12/12 | da | 988,493 | [ocena](../../runs/P03-C-001/evaluation-summary.json) · [proces](../../runs/P03-C-001/execution.json) · [poraba](../../runs/P03-C-001/usage-observation.json) · [koda](../../runs/P03-C-001/submission/src/App.tsx) · [predaja](../../runs/P03-C-001/submission/docs/agent/verification.md) |
 | P03-C-002 | completed | 12/12 | da | 1002,222 | [ocena](../../runs/P03-C-002/evaluation-summary.json) · [proces](../../runs/P03-C-002/execution.json) · [poraba](../../runs/P03-C-002/usage-observation.json) · [koda](../../runs/P03-C-002/submission/src/App.tsx) · [predaja](../../runs/P03-C-002/submission/docs/agent/verification.md) |
-| P03-C-003 | še ni arhiva | — | — | — | — |
+| P03-C-003 | execution_failed | 0/12 | ne | 33,297 | [ocena](../../runs/P03-C-003/evaluation-summary.json) · [proces](../../runs/P03-C-003/execution.json) · [poraba](../../runs/P03-C-003/usage-observation.json) · [koda](../../runs/P03-C-003/submission/src/App.tsx) |
 
 Vsebinske presoje izbranih oddaj:
 
@@ -34,21 +34,21 @@ Vsebinske presoje izbranih oddaj:
 
 | Izvedba | Status | Zahteve | Strogi uspeh | Čas (s) | Dokazi |
 | --- | --- | --- | --- | --- | --- |
-| P04-A-001 | še ni arhiva | — | — | — | — |
+| P04-A-001 | execution_failed | 0/12 | ne | 31,412 | [ocena](../../runs/P04-A-001/evaluation-summary.json) · [proces](../../runs/P04-A-001/execution.json) · [poraba](../../runs/P04-A-001/usage-observation.json) · [koda](../../runs/P04-A-001/submission/src/App.tsx) |
 | P04-A-002 | completed | 12/12 | da | 622,467 | [ocena](../../runs/P04-A-002/evaluation-summary.json) · [proces](../../runs/P04-A-002/execution.json) · [poraba](../../runs/P04-A-002/usage-observation.json) · [koda](../../runs/P04-A-002/submission/src/App.tsx) · [predaja](../../runs/P04-A-002/submission/docs/agent/verification.md) |
 | P04-A-003 | completed | 12/12 | da | 622,888 | [ocena](../../runs/P04-A-003/evaluation-summary.json) · [proces](../../runs/P04-A-003/execution.json) · [poraba](../../runs/P04-A-003/usage-observation.json) · [koda](../../runs/P04-A-003/submission/src/App.tsx) · [predaja](../../runs/P04-A-003/submission/docs/agent/verification.md) |
-| P04-B-001 | še ni arhiva | — | — | — | — |
+| P04-B-001 | execution_failed | 0/12 | ne | 31,772 | [ocena](../../runs/P04-B-001/evaluation-summary.json) · [proces](../../runs/P04-B-001/execution.json) · [poraba](../../runs/P04-B-001/usage-observation.json) · [koda](../../runs/P04-B-001/submission/src/App.tsx) |
 | P04-B-002 | completed_with_phase_time_limit | 12/12 | ne | 1109,156 | [ocena](../../runs/P04-B-002/evaluation-summary.json) · [proces](../../runs/P04-B-002/execution.json) · [poraba](../../runs/P04-B-002/usage-observation.json) · [koda](../../runs/P04-B-002/submission/src/App.tsx) · [predaja](../../runs/P04-B-002/submission/docs/agent/verification.md) |
 | P04-B-003 | completed | 12/12 | da | 854,384 | [ocena](../../runs/P04-B-003/evaluation-summary.json) · [proces](../../runs/P04-B-003/execution.json) · [poraba](../../runs/P04-B-003/usage-observation.json) · [koda](../../runs/P04-B-003/submission/src/App.tsx) · [predaja](../../runs/P04-B-003/submission/docs/agent/verification.md) |
-| P04-C-001 | še ni arhiva | — | — | — | — |
+| P04-C-001 | execution_failed | 0/12 | ne | 31,008 | [ocena](../../runs/P04-C-001/evaluation-summary.json) · [proces](../../runs/P04-C-001/execution.json) · [poraba](../../runs/P04-C-001/usage-observation.json) · [koda](../../runs/P04-C-001/submission/src/App.tsx) |
 | P04-C-002 | completed | 12/12 | da | 1020,453 | [ocena](../../runs/P04-C-002/evaluation-summary.json) · [proces](../../runs/P04-C-002/execution.json) · [poraba](../../runs/P04-C-002/usage-observation.json) · [koda](../../runs/P04-C-002/submission/src/App.tsx) · [predaja](../../runs/P04-C-002/submission/docs/agent/verification.md) |
 | P04-C-003 | completed | 12/12 | da | 944,940 | [ocena](../../runs/P04-C-003/evaluation-summary.json) · [proces](../../runs/P04-C-003/execution.json) · [poraba](../../runs/P04-C-003/usage-observation.json) · [koda](../../runs/P04-C-003/submission/src/App.tsx) · [predaja](../../runs/P04-C-003/submission/docs/agent/verification.md) |
 
 Vsebinske presoje izbranih oddaj:
 
-- P04-A-001: presoja še ni opravljena.
-- P04-B-001: presoja še ni opravljena.
-- P04-C-001: presoja še ni opravljena.
+- [P04-A-001](reviews/P04-A-001.json): možnost ocene je preverjena; ocene manjkajo z navedenim razlogom.
+- [P04-B-001](reviews/P04-B-001.json): možnost ocene je preverjena; ocene manjkajo z navedenim razlogom.
+- [P04-C-001](reviews/P04-C-001.json): možnost ocene je preverjena; ocene manjkajo z navedenim razlogom.
 
 ## P05 — Straničenje in filter stanja
 
@@ -79,7 +79,7 @@ Vsebinske presoje izbranih oddaj:
 | Izvedba | Status | Zahteve | Strogi uspeh | Čas (s) | Dokazi |
 | --- | --- | --- | --- | --- | --- |
 | P06-A-001 | completed | 12/12 | da | 610,264 | [ocena](../../runs/P06-A-001/evaluation-summary.json) · [proces](../../runs/P06-A-001/execution.json) · [poraba](../../runs/P06-A-001/usage-observation.json) · [koda](../../runs/P06-A-001/submission/src/App.tsx) · [predaja](../../runs/P06-A-001/submission/docs/agent/verification.md) |
-| P06-A-002 | še ni arhiva | — | — | — | — |
+| P06-A-002 | completed | 12/12 | da | 650,136 | [ocena](../../runs/P06-A-002/evaluation-summary.json) · [proces](../../runs/P06-A-002/execution.json) · [poraba](../../runs/P06-A-002/usage-observation.json) · [koda](../../runs/P06-A-002/submission/src/App.tsx) · [predaja](../../runs/P06-A-002/submission/docs/agent/verification.md) |
 | P06-A-003 | completed | 12/12 | da | 792,318 | [ocena](../../runs/P06-A-003/evaluation-summary.json) · [proces](../../runs/P06-A-003/execution.json) · [poraba](../../runs/P06-A-003/usage-observation.json) · [koda](../../runs/P06-A-003/submission/src/App.tsx) · [predaja](../../runs/P06-A-003/submission/docs/agent/verification.md) |
 | P06-B-001 | completed | 12/12 | da | 926,627 | [ocena](../../runs/P06-B-001/evaluation-summary.json) · [proces](../../runs/P06-B-001/execution.json) · [poraba](../../runs/P06-B-001/usage-observation.json) · [koda](../../runs/P06-B-001/submission/src/App.tsx) · [predaja](../../runs/P06-B-001/submission/docs/agent/verification.md) |
 | P06-B-002 | completed | 12/12 | da | 921,614 | [ocena](../../runs/P06-B-002/evaluation-summary.json) · [proces](../../runs/P06-B-002/execution.json) · [poraba](../../runs/P06-B-002/usage-observation.json) · [koda](../../runs/P06-B-002/submission/src/App.tsx) · [predaja](../../runs/P06-B-002/submission/docs/agent/verification.md) |
@@ -144,21 +144,21 @@ Vsebinske presoje izbranih oddaj:
 
 | Izvedba | Status | Zahteve | Strogi uspeh | Čas (s) | Dokazi |
 | --- | --- | --- | --- | --- | --- |
-| P09-A-001 | še ni arhiva | — | — | — | — |
-| P09-A-002 | še ni arhiva | — | — | — | — |
+| P09-A-001 | execution_failed | 0/12 | ne | 30,753 | [ocena](../../runs/P09-A-001/evaluation-summary.json) · [proces](../../runs/P09-A-001/execution.json) · [poraba](../../runs/P09-A-001/usage-observation.json) · [koda](../../runs/P09-A-001/submission/src/App.tsx) |
+| P09-A-002 | execution_failed | 0/12 | ne | 31,081 | [ocena](../../runs/P09-A-002/evaluation-summary.json) · [proces](../../runs/P09-A-002/execution.json) · [poraba](../../runs/P09-A-002/usage-observation.json) · [koda](../../runs/P09-A-002/submission/src/App.tsx) |
 | P09-A-003 | še ni arhiva | — | — | — | — |
-| P09-B-001 | še ni arhiva | — | — | — | — |
-| P09-B-002 | še ni arhiva | — | — | — | — |
+| P09-B-001 | execution_failed | 0/12 | ne | 31,358 | [ocena](../../runs/P09-B-001/evaluation-summary.json) · [proces](../../runs/P09-B-001/execution.json) · [poraba](../../runs/P09-B-001/usage-observation.json) · [koda](../../runs/P09-B-001/submission/src/App.tsx) |
+| P09-B-002 | execution_failed | 0/12 | ne | 32,131 | [ocena](../../runs/P09-B-002/evaluation-summary.json) · [proces](../../runs/P09-B-002/execution.json) · [poraba](../../runs/P09-B-002/usage-observation.json) · [koda](../../runs/P09-B-002/submission/src/App.tsx) |
 | P09-B-003 | še ni arhiva | — | — | — | — |
-| P09-C-001 | še ni arhiva | — | — | — | — |
-| P09-C-002 | še ni arhiva | — | — | — | — |
+| P09-C-001 | execution_failed | 0/12 | ne | 32,777 | [ocena](../../runs/P09-C-001/evaluation-summary.json) · [proces](../../runs/P09-C-001/execution.json) · [poraba](../../runs/P09-C-001/usage-observation.json) · [koda](../../runs/P09-C-001/submission/src/App.tsx) |
+| P09-C-002 | execution_failed | 0/12 | ne | 30,795 | [ocena](../../runs/P09-C-002/evaluation-summary.json) · [proces](../../runs/P09-C-002/execution.json) · [poraba](../../runs/P09-C-002/usage-observation.json) · [koda](../../runs/P09-C-002/submission/src/App.tsx) |
 | P09-C-003 | še ni arhiva | — | — | — | — |
 
 Vsebinske presoje izbranih oddaj:
 
-- P09-A-001: presoja še ni opravljena.
-- P09-B-001: presoja še ni opravljena.
-- P09-C-001: presoja še ni opravljena.
+- [P09-A-001](reviews/P09-A-001.json): možnost ocene je preverjena; ocene manjkajo z navedenim razlogom.
+- [P09-B-001](reviews/P09-B-001.json): možnost ocene je preverjena; ocene manjkajo z navedenim razlogom.
+- [P09-C-001](reviews/P09-C-001.json): možnost ocene je preverjena; ocene manjkajo z navedenim razlogom.
 
 ## P10 — Lokalni vrstni red z razveljavitvami
 

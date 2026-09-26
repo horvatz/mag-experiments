@@ -1,0 +1,75 @@
+{
+  "id": "P09-A-001",
+  "reviewedAt": "2026-09-26",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha. Manjkajoča oddaja se ne nadomesti z drugo ponovitvijo.",
+  "reviewStatus": "unavailable",
+  "unavailableReason": "Storitev je zavrnila prijavo z 401 Unauthorized pred prvim avtorskim sporočilom, ukazom ali spremembo datoteke (fileChanges=[]). Izvedba se je končala po 30,753 s. Ohranjeno izhodišče ni ocenljiva avtorska rešitev P09; vseh pet vsebinskih ocen ostane manjkajočih. Začeti ID in funkcionalni izid ostaneta v primarni analizi.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": null,
+      "rationale": "Specifikacija ni nastala; pokritosti odsotne avtorske oddaje ne ocenjujemo z ničlo.",
+      "evidence": [
+        "runs/P09-A-001/execution.json",
+        "runs/P09-A-001/events.jsonl.gz",
+        "runs/P09-A-001/archive-complete.json"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": null,
+      "rationale": "Avtorski predikati in invariante niso nastali, zato ocena zaradi odsotne rešitve manjka.",
+      "evidence": [
+        "runs/P09-A-001/execution.json",
+        "runs/P09-A-001/events.jsonl.gz",
+        "runs/P09-A-001/archive-complete.json"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": null,
+      "rationale": "Model ni oddal matrike ali verifikacijskega zapisa; raziskovalčeva poznejša evalvacija ne nadomesti njegove predaje.",
+      "evidence": [
+        "runs/P09-A-001/execution.json",
+        "runs/P09-A-001/events.jsonl.gz",
+        "runs/P09-A-001/archive-complete.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Nobena datoteka ni bila spremenjena. Organizacije ohranjenega izhodišča ne pripišemo kot kakovost nove implementacije.",
+      "evidence": [
+        "runs/P09-A-001/execution.json",
+        "runs/P09-A-001/events.jsonl.gz",
+        "runs/P09-A-001/archive-complete.json"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": null,
+      "rationale": "Lastni testi in modelski testni zagoni niso nastali. Neodvisnih testov ne obravnavamo kot agentovo lastno preverjanje.",
+      "evidence": [
+        "runs/P09-A-001/execution.json",
+        "runs/P09-A-001/events.jsonl.gz",
+        "runs/P09-A-001/archive-complete.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "D01 pri neposrednem filtriranem URL-ju pričakuje samo web-03, vendar ohranjeno izhodišče prikaže web-01 do web-08. URL filtriranje P09 ni implementirano. Neodvisna ocena je 38/38 regresijskih, 0/8 razvojnih in 0/24 sprejemnih preverjanj ter 0/12 dokazanih zahtev (12 opaženih). Gre za neimplementirano funkcionalnost po zavrnjeni prijavi, ne napako v ustvarjeni implementaciji.",
+    "evidence": [
+      "runs/P09-A-001/evaluation-summary.json",
+      "runs/P09-A-001/submission/src/App.tsx",
+      "runs/P09-A-001/events.jsonl.gz"
+    ]
+  },
+  "finalFailureNote": "execution_failed zaradi 401; brez avtorskega izhoda ali sprememb kode. Strogi uspeh false, znani čas 30.753 s, celotna in opažena poraba null. Kratek čas zavrnjene prijave ni čas uspešne rešitve.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Model ni prišel do implementacije ali lastnega preverjanja. Zamrznjeno varovalo je zaznavalo omejitev porabe, ne napake prijave, zato je vrsta nadaljevala. Incident je dokumentiran v diagnostics/authentication-incident-2026-09-25.json. Izvedba se ne ponovi."
+}

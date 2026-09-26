@@ -1,12 +1,12 @@
 # Rezultati za pisanje
 
-Podatkovni posnetek: 2026-09-25T22:31:20.275Z. Arhiviranih 53/72. Nepopolna zbirka; skupinski podatki so sprotni opis, brez končnega sklepanja.
+Podatkovni posnetek: 2026-09-25T23:32:36.197Z. Arhiviranih 66/72. Nepopolna zbirka; skupinski podatki so sprotni opis, brez končnega sklepanja.
 
 | Postopek | Arhivi | Strogi uspehi | Delež zahtev | Čas s | Znani časi |
 | --- | --- | --- | --- | --- | --- |
-| A | 17/24 | 16 | 0.941 | 615.49 | 17/17 |
-| B | 18/24 | 17 | 1.000 | 943.09 | 18/18 |
-| C | 18/24 | 17 | 1.000 | — | 17/18 |
+| A | 22/24 | 17 | 0.773 | 510.79 | 22/22 |
+| B | 22/24 | 17 | 0.818 | 777.39 | 22/22 |
+| C | 22/24 | 17 | 0.818 | — | 21/22 |
 
 Dokazana zahteva potrebuje uspeh obeh sprejemnih prikazov in dovoljen obseg sprememb. Neopaženo preverjanje ni potrjena funkcionalna napaka. Strogi uspeh dodatno zahteva zaključen postopek, lint, tipe, gradnjo in vseh 70 preverjanj.
 
@@ -67,14 +67,27 @@ Dokazana zahteva potrebuje uspeh obeh sprejemnih prikazov in dovoljen obseg spre
 | [P07-C-001](../../runs/P07-C-001/evaluation-summary.json) | completed | 12/12 | 12/12 | 896.50 | da |
 | [P06-C-002](../../runs/P06-C-002/evaluation-summary.json) | completed | 12/12 | 12/12 | 974.60 | da |
 | [P06-B-002](../../runs/P06-B-002/evaluation-summary.json) | completed | 12/12 | 12/12 | 921.61 | da |
+| [P06-A-002](../../runs/P06-A-002/evaluation-summary.json) | completed | 12/12 | 12/12 | 650.14 | da |
+| [P09-A-001](../../runs/P09-A-001/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 30.75 | ne |
+| [P09-B-001](../../runs/P09-B-001/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 31.36 | ne |
+| [P09-C-001](../../runs/P09-C-001/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 32.78 | ne |
+| [P04-A-001](../../runs/P04-A-001/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 31.41 | ne |
+| [P04-C-001](../../runs/P04-C-001/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 31.01 | ne |
+| [P04-B-001](../../runs/P04-B-001/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 31.77 | ne |
+| [P03-C-003](../../runs/P03-C-003/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 33.30 | ne |
+| [P03-A-003](../../runs/P03-A-003/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 30.70 | ne |
+| [P03-B-003](../../runs/P03-B-003/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 31.68 | ne |
+| [P09-B-002](../../runs/P09-B-002/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 32.13 | ne |
+| [P09-C-002](../../runs/P09-C-002/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 30.80 | ne |
+| [P09-A-002](../../runs/P09-A-002/evaluation-summary.json) | execution_failed | 0/12 | 12/12 | 31.08 | ne |
 
 ## Popolno zabeležena poraba
 
 | Postopek | Popolni zapisi / arhivi | Povprečni vhodni tokeni | Povprečni izhodni tokeni |
 | --- | --- | --- | --- |
-| A | 16/17 | 746636.69 | 20056.63 |
-| B | 17/18 | 1144168.82 | 27694.94 |
-| C | 17/18 | 2818305.24 | 29068.59 |
+| A | 17/22 | 746585.24 | 20033.94 |
+| B | 17/22 | 1144168.82 | 27694.94 |
+| C | 17/22 | 2818305.24 | 29068.59 |
 
 Ta povprečja vključujejo samo popolno zabeleženo porabo in so ob manjkajočih zapisih lahko selektivna. Predpomnjeni tokeni so že vključeni v vhodne, reasoning tokeni v izhodne. Zadnja opažena poraba prekinjenih izvedb je ločena spodnja meja v JSON/CSV, ne nadomestilo celotne porabe. Tokeni niso denarni strošek.
 
@@ -84,6 +97,8 @@ Primerjave se izračunajo šele ob vseh 72 arhivih. Neuravnotežen sprotni vzore
 
 
 ## Manjkajoče meritve in viri
+
+Dvanajst zaporednih poskusov #55–66 je prekinila napaka prijave 401, pred prvim avtorskim izhodom ali spremembo datoteke. Prizadeti so P09-001/002, P04-001 in P03-003 pri vseh treh postopkih (štirje poskusi na postopek). Vsak ostane v primarni analizi z 0/12 in brez strogega uspeha; nobeden ni ponovljen. Časi 30–34 s so časi neuspešnega dostopa, ne rešitve. Celotna poraba in šest izbranih vsebinskih presoj so manjkajoče. Uravnoteženo število zavrnitev ne odpravi izgube implementacij in omejitve razlage rezultatov. [Preverjeni dokazi incidenta](diagnostics/authentication-incident-2026-09-25.json).
 
 Manjkajoči točni časi: P06-C-001. Neznan čas ni nič. Prizadeta povprečja in parne časovne primerjave niso prikazane; funkcionalni izidi in imenovalci ostajajo nespremenjeni.
 

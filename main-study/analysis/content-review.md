@@ -2,7 +2,7 @@
 
 **AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.
 
-Vsebinsko ocenjenih je 17/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Število izbranih oddaj z dokumentirano nezmožnostjo ocene: 1; njihove ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
+Vsebinsko ocenjenih je 17/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Število izbranih oddaj z dokumentirano nezmožnostjo ocene: 7; njihove ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.
 
 | Oddaja | Status presoje | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -24,16 +24,22 @@ Vsebinsko ocenjenih je 17/24 vnaprej določenih oddaj (ponovitev 001 za P03–P1
 | [P07-A-001](reviews/P07-A-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 | [P07-B-001](reviews/P07-B-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
 | [P07-C-001](reviews/P07-C-001.json) | ocenjeno | 2 | 2 | 2 | 2 | 2 |
+| [P09-A-001](reviews/P09-A-001.json) | ocena ni mogoča | — | — | — | — | — |
+| [P09-B-001](reviews/P09-B-001.json) | ocena ni mogoča | — | — | — | — | — |
+| [P09-C-001](reviews/P09-C-001.json) | ocena ni mogoča | — | — | — | — | — |
+| [P04-A-001](reviews/P04-A-001.json) | ocena ni mogoča | — | — | — | — | — |
+| [P04-C-001](reviews/P04-C-001.json) | ocena ni mogoča | — | — | — | — | — |
+| [P04-B-001](reviews/P04-B-001.json) | ocena ni mogoča | — | — | — | — | — |
 
-Še neobravnavane izbrane oddaje: P09-A-001, P09-B-001, P09-C-001, P04-A-001, P04-C-001, P04-B-001.
+Še neobravnavane izbrane oddaje: ni.
 
 ## Porazdelitev ocen po dimenzijah
 
 Vsaka trojica navaja število ocen 0 / 1 / 2. Manjkajoče in še neopravljene presoje niso ocena 0. Števila so opisna; dimenzij ne seštevamo in ne računamo skupne ocene kakovosti.
 
-A: 5/8 številčno ocenjenih, 1 brez možnosti ocene, 2 še neobravnavanih.
-B: 6/8 številčno ocenjenih, 0 brez možnosti ocene, 2 še neobravnavanih.
-C: 6/8 številčno ocenjenih, 0 brez možnosti ocene, 2 še neobravnavanih.
+A: 5/8 številčno ocenjenih, 3 brez možnosti ocene, 0 še neobravnavanih.
+B: 6/8 številčno ocenjenih, 2 brez možnosti ocene, 0 še neobravnavanih.
+C: 6/8 številčno ocenjenih, 2 brez možnosti ocene, 0 še neobravnavanih.
 
 | Dimenzija | A: 0 / 1 / 2 | B: 0 / 1 / 2 | C: 0 / 1 / 2 |
 | --- | --- | --- | --- |
@@ -516,3 +522,171 @@ Dokazi: [P07.spec.ts](../../runs/P07-C-001/submission/tests/agent/P07.spec.ts), 
 Končna napaka: Neodvisna ocena potrdi 70/70 in 12/12 zahtev, dovoljen obseg, zaključen postopek in popolno porabo. V tem pregledu ni dodatno potrjene funkcionalne napake. Statična primerjava pokaže, da TaskBoard ohrani izhodiščni aria-labelledby z neobdelanim task.id, enako kot nespremenjeno izhodišče v P03-A-001. Znana podedovana občutljivost takih IDREF na presledke zato ni odpravljena; za to oddajo ni izveden dodaten brskalniški preizkus in primarni izid ni spremenjen. 70/70 ni izčrpen dokaz vseh vhodov.
 
 Opomba o razvojnem poteku: Prvi celotni check uspe 66/66 v 27,2 s. Pregledani surovi dogodki nimajo neuspešnega zaključenega ukaza ali dokumentiranega popravljanja neuspešnega testa. Converge traja 72,113 s, pregleda že shranjene rezultate in ne izvaja testov ali dodatne implementacije.
+
+## P09-A-001
+
+**Vsebinska ocena ni mogoča.** Storitev je zavrnila prijavo z 401 Unauthorized pred prvim avtorskim sporočilom, ukazom ali spremembo datoteke (fileChanges=[]). Izvedba se je končala po 30,753 s. Ohranjeno izhodišče ni ocenljiva avtorska rešitev P09; vseh pet vsebinskih ocen ostane manjkajočih. Začeti ID in funkcionalni izid ostaneta v primarni analizi.
+
+**Pokritost specifikacije: manjkajoče.** Specifikacija ni nastala; pokritosti odsotne avtorske oddaje ne ocenjujemo z ničlo.
+
+Dokazi: [execution.json](../../runs/P09-A-001/execution.json), [events.jsonl.gz](../../runs/P09-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P09-A-001/archive-complete.json).
+
+**Predikati/invariante: manjkajoče.** Avtorski predikati in invariante niso nastali, zato ocena zaradi odsotne rešitve manjka.
+
+Dokazi: [execution.json](../../runs/P09-A-001/execution.json), [events.jsonl.gz](../../runs/P09-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P09-A-001/archive-complete.json).
+
+**Sledljivost: manjkajoče.** Model ni oddal matrike ali verifikacijskega zapisa; raziskovalčeva poznejša evalvacija ne nadomesti njegove predaje.
+
+Dokazi: [execution.json](../../runs/P09-A-001/execution.json), [events.jsonl.gz](../../runs/P09-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P09-A-001/archive-complete.json).
+
+**Organizacija kode: manjkajoče.** Nobena datoteka ni bila spremenjena. Organizacije ohranjenega izhodišča ne pripišemo kot kakovost nove implementacije.
+
+Dokazi: [execution.json](../../runs/P09-A-001/execution.json), [events.jsonl.gz](../../runs/P09-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P09-A-001/archive-complete.json).
+
+**Lastna preverjanja: manjkajoče.** Lastni testi in modelski testni zagoni niso nastali. Neodvisnih testov ne obravnavamo kot agentovo lastno preverjanje.
+
+Dokazi: [execution.json](../../runs/P09-A-001/execution.json), [events.jsonl.gz](../../runs/P09-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P09-A-001/archive-complete.json).
+
+Končna napaka: execution_failed zaradi 401; brez avtorskega izhoda ali sprememb kode. Strogi uspeh false, znani čas 30.753 s, celotna in opažena poraba null. Kratek čas zavrnjene prijave ni čas uspešne rešitve.
+
+Opomba o razvojnem poteku: Model ni prišel do implementacije ali lastnega preverjanja. Zamrznjeno varovalo je zaznavalo omejitev porabe, ne napake prijave, zato je vrsta nadaljevala. Incident je dokumentiran v diagnostics/authentication-incident-2026-09-25.json. Izvedba se ne ponovi.
+
+## P09-B-001
+
+**Vsebinska ocena ni mogoča.** Storitev je zavrnila prijavo z 401 Unauthorized pred prvim avtorskim sporočilom, ukazom ali spremembo datoteke (fileChanges=[]). Izvedba se je končala po 31,358 s. Ohranjeno izhodišče ni ocenljiva avtorska rešitev P09; vseh pet vsebinskih ocen ostane manjkajočih. Začeti ID in funkcionalni izid ostaneta v primarni analizi.
+
+**Pokritost specifikacije: manjkajoče.** Specifikacija ni nastala; pokritosti odsotne avtorske oddaje ne ocenjujemo z ničlo.
+
+Dokazi: [execution.json](../../runs/P09-B-001/execution.json), [events.jsonl.gz](../../runs/P09-B-001/phases/01-specification/events.jsonl.gz), [archive-complete.json](../../runs/P09-B-001/archive-complete.json).
+
+**Predikati/invariante: manjkajoče.** Avtorski predikati in invariante niso nastali, zato ocena zaradi odsotne rešitve manjka.
+
+Dokazi: [execution.json](../../runs/P09-B-001/execution.json), [events.jsonl.gz](../../runs/P09-B-001/phases/01-specification/events.jsonl.gz), [archive-complete.json](../../runs/P09-B-001/archive-complete.json).
+
+**Sledljivost: manjkajoče.** Model ni oddal matrike ali verifikacijskega zapisa; raziskovalčeva poznejša evalvacija ne nadomesti njegove predaje.
+
+Dokazi: [execution.json](../../runs/P09-B-001/execution.json), [events.jsonl.gz](../../runs/P09-B-001/phases/01-specification/events.jsonl.gz), [archive-complete.json](../../runs/P09-B-001/archive-complete.json).
+
+**Organizacija kode: manjkajoče.** Nobena datoteka ni bila spremenjena. Organizacije ohranjenega izhodišča ne pripišemo kot kakovost nove implementacije.
+
+Dokazi: [execution.json](../../runs/P09-B-001/execution.json), [events.jsonl.gz](../../runs/P09-B-001/phases/01-specification/events.jsonl.gz), [archive-complete.json](../../runs/P09-B-001/archive-complete.json).
+
+**Lastna preverjanja: manjkajoče.** Lastni testi in modelski testni zagoni niso nastali. Neodvisnih testov ne obravnavamo kot agentovo lastno preverjanje.
+
+Dokazi: [execution.json](../../runs/P09-B-001/execution.json), [events.jsonl.gz](../../runs/P09-B-001/phases/01-specification/events.jsonl.gz), [archive-complete.json](../../runs/P09-B-001/archive-complete.json).
+
+Končna napaka: execution_failed zaradi 401; brez avtorskega izhoda ali sprememb kode. Strogi uspeh false, znani čas 31.358 s, celotna in opažena poraba null. Kratek čas zavrnjene prijave ni čas uspešne rešitve.
+
+Opomba o razvojnem poteku: Model ni prišel do implementacije ali lastnega preverjanja. Zamrznjeno varovalo je zaznavalo omejitev porabe, ne napake prijave, zato je vrsta nadaljevala. Incident je dokumentiran v diagnostics/authentication-incident-2026-09-25.json. Izvedba se ne ponovi.
+
+## P09-C-001
+
+**Vsebinska ocena ni mogoča.** Storitev je zavrnila prijavo z 401 Unauthorized pred prvim avtorskim sporočilom, ukazom ali spremembo datoteke (fileChanges=[]). Izvedba se je končala po 32,777 s. Ohranjeno izhodišče ni ocenljiva avtorska rešitev P09; vseh pet vsebinskih ocen ostane manjkajočih. Začeti ID in funkcionalni izid ostaneta v primarni analizi.
+
+**Pokritost specifikacije: manjkajoče.** Specifikacija ni nastala; pokritosti odsotne avtorske oddaje ne ocenjujemo z ničlo.
+
+Dokazi: [execution.json](../../runs/P09-C-001/execution.json), [events.jsonl.gz](../../runs/P09-C-001/phases/01-constitution/events.jsonl.gz), [archive-complete.json](../../runs/P09-C-001/archive-complete.json).
+
+**Predikati/invariante: manjkajoče.** Avtorski predikati in invariante niso nastali, zato ocena zaradi odsotne rešitve manjka.
+
+Dokazi: [execution.json](../../runs/P09-C-001/execution.json), [events.jsonl.gz](../../runs/P09-C-001/phases/01-constitution/events.jsonl.gz), [archive-complete.json](../../runs/P09-C-001/archive-complete.json).
+
+**Sledljivost: manjkajoče.** Model ni oddal matrike ali verifikacijskega zapisa; raziskovalčeva poznejša evalvacija ne nadomesti njegove predaje.
+
+Dokazi: [execution.json](../../runs/P09-C-001/execution.json), [events.jsonl.gz](../../runs/P09-C-001/phases/01-constitution/events.jsonl.gz), [archive-complete.json](../../runs/P09-C-001/archive-complete.json).
+
+**Organizacija kode: manjkajoče.** Nobena datoteka ni bila spremenjena. Organizacije ohranjenega izhodišča ne pripišemo kot kakovost nove implementacije.
+
+Dokazi: [execution.json](../../runs/P09-C-001/execution.json), [events.jsonl.gz](../../runs/P09-C-001/phases/01-constitution/events.jsonl.gz), [archive-complete.json](../../runs/P09-C-001/archive-complete.json).
+
+**Lastna preverjanja: manjkajoče.** Lastni testi in modelski testni zagoni niso nastali. Neodvisnih testov ne obravnavamo kot agentovo lastno preverjanje.
+
+Dokazi: [execution.json](../../runs/P09-C-001/execution.json), [events.jsonl.gz](../../runs/P09-C-001/phases/01-constitution/events.jsonl.gz), [archive-complete.json](../../runs/P09-C-001/archive-complete.json).
+
+Končna napaka: execution_failed zaradi 401; brez avtorskega izhoda ali sprememb kode. Strogi uspeh false, znani čas 32.777 s, celotna in opažena poraba null. Kratek čas zavrnjene prijave ni čas uspešne rešitve.
+
+Opomba o razvojnem poteku: Model ni prišel do implementacije ali lastnega preverjanja. Zamrznjeno varovalo je zaznavalo omejitev porabe, ne napake prijave, zato je vrsta nadaljevala. Incident je dokumentiran v diagnostics/authentication-incident-2026-09-25.json. Izvedba se ne ponovi.
+
+## P04-A-001
+
+**Vsebinska ocena ni mogoča.** Storitev je zavrnila prijavo z 401 Unauthorized pred prvim avtorskim sporočilom, ukazom ali spremembo datoteke (fileChanges=[]). Izvedba se je končala po 31,412 s. Ohranjeno izhodišče ni ocenljiva avtorska rešitev P04; vseh pet vsebinskih ocen ostane manjkajočih. Začeti ID in funkcionalni izid ostaneta v primarni analizi.
+
+**Pokritost specifikacije: manjkajoče.** Specifikacija ni nastala; pokritosti odsotne avtorske oddaje ne ocenjujemo z ničlo.
+
+Dokazi: [execution.json](../../runs/P04-A-001/execution.json), [events.jsonl.gz](../../runs/P04-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P04-A-001/archive-complete.json).
+
+**Predikati/invariante: manjkajoče.** Avtorski predikati in invariante niso nastali, zato ocena zaradi odsotne rešitve manjka.
+
+Dokazi: [execution.json](../../runs/P04-A-001/execution.json), [events.jsonl.gz](../../runs/P04-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P04-A-001/archive-complete.json).
+
+**Sledljivost: manjkajoče.** Model ni oddal matrike ali verifikacijskega zapisa; raziskovalčeva poznejša evalvacija ne nadomesti njegove predaje.
+
+Dokazi: [execution.json](../../runs/P04-A-001/execution.json), [events.jsonl.gz](../../runs/P04-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P04-A-001/archive-complete.json).
+
+**Organizacija kode: manjkajoče.** Nobena datoteka ni bila spremenjena. Organizacije ohranjenega izhodišča ne pripišemo kot kakovost nove implementacije.
+
+Dokazi: [execution.json](../../runs/P04-A-001/execution.json), [events.jsonl.gz](../../runs/P04-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P04-A-001/archive-complete.json).
+
+**Lastna preverjanja: manjkajoče.** Lastni testi in modelski testni zagoni niso nastali. Neodvisnih testov ne obravnavamo kot agentovo lastno preverjanje.
+
+Dokazi: [execution.json](../../runs/P04-A-001/execution.json), [events.jsonl.gz](../../runs/P04-A-001/events.jsonl.gz), [archive-complete.json](../../runs/P04-A-001/archive-complete.json).
+
+Končna napaka: execution_failed zaradi 401; brez avtorskega izhoda ali sprememb kode. Strogi uspeh false, znani čas 31.412 s, celotna in opažena poraba null. Kratek čas zavrnjene prijave ni čas uspešne rešitve.
+
+Opomba o razvojnem poteku: Model ni prišel do implementacije ali lastnega preverjanja. Zamrznjeno varovalo je zaznavalo omejitev porabe, ne napake prijave, zato je vrsta nadaljevala. Incident je dokumentiran v diagnostics/authentication-incident-2026-09-25.json. Izvedba se ne ponovi.
+
+## P04-C-001
+
+**Vsebinska ocena ni mogoča.** Storitev je zavrnila prijavo z 401 Unauthorized pred prvim avtorskim sporočilom, ukazom ali spremembo datoteke (fileChanges=[]). Izvedba se je končala po 31,008 s. Ohranjeno izhodišče ni ocenljiva avtorska rešitev P04; vseh pet vsebinskih ocen ostane manjkajočih. Začeti ID in funkcionalni izid ostaneta v primarni analizi.
+
+**Pokritost specifikacije: manjkajoče.** Specifikacija ni nastala; pokritosti odsotne avtorske oddaje ne ocenjujemo z ničlo.
+
+Dokazi: [execution.json](../../runs/P04-C-001/execution.json), [events.jsonl.gz](../../runs/P04-C-001/phases/01-constitution/events.jsonl.gz), [archive-complete.json](../../runs/P04-C-001/archive-complete.json).
+
+**Predikati/invariante: manjkajoče.** Avtorski predikati in invariante niso nastali, zato ocena zaradi odsotne rešitve manjka.
+
+Dokazi: [execution.json](../../runs/P04-C-001/execution.json), [events.jsonl.gz](../../runs/P04-C-001/phases/01-constitution/events.jsonl.gz), [archive-complete.json](../../runs/P04-C-001/archive-complete.json).
+
+**Sledljivost: manjkajoče.** Model ni oddal matrike ali verifikacijskega zapisa; raziskovalčeva poznejša evalvacija ne nadomesti njegove predaje.
+
+Dokazi: [execution.json](../../runs/P04-C-001/execution.json), [events.jsonl.gz](../../runs/P04-C-001/phases/01-constitution/events.jsonl.gz), [archive-complete.json](../../runs/P04-C-001/archive-complete.json).
+
+**Organizacija kode: manjkajoče.** Nobena datoteka ni bila spremenjena. Organizacije ohranjenega izhodišča ne pripišemo kot kakovost nove implementacije.
+
+Dokazi: [execution.json](../../runs/P04-C-001/execution.json), [events.jsonl.gz](../../runs/P04-C-001/phases/01-constitution/events.jsonl.gz), [archive-complete.json](../../runs/P04-C-001/archive-complete.json).
+
+**Lastna preverjanja: manjkajoče.** Lastni testi in modelski testni zagoni niso nastali. Neodvisnih testov ne obravnavamo kot agentovo lastno preverjanje.
+
+Dokazi: [execution.json](../../runs/P04-C-001/execution.json), [events.jsonl.gz](../../runs/P04-C-001/phases/01-constitution/events.jsonl.gz), [archive-complete.json](../../runs/P04-C-001/archive-complete.json).
+
+Končna napaka: execution_failed zaradi 401; brez avtorskega izhoda ali sprememb kode. Strogi uspeh false, znani čas 31.008 s, celotna in opažena poraba null. Kratek čas zavrnjene prijave ni čas uspešne rešitve.
+
+Opomba o razvojnem poteku: Model ni prišel do implementacije ali lastnega preverjanja. Zamrznjeno varovalo je zaznavalo omejitev porabe, ne napake prijave, zato je vrsta nadaljevala. Incident je dokumentiran v diagnostics/authentication-incident-2026-09-25.json. Izvedba se ne ponovi.
+
+## P04-B-001
+
+**Vsebinska ocena ni mogoča.** Storitev je zavrnila prijavo z 401 Unauthorized pred prvim avtorskim sporočilom, ukazom ali spremembo datoteke (fileChanges=[]). Izvedba se je končala po 31,772 s. Ohranjeno izhodišče ni ocenljiva avtorska rešitev P04; vseh pet vsebinskih ocen ostane manjkajočih. Začeti ID in funkcionalni izid ostaneta v primarni analizi.
+
+**Pokritost specifikacije: manjkajoče.** Specifikacija ni nastala; pokritosti odsotne avtorske oddaje ne ocenjujemo z ničlo.
+
+Dokazi: [execution.json](../../runs/P04-B-001/execution.json), [events.jsonl.gz](../../runs/P04-B-001/phases/01-specification/events.jsonl.gz), [archive-complete.json](../../runs/P04-B-001/archive-complete.json).
+
+**Predikati/invariante: manjkajoče.** Avtorski predikati in invariante niso nastali, zato ocena zaradi odsotne rešitve manjka.
+
+Dokazi: [execution.json](../../runs/P04-B-001/execution.json), [events.jsonl.gz](../../runs/P04-B-001/phases/01-specification/events.jsonl.gz), [archive-complete.json](../../runs/P04-B-001/archive-complete.json).
+
+**Sledljivost: manjkajoče.** Model ni oddal matrike ali verifikacijskega zapisa; raziskovalčeva poznejša evalvacija ne nadomesti njegove predaje.
+
+Dokazi: [execution.json](../../runs/P04-B-001/execution.json), [events.jsonl.gz](../../runs/P04-B-001/phases/01-specification/events.jsonl.gz), [archive-complete.json](../../runs/P04-B-001/archive-complete.json).
+
+**Organizacija kode: manjkajoče.** Nobena datoteka ni bila spremenjena. Organizacije ohranjenega izhodišča ne pripišemo kot kakovost nove implementacije.
+
+Dokazi: [execution.json](../../runs/P04-B-001/execution.json), [events.jsonl.gz](../../runs/P04-B-001/phases/01-specification/events.jsonl.gz), [archive-complete.json](../../runs/P04-B-001/archive-complete.json).
+
+**Lastna preverjanja: manjkajoče.** Lastni testi in modelski testni zagoni niso nastali. Neodvisnih testov ne obravnavamo kot agentovo lastno preverjanje.
+
+Dokazi: [execution.json](../../runs/P04-B-001/execution.json), [events.jsonl.gz](../../runs/P04-B-001/phases/01-specification/events.jsonl.gz), [archive-complete.json](../../runs/P04-B-001/archive-complete.json).
+
+Končna napaka: execution_failed zaradi 401; brez avtorskega izhoda ali sprememb kode. Strogi uspeh false, znani čas 31.772 s, celotna in opažena poraba null. Kratek čas zavrnjene prijave ni čas uspešne rešitve.
+
+Opomba o razvojnem poteku: Model ni prišel do implementacije ali lastnega preverjanja. Zamrznjeno varovalo je zaznavalo omejitev porabe, ne napake prijave, zato je vrsta nadaljevala. Incident je dokumentiran v diagnostics/authentication-incident-2026-09-25.json. Izvedba se ne ponovi.

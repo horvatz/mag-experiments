@@ -1,5 +1,6 @@
 """Publication-friendly descriptive figures from archived M/1.0 measurements."""
 import json
+import textwrap
 from pathlib import Path
 import numpy as np
 import matplotlib
@@ -75,7 +76,8 @@ ax.spines[['top','right']].set_visible(False)
 legend = [Line2D([0],[0], marker='o', linestyle='', color=colors[p], label=p) for p in procedures]
 legend += [Line2D([0],[0], marker='X', linestyle='', color='#555555', label='Nezaključen postopek'), Line2D([0],[0], linestyle='--', color='#8E3E44', label='Meja 20 min')]
 ax.legend(handles=legend, loc='upper center', bbox_to_anchor=(.5,-.09), ncol=5, frameon=False, fontsize=9)
-fig.subplots_adjust(bottom=.27)
+fig.subplots_adjust(bottom=.30)
+fig.text(.125, .115, 'Kratki neuspešni poskusi zaradi dostopa niso časi uspešnih rešitev.', fontsize=9)
 fig.text(.125, .072, note + ' Neznani časi niso prikazani: ' + str(len(data['durationReporting']['missing'])) + '.', fontsize=9)
 fig.text(.125, .035, 'Vir: execution.json posameznih arhivov; ' + snapshot, fontsize=8, color='#596678')
 save(fig, 'cas-izvedb')
@@ -83,7 +85,7 @@ save(fig, 'cas-izvedb')
 # Complete usage only. Cached/reasoning tokens are subsets, never extra totals.
 usage_rows = [r for r in data['data'] if r['usageComplete'] and r['usage'] is not None]
 missing_usage = [r['id'] for r in data['data'] if not r['usageComplete'] or r['usage'] is None]
-fig, axes = plt.subplots(2, 1, figsize=(10.5, 7.4), sharex=True)
+fig, axes = plt.subplots(2, 1, figsize=(10.5, 8.2), sharex=True)
 for ax, key, scale, ylabel in zip(axes, ['input_tokens', 'output_tokens'], [1_000_000, 1000],
                                  ['Vhodni tokeni (milijoni)', 'Izhodni tokeni (tisoči)']):
     for r in usage_rows:
@@ -98,10 +100,11 @@ axes[0].set_title(f'Popolno zabeležena poraba — {scope}', loc='left', pad=14)
 axes[1].set_xticks(range(8), tasks); axes[1].set_xlim(-.6, 7.6)
 axes[1].legend(handles=[Line2D([0],[0], marker='o', linestyle='', color=colors[p], label=p) for p in procedures],
                loc='upper center', bbox_to_anchor=(.5,-.14), ncol=3, frameon=False, fontsize=9)
-fig.subplots_adjust(bottom=.24, hspace=.22)
-fig.text(.125, .105, f"Popolni zapisi: {len(usage_rows)}/{data['archived']}. Izpuščeni nepopolni zapisi: " + (', '.join(missing_usage) or 'ni') + '.', fontsize=9)
-fig.text(.125, .075, 'Predpomnjeni tokeni so vključeni v vhodne; reasoning v izhodne. Tokeni niso denarni strošek.', fontsize=9)
-fig.text(.125, .045, note, fontsize=9)
+fig.subplots_adjust(bottom=.30, hspace=.22)
+usage_note = f"Popolni zapisi: {len(usage_rows)}/{data['archived']}. Izpuščeni nepopolni zapisi: " + (', '.join(missing_usage) or 'ni') + '.'
+fig.text(.125, .17, '\n'.join(textwrap.wrap(usage_note, width=108)), fontsize=8.5, va='top', linespacing=1.35)
+fig.text(.125, .072, 'Predpomnjeni tokeni so vključeni v vhodne; reasoning v izhodne. Tokeni niso denarni strošek.', fontsize=9)
+fig.text(.125, .044, note, fontsize=9)
 fig.text(.125, .018, 'Vir: usklajena poraba točnih merjenih sej; ' + snapshot, fontsize=8, color='#596678')
 save(fig, 'poraba-izvedb')
 

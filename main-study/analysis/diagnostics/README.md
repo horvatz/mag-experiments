@@ -98,3 +98,15 @@ s presledki niso nova regresija P07-C-003. Podatkovni ID-ji ostanejo
 nespremenjeni. To je pregled kode in že izvedenih testov; tabela starega
 brskalniškega pregleda ne dobiva nove vrstice, ker P07-C-003 z istim
 raziskovalčevim orodjem ni bil ponovno izmerjen.
+
+## Zavrnitev prijave 25. septembra 2026
+
+`authentication-incident-2026-09-25.json` preverja vseh 12 zaporednih
+prizadetih arhivov (#55–66): status, odsotnost avtorskega izhoda in ukazov,
+nespremenjene datoteke, izide in SHA-256 dokazov. Vsebuje samo opis vrste
+napake; poverilnice niso prepisane. Surovi arhivi ostanejo nespremenjeni.
+
+Dostop je bil ob obnovi uspešen brez urejanja poverilnic ali menjave računa.
+Natančen vzrok prehodne zavrnitve ni znan. Operatorjevo varovalo je v
+`../recovery/run-guarded.mjs`, dokaz varne odstranitve stare ključavnice in
+nezačetega P10-C-002 pa v `../recovery/restart-2026-09-26.json`.
