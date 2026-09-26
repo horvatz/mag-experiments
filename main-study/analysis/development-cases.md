@@ -288,3 +288,44 @@ Dokazi: [napaka tipov](../../runs/P07-C-003/submission/docs/agent/P07/check.log)
 [zapis poteka](../../runs/P07-C-003/submission/docs/agent/verification.md),
 [primerjava zgoščenih vrednosti](diagnostics/P07-C-003-accessibility.json),
 [neodvisna ocena](../../runs/P07-C-003/evaluation-summary.json).
+
+## P10–B–002: popravek tipov in primerjava z modelom časovnice
+
+V prvi implementaciji je TypeScript zavrnil dostop do `id` in `direction`
+po obravnavi undo/redo/reset: `OrderAction` je združeval tri vrednosti
+`type` v enem členu unije. Surovi dogodek implementacije `item_14` vsebuje
+dve napaki TS2339 in izhodno kodo 2. Implementer je razdelil te tri člene
+na ločene diskriminirane tipe. To je popravek aplikacijske kode med razvojem,
+ne napaka končne oddaje.
+
+Prvi skupni zagon (`item_19`) je nato opravil 52/53 testov. Lastni S4 je
+pričakoval vidni fokus po programskem `focus()` v miškinem načinu. Test
+je bil popravljen na dejanski Tab; naslednji skupni zagon (`item_26`) je
+uspel s 53/53 v 27,5 s: 38 regresijskih, 8 razvojnih in 7 lastnih preverjanj.
+Oba dnevnika sta ohranjena; neuspešni zagon ni nadomeščen samo s povzetkom.
+
+Pregledovalec je brez spreminjanja kode izvedel še ločen preizkus dejanskega
+reducerja proti modelu časovnice in kazalca. Uporabil je generator s semenom
+`0x102b002`, velikosti 0, 1, 2, 5 in 24, pri vsaki 30 zaporedij po 1000
+korakov. Vseh **150.000 prehodov** se je ujemalo; preverjeni so tudi
+nespremenljivost prejšnjega stanja, število ID-jev in meja 20 razveljavitev.
+Opaženih je 90.129 premikov, 30.045 undo, 16.192 redo in 13.634 reset;
+55.874 neveljavnih premikov je podmnožica premikov. Dogodek pregleda
+`item_17` ima izhod 0 in izpis `passed`. Gre za 150.000 korakov v 150
+zaporedjih, ne za toliko različnih nalog ali izčrpen dokaz pravilnosti.
+
+Pregled ni zahteval povratnega popravka. Neodvisna končna ocena je 70/70,
+12/12 in strogi uspeh. Celoten čas 997,802 s vključuje ta pregled; ločena
+raziskovalčeva ekstrakcija dokazov ni nova merjena seja. Primer je izbran
+naknadno in ne dodaja ordinalne ocene ponovitvi 002 ali dokaza, da pregled
+vedno izboljša rezultat.
+
+Dokazi: [dogodki implementacije](../../runs/P10-B-002/phases/02-implementation/events.jsonl.gz),
+[končni tipi dejanj](../../runs/P10-B-002/submission/src/useTaskOrder.ts#L11),
+[prvi skupni zagon](../../runs/P10-B-002/submission/docs/agent/check.log),
+[končni zagon](../../runs/P10-B-002/submission/docs/agent/check-final.log),
+[test S4](../../runs/P10-B-002/submission/tests/agent/order.spec.ts#L91),
+[izvirni pregled](../../runs/P10-B-002/phases/03-review/events.jsonl.gz),
+[izluščen dokaz s poreklom](diagnostics/P10-B-002-review-timeline.json),
+[predaja](../../runs/P10-B-002/submission/docs/agent/review.json),
+[neodvisna ocena](../../runs/P10-B-002/evaluation-summary.json).
