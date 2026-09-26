@@ -160,5 +160,5 @@ for (const [sheetName, range, name] of [['Pregled', 'A1:H31', 'pregled'], ['Preg
   await fs.writeFile(resolve(qa, `${name}.png`), new Uint8Array(await preview.arrayBuffer()))
 }
 await (await SpreadsheetFile.exportXlsx(wb)).save(resolve(out, 'rezultati-eksperimentov.xlsx'))
-await fs.writeFile(resolve(qa, 'verification.json'), JSON.stringify({ generatedAt: new Date().toISOString(), sourceGeneratedAt: result.generatedAt, archived: result.archived, formulasComparedWithAnalysis: true, perturbationRestored: true, output: resolve(out, 'rezultati-eksperimentov.xlsx') }, null, 2))
+await fs.writeFile(resolve(qa, 'verification.json'), JSON.stringify({ generatedAt: new Date().toISOString(), sourceGeneratedAt: result.generatedAt, archived: result.archived, formulasComparedWithAnalysis: true, perturbationRestored: true, formulaValuesChecked: true, output: resolve(out, 'rezultati-eksperimentov.xlsx') }, null, 2))
 console.log(JSON.stringify({ output: resolve(out, 'rezultati-eksperimentov.xlsx'), archived: result.archived, errors }))

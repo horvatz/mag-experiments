@@ -116,11 +116,19 @@ okolju Codex. Formule se primerjajo s primarno analizo, izvede se
 povratna sprememba enega vhoda ter pregled izračunanih celic in slik.
 TeX dokument se nato prevede z obstoječim `naloga/latex/scripts/build.sh`.
 
+Po vseh 72 arhivih, osvežitvi gradiva, pregledu povezav in končnem prevodu
+poženi še `verify-writing-bundle.py`. Primerja CSV z izvornimi ocenami,
+preveri manjkajoče vrednosti, vseh 24 obravnavanih presoj in skupni
+podatkovni posnetek preglednice/grafov ter zapiše zgoščene vrednosti izvozov
+v `final-verification.json`. Vizualni pregled končnega PDF in preglednice
+je ločen obvezen korak; skript ga ne nadomesti.
+
 Po incidentu 401 se nadaljuje z `node main-study/analysis/recovery/run-guarded.mjs`.
 Ta operatorjev ovoj uporablja iste zamrznjene pripravljalne, merjene in
 ocenjevalne skripte v istem vrstnem redu. Pred novim modelskim poskusom
 doda ločeno preverjanje storitve in po arhivu zazna tudi napake prijave.
-Ne spreminja protokola, modelskih vhodov ali merjenih proračunov.
+To je dokumentiran operativni dodatek ob obnovi; zamrznjeni merjeni
+skripti, modelski vhodi in merjeni proračuni ostajajo nespremenjeni.
 Pred zagonom preberi aktualni zapis v `naloga/zapiski/nadaljevanje-eksperimentov.md`
 in preveri aktivni proces; nikoli ne odpri druge vrste ali odstrani žive
 ključavnice. Že začetih ID-jev ne ponavljaj in ne zamenjuj zamrznjenih

@@ -1,6 +1,6 @@
 # Kazalo dokazov po nalogah
 
-Posnetek 2026-09-26T09:50:18.126Z: 69/72 arhivov.
+Posnetek 2026-09-26T10:09:58.915Z: 70/72 arhivov.
 
 Kazalo povezuje vnaprej določene naloge z vsemi tremi ponovitvami. Vrstni red spodaj je po postopku in ponovitvi; dejanski vrstni red meritev je v [zamrznjenem razporedu](../schedule.json). Nearhivirana vrstica lahko pravkar teče; to kaže [aktivno stanje](../active.json).
 
@@ -152,7 +152,7 @@ Vsebinske presoje izbranih oddaj:
 | P09-B-003 | še ni arhiva | — | — | — | — |
 | P09-C-001 | execution_failed | 0/12 | ne | 32,777 | [ocena](../../runs/P09-C-001/evaluation-summary.json) · [proces](../../runs/P09-C-001/execution.json) · [poraba](../../runs/P09-C-001/usage-observation.json) · [koda](../../runs/P09-C-001/submission/src/App.tsx) |
 | P09-C-002 | execution_failed | 0/12 | ne | 30,795 | [ocena](../../runs/P09-C-002/evaluation-summary.json) · [proces](../../runs/P09-C-002/execution.json) · [poraba](../../runs/P09-C-002/usage-observation.json) · [koda](../../runs/P09-C-002/submission/src/App.tsx) |
-| P09-C-003 | še ni arhiva | — | — | — | — |
+| P09-C-003 | completed | 12/12 | da | 1118,993 | [ocena](../../runs/P09-C-003/evaluation-summary.json) · [proces](../../runs/P09-C-003/execution.json) · [poraba](../../runs/P09-C-003/usage-observation.json) · [koda](../../runs/P09-C-003/submission/src/App.tsx) · [predaja](../../runs/P09-C-003/submission/docs/agent/verification.md) |
 
 Vsebinske presoje izbranih oddaj:
 
