@@ -116,8 +116,14 @@ okolju Codex. Formule se primerjajo s primarno analizo, izvede se
 povratna sprememba enega vhoda ter pregled izračunanih celic in slik.
 TeX dokument se nato prevede z obstoječim `naloga/latex/scripts/build.sh`.
 
-Za nadaljevanje meritev se uporablja **obstoječa čakalna vrsta**, ne ta
-analizni imenik. Že začetih ID-jev ne ponavljaj in ne zamenjuj zamrznjenih
+Po incidentu 401 se nadaljuje z `node main-study/analysis/recovery/run-guarded.mjs`.
+Ta operatorjev ovoj uporablja iste zamrznjene pripravljalne, merjene in
+ocenjevalne skripte v istem vrstnem redu. Pred novim modelskim poskusom
+doda ločeno preverjanje storitve in po arhivu zazna tudi napake prijave.
+Ne spreminja protokola, modelskih vhodov ali merjenih proračunov.
+Pred zagonom preberi aktualni zapis v `naloga/zapiski/nadaljevanje-eksperimentov.md`
+in preveri aktivni proces; nikoli ne odpri druge vrste ali odstrani žive
+ključavnice. Že začetih ID-jev ne ponavljaj in ne zamenjuj zamrznjenih
 meril. Med modelskim delom ne zaganjaj referenčnih ali ocenjevalnih
 strežnikov; dostopne vhode in orodja za modele vodi izolirani izvajalnik.
 
@@ -162,3 +168,13 @@ Po uporabnikovi ročni ponastavitvi omejitve je 24. septembra po lokalnem
 času vrsta nadaljevala pri P03-B-001. Potrdilo je v
 `../resume-2026-09-24.json`. P03-A-001 se ne ponovi ali izloči. Iz te
 prekinitve ni mogoče sklepati na slabšo implementacijsko sposobnost A.
+
+## Dvanajst zavrnjenih prijav pred implementacijo
+
+Preverjeni zapis `diagnostics/authentication-incident-2026-09-25.json`
+vsebuje vseh 12 prizadetih ID-jev in zgoščene vrednosti dokazov. Po štirje
+poskusi na postopek so ostali brez avtorske rešitve. V primarni analizi
+ohranijo znani čas, 0/12 in neuspešen status; poraba in izbrane vsebinske
+ocene so manjkajoče. Enako število zavrnitev ne odpravi izgube podatkov.
+Ločen uspešen preizkus dostopa ni ponovitev nobenega merjenega ID-ja.
+Podrobno pravilo razlage je v `writing-guide.md`.

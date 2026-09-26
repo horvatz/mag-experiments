@@ -1,6 +1,6 @@
 # Kazalo dokazov po nalogah
 
-Posnetek 2026-09-25T23:32:36.197Z: 66/72 arhivov.
+Posnetek 2026-09-26T09:20:11.572Z: 67/72 arhivov.
 
 Kazalo povezuje vnaprej določene naloge z vsemi tremi ponovitvami. Vrstni red spodaj je po postopku in ponovitvi; dejanski vrstni red meritev je v [zamrznjenem razporedu](../schedule.json). Nearhivirana vrstica lahko pravkar teče; to kaže [aktivno stanje](../active.json).
 
@@ -173,7 +173,7 @@ Vsebinske presoje izbranih oddaj:
 | P10-B-002 | še ni arhiva | — | — | — | — |
 | P10-B-003 | completed | 12/12 | da | 1061,263 | [ocena](../../runs/P10-B-003/evaluation-summary.json) · [proces](../../runs/P10-B-003/execution.json) · [poraba](../../runs/P10-B-003/usage-observation.json) · [koda](../../runs/P10-B-003/submission/src/App.tsx) · [predaja](../../runs/P10-B-003/submission/docs/agent/verification.md) |
 | P10-C-001 | completed | 12/12 | da | 1071,482 | [ocena](../../runs/P10-C-001/evaluation-summary.json) · [proces](../../runs/P10-C-001/execution.json) · [poraba](../../runs/P10-C-001/usage-observation.json) · [koda](../../runs/P10-C-001/submission/src/App.tsx) · [predaja](../../runs/P10-C-001/submission/docs/agent/verification.md) |
-| P10-C-002 | še ni arhiva | — | — | — | — |
+| P10-C-002 | completed | 12/12 | da | 984,897 | [ocena](../../runs/P10-C-002/evaluation-summary.json) · [proces](../../runs/P10-C-002/execution.json) · [poraba](../../runs/P10-C-002/usage-observation.json) · [koda](../../runs/P10-C-002/submission/src/App.tsx) · [predaja](../../runs/P10-C-002/submission/docs/agent/verification.md) |
 | P10-C-003 | completed | 12/12 | da | 988,688 | [ocena](../../runs/P10-C-003/evaluation-summary.json) · [proces](../../runs/P10-C-003/execution.json) · [poraba](../../runs/P10-C-003/usage-observation.json) · [koda](../../runs/P10-C-003/submission/src/App.tsx) · [predaja](../../runs/P10-C-003/submission/docs/agent/verification.md) |
 
 Vsebinske presoje izbranih oddaj:
