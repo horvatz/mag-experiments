@@ -1,6 +1,6 @@
 # Kazalo dokazov po nalogah
 
-Posnetek 2026-09-26T09:37:54.586Z: 68/72 arhivov.
+Posnetek 2026-09-26T09:50:18.126Z: 69/72 arhivov.
 
 Kazalo povezuje vnaprej določene naloge z vsemi tremi ponovitvami. Vrstni red spodaj je po postopku in ponovitvi; dejanski vrstni red meritev je v [zamrznjenem razporedu](../schedule.json). Nearhivirana vrstica lahko pravkar teče; to kaže [aktivno stanje](../active.json).
 
@@ -167,7 +167,7 @@ Vsebinske presoje izbranih oddaj:
 | Izvedba | Status | Zahteve | Strogi uspeh | Čas (s) | Dokazi |
 | --- | --- | --- | --- | --- | --- |
 | P10-A-001 | completed | 12/12 | da | 659,144 | [ocena](../../runs/P10-A-001/evaluation-summary.json) · [proces](../../runs/P10-A-001/execution.json) · [poraba](../../runs/P10-A-001/usage-observation.json) · [koda](../../runs/P10-A-001/submission/src/App.tsx) · [predaja](../../runs/P10-A-001/submission/docs/agent/verification.md) |
-| P10-A-002 | še ni arhiva | — | — | — | — |
+| P10-A-002 | completed | 12/12 | da | 682,126 | [ocena](../../runs/P10-A-002/evaluation-summary.json) · [proces](../../runs/P10-A-002/execution.json) · [poraba](../../runs/P10-A-002/usage-observation.json) · [koda](../../runs/P10-A-002/submission/src/App.tsx) · [predaja](../../runs/P10-A-002/submission/docs/agent/verification.md) |
 | P10-A-003 | completed | 12/12 | da | 637,054 | [ocena](../../runs/P10-A-003/evaluation-summary.json) · [proces](../../runs/P10-A-003/execution.json) · [poraba](../../runs/P10-A-003/usage-observation.json) · [koda](../../runs/P10-A-003/submission/src/App.tsx) · [predaja](../../runs/P10-A-003/submission/docs/agent/verification.md) |
 | P10-B-001 | completed | 12/12 | da | 1027,895 | [ocena](../../runs/P10-B-001/evaluation-summary.json) · [proces](../../runs/P10-B-001/execution.json) · [poraba](../../runs/P10-B-001/usage-observation.json) · [koda](../../runs/P10-B-001/submission/src/App.tsx) · [predaja](../../runs/P10-B-001/submission/docs/agent/verification.md) |
 | P10-B-002 | completed | 12/12 | da | 997,802 | [ocena](../../runs/P10-B-002/evaluation-summary.json) · [proces](../../runs/P10-B-002/execution.json) · [poraba](../../runs/P10-B-002/usage-observation.json) · [koda](../../runs/P10-B-002/submission/src/App.tsx) · [predaja](../../runs/P10-B-002/submission/docs/agent/verification.md) |
