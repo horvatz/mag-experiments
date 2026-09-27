@@ -123,10 +123,11 @@ runs.getRange(`I${rowNumber}`).values = [[originalValue]]; wb.recalculate(); ver
 for (const sheet of [overview, intervals, runs]) for (const row of sheet.getUsedRange().values) for (const value of row) assert.ok(!(typeof value === 'string' && /#REF!|#DIV\/0!|#VALUE!|#NAME\?|#NUM!|#NULL!|#SPILL!|#CALC!/.test(value)))
 const scan = await wb.inspect({ kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#NUM!|#NULL!|#SPILL!|#CALC!', options: { useRegex: true, maxResults: 100 }, maxChars: 3000 })
 await fs.writeFile(resolve(qa, 'formula-errors.json'), JSON.stringify(scan, null, 2))
-for (const [sheetName, range, name] of [['Primerjava', 'A1:J26', 'primerjava'], ['Primerjava', 'A28:J37', 'pojasnila'], ['Intervali', 'A1:F18', 'intervali'], ['Izvedbe', 'A1:M12', 'izvedbe'], ['Izvedbe', 'N1:U12', 'poraba'], ['Izvedbe', 'A132:M145', 'zadnje']]) {
+for (const [sheetName, range, name] of [['Primerjava', 'A1:J26', 'primerjava'], ['Primerjava', 'A28:J37', 'pojasnila'], ['Intervali', comparison.complete ? 'A1:F22' : 'A1:F18', 'intervali'], ...(comparison.complete ? [['Intervali', 'A23:F39', 'intervali-nadaljevanje']] : []), ['Izvedbe', 'A1:M12', 'izvedbe'], ['Izvedbe', 'N1:U12', 'poraba'], ['Izvedbe', 'A132:M145', 'zadnje']]) {
   const blob = await wb.render({ sheetName, range, scale: 1.4, format: 'png' })
   await fs.writeFile(resolve(qa, name + '.png'), new Uint8Array(await blob.arrayBuffer()))
 }
 const output = await SpreadsheetFile.exportXlsx(wb); await output.save(resolve(out, 'primerjava-astra-luna.xlsx'))
 await fs.writeFile(resolve(qa, 'workbook-verification.json'), JSON.stringify({ at: new Date().toISOString(), archived: comparison.archived, snapshots: comparison.snapshots, formulasChecked: true, perturbationRestored: true, renderedSheets: ['Primerjava', 'Intervali', 'Izvedbe'], visuallyReviewed: false }, null, 2) + '\n')
+await fs.copyFile(resolve(qa, 'workbook-verification.json'), resolve(study, 'analysis/workbook-verification.json'))
 console.log(JSON.stringify({ workbook: resolve(out, 'primerjava-astra-luna.xlsx'), archived: comparison.archived }))

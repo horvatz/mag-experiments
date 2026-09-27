@@ -1,10 +1,13 @@
 """Final audit: require both completed collections, traceable reviews and matching artifacts.
 Run only after the queue ends and explicit visual inspection is recorded.
 """
-import csv, hashlib, json, math
+import csv, hashlib, json, math, subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 s=Path(__file__).resolve().parent; a=s/'analysis'; root=s.parent
+subprocess.run(['node', str(s/'verify.mjs')], cwd=root, check=True)
+original = subprocess.run(['git', 'diff', '--exit-code', '677b4dd764a0db4aed3acae6d4f411f8ab35da6a', '--', 'runs', 'main-study', 'scripts', 'tasks', 'evaluation', 'references', 'support', 'vendor', 'docs', 'outputs/01a0c0dd-8558-70e1-8ed7-03605027f3bd/rezultati-eksperimentov.xlsx'], cwd=root, capture_output=True, text=True)
+assert original.returncode == 0, 'Original Astra bundle changed since its verified checkpoint'
 read=lambda p:json.loads(p.read_text())
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 rows=lambda p:list(csv.DictReader(p.open(newline='')))
@@ -53,7 +56,8 @@ assert len(c['contrasts'])+len(c['withheld'])==33
 figures=read(a/'figures/provenance.json'); writing=read(a/'writing-snapshot.json')
 assert figures['snapshots']==c['snapshots'] and figures['archived']==144 and figures['complete']
 assert writing['comparisonSnapshot']==c['generatedAt'] and writing['complete']
-qa=read(a/'artifacts/qa/workbook-verification.json')
+assert writing['reviewVerificationSha256']==sha(a/'review-verification.json')
+qa=read(a/'workbook-verification.json')
 assert qa['archived']==144 and qa['snapshots']==c['snapshots']
 assert qa['formulasChecked'] and qa['perturbationRestored'] and qa['visuallyReviewed']
 # Visual inspection is a separate researcher action, never inferred from successful rendering.

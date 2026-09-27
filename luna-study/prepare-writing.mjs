@@ -1,5 +1,6 @@
 // Reporting only: reads archived results, never changes measured inputs or submissions.
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -66,6 +67,15 @@ Primerjava & Mera & Razlika & Spodnja meja & Zgornja meja \\
   if (c.withheld.length) lines.push('Zaradi manjkajočih točnih časov so zadržane primerjave: ' + c.withheld.filter(x => !x.label.startsWith('astra,')).map(x => tex(x.label)).join('; ') + '.')
   lines.push('Ničelna razlika ali interval z ničlo ne potrjujeta enakovrednosti. Vzorec obsega osem sorodnih, namensko izbranih nalog. Izidi samo zaključenih postopkov so ločen opis izbranega podvzorca in ne nadomeščajo glavnih izidov.')
 }
+const unfinished = luna.data.filter(r => r.executionStatus !== 'completed')
+if (unfinished.length) {
+ lines.push(String.raw`\paragraph{Nezaključeni postopki v zbirki L/1.0.}`, `Med arhivi je ${unfinished.length} nezaključenih postopkov. Ti ostanejo v glavnih imenovalcih. Uspeh funkcionalnih preverjanj ne nadomesti zaključka postopka in predaje.`)
+ for (const status of [...new Set(unfinished.map(r => r.executionStatus))]) {
+  const subset = unfinished.filter(r=>r.executionStatus===status)
+  lines.push(`Status \\texttt{${tex(status)}}: ${subset.map(r=>tex(r.id)).join(', ')}. Popolno funkcionalno pokritje 12/12 zahtev ima ${subset.filter(r=>r.score.passed===12).length} od ${subset.length} teh oddaj.`)
+ }
+ if (unfinished.some(r=>r.id==='P05-C-001')) lines.push(String.raw`Pri P05--C--001 se je implementacijska faza ustavila ob svoji časovni meji. Dogodki potrdijo končni razvojni zagon 51/51, neodvisna ocena pa 70/70 in 12/12. Vendar je predaja ostala nedokončana in korak konvergence ni bil izveden. Zato nima strogega uspeha; njegova celotna poraba ostane neznana, opažena delna poraba pa je ločena spodnja meja.`)
+}
 const reviewsFile = resolve(study, 'analysis/review-verification.json')
 if (existsSync(reviewsFile)) {
  const r = read(reviewsFile)
@@ -88,5 +98,5 @@ for (const [file, caption, label] of [
 ]) lines.push(String.raw`\begin{figure}[p]\centering`, `\\includegraphics[width=\\textwidth,height=0.76\\textheight,keepaspectratio]{../../experiments/luna-study/analysis/figures/${file}.png}`, `\\caption{${caption}}\\label{fig:luna-${label}}`, String.raw`\end{figure}`)
 mkdirSync(output, {recursive:true})
 writeFileSync(resolve(output,'luna-primerjava.tex'), lines.join('\n')+'\n')
-writeFileSync(resolve(study,'analysis/writing-snapshot.json'), JSON.stringify({ generatedAt:new Date().toISOString(), comparisonSnapshot:c.generatedAt, snapshots:c.snapshots, archived:luna.archived, complete:c.complete, file:resolve(output,'luna-primerjava.tex') },null,2)+'\n')
+writeFileSync(resolve(study,'analysis/writing-snapshot.json'), JSON.stringify({ generatedAt:new Date().toISOString(), comparisonSnapshot:c.generatedAt, snapshots:c.snapshots, archived:luna.archived, complete:c.complete, reviewVerificationSha256:existsSync(reviewsFile) ? createHash('sha256').update(readFileSync(reviewsFile)).digest('hex') : null, file:resolve(output,'luna-primerjava.tex') },null,2)+'\n')
 console.log(JSON.stringify({luna:luna.archived,complete:c.complete,output}))

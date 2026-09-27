@@ -1,6 +1,6 @@
 # Zabeležene predaje in povratni koraki
 
-Posnetek 2026-09-27T08:55:26.520Z; 1/72 arhivov. Nepopolna zbirka; opis trenutno arhiviranih izvedb.
+Posnetek 2026-09-27T09:30:59.101Z; 3/72 arhivov. Nepopolna zbirka; opis trenutno arhiviranih izvedb.
 
 Štejemo samo formalne faze in predaje izvajalnika. Popravki kode, testnih pričakovanj ali priprave podatkov znotraj ene faze niso povratni korak izvajalnika. Ti števci niso število razvojnih napak, potrjenih funkcionalnih napak ali ocena kakovosti. A nima ločenega pregledovalca oziroma konvergence; zanj ne navajamo navidezno primerljivih ničel.
 
@@ -8,9 +8,9 @@ Posnetek 2026-09-27T08:55:26.520Z; 1/72 arhivov. Nepopolna zbirka; opis trenutno
 
 | Zapis | Število |
 | --- | --- |
-| Arhivirane izvedbe | 0 |
-| Začeti pregledi | 0 |
-| Potrjene strukturirane predaje pregleda | 0 |
+| Arhivirane izvedbe | 1 |
+| Začeti pregledi | 1 |
+| Potrjene strukturirane predaje pregleda | 1 |
 | Izvedbe brez potrjene predaje pregleda | 0 |
 | Predaje z zahtevano korekcijo specifikacije | 0 |
 | Predaje z zahtevano korekcijo kode | 0 |
@@ -23,10 +23,10 @@ Zahteve za korekcijo so znane le pri potrjeni predaji. Odsotna ali neveljavna pr
 
 | Zapis | Število |
 | --- | --- |
-| Arhivirane izvedbe | 0 |
+| Arhivirane izvedbe | 1 |
 | Začeti koraki converge | 0 |
 | Potrjene strukturirane predaje converge | 0 |
-| Izvedbe brez potrjene predaje converge | 0 |
+| Izvedbe brez potrjene predaje converge | 1 |
 | Izid converged | 0 |
 | Izid tasks_appended | 0 |
 | Izid blocked | 0 |
