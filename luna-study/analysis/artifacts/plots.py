@@ -105,7 +105,7 @@ for ax, key, scale, label in zip(axes, ['input_tokens', 'output_tokens'], [1_000
     ax.set_ylabel(label); ax.set_ylim(bottom=0); ax.set_xlim(-.6, 2.6)
     ax.grid(axis='y', color='#E2E5EA', lw=.7); ax.set_axisbelow(True)
     ax.spines[['top', 'right']].set_visible(False)
-axes[0].set_title('Popolno zabeležena poraba: ' + scope, loc='left', pad=12)
+axes[0].set_title('Popolno zabeležena poraba (izbor iz arhiviranih meritev)', loc='left', pad=12)
 axes[1].set_xticks(range(3), procedures); axes[1].set_xlabel('Postopek')
 axes[1].legend(handles=[Line2D([0], [0], marker='o' if m == 'Astra' else '^', linestyle='', color=colors[m], label=m) for m, _ in collections], loc='upper center', bbox_to_anchor=(.5, -.2), ncol=2, frameon=False)
 fig.subplots_adjust(bottom=.32, hspace=.2)

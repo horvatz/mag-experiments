@@ -1,13 +1,13 @@
 # Primerjava Astre in Lune
 
-72/144 arhiviranih. Lunina zbirka še ni zaključena; spodnja tabela je vmesni opis.
+73/144 arhiviranih. Lunina zbirka še ni zaključena; spodnja tabela je vmesni opis.
 
 | Model | Postopek | Arhivi | Strogi uspehi | Zahteve (%) | Čas (min) | Popolna poraba | Vhodni tokeni¹ | Izhodni tokeni¹ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Astra | A | 24/24 | 19 | 79.17 | 8.84 | 19/24 | 752234 | 20177 |
 | Astra | B | 24/24 | 19 | 83.33 | 13.24 | 19/24 | 1140360 | 27873 |
 | Astra | C | 24/24 | 19 | 83.33 | — | 19/24 | 2794804 | 29236 |
-| Luna | A | 0/24 | 0 | — | — | 0/0 | — | — |
+| Luna | A | 1/24 | 1 | 100.00 | 7.89 | 1/1 | 1250709 | 21757 |
 | Luna | B | 0/24 | 0 | — | — | 0/0 | — | — |
 | Luna | C | 0/24 | 0 | — | — | 0/0 | — | — |
 

@@ -1,0 +1,75 @@
+{
+  "collection": "L/1.0",
+  "id": "P05-A-001",
+  "reviewedAt": "2026-09-27T08:57:03.026474+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "4b46abff9181da1b8357a0a230e16e42970d9bbc50d26e4130451d6b1a34e97b",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija opredeli vseh R01–R12, filtriranje pred globalnim rezanjem, privzete vrednosti, ponastavitve ter ohranitev stanja ob pogledu in dialogu. Loči osnove projektnih in stolpčnih števcev ter posebej opiše prazen rezultat in meje navigacije.",
+      "evidence": [
+        "runtime/runs/P05-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Množici T/F, odsek P(s,F,p), število strani in 1-osnovani razpon so preverljivo definirani, vključno z ničelnim praznim prikazom. Prehodi določijo ponastavitve in nespremenljivost ob pogledu/dialogu; kodi ustreza ločitev shranjene strani in izpeljanega currentPage.",
+      "evidence": [
+        "runtime/runs/P05-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P05-A-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P05-A-001/submission/src/App.tsx:16"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Vsaka zahteva je povezana s konkretnimi A/D scenariji, mesti kode in izidom. Arhiviran dogodek item_27 potrdi 53 passed in izhod 0. Dokument odkrito ohrani napaki ikon ter lastnih testov in pove, da zasebnih testov ni videl. Izbrani dokazi ustrezajo končni oddaji; razvojni neuspeh lastnega scenarija ni zamenjan za neuspeh neodvisnega ocenjevanja.",
+      "evidence": [
+        "runtime/runs/P05-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P05-A-001/submission/docs/agent/verification.md",
+        "analysis/evidence/P05-A-001-checks.md#item_27"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "ProjectView ima tri lokalna stanja; filtrirani seznam, število strani, trenutna stran, odsek in razpon so izpeljani skupaj. Oba pogleda dobita pageTasks; povzetek uporablja allTasks. Projektni key poskrbi za ponastavitev brez sinhronizacijskih učinkov. Skupni komponenti TaskBoard in TaskDetails ostaneta ločeni. Dolg JSX sledi izhodišču, nova pravila pa niso podvojena med pogledoma.",
+      "evidence": [
+        "runtime/runs/P05-A-001/submission/src/App.tsx:14",
+        "runtime/runs/P05-A-001/submission/src/App.tsx:83",
+        "runtime/runs/P05-A-001/submission/src/App.tsx:127",
+        "runtime/runs/P05-A-001/submission/src/TaskBoard.tsx:13"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "Sedem lastnih scenarijev pokrije meje navigacije, deljeno filtrirano stran obeh pogledov, ponastavitve, ohranitev ob dialogu, prazen filter/projekt, odstranitev filtra in 11 opravil pri velikosti 10. Preverja tudi osnovo števcev in odsotnost zapisov. Končni izvedeni nabor potrdi uspeh; lastni scenariji niso sistematično podvojeni na obeh zaslonih, mobilne razvojne scenarije agent poroča ločeno.",
+      "evidence": [
+        "runtime/runs/P05-A-001/submission/tests/agent/P05.spec.ts:3",
+        "runtime/runs/P05-A-001/submission/tests/agent/P05.spec.ts:72",
+        "runtime/runs/P05-A-001/submission/tests/agent/P05.spec.ts:95",
+        "analysis/evidence/P05-A-001-checks.md#item_27"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisno preverjanje je 70/70; potrjene končne napake ni. To ni dokaz pravilnosti za vse možne vhode.",
+  "developmentFailureExample": {
+    "description": "Začetni uvoz ChevronsFirst/ChevronsLast je ustavil gradnjo (TS2724). Model je uporabil izvožena ChevronFirst/ChevronLast. Nato je popravil dve lastni testni pripravi: napačno velikost projekta in ponovno registracijo mock poti. Končni check ima 53 uspehov. Zadnji dve odpovedi sta napaki testnih scenarijev, ne potrjeni napaki rešitve.",
+    "evidence": [
+      "analysis/evidence/P05-A-001-checks.md#item_21",
+      "analysis/evidence/P05-A-001-checks.md#item_24",
+      "analysis/evidence/P05-A-001-checks.md#item_27",
+      "runtime/runs/P05-A-001/submission/src/App.tsx:1"
+    ]
+  }
+}
