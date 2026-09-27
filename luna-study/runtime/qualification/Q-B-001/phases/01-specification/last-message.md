@@ -1,0 +1,1 @@
+Nisem mogel prebrati `task/instructions.md` ali urediti specifikacije: izvajalno okolje dvakrat ni uspelo zagnati ukazne lupine, ker manjka `codex-code-mode-host`. Datotek nisem spreminjal in kode nisem pisal.

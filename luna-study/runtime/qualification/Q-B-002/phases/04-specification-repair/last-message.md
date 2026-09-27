@@ -1,0 +1,3 @@
+Q01 sem popravil, da ustreza R01, in zabeležil spremembo v [specification-history.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P02-B-902/app/docs/agent/specification-history.md). [specification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P02-B-902/app/docs/agent/specification.md) je posodobljen. Kode nisem spreminjal; pregleda kode nisem ponovil.
+
+Kontrolna beseda: amber-pine-47

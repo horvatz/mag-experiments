@@ -1,0 +1,1 @@
+Zapisal sem kratki načeli za R01 in R02 v [constitution.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P02-C-902/app/.specify/memory/constitution.md). Dodal sem tudi nadaljnja koraka, kot zahteva veščina. Kodo in teste sem pustil nedotaknjene.

@@ -1,0 +1,1 @@
+{"outcome":"converged","summary":"Javni test je uspel; pregled je našel 0 vrzeli in tasks.md ostaja nespremenjen. Pripravljeno za pregled. Kontrolna beseda: copper-birch-63.","unverified":[]}

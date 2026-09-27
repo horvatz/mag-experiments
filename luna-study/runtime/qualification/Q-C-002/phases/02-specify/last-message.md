@@ -1,0 +1,3 @@
+Ustvaril sem kratek [spec.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P02-C-902/app/docs/agent/P02/spec.md) z zahtevama R01/R02 in zahtevano vrstico Q01 ter nastavil [.specify/feature.json](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P02-C-902/app/.specify/feature.json). Kode nisem spreminjal in testa nisem poganjal.
+
+Kontrolna beseda: `copper-birch-63`

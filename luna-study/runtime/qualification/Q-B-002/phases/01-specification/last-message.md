@@ -1,0 +1,1 @@
+Pripravil sem kratko specifikacijo z zahtevama R01 in R02 ter zahtevano vrstico Q01 v [specification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P02-B-902/app/docs/agent/specification.md). Kode nisem spreminjal.

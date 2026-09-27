@@ -1,0 +1,56 @@
+import { choose, controls, expect, onlyStatuses, reset, snapshot, summary, test } from './helpers.ts'
+
+test.beforeEach(async ({ request }) => { await reset(request) })
+
+test('D01: izbor in čiščenje ne shranjujeta podatkov', async ({ page, request }) => {
+  const before = await snapshot(request)
+  await page.goto('/')
+  const form = await choose(page, ['web-02'], 'done')
+  await expect(form.count).toHaveText('Izbrano: 1')
+  await form.clear.click()
+  await expect(form.count).toHaveText('Izbrano: 0')
+  await expect(form.target).toHaveValue('')
+  expect(await snapshot(request)).toEqual(before)
+})
+
+test('D02: dve izbrani opravili se shranita neodvisno', async ({ page, request, transport }) => {
+  const before = await snapshot(request)
+  await page.goto('/')
+  const form = await choose(page, ['web-01', 'web-02'], 'done')
+  await form.apply.click()
+  await summary(page, 2, 0)
+  await onlyStatuses(request, before, ['web-01', 'web-02'], 'done')
+  expect(transport.calls.map((call) => call.id).sort()).toEqual(['web-01', 'web-02'])
+  await expect(form.count).toHaveText('Izbrano: 0')
+})
+
+test('D03: delna napaka omogoči ponovitev samo neuspelega opravila', async ({ page, request, transport }) => {
+  const before = await snapshot(request)
+  transport.plan('web-02', ['reject', 'success'])
+  await page.goto('/')
+  const form = await choose(page, ['web-01', 'web-02'], 'done')
+  await form.apply.click()
+  await summary(page, 1, 1)
+  await onlyStatuses(request, before, ['web-01'], 'done')
+  await expect(page.getByRole('alert')).toContainText('web-02')
+  await expect(form.item('web-02')).toBeChecked()
+  await expect(form.item('web-01')).not.toBeChecked()
+  await form.retry.click()
+  await summary(page, 2, 0)
+  await onlyStatuses(request, before, ['web-01', 'web-02'], 'done')
+  expect(transport.calls.map((call) => call.id).sort()).toEqual(['web-01', 'web-02', 'web-02'])
+})
+
+test('D04: čakanje zaklene kontrole in ohrani nepotrjene podatke', async ({ page, request, transport }) => {
+  const before = await snapshot(request)
+  transport.plan('web-01', ['hold-success'])
+  await page.goto('/')
+  const form = await choose(page, ['web-01'], 'todo')
+  await form.apply.click()
+  await expect(controls(page).progress).toBeVisible()
+  for (const control of [form.all, form.item('web-01'), form.target, form.apply, form.clear]) await expect(control).toBeDisabled()
+  expect((await snapshot(request)).tasks).toEqual(before.tasks)
+  transport.releaseAll()
+  await summary(page, 1, 0)
+  await onlyStatuses(request, before, ['web-01'], 'todo')
+})

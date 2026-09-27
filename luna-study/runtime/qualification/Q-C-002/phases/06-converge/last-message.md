@@ -1,0 +1,1 @@
+{"outcome":"tasks_appended","summary":"Javni test je padel: shift prišteje 2 namesto 1 (R01/Q01). V docs/agent/P02/tasks.md sem dodal neopravljeno nalogo T003. Kontrolna beseda: copper-birch-63.","unverified":["R02 obnašanje za nespremenjen vhod in sveže prazno polje ni bilo ločeno preizkušeno."]}
