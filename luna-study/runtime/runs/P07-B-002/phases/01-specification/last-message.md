@@ -1,0 +1,1 @@
+Specifikacija R01–R12 je dopolnjena in shranjena v [specification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P07-B-002/app/docs/agent/specification.md). Pogoji upoštevajo tipe in izhodiščno kodo; aplikacije in testov v tej vlogi nisem zaganjal. Oznake in dokaze izvedenih testov naj po implementaciji dopolni implementer.

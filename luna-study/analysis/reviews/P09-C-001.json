@@ -1,0 +1,108 @@
+{
+  "collection": "L/1.0",
+  "id": "P09-C-001",
+  "reviewedAt": "2026-09-28T22:36:05.046996+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "9dc7e3d75afa7d625d8b87a3179549e56dea59f104d07b4a8fbff62b9536e0c1",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija skladno opredeli vseh R01–R12, polja in domeno podatkov s praznimi projekti, URL stanje, prve/neveljavne parametre, dobesedno iskanje, stabilni UTF-16 vrstni red, osnutek/potrditev, kanonizacijo brez novega stanja ob enakosti, zgodovino, oba pogleda, ID podrobnosti, projektni reset, prazen rezultat in števec. Natančno našteje obvezna dostopna imena in omejitve zapisov/shrambe. Tabela jasno loči načrtovane scenarije od še neizvedenih rezultatov; izvedbena nedokončanost ni zamenjana z manjkajočo zahtevo v specifikaciji.",
+      "evidence": [
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md#funkcionalne-zahteve-in-preverjanje",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md#dogovor-o-vmesniku-in-omejitve",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "F, D, V, P, T ter N/M so ločeni. norm in match natančno določita NFD, kombinacijske znake, male črke, trim iskalnega q in podniz posameznega polja, nato konjunkcijo s statusom. Tabela dogodkov poda predpogoje ter prehode za potrditev/reset, preklop pogleda, podrobnosti, projekt in zgodovino; izrecno ohrani potrjene filtre oziroma jih ponastavi glede na dogodek. Predikati so uporabni tudi, ker kanonizacijo enakega učinkovitega stanja ločijo od dodajanja zgodovine.",
+      "evidence": [
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md#model-in-predikati",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md#pravila-sprememb-stanja"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Dokumenti povežejo R01–R12 z načrtovanimi moduli in scenariji, plan razdeli odgovornosti, tasks.md pa sedem opravil. Toda končna sledljivost še vedno pravi »še nepreverjeno«, vseh sedem nalog je neoznačenih in verification.md ostane pri začetnem »no tests have been run yet / Pending«. To je pošteno glede odsotnosti testov, vendar ne poveže dejansko nastale delne kode s preverjenimi izidi ali konkretnim stanjem dokončanosti. Implementacijski dnevnik potrdi samo branje in spremembe datotek; converge ni bil izveden.",
+      "evidence": [
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/plan.md#work-sequence-and-target-files",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/tasks.md",
+        "runtime/runs/P09-C-001/submission/docs/agent/verification.md#progress",
+        "runtime/runs/P09-C-001/submission/docs/agent/verification.md#results-and-limits",
+        "analysis/evidence/P09-C-001-checks.md#ukazi-implementacije",
+        "runtime/runs/P09-C-001/execution.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 1,
+      "rationale": "Nastala koda ima razumljivo delitev: navigation.ts hrani parser in URL gradnike, taskView.ts čisto projekcijo in stabilno urejanje, ProjectView pa osnutek in potrjevanje. Integracija ostane konkretno nedokončana: preklopa kličeta neobstoječi urlForView, App poda filters komponentama TaskBoard/TaskDetails, ki sta ostali nespremenjeni in tega vmesnika ne podpirata. Effect izpusti odvisnost filters. Napake potrjujejo neodvisni tipi in lint; odgovornosti so prepoznavne, povezave med njimi pa še niso dosledno zaključene. Koda je prisotna in ocenljiva, zato ta dimenzija ni označena kot manjkajoča.",
+      "evidence": [
+        "runtime/runs/P09-C-001/submission/src/navigation.ts:14",
+        "runtime/runs/P09-C-001/submission/src/navigation.ts:25",
+        "runtime/runs/P09-C-001/submission/src/taskView.ts:12",
+        "runtime/runs/P09-C-001/submission/src/App.tsx:12",
+        "runtime/runs/P09-C-001/submission/src/App.tsx:15",
+        "runtime/runs/P09-C-001/submission/src/App.tsx:50",
+        "runtime/runs/P09-C-001/submission/src/App.tsx:60",
+        "runtime/runs/P09-C-001/submission/src/App.tsx:77",
+        "runtime/runs/P09-C-001/submission/src/TaskBoard.tsx:13",
+        "runtime/runs/P09-C-001/submission/src/TaskDetails.tsx:9",
+        "analysis/evidence/P09-C-001-checks.md#nepovezane-komponente",
+        "analysis/evidence/P09-C-001-checks.md#neodvisna-tehnična-ocena"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Noben lasten test ni bil dodan; končni inventar pod tests/agent/ nima datotek. T001 je načrtoval ogrodje, T002–T007 pa konkretne scenarije in skupni check, vendar so vse naloge ostale neoznačene. Surovi implementacijski dnevnik nima nobenega zagona testov, lint, tipov ali gradnje. Neodvisno ocenjevanje po oddaji ne šteje kot modelovo lastno preverjanje; začetna predaja tega tudi ne zatrjuje.",
+      "evidence": [
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/tasks.md",
+        "runtime/runs/P09-C-001/submission/docs/agent/verification.md#progress",
+        "analysis/evidence/P09-C-001-checks.md#ukazi-implementacije",
+        "analysis/evidence/P09-C-001-checks.md#nepovezane-komponente",
+        "runtime/runs/P09-C-001/execution.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Končna oddaja doseže 52/70: regresija 30/38, razvojni 6/8, sprejemni 16/24, skupaj 8/12 zahtev. E08/E12 in razvojni D03 na obeh širinah ne dosežejo table; App.tsx:50–51 kličeta nedefinirani urlForView, kar potrdi TS2304. E09 po podrobnosti izgubi q, saj nespremenjeni TaskDetails ne sprejme/poda filtrov; E11 pri neposredni prazni filtrirani tabli ne pokaže Ni zadetkov. Regresija zazna tudi izbris osnovnega praznega naslova. TS2322 potrdi neujemajoča filters prop vmesnika, lint pa manjkajočo odvisnost. R12 se ustavi pred preverjanjem celotne odzivnosti, zato njegov neuspeh ni dokaz API zapisov ali vodoravnega prelivanja. Izid, časovna prekinitev in koda ostanejo ohranjeni brez ponovitve.",
+    "evidence": [
+      "runtime/runs/P09-C-001/evaluation-summary.json",
+      "runtime/runs/P09-C-001/evaluation-tests.log",
+      "runtime/runs/P09-C-001/evaluation-types.log",
+      "runtime/runs/P09-C-001/evaluation-lint.log",
+      "runtime/runs/P09-C-001/submission/src/App.tsx:50",
+      "runtime/runs/P09-C-001/submission/src/App.tsx:60",
+      "runtime/runs/P09-C-001/submission/src/TaskDetails.tsx:12",
+      "runtime/runs/P09-C-001/submission/src/TaskBoard.tsx:26"
+    ]
+  },
+  "finalFailureNote": "Phase_time_limit, 1080,545 s, 8/12 zahtev in 52/70 testov; lint, tipi in gradnja neuspešni. Faze 125,456 / 520,856 / 125,157 / 167,909 / 138,492 s. Priprava pred implementacijo 939,378 s; meja implementacije 138,457 s, converge ni bil začet. Popolna poraba null, opažena spodnja meja 1746429 vhodnih / 42161 izhodnih tokenov. Delna koda obstaja, zato je presoja v celoti ocenljiva, čeprav je postopek nedokončan.",
+  "developmentFailureExample": {
+    "description": "Ni razvojnega funkcionalnega zagona, iz katerega bi lahko navajali neuspešen modelov test. Dokumentacijski ukaz constitution/item_4 izpiše »can't create temp file« pri heredoc, čeprav ima celoten ukaz exit 0 zaradi naslednjega uspešnega prikaza proračuna; poznejša patch dogodka ustavo shranita. V tasks/item_2 manjka še neustvarjeni tasks.md, nato item_8 ustvari načrt. Implementacija začne verifikacijski zapis, doda navigacijo in taskView ter zadnji App.tsx, nato jo ustavi fazna meja; neodvisne tehnične napake sodijo v končno oceno, ne v izmišljen razvojni check.",
+    "evidence": [
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_4",
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_6",
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_7",
+      "analysis/evidence/P09-C-001-checks.md#04-tasks-item_2",
+      "analysis/evidence/P09-C-001-checks.md#04-tasks-item_8",
+      "analysis/evidence/P09-C-001-checks.md#05-implement-item_2",
+      "analysis/evidence/P09-C-001-checks.md#05-implement-item_7",
+      "analysis/evidence/P09-C-001-checks.md#05-implement-item_8",
+      "analysis/evidence/P09-C-001-checks.md#05-implement-item_9",
+      "analysis/evidence/P09-C-001-checks.md#ukazi-implementacije"
+    ]
+  }
+}

@@ -21,7 +21,7 @@ colors = {'A': '#275DAD', 'B': '#B85D19', 'C': '#527E40'}
 lookup = {r['id']: r for r in data['data']}
 snapshot = data['generatedAt'].replace('T', ' ')[:19] + ' UTC'
 scope = f"{data['archived']}/72 arhiviranih izvedb"
-note = 'Vse izvedbe so arhivirane.' if data['complete'] else 'Nepopolna zbirka; brez končne primerjave postopkov.'
+note = 'Vse izvedbe so arhivirane.' if data['complete'] else 'Nepopolna zbirka; brez končne primerjave pristopov.'
 
 def save(fig, name):
     for ext in ['png', 'svg']:
@@ -45,7 +45,7 @@ for y, task in enumerate(tasks):
                     color='#556170' if not r else ('white' if r['score']['passed'] < 7 else '#172033'))
 ax.set_xticks(range(9), [f'{p} · {r}' for p in procedures for r in [1, 2, 3]])
 ax.set_yticks(range(8), tasks)
-ax.set_xlabel('Postopek · ponovitev')
+ax.set_xlabel('Pristop · ponovitev')
 ax.set_title(f'Dokazane zahteve od 12 — {scope}', loc='left', pad=14)
 ax.set_xticks(np.arange(-.5, 9, 1), minor=True); ax.set_yticks(np.arange(-.5, 8, 1), minor=True)
 ax.grid(which='minor', color='white', linewidth=1.5); ax.tick_params(which='minor', bottom=False, left=False)
@@ -53,7 +53,7 @@ for x in [2.5, 5.5]: ax.axvline(x, color='white', lw=5)
 for spine in ax.spines.values(): spine.set_visible(False)
 fig.colorbar(im, ax=ax, pad=.025, shrink=.85, ticks=[0, 3, 6, 9, 12], label='Dokazane zahteve')
 fig.subplots_adjust(bottom=.21)
-fig.text(.125, .10, '— ni arhiva; * postopek ni zaključen. Zahteva šteje le ob uspehu na obeh velikostih zaslona.', fontsize=9)
+fig.text(.125, .10, '— ni arhiva; * pristop ni zaključen. Zahteva šteje le ob uspehu na obeh velikostih zaslona.', fontsize=9)
 fig.text(.125, .064, note + ' Neopaženo preverjanje ni potrjena funkcionalna napaka.', fontsize=9)
 fig.text(.125, .029, 'Vir: zamrznjene oddaje in neodvisne ocene; ' + snapshot, fontsize=8, color='#596678')
 save(fig, 'dokazane-zahteve')
@@ -74,7 +74,7 @@ ax.set_title(f'Čas posameznih izvedb — {scope}', loc='left', pad=14)
 ax.grid(axis='y', color='#E2E5EA', lw=.7); ax.set_axisbelow(True)
 ax.spines[['top','right']].set_visible(False)
 legend = [Line2D([0],[0], marker='o', linestyle='', color=colors[p], label=p) for p in procedures]
-legend += [Line2D([0],[0], marker='X', linestyle='', color='#555555', label='Nezaključen postopek'), Line2D([0],[0], linestyle='--', color='#8E3E44', label='Meja 20 min')]
+legend += [Line2D([0],[0], marker='X', linestyle='', color='#555555', label='Nezaključen pristop'), Line2D([0],[0], linestyle='--', color='#8E3E44', label='Meja 20 min')]
 ax.legend(handles=legend, loc='upper center', bbox_to_anchor=(.5,-.09), ncol=5, frameon=False, fontsize=9)
 fig.subplots_adjust(bottom=.30)
 fig.text(.125, .115, 'Kratki neuspešni poskusi zaradi dostopa niso časi uspešnih rešitev.', fontsize=9)

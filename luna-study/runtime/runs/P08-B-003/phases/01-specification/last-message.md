@@ -1,0 +1,3 @@
+Specifikacija je pripravljena za predajo: vključuje predikate in sprejemne pogoje za R01–R12, povezave na relevantne tipe in izvorne dele ter loči delno pokritost razvojnih testov D01–D04 od nepreverjenih scenarijev. Zgodovina sprememb je zapisana v [specification-history.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P08-B-003/app/docs/agent/specification-history.md).
+
+V [specification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P08-B-003/app/docs/agent/specification.md) sem preveril vseh 12 zahtev. Aplikacije in testov nisem zaganjal, skladno z vlogo avtorja specifikacije.

@@ -50,7 +50,7 @@ for ax, (model, data) in zip(axes, collections):
     ax.set_title(f"{model}: {data['archived']}/72", loc='left', pad=12)
     ax.set_xticks(range(9), [f'{p}·{r}' for p in procedures for r in [1, 2, 3]])
     ax.set_yticks(range(8), tasks)
-    ax.set_xlabel('Postopek · ponovitev')
+    ax.set_xlabel('Pristop · ponovitev')
     ax.set_xticks(np.arange(-.5, 9, 1), minor=True); ax.set_yticks(np.arange(-.5, 8, 1), minor=True)
     ax.grid(which='minor', color='white', linewidth=1.2); ax.tick_params(which='minor', bottom=False, left=False)
     for x in [2.5, 5.5]: ax.axvline(x, color='white', lw=4)
@@ -59,7 +59,7 @@ fig.suptitle('Dokazane zahteve od 12', x=.125, ha='left', fontsize=15)
 fig.subplots_adjust(bottom=.25, right=.9, wspace=.12)
 cax = fig.add_axes([.92, .27, .014, .56])
 fig.colorbar(im, cax=cax, ticks=[0, 3, 6, 9, 12])
-fig.text(.125, .145, '— ni arhiva; * postopek ni zaključen. Zahteva potrebuje uspeh na obeh zaslonih.', fontsize=9)
+fig.text(.125, .145, '— ni arhiva; * pristop ni zaključen. Zahteva potrebuje uspeh na obeh zaslonih.', fontsize=9)
 fig.text(.125, .105, limitation, fontsize=9)
 fig.text(.125, .065, state, fontsize=9)
 fig.text(.125, .024, 'Vir: arhivi M/1.0 in L/1.0; ' + snapshot, fontsize=8, color='#58616E')
@@ -82,7 +82,7 @@ for ax, (model, data) in zip(axes, collections):
     ax.spines[['top', 'right']].set_visible(False)
 axes[1].set_xticks(range(8), tasks); axes[1].set_xlim(-.6, 7.6)
 handles = [Line2D([0], [0], marker='o', linestyle='', color=procedure_colors[p], label=p) for p in procedures]
-handles += [Line2D([0], [0], marker='X', linestyle='', color='#555555', label='Nezaključen postopek'), Line2D([0], [0], color='#8E3E44', ls='--', label='Meja 20 min')]
+handles += [Line2D([0], [0], marker='X', linestyle='', color='#555555', label='Nezaključen pristop'), Line2D([0], [0], color='#8E3E44', ls='--', label='Meja 20 min')]
 axes[1].legend(handles=handles, loc='upper center', bbox_to_anchor=(.5, -.16), ncol=5, frameon=False, fontsize=9)
 fig.subplots_adjust(bottom=.28, hspace=.25)
 missing = [(model, r['id']) for model, d in collections for r in d['data'] if r['elapsedSeconds'] is None]
@@ -106,7 +106,7 @@ for ax, key, scale, label in zip(axes, ['input_tokens', 'output_tokens'], [1_000
     ax.grid(axis='y', color='#E2E5EA', lw=.7); ax.set_axisbelow(True)
     ax.spines[['top', 'right']].set_visible(False)
 axes[0].set_title('Popolno zabeležena poraba (izbor iz arhiviranih meritev)', loc='left', pad=12)
-axes[1].set_xticks(range(3), procedures); axes[1].set_xlabel('Postopek')
+axes[1].set_xticks(range(3), procedures); axes[1].set_xlabel('Pristop')
 axes[1].legend(handles=[Line2D([0], [0], marker='o' if m == 'Astra' else '^', linestyle='', color=colors[m], label=m) for m, _ in collections], loc='upper center', bbox_to_anchor=(.5, -.2), ncol=2, frameon=False)
 fig.subplots_adjust(bottom=.32, hspace=.2)
 counts = '; '.join(m + ' A/B/C: ' + '/'.join(str(usage_counts[m][p]) for p in procedures) for m, _ in collections)

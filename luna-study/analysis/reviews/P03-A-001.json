@@ -1,0 +1,86 @@
+{
+  "collection": "L/1.0",
+  "id": "P03-A-001",
+  "reviewedAt": "2026-09-27T15:53:46.668806+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "5192b0ac13d7e68d5751aaa3af28b9cf935a54ef4b0679ef9812c84608fac222",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Končna specifikacija skladno pokrije vseh R01–R12: normalizacijo in dobesedne besede, IN s točnim imenom, osebe iz celega projekta, isti izpeljani seznam v obeh pogledih, vse tri ponastavitve, filtrirane števce, nič zadetkov in prazen projekt ter ohranitev navigacije in 390 px. R10 po razvojni regresiji izrecno loči prazno preglednico od treh praznih stolpcev table; popravek ni skrit.",
+      "evidence": [
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md#zapis-popravkov-specifikacije"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Predikat F nad izvornim T ohrani vrstni red in poveže tri pogoje z IN. Norm je določen z NFD, natanko U+0300–U+036F in malimi črkami; vse normalizirane besede so dobesedni podnizi. Točna enakost osebe je ločena od normaliziranega iskanja. Prehodi clear/projekt/reload ter pogoja za prazni projekt in prazen rezultat so preverljivi, števci pa izrecno uporabljajo F.",
+      "evidence": [
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Tabela vseh dvanajstih zahtev poveže pravila, lokacije kode in poimenovane D01–D04/A01–A06; surovi item_35 potrdi zadnji celotni check 52/52. Zapis razkrije prvotne neuspehe in odsotnost skritih testov ter ročnega vizualnega pregleda. Dve besedni nenatančnosti omejujeta razumevanje: verification.md je povzetek, ne »popoln izpis«, in A03 dinamično preveri le ponastavitev iskalnega niza, ne obeh predhodno spremenjenih izbirnikov. Povezave sicer omogočajo neposredno preverjanje trditev, pri čemer R08 v celoti dodatno podpira pregled lokalnega stanja kode.",
+      "evidence": [
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P03-A-001/submission/docs/agent/verification.md#povezava-zahtev-s-preverjanji",
+        "runtime/runs/P03-A-001/submission/docs/agent/verification.md#omejitve-preverjanja",
+        "analysis/evidence/P03-A-001-checks.md#item_35",
+        "runtime/runs/P03-A-001/submission/tests/agent/P03.spec.ts:55"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "ProjectView hrani le tri uporabniška stanja; osebe, besede, vidni seznam in števci so izpeljani iz nespremenjenih opravil. Enak visibleTasks dobi tabela oziroma obstoječi TaskBoard, normalizacija je čista funkcija in projektni ključ upravlja življenjsko dobo stanj. Ni podvojene shranjene kopije rezultata ali API zapisov; dodatni odzivni slogi ostanejo ločeni. Obseg logike je dovolj majhen za jasno lokalno rešitev v App.tsx.",
+      "evidence": [
+        "runtime/runs/P03-A-001/submission/src/App.tsx:13",
+        "runtime/runs/P03-A-001/submission/src/App.tsx:18",
+        "runtime/runs/P03-A-001/submission/src/App.tsx:67",
+        "runtime/runs/P03-A-001/submission/src/App.tsx:71",
+        "runtime/runs/P03-A-001/submission/src/App.tsx:91",
+        "runtime/runs/P03-A-001/submission/src/App.tsx:119",
+        "runtime/runs/P03-A-001/submission/src/TaskBoard.tsx:16",
+        "runtime/runs/P03-A-001/submission/src/styles.css:176"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "Šest lastnih scenarijev smiselno razlikuje Unicode/case normalizacijo od točne izbire osebe in dobesedno piko od regexa. Preveri kombinacijo vseh treh pogojev, osebe iz skritih opravil, clear in menjavo projekta iz dejansko spremenjenih treh kontrol, nič zadetkov v obeh pogledih, prazen projekt, filtrirane števce, 390 px ter 12 opravil z obrnjenimi ID-ji in ponovljenimi naslovi. To pokrije zahtevne lastnosti z negativnimi in mejnimi primeri. Obseg ni izčrpen: reload spremeni le poizvedbo, A06 kljub širšemu naslovu izbere le done, navigacijo v podrobnosti pa preverja osnovni nabor. Zadnji item_35 potrdi vseh šest lastnih testov v 52 uspešnih preverjanjih.",
+      "evidence": [
+        "runtime/runs/P03-A-001/submission/tests/agent/P03.spec.ts:3",
+        "runtime/runs/P03-A-001/submission/tests/agent/P03.spec.ts:30",
+        "runtime/runs/P03-A-001/submission/tests/agent/P03.spec.ts:55",
+        "runtime/runs/P03-A-001/submission/tests/agent/P03.spec.ts:71",
+        "runtime/runs/P03-A-001/submission/tests/agent/P03.spec.ts:81",
+        "runtime/runs/P03-A-001/submission/tests/agent/P03.spec.ts:97",
+        "analysis/evidence/P03-A-001-checks.md#item_35"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Končno completed, 714,666 s, 70/70 in 12/12; strogi uspeh. Potrjene končne funkcionalne napake ni. Popolna poraba je 1722101 vhodnih in 23530 izhodnih tokenov; tokeni niso račun API.",
+  "developmentFailureExample": {
+    "description": "Prvi celotni check item_19 konča s 47/51: osnovni test prazne table odpove na obeh širinah, lastni A04 prav tako neposredno ne najde prazne table, A05 pa primerja Promise z true. Item_21 spremeni App.tsx še med tekom tega preverjanja, item_22 popravi pričakovanje praznega projekta in await v testih, item_23 pojasni R10. Naslednja celovita zagona item_25 in item_28 potrdita 51/51; po razširitvi s 12 opravili item_35 potrdi 52/52. Gre za popravljeno regresijo prikaza in ločeno napako testne trditve, ne za končno napako.",
+    "evidence": [
+      "analysis/evidence/P03-A-001-checks.md#item_19",
+      "analysis/evidence/P03-A-001-checks.md#item_21",
+      "analysis/evidence/P03-A-001-checks.md#item_22",
+      "analysis/evidence/P03-A-001-checks.md#item_23",
+      "analysis/evidence/P03-A-001-checks.md#item_25",
+      "analysis/evidence/P03-A-001-checks.md#item_35"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+Najprej preberem projektna pravila, navodila naloge in predlogo specifikacije, nato zapišem specifikacijo pred posegom v kodo. Potem izvedem spremembe in preverjanja, rezultate ter morebitne omejitve pa zabeležim v `docs/agent/verification.md`.
+Obstoječi `ProjectView` nalaga opravila po projektu, tabla prejema celoten seznam, preklop pogleda pa že temelji na hash poti. Specifikacijo bom oprl na te obstoječe meje: filtre bom izračunal lokalno iz naloženih opravil, stanje filtrov pa bo ponastavljeno z že obstoječim `key` ob menjavi projekta.
+Osnovni filterji so dodani v `ProjectView`; tabela, povzetek stanj in tabla zdaj dobijo isti izračunani seznam. Dodal sem tudi števec rezultatov in jasno stanje »Ni zadetkov.«. Zdaj dopolnjujem lastne scenarije za robne primere, ki jih razvojni testi ne pokrivajo v celoti, nato bom pognal predpisano celotno preverjanje.
+Prvi celotni zagon je uspešno zaključil lint, tipovno preverjanje in build; med 53 testi so padli trije moji scenariji zaradi predpostavk o vzorčnih podatkih in vrstnem redu table. Popravil sem te predpostavke, ne aplikacije; vseh sedem agentnih scenarijev zdaj uspe. Ponovno zaženem celotni `npm run check`, da bo končni rezultat zajemal tudi popravljene teste.
+P03 je izveden. Iskanje in oba filtra delujejo skupaj, veljajo v tabeli in na tabli, ob menjavi projekta se ponastavijo, gumb pa jih počisti z enim dejanjem. Števci upoštevajo prikazane rezultate; dodano je tudi stanje brez zadetkov. Filtriranje ne zapisuje prek API-ja.
+
+Specifikacija je bila pripravljena pred implementacijo, nato dopolnjena s sledljivostjo vseh zahtev R01–R12. Rezultati in omejitve preverjanja so zapisani v dokumentaciji.
+
+`npm run check` je uspel: lint, tipovno preverjanje, produkcijska gradnja in vseh **54/54 testov**.
+
+- [Implementacija](</Users/zan/Documents/mag/experimen
+{"status":"completed","elapsedSeconds":655.95,"allowedChanges":true,"usage":{"input_tokens":1222099,"cached_input_tokens":1131264,"cache_write_input_tokens":0,"output_tokens":27353,"reasoning_output_tokens":12763}}

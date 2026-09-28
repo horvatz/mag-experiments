@@ -42,3 +42,6 @@ const result = { verifiedAt: new Date().toISOString(), collection: 'L/1.0', arch
 assert.equal(requirements.length, verified.length * 12)
 writeFileSync(resolve(out, 'archive-verification.json'), JSON.stringify(result, null, 2) + '\n')
 console.log(JSON.stringify({ archived: result.archived, passed: result.passed, tests: tests.length, requirements: requirements.length, phases: phases.length }))
+await import('./evidence-map.mjs')
+await import('./failure-catalog.mjs')
+await import('./phase-timing.mjs')

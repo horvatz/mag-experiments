@@ -1,0 +1,1 @@
+Začenjam `verification.md` takoj, kot zahtevano. Nato pregledam naloge in trenutno kodo, izvedem čim več po vrstnem redu ter beležim samo dejanske spremembe in rezultate; obveznih zahtev ne bom označil kot izpolnjenih brez preverjanja.

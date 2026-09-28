@@ -1,0 +1,121 @@
+import { test, expect, mount, expectIds, webIds, board, table, select, project, makeTask, examples, summary } from '../development/helpers.ts'
+
+test('search normalizes diacritics, checks every text field, and treats punctuation literally', async ({ page }) => {
+  await mount(page)
+  const search = page.getByRole('searchbox', { name: 'Išči opravila' })
+
+  await search.fill('CAS')
+  await expectIds(page, ['web-01'])
+  await search.fill('ziva')
+  await expectIds(page, ['web-06'])
+  await search.fill('opis opravila web-02')
+  await expectIds(page, ['web-02'])
+  await search.fill('citat zapis')
+  await expectIds(page, ['web-06'])
+  await search.fill('=SUM(A1)')
+  await expectIds(page, ['web-07'])
+  await search.fill('[')
+  await expectIds(page, [])
+  await search.fill(' \t  ')
+  await expectIds(page, webIds())
+})
+
+test('assignee options come from the whole project and compare exact names', async ({ page }) => {
+  await mount(page)
+  await select(page, 'Filter stanja', 'todo')
+  const assignee = page.getByRole('combobox', { name: 'Filter odgovorne osebe' })
+  await expect(assignee.locator('option')).toHaveText(['Vse osebe', 'Ana Novak', 'Luka Kovač', 'Maja Zupan', 'Živa Kovač', 'Črt'])
+  await assignee.selectOption({ label: 'Živa Kovač' })
+  await expectIds(page, [])
+  await select(page, 'Filter stanja', 'all')
+  await expectIds(page, ['web-06'])
+  await project(page, 'launch')
+  await expect(page.getByRole('combobox', { name: 'Filter odgovorne osebe' }).locator('option')).toHaveText(['Vse osebe', 'Ana Novak', 'Luka Kovač'])
+})
+
+test('assignee filtering compares the selected name without accent normalization', async ({ page }) => {
+  await mount(page, [
+    makeTask('person-accented', { assignee: 'Črt' }),
+    makeTask('person-plain', { assignee: 'Crt' }),
+  ])
+  await page.getByRole('combobox', { name: 'Filter odgovorne osebe' }).selectOption('Crt')
+  await expectIds(page, ['person-plain'])
+})
+
+test('project navigation and reload reset local filters, while view switching preserves them', async ({ page }) => {
+  await mount(page)
+  const storageBefore = await page.evaluate(() => JSON.stringify([localStorage.length, sessionStorage.length]))
+  await page.getByRole('searchbox', { name: 'Išči opravila' }).fill('pregled')
+  await select(page, 'Filter stanja', 'done')
+  await select(page, 'Filter odgovorne osebe', 'Ana Novak')
+  await expectIds(page, ['web-03'])
+  expect(await page.evaluate(() => location.hash)).toBe('#/projects/web')
+  expect(await page.evaluate(() => JSON.stringify([localStorage.length, sessionStorage.length]))).toBe(storageBefore)
+  await board(page)
+  await expectIds(page, ['web-03'])
+  await table(page)
+  await expectIds(page, ['web-03'])
+  await project(page, 'launch')
+  await expect(page.getByRole('searchbox', { name: 'Išči opravila' })).toHaveValue('')
+  await expect(page.getByRole('combobox', { name: 'Filter stanja' })).toHaveValue('all')
+  await expect(page.getByRole('combobox', { name: 'Filter odgovorne osebe' })).toHaveValue('all')
+  await expectIds(page, examples.filter((task) => task.projectId === 'launch').map((task) => task.id))
+
+  await page.getByRole('searchbox', { name: 'Išči opravila' }).fill('časovnice')
+  await page.reload()
+  await expect(page.getByRole('searchbox', { name: 'Išči opravila' })).toHaveValue('')
+  await expectIds(page, examples.filter((task) => task.projectId === 'launch').map((task) => task.id))
+  expect(await page.evaluate(() => location.hash)).toBe('#/projects/launch')
+})
+
+test('filtered counts and board columns use the same subset and leave task data read-only', async ({ page }) => {
+  const writes = await mount(page)
+  await select(page, 'Filter stanja', 'todo')
+  await expect(page.getByRole('status', { name: 'Rezultati filtriranja' })).toHaveText('Prikazano: 4 od 8.')
+  await summary(page, [4, 0, 0])
+  await expect(page.locator('.table-footer')).toContainText('0 / 4 končanih')
+  await board(page)
+  await expectIds(page, ['web-02', 'web-04', 'web-07', 'web-08'])
+  const boardRegion = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+  await expect(boardRegion.getByRole('region', { name: 'Pripravljeno' }).locator('[data-task-id]')).toHaveCount(4)
+  await expect(boardRegion.getByRole('region', { name: 'V delu' }).locator('[data-task-id]')).toHaveCount(0)
+  expect(writes).toEqual([])
+})
+
+test('no results are explicit in both views and clear filters restores all tasks', async ({ page }) => {
+  await mount(page)
+  await page.getByRole('searchbox', { name: 'Išči opravila' }).fill('nothing matches')
+  await select(page, 'Filter stanja', 'done')
+  await select(page, 'Filter odgovorne osebe', 'Ana Novak')
+  await expect(page.getByText('Ni zadetkov.', { exact: true })).toBeVisible()
+  await expect(page.getByRole('status', { name: 'Rezultati filtriranja' })).toHaveText('Prikazano: 0 od 8.')
+  await board(page)
+  await expect(page.getByText('Ni zadetkov.', { exact: true })).toBeVisible()
+  await expect(page.getByRole('region', { name: 'Tabla opravil' }).getByRole('region')).toHaveCount(3)
+  await page.getByRole('button', { name: 'Počisti filtre' }).click()
+  await expectIds(page, webIds(), false)
+  await expect(page.getByRole('searchbox', { name: 'Išči opravila' })).toHaveValue('')
+  await expect(page.getByRole('combobox', { name: 'Filter stanja' })).toHaveValue('all')
+  await expect(page.getByRole('combobox', { name: 'Filter odgovorne osebe' })).toHaveValue('all')
+})
+
+test('empty project retains its standard empty state and narrow layout does not overflow', async ({ page }) => {
+  await mount(page, [])
+  await expect(page.getByRole('status', { name: 'Rezultati filtriranja' })).toHaveText('Prikazano: 0 od 0.')
+  await expect(page.getByRole('heading', { name: 'V tem projektu še ni opravil' })).toBeVisible()
+  await board(page)
+  await expect(page.getByRole('region', { name: 'Tabla opravil' }).getByText('Ni opravil v tem stanju.')).toHaveCount(3)
+  await table(page)
+  await page.setViewportSize({ width: 390, height: 844 })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true)
+})
+
+test('search words can match ID, title, description, and assignee together', async ({ page }) => {
+  const records = [makeTask('id-special', { title: 'Pripravi načrt', description: 'Pregled; potrdi vnos.', assignee: 'Ana Novak' })]
+  await mount(page, [...records, ...examples.filter((task) => task.projectId === 'launch')])
+  const search = page.getByRole('searchbox', { name: 'Išči opravila' })
+  await search.fill('special pripravi pregled potrdi ana')
+  await expectIds(page, ['id-special'])
+  await search.fill('special ana never-match')
+  await expectIds(page, [])
+})

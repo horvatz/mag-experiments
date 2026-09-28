@@ -1,0 +1,13 @@
+Najprej preberem projektna pravila, nalogo in predlogo, nato pripravim specifikacijo pred posegi v kodo. Delal bom samostojno in spremembe omejil na `src/`, `tests/agent/` ter `docs/agent/`.
+Vmesnik že pridobi opravila iz javnega API-ja, tabela in tabla pa trenutno uporabljata neposredno prejeti vrstni red. Specifikacijo bom zato vezal na lokalno stanje posameznega projekta in na isti urejen seznam za oba prikaza; API in obstoječa polja ostanejo nespremenjeni.
+Osnovno stanje in prehodi zgodovine so implementirani kot čista reducer funkcija: premiki hranijo permutacije ID-jev, zavržejo ponovitve ob novi veji in omejujejo razveljavitve na 20. Zdaj povežem skupne kontrolnike z vrstico in kartico, nato bom preveril robne scenarije in ozko postavitev.
+Preverjanje kode in gradnja sta uspešna, začetni API ter namizni in mobilni testi prav tako. Celoten nabor zdaj teče; v njem je 53 testov, vključno z mojimi preverjanji zgodovine in življenjske dobe vrstnega reda.
+Prvi celoten zagon je odkril štiri napake v mojih testnih pričakovanjih: eno napačno število statusov in tri teste, ki so preverjali fixture oziroma locator napačno. Koda je prestala linter, tipizacijo, gradnjo in razvojne teste. Popravil sem pričakovanja ter ločil prazen in enoopravilen projekt, nato pa ponovno preverjam agentne teste.
+Vsi agentni testi zdaj uspešno prestanejo tudi neposredno preverjanje, da robna poteza in neuporabna ponastavitev ohranita sklada nespremenjena. Nadaljujem s končnim `npm run check`, da vključim še izhodiščne in razvojne teste po zadnjih popravkih.
+Končni `npm run check` je uspešno zaključil vseh 55 testov: 14 API, 24 izhodiščnih v brskalnikih, 8 razvojnih in 9 agentnih. Zdaj zapisujem dejanske dokaze in omejitve v dokumentacijo ter povezujem R01–R12 s kodo in opravljenimi scenariji.
+P10 je implementiran: oba pogleda prikazujeta globalni vrstni red, premiki in zgodovina razveljavitev/ponovitev ostanejo lokalni projektu, podatki opravil pa se ne zapisujejo v API.
+
+`npm run check` je uspešno zaključil ESLint, tipizacijo, gradnjo in vseh **55 testov** (14 API, 24 izhodiščnih, 8 razvojnih in 9 agentnih). Prvi testni zagon je odkril napake v pričakovanjih novih testov; popravil sem jih, kar je zabeleženo v poročilu.
+
+Specifikacija in sledljivost zahtev sta v [specifikaciji](</Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P10-A-003/app/docs/agent/specificat
+{"status":"completed","elapsedSeconds":668.224,"allowedChanges":true,"usage":{"input_tokens":1391772,"cached_input_tokens":1295616,"cache_write_input_tokens":0,"output_tokens":28893,"reasoning_output_tokens":12828}}

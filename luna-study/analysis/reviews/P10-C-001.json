@@ -1,0 +1,78 @@
+{
+  "collection": "L/1.0",
+  "id": "P10-C-001",
+  "reviewedAt": "2026-09-27T10:09:37.737292+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "cbec985cec63c2c749b6af6bd7fc40bfd2bca54f8b64b7a9832bc72400d68ce5",
+  "reviewStatus": "partial",
+  "partialReason": "Avtorska specifikacija, načrt in naloge so razpoložljivi, nova aplikacijska koda pa ni nastala. Dokumentacijo ocenimo, organizacija odsotne kode ostane manjkajoča. Odsotnost lastnih preverjanj je po izvirni rubriki ocena 0. Način poročanja je razkrit v analysis/review-missingness-note.md.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija jasno zajame R01–R12 in bistvene robove: identiteto po ID, globalnega soseda v različnih stolpcih, nedejavne robove, redo po razveljavitvi, najstarejši zapis pri meji 20, razveljavljiv reset, življenjsko dobo projekta ter 0/1 elementov in širino 390 px. Matrika sprejemnih pogojev je skladna s prehodnimi pravili; implementacije in preverjanj ne predstavlja kot izvedenih.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#zahteve-in-pravila",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#merila-uspeha"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "O/C/U/R imajo opredeljeno domeno, orientacijo skladov in vrh na koncu. Sosednja zamenjava, tail20, undo/redo in reset so preverljivi prehodi; neveljavno dejanje ohrani celotno stanje. Enaka množica ID-jev skupaj z enako dolžino in enoličnimi vhodnimi ID-ji zagotovi permutacijo. Nespremenljiva polja, podrobnosti/pogled in projektni reset imajo ločene pogoje.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#pravila-prehodov-stanja",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Specifikacija poveže vsako zahtevo s sprejemnim scenarijem in odkrito navede Ni izvedeno. Načrt poveže predvidene odgovornosti z datotekami, tasks pa vsebuje odprte T001–T009. Dejanskih povezav do izvedene kode in dokazov testov ni, verification.md ni nastal in implementacijska faza se ni začela. To so uporabne načrtovane povezave, ne končna sledljivost; izmišljene izvedbe ni.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/plan.md#datoteke-in-koraki",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/tasks.md",
+        "runtime/runs/P10-C-001/execution.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Nova aplikacijska koda ni bila napisana: arhivirani inventar začetka in konca je enak za vseh deset datotek src, izvajalnik pa beleži le spremembe procesnih dokumentov. Ocenjevanje organizacije začetne aplikacije bi njeno avtorstvo napačno pripisalo tej izvedbi. Načrtovana arhitektura ni oddana implementacija.",
+      "evidence": [
+        "analysis/evidence/P10-C-001-unchanged-source.json",
+        "runtime/runs/P10-C-001/execution.json",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/plan.md"
+      ],
+      "missingReason": "Avtorska implementacija manjka, ker se pred skupno časovno mejo implementacijska faza ni začela; zato ni kode, katere organizacijo bi lahko ocenili."
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Noben lastni test ni nastal ali bil izveden. Predvideni scenariji v specifikaciji, načrtu in odprtih nalogah niso dejanska preverjanja; arhivirani končni inventar nima tests/agent datotek in izvedba vsebuje le constitution/specify/plan/tasks. Izvirna rubrika odsotna smiselna dodatna preverjanja izrecno uvrsti v oceno 0.",
+      "evidence": [
+        "analysis/evidence/P10-C-001-unchanged-source.json",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/tasks.md#polish",
+        "runtime/runs/P10-C-001/execution.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Po 1200,323 s je izvedba končana s time_limit brez implementacije. Neodvisni D01 že ne najde gumba Premakni web-01 gor; vseh 8 razvojnih in 24 skritih preverjanj nove funkcionalnosti je neuspešnih, 38 osnovnih pa uspešnih. Dokazanih je 0/12 zahtev. To je manjkajoča implementacija v danem proračunu, ne izguba dostopa do modela.",
+    "evidence": [
+      "runtime/runs/P10-C-001/evaluation-summary.json",
+      "runtime/runs/P10-C-001/execution.json",
+      "analysis/evidence/P10-C-001-unchanged-source.json"
+    ]
+  },
+  "finalFailureNote": "Končno 38/70 in 0/12; strogi uspeh ne. Constitution 222,301 s, specify 724,377 s, plan 198,166 s, tasks 51,380 s; implement in converge nista zagnana. Tasks je zapisal seznam in končni odgovor, vendar ima faza status time_limit. Celotna poraba je null; opažena spodnja meja je 1149492 vhodnih in 24651 izhodnih tokenov. Delne porabe ne predstavljamo kot celotno.",
+  "developmentFailureExample": null,
+  "calibrationNote": "Rubrika 0–2 ostaja nespremenjena. Poročevalsko pojasnilo za delno razpoložljive artefakte je dodano po prvem takem izidu in razkrito v analysis/review-missingness-note.md. Ocene ne pripišemo začetni kodi ali neizvedenim testom; funkcionalni neuspeh v celoti ostaja v primarni analizi."
+}

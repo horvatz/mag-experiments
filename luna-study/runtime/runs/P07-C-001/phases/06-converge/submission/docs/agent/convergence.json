@@ -1,0 +1,1 @@
+{"outcome":"converged","summary":"R01–R12, pet odločitev načrta, štirje ustavni principi in naloge T001–T006 so skladni. npm run check je uspel (54/54 testov); novih nalog nisem pripel.","unverified":["Končni testi, ki niso dostopni v lokalnem okolju, niso bili izvedeni."]}

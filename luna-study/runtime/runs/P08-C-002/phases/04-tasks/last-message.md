@@ -1,0 +1,1 @@
+Zaporedne naloge T001–T007 so v [tasks.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P08-C-002/app/docs/agent/P08/tasks.md). Vključujejo razvojne teste za R01–R12 in končno preverjanje ter posodobitev sledljivosti. Kode ali testov v tem koraku nisem izvajal; časovni proračun je ob zadnjem preverjanju znašal 575 sekund.

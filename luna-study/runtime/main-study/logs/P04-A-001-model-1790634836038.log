@@ -1,0 +1,11 @@
+Najprej preberem projektna pravila, navodila in predlogo specifikacije. Nato pripravim specifikacijo pred spremembami kode, izvedem nalogo in zabeležim preverjanja ter morebitne omejitve.
+Specifikacija je zapisana. Za izvedbo bom dodal čisto razvrščalno funkcijo, stanje štirih kontrol znotraj projekta in enako razvrščeno polje za preglednico ter tablo. Smer bo uporabljena ločeno za vsak ključ, stabilnost pa bo vezana na indeks prvotnega polja.
+Prvi `npm run check` je ustavil TypeScript: v povratnem klicu ni zožil tipa primarnega ključa po preverjanju `original`. Popravil sem zožitev in hkrati poravnal dve pričakovani testni razvrstitvi z leksikografskim rezultatom. Zdaj ponovno zaženem celoten preverjevalni ukaz.
+Lastni testi so zdaj uspešni. Ugotovil sem, da so bili prvi spodrsljaji v testni pripravi: večkratni `mount` na isti hash URL ni sprožil novega nalaganja, zato sem dodal osvežitev med različnimi nabori. Zdaj zaženem še končni `npm run check` za vse 50 preverjanj.
+Dopolnil sem še dve neposredni preverjanji: normalizacijo odgovorne osebe in nespremenjenost povzetkov pred ter po sortiranju. Ciljni agentni testi ostajajo 4/4 uspešni; ponavljam celoten `npm run check`, da dokumentirani končni rezultat ustreza zadnji različici datotek.
+Izvedeno je stabilno razvrščanje z dvema ključema za preglednico in tablo, vključno s ponastavitvijo, privzetimi nastavitvami ob menjavi projekta in preverjanjem podvojenih naslovov.
+
+`npm run check` je uspešno zaključil vseh 50 preverjanj; lastni agentni testi so uspešni 4/4. Sledljivost in rezultati so v [specifikaciji](</Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P04-A-001/app/docs/agent/specification.md>) in [poročilu o preverjanju](</Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P04-A-001/app/docs/agent/verification.md>).
+
+Funkcionalnih zahte
+{"status":"completed","elapsedSeconds":548.036,"allowedChanges":true,"usage":{"input_tokens":2510992,"cached_input_tokens":2400768,"cache_write_input_tokens":0,"output_tokens":23075,"reasoning_output_tokens":8368}}

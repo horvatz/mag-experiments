@@ -1,0 +1,3 @@
+Specifikacija za vseh 12 zahtev je v [spec.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P06-C-002/app/docs/agent/P06/spec.md). Vključuje sprejemne pogoje, pravila CSV, prehode stanja, uporabniške scenarije in sledljivost; preverjanja so označena kot neizvedena. Pot funkcionalnosti je registrirana v [feature.json](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P06-C-002/app/.specify/feature.json).
+
+Veljavnost JSON-a in povezavo do potrjenega dizajna sem preveril. Testov nisem zaganjal, ker implementacija ni bila del tega koraka. Preostali čas sem preveril z `node task/time-budget.mjs`.

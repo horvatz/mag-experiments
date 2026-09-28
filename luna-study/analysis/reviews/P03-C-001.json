@@ -1,0 +1,94 @@
+{
+  "collection": "L/1.0",
+  "id": "P03-C-001",
+  "reviewedAt": "2026-09-27T16:25:21.258716+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "add57df1fb4d2a345d4de082d97794af0806c877e806e56bca21193d0d658d21",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Vseh R01–R12 je opredeljenih s podatki, stanji in uporabniškimi scenariji: normalizirane dobesedne besede, konjunkcija s stanjem/točno osebo, možnosti iz celega projekta, ohranitev filtrov med pogledi, ponastavitve, števci, nič zadetkov proti praznemu projektu ter bralna navigacija in 390 px. V okviru obstoječih statusnih stolpcev ohranja izvorno zaporedje in iste ID-je. Dogovor o vmesniku je izrecen, poljubni vhodni podatki in omejitve so zapisani.",
+      "evidence": [
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md#podatki",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md#stanje-filtrov-in-pravila-sprememb",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md#zahteve-in-pravila",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md#dogovor-o-vmesniku"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Fₚ=(q,s,a), Tₚ in v ločijo izvorne podatke, uporabniško stanje ter pogled. Fold in W določata NFD, natančen obseg znamenj, male črke ter neprazne besede. M vsebuje univerzalni literalni pogoj in natančni status/osebo, stabilni Rₚ pa ohrani podatke in določi N/M. Prehodi pogled/projekt/reload/clear imajo preverljive ohranjene oziroma ponastavljene vrednosti.",
+      "evidence": [
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md#stanje-filtrov-in-pravila-sprememb",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Specifikacija ima vseh dvanajst načrtovanih scenarijev, plan/tasks povežeta zahteve z datotekami in T001–T005 so označene. Toda končna tabela specifikacije še vedno pravi »Še ni določeno« in »Ni izvedeno«; T006 je odprta, verification.md ostane pri preverjanju v teku. Surovi dogodki kažejo dejanski celotni 49/50 in po popravku 5/5 lastnih testov, vendar predaja ne vsebuje teh rezultatov ali končne povezave zahteva–koda–test. Converge zaradi fazne meje ni izveden. To je nepopolna predaja, ne izmišljena trditev o uspešnih testih.",
+      "evidence": [
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/tasks.md#dodelava-in-preverjanje",
+        "runtime/runs/P03-C-001/submission/docs/agent/verification.md#izvedba",
+        "analysis/evidence/P03-C-001-checks.md#item_29",
+        "analysis/evidence/P03-C-001-checks.md#item_33",
+        "runtime/runs/P03-C-001/execution.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "taskFilters.ts loči tip kontrol, čisto normalizacijo, sestavljeni predikat in izpeljavo oseb. ProjectView shrani samo tri kontrole; filtrirani seznam in števci so izračunani, isti seznam dobi tabela oziroma obstoječi TaskBoard. Projektni ključ upravlja reset, podatki se ne mutirajo in ni nove shrambe ali zapisovalnega API-ja. Slogi kontrol so omejeni na CSS in mobilno razporeditev.",
+      "evidence": [
+        "runtime/runs/P03-C-001/submission/src/taskFilters.ts:3",
+        "runtime/runs/P03-C-001/submission/src/taskFilters.ts:9",
+        "runtime/runs/P03-C-001/submission/src/taskFilters.ts:17",
+        "runtime/runs/P03-C-001/submission/src/App.tsx:14",
+        "runtime/runs/P03-C-001/submission/src/App.tsx:61",
+        "runtime/runs/P03-C-001/submission/src/App.tsx:64",
+        "runtime/runs/P03-C-001/submission/src/App.tsx:111",
+        "runtime/runs/P03-C-001/submission/src/styles.css:176"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Pet lastnih scenarijev preveri vsako iskalno polje, diakritiko, besede prek polj, literalni a+b[1], prikaz skritih oseb, isto filtrirano opravilo v obeh pogledih, števce, nič zadetkov, prazen projekt ter navigacijo/390 px/brez zapisov. Vendar projekt zamenja šele po clear, zato ta test ne razlikuje pravilnega reseta od ohranjenih privzetih filtrov; reload spremeni samo query, clear pa nikoli ne spremeni osebe. Ni kontrastnih imen za natančno enakost, večjega ali nesortiranega nabora in prazne table. Po testnem popravku item_33 potrdi 5/5, celotnega checka po njem ni. To so koristna preverjanja s pomembnimi vrzelmi.",
+      "evidence": [
+        "runtime/runs/P03-C-001/submission/tests/agent/P03.spec.ts:3",
+        "runtime/runs/P03-C-001/submission/tests/agent/P03.spec.ts:24",
+        "runtime/runs/P03-C-001/submission/tests/agent/P03.spec.ts:52",
+        "runtime/runs/P03-C-001/submission/tests/agent/P03.spec.ts:68",
+        "runtime/runs/P03-C-001/submission/tests/agent/P03.spec.ts:75",
+        "analysis/evidence/P03-C-001-checks.md#item_33"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Izvedba doseže fazno časovno mejo pri implementaciji po 398,147 s; skupaj 1081,240 s. Converge se ne začne in predaja ostane nepopolna. Neodvisno je oddaja 70/70 in 12/12, zato potrjene končne funkcionalne napake ni; strogi uspeh vseeno ne velja. Celotna poraba je null, opažena spodnja meja 3147714 vhodnih in 51631 izhodnih tokenov.",
+    "evidence": [
+      "runtime/runs/P03-C-001/execution.json",
+      "runtime/runs/P03-C-001/evaluation-summary.json",
+      "runtime/runs/P03-C-001/submission/docs/agent/verification.md",
+      "runtime/runs/P03-C-001/submission/docs/agent/P03/tasks.md"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Item_29 potrdi 49/50: po ponovnem mount(page, []) v že uporabljenem scenariju ni besedila Prikazano: 0 od 0. Item_32 spremeni samo test in izloči prazni projekt v lasten scenarij s svežo stranjo; item_33 potrdi vseh pet lastnih testov. Poznejšega celotnega checka ali zaključene posodobitve predaje ni. Neodvisni končni nabor potrdi pravilno oddano kodo; natančen mehanizem odpovedi pri ponovnem mountu ni bil ločeno diagnosticiran.",
+    "evidence": [
+      "analysis/evidence/P03-C-001-checks.md#item_29",
+      "analysis/evidence/P03-C-001-checks.md#item_32",
+      "analysis/evidence/P03-C-001-checks.md#item_33",
+      "runtime/runs/P03-C-001/submission/tests/agent/P03.spec.ts:68",
+      "runtime/runs/P03-C-001/submission/docs/agent/verification.md"
+    ]
+  }
+}

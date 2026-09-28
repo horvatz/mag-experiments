@@ -1,0 +1,1 @@
+`npm run check` je uspešno zaključil lint, tipizacijo, gradnjo, 38 osnovnih in 8 razvojnih testov P06. En lastni test je odpovedal, ker je ponovno uporabljal isto stran pri praznem fixture-u; ločim jo na novo stran, nato ponovim preverjanje.

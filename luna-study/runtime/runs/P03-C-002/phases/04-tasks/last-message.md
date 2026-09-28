@@ -1,0 +1,1 @@
+Zaporedne naloge T001–T007 so zapisane v [tasks.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P03-C-002/app/docs/agent/P03/tasks.md), razdeljene po fazah in povezane z zahtevami ter datotekami. Preveril sem zaporednost oznak. Kode nisem spreminjal in testov nisem zaganjal.

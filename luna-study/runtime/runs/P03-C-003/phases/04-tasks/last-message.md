@@ -1,0 +1,1 @@
+Naloge T001–T007 so zapisane v [tasks.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P03-C-003/app/docs/agent/P03/tasks.md), razvrščene po fazah in pokrivajo implementacijo, preverjanje R01–R12 ter dopolnitev sledljivosti. Kode ali testov v tem koraku nisem spreminjal oziroma zaganjal. Preostali čas sem preveril z `node task/time-budget.mjs`.

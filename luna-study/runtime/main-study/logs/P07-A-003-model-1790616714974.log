@@ -1,0 +1,14 @@
+Najprej preberem projektna pravila, navodila in predlogo, nato zapišem specifikacijo pred posegom v kodo. Deloval bom samo v dovoljenih mapah in spremljal časovni okvir.
+Začetni vmesnik že ločuje preglednico, tablo in podrobnosti, zato bom priljubljene vodil v stanju aplikacije nad projektnim pogledom. Specifikacija bo zajela validacijo shrambe, filtriranje, projektne meje in preverljive pogoje za vseh 12 zahtev; zdaj jo zapišem pred implementacijo.
+Osnovna implementacija je dodana: stanje ID-jev je globalno, filter je vezan na pogled projekta, gumbi so ločeni od povezav, shranjevanje pa ne kliče API-ja. Zdaj dodajam agentne scenarije za trajnost, projektni obseg, zunanje `storage` dogodke in napako zapisa, nato zaženem celoten predpisani pregled.
+Lint, TypeScript in gradnja so uspešni; preostali del `npm run check` še izvaja regresijske in agentne brskalniške teste. Preglednica in tabla sta za zdaj prestali osnovne namizne in mobilne regresije.
+Prvih 49 od 50 preverjanj je uspelo. Edini neuspeh je bil v mojem testu, ker je iskal malo začetnico v opozorilu, ki se začne z »Shramba«; prilagodim besedilo opozorila, da vsebuje izrecno besedo v malih črkah, nato ponovim celoten `npm run check`.
+Ponovljeni `npm run check` je zdaj uspešen: lint, tipizacija, produkcijska gradnja in vseh 52 brskalniških testov. Dodajam še dokaz za vrstni red filtriranih rezultatov in števce table, nato v dokumentacijo vnesem rezultate ter omejitve iz dejansko izvedenih preverjanj.
+Končni pregled po razširitvi robnih primerov je uspel z 54/54 testi; agentni primeri zdaj vključujejo tudi prazen projekt, 12 opravil, ohranjen vrstni red in vidne števce table. Posodobil sem specifikacijo z dejanskimi dokazili in zapisom dopolnitve. Zdaj zapisujem preverjanja ter preostale omejitve, vključno z nedostopnostjo Git/Xcode orodja v okolju.
+Implementacija P07 je končana. Priljubljene delujejo po ID-ju, se shranijo v `localStorage`, sinhronizirajo ob `storage` dogodkih ter se uporabljajo v preglednici in na tabli. Dodani so filter, števci, projektno čiščenje in opozorilo ob nedostopni shrambi.
+
+`npm run check` je uspešno zaključil lint, tipizacijo, gradnjo in **54/54 testov**.
+
+- [Specifikacija in sledljivost zahtev](</Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P07-A-003/app/docs/agent/specification.md>)
+- [Izvedena preverjanja in omejitve](</Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pil
+{"status":"completed","elapsedSeconds":774.064,"allowedChanges":true,"usage":{"input_tokens":1700004,"cached_input_tokens":1602048,"cache_write_input_tokens":0,"output_tokens":32933,"reasoning_output_tokens":15986}}

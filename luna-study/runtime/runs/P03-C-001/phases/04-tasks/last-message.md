@@ -1,0 +1,1 @@
+Korak `$speckit-tasks` je zaključen. V [tasks.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P03-C-001/app/docs/agent/P03/tasks.md) je šest zaporednih nalog za filtre, oba pogleda, Folio slog, lastne Playwright teste in končno preverjanje. Kode nisem spreminjal in testov nisem zaganjal.

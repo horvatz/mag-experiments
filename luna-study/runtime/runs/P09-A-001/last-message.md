@@ -1,0 +1,1 @@
+Končni `npm run check` je uspel z 53/53 testi. Pri zadnjem pregledu sem še opazil robni primer: prazen projekt je ohranil staro prazno stanje, vendar ni dobesedno prikazal zahtevanega `Ni zadetkov.`. Dodajam to besedilo ob obstoječe prazno stanje in ponovno preverjam.

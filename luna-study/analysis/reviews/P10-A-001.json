@@ -1,0 +1,77 @@
+{
+  "collection": "L/1.0",
+  "id": "P10-A-001",
+  "reviewedAt": "2026-09-27T09:45:50.760807+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "18d5a5b2f5f46ebc1aefd378bc63c591251acccddf8802b96e04575857e4085f",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija pokrije R01–R12: globalno identiteto po ID, sosednje zamenjave, oba sklada, kapaciteto 20, reset kot razveljavljivo dejanje ter identitetna robna dejanja. Loči globalno zaporedje od statusnih stolpcev, življenjsko dobo projekta/pogleda in ohranitev podatkov ter ozkega prikaza.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "O/C/U/R imajo natančno orientacijo skladov, formule tail20, last/init in ločene prehode move/undo/redo/reset. Neveljavno dejanje je identiteta nad celotno trojico, veljaven premik počisti redo; multiset invariant ohrani vse ID-je. Pravila so preverljiva brez sklicevanja le na opis uporabniškega vmesnika.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Vseh dvanajst zahtev ima povezave do konkretnih funkcij/komponent, D in lastnih scenarijev ter izidov. Arhivirani item_40 potrdi končni 54/54 in exit 0; item_32 potrdi zadnjih osem agentnih testov. Zapis ohrani prejšnjo napako testne priprave, omejitev git/xcrun ter jasno izključi nedostopne skrite scenarije iz agentovih dosežkov. Omejen orakelj testa kapacitete je ovrednoten v dimenziji lastnih preverjanj.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P10-A-001/submission/docs/agent/verification.md",
+        "analysis/evidence/P10-A-001-checks.md#item_40",
+        "analysis/evidence/P10-A-001-checks.md#item_32"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "ProjectView ohrani nalaganje in celotne števce, TaskWorkspace pa po prejetih podatkih inicializira lokalno permutacijo in oba sklada. Prehodi uporabljajo funkcijske posodobitve in ne spreminjajo prejšnjih polj. Skupna komponenta OrderControls loči gumbe od povezav ter se uporabi v tabeli in tabli. Obe predstavitvi izhajata iz ene permutacije; projektni ključ upravlja ponastavitev.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/src/App.tsx:12",
+        "runtime/runs/P10-A-001/submission/src/App.tsx:39",
+        "runtime/runs/P10-A-001/submission/src/OrderControls.tsx:1",
+        "runtime/runs/P10-A-001/submission/src/TaskBoard.tsx:14"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Osem dejansko uspešnih scenarijev koristno preveri premik/undo/redo/reset, oba pogleda, projekte/osvežitev, 0/1/12 elementov, enake naslove, podatkovne števce in mobilno drsenje. Ključna vrzel je test meje zgodovine: 22 potez izmenjuje samo dve permutaciji, nato preveri končni red po 20 undo/redo, ne vsakega vmesnega stanja. Tak vzorec ne loči odstranitve najstarejših od napačne odstranitve najnovejših zapisov pri ponavljajočem se zaporedju. Za R07 manjka razločujoč robni primer z različnimi preteklimi permutacijami; ocena ni odvisna od samega števila testov.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/tests/agent/P10.spec.ts:50",
+        "runtime/runs/P10-A-001/submission/tests/agent/P10.spec.ts:77",
+        "runtime/runs/P10-A-001/submission/tests/agent/P10.spec.ts:86",
+        "runtime/runs/P10-A-001/submission/tests/agent/P10.spec.ts:110",
+        "analysis/evidence/P10-A-001-checks.md#item_40"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Končno 70/70, 12/12 in strogi uspeh; potrjene funkcionalne napake ni. Vrzel v oraklju lastnega testa je ločena od dejanske implementacije, ki za zgodovino uporablja slice(-20).",
+  "developmentFailureExample": {
+    "description": "Prvi samostojni zagon agentnih testov ima 4 uspehe in 1 neuspeh v združenem scenariju: isti page je bil ponovno uporabljen za nov nabor z enim opravilom. Model je enojni primer ločil v samostojen test s svežo stranjo; item_19 potrdi 6/6, po dodatnih scenarijih pa item_40 potrdi celotni 54/54. Dokaz podpira popravek testne priprave; natančen brskalniški mehanizem starega nabora ni bil neodvisno diagnosticiran.",
+    "evidence": [
+      "analysis/evidence/P10-A-001-checks.md#item_16",
+      "analysis/evidence/P10-A-001-checks.md#item_19",
+      "analysis/evidence/P10-A-001-checks.md#item_40",
+      "runtime/runs/P10-A-001/submission/tests/agent/P10.spec.ts:77"
+    ]
+  },
+  "calibrationNote": "Rubrika je enaka M/1.0. Stara presoja P10-A-001 je oceno 2 utemeljila tudi z 21 različnimi premiki in preverjanjem vmesnih undo/redo stanj. Tukaj je pomembna vrzel odsotnost razločujočega oraklja za zahtevani najstarejši vnos, ne zahteva po enakem številu testov ali 600-koračnem modelnem testu."
+}

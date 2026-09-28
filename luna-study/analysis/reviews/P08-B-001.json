@@ -1,0 +1,88 @@
+{
+  "collection": "L/1.0",
+  "id": "P08-B-001",
+  "reviewedAt": "2026-09-27",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "1e9e6ae8cd3a7d44602a60659c0f833aa21718df8246894d55971436b64ed044",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "R01–R12 jasno zajamejo fiksni datum, prednost done, koledarske meje, števce celotnega projekta, stabilen filter, ločitev osnutka in zadnjega veljavnega datuma, ohranitev stanja ter obe ponastavitvi. R09 razjasni, da tabla iste ID-je razdeli po statusnih stolpcih. Prazni primeri, bralni obseg, obstoječa dostopna imena, ID-ji in 390 px so izrecni. Razvojni primeri so navedeni kot delno kritje, ne celotna domena.",
+      "evidence": [
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "group(t,D) določi pet disjunktnih skupin s prednostjo done ter mejama D in D+7. Števec je kardinalnost članov skupine celotnega P in je neodvisen od filtra; izbor all/podskupine ohrani podatke in izvorni red. Prehodi veljavnega/praznega datuma, prikaza ter projekta/osvežitve določijo spremenjeno oziroma ohranjeno stanje. Koledarska primerjava izrecno izključi krajevne časovne razlike in trenutno uro naprave.",
+      "evidence": [
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Začetna specifikacija ostane označena kot fazni načrt, implementacijski verification.md pa razpiše vseh dvanajst zahtev z dejanskimi funkcijami in D/lastnimi scenariji. Izrecno pove, da prehod leta in različni časovni pasovi niso testirani. Item_35 potrdi zadnji celoviti zagon 48/48, item_37 spremeni samo teste in item_38 potrdi zadnji ciljni 2/2; dokument pravilno razloči oba dokaza. Pregledovalec priznava, da testov ni ponovno zagnal. Nepopolnost nekaterih testnih orakljev je ocenjena posebej.",
+      "evidence": [
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P08-B-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "runtime/runs/P08-B-001/submission/docs/agent/verification.md#rezultati-zagonov",
+        "runtime/runs/P08-B-001/submission/docs/agent/verification.md#omejitve-in-odstopanja",
+        "runtime/runs/P08-B-001/submission/docs/agent/review.json",
+        "analysis/evidence/P08-B-001-checks.md#item_35",
+        "analysis/evidence/P08-B-001-checks.md#item_37",
+        "analysis/evidence/P08-B-001-checks.md#item_38"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "deadlines.ts loči veljavnost koledarskega niza, UTC ordinalni dan ter čisto klasifikacijo. ProjectView vodi projektno lokalni osnutek, veljavno referenco in filter, z eno zanko izpelje skupine/števce in isti vidni seznam poda obema prikazoma. Obstoječi povzetek statusov ostane na celotnem projektu. Prazno filtrirano sporočilo je ločeno od izrisa table, zato njeni stolpci ostanejo prisotni. Opozorilo ima manjše lastno stanje, pomembne odgovornosti in izpeljave pa niso znatno podvojene.",
+      "evidence": [
+        "runtime/runs/P08-B-001/submission/src/deadlines.ts:15",
+        "runtime/runs/P08-B-001/submission/src/deadlines.ts:31",
+        "runtime/runs/P08-B-001/submission/src/App.tsx:12",
+        "runtime/runs/P08-B-001/submission/src/App.tsx:23",
+        "runtime/runs/P08-B-001/submission/src/App.tsx:33",
+        "runtime/runs/P08-B-001/submission/src/App.tsx:84"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Dva vsebinsko sestavljena scenarija koristno preverita vseh pet začetnih števcev, prestopni dan in mejo +7/+8, done s starim rokom, prazno skupino tudi na tabli, ohranitev datuma/filtra ter ponastavitev spremenjenega datuma ob reloadu. Lastni scenarij dejansko odkrije manjkajoče območje table. Vendar ne preverita praznega osnutka pri preklopu pogledov, prehoda leta ali števcev pri vseh filtrih. Pred reloadom je filter že all, pred menjavo projekta pa sta obe nastavitvi že ponastavljeni; ta pričakovanja ne razločijo vseh zahtevanih ponastavitev. Ocena izhaja iz teh vrzeli, ne iz samega števila testov.",
+      "evidence": [
+        "runtime/runs/P08-B-001/submission/tests/agent/deadlines.spec.ts:3",
+        "runtime/runs/P08-B-001/submission/tests/agent/deadlines.spec.ts:25",
+        "runtime/runs/P08-B-001/submission/tests/agent/deadlines.spec.ts:40",
+        "runtime/runs/P08-B-001/submission/docs/agent/verification.md#omejitve-in-odstopanja",
+        "analysis/evidence/P08-B-001-checks.md#item_25",
+        "analysis/evidence/P08-B-001-checks.md#item_38"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Končno completed, 961,783 s, 70/70 in 12/12; strogi uspeh. Specifikacija/implementacija/pregled trajajo 323,115 / 473,505 / 161,748 s. Pregled ne zahteva popravkov. Popolna poraba je 1794771 vhodnih in 36158 izhodnih tokenov; potrjene končne funkcionalne napake v testnem naboru ni.",
+  "developmentFailureExample": {
+    "description": "Prvi check ima 47 uspehov in eno odpoved: po izbiri prazne skupine in kliku Tabla pomočnik board ne najde območja Tabla opravil. Item_26 spremeni samo App.tsx; naslednji ciljni zagon pride prek tega koraka in odpove pri getByLabel za izbirnik. Sprememba testnih selektorjev v item_30 pripelje do 2/2, nato celovitih 48/48. Poznejši dopolnitvi testov spremljata še celoviti 48/48 in zadnji ciljni 2/2. Za razliko od P08-C-001 je v tej izvedbi manjkajoča prazna tabla neposredno izkazana v neuspešnem testu pred popravkom aplikacije.",
+    "evidence": [
+      "analysis/evidence/P08-B-001-checks.md#item_25",
+      "analysis/evidence/P08-B-001-checks.md#item_26",
+      "analysis/evidence/P08-B-001-checks.md#item_27",
+      "analysis/evidence/P08-B-001-checks.md#item_30",
+      "analysis/evidence/P08-B-001-checks.md#item_31",
+      "analysis/evidence/P08-B-001-checks.md#item_35",
+      "analysis/evidence/P08-B-001-checks.md#item_38",
+      "runtime/runs/P08-B-001/submission/src/App.tsx:84"
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "collection": "L/1.0",
+  "id": "P06-C-001",
+  "reviewedAt": "2026-09-27T11:06:45.858860+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "2800698f8800f8375fa1954af01ea9f62e3d8e9013263faa6fb93f9d0a383de7",
+  "reviewStatus": "partial",
+  "partialReason": "Specifikacija in načrt sta razpoložljiva, nova koda in lastni testi pa niso nastali. Razpoložljivo dokumentacijo ocenimo po isti rubriki; organizacija odsotne avtorske kode ostane null. Uporabljeno je predhodno razkrito pojasnilo v analysis/review-missingness-note.md.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija pokrije R01–R12 in ključne robove: kanonične kolone ne glede na klike, izvorni red vrstic, lokalni izvozni filter, prazni izbori, ime/BOM, citiranje vseh vrednosti in CRLF ter natančna formula z dovoljenimi začetnimi belimi znaki. Opredeli Unicode, ohranitev prikazov, projekt/reload reset, zaporedne izvoze, napako nalaganja in širino 390 px. Scenarije jasno loči od dokazov izvedbe.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#dejanja-in-prehodna-stanja",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#zahteve-in-pravila",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#merila-uspeha"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "X=(C,D,F) ima izrecne prehode izbire kolon prek simetrične razlike, ločila in filtra z ohranitvijo drugih komponent. T(P)/R(P,F) določita stabilni podseznam in preverljiv predikat omogočenosti. Serializacija opredeli dovoljeno množico začetnih belih znakov in znakov formule, vrstni red nevtralizacije/citiranja, BOM in zaključni CRLF. Isti podatki in nastavitve morajo ustvariti iste bajte, izvoz pa ohrani nastavitve ter opravila.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#dejanja-in-prehodna-stanja",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Matrika vseh R poveže sprejemne scenarije s trenutnimi ali predvidenimi datotekami in povsod navede Ni izvedeno. Plan loči datoteke ter načrtovane preglede. Končnih povezav do avtorske kode in izvedenih testnih dokazov ni; tasks.md in verification.md nista nastala, faza tasks je prekinjena ob skupni meji. Razpoložljive povezave so uporabne za načrtovanje, ne predstavljajo sledljivosti dokončane izvedbe; uspehi niso izmišljeni.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/plan.md#datoteke",
+        "runtime/runs/P06-C-001/execution.json",
+        "analysis/evidence/P06-C-001-unchanged-source.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Inventarja začetka in konca potrdita nespremenjenih vseh deset datotek src; izvedba je spremenila le feature.json, ustavo, specifikacijo in načrt. Načrtovani CSV formatter in kontrole niso bili implementirani. Organizacije začetne aplikacije zato ne pripišemo modelu in odsotnosti kode ne ocenimo kot opažene slabe organizacije.",
+      "evidence": [
+        "analysis/evidence/P06-C-001-unchanged-source.json",
+        "runtime/runs/P06-C-001/execution.json",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/plan.md#odločitve-in-arhitektura"
+      ],
+      "missingReason": "Avtorska implementacija ne obstaja, ker se implementacijska faza pred časovno omejitvijo ni začela; organizacija kode zato ni ocenljiva."
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Končni inventar nima lastnih testnih datotek, izvedba pa vsebuje le constitution/specify/plan in prekinjeni tasks. Predvidene bajtne primerjave, prazni primeri in kontrolni pregledi dokumentov niso izvedeni preizkusi funkcionalnosti. Po izvirni rubriki odsotnost smiselnih dodatnih preverjanj pomeni oceno 0.",
+      "evidence": [
+        "analysis/evidence/P06-C-001-unchanged-source.json",
+        "runtime/runs/P06-C-001/execution.json",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/plan.md#zaporedje-izvedbe-in-preverjanja"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Časovna meja 1200,525 s nastopi med tasks; implement in converge nista zagnana. D01 pri neodvisnem ocenjevanju čaka na prenos CSV in doživi časovno omejitev; novih kontrol ali formatterja ni. Vseh 8 razvojnih in 24 skritih preverjanj nove funkcionalnosti je neuspešnih, osnovnih 38 pa uspešnih. Dokazanih je 0/12 zahtev; to je neizdelana funkcionalnost v danem proračunu, ne zavrnitev dostopa.",
+    "evidence": [
+      "runtime/runs/P06-C-001/evaluation-summary.json",
+      "runtime/runs/P06-C-001/execution.json",
+      "analysis/evidence/P06-C-001-unchanged-source.json"
+    ]
+  },
+  "finalFailureNote": "Končno time_limit, 1200,525 s, 38/70 in 0/12; strogi uspeh ne. Faze trajajo constitution 169,575 s, specify 877,491 s, plan 99,894 s in tasks 50,591 s. Naloge niso bile zapisane pred prekinitvijo. Celotna poraba je null; opažena spodnja meja je 1424992 vhodnih in 35589 izhodnih tokenov.",
+  "developmentFailureExample": null,
+  "calibrationNote": "Delna presoja sledi že razkritemu pojasnilu po prvem takem izidu P10-C-001. Merila 0–2 in izbor ostaneta nespremenjena. Kakovost razpoložljive specifikacije je ločena od odsotne implementacije in funkcionalnega neuspeha."
+}

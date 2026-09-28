@@ -1,0 +1,1 @@
+Celoten prvi preveritveni zagon je našel napaki v lastnem testu in prikazu prazne table; prikaz sem popravil, selektorje v testu uskladil z vlogo `combobox`, nato pa je ciljnih 5/5 agentnih testov uspelo. Ker je skupni zagon prej končal z eno testno napako, ga še enkrat zaganjam, preden zabeležim končni izid.

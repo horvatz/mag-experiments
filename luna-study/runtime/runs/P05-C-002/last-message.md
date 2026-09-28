@@ -1,0 +1,1 @@
+Začenjam lokalno uradno veščino `speckit-implement`. Najprej ustvarim `docs/agent/verification.md`, nato na hitro preverim tasks in izvorna pravila pred spremembo kode. Časovno okno je zelo kratko, zato bom rezultate vanj beležil sproti.

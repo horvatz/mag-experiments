@@ -1,0 +1,3 @@
+Implementacija R01–R12 je končana in predana pregledovalcu. Dodal sem lokalno straničenje in filter, skupen odsek za preglednico in tablo ter prikaz praznega rezultata. Podrobnosti izvedbe, sledljivost zahtev in omejitve so v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P05-B-002/app/docs/agent/verification.md).
+
+`npm run check` je uspešno zaključil slogovno preverjanje, tipe, gradnjo in vseh 51 testov. Po zadnji okrepitvi testa ponovnega nalaganja je uspešno prestalo še vseh 5 lastnih testov. `git diff --check` ni bilo mogoče izvesti, ker okolju manjka `xcrun`. Napake specifikacije nisem zaznal.

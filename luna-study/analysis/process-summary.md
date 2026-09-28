@@ -1,6 +1,6 @@
 # Zabeležene predaje in povratni koraki
 
-Posnetek 2026-09-27T09:30:59.101Z; 3/72 arhivov. Nepopolna zbirka; opis trenutno arhiviranih izvedb.
+Posnetek 2026-09-28T23:47:27.070Z; 62/72 arhivov. Nepopolna zbirka; opis trenutno arhiviranih izvedb.
 
 Štejemo samo formalne faze in predaje izvajalnika. Popravki kode, testnih pričakovanj ali priprave podatkov znotraj ene faze niso povratni korak izvajalnika. Ti števci niso število razvojnih napak, potrjenih funkcionalnih napak ali ocena kakovosti. A nima ločenega pregledovalca oziroma konvergence; zanj ne navajamo navidezno primerljivih ničel.
 
@@ -8,14 +8,14 @@ Posnetek 2026-09-27T09:30:59.101Z; 3/72 arhivov. Nepopolna zbirka; opis trenutno
 
 | Zapis | Število |
 | --- | --- |
-| Arhivirane izvedbe | 1 |
-| Začeti pregledi | 1 |
-| Potrjene strukturirane predaje pregleda | 1 |
-| Izvedbe brez potrjene predaje pregleda | 0 |
-| Predaje z zahtevano korekcijo specifikacije | 0 |
-| Predaje z zahtevano korekcijo kode | 0 |
-| Začete / zaključene korekcije specifikacije | 0 / 0 |
-| Začete / zaključene korekcije implementacije | 0 / 0 |
+| Arhivirane izvedbe | 20 |
+| Začeti pregledi | 20 |
+| Potrjene strukturirane predaje pregleda | 19 |
+| Izvedbe brez potrjene predaje pregleda | 1 |
+| Predaje z zahtevano korekcijo specifikacije | 1 |
+| Predaje z zahtevano korekcijo kode | 5 |
+| Začete / zaključene korekcije specifikacije | 1 / 0 |
+| Začete / zaključene korekcije implementacije | 6 / 6 |
 
 Zahteve za korekcijo so znane le pri potrjeni predaji. Odsotna ali neveljavna predaja ni potrditev, da ni bilo napak. Popravek specifikacije sproži tudi ponovno predajo implementerju, četudi zastavica za popravek kode ni nastavljena. Protokol po povratnem popravku ne načrtuje drugega formalnega pregleda.
 
@@ -23,11 +23,11 @@ Zahteve za korekcijo so znane le pri potrjeni predaji. Odsotna ali neveljavna pr
 
 | Zapis | Število |
 | --- | --- |
-| Arhivirane izvedbe | 1 |
-| Začeti koraki converge | 0 |
-| Potrjene strukturirane predaje converge | 0 |
-| Izvedbe brez potrjene predaje converge | 1 |
-| Izid converged | 0 |
+| Arhivirane izvedbe | 21 |
+| Začeti koraki converge | 1 |
+| Potrjene strukturirane predaje converge | 1 |
+| Izvedbe brez potrjene predaje converge | 20 |
+| Izid converged | 1 |
 | Izid tasks_appended | 0 |
 | Izid blocked | 0 |
 | Začete / zaključene dodatne implementacije | 0 / 0 |

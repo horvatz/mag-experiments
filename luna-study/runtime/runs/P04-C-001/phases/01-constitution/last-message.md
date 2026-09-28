@@ -1,0 +1,1 @@
+Posodobil sem [ustavo projekta](</Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P04-C-001/app/.specify/memory/constitution.md>) s kratkimi načeli, izpeljanimi iz projektnih pravil. Datoteko sem prebral nazaj; implementacijskih testov nisem izvajal. `git diff` ni bil na voljo, ker sistem ne najde aktivne poti do orodij Xcode.

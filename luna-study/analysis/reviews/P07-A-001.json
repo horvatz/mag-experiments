@@ -1,0 +1,109 @@
+{
+  "collection": "L/1.0",
+  "id": "P07-A-001",
+  "reviewedAt": "2026-09-28T20:18:23.522590+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "c0d577cb26415309a088f46f7dddc5b0c237aa976517532124c0512c72e3a973",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija skladno navede R01–R12, identiteto po ID-ju, globalno različico shrambe z normalizacijo UTF-16, neznane in neveljavne vrednosti, lokalni projektni filter, ponastavitve, projektno odstranjevanje, obe predstavitvi, števce, dogodke brez povratnega zapisa in pomnilniško delovanje z opozorilom ob napaki. Prazni filtrirani rezultat je opredeljen, nadaljnje ohranjanje območja prazne table pa ni izrecno zapisano. Končna napaka prikaza ostane ločeno objektivno zabeležena.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md#problem-in-kontekst",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Množica globalnih ID-jev F, projektni seznam T in stabilna projekcija V so ločeni. normalize(ids) določi enoličnost in UTF-16 vrstni red, odstranjevanje projekta je množična razlika, X/M pa kardinalnosti projektnih opravil. Tabela določi tudi predikate veljavnosti zapisa, dogodka in disabled kontrole ter prehode ob filtru, projektu in reloadu; pravila je mogoče neposredno preverjati.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Dvanajst vrstic poveže zahteve s konkretnimi funkcijami in poimenovanimi razvojnimi oziroma lastnimi testi; surovi item_52 potrdi navedeni polni rezultat 54/54, item_64 poznejši ciljni projektni test. Predaja razkrije popravljene testne predpostavke, sintetični storage in odsotnost dejanskega cross-tab ter skritih preverjanj. Navedba »ločeno« pri napakah shrambe je preširoka: izjema pisanja je sprožena v isti strani z že aktivnim opozorilom po napaki branja, zato opozorilo za pisanje ni neodvisno dokazano. Zadnja poved o zgolj preostalih skritih primerih tudi ni dokaz izčrpnosti. Kljub tema omejitvama povezave omogočajo preverjanje izvedenega; pomembne vrzeli dodatnih testov so ocenjene posebej.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P07-A-001/submission/docs/agent/verification.md#izvedeni-ukazi",
+        "runtime/runs/P07-A-001/submission/docs/agent/verification.md#povezava-preverjanj-z-zahtevami",
+        "runtime/runs/P07-A-001/submission/docs/agent/verification.md#dokazi-in-omejitve",
+        "runtime/runs/P07-A-001/submission/tests/agent/favorites.spec.ts:111",
+        "analysis/evidence/P07-A-001-checks.md#item_52",
+        "analysis/evidence/P07-A-001-checks.md#item_63",
+        "analysis/evidence/P07-A-001-checks.md#item_64"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti normalizator in parser sta ločena od useFavorites, ki upravlja globalno pomnilniško stanje, branje, zapis in poslušalca dogodkov s čiščenjem. ProjectView hrani samo lokalno izbiro filtra, vidna opravila in števci so izpeljani; projektni ključ ponastavi filter. Skupni FavoriteButton ostane zunaj povezave v obeh pogledih. Ni dodatnega shranjenega rezultata filtra ali API zapisov. Napačen vrstni red pogojev za prazen prikaz je funkcionalna napaka, ne dokaz zmede odgovornosti celotne rešitve.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/src/useFavorites.ts:5",
+        "runtime/runs/P07-A-001/submission/src/useFavorites.ts:9",
+        "runtime/runs/P07-A-001/submission/src/useFavorites.ts:30",
+        "runtime/runs/P07-A-001/submission/src/useFavorites.ts:36",
+        "runtime/runs/P07-A-001/submission/src/useFavorites.ts:45",
+        "runtime/runs/P07-A-001/submission/src/App.tsx:20",
+        "runtime/runs/P07-A-001/submission/src/App.tsx:84",
+        "runtime/runs/P07-A-001/submission/src/App.tsx:109",
+        "runtime/runs/P07-A-001/submission/src/components.tsx:18",
+        "runtime/runs/P07-A-001/submission/src/TaskBoard.tsx:13"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Osem koristnih scenarijev preveri podvojene/neznane ID-je brez začetnega zapisa, UTF-16, več neveljavnih oblik, projektno čiščenje in ponastavitve iz aktivnega filtra, sintetične dogodke brez odmeva, pomnilniški odziv ob izjemah, števce, 390 px in enaka naslova. Manjkajo prazen projekt, singleton in več kot deset opravil ter zlasti prazna tabla po odstranitvi zadnje oznake pod filtrom. Test table ima po eno izbrano opravilo v dveh različnih stolpcih, zato ne preveri vrstnega reda več kartic istega stolpca. Izjema pisanja je preizkušena po trajni napaki branja; že vidni alert ne izolira opozorila za zapis. Dejanska dva zavihka sta pošteno navedena kot nepreverjena.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/tests/agent/favorites.spec.ts:5",
+        "runtime/runs/P07-A-001/submission/tests/agent/favorites.spec.ts:22",
+        "runtime/runs/P07-A-001/submission/tests/agent/favorites.spec.ts:34",
+        "runtime/runs/P07-A-001/submission/tests/agent/favorites.spec.ts:54",
+        "runtime/runs/P07-A-001/submission/tests/agent/favorites.spec.ts:85",
+        "runtime/runs/P07-A-001/submission/tests/agent/favorites.spec.ts:111",
+        "runtime/runs/P07-A-001/submission/tests/agent/favorites.spec.ts:137",
+        "runtime/runs/P07-A-001/submission/tests/agent/favorites.spec.ts:155",
+        "analysis/evidence/P07-A-001-checks.md#item_52"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Končna E06 odpove na namizju in mobilno: po odstranitvi zadnjega priljubljenega opravila pri aktivnem filtru ni območja Tabla opravil. App.tsx najprej izbere favoritesOnly && visibleTasks.length === 0 in prikaže sporočilo, zato sploh ne pride do veje TaskBoard z njegovimi tremi praznimi stolpci. Končna neodvisna ocena: 68/70 testov, 11/12 zahtev; neuspeh ni popravljen ali ponovljen.",
+    "evidence": [
+      "runtime/runs/P07-A-001/submission/src/App.tsx:59",
+      "runtime/runs/P07-A-001/submission/src/TaskBoard.tsx:14",
+      "runtime/runs/P07-A-001/evaluation-summary.json",
+      "runtime/runs/P07-A-001/evaluation-tests.log"
+    ]
+  },
+  "finalFailureNote": "Completed, 909,327 s, 68/70 in 11/12, brez strogega uspeha. Popolna poraba je 4061645 vhodnih in 41520 izhodnih tokenov; tokeni niso račun API.",
+  "developmentFailureExample": {
+    "description": "Prvi skupni check item_29 ima 52/53 zaradi napačno pričakovanega vrstnega reda kartic med statusnimi stolpci. Po spremembi testa item_32 lastni item_33 doseže 6/7, ker test pričakuje en stolpec z dvema opraviloma namesto dveh z enim; item_34 popravi test in ciljni item_35 uspe. Item_37 in item_44 potrdita 54/54. Dodatni reload v projektni scenarij povzroči 53/54 v item_47 zaradi ponovnega sejanja inicializacijskega zapisa; testni item_50 popravi fixture, item_51 potrdi ciljni uspeh in item_52 celotnih 54/54. Po poznejši spremembi testne datoteke item_63 je dokumentiran še ciljni uspeh item_64, ne nov polni check. To so razvojne napake testnih predpostavk, ločene od končne prazne table.",
+    "evidence": [
+      "analysis/evidence/P07-A-001-checks.md#item_29",
+      "analysis/evidence/P07-A-001-checks.md#item_32",
+      "analysis/evidence/P07-A-001-checks.md#item_33",
+      "analysis/evidence/P07-A-001-checks.md#item_34",
+      "analysis/evidence/P07-A-001-checks.md#item_35",
+      "analysis/evidence/P07-A-001-checks.md#item_37",
+      "analysis/evidence/P07-A-001-checks.md#item_44",
+      "analysis/evidence/P07-A-001-checks.md#item_46",
+      "analysis/evidence/P07-A-001-checks.md#item_47",
+      "analysis/evidence/P07-A-001-checks.md#item_50",
+      "analysis/evidence/P07-A-001-checks.md#item_51",
+      "analysis/evidence/P07-A-001-checks.md#item_52",
+      "analysis/evidence/P07-A-001-checks.md#item_63",
+      "analysis/evidence/P07-A-001-checks.md#item_64"
+    ]
+  }
+}

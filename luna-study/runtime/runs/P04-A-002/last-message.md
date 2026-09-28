@@ -1,0 +1,1 @@
+Prvi celotni zagon je našel dve napaki v novih preverjanjih: eno strogo izbiranje podvojenega ID-ja v podrobnostih in ponovno uporabo strani z že prestreženim praznim API odgovorom. Popravil sem testne scenarije; vseh 4 agentnih testov zdaj uspe. Ponovno zaganjam celoten pregled, da končni zapis temelji na enem uspešnem polnem zagonu.

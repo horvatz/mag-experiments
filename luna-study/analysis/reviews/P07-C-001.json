@@ -1,0 +1,108 @@
+{
+  "collection": "L/1.0",
+  "id": "P07-C-001",
+  "reviewedAt": "2026-09-28T20:50:20.987108+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "9f02fbe8c4075ef6e3ce39e8a60896d076dc9c531f4f4d052841dcfbb0afec17",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija skladno opredeli R01–R12: identiteto ID, globalno shrambo in projektni filter, kanoničen zapis UTF-16, podvojene/neznane/neveljavne vrednosti, prehode, projektno čiščenje, oba prikaza in števce, dogodke brez odmeva, izjeme ter lokalni obseg in 390 px. Prazni filtrirani rezultat in dostopne kontrole so izrecni; ohranitev območja prazne table ni posebej opisana. Načrt pojasni lastništvo stanja in meje sprememb; funkcionalni neuspeh se poroča ločeno.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md#zahteve-in-pravila",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md#uporabniški-scenariji",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/plan.md#odločitve-pri-zasnovi"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Sedem pravil stanja poveže T(p), I(p), globalni F, filter A in stabilno projekcijo D. Preklop je simetrična razlika, projektno odstranjevanje množična razlika, zapis normalizirana množica, veljavnost pa pogoj nad objektom/različico/seznamom nizov. Projektni X/M in vidni stolpčni števci so ločeni, ponastavitve ter zunanji dogodek imajo jasne pred-/popogoje brez API sprememb.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md#pravila-stanja",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Končna matrika poveže vseh dvanajst zahtev s konkretnimi moduli in poimenovanimi lastnimi testi; verification.md zabeleži razvojni neuspeh ter zadnji 54/54, ki ga potrdi surovi item_38. Vseh šest nalog je zaključenih, converge pa referencira isti rezultat brez dodatnega testnega zagona. Nedostopni končni testi so označeni kot neizvedeni. Dokazni doseg nekaterih vrstic je ožji od celotne zahteve: navedeni test R08 nima reloada aktivnega filtra, R09 ne čisti hkrati s tujimi/neznanimi ID-ji, R10 pa šteje povezave v stolpcu, ne besedila njegovega števca. Povezave omogočajo neposredno preverjanje teh omejitev; oznaka uspešno ni dokaz izčrpnosti.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P07-C-001/submission/docs/agent/verification.md#napredek",
+        "runtime/runs/P07-C-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/tasks.md#polish",
+        "runtime/runs/P07-C-001/submission/docs/agent/convergence.json",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:49",
+        "analysis/evidence/P07-C-001-checks.md#item_38",
+        "analysis/evidence/P07-C-001-checks.md#converge"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti parser/normalizator/serializer so ločeni od hooka za globalno stanje, shrambo in listener s čiščenjem. Objavna pot uskladi state/ref; uporabniški save poskusi zapis, zunanja sinhronizacija pa neposredno objavi stanje. App hrani globalne priljubljene, ProjectView le lokalni filter, vidna opravila in števci so izpeljani. Oba pogleda uporabita isti seznam in ID-dejanje; gumb ostane zunaj povezave. Kratka podvojena oznaka gumba v dveh prikazih ne podvaja pravil shrambe ali prehodov. Napačna prazna veja je posebej izkazana funkcionalna napaka.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:7",
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:11",
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:34",
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:43",
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:66",
+        "runtime/runs/P07-C-001/submission/src/App.tsx:20",
+        "runtime/runs/P07-C-001/submission/src/App.tsx:27",
+        "runtime/runs/P07-C-001/submission/src/App.tsx:80",
+        "runtime/runs/P07-C-001/submission/src/App.tsx:105",
+        "runtime/runs/P07-C-001/submission/src/TaskBoard.tsx:13"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Osem lastnih scenarijev preveri ID-preklop v obeh pogledih, nespremenjeno stanje API, več neveljavnih oblik, deduplikacijo/neznani ID, projektni prehod iz aktivnega filtra, veljaven/null/drugi-ključ dogodek, odsotnost zapisa pri veljavnem dogodku, ločeni izjemi branja/pisanja, prazno tabelo in 390 px. Ostanejo pomembne vrzeli: vsi lastni podatki so osnovni projekti s tremi opravili; ni 0/1/>10, Unicode kanonizacije, neveljavnega dogodka ali reloada aktivnega filtra. Projektno čiščenje ne začne s tujimi/neznanimi priljubljenimi, tabla ima le preverjeno število povezav enega stolpca. Prazni test ne preklopi na tablo, kjer ostane končna napaka. Mobilni lastni test preveri širino samo preglednice; pravi cross-tab ni izveden.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:10",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:30",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:49",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:75",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:86",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:101",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:117",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:130",
+        "analysis/evidence/P07-C-001-checks.md#item_38"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E06 odpove na namizju in mobilno: po odstranitvi zadnjega priljubljenega pod filtrom in preklopu na tablo ni območja Tabla opravil. App.tsx:59 izbere prazno sporočilo pred TaskBoard; lastni prazen scenarij ostane v preglednici in tega prehoda ne izvede. Končna neodvisna ocena je 68/70 in 11/12, čeprav lastni skupni check doseže 54/54 in je celoten postopek completed.",
+    "evidence": [
+      "runtime/runs/P07-C-001/submission/src/App.tsx:59",
+      "runtime/runs/P07-C-001/submission/src/TaskBoard.tsx:14",
+      "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:117",
+      "runtime/runs/P07-C-001/evaluation-summary.json",
+      "runtime/runs/P07-C-001/evaluation-tests.log"
+    ]
+  },
+  "finalFailureNote": "Completed, 1166,943 s, 68/70 in 11/12; ni strogega uspeha. Vseh šest faz je zaključenih, converge ne doda nalog ali ponovi testov. Popolna poraba je 5812721 vhodnih in 55873 izhodnih tokenov; to ni denarna cena.",
+  "developmentFailureExample": {
+    "description": "Implementacijski item_19 najprej odpove s TS6133 zaradi neuporabljenega storageKey v lastnem testu; item_20 popravi test, item_21 in item_29 potrdita tipe. Prvi celotni item_34 doseže 51/52, ker test pričakuje malo začetnico shramba, UI pa pokaže Shramba. Item_36 spremeni le teste: primerjavo naredi neobčutljivo na velikost črk in razširi nabor; item_38 potrdi 54/54. Poznejša posega item_41 in item_44 dopolnita dokumentacijo; v konvergenci ni nove implementacije ali testnega zagona. Končna napaka prazne table ni odkrita ali popravljena.",
+    "evidence": [
+      "analysis/evidence/P07-C-001-checks.md#item_19",
+      "analysis/evidence/P07-C-001-checks.md#item_20",
+      "analysis/evidence/P07-C-001-checks.md#item_21",
+      "analysis/evidence/P07-C-001-checks.md#item_29",
+      "analysis/evidence/P07-C-001-checks.md#item_34",
+      "analysis/evidence/P07-C-001-checks.md#item_36",
+      "analysis/evidence/P07-C-001-checks.md#item_38",
+      "analysis/evidence/P07-C-001-checks.md#item_41",
+      "analysis/evidence/P07-C-001-checks.md#item_44",
+      "analysis/evidence/P07-C-001-checks.md#converge"
+    ]
+  }
+}

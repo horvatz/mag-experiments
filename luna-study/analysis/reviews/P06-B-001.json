@@ -1,0 +1,86 @@
+{
+  "collection": "L/1.0",
+  "id": "P06-B-001",
+  "reviewedAt": "2026-09-27T11:25:03.478757+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "6abb3591060e98ac256ec063d91034fd796da837f73d85c2cafe7049a64c2d01",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "R01–R12 pokrijejo kanonični izbor kolon, izvorni red vrstic, filter samo za izvoz, oba pogoja onemogočenja, lokalni prenos z imenom in BOM, citiranje/CRLF ter natančno zaščito pred formulami. Ohranjanje Unicode in izvornih vrednosti, projektna življenjska doba nastavitev, enakost med pogledoma in nespremenjenost prikaza so izrecni. Predaja navede omejitve znanih razvojnih scenarijev.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T/K/S/C/R/d jasno ločijo izvorni seznam, množico izbranih kolon in kanonično projekcijo ter filtrirane vrstice. Dvosmerni enabled predikat zahteva hkrati kolone in vrstice. Pravila za citiranje vseh celic, podvajanje narekovajev, zaključni CRLF, apostrof pred celotnim izvornim nizom po točno določenih belih znakih ter izključitev glave omogočajo neposredno preverjanje. Prehodi pogled/projekt/osvežitev imajo določene ohranjene oziroma ponastavljene nastavitve.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Začetna specifikacija ohrani pošteno označen fazni načrt, končni verification.md pa vsako zahtevo poveže z dejansko kodo in poimenovanimi scenariji. Dnevnik neposredno potrdi končnih 51/51, ločenih 8/8 razvojnih in 5/5 lastnih preverjanj. Vmesni neuspehi, neizveden ročni ogled, omejitev Git in odsotnost velikih naborov so navedeni. Pregledovalec izrecno pove, da testov ni ponovno zagnal. Vrzel v razločevanju nekaterih lastnih primerov je ocenjena v dimenziji lastnih preverjanj.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/docs/agent/specification-history.md",
+        "runtime/runs/P06-B-001/submission/docs/agent/verification.md#sledljivost-zahtev-in-dokazov",
+        "runtime/runs/P06-B-001/submission/docs/agent/verification.md#omejitve-okolja-in-nepreverjeno",
+        "runtime/runs/P06-B-001/submission/docs/agent/review.json",
+        "analysis/evidence/P06-B-001-checks.md#item_13",
+        "analysis/evidence/P06-B-001-checks.md#item_26",
+        "analysis/evidence/P06-B-001-checks.md#item_27"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "csv.ts vsebuje tipizirane kanonične kolone in čist serializator; citiranje in nevtralizacija sta skupna vsem podatkovnim celicam. ProjectView hrani tri neodvisne nastavitve, vrstice/kolone/omogočenost izpelje iz njih, Set pri spremembi kopira, podatkov za prikaz ne mutira. Prenos je v enem obdelovalniku z istim predikatom kot gumb in sprostitvijo objektnega URL-ja. Ključ projekta upravlja ponastavitev; ohranjeni TaskBoard prejme izvorna opravila.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/src/csv.ts:3",
+        "runtime/runs/P06-B-001/submission/src/csv.ts:8",
+        "runtime/runs/P06-B-001/submission/src/App.tsx:12",
+        "runtime/runs/P06-B-001/submission/src/App.tsx:21",
+        "runtime/runs/P06-B-001/submission/src/App.tsx:64",
+        "runtime/runs/P06-B-001/submission/src/App.tsx:144"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Pet uspešnih scenarijev koristno preveri celotno ročno pričakovano CSV besedilo, vse štiri nevarne začetke, Unicode/citate/prelome, obe ločili, nič kolon, prazen projekt/filter, izvorni prikaz in enakost med pogledoma. Vendar klici check za drugačen vrstni red kolon zadevajo že izbrane checkboxe, zato ne ustvarijo drugačnega reda ponovne izbire. Reload sledi projektni ponastavitvi in se zgodi pri že privzetih nastavitvah, zato ne razloči zahtevane ponastavitve spremenjenih nastavitev. Tudi namenska primera nekanoničnega reda ID-jev in več kot deset opravil manjkata. To so konkretne vrzeli oraklja; končna aplikacija vse neodvisne teste opravi.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/tests/agent/P06.spec.ts:3",
+        "runtime/runs/P06-B-001/submission/tests/agent/P06.spec.ts:11",
+        "runtime/runs/P06-B-001/submission/tests/agent/P06.spec.ts:22",
+        "runtime/runs/P06-B-001/submission/tests/agent/P06.spec.ts:44",
+        "runtime/runs/P06-B-001/submission/tests/agent/P06.spec.ts:59",
+        "runtime/runs/P06-B-001/submission/docs/agent/verification.md#omejitve-okolja-in-nepreverjeno",
+        "analysis/evidence/P06-B-001-checks.md#item_27"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Končno completed, 974,316 s, 70/70 in 12/12; strogi uspeh. Potrjene končne funkcionalne napake ni. Specifikacija/implementacija/pregled trajajo 214,948 / 550,830 / 205,188 s; pregled ne zahteva popravkov. Popolna poraba je 2233686 vhodnih in 38040 izhodnih tokenov.",
+  "developmentFailureExample": {
+    "description": "Prvi check potrdi 49/49. Dodani združeni scenarij za prazen projekt in nov neprazen nabor nato ne najde web-only: celotni zagon ima 49 uspehov in eno odpoved, naslednji lastni zagon pa 3 uspehe in isto odpoved. Razdelitev na dva scenarija s svežima stranema pripelje do 5/5 in končnega 51/51. Natančen mehanizem starega nabora v brskalniku ni bil neodvisno diagnosticiran; dokazani so neuspešen scenarij, sprememba testne priprave in poznejši uspeh.",
+    "evidence": [
+      "analysis/evidence/P06-B-001-checks.md#item_11",
+      "analysis/evidence/P06-B-001-checks.md#item_17",
+      "analysis/evidence/P06-B-001-checks.md#item_20",
+      "analysis/evidence/P06-B-001-checks.md#item_22",
+      "analysis/evidence/P06-B-001-checks.md#item_27",
+      "runtime/runs/P06-B-001/submission/tests/agent/P06.spec.ts:44"
+    ]
+  }
+}

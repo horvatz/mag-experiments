@@ -1,0 +1,95 @@
+{
+  "collection": "L/1.0",
+  "id": "P04-B-001",
+  "reviewedAt": "2026-09-28T23:20:28.731627+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "5e9d68119943c9a79d2f20f5c612974e76feeac14e75e2de4038962903d4fb27",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija skladno pokrije vse zahteve R01–R12: točne kontrole/domene in privzeti tuple, lokalno stanje, NFD/UTF-16, statusni vrstni red in veljavne datume. Izrecni so neodvisni smeri, sekundarno primerjanje le pri izenačenju, stabilen izvorni indeks, enaka ključa in original. Pokriti so fiksni stolpci, ohranitev stanja pri pogledih/podrobnostih, ponastavitve, nič/eno pri vseh izbirah, nespremenjenost podatkov/povzetkov/API, ID-ji, bralni tokovi, dostopna imena in 390 px. Začetna sledljivost pošteno loči obstoječe razvojne scenarije od še nepreverjenih pogojev.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T in i(t), normalizacija N, cmpK ter predznaka dP/dS določijo točen vrstni red. Neničelni primarni rezultat odloči prvi, sekundarni sledi le ob enakosti in indeks ohrani stabilnost tudi pri padajoči smeri ali podvojenem ključu. original je ekspliciten obvoz drugih kontrol, tabla je podzaporedje iste projekcije. Pravila določijo lokalno življenjsko dobo četverice, ponastavitve ter nespremenjenost vhodnih podatkov in odsotnost zapisovalnih klicev.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P04-B-001/submission/docs/agent/verification.md#spremembe-in-sledljivost"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Začetna specifikacija odkrito označi načrtovane in nezagnane scenarije; implementacijska predaja doda dvanajst povezav med pravili, konkretnimi funkcijami in testi. Končni 50/50 je potrjen z item_27, pregledovalec pa izrecno pove, da tega zagona ni ponovil. Povezave zato omogočajo preverjanje, ob manjših pretiranih opisih obsega: lastni datumi ne prečkajo leta, nič/eno pa ne zajameta vseh smeri in kombinacij, čeprav ju predaja tako posploši. Teh besedil ne štejemo za dodatne izvedene dokaze; dejanski obseg in vrzeli so navedeni pri lastnih preverjanjih. Ne gre za izmišljen uspešni zagon.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P04-B-001/submission/docs/agent/verification.md#spremembe-in-sledljivost",
+        "runtime/runs/P04-B-001/submission/docs/agent/verification.md#rezultati-in-omejitve",
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:27",
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:82",
+        "analysis/evidence/P04-B-001-checks.md#02-implementation-item_27",
+        "analysis/evidence/P04-B-001-checks.md#03-review-item_41",
+        "analysis/evidence/P04-B-001-checks.md#popis-ukazov-pregledovalca"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "App.tsx ima kratke ločene funkcije compareText, compareByKey in sortTasks pred komponento. Dekorirana kopija ohrani indeks in ne mutira izvornega polja; neodvisni predznaki ne obrnejo stabilnih vezi. ProjectView hrani štiri nastavitve in izpelje orderedTasks, isto polje za preglednico in tablo, medtem ko povzetki uporabljajo izvorna opravila. Projektni key zagotovi ponastavitev, brez nove navigacije, shrambe ali API-ja. Čista logika je v istem modulu, vendar razločno ločena in za obseg spremembe pregledna; delitev v dodatno datoteko sama ni merilo kakovosti.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/src/App.tsx:11",
+        "runtime/runs/P04-B-001/submission/src/App.tsx:17",
+        "runtime/runs/P04-B-001/submission/src/App.tsx:23",
+        "runtime/runs/P04-B-001/submission/src/App.tsx:29",
+        "runtime/runs/P04-B-001/submission/src/App.tsx:42",
+        "runtime/runs/P04-B-001/submission/src/App.tsx:79",
+        "runtime/runs/P04-B-001/submission/src/App.tsx:94",
+        "runtime/runs/P04-B-001/submission/src/App.tsx:138",
+        "runtime/runs/P04-B-001/submission/src/TaskBoard.tsx:16"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Štirje uspešni lastni scenariji preverijo UTF-16 številčne nize, Unicode izenačitve in obe smeri, stabilnost, original ob spremenjenih kontrolah, status/datum z neodvisnima smerema, ponovljen ključ, eno kolono table, podrobnosti ter ponastavitve. Reset gumba začne pri vseh štirih neprivzetih nastavitvah in preveri vse štiri. Pomembne vrzeli ostanejo: enaka ključa imata enako smer; normalizacija oseb in >10 zapisov nista pokriti. Pri projektu sta primarni ključ in sekundarna smer že privzeta; refresh spremeni in preveri samo primarni ključ. Prazen vhod uporabi eno kombinacijo, singleton vse primarne ključe samo v desc in en sekundarni ključ/smer, torej ne celotne matrike. Ni neposredne primerjave vhodnih podatkov/povzetkov pred in po. Uspeh 50/50 teh robov ne dokazuje.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:3",
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:27",
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:49",
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:82",
+        "analysis/evidence/P04-B-001-checks.md#02-implementation-item_27"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Completed, 875,748 s, 70/70 in 12/12, strogi uspeh. Popolna poraba 1873013 vhodnih in 35762 izhodnih tokenov. Pregledovalec ne zahteva popravkov in testov ne ponovi. Rezultat velja za določen neodvisni nabor, ne za vse možne vhode.",
+  "developmentFailureExample": {
+    "description": "Item_17 doseže 48/50: test pri naslovu še ohrani primary desc, a pričakuje Alfa pred Echo; drugi pričakuje napačen vrstni red naslovov todo kolone. Item_18 spremeni samo test. Item_20 doseže 49/50, ker pričakuje celotni API vrstni red, izpis table pa je združen po stalnih statusnih stolpcih. Item_21 popravi testni potek/pričakovanje. Item_23 še doseže 49/50 zaradi napačne pozicije Čas za pregled glede na alfa v padajočem vrstnem redu. Item_24 popravi samo test; item_27 nato potrdi lint/tipi/gradnjo in 50/50 (19,1 s). Popis sprememb kaže, da sta App.tsx in styles.css zapisani samo v item_12/13 pred prvim checkom. Neuspehi so zato konkretno razloženi s testnimi pričakovanji in potekom, ne pripisani popravku aplikacijske logike.",
+    "evidence": [
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_17",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_18",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_20",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_21",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_23",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_24",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_27",
+      "analysis/evidence/P04-B-001-checks.md#popis-implementacijskih-sprememb",
+      "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:27",
+      "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:49"
+    ]
+  }
+}

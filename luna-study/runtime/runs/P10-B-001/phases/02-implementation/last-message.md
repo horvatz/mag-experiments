@@ -1,0 +1,3 @@
+Implementacija in predaja pregledovalcu sta zaključeni. Lokalni vrstni red, globalna mesta, premiki na tabli ter razveljavitev, ponovitev in povrnitev so dodani; svoje teste sem shranil v [P10.history.spec.ts](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P10-B-001/app/tests/agent/P10.history.spec.ts).
+
+`npm run check` je uspešno zaključil lint, typecheck, gradnjo in vseh 50 testov. Sledljivost zahtev, omejitve in nepreverjeni scenariji so zapisani v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P10-B-001/app/docs/agent/verification.md). Ročni vizualni pregled ni bil izveden; poskus `git status` je oviral manjkajoči `xcrun`.

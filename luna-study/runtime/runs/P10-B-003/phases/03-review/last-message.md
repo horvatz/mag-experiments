@@ -1,0 +1,1 @@
+Kodo, zahteve in razpoložljive teste sem pregledal. Implementacija se ujema z R01–R12; `verification.md` pravi, da izvajalec testov še ni zagnal. Zdaj zabeležim pregled kot dokončan, pri nepreverjenih pa navedem, da v tej fazi nisem poganjal testov ali ročnega preverjanja pri 390 px.

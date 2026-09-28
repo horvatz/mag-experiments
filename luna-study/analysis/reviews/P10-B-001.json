@@ -1,0 +1,81 @@
+{
+  "collection": "L/1.0",
+  "id": "P10-B-001",
+  "reviewedAt": "2026-09-27T10:28:24.154529+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "1dc1e08f1e5bd84ae52ab1dbf51c437e61accdee391f81441e3f6a8668978114",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Predana specifikacija pokrije R01–R12, vhodno domeno, enake naslove in identiteto po ID, globalnega soseda tudi med statusnimi stolpci, no-op in redo-vejo, zgodovino 20 ter reset z ohranitvijo zgodovine ob izvornem redu. Življenjska doba projekta, pogled/podrobnosti in osvežitev so ločeni. Načrtovanih preverjanj ne predstavlja kot izvedenih.",
+      "evidence": [
+        "runtime/runs/P10-B-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P10-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "O/C/U/R imajo izrecne formule za sosednji premik, last20, init/last pri undo/redo in povrnitev. Invarianta permutacije, nespremenljivost polj ter ohranitev celotnega stanja pri robnih dejanjih so preverljivi. R03 in R06 pojasnita neveljavna dejanja; R09 veže filtriranje stolpcev na eno globalno permutacijo.",
+      "evidence": [
+        "runtime/runs/P10-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Končna tabela verification.md poveže vsako R s konkretno logiko in D oziroma lastnim scenarijem. Pri R06 in R10 odkrito označi manjkajoče namenske preizkuse; review.json loči statični pregled od neponovljenega zagona in ročnega ogleda. Arhivirani item_23 potrdi 4/4 lastne teste, item_24 končni 50/50. Predana specifikacija pravilno ostane dokument specifikatorske vloge; končna dokazila so v implementatorjevem zapisu. Vrzel oraklja zgodovine je ocenjena pri lastnih preverjanjih.",
+      "evidence": [
+        "runtime/runs/P10-B-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "runtime/runs/P10-B-001/submission/docs/agent/verification.md#rezultati-preverjanja",
+        "runtime/runs/P10-B-001/submission/docs/agent/review.json",
+        "analysis/evidence/P10-B-001-checks.md#item_23",
+        "analysis/evidence/P10-B-001-checks.md#item_24"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Tipizirani OrderState hrani izvor, trenutno permutacijo in sklada; initialOrder/remember ter funkcijski prehodi ločijo posnetke od izvornih Task objektov. ProjectView izpelje Map po ID, globalna mesta in skupni urejeni seznam, števce pa računa iz nespremenjenih opravil. TaskBoard sprejme podatke in callbacke ter filtrira po stanju. Majhna ponovitev predstavitvenih gumbov v obeh pogledih ne podvaja prehodne logike; projektni ključ določa ponastavitev.",
+      "evidence": [
+        "runtime/runs/P10-B-001/submission/src/App.tsx:11",
+        "runtime/runs/P10-B-001/submission/src/App.tsx:22",
+        "runtime/runs/P10-B-001/submission/src/App.tsx:35",
+        "runtime/runs/P10-B-001/submission/src/TaskBoard.tsx:14"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Štirje dejansko uspešni scenariji koristno preverijo kapaciteto skladov, reset, 0/1 opravilo, posebne ID-je, podvojene naslove in globalno mesto na tabli. Test zgodovine izmenjuje le dve permutaciji in po 20 undo preveri samo dolžini skladov; vrstni red preveri šele po vseh redo. Zato ne loči pravilne odstranitve najstarejšega zapisa od napačnega ohranjanja zgodnejšega okna zgodovine. Manjkata tudi namenska no-op ob nepraznem redo in projekt/refresh po lokalnem premiku, kar predaja odkrito prizna. Gre za pomembne vrzeli oraklja, ne za kazen zaradi majhnega števila testov.",
+      "evidence": [
+        "runtime/runs/P10-B-001/submission/tests/agent/P10.history.spec.ts:3",
+        "runtime/runs/P10-B-001/submission/tests/agent/P10.history.spec.ts:25",
+        "runtime/runs/P10-B-001/submission/tests/agent/P10.history.spec.ts:31",
+        "runtime/runs/P10-B-001/submission/tests/agent/P10.history.spec.ts:40",
+        "runtime/runs/P10-B-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "analysis/evidence/P10-B-001-checks.md#item_24"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Končno completed, 1032,509 s, 70/70 in 12/12; strogi uspeh. Potrjene končne funkcionalne napake ni. Pregledovalec ni zahteval spremembe specifikacije ali kode in ni sam ponovil testov. Opažena vrzel lastnega testa zgodovine ni napaka dejanske implementacije, ki pravilno uporablja slice(-20).",
+  "developmentFailureExample": {
+    "description": "Prvi osnovni check potrdi 46/46. Po dodatnih testih item_21 pokaže 47 uspehov in dve odpovedi: test poskusi Premakni web-02 gor, ko je gumb pravilno onemogočen na prvem mestu, ter isti test ponovno namesti drugačen nabor po praznem projektu. Model popravi zaporedje na ponavljajoč se premik istega ID-ja dol/gor in loči enoelementni primer. Item_23 nato potrdi 4/4, item_24 pa 50/50. Ti izidi podpirajo popravek testnih scenarijev; niso predhodni neuspehi neodvisnega končnega ocenjevanja.",
+    "evidence": [
+      "analysis/evidence/P10-B-001-checks.md#item_16",
+      "analysis/evidence/P10-B-001-checks.md#item_21",
+      "analysis/evidence/P10-B-001-checks.md#item_23",
+      "analysis/evidence/P10-B-001-checks.md#item_24",
+      "runtime/runs/P10-B-001/submission/tests/agent/P10.history.spec.ts",
+      "analysis/evidence/P10-B-001-checks.md#item_22"
+    ]
+  },
+  "calibrationNote": "Ista rubrika M/1.0. Zgodovinska presoja Astra P10-B-001 z oceno 2 za lastna preverjanja je temeljila tudi na dejanskih shranjenih posnetkih skozi zgodovino in no-op ob redo. Pri Luni manjka razločujoč orakelj za najstarejši zapis; ne zahtevamo enakega števila testov, ločenega reducerja ali dodatnega testiranja kot pri Astri. Raziskovalec oddaje ni spreminjal ali izvajal mutacij."
+}
