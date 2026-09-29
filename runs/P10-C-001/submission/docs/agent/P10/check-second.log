@@ -1,0 +1,149 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 check
+> npm run lint && npm run build && npm test
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 lint
+> eslint .
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 build
+> npm run typecheck && vite build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 typecheck
+> tsc --noEmit
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 1877 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.36 kB
+dist/assets/index-CZCvDDAb.css   13.75 kB │ gzip:  3.71 kB
+dist/assets/index-DuihsdBa.js   242.07 kB │ gzip: 75.44 kB
+
+✓ built in 77ms
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 test
+> playwright test
+
+[WebServer] (node:64148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:64186) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 58 tests using 1 worker
+
+(node:64187) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [api] › tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (35ms)
+  ✓   2 [api] › tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (9ms)
+  ✓   3 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (5ms)
+  ✓   4 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (7ms)
+  ✓   5 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (7ms)
+  ✓   7 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (4ms)
+  ✓   8 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (5ms)
+  ✓   9 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [api] › tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (15ms)
+  ✓  11 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with success (9ms)
+  ✓  12 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (7ms)
+  ✓  13 [api] › tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (7ms)
+  ✓  14 [api] › tests/api.spec.ts:91:1 › normal server does not expose test controls (8ms)
+(node:64189) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [desktop] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (426ms)
+  ✓  16 [desktop] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (513ms)
+  ✓  17 [desktop] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (532ms)
+  ✓  18 [desktop] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (656ms)
+  ✓  19 [desktop] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (450ms)
+  ✓  20 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (358ms)
+  ✓  21 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (372ms)
+  ✓  22 [desktop] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (347ms)
+  ✓  23 [desktop] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (359ms)
+  ✓  24 [desktop] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (869ms)
+  ✓  25 [desktop] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (602ms)
+  ✓  26 [desktop] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (406ms)
+(node:64209) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  27 [mobile] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (386ms)
+  ✓  28 [mobile] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (497ms)
+  ✓  29 [mobile] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (564ms)
+  ✓  30 [mobile] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (701ms)
+  ✓  31 [mobile] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (511ms)
+  ✓  32 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (408ms)
+  ✓  33 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (407ms)
+  ✓  34 [mobile] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (359ms)
+  ✓  35 [mobile] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (366ms)
+  ✓  36 [mobile] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (922ms)
+  ✓  37 [mobile] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (670ms)
+  ✓  38 [mobile] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (425ms)
+(node:64226) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  39 [development-desktop] › tests/development/P10.spec.ts:2:1 › D01: one move and boundary (351ms)
+  ✓  40 [development-desktop] › tests/development/P10.spec.ts:3:1 › D02: undo and redo (395ms)
+  ✓  41 [development-desktop] › tests/development/P10.spec.ts:4:1 › D03: new move clears redo (378ms)
+  ✓  42 [development-desktop] › tests/development/P10.spec.ts:5:1 › D04: board global rank, reset and no writes (441ms)
+(node:64232) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [development-mobile] › tests/development/P10.spec.ts:2:1 › D01: one move and boundary (367ms)
+  ✓  44 [development-mobile] › tests/development/P10.spec.ts:3:1 › D02: undo and redo (429ms)
+  ✓  45 [development-mobile] › tests/development/P10.spec.ts:4:1 › D03: new move clears redo (410ms)
+  ✓  46 [development-mobile] › tests/development/P10.spec.ts:5:1 › D04: board global rank, reset and no writes (494ms)
+(node:64239) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  47 [agent] › tests/agent/P10.spec.ts:26:1 › A01: arbitrary IDs, duplicate titles, global neighbors and unchanged fields (645ms)
+  ✓  48 [agent] › tests/agent/P10.spec.ts:54:1 › A02: undo redo branch, disabled edges and undoable reset (753ms)
+  ✓  49 [agent] › tests/agent/P10.spec.ts:87:1 › A03: UI retains 20 undo steps after 21 moves and replays all (2.7s)
+  ✓  50 [agent] › tests/agent/P10.spec.ts:99:1 › A04: view and details preserve both histories; project and refresh reset (1.2s)
+  ✓  51 [agent] › tests/agent/P10.spec.ts:135:3 › A05: 0 tasks, empty second project, both views (436ms)
+  ✓  52 [agent] › tests/agent/P10.spec.ts:135:3 › A05: 1 tasks, empty second project, both views (485ms)
+  ✘  53 [agent] › tests/agent/P10.spec.ts:156:1 › A06: 390px Folio, inner scrolling, keyboard controls outside links (480ms)
+(node:64255) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  54 [agent] › tests/agent/taskOrder.spec.ts:11:1 › M01: full permutations, immutable moves, undo and redo (5ms)
+  ✓  55 [agent] › tests/agent/taskOrder.spec.ts:31:1 › M02: invalid edges preserve redo; valid branch clears it (1ms)
+  ✓  56 [agent] › tests/agent/taskOrder.spec.ts:47:1 › M03: 21 moves retain exactly 20 complete undo and redo steps (10ms)
+  ✓  57 [agent] › tests/agent/taskOrder.spec.ts:73:1 › M04: reset is one undoable action and clears existing redo (0ms)
+  ✓  58 [agent] › tests/agent/taskOrder.spec.ts:90:1 › M05: empty and singleton have no valid action (0ms)
+
+
+  1) [agent] › tests/agent/P10.spec.ts:156:1 › A06: 390px Folio, inner scrolling, keyboard controls outside links 
+
+    Error: expect(received).not.toBe(expected) // Object.is equality
+
+    Expected: not "none"
+
+      171 |   await up.focus()
+      172 |   await expect(up).toBeFocused()
+    > 173 |   expect(await up.evaluate(element => getComputedStyle(element).outlineStyle)).not.toBe('none')
+          |                                                                                    ^
+      174 |   await page.keyboard.press('Enter')
+      175 |   await ranks(page, original)
+      176 |   expect(await page.locator('[data-task-id] button').evaluateAll(buttons => buttons.every(button => !button.closest('a')))).toBe(true)
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P10-C-001/app/tests/agent/P10.spec.ts:173:84
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-P10-A06-390px-Folio--66fe0-oard-controls-outside-links-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-P10-A06-390px-Folio--66fe0-oard-controls-outside-links-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-P10-A06-390px-Folio--66fe0-oard-controls-outside-links-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-P10-A06-390px-Folio--66fe0-oard-controls-outside-links-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [agent] › tests/agent/P10.spec.ts:156:1 › A06: 390px Folio, inner scrolling, keyboard controls outside links 
+  57 passed (24.0s)

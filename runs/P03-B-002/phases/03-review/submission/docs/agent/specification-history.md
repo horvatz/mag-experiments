@@ -1,0 +1,5 @@
+# Zgodovina specifikacije P03
+
+- 2026-09-23, v0.1: shranjen začetni uporaben osnutek po skupni predlogi, z vsemi R01–R12 in dogovorom vmesnika. Vir: `PROJECT_RULES.md`, `task/instructions.md`, `task/specification-template.md`. Koda in testi še niso pregledani; nič ni označeno kot uspešno preverjeno.
+- 2026-09-23, v1.0: po branju `shared/types.ts`, komponent in virov API/navigacije, slogov, `docs/dizajn.md`, baseline in razvojnih testov ter konfiguracije dopolnjeni predikati, prehodi stanja, natančna mesta izvedbe in sledljivost vsake R01–R12. Dodani S01–S07 za vrzeli razvojnih testov, pojasnjeno prazno stanje table in vrstni red znotraj stolpcev. Dokument je pripravljen za predajo; aplikacija, testi in vizualni pregled niso bili zagnani. Implementer zabeleži dejanske rezultate v lastne opombe, morebitne popravke specifikacije opravi prvotni avtor.
+- Preverjanje dokumenta: z branjem potrjene vse rubrike predloge ter vrstice R01–R12 v obeh tabelah. Poskus `git diff --check` ni uspel zaradi manjkajočega `xcrun` v sistemskem imeniku CommandLineTools; ne gre za rezultat preverjanja aplikacije. Infrastruktura ni bila spreminjana.

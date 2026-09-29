@@ -1,0 +1,78 @@
+{
+  "collection": "L/1.0",
+  "id": "P05-C-001",
+  "reviewedAt": "2026-09-27T09:33:02.329216+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "85acbd5a619399bd181f560249a4e762ba52779d9c400287ae510a3abb9f6825",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija pokrije vseh dvanajst zahtev, prazne in krajše strani, vse filtre/velikosti, skupni odsek pogledov, različne osnove števcev ter natančne ponastavitve. Posebej zahteva reset tudi, kadar bi prejšnja številka strani še obstajala, in loči načrtovana preverjanja od izvedenih dokazov.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#zahteve-in-pravila",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#dogovor-o-vmesniku-in-ohranjene-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T/F/N/Y/D in indeksni razpon imajo preverljive definicije s posebnima vejama all in praznim rezultatom. Navedeni so disjunktnost in popolna združitev strani, ohranjeni lokalni prehodi, pogoji onemogočenih gumbov ter nespremenljivost izvornih opravil in API. Za prazni prikaz je izrecno določena stran 0 ob lokalni začetni strani 1.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#model-in-predikati",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Specifikacija ima matriko R01–R12, vendar ostane pri načrtovanih mestih in oznaki Ni še izvedeno. Plan in tasks povežeta skupine zahtev z datotekami, verification.md pa vseh dvanajst združi v eno vrstico Preverjanje v teku. Arhivirani item_30 sicer potrdi 51 passed, a model pred časovno omejitvijo ni dokončal predaje po zahtevah; T009 ostane odprt in converge ni izveden. Nepreverjenega ni lažno označil za potrjeno, toda povezave do dejanskih končnih dokazov so le delne.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/tasks.md#polish-in-preverjanje",
+        "runtime/runs/P05-C-001/submission/docs/agent/verification.md",
+        "analysis/evidence/P05-C-001-checks.md#item_30",
+        "runtime/runs/P05-C-001/execution.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "ProjectView hrani tri neodvisna lokalna stanja in izpelje filtrirani odsek, razpon ter status. Tabela in tabla dobita pageTasks, celotni števci pa projectTasks. Projektni ključ upravlja ponastavitev in ni podvojene straničitvene logike v TaskBoard. Manjša nedoslednost zamika JSX ne ovira sledljivosti odgovornosti in podatkovnega toka.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/src/App.tsx:14",
+        "runtime/runs/P05-C-001/submission/src/App.tsx:19",
+        "runtime/runs/P05-C-001/submission/src/App.tsx:74",
+        "runtime/runs/P05-C-001/submission/src/TaskBoard.tsx:13"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "Pet končnih lastnih scenarijev preveri vseh šest odsekov enajstih opravil pri velikosti 2, izbiro 5/10/all, reset še veljavne druge strani, vse filtre in mešane poglede. Dodani so ohranitev podrobnosti, menjava projekta/osvežitev, prazen projekt/filter, števci vidne table, odsotnost zapisov in širina 390 px. Prvi dve napačni testni pripravi sta popravljeni, item_30 pa dejansko potrdi vseh pet lastnih testov. To je smiseln nabor negativnih in mejnih primerov, čeprav ne preizkusi vseh možnih kombinacij.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/tests/agent/P05.pagination.spec.ts:3",
+        "runtime/runs/P05-C-001/submission/tests/agent/P05.pagination.spec.ts:31",
+        "runtime/runs/P05-C-001/submission/tests/agent/P05.pagination.spec.ts:79",
+        "analysis/evidence/P05-C-001-checks.md#item_30"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisno 70/70 in 12/12, toda status phase_time_limit po 1081,068 s; implementacija je dosegla svojo mejo 456,793 s (opaženo 456,831 s). Converge ni zagnan, zato strogi uspeh manjka. To je procesni neuspeh v vnaprej določenem proračunu, ne potrjena končna funkcionalna napaka. Celotna poraba je neznana; opažena spodnja meja je 4429360 vhodnih in 49069 izhodnih tokenov.",
+  "developmentFailureExample": {
+    "description": "Prvi check ima 48 uspešnih preverjanj in dve odpovedi lastnih scenarijev: klik Naslednja na projektu z le dvema opraviloma ter ponovna namestitev GET prestreznikov v istem testu. Po razširitvi drugega projekta na tri opravila in ločitvi praznega primera item_30 potrdi 51/51. Časovna meja nastopi pred končno dokumentacijsko predajo; uspešen zagon v dogodkih ni dokaz zaključenega postopka.",
+    "evidence": [
+      "analysis/evidence/P05-C-001-checks.md#item_23",
+      "analysis/evidence/P05-C-001-checks.md#item_30",
+      "runtime/runs/P05-C-001/submission/docs/agent/P05/tasks.md",
+      "runtime/runs/P05-C-001/execution.json",
+      "runtime/runs/P05-C-001/usage-observation.json"
+    ]
+  }
+}

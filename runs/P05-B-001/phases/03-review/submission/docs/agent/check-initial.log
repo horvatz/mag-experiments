@@ -1,0 +1,197 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 check
+> npm run lint && npm run build && npm test
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 lint
+> eslint .
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 build
+> npm run typecheck && vite build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 typecheck
+> tsc --noEmit
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 1875 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.36 kB
+dist/assets/index-CXOEsmPi.css   13.46 kB │ gzip:  3.64 kB
+dist/assets/index-BgH8eoG6.js   241.21 kB │ gzip: 75.14 kB
+
+✓ built in 77ms
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 test
+> playwright test
+
+[WebServer] (node:35305) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:35342) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 56 tests using 1 worker
+
+(node:35344) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [api] › tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (35ms)
+  ✓   2 [api] › tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (8ms)
+  ✓   3 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (6ms)
+  ✓   4 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (7ms)
+  ✓   5 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (7ms)
+  ✓   7 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (4ms)
+  ✓   8 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (5ms)
+  ✓   9 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [api] › tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (10ms)
+  ✓  11 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with success (13ms)
+  ✓  12 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [api] › tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (7ms)
+  ✓  14 [api] › tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:35346) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [desktop] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (435ms)
+  ✓  16 [desktop] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (502ms)
+  ✓  17 [desktop] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (530ms)
+  ✓  18 [desktop] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (653ms)
+  ✓  19 [desktop] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (469ms)
+  ✓  20 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (357ms)
+  ✓  21 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (355ms)
+  ✓  22 [desktop] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (339ms)
+  ✓  23 [desktop] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (346ms)
+  ✓  24 [desktop] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (873ms)
+  ✓  25 [desktop] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (620ms)
+  ✓  26 [desktop] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (422ms)
+(node:35827) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  27 [mobile] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (385ms)
+  ✓  28 [mobile] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (510ms)
+  ✓  29 [mobile] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (557ms)
+  ✓  30 [mobile] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (680ms)
+  ✓  31 [mobile] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (497ms)
+  ✓  32 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (410ms)
+  ✓  33 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (393ms)
+  ✓  34 [mobile] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (358ms)
+  ✓  35 [mobile] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (363ms)
+  ✓  36 [mobile] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (918ms)
+  ✓  37 [mobile] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (667ms)
+  ✓  38 [mobile] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (425ms)
+(node:36329) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  39 [development-desktop] › tests/development/P05.spec.ts:2:1 › D01: page size and next page (330ms)
+  ✓  40 [development-desktop] › tests/development/P05.spec.ts:3:1 › D02: last page and status (339ms)
+  ✓  41 [development-desktop] › tests/development/P05.spec.ts:4:1 › D03: filter before global board page (390ms)
+  ✓  42 [development-desktop] › tests/development/P05.spec.ts:5:1 › D04: size change resets and no writes (340ms)
+(node:36352) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [development-mobile] › tests/development/P05.spec.ts:2:1 › D01: page size and next page (382ms)
+  ✓  44 [development-mobile] › tests/development/P05.spec.ts:3:1 › D02: last page and status (375ms)
+  ✓  45 [development-mobile] › tests/development/P05.spec.ts:4:1 › D03: filter before global board page (408ms)
+  ✓  46 [development-mobile] › tests/development/P05.spec.ts:5:1 › D04: size change resets and no writes (360ms)
+(node:36359) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  47 [agent] › tests/agent/pagination.spec.ts:23:5 › P05 pri širini 1440 › S01: defaults, complete partitions, boundaries and size reset (1.2s)
+  ✓  48 [agent] › tests/agent/pagination.spec.ts:68:5 › P05 pri širini 1440 › S02: stable filters, shared board page and full versus visible counts (772ms)
+  ✓  49 [agent] › tests/agent/pagination.spec.ts:103:5 › P05 pri širini 1440 › S03: details and view preserve state; project and refresh reset it (1.3s)
+  ✓  50 [agent] › tests/agent/pagination.spec.ts:148:5 › P05 pri širini 1440 › S04: both projects empty in both views (1.6s)
+  ✘  51 [agent] › tests/agent/pagination.spec.ts:168:5 › P05 pri širini 1440 › S05: single task, empty filter, keyboard controls and mobile containment (5.4s)
+(node:36371) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  52 [agent] › tests/agent/pagination.spec.ts:23:5 › P05 pri širini 390 › S01: defaults, complete partitions, boundaries and size reset (1.2s)
+  ✓  53 [agent] › tests/agent/pagination.spec.ts:68:5 › P05 pri širini 390 › S02: stable filters, shared board page and full versus visible counts (729ms)
+  ✓  54 [agent] › tests/agent/pagination.spec.ts:103:5 › P05 pri širini 390 › S03: details and view preserve state; project and refresh reset it (1.3s)
+  ✓  55 [agent] › tests/agent/pagination.spec.ts:148:5 › P05 pri širini 390 › S04: both projects empty in both views (1.6s)
+  ✘  56 [agent] › tests/agent/pagination.spec.ts:168:5 › P05 pri širini 390 › S05: single task, empty filter, keyboard controls and mobile containment (5.3s)
+
+
+  1) [agent] › tests/agent/pagination.spec.ts:168:5 › P05 pri širini 1440 › S05: single task, empty filter, keyboard controls and mobile containment 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByLabel('Filter strani')
+    Expected: "done"
+    Received: "all"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Filter strani') with timeout 5000ms
+      - waiting for getByLabel('Filter strani')
+        14 × locator resolved to <select>…</select>
+           - unexpected value "all"
+
+
+      177 |       await page.keyboard.press('End')
+      178 |       await page.keyboard.press('Enter')
+    > 179 |       await expect(page.getByLabel('Filter strani')).toHaveValue('done')
+          |                                                      ^
+      180 |       await empty(page)
+      181 |       await summary(page, [1, 0, 0])
+      182 |       await expect(page.locator('.count-badge')).toHaveText('1')
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P05-B-001/app/tests/agent/pagination.spec.ts:179:54
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-pagination-P05-pri-š-431f0-rols-and-mobile-containment-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-pagination-P05-pri-š-431f0-rols-and-mobile-containment-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-pagination-P05-pri-š-431f0-rols-and-mobile-containment-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-pagination-P05-pri-š-431f0-rols-and-mobile-containment-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [agent] › tests/agent/pagination.spec.ts:168:5 › P05 pri širini 390 › S05: single task, empty filter, keyboard controls and mobile containment 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByLabel('Filter strani')
+    Expected: "done"
+    Received: "all"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Filter strani') with timeout 5000ms
+      - waiting for getByLabel('Filter strani')
+        14 × locator resolved to <select>…</select>
+           - unexpected value "all"
+
+
+      177 |       await page.keyboard.press('End')
+      178 |       await page.keyboard.press('Enter')
+    > 179 |       await expect(page.getByLabel('Filter strani')).toHaveValue('done')
+          |                                                      ^
+      180 |       await empty(page)
+      181 |       await summary(page, [1, 0, 0])
+      182 |       await expect(page.locator('.count-badge')).toHaveText('1')
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P05-B-001/app/tests/agent/pagination.spec.ts:179:54
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-pagination-P05-pri-š-40678-rols-and-mobile-containment-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-pagination-P05-pri-š-40678-rols-and-mobile-containment-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-pagination-P05-pri-š-40678-rols-and-mobile-containment-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-pagination-P05-pri-š-40678-rols-and-mobile-containment-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [agent] › tests/agent/pagination.spec.ts:168:5 › P05 pri širini 1440 › S05: single task, empty filter, keyboard controls and mobile containment 
+    [agent] › tests/agent/pagination.spec.ts:168:5 › P05 pri širini 390 › S05: single task, empty filter, keyboard controls and mobile containment 
+  54 passed (37.4s)

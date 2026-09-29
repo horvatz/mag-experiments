@@ -1,0 +1,16 @@
+Najprej bom prebral pravila in zahteve ter zapisal specifikacijo, nato izvedel spremembe in preverjanja. Delal bom samostojno in spreminjal samo dovoljene mape.
+
+Zahteve določajo en globalni vrstni red po ID-jih, ki ga uporabljata oba pogleda. Zgodovino bom vezal na odprti projekt, dodatno pa preveril mejo 20 razveljavitev, robna dejanja, ponastavitev ter prazne in enoopravilne projekte.
+
+Osnovna izvedba je pripravljena: oba pogleda uporabljata isti vrstni red, premiki pa spreminjajo samo zaporedje ID-jev. Prvi celotni pregled že teče. Dodajam še teste za daljša zaporedja dejanj in robne primere, ki jih skupni testi ne pokrivajo. Pomožni Python zaradi manjkajočega sistemskega orodja ni deloval; isti korak sem izvedel z Node.js.
+
+Prvi `npm run check` je uspešno opravil vseh 46 skupnih preverjanj. Dodani testi zdaj preverjajo tudi 21 zaporednih premikov, popolno razveljavitev in ponovitev, zgodovino ob navigaciji, nenavadne ID-je ter širino 390 pik. Pri ID-jih s presledki sem popravil še dostopno ime povezave na kartici.
+
+Končni `npm run check` je uspešen: 55 preverjanj, od tega 9 dodatnih. Pregledal sem tudi oba pogleda pri širinah 1440 in 390 pik; stran se ne razširi in ni bilo napak JavaScript. Zdaj dopolnjujem povezave med zahtevami, kodo in rezultati v dokumentaciji.
+
+Implementirane so zahteve R01–R12. `npm run check` je uspešno opravil vseh **55 preverjanj**.
+
+Specifikacija z zapisom popravka je v [specification.md](docs/agent/specification.md), rezultati, sledljivost in omejitve pa v [verification.md](docs/agent/verification.md).
+
+Ni znanih neizpolnjenih zahtev. Skriti končni testi niso bili dostopni. Naloga je zaključena znotraj 20 minut.
+{"status":"completed","elapsedSeconds":659.144,"allowedChanges":true,"usage":{"input_tokens":1018301,"cached_input_tokens":956544,"cache_write_input_tokens":0,"output_tokens":20023,"reasoning_output_tokens":2934}}

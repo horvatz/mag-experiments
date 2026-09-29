@@ -1,0 +1,3 @@
+Izvedel sem naloge T001–T006. Priljubljene se shranjujejo po ID-ju, sinhronizirajo med preglednico in tablo ter podpirajo filter, projektno odstranjevanje in opozorila ob napakah shrambe. Infrastrukture in odvisnosti nisem spreminjal.
+
+`npm run check` je uspel: lint, preverjanje tipov, gradnja in vseh 54 testov. Rezultati in sledljivost R01–R12 so v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P07-C-001/app/docs/agent/verification.md) ter [spec.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P07-C-001/app/docs/agent/P07/spec.md); vse naloge so označene kot opravljene. Končni testi zunaj lokalnega okolja niso bili izvedeni.

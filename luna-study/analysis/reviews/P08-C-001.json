@@ -1,0 +1,87 @@
+{
+  "collection": "L/1.0",
+  "id": "P08-C-001",
+  "reviewedAt": "2026-09-27",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "c0f79b88bcaf7afb7779bc63aee671d2af081a347d2851e7649332baebaa52a3",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "R01–R12 so podrobno pokrite v obeh tabelah: stalni začetni datum, prednost done, pet skupin in koledarske meje, nefiltrirani števci, stabilen prikaz, zadnji veljavni datum ob praznem vnosu, ohranitev ob pogledu ter ponastavitev projekta/osvežitve. Specifikacija izrecno obravnava prazne primere v obeh pogledih, enkratne ID-je/enake naslove, širino 390 px, javni API in nespremenjen bralni obseg. Začetna sledljivost je pravilno označena kot načrtovana.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md#zahteve-in-pravila",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md#dogovor-o-vmesniku-in-ohranitev-folia"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "P/T(P)/D/F/V in group(t,D) ločijo podatkovni vir, zadnji veljavni datum, skupino in prikaz. Predikat določi prednost done in vse meje, disjunktnost ter popolnost particije. L je stabilen podseznam, count se računa iz celotnega projekta; oba pogleda imata enako množico ID-jev. Veljaven/prazen vnos, preklop pogleda in menjava projekta imajo določene spremembe ter ohranjene dele stanja. Koledarska aritmetika je opredeljena neodvisno od ure in časovnega pasu.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md#zahteve-in-pravila",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md#merila-uspeha"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Začetna matrika poveže vse zahteve z načrtovanimi T-R01–T-R12 in integracijskimi točkami, vendar ni dopolnjena z dejanskimi testi in izidi. Verification.md opiše datoteke in prvi neuspešni check 49/51, nato ostane pri ponovnem preverjanju v teku; T006/T007 sta odprta. Dnevnik sicer neposredno potrdi končnih 51/51 v item_33, toda predaja tega ne zajame in converge se ne začne. Gre za delno, pošteno nedokončano sledljivost, ne izmišljene uspešne dokaze.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/tasks.md#polish-in-dokazila",
+        "runtime/runs/P08-C-001/submission/docs/agent/verification.md#izvedba",
+        "analysis/evidence/P08-C-001-checks.md#item_33",
+        "runtime/runs/P08-C-001/execution.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "deadlineGroups.ts loči validacijo koledarskega niza, prištevanje prek UTC, klasifikacijo s prednostjo done, stabilni filter in števce. ProjectView hrani referenco, besedilo, opozorilo in filter lokalno projektu, iz njih izpelje števce ter vidni seznam. TaskBoard ostane prikazna komponenta; prazni filtrirani pogled ima posebno vejo z ohranjenim območjem table. Podatki niso mutirani in ni dodane shrambe ali zapisovalne poti. Opozorilo je manjše podvojeno stanje, osnovne odgovornosti in izpeljave pa ostanejo razumljivo ločene.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/src/deadlineGroups.ts:7",
+        "runtime/runs/P08-C-001/submission/src/deadlineGroups.ts:17",
+        "runtime/runs/P08-C-001/submission/src/deadlineGroups.ts:25",
+        "runtime/runs/P08-C-001/submission/src/deadlineGroups.ts:33",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:12",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:67"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Pet končno uspešnih lastnih scenarijev preveri vse skupine in nespremenjene števce, oba roba tedna, prestopni februar/mesečno mejo, done pred in po referenci, projektni prehod, ponastavitev spremenjenega filtra, prazno skupino tudi na tabli ter podrobnosti/390 px/brez zapisov. Ostanejo pomembne vrzeli: lastni test preklopa nikoli ne izprazni datuma, zato ne preveri ohranitve praznega osnutka in zadnjega veljavnega preračuna med pogledoma. Tudi reload ne začne s spremenjenim datumom, koledarski primer pa ne prečka leta. Navedba takšnih scenarijev v načrtu ni dokaz izvedbe; razvojni D03 pokrije le del praznega vnosa.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:3",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:24",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:38",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:57",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:70",
+        "analysis/evidence/P08-C-001-checks.md#item_31",
+        "analysis/evidence/P08-C-001-checks.md#item_33"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisno 70/70 in 12/12; potrjene končne funkcionalne napake v tem naboru ni. Implementacija doseže phase_time_limit po 491,900 s ob dodeljenih 491,863 s; celoten čas 1081,000 s. Predhodne faze trajajo 89,562 / 257,929 / 127,482 / 109,826 s. Converge se ne začne in strogi uspeh je ne. Popolna poraba je null; opažena spodnja meja je 4191929 vhodnih in 48480 izhodnih tokenov.",
+  "developmentFailureExample": {
+    "description": "Prvi check ima 49 uspehov in dve odpovedi: getByLabel ne najde pričakovanega izbirnika, ponovni mount po praznem projektu pa ne pokaže sporočila prazne skupine. Drugi scenarij se ustavi pred preklopom na tablo, zato to ni neposreden testni dokaz odpovedi prazne table. Prebrana koda item_25 kljub temu pokaže vejo, ki pri prazni skupini nadomesti tablo s sporočilom; item_28 spremeni App.tsx in teste. Naslednji check ima 50 uspehov in še eno odpoved getByLabel. Sprememba samo testnih selektorjev v item_30 pripelje do 5/5 in zadnjega celovitega 51/51. Končna koda ohrani območje Tabla opravil tudi pri prazni skupini. Natančen mehanizem ponovnega mounta oziroma iskanja label ni bil dodatno neodvisno diagnosticiran.",
+    "evidence": [
+      "analysis/evidence/P08-C-001-checks.md#item_22",
+      "analysis/evidence/P08-C-001-checks.md#item_25",
+      "analysis/evidence/P08-C-001-checks.md#item_28",
+      "analysis/evidence/P08-C-001-checks.md#item_29",
+      "analysis/evidence/P08-C-001-checks.md#item_30",
+      "analysis/evidence/P08-C-001-checks.md#item_31",
+      "analysis/evidence/P08-C-001-checks.md#item_33",
+      "runtime/runs/P08-C-001/submission/src/App.tsx:67"
+    ]
+  }
+}

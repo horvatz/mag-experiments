@@ -1,0 +1,1 @@
+Celoten zagon je ustavil TypeScript pred testi: dva testna dostopa do števca klicev imata preozek tip. Popravljam tipe testnega pripomočka, nato bom ponovil celoten zagon; aplikacijska koda je do te točke prestala lint.

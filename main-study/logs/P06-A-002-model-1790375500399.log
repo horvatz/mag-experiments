@@ -1,0 +1,20 @@
+Najprej bom prebral pravila in zahteve ter pripravil specifikacijo. Nato bom samostojno izvedel spremembe, zagnal preverjanja in zapisal rezultate ter morebitne omejitve.
+
+Zahteve določajo izvoz iz trenutno naloženih podatkov, brez sprememb opravil ali zapisov na API. Nastavitve bom vezal na trenutni projekt, da preživijo preklop pogledov in se ponastavijo ob menjavi projekta. Dodatna preverjanja bodo zajela tudi prazne rezultate, ponastavitve, vrstni red kolon in nevtralizacijo formul.
+
+Implementacija je prestala vseh 8 skupnih razvojnih preverjanj ter preverjanje tipov in sloga kode. Dodajam lastne teste za ponastavitve, onemogočen izvoz, natančno vsebino datoteke in mobilni prikaz.
+
+Celoten `npm run check` še teče; vseh 38 izhodiščnih in 8 razvojnih preverjanj je že uspešnih. Lastni testi preverjajo tudi dejanske bajte prenosov, 14 nesortiranih opravil, Unicode, notranje prelome vrstic ter ohranitev in ponastavitev nastavitev.
+
+Prvi celotni zagon je končal s 55 uspešnimi testi in eno napako v mojem testnem pripomočku: ponovna navigacija na isti URL ni znova naložila testnih podatkov. Pripomoček sem popravil. Mobilni posnetek kaže, da kontrole ostanejo znotraj širine 390 pik in da je fokus tipkovnice viden.
+
+Končni `npm run check` je uspešen: preverjanje kode, produkcijska gradnja in vseh 56 testov (38 izhodiščnih, 8 razvojnih, 10 lastnih). Dopolnjujem še sledljivost zahtev R01–R12 in zapis preverjanj, vključno s popravljeno napako testnega pripomočka ter omejitvami.
+
+Implementiran je nastavljiv izvoz CSV po zahtevah R01–R12.
+
+`npm run check` je uspešen: preverjanje kode, gradnja in vseh **56 testov**.
+
+Dokumentacija: [specifikacija](docs/agent/specification.md) in [preverjanja z rezultati](docs/agent/verification.md).
+
+Ni znanih neizpolnjenih zahtev. Nedostopni skriti testi niso bili izvedeni.
+{"status":"completed","elapsedSeconds":650.136,"allowedChanges":true,"usage":{"input_tokens":745762,"cached_input_tokens":682752,"cache_write_input_tokens":0,"output_tokens":19671,"reasoning_output_tokens":3409}}

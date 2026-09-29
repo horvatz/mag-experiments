@@ -1,0 +1,3 @@
+Obe ugotovitvi pregleda sem sprejel in odpravil v lastnih testih: R07 zdaj preverja vrstni red vseh treh stolpcev table, R10 pa vseh 100 kombinacij kontrol pri praznem in enoopravilnem projektu ter ponastavitev.
+
+`npx playwright test --project=agent` je uspešno zaključil vseh 5 testov. Celotnega `npm run check` po teh testnih dopolnitvah zaradi roka nisem ponovil; pred njimi je uspešno prestal vseh 50 testov. Obravnava je zabeležena v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P04-B-003/app/docs/agent/verification.md). Specifikacije in preglednih datotek nisem spreminjal.

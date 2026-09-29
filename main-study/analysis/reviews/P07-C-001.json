@@ -1,0 +1,72 @@
+{
+  "id": "P07-C-001",
+  "reviewedAt": "2026-09-26",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija skladno zajame vseh R01–R12 ter globalno množico, lokalni filter, oba pogleda, identiteto ID, poljubno velikost in prazna projekta. Jasno loči neveljavno vsebino od izjeme dostopa, ohranja neznane ID-je, določi kanonični UTF-16 zapis, projektno odstranjevanje in izvore števcev. Obravnava podrobnosti, življenjsko dobo stanja, nedostopno shrambo in mejo sočasnosti. Zgodovina loči začetno specifikacijo od nadomestitve načrtovane sledljivosti s končnimi dokazi, brez spremembe sprejemnih pogojev.",
+      "evidence": [
+        "runs/P07-C-001/submission/docs/agent/P07/spec.md",
+        "runs/P07-C-001/submission/docs/agent/P07/plan.md"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Model P/T/I/F/q/v/W poda veljavnost celotnega zapisa, decode(null), inicializacijo brez pisanja, simetrično razliko, F\\I(P) in disabled natanko pri praznem preseku. V ostane stabilna podsekvenca, X/M izhajata iz celotnega projekta, stolpci iz vidnega seznama. Prehodi ločijo pogled, projekt in osvežitev; storage zamenja F brez odmeva, napaka zapisa ohrani novo pomnilniško stanje. Lokalnost izrecno prepove API zapise in spremembe polj opravil.",
+      "evidence": [
+        "runs/P07-C-001/submission/docs/agent/P07/spec.md#model-stanja-in-predikati"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Specifikacija poveže izvedbeni del neposredno na matriko v verification.md; vsaka R ima pogoj, S/A/D scenarij, končni simbol kode in dejanski dokaz. Dnevnik in surovi 05-implement item_8 potrdita uspešni check 66/66 v 27,2 s; 20 lastnih testov ustreza osmim predponam z matrikami. Navedena vrstica 47 res zapisuje kanonični JSON. Devet nalog je zaključenih; converge zgolj pregleda obstoječe dokaze in ohrani tasks.md, brez ponovitve ali nove implementacije. Sintetični storage in odsotnost dejanskega preverjanja dveh zavihkov sta izrecno označena; skriti testi niso predstavljeni kot izvedeni.",
+      "evidence": [
+        "runs/P07-C-001/submission/docs/agent/P07/spec.md",
+        "runs/P07-C-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "runs/P07-C-001/submission/docs/agent/P07/check.log",
+        "runs/P07-C-001/submission/docs/agent/P07/tasks.md",
+        "runs/P07-C-001/submission/docs/agent/convergence.json",
+        "runs/P07-C-001/phases/05-implement/events.jsonl.gz",
+        "runs/P07-C-001/phases/06-converge/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "useFavorites loči čisti dekoder, začetno branje, uporabniški zapis in storage poslušalec s čiščenjem. Najnovejši objekt v ref podpira zaporedna dejanja, Set se kopira, zapis je zunaj updaterja in opozorilo ostane v seji. App hrani en globalni hook, ključena ProjectView lokalni filter; oba pogleda dobita isti izpeljani seznam, števec in odstranjevanje pa celotne tasks. FavoriteButton je skupen, semantičen in zunaj povezav. CSS omeji dodatke na kontrole/gumb/opozorilo in obstoječi mobilni prelom. Podedovana konstrukcija ARIA z neobdelanim ID-jem je posebej navedena kot meja, ne kot nova regresija.",
+      "evidence": [
+        "runs/P07-C-001/submission/src/useFavorites.ts",
+        "runs/P07-C-001/submission/src/FavoriteButton.tsx",
+        "runs/P07-C-001/submission/src/App.tsx",
+        "runs/P07-C-001/submission/src/TaskBoard.tsx",
+        "runs/P07-C-001/submission/src/styles.css",
+        "runs/P03-A-001/submission/src/TaskBoard.tsx"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "20 uspešnih lastnih testov preveri 13 nesortiranih opravil in tuji projekt, enake naslove, Unicode ID-je, prazen niz/emoji/U+E000 v izrecnem pričakovanju zapisa, dvojnike/neznane ID-je ter reload brez ponovnega sejanja. Pokrije oba prazna projekta, projekt z enim tujem opravilom, filtriranje in odstranitev zadnjega v obeh pogledih, podrobnosti/Escape, projektno brisanje, števce, 11 neveljavnih začetnih oblik in celo matriko storage dogodkov brez odmeva. Tri izjeme shrambe ohranijo pomnilniško delo, A05 preveri Space, širino 390, odsotnost zapisov in nespremenjen odgovor API-ja. Posnetki podpirajo oba prikaza. Dejanski medzavihkovni prenos in ID-ji s presledki niso dodatno preverjeni; to omejitev ohranimo kljub obsežnim negativnim/mejnim testom.",
+      "evidence": [
+        "runs/P07-C-001/submission/tests/agent/P07.spec.ts",
+        "runs/P07-C-001/submission/docs/agent/P07/check.log",
+        "runs/P07-C-001/submission/docs/agent/P07/desktop-board.png",
+        "runs/P07-C-001/submission/docs/agent/P07/mobile-table.png",
+        "runs/P07-C-001/submission/docs/agent/convergence.json"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena potrdi 70/70 in 12/12 zahtev, dovoljen obseg, zaključen postopek in popolno porabo. V tem pregledu ni dodatno potrjene funkcionalne napake. Statična primerjava pokaže, da TaskBoard ohrani izhodiščni aria-labelledby z neobdelanim task.id, enako kot nespremenjeno izhodišče v P03-A-001. Znana podedovana občutljivost takih IDREF na presledke zato ni odpravljena; za to oddajo ni izveden dodaten brskalniški preizkus in primarni izid ni spremenjen. 70/70 ni izčrpen dokaz vseh vhodov.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Prvi celotni check uspe 66/66 v 27,2 s. Pregledani surovi dogodki nimajo neuspešnega zaključenega ukaza ali dokumentiranega popravljanja neuspešnega testa. Converge traja 72,113 s, pregleda že shranjene rezultate in ne izvaja testov ali dodatne implementacije."
+}

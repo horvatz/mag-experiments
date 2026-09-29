@@ -1,0 +1,59 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 test
+> playwright test --project=agent --grep=S08
+
+[WebServer] (node:84812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:84839) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:84840) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [agent] › tests/agent/P05.spec.ts:204:1 › S08: controls remain usable by keyboard at 390px in both views (5.6s)
+
+
+  1) [agent] › tests/agent/P05.spec.ts:204:1 › S08: controls remain usable by keyboard at 390px in both views 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByRole('combobox', { name: 'Velikost strani' })
+    Expected: "2"
+    Received: "all"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" getByRole('combobox', { name: 'Velikost strani' }) with timeout 5000ms
+      - waiting for getByRole('combobox', { name: 'Velikost strani' })
+        14 × locator resolved to <select>…</select>
+           - unexpected value "all"
+
+
+      210 |   await page.keyboard.press('ArrowDown')
+      211 |   await page.keyboard.press('Enter')
+    > 212 |   await expect(size).toHaveValue('2')
+          |                      ^
+      213 |   const next = page.getByRole('button', { name: 'Naslednja stran', exact: true })
+      214 |   await next.focus()
+      215 |   await page.keyboard.press('Enter')
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P05-C-002/app/tests/agent/P05.spec.ts:212:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-P05-S08-controls-rem-2a56a-oard-at-390px-in-both-views-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-P05-S08-controls-rem-2a56a-oard-at-390px-in-both-views-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-P05-S08-controls-rem-2a56a-oard-at-390px-in-both-views-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-P05-S08-controls-rem-2a56a-oard-at-390px-in-both-views-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [agent] › tests/agent/P05.spec.ts:204:1 › S08: controls remain usable by keyboard at 390px in both views 

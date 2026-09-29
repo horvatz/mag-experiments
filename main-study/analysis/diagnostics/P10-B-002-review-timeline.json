@@ -1,0 +1,32 @@
+{
+  "collectedAt": "2026-09-26T09:39:18.494Z",
+  "selection": "Post hoc development example; no additional formal content rating or frozen acceptance test.",
+  "source": "runs/P10-B-002/phases/03-review/events.jsonl.gz",
+  "sourceSha256": "128f22874ef7003d76b66f11b40c611af1c4a29d38ebe94910c1d52d5b55d570",
+  "eventId": "item_17",
+  "exitCode": 0,
+  "seed": "0x102b002",
+  "sequences": 150,
+  "stepsPerSequence": 1000,
+  "result": {
+    "result": "passed",
+    "checks": 150000,
+    "counts": {
+      "move": 90129,
+      "undo": 30045,
+      "redo": 16192,
+      "reset": 13634,
+      "invalid": 55874
+    },
+    "sizes": [
+      0,
+      1,
+      2,
+      5,
+      24
+    ],
+    "method": "Skutečni reducer primerjan z neodvisnim modelom časovnice in kazalca; preverjeni tudi nespremenljivost prejšnjega stanja, ID-ji in meja 20."
+  },
+  "command": "/bin/zsh -lc \"node --input-type=module <<'NODE'\nimport fs from 'node:fs';\nimport vm from 'node:vm';\nimport assert from 'node:assert/strict';\nimport ts from 'typescript';\nconst source = fs.readFileSync('src/useTaskOrder.ts', 'utf8') + '\\\\nexport { orderReducer as reviewReducer };';\nconst js = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText;\nconst scope = { exports: {}, require: () => ({ useReducer() { throw Error('Hook not used in reducer check'); } }) };\nvm.runInNewContext(js, scope);\nconst reducer = scope.exports.reviewReducer;\nlet seed = 0x102b002;\nconst next = n => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed % n; };\nlet checks = 0;\nconst counts = { move: 0, undo: 0, redo: 0, reset: 0, invalid: 0 };\nfor (const size of [0, 1, 2, 5, 24]) {\n  for (let run = 0; run < 30; run++) {\n    const initial = Array.from({ length: size }, (_, i) => ['__proto__', 'č /?#\\\" β', 'constructor'][i] ?? \"'`id-${i}`);\n    let state = { initial, current: initial, undo: [], redo: [] };\n    let timeline = [initial];\n    let cursor = 0;\n    for (let step = 0; step < 1000; step++) {\n      const kind = next(10);\n      const action = kind < 6 ? { type: '\"'move', id: next(12) === 0 || \"'!size ? '\"'unknown-id' : initial[next(size)], direction: next(2) ? 1 : -1 } : { type: ['undo', 'undo', 'redo', 'reset'][kind - 6] };\n      counts[action.type]++;\n      const current = timeline[cursor];\n      const before = JSON.stringify(state);\n      let newOrder = null;\n      if (action.type === 'move') {\n        const at = current.indexOf(action.id);\n        const destination = at + action.direction;\n        if (at < 0 || destination < 0 || destination >= size) counts.invalid++;\n        else {\n          newOrder = [...current];\n          const [item] = newOrder.splice(at, 1);\n          newOrder.splice(destination, 0, item);\n        }\n      } else if (action.type === 'undo') cursor = Math.max(0, cursor - 1);\n      else if (action.type === 'redo') cursor = Math.min(timeline.length - 1, cursor + 1);\n      else if (JSON.stringify(current) \"'!== JSON.stringify(initial)) newOrder = initial;\n      if (newOrder) {\n        timeline = timeline.slice(0, cursor + 1).concat([newOrder]);\n        if (timeline.length > 21) timeline.shift();\n        cursor = timeline.length - 1;\n      }\n      const updated = reducer(state, action);\n      assert.equal(JSON.stringify(state), before, '\"'Reducer mutated previous state');\n      const expected = { initial, current: timeline[cursor], undo: timeline.slice(0, cursor), redo: timeline.slice(cursor + 1).reverse() };\n      assert.equal(JSON.stringify(updated), JSON.stringify(expected), \"'`Mismatch at size=${size} run=${run} step=${step}`);\n      assert.equal(new Set(updated.current).size, size);\n      assert.equal(updated.undo.length <= 20, true);\n      state = updated;\n      checks++;\n    }\n  }\n}\nconst evidence = { result: '\"'passed', checks, counts, sizes: [0, 1, 2, 5, 24], method: 'Skutečni reducer primerjan z neodvisnim modelom časovnice in kazalca; preverjeni tudi nespremenljivost prejšnjega stanja, ID-ji in meja 20.' };\nconsole.log(JSON.stringify(evidence));\nconst file = 'docs/agent/review.json';\nconst review = JSON.parse(fs.readFileSync(file, 'utf8'));\nreview.summary = \"'`Vseh R01–R12 je statično pregledanih brez konkretnih odstopanj. Neodvisno preverjanje dejanskega reducerja z modelom časovnice je uspešno za ${checks} mešanih dejanj pri N=0,1,2,5,24. Pregledana sta tudi posnetka mobilne preglednice in namizne table.`;\nreview.unverified = review.unverified.filter(item => !item.startsWith('\"'Vizualni pregled'));\nfs.writeFileSync(file, JSON.stringify(review, null, 2) + '\\\\n');\nNODE\"",
+  "interpretation": "150000 checked transitions, not 150000 distinct problems or exhaustive histories. Reviewer executed this within the original measured review; researcher only extracted existing evidence. No code changes or extra test rerun by researcher."
+}

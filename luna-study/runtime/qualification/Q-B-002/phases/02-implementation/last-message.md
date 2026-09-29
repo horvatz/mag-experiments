@@ -1,0 +1,1 @@
+Funkcija `shift` je implementirana v [qualification.ts](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P02-B-902/app/src/qualification.ts). Preverjanje `node task/qualification-check.mjs` je uspelo. Kratek zapis je v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P02-B-902/app/docs/agent/verification.md).

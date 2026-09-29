@@ -1,0 +1,117 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 check
+> npm run lint && npm run build && npm test
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 lint
+> eslint .
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 build
+> npm run typecheck && vite build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 typecheck
+> tsc --noEmit
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 1877 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.35 kB
+dist/assets/index-zVQ2V8z8.css   13.85 kB │ gzip:  3.73 kB
+dist/assets/index-DT9cBrEx.js   241.88 kB │ gzip: 75.49 kB
+
+✓ built in 75ms
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 test
+> playwright test
+
+[WebServer] (node:46174) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:46211) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 60 tests using 1 worker
+
+(node:46212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [api] › tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (36ms)
+  ✓   2 [api] › tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (9ms)
+  ✓   3 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (5ms)
+  ✓   4 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (7ms)
+  ✓   5 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (8ms)
+  ✓   7 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (5ms)
+  ✓   8 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (5ms)
+  ✓   9 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [api] › tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (11ms)
+  ✓  11 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with success (14ms)
+  ✓  12 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [api] › tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (7ms)
+  ✓  14 [api] › tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:46215) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [desktop] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (422ms)
+  ✓  16 [desktop] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (484ms)
+  ✓  17 [desktop] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (544ms)
+  ✓  18 [desktop] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (622ms)
+  ✓  19 [desktop] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (482ms)
+  ✓  20 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (353ms)
+  ✓  21 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (356ms)
+  ✓  22 [desktop] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (344ms)
+  ✓  23 [desktop] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (380ms)
+  ✓  24 [desktop] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (896ms)
+  ✓  25 [desktop] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (562ms)
+  ✓  26 [desktop] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (441ms)
+(node:46252) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  27 [mobile] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (403ms)
+  ✓  28 [mobile] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (510ms)
+  ✓  29 [mobile] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (555ms)
+  ✓  30 [mobile] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (685ms)
+  ✓  31 [mobile] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (466ms)
+  ✓  32 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (409ms)
+  ✓  33 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (407ms)
+  ✓  34 [mobile] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (392ms)
+  ✓  35 [mobile] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (381ms)
+  ✓  36 [mobile] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (859ms)
+  ✓  37 [mobile] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (674ms)
+  ✓  38 [mobile] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (459ms)
+(node:46268) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  39 [development-desktop] › tests/development/P08.spec.ts:2:1 › D01: fixed anchor and overdue tasks (310ms)
+  ✓  40 [development-desktop] › tests/development/P08.spec.ts:3:1 › D02: inclusive week boundary (310ms)
+  ✓  41 [development-desktop] › tests/development/P08.spec.ts:4:1 › D03: empty draft retains last valid classification (307ms)
+  ✓  42 [development-desktop] › tests/development/P08.spec.ts:5:1 › D04: done group, board and no writes (374ms)
+(node:46274) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [development-mobile] › tests/development/P08.spec.ts:2:1 › D01: fixed anchor and overdue tasks (348ms)
+  ✓  44 [development-mobile] › tests/development/P08.spec.ts:3:1 › D02: inclusive week boundary (363ms)
+  ✓  45 [development-mobile] › tests/development/P08.spec.ts:4:1 › D03: empty draft retains last valid classification (361ms)
+  ✓  46 [development-mobile] › tests/development/P08.spec.ts:5:1 › D04: done group, board and no writes (388ms)
+(node:46499) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  47 [agent] › tests/agent/deadlines.spec.ts:33:1 › A01: all groups partition 14 tasks, preserve order and keep project counts in both views (1.2s)
+  ✓  48 [agent] › tests/agent/deadlines.spec.ts:77:3 › A02: calendar partition across month (0ms)
+  ✓  49 [agent] › tests/agent/deadlines.spec.ts:77:3 › A02: calendar partition across year (0ms)
+  ✓  50 [agent] › tests/agent/deadlines.spec.ts:77:3 › A02: calendar partition across leap February (0ms)
+  ✓  51 [agent] › tests/agent/deadlines.spec.ts:77:3 › A02: calendar partition across non-leap century (0ms)
+  ✓  52 [agent] › tests/agent/deadlines.spec.ts:77:3 › A02: calendar partition across leap century (0ms)
+  ✓  53 [agent] › tests/agent/deadlines.spec.ts:77:3 › A02: calendar partition across year below 100 (0ms)
+  ✓  54 [agent] › tests/agent/deadlines.spec.ts:89:1 › A02: rejects invalid calendar drafts instead of normalizing impossible dates (1ms)
+  ✓  55 [agent] › tests/agent/deadlines.spec.ts:101:5 › calendar in Pacific/Kiritimati › A03: browser recomputes through DST and leap day without timezone shifts (319ms)
+  ✓  56 [agent] › tests/agent/deadlines.spec.ts:101:5 › calendar in America/Los_Angeles › A03: browser recomputes through DST and leap day without timezone shifts (338ms)
+  ✓  57 [agent] › tests/agent/deadlines.spec.ts:101:5 › calendar in Europe/Ljubljana › A03: browser recomputes through DST and leap day without timezone shifts (319ms)
+  ✓  58 [agent] › tests/agent/deadlines.spec.ts:123:1 › A04: last valid date and empty draft survive views; project and reload reset local state (939ms)
+  ✓  59 [agent] › tests/agent/deadlines.spec.ts:170:1 › A05: zero and one task support every filter and recover from an empty group in both views (1.1s)
+  ✓  60 [agent] › tests/agent/deadlines.spec.ts:202:1 › A06: filtered Unicode IDs keep complete read-only details, fields and mobile layout (734ms)
+
+  60 passed (21.6s)

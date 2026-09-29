@@ -1,0 +1,78 @@
+{
+  "collection": "L/1.0",
+  "id": "P05-B-001",
+  "reviewedAt": "2026-09-27T09:13:17.986272+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "c281ff7328e9604dc71c834ab565131202bcad4eefbe0d0596604502d191a19b",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija jasno pokrije R01–R12, natančna imena kontrol, prazne in krajše strani, ohranitev vrstnega reda, deljen odsek pogledov ter različne osnove števcev. Določi ponastavitve in ohranjanje ob podrobnostih, lokalnost stanja, poljubne ID-je in ozko postavitev.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "M, N, Y, p in D so definirani s posebnimi vejami za številčno velikost, all in prazen rezultat. Indeksni razpon ima eksplicitno vejo za all; prehodi resetirajo stran in ohranijo stanje pri view/detail. Implementerjev začetni pomislek o all zato ni dokaz napake specifikacije: končna oddaja pravilno vsebuje ločeno vejo in ni zahtevala popravka.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P05-B-001/submission/src/App.tsx:19"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Večina povezav zahteva–koda–test je preverljiva; arhivirani item_28 potrdi 49 passed in izhod 0, pregledovalec pa odkrito navede, da zagona in ozkega prikaza ni neodvisno ponovil. Vendar verification.md v zadnji omejitvi neupravičeno opisuje vsebino neobjavljenih končnih scenarijev, do katerih model ni imel dostopa (trdi tudi pokritje vseh poljubnih podatkov). Ta nepodprta trditev o dokazih prepreči najvišjo oceno; ne spreminja dejanskih 70/70 neodvisnih izidov.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/verification.md#sledljivost-po-izvedbi",
+        "runtime/runs/P05-B-001/submission/docs/agent/verification.md#omejitve-in-opozorila",
+        "runtime/runs/P05-B-001/submission/docs/agent/review.json",
+        "analysis/evidence/P05-B-001-checks.md#item_28"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Tri lokalna stanja so ločena od memoiziranega filtra, števila strani, trenutne strani in vidnega odseka. Oba pogleda uporabita visibleTasks, projektni povzetek pa tasks. Projektni key skrbi za ponastavitev, brez podvojitve modela straničenja v TaskBoard. Obseg sprememb ostane v App in slogih; obstoječi prikaz podrobnosti in podatkovni sloj sta ohranjena.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/src/App.tsx:14",
+        "runtime/runs/P05-B-001/submission/src/App.tsx:19",
+        "runtime/runs/P05-B-001/submission/src/App.tsx:55",
+        "runtime/runs/P05-B-001/submission/src/TaskBoard.tsx:13"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Trije dejansko izvedeni lastni testi koristno preverijo filtriranje pred rezanjem, ohranitev izbire ob pogledu/podrobnostih, prazen filter z enim opravilom in ponastavitve projekta/osvežitve. Pomembni robovi ostanejo brez lastnih scenarijev: velikost 10 z več kot 10 opravili in krajšo zadnjo stranjo, razdelitev celotnega seznama brez vrzeli ter vsi štirje premiki na nepraznih robovih. Razvojni testi pomagajo, vendar ne nadomestijo manjkajočih lastnih mejnih preverjanj.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/tests/agent/pagination.spec.ts:3",
+        "runtime/runs/P05-B-001/submission/tests/agent/pagination.spec.ts:28",
+        "runtime/runs/P05-B-001/submission/tests/agent/pagination.spec.ts:41",
+        "analysis/evidence/P05-B-001-checks.md#item_28"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Končna neodvisna ocena potrdi 70/70, 12/12 in strogi uspeh. Potrjene funkcionalne napake ni; vsebinska vrzel sledljivosti in omejen obseg lastnih testov sta ločeni oceni.",
+  "developmentFailureExample": {
+    "description": "Implementerjev prvi check ima 47 uspehov in dve odpovedi v lastnih testih: napačno pričakovano število opravil todo in primerjava vrstnega reda table kot vrstnega reda API. Popravil je testni pričakovanji; item_23 potrdi 49/49. Po dodatnih preverjanjih osvežitve in ohranitve druge strani item_28 znova potrdi 49/49. To sta popravljeni napaki testnih scenarijev, ne dokazana popravka funkcionalne kode. Pregledovalec ni zahteval dodatnega popravka.",
+    "evidence": [
+      "analysis/evidence/P05-B-001-checks.md#item_20",
+      "analysis/evidence/P05-B-001-checks.md#item_23",
+      "analysis/evidence/P05-B-001-checks.md#item_28",
+      "runtime/runs/P05-B-001/submission/docs/agent/review.json"
+    ]
+  },
+  "calibrationNote": "Rubrika je ista kot pri M/1.0. Kontrolna primerjava utemeljitve M/1.0:P05-B-001 potrdi, da je tam ocena 2 za lastna preverjanja utemeljena s celotnimi razdelitvami 13 opravil pri različnih velikostih, krajšimi zadnjimi stranmi, 0/1 elementom in negativnimi robovi. Tukaj ocena 1 temelji na konkretno manjkajočih primerih, ne na manjšem številu testnih datotek ali pričakovanju o modelu. Stara presoja ni spremenjena."
+}

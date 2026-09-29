@@ -1,0 +1,38 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 lint
+> eslint .
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 typecheck
+> tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 test
+> playwright test --project=agent
+
+[WebServer] (node:49154) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:49181) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:49182) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [agent] › tests/agent/P05.spec.ts:19:3 › P01: ordered pages and all navigation, size 2 (746ms)
+  ✓   2 [agent] › tests/agent/P05.spec.ts:19:3 › P01: ordered pages and all navigation, size 5 (535ms)
+  ✓   3 [agent] › tests/agent/P05.spec.ts:19:3 › P01: ordered pages and all navigation, size 10 (454ms)
+  ✓   4 [agent] › tests/agent/P05.spec.ts:59:1 › P01: changing size resets a still-valid second page (471ms)
+  ✓   5 [agent] › tests/agent/P05.spec.ts:73:1 › P02: filters precede paging, preserve views/details, and count the correct scope (1.6s)
+  ✓   6 [agent] › tests/agent/P05.spec.ts:126:1 › P03: project changes and reload reset local state without URL or storage (775ms)
+  ✓   7 [agent] › tests/agent/P05.spec.ts:155:3 › P04: empty and singleton projects, count 0 (551ms)
+  ✓   8 [agent] › tests/agent/P05.spec.ts:155:3 › P04: empty and singleton projects, count 1 (536ms)
+  ✓   9 [agent] › tests/agent/P05.spec.ts:179:1 › P04: a nonmatching filter resets the page and removing it starts at one (352ms)
+  ✓  10 [agent] › tests/agent/P05.spec.ts:192:1 › P05: mobile controls, keyboard focus and read-only data (513ms)
+
+  10 passed (7.2s)
+EXIT_CODE=0

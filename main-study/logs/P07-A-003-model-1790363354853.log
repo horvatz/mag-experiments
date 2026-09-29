@@ -1,0 +1,19 @@
+Najprej bom prebral pravila in zahteve ter zapisal specifikacijo, nato izvedel spremembe in preverjanja. Delal bom samostojno z enim agentom in znotraj 20-minutne omejitve.
+
+Zahteve določajo globalno množico priljubljenih in filter, ki se ob menjavi projekta ponastavi. Shrambo bom spreminjal le ob uporabnikovem dejanju; neveljavne zapise in napake dostopa bom obravnaval brez prekinitve delovanja aplikacije.
+
+Specifikacija je zapisana, osnovna funkcionalnost pa je implementirana v obeh pogledih. Zdaj dodajam preizkuse za robne primere, ki jih skupni testi ne pokrivajo: neveljavno shrambo, Unicode ID-je, usklajevanje zavihkov, napake dostopa in odstranjevanje priljubljenih po projektu.
+
+`npm run check` je uspešno zaključil lint, preverjanje tipov, gradnjo in vseh 67 testov: 38 izhodiščnih, 8 razvojnih ter 21 dodatnih. Prestali so tudi preizkusi usklajevanja dveh zavihkov in napak shrambe. Pregledujem še posnetke vmesnika ter pripravljam končno sledljivost zahtev in omejitev.
+
+Pri končnem pregledu sem opazil še primer za popravek: uspešen zapis ne pomeni, da je po predhodni napaki znova mogoče brati shrambo. Opozorilo bom zato ohranil do osvežitve in dopolnil test. Vizualni pregled obeh pogledov pri širini 390 pik ni pokazal širjenja strani.
+
+P07 je izveden samostojno z enim agentom, znotraj 20 minut. Implementirane so zahteve R01–R12.
+
+`npm run check` je uspešen: lint, preverjanje tipov, gradnja in **67/67 testov**, vključno z 21 lastnimi testi.
+
+- [Specifikacija in zapis popravkov](docs/agent/specification.md)
+- [Preverjanja, sledljivost in omejitve](docs/agent/verification.md)
+
+Znanih neizpolnjenih zahtev ni. Skriti končni testi niso bili dostopni.
+{"status":"completed","elapsedSeconds":653.174,"allowedChanges":true,"usage":{"input_tokens":851933,"cached_input_tokens":781056,"cache_write_input_tokens":0,"output_tokens":19491,"reasoning_output_tokens":3503}}

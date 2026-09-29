@@ -1,0 +1,1 @@
+Izvedba je vključena: koledarska razvrstitev uporablja UTC-dneve, UI pa izračuna števce iz celotnega projekta in filter hrani samo lokalno. Lint in typecheck/build so že uspeli; zdaj teče celoten Playwright nabor, vključno z osnovnimi, razvojnimi in agentnimi scenariji.

@@ -1,19 +1,22 @@
+import { pilotTask } from './pilot-tasks.mjs'
 import assert from 'node:assert/strict'
-import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync } from 'node:fs'
+import { inventory } from './pilot-utils.mjs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { gzipSync } from 'node:zlib'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'
-assert.match(id, /^P01-[ABC]-\d{3}$/)
+assert.match(id, /^P(?:0[1-9]|10)-[ABC]-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
-const target = resolve(root, 'runs', id)
-assert.ok(!existsSync(target), 'Do not overwrite a recorded run')
+const task = pilotTask(id)
+const finalTarget = resolve(root, 'runs', id), target = finalTarget + '.partial'
+assert.ok(!existsSync(finalTarget) && !existsSync(target), 'Do not overwrite a recorded or partially archived run')
 const summary = JSON.parse(readFileSync(resolve(run, 'evaluation-summary.json'), 'utf8'))
 assert.notEqual(summary.executionStatus, 'running')
 mkdirSync(target, { recursive: true })
-for (const file of ['execution.json', 'evaluation-summary.json', 'usage-observation.json', 'prompt.md', 'config.json', 'procedure-b.json', 'procedure-c.json', 'spec-kit-provenance.json', 'browser.sb', 'last-message.md', 'preflight-filesystem.json', 'preflight-roles.json', 'preflight-c.json', 'preflight-runtime.log', 'network-audit.json']) {
+for (const file of ['execution.json', 'evaluation-summary.json', 'usage-observation.json', 'prompt.md', 'config.json', 'procedure-b.json', 'procedure-c.json', 'spec-kit-provenance.json', 'browser.sb', 'last-message.md', 'preflight-filesystem.json', 'preflight-roles.json', 'preflight-c.json', 'preflight-runtime.log', 'preflight-python.json', 'network-audit.json']) {
   if (existsSync(resolve(run, file))) cpSync(resolve(run, file), resolve(target, file))
 }
 for (const file of ['manifest.json', 'final-inventory.json', 'events.jsonl', 'stderr.log', 'preflight-prompt.json', 'evaluation-results.json', 'spec-kit-runtime.json']) {
@@ -37,7 +40,7 @@ if (existsSync(resolve(run, 'phases'))) {
   }
 }
 mkdirSync(resolve(target, 'input-overrides'))
-for (const file of ['AGENTS.md', 'playwright.config.ts', 'task']) cpSync(resolve(run, 'app', file), resolve(target, 'input-overrides', file), { recursive: true })
+for (const file of ['AGENTS.md', 'PROJECT_RULES.md', 'playwright.config.ts', 'task', 'tests/development', ...(task.name === 'P02' ? ['support'] : []), ...(summary.procedure === 'C' ? ['.pilot-tools'] : [])]) cpSync(resolve(run, 'app', file), resolve(target, 'input-overrides', file), { recursive: true })
 if (summary.procedure === 'C') {
   const manifest = JSON.parse(readFileSync(resolve(run, 'manifest.json'), 'utf8'))
   cpSync(resolve(root, 'vendor', manifest.specKitVendor || 'spec-kit-1.0.8'), resolve(target, 'spec-kit-at-launch'), { recursive: true })
@@ -46,9 +49,9 @@ const minutes = Math.floor(summary.elapsedSeconds / 60)
 const seconds = Math.round(summary.elapsedSeconds % 60)
 const group = (name) => summary.groups[name] ? summary.groups[name].passed + '/' + summary.groups[name].total : 'ni podatka'
 const text = [
-  '# Pilot P01, postopek ' + summary.procedure,
+  '# ' + (task.main ? 'Glavna naloga ' : 'Pilot ') + task.name + ', postopek ' + summary.procedure,
   '',
-  summary.procedure === 'B' ? 'Trije agenti so si zaporedno predali pripravo specifikacije, implementacijo in pregled. Morebitne popravke opravita prvotna avtorja.' : summary.procedure === 'C' ? 'En agent je v isti seji izvajal uradne korake Spec Kit 1.0.8: constitution, specify, plan, tasks, implement in converge.' : 'En agent je iz navodil pripravil specifikacijo, implementacijo urejanja opravila in lastna preverjanja.',
+  summary.procedure === 'B' ? 'Trije agenti so si zaporedno predali pripravo specifikacije, implementacijo in pregled. Morebitne popravke opravita prvotna avtorja.' : summary.procedure === 'C' ? 'En agent je v isti seji izvajal uradne korake Spec Kit 1.0.8: constitution, specify, plan, tasks, implement in converge.' : 'En agent je iz navodil pripravil specifikacijo, implementacijo naloge in lastna preverjanja.',
   'Referenčne rešitve in končnih testov med delom ni imel na voljo.',
   '',
   '| Podatek | Rezultat |', '| --- | --- |',
@@ -56,15 +59,16 @@ const text = [
   '| Zaključek | ' + summary.executionStatus + ' |',
   '| Čas agenta | ' + minutes + ' min ' + seconds + ' s; omejitev 20 min |',
   '| Osnovna preverjanja | ' + group('regression') + ' |',
-  '| Razvojna preverjanja P01 | ' + group('development') + ' |',
-  '| Končna preverjanja P01 | ' + group('holdout') + ' |',
+  '| Razvojna preverjanja ' + task.name + ' | ' + group('development') + ' |',
+  '| Končna preverjanja ' + task.name + ' | ' + group('holdout') + ' |',
   '| Dovoljene spremembe | ' + (summary.allowedChanges ? 'Da' : 'Ne; glej execution.json') + ' |',
   '| Slog, tipi in gradnja | ' + (summary.checks.filter((item) => item.name !== 'tests').every((item) => item.passed) ? 'Uspešno' : 'Glej evaluation-summary.json') + ' |',
   '',
   'Čas vključuje specifikacijo, kodo in preverjanje agenta. Priprava okolja in končna ocena nista vključeni.',
-  'Osnovna aplikacija mag-app ostaja pri pripetem commitu; izdelek pilota je shranjen ločeno v submission/.',
+  'Osnovna aplikacija mag-app ostaja pri pripetem commitu; izdelek izvedbe je shranjen ločeno v submission/.',
   '',
   'Poraba, kot jo je vrnil CLI: ' + (summary.usage ? JSON.stringify(summary.usage) : 'podatek ni na voljo') + '.',
+  ...(summary.observedUsageBeforeInterruption ? ['Delno opažena poraba pred prekinitvijo (spodnja meja, ne celotna poraba): ' + JSON.stringify(summary.observedUsageBeforeInterruption) + '.'] : []),
   ...(summary.usageNote ? [summary.usageNote] : []),
   'Zagon uporablja obstoječo prijavo ChatGPT. Iz porabe nismo izračunali stroška API ali zneska v evrih.',
   '',
@@ -73,13 +77,15 @@ const text = [
     'Vsaka mapa v phases/ vsebuje točen poziv, nastavitve, rezultate, stisnjen dnevnik in predajo ob koncu faze.',
     'Skupni čas vključuje tudi samodejne predaje med fazami.', '',
     '[Vnaprej določen protokol ' + summary.procedure + '](../../docs/pilot-' + summary.procedure.toLowerCase() + '-protocol.md) opisuje korake, omejitve in obravnavo popravkov.', '',] : []),
-  'Rezultat velja za eno izvedbo pilotne naloge. Ne dokazuje prednosti postopka ' + summary.procedure + ', popolnosti testov ali pravilnosti za vsa mogoča stanja.',
+  'Rezultat velja za eno izvedbo naloge. Ne dokazuje prednosti postopka ' + summary.procedure + ', popolnosti testov ali pravilnosti za vsa mogoča stanja.',
   'Mobilna preverjanja so emulacija v Chromiumu.',
   '',
   'Navodila in nastavitve so ob poročilu. Stisnjena izpisa dogodkov in datotek ohranjata sled izvedbe.',
   'Vhodne datoteke aplikacije določa baseline v evaluation-summary.json; posebnosti izvoza so v input-overrides/.',
-  'Natančen opis okolja je v ../../docs/pilot-protocol.md. Shranjena konfiguracija in dnevnik te izvedbe imata prednost pred poznejšimi izboljšavami izvajalnika.',
+  'Natančen opis okolja je v ' + (task.main ? '../../docs/main-protocol.md' : task.name === 'P02' ? '../../docs/p02-pilot-protocol.md' : '../../docs/pilot-protocol.md') + '. Shranjena konfiguracija in dnevnik te izvedbe imata prednost pred poznejšimi izboljšavami izvajalnika.',
   '',
 ].join('\n')
 writeFileSync(resolve(target, 'report.md'), text)
+writeFileSync(resolve(target, 'archive-complete.json'), JSON.stringify({ id, completedAt: new Date().toISOString(), files: inventory(target) }, null, 2) + '\n')
+renameSync(target, finalTarget)
 console.log('Archived ' + id + ' in runs/' + id)

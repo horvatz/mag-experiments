@@ -1,0 +1,1 @@
+Popravljena sta bila testna primera: zdaj ima menjani projekt dovolj opravil za naslednjo stran, prazni projekt pa je ločen od primera s podatki. Začenjam ponovni celotni `npm run check`; po njem zabeležim le dejanske rezultate in označim nalogo preverjanja, če uspe.

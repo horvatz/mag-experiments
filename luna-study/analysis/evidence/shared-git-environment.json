@@ -1,0 +1,28 @@
+{
+  "scope": "Two post-hoc illustrative command failures from archived model sessions, not a prevalence estimate or causal analysis. Original archives are unchanged.",
+  "observation": "The same xcrun error occurs in both collections. It is not unique to Luna and does not itself establish an application defect or explain an execution outcome.",
+  "examples": [
+    {
+      "collection": "M/1.0",
+      "archivePath": "runs/P03-B-001/phases/02-implementation/events.jsonl.gz",
+      "archiveFileSha256": "ca88f670cfe3b4af620ad4c88ef13fab50d90ca2d5bf81614ba54072c6379b4f",
+      "item": "item_20",
+      "command": "/bin/zsh -lc 'git diff --check && git diff --stat'",
+      "exitCode": 1,
+      "errorLines": [
+        "xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun"
+      ]
+    },
+    {
+      "collection": "L/1.0",
+      "archivePath": "luna-study/runtime/runs/P06-B-001/phases/02-implementation/events.jsonl.gz",
+      "archiveFileSha256": "bf920f1ad9ba9e20d19a8c93727c0c89e38b0f8a341785ea160d5034e9e3d302",
+      "item": "item_2",
+      "command": "/bin/zsh -lc 'cat PROJECT_RULES.md && cat task/instructions.md && cat task/specification-template.md && cat docs/agent/specification.md && node task/time-budget.mjs && git status --short --branch'",
+      "exitCode": 1,
+      "errorLines": [
+        "xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun"
+      ]
+    }
+  ]
+}

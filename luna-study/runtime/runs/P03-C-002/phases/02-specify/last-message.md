@@ -1,0 +1,3 @@
+Specifikacija je pripravljena v [spec.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P03-C-002/app/docs/agent/P03/spec.md). Zajema skupno predlogo, formalna pravila, dogovor o vmesniku, uporabniške scenarije ter pogoje in sledljivost za R01–R12. Pot funkcionalnosti je zapisana v [.specify/feature.json](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P03-C-002/app/.specify/feature.json).
+
+Preveril sem veljavnost JSON-a in prisotnost vseh 12 zahtev v sprejemnih pogojih ter sledljivosti. Aplikacijskih testov nisem zaganjal; specifikacija jih ne navaja kot izvedene.

@@ -1,0 +1,1 @@
+Pregled kode potrjuje, da so ID-ji že osnova poti in elementov vrstic/kartic, API za opravila pa je samo bralni v tem pogledu. Specifikacija zdaj vključuje predikate za vseh 12 zahtev, obstoječe razvojne scenarije D01–D04 in jasno označuje, da testi v tej fazi niso bili zagnani. Zaključujem še zgodovinski zapis predaje.

@@ -1,0 +1,3 @@
+To je majhna tehnična kvalifikacija izvajalnika Q, ne polna naloga Folio. Preberi task/instructions.md. Dokumente ohrani zelo kratke. Uporabi samo src/qualification.ts, docs/agent/ in dovoljene procesne datoteke; spoštuj meje dodeljene vloge. Izvedba testa je node task/qualification-check.mjs. Ne uporabljaj brskalnika, javnega interneta ali drugih agentov. Končaj takoj, ko opraviš korak.
+Preberi .agents/skills/speckit-tasks/SKILL.md. Zapiši docs/agent/P02/tasks.md z dvema kratkima nalogama - [ ] T001 implementacija src/qualification.ts in - [ ] T002 javni test ter verification.md.
+V končnem odgovoru navedi kontrolno besedo iz svoje prvotne seje (pri JSON jo vključi v summary). Ne ugibaj, če je ne pomniš.

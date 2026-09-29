@@ -1,0 +1,124 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 check
+> npm run lint && npm run build && npm test
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 lint
+> eslint .
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 build
+> npm run typecheck && vite build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 typecheck
+> tsc --noEmit
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 1877 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.36 kB
+dist/assets/index-YKH4sadn.css   13.82 kB │ gzip:  3.75 kB
+dist/assets/index-Bj3Rn7v7.js   242.19 kB │ gzip: 75.64 kB
+
+✓ built in 76ms
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 test
+> playwright test
+
+[WebServer] (node:88559) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:88596) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 67 tests using 1 worker
+
+(node:88597) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [api] › tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (36ms)
+  ✓   2 [api] › tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (9ms)
+  ✓   3 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (5ms)
+  ✓   4 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (7ms)
+  ✓   5 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (9ms)
+  ✓   7 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (5ms)
+  ✓   8 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (5ms)
+  ✓   9 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [api] › tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (14ms)
+  ✓  11 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with success (9ms)
+  ✓  12 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [api] › tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (7ms)
+  ✓  14 [api] › tests/api.spec.ts:91:1 › normal server does not expose test controls (8ms)
+(node:88599) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [desktop] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (424ms)
+  ✓  16 [desktop] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (507ms)
+  ✓  17 [desktop] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (591ms)
+  ✓  18 [desktop] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (622ms)
+  ✓  19 [desktop] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (444ms)
+  ✓  20 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (373ms)
+  ✓  21 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (370ms)
+  ✓  22 [desktop] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (340ms)
+  ✓  23 [desktop] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (341ms)
+  ✓  24 [desktop] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (897ms)
+  ✓  25 [desktop] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (609ms)
+  ✓  26 [desktop] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (425ms)
+(node:88832) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  27 [mobile] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (410ms)
+  ✓  28 [mobile] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (518ms)
+  ✓  29 [mobile] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (587ms)
+  ✓  30 [mobile] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (698ms)
+  ✓  31 [mobile] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (469ms)
+  ✓  32 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (408ms)
+  ✓  33 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (410ms)
+  ✓  34 [mobile] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (363ms)
+  ✓  35 [mobile] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (382ms)
+  ✓  36 [mobile] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (900ms)
+  ✓  37 [mobile] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (634ms)
+  ✓  38 [mobile] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (445ms)
+(node:88852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  39 [development-desktop] › tests/development/P07.spec.ts:2:1 › D01: independent favorites by ID (334ms)
+  ✓  40 [development-desktop] › tests/development/P07.spec.ts:3:1 › D02: filter and remove visible favorite (407ms)
+  ✓  41 [development-desktop] › tests/development/P07.spec.ts:4:1 › D03: storage and refresh (571ms)
+  ✓  42 [development-desktop] › tests/development/P07.spec.ts:5:1 › D04: view parity and no writes (411ms)
+(node:89313) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [development-mobile] › tests/development/P07.spec.ts:2:1 › D01: independent favorites by ID (386ms)
+  ✓  44 [development-mobile] › tests/development/P07.spec.ts:3:1 › D02: filter and remove visible favorite (427ms)
+  ✓  45 [development-mobile] › tests/development/P07.spec.ts:4:1 › D03: storage and refresh (532ms)
+  ✓  46 [development-mobile] › tests/development/P07.spec.ts:5:1 › D04: view parity and no writes (393ms)
+(node:89320) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  47 [agent] › tests/agent/favorites.spec.ts:40:1 › A01: canonical UTF-16 storage, unknown IDs and more than ten tasks retain source order (786ms)
+  ✓  48 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (missing key) is empty without an automatic write (383ms)
+  ✓  49 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (invalid JSON) is empty without an automatic write (347ms)
+  ✓  50 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (null) is empty without an automatic write (367ms)
+  ✓  51 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (wrong version) is empty without an automatic write (346ms)
+  ✓  52 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (string version) is empty without an automatic write (316ms)
+  ✓  53 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (missing ids) is empty without an automatic write (346ms)
+  ✓  54 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (ids object) is empty without an automatic write (313ms)
+  ✓  55 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (mixed number) is empty without an automatic write (330ms)
+  ✓  56 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (mixed null) is empty without an automatic write (347ms)
+  ✓  57 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (mixed object) is empty without an automatic write (311ms)
+  ✓  58 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (array) is empty without an automatic write (312ms)
+  ✓  59 [agent] › tests/agent/favorites.spec.ts:83:3 › A02: invalid initial storage (primitive) is empty without an automatic write (344ms)
+  ✓  60 [agent] › tests/agent/favorites.spec.ts:97:1 › A03: project removal, filter reset and counters use the whole project (1.1s)
+  ✓  61 [agent] › tests/agent/favorites.spec.ts:141:1 › A04: storage events replace favorites, validate all values and never echo writes (574ms)
+  ✓  62 [agent] › tests/agent/favorites.spec.ts:163:1 › A05: real storage events synchronize two tabs without a write loop (627ms)
+  ✓  63 [agent] › tests/agent/favorites.spec.ts:182:3 › A06: read failure warns and leaves favorites usable in memory (686ms)
+  ✓  64 [agent] › tests/agent/favorites.spec.ts:182:3 › A06: write failure warns and leaves favorites usable in memory (672ms)
+  ✓  65 [agent] › tests/agent/favorites.spec.ts:182:3 › A06: access failure warns and leaves favorites usable in memory (718ms)
+  ✓  66 [agent] › tests/agent/favorites.spec.ts:211:1 › A07: empty projects and a single task keep controls and board columns (578ms)
+  ✓  67 [agent] › tests/agent/favorites.spec.ts:234:1 › A08: 390px layout, keyboard actions and long plain text work in both views (413ms)
+
+  67 passed (27.7s)

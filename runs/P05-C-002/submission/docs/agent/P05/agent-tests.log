@@ -1,0 +1,29 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> folio@0.1.0 test
+> playwright test --project=agent
+
+[WebServer] (node:86863) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:86890) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:86891) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [agent] › tests/agent/P05.spec.ts:21:3 › S01: defaults preserve source order with 1 tasks (440ms)
+  ✓   2 [agent] › tests/agent/P05.spec.ts:21:3 › S01: defaults preserve source order with 17 tasks (432ms)
+  ✓   3 [agent] › tests/agent/P05.spec.ts:32:3 › S02: size 2 partitions every ID and respects navigation edges (889ms)
+  ✓   4 [agent] › tests/agent/P05.spec.ts:32:3 › S02: size 5 partitions every ID and respects navigation edges (701ms)
+  ✓   5 [agent] › tests/agent/P05.spec.ts:32:3 › S02: size 10 partitions every ID and respects navigation edges (890ms)
+  ✓   6 [agent] › tests/agent/P05.spec.ts:60:1 › S03: every size and filter change resets before slicing (2.8s)
+  ✓   7 [agent] › tests/agent/P05.spec.ts:91:1 › S04: views and details retain the global page while counts keep their scope (2.1s)
+  ✓   8 [agent] › tests/agent/P05.spec.ts:128:1 › S05: project changes and reload reset settings without persistence (909ms)
+  ✓   9 [agent] › tests/agent/P05.spec.ts:159:3 › S06: empty projects has zero status in both views (610ms)
+  ✓  10 [agent] › tests/agent/P05.spec.ts:159:3 › S06: empty filter has zero status in both views (563ms)
+  ✓  11 [agent] › tests/agent/P05.spec.ts:186:1 › S07: pagination and filtering leave data intact and send no writes (597ms)
+  ✓  12 [agent] › tests/agent/P05.spec.ts:204:1 › S08: controls remain usable by keyboard at 390px in both views (572ms)
+
+  12 passed (12.2s)

@@ -1,0 +1,198 @@
+import { test, expect, mount, makeTask, expectIds, examples, webIds, select, click, board, table, project, readonly } from '../development/helpers.ts'
+import type { Page } from '@playwright/test'
+
+const search = (page: Page) => page.getByRole('searchbox', { name: 'Iskanje v povezavi' })
+const result = (page: Page) => page.getByRole('status', { name: 'Rezultati povezave' })
+const query = (page: Page) => new URLSearchParams(new URL(page.url()).hash.split('?')[1])
+
+async function applySearch(page: Page, value: string) {
+  await search(page).fill(value)
+  await click(page, 'Uporabi pogled')
+  await expect(search(page)).toHaveValue(value.trim())
+}
+
+test('A01: literal normalized phrase matches each field and combines with status', async ({ page }) => {
+  const records = [
+    makeTask('title', { title: 'ČAS za pregled', description: '', assignee: 'Ana' }),
+    makeTask('description', { title: 'Drugo', description: 'c\u030cas za pregled', assignee: 'Ana', status: 'done' }),
+    makeTask('assignee', { title: 'Drugo', description: '', assignee: 'Čas za pregled' }),
+    makeTask('ČAS ZA PREGLED', { title: 'Drugo', description: '', assignee: 'Ana' }),
+    makeTask('separate', { title: 'Čas za', description: 'pregled', assignee: 'Ana' }),
+    makeTask('split', { title: 'Čas za dolg pregled', description: '', assignee: 'Ana' }),
+    makeTask('literal', { title: 'Dobesedno .* & + # ?', description: '', assignee: 'Ana' }),
+  ]
+  await mount(page, records)
+  await applySearch(page, '  CAS ZA PREGLED  ')
+  await expectIds(page, ['title', 'description', 'assignee', 'ČAS ZA PREGLED'])
+  await select(page, 'Stanje v povezavi', 'done')
+  await click(page, 'Uporabi pogled')
+  await expectIds(page, ['description'])
+  await select(page, 'Stanje v povezavi', 'all')
+  await search(page).fill(' .* & + # ? ')
+  await click(page, 'Uporabi pogled')
+  await expectIds(page, ['literal'])
+  expect(query(page).get('q')).toBe('.* & + # ?')
+  await page.reload()
+  await expectIds(page, ['literal'])
+  await expect(search(page)).toHaveValue('.* & + # ?')
+})
+
+test('A02: UTF-16 ordering is stable in both directions for more than ten records', async ({ page }) => {
+  const titles = ['Žaba', 'alfa 2', 'Čaj', 'Alfa 10', 'c\u030caj', 'A', '😀', '\uE000', 'čaj', 'Z', 'B', 'C', '0']
+  const records = titles.map((title, index) => makeTask('item-' + index, { title }))
+  await mount(page, records)
+  await select(page, 'Vrstni red v povezavi', 'title-asc')
+  await click(page, 'Uporabi pogled')
+  const asc = [12, 5, 3, 1, 10, 11, 2, 4, 8, 9, 0, 6, 7]
+  await expectIds(page, asc.map(index => 'item-' + index))
+  await select(page, 'Vrstni red v povezavi', 'title-desc')
+  await click(page, 'Uporabi pogled')
+  await expectIds(page, [7, 6, 0, 9, 2, 4, 8, 11, 10, 1, 3, 5, 12].map(index => 'item-' + index))
+  await board(page)
+  await expectIds(page, [7, 6, 0, 9, 2, 4, 8, 11, 10, 1, 3, 5, 12].map(index => 'item-' + index))
+  await select(page, 'Vrstni red v povezavi', 'original')
+  await click(page, 'Uporabi pogled')
+  await expectIds(page, records.map(record => record.id))
+})
+
+test('A03: first parameters win, parsing preserves URL, equal confirmation replaces only', async ({ page }) => {
+  const hash = '#/projects/web?view=board&q=&q=pregled&status=invalid&status=done&order=bad&order=title-desc&extra=1'
+  await mount(page, undefined, hash)
+  await expectIds(page, webIds(), false)
+  expect(new URL(page.url()).hash).toBe(hash)
+  await expect(search(page)).toHaveValue('')
+  await expect(page.getByRole('combobox', { name: 'Stanje v povezavi' })).toHaveValue('all')
+  await expect(page.getByRole('combobox', { name: 'Vrstni red v povezavi' })).toHaveValue('original')
+  const length = await page.evaluate(() => history.length)
+  await click(page, 'Uporabi pogled')
+  await expect(page).toHaveURL(/#\/projects\/web\?view=board$/)
+  expect(await page.evaluate(() => history.length)).toBe(length)
+  await search(page).fill('  Čas & + # ?  ')
+  await select(page, 'Stanje v povezavi', 'in_progress')
+  await select(page, 'Vrstni red v povezavi', 'title-desc')
+  await click(page, 'Uporabi pogled')
+  expect(query(page).get('q')).toBe('Čas & + # ?')
+  expect(query(page).get('status')).toBe('in_progress')
+  expect(query(page).get('order')).toBe('title-desc')
+  expect(query(page).get('view')).toBe('board')
+  expect(await page.evaluate(() => history.length)).toBe(length + 1)
+  await click(page, 'Uporabi pogled')
+  expect(await page.evaluate(() => history.length)).toBe(length + 1)
+  await page.goBack()
+  await expectIds(page, webIds(), false)
+  await expect(search(page)).toHaveValue('')
+})
+
+test('A04: atomic draft, back/forward, refresh and reset follow committed history', async ({ page }) => {
+  await mount(page)
+  const before = page.url()
+  await search(page).fill('pregled')
+  await select(page, 'Stanje v povezavi', 'done')
+  await select(page, 'Vrstni red v povezavi', 'title-desc')
+  await expectIds(page, webIds())
+  expect(page.url()).toBe(before)
+  await click(page, 'Uporabi pogled')
+  await expectIds(page, ['web-03'])
+  await applySearch(page, 'zapis')
+  await expectIds(page, ['web-06'])
+  await search(page).fill('nepotrjeno')
+  await page.goBack()
+  await expectIds(page, ['web-03'])
+  await expect(search(page)).toHaveValue('pregled')
+  await page.goForward()
+  await expectIds(page, ['web-06'])
+  await expect(search(page)).toHaveValue('zapis')
+  await page.reload()
+  await expectIds(page, ['web-06'])
+  await click(page, 'Ponastavi pogled')
+  await expectIds(page, webIds())
+  await expect(search(page)).toHaveValue('')
+  const resetLength = await page.evaluate(() => history.length)
+  await search(page).fill('samo osnutek')
+  await click(page, 'Ponastavi pogled')
+  await expect(search(page)).toHaveValue('')
+  expect(await page.evaluate(() => history.length)).toBe(resetLength)
+  await page.goBack()
+  await expectIds(page, ['web-06'])
+  await expect(search(page)).toHaveValue('zapis')
+})
+
+test('A05: views, duplicate-ID details and project navigation discard drafts and retain committed state', async ({ page }) => {
+  const writes = await mount(page, undefined, '#/projects/web?q=pregled&order=title-desc')
+  await expectIds(page, ['web-02', 'web-03', 'web-01'])
+  await search(page).fill('nepotrjeno')
+  await board(page)
+  await expectIds(page, ['web-01', 'web-02', 'web-03'], false)
+  await expect(search(page)).toHaveValue('pregled')
+  for (const id of ['web-02', 'web-03']) {
+    await search(page).fill('nepotrjeno')
+    const link = page.locator(`[data-task-id="${id}"]`).getByRole('link')
+    await link.click()
+    await expect(page.getByRole('dialog').getByText(id, { exact: true }).first()).toBeVisible()
+    expect(query(page).get('q')).toBe('pregled')
+    expect(query(page).get('order')).toBe('title-desc')
+    if (id === 'web-02') await page.keyboard.press('Escape')
+    else await click(page, 'Zapri podrobnosti')
+    await expect(page.getByRole('dialog')).toHaveCount(0)
+    await expect(search(page)).toHaveValue('pregled')
+    await expect(link).toBeFocused()
+  }
+  await search(page).fill('nepotrjeno')
+  await table(page)
+  await expectIds(page, ['web-02', 'web-03', 'web-01'])
+  await expect(search(page)).toHaveValue('pregled')
+  await page.locator('[data-task-id="web-03"]').getByRole('link').click()
+  await click(page, 'Zapri podrobnosti')
+  await expectIds(page, ['web-02', 'web-03', 'web-01'])
+  await board(page)
+  await project(page, 'launch')
+  await expectIds(page, ['launch-01', 'launch-02'])
+  expect(new URL(page.url()).hash).toBe('#/projects/launch?view=board')
+  await expect(search(page)).toHaveValue('')
+  await page.goto('/#/projects/launch?view=board&q=drugi&status=done')
+  await expectIds(page, ['launch-02'])
+  await readonly(page, writes)
+  expect(await page.evaluate(() => localStorage.length)).toBe(0)
+})
+
+test('A06: direct filtered details survive refresh even when task is outside results', async ({ page }) => {
+  await mount(page, undefined, '#/projects/web/tasks/web-02?view=board&q=zapis&status=done&order=title-asc')
+  await expect(page.getByRole('dialog').getByText('Luka Kovač', { exact: true })).toBeVisible()
+  await page.reload()
+  await expect(page.getByRole('dialog').getByText('web-02', { exact: true }).first()).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expectIds(page, ['web-06'])
+  await expect(search(page)).toHaveValue('zapis')
+  expect(query(page).get('view')).toBe('board')
+  expect(query(page).get('order')).toBe('title-asc')
+})
+
+test('A07: empty and singleton projects, counter, reset and 390px layout', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  const writes = await mount(page, [makeTask('only', { projectId: 'launch' })], '#/projects/web?view=board')
+  await expect(result(page)).toHaveText('Prikazano: 0 od 0.')
+  await expect(page.getByText('Ni zadetkov.', { exact: true })).toBeVisible()
+  await expect(page.getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region')).toHaveCount(3)
+  await table(page)
+  await expect(page.getByRole('heading', { name: 'V tem projektu še ni opravil' })).toBeVisible()
+  await project(page, 'launch')
+  await expect(result(page)).toHaveText('Prikazano: 1 od 1.')
+  await applySearch(page, 'nič')
+  await expect(result(page)).toHaveText('Prikazano: 0 od 1.')
+  await expect(page.getByText('Ni zadetkov.', { exact: true })).toBeVisible()
+  await board(page)
+  await click(page, 'Ponastavi pogled')
+  await expectIds(page, ['only'])
+  expect(query(page).get('view')).toBe('board')
+  await readonly(page, writes)
+  await page.screenshot({ path: 'docs/agent/mobile-board.png', fullPage: true })
+})
+
+test('A08: committed status filters each supported state', async ({ page }) => {
+  await mount(page)
+  for (const status of ['todo', 'in_progress', 'done'] as const) {
+    await select(page, 'Stanje v povezavi', status)
+    await click(page, 'Uporabi pogled')
+    await expectIds(page, examples.filter(task => task.projectId === 'web' && task.status === status).map(task => task.id))
+  }
+})

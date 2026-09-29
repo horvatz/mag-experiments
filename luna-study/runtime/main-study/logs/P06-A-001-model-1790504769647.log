@@ -1,0 +1,10 @@
+Najprej preberem projektna pravila, navodila in predlogo, nato zapišem specifikacijo ter izvedem spremembe in preverjanja v dovoljenih mapah. Časovno omejitev bom spremljal skozi delo.
+Specifikacija je pripravljena v `docs/agent/specification.md`. Obstoječi `ProjectView` se na menjavo projekta že znova ustvari, zato lahko nastavitve ostanejo lokalne temu pogledu, med preklopom Preglednica/Tabla pa se ohranijo. Zdaj dodajam izvozni modul, kontrole in preverjanja robnih primerov.
+Prvi agentni zagon je potrdil štiri scenarije; peti je odkril napako v pričakovani vrednosti mojega testa: drugo opravilo namenoma ni spreminjalo privzetega opisa, test pa je pričakoval drugačen opis. Popravim test in dodam še izrecen primer praznega filtriranega rezultata, nato zaženem celoten `npm run check`.
+Celoten `npm run check` je zdaj uspešen: 52 preverjanj je opravljenih, vključno z izhodiščnimi, razvojnimi in šestimi agentnimi primeri. Urejanje specifikacije bom dopolnil z dejanskimi rezultati in povezavami R01–R12; pred oddajo dodajam še en primer za več kot deset opravil in preverim zaporedni izvoz po spremembi nastavitev.
+**P06 je izveden.** Dodani so nastavljivi stolpci, ločilo in filter, lokalni prenos CSV ter privzete nastavitve ob menjavi projekta in osvežitvi. Specifikacija vsebuje tudi zapis popravka; preverjanja in omejitve so zabeleženi v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P06-A-001/app/docs/agent/verification.md).
+
+`npm run check` je uspešno končal lint, preverjanje tipov, gradnjo in vseh **53 testov**: 38 izhodiščnih, 8 razvojnih in 7 agentnih.
+
+Nobena znana funkcionalna zahteva R01–R12 ni ostala neizpolnjena. Omejitvi: zasebni končni testi niso bili
+{"status":"completed","elapsedSeconds":852.557,"allowedChanges":true,"usage":{"input_tokens":2375298,"cached_input_tokens":2262528,"cache_write_input_tokens":0,"output_tokens":40408,"reasoning_output_tokens":17723}}

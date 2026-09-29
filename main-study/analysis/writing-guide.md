@@ -1,0 +1,154 @@
+# Gradivo za pisanje magistrske
+
+## Kje začeti
+
+Končni obseg je **P03–P10: osem nalog, A/B/C, tri ponovitve, 72 izvedb**.
+P01 in P02 sta zaključena pilota in ne vstopata v glavno primerjavo.
+**Vseh 72 izvedb je arhiviranih; eksperimentalna vrsta je zaključena.**
+[Zaključni povzetek](zakljucni-povzetek.md) vsebuje glavne številke,
+razlago prekinitev in povezave do gradiva. Podrobnosti so v
+[zbirnih rezultatih za pisanje](reporting-results.md).
+
+Za obravnavo posamezne naloge odpri [kazalo dokazov po nalogah](evidence-map.md).
+Vseh devet načrtovanih izvedb iste naloge je zbranih skupaj, s povezavami
+na neodvisni izid, proces, porabo, kodo, predajo in vsebinsko presojo 001.
+
+Metodologija je usklajena z zamrznjenim protokolom v
+[poglavju 5](../../../naloga/latex/poglavja/05-metodologija.tex).
+Razdelka 4.6 in 4.7 v [opisu okolja](../../../naloga/latex/poglavja/04-zasnova-in-izvedba.tex)
+opisujeta dejansko izolacijo, preverjanje in beleženje porabe.
+Prejšnji različici sta ohranjeni v `naloga/zapiski/pred-glavnimi-meritvami-2026-09-21/`.
+
+## Dokazi za posamezen del besedila
+
+| Del magistrske | Uporabno gradivo | Kaj je mogoče utemeljiti |
+| --- | --- | --- |
+| Zasnova in izvedba | [Glavni protokol](../../docs/main-protocol.md), [preverjanje okolja](../../docs/main-verification.md) | Sveže okolje, izolacija, enaka izhodišča, zaključevanje in arhiviranje |
+| Izbor nalog | [Katalog](../../tasks/main-catalog.json), `tasks/P03` do `tasks/P10` | Osem konkretnih razširitev; 12 zahtev vsake; skupna domena vhodov |
+| Pilot | [P01](../../docs/pilot-results.md), [P02](../../docs/p02-results.md) | Razvoj in preverjanje postopkov pred glavno raziskavo |
+| Kvalifikacija | [Q-B/Q-C/Q-I](../../docs/qualification-results.md) | Dejanski povratni popravki in obravnava prekinjene porabe |
+| Potek meritev | [Razpored](../schedule.json), [zamrznjeni vhodi](../frozen-inputs.json), `runs/<ID>/execution.json` | Vrstni red, model in časovna meja; konkretne faze in statusi |
+| Funkcionalni rezultati | [Zbirka za pisanje](reporting-results.json), `runs/<ID>/evaluation-summary.json` | Dokazane zahteve, regresije, strogi uspeh in napake |
+| Čas in poraba | `execution.json`, `usage-observation.json`, `evaluation-summary.json` v arhivu | Celoten modelski čas, faze, popolna poraba ali opažena spodnja meja |
+| Formalne predaje in popravki | [Povzetek procesnih zapisov](process-summary.md), `phase-data.csv` | Začeti in zaključeni povratni koraki B/C ter potrjene predaje; ločeno od popravkov testov in kode znotraj faz |
+| Vsebinska presoja | [Zamrznjena rubrika](../../docs/main-rubric.md), `reviews/<ID>.json` | Pet ločenih ocen z utemeljitvami in konkretnimi dokazi |
+| Primeri za razpravo | Oddana specifikacija, lastni testi, dnevniki ter neodvisna ocena iste izvedbe | Konkretna razlika med zahtevami, razvojnim preverjanjem in končnim vedenjem |
+| Dodatni razvojni primeri | [Izbrani primeri iz drugih ponovitev](development-cases.md) | Naknadni opis konkretnega popravka; ne nova vsebinska ocena ali merilo pogostosti |
+| Dodatni pregled po oddaji | [Raziskovalni pregledi](diagnostics/README.md) | Konkretna omejitev, njen izbor in poreklo; ločeno od zamrznjenega merila |
+
+Poti oblike `runs/<ID>/` so relativne imeniku `experiments`. Tak arhiv
+vsebuje tudi `archive-complete.json`: inventar in zgoščene vrednosti datotek.
+Vrednosti iz surovega arhiva imajo prednost pred ročno prepisano številko.
+
+## Predlagano zaporedje rezultatov
+
+1. **Dejanski obseg.** Koliko od 72 izvedb je začetih in arhiviranih;
+   koliko postopkov je zaključenih, omejenih s časom ali prekinjenih;
+   katere naloge oziroma bloki manjkajo. Navedi datumski razpon.
+2. **Izpolnjevanje zahtev.** Prikaži posamezne ponovitve in povprečja po nalogi.
+   Za R01–R12 morata uspeti oba sprejemna scenarija. Delno opaženega preverjanja
+   ne opisuj kot dokazano funkcionalno napako. Loči strogi uspeh od deleža zahtev.
+3. **Čas in poraba.** Vključi neuspehe in časovne omejitve. Pri popolni porabi
+   navedi imenovalec; prekinjena izvedba ima le opaženo spodnjo mejo.
+   Predpomnjenih tokenov ne prištevaj še enkrat vhodnim. Tokeni niso evri.
+4. **Parne razlike.** Ob popolni zbirki najprej povpreči tri ponovitve iste
+   naloge in postopka; primerjaj osem parov nalog. Opiši smer, velikost in
+   negotovost razlike. Ponavljanje 20.000 vzorcev ne poveča števila nalog.
+5. **Vsebinska kakovost.** Poročaj pet dimenzij posebej za vnaprej izbrano
+   ponovitev 001, z manjkajočimi ocenami in razlago presoje. Ocenjevalec Codex
+   pomeni AI-podprto, neslepo presojo. Človeških ocen ali soglasja ni.
+   Loči še neopravljeno presojo od dokumentirane nezmožnosti ocene
+   (`review_status=pending` oziroma `unavailable`). Nobena ni ocena 0.
+6. **Konkretni primeri.** Izberi razložljiv neuspeh, če obstaja, oziroma
+   jasno označen razvojni popravek. Razvojna napaka, popravljena pred oddajo,
+   ni napaka končne rešitve. Za vsak primer poveži navodilo, kodo, test in izid.
+
+## Merila in dovoljene trditve
+
+- Enota posploševanja je naloga. 72 izvedb, 864 ocen zahtev in tisoči testnih
+  izidov niso 72, 864 ali več tisoč neodvisnih programerskih problemov.
+- Rezultat 12/12 pomeni uspeh določenih končnih scenarijev na obeh pogledih;
+  ne pomeni formalnega dokaza pravilnosti za vse možne podatke.
+- Strogi uspeh zahteva zaključen proces, dovoljene spremembe, lint, tipe,
+  gradnjo ter 70/70 preverjanj. Agentova trditev »vse deluje« ni to merilo.
+- Primerjamo celotne postopke A/B/C. Iz te zasnove ne moremo izolirati učinka
+  samo števila agentov, dolžine specifikacije ali posameznega koraka Spec Kit.
+- Neznačilna ali nejasna razlika ne dokazuje enakovrednosti. Opisni intervali
+  temeljijo na majhnem namenskem vzorcu osmih sorodnih nalog.
+- Vse naloge so razširitve istega React vmesnika, večinoma organiziranje
+  prebranih podatkov. Mobilni prikaz je emuliran Chromium. Ne trdimo, da
+  rezultat velja za fizične naprave, druge modele ali poljubne projekte.
+- Referenčnih 560/560 in zaznanih 48/48 namernih napak sta preverjanje
+  infrastrukture. Ne vključuj ju v uspešnost merjenih modelskih rešitev.
+- Naknadno izbranega diagnostičnega primera ne predstavljaj kot dodatni
+  vnaprej določen test. Pri opaženi omejitvi preveri tudi izhodišče;
+  podedovana omejitev ni nujno regresija, ki jo je uvedel postopek.
+
+## Preostalo avtorsko delo
+
+Rezultate poveži z raziskovalnimi vprašanji iz uvoda, izberi jasne primere
+in preveri skladnost sklepov s podatki. Literatura, interpretacija,
+neodvisna človeška presoja in končna jezikovna ureditev ostanejo ločeni
+avtorski koraki. Zbirka ne more nadomestiti mentorjeve presoje zasnove.
+
+## Neznan čas pri obnovi P06-C-001
+
+Za številčne rezultate uporabi reporting-results.json/md, ne prizadetih
+časovnih agregatov zamrznjenega results.json. Po infrastrukturni prekinitvi
+P06-C-001 točnega trajanja ni mogoče potrditi; neznan čas ostane null in
+prizadete povprečne/parne časovne primerjave so zadržane. Arhivski report.md
+null čas samodejno izpiše kot 0 min, kar ni veljavna meritev. Obnovitvena
+sled, omejitve in odprta predaja so v recovery/P06-C-001/ ter presoji.
+Ohranjena koda je prestala 70/70, postopek ni zaključen; to sta ločena izida.
+Iz ene infrastrukturno prekinjene predaje ni mogoče sklepati na vzrok
+v postopku C. Oddaja se ohrani v funkcionalnem imenovalcu in izbranem
+vzorcu vsebinske presoje. Model ni bil ponovljen.
+
+## Omejitev uporabe pri P03-A-001
+
+P03-A-001 se je ustavil zaradi omejitve storitve po 13,293 s, brez sprememb
+datotek. Neodvisna ocena izhodišča je 38/70 in 0/12; vsebinske ocene
+manjkajo, ker ni nastala avtorska rešitev. Kratkega časa ne razlagaj kot
+hitre uspešne rešitve, izida pa ne kot dokaza, da je A ustvaril slabšo
+kodo. Začeti poskus ostane v zamrznjeni analizi in ni nadomeščen z drugo
+ponovitvijo. Po uporabnikovi ročni ponastavitvi je sledil P03-B-001.
+Dokazi so v [zapisu nezmožnosti presoje](reviews/P03-A-001.json) in
+[arhivirani izvedbi](../../runs/P03-A-001/execution.json).
+
+## Fazna omejitev in dokumentacijski popravek P04-B-002
+
+`completed_with_phase_time_limit` pomeni, da se je zaporedje nadaljevalo,
+vendar vsaj ena faza ni normalno zaključena. P04-B-002 ima dve taki fazi,
+70/70 neodvisnih preverjanj ter 12/12 zahtev, vendar nima strogega uspeha.
+Čas 1109,156 s je znan, celotna poraba pa po skupnem pravilu ostane
+manjkajoča. Opaženi tokeni so le spodnja meja. Izvedba ostane v analizi.
+
+Začeti/zaključeni popravljalni koraki v `process-summary.json` so procesni
+števci: specifikator je dokument dejansko dopolnil, vendar je faza dosegla
+časovno mejo, zato ne šteje kot normalno zaključena. Povratni implementer
+je preveril dopolnitev dokumentov brez spreminjanja kode ali ponovitve
+funkcionalnih testov. Ta primer ni dodatna ordinalna ocena in ne dokazuje
+vzročnega izboljšanja kode zaradi pregleda. Dokazi, primerjava datotek in
+omejitev arhiviranja slike so v [razvojnem primeru](development-cases.md#p04b002-dejanski-povratni-popravek-specifikacije-ob-faznih-omejitvah).
+
+## Napaka dostopa v dvanajstih zaporednih poskusih
+
+[Preverjeni incident 401](diagnostics/authentication-incident-2026-09-25.json)
+obsega P09-A/B/C-001/002, P04-A/B/C-001 in P03-A/B/C-003. Pri vseh je
+potrjeno: brez avtorskega izhoda, ukazov ali sprememb datotek, 38/70,
+0/12, status execution_failed, brez potrjene porabe. Vsi ostanejo v
+primarnih imenovalcih. Kratki časi niso časi implementacije; ne uporabljaj
+jih kot dokaz hitrosti. Vsebinske ocene šestih prizadetih 001 oddaj so
+unavailable, ne ničelne. Skupaj je obravnavanih vseh 24 izbranih oddaj:
+17 ocenjenih, 7 neocenljivih (vključno s P03-A-001).
+
+Po štirje prizadeti poskusi na postopek ne pomenijo, da je incident
+nepomemben: pri P09 je za vsak postopek ostala le ponovitev 003 z možnostjo
+implementacije. Ne sklepaj na sposobnosti postopkov iz zavrnjene prijave.
+Morebitno dodatno analizo po izločanju označi kot naknadno občutljivostno
+analizo; primarne zbirke ali vnaprej izbranih oddaj ne zamenjaj.
+
+Obnova uporablja isti merjeni model, različico CLI, proračune in zamrznjene
+skripte. Zunanje operativno varovalo v `recovery/run-guarded.mjs` preveri
+dostop pred novim ID-jem in po arhiviranju ustavi vrsto ob napaki prijave
+ali omejitvi storitve. Diagnostični preizkusi niso eksperimentalne meritve.

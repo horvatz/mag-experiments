@@ -1,0 +1,4 @@
+# Zgodovina specifikacije P08
+
+- **2026-09-25, v1 — začetni osnutek:** po branju `PROJECT_RULES.md`, `task/instructions.md` in skupne predloge shranjen uporaben dokument z R01–R12, predikatom klasifikacije in obveznimi oznakami vmesnika.
+- **2026-09-25, v2 — predaja:** po branju skupnih tipov, `App`, table, podrobnosti, navigacije, API odjemalca, oblikovanja datumov, slogov, dizajna in razvojnih testov dodana konkretna integracijska mesta, stanje `(vnos, zadnji veljavni datum, filter)`, sledljivost vseh zahtev ter dodatni scenariji S01–S07. Pojasnjena stabilnost vrstnega reda znotraj stolpcev table in ohranitev obstoječih praznih stanj ter treh števcev stanj. Izvirne zahteve niso spremenjene ali izpuščene. Aplikacija, testi in vizualni pregled niso bili izvedeni; implementer zabeleži dejanske rezultate v svoji dokumentaciji. Spremenjeni sta samo datoteki specifikacije in njene zgodovine.

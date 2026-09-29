@@ -1,0 +1,55 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:16521) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:16548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:16595) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [agent] › tests/agent/P05.spec.ts:224:1 › A08: 390px layout, encoded IDs and plain Unicode text remain usable in both views (5.8s)
+
+
+  1) [agent] › tests/agent/P05.spec.ts:224:1 › A08: 390px layout, encoded IDs and plain Unicode text remain usable in both views 
+
+    Error: expect(locator).toHaveAccessibleName(expected) failed
+
+    Locator:  locator('[data-task-id]').filter({ hasText: 'č /2?x=#%' }).getByRole('link')
+    Expected: "Enak naslov – čšž, \"citat\" <span> & č /2?x=#%"
+    Received: "č /2?x=#% Enak naslov – čšž, \"citat\" <span> & Opis č /2?x=#% Druga vrstica. Živa Kovač 29. feb. 2028"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAccessibleName" locator('[data-task-id]').filter({ hasText: 'č /2?x=#%' }).getByRole('link') with timeout 5000ms
+      - waiting for locator('[data-task-id]').filter({ hasText: 'č /2?x=#%' }).getByRole('link')
+        14 × locator resolved to <a class="board-card" aria-labelledby="card-title-č /2?x=#% card-id-č /2?x=#%" href="#/projects/web/tasks/%C4%8D%20%2F2%3Fx%3D%23%25?view=board">…</a>
+           - unexpected value "č /2?x=#% Enak naslov – čšž, "citat" <span> & Opis č /2?x=#% Druga vrstica. Živa Kovač 29. feb. 2028"
+
+
+      236 |     }
+      237 |     const link = page.locator('[data-task-id]').filter({ hasText: taskIds[1] }).getByRole('link')
+    > 238 |     await expect(link).toHaveAccessibleName(`${records[1].title} ${taskIds[1]}`)
+          |                        ^
+      239 |     await expect(link).toHaveAttribute('href', `#/projects/web/tasks/${encodeURIComponent(taskIds[1])}${view === 'board' ? '?view=board' : ''}`)
+      240 |     await link.click()
+      241 |     const dialog = page.getByRole('dialog')
+        at /Users/zan/Documents/mag/experiments/.work/pilots/P05-A-001/app/tests/agent/P05.spec.ts:238:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/run/agent-P05-A08-390px-layout-de37b-remain-usable-in-both-views-agent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/run/agent-P05-A08-390px-layout-de37b-remain-usable-in-both-views-agent/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/run/agent-P05-A08-390px-layout-de37b-remain-usable-in-both-views-agent/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/run/agent-P05-A08-390px-layout-de37b-remain-usable-in-both-views-agent/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [agent] › tests/agent/P05.spec.ts:224:1 › A08: 390px layout, encoded IDs and plain Unicode text remain usable in both views 

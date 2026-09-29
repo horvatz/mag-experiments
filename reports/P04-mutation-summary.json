@@ -1,0 +1,93 @@
+{
+  "date": "2026-09-21T21:07:10.133Z",
+  "task": "P04",
+  "baseline": {
+    "repository": "https://github.com/horvatz/mag-app.git",
+    "commit": "6dc1193f32a1fc00722fbc0983907d32b908cb51",
+    "taskVersion": "P04/1.0",
+    "kind": "main"
+  },
+  "sourceHashes": {
+    "baseline.json": "4c7f3cbcc5e9f37b2398c8ec2c47544486939615a37d6c8bd6ae4634bce27e0a",
+    "evaluation/P04/acceptance.spec.ts": "763da8cf9e87627815cb63551d66b5af0c867506ab4d5cd3a8d88c15b4bd1040",
+    "evaluation/P04/mutations.mjs": "97266a7d115943cd4dbc89397523336b7a6b9a3b74eaf93ac13463afe035242e",
+    "package-lock.json": "5e3cae728c00882f4b8d93bb727b5e3ed26ef97f5ff3947b8e84f541825fd580",
+    "playwright.main.config.ts": "1d1ee9dee7de479b16b167c590e6471227fda20878a60c804a790fbac93c4de3",
+    "reference/P04/overlay/src/App.tsx": "6a84d61109520bbf601d9a316f1ee66fe8de7a8674a9e2cc5922dab88e15468a",
+    "reference/P04/overlay/src/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/P04/overlay/src/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/P04/overlay/src/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P04/overlay/src/TaskBoard.tsx": "efdfe4a6e56552136ec8fe23e143d62a89db15c8be02e274143b28d098a37b5f",
+    "reference/P04/overlay/src/TaskFeature.tsx": "1919b4e6c819d45064275093d297ffe4b9e3e844e434dc972e782f48543fcefd",
+    "scripts/main.mjs": "578845f029885da9782e20f152b239f5ea501178959ac9ba5770bf9d87e4102d",
+    "scripts/report-utils.mjs": "9fe7c0e240e53b8f239949157e6534d21a6090e5cbbb72d8110b054dac482617",
+    "scripts/start-app.mjs": "4e8b6bc1f40985384db605e409898fd03632d119614f391924229cd91fc2d90b",
+    "scripts/start-main.mjs": "e9072cbbf9e05ce656695ca06b68c2b03d159d5350558edf6922777720271ac3",
+    "support/types.ts": "27ecd2e574b2fa8c45e6f9bf5d9dec92a87e5d150008f64d9d126eee6474612b",
+    "tasks/P04/baseline.json": "041565ea471ec34f4e6c79ed6cb444fe3c83e8eb44bf3396be61d5792cbe604b",
+    "tasks/P04/development.spec.ts": "3a9ce5f36c20836e7c402c0bb01fd74dad2f2b6564b39eff9d28833ae81119e0",
+    "tasks/P04/helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P04/instructions.md": "283ff8ec782420eadc52fff1d4eea3f20497c24137d3336cd36f241f515751b9",
+    "tasks/P04/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095"
+  },
+  "referenceChecks": 70,
+  "sourceUnchanged": true,
+  "mutations": [
+    {
+      "id": "M01",
+      "name": "Reversed original order",
+      "scenario": "E01",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 5\n+ Received  + 5\n\n  Array [\n-   \"z\",\n-   \"b\",\n-   \"c\",\n-   \"d\",\n-   \"e\",\n    \"f\",\n+   \"e\",\n+   \"d\","
+    },
+    {
+      "id": "M02",
+      "name": "Accent normalization omitted",
+      "scenario": "E02",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 1\n+ Received  + 1\n\n  Array [\n-   \"c\",\n    \"b\",\n    \"d\",\n    \"e\",\n+   \"c\",\n    \"f\",\n    \"z\",\n  ]"
+    },
+    {
+      "id": "M03",
+      "name": "Wrong status rank",
+      "scenario": "E03",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 3\n+ Received  + 3\n\n  Array [\n+   \"z\",\n+   \"f\",\n+   \"c\",\n    \"b\",\n    \"d\",\n    \"e\",\n-   \"c\",\n-   \"z\","
+    },
+    {
+      "id": "M04",
+      "name": "Unstable ties descending",
+      "scenario": "E04",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 2\n+ Received  + 2\n\n  Array [\n    \"z\",\n    \"f\",\n-   \"b\",\n-   \"d\",\n    \"e\",\n+   \"d\",\n+   \"b\",\n    \"c\","
+    },
+    {
+      "id": "M05",
+      "name": "Secondary key ignored",
+      "scenario": "E05",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 1\n+ Received  + 1\n\n  Array [\n    \"c\",\n+   \"b\",\n    \"d\",\n    \"e\",\n-   \"b\",\n    \"f\",\n    \"z\",\n  ]"
+    },
+    {
+      "id": "M06",
+      "name": "Secondary direction copied from primary",
+      "scenario": "E05",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 1\n+ Received  + 1\n\n  Array [\n    \"c\",\n+   \"b\",\n    \"d\",\n    \"e\",\n-   \"b\",\n    \"f\",\n    \"z\",\n  ]"
+    }
+  ],
+  "detected": 6,
+  "total": 6
+}

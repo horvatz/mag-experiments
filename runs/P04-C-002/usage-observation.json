@@ -1,0 +1,110 @@
+{
+  "id": "P04-C-002",
+  "observedAt": "2026-09-25T18:20:48.958Z",
+  "complete": true,
+  "roles": [
+    {
+      "role": "agent",
+      "session": "01a0d9bc-dc58-7582-ab7c-457c826876c8",
+      "lastTokenEventAt": "2026-09-25T18:20:46.985Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 3283998,
+        "cached_input_tokens": 3021568,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 29176,
+        "reasoning_output_tokens": 5264
+      },
+      "phases": [
+        {
+          "name": "constitution",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 63760,
+            "cached_input_tokens": 51840,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2526,
+            "reasoning_output_tokens": 133
+          },
+          "lastTokenEventAt": "2026-09-25T18:05:22.074Z",
+          "cumulativeMatchesCLI": true
+        },
+        {
+          "name": "specify",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 206771,
+            "cached_input_tokens": 179840,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 7233,
+            "reasoning_output_tokens": 338
+          },
+          "lastTokenEventAt": "2026-09-25T18:08:00.121Z",
+          "cumulativeMatchesCLI": true
+        },
+        {
+          "name": "plan",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 451689,
+            "cached_input_tokens": 402304,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 10301,
+            "reasoning_output_tokens": 455
+          },
+          "lastTokenEventAt": "2026-09-25T18:09:46.076Z",
+          "cumulativeMatchesCLI": true
+        },
+        {
+          "name": "tasks",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 643933,
+            "cached_input_tokens": 580352,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 12192,
+            "reasoning_output_tokens": 592
+          },
+          "lastTokenEventAt": "2026-09-25T18:10:53.100Z",
+          "cumulativeMatchesCLI": true
+        },
+        {
+          "name": "implement",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 2182587,
+            "cached_input_tokens": 2072960,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 25638,
+            "reasoning_output_tokens": 3451
+          },
+          "lastTokenEventAt": "2026-09-25T18:18:29.028Z",
+          "cumulativeMatchesCLI": true
+        },
+        {
+          "name": "converge",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 3283998,
+            "cached_input_tokens": 3021568,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 29176,
+            "reasoning_output_tokens": 5264
+          },
+          "lastTokenEventAt": "2026-09-25T18:20:46.985Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    }
+  ],
+  "usage": {
+    "input_tokens": 3283998,
+    "cached_input_tokens": 3021568,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 29176,
+    "reasoning_output_tokens": 5264
+  },
+  "observedUsageBeforeInterruption": null,
+  "method": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+  "note": "Cached input is included in input; reasoning output is included in output."
+}

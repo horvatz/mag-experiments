@@ -1,0 +1,1 @@
+Osnovno stanje in oba prikaza so zdaj povezani, testni scenariji pa so dodani. Časovnik kaže le še nekaj deset sekund za ta korak; začenjam zahtevani `npm run check` in bom v dnevnik zapisal samo izide, ki jih dejansko dobim.

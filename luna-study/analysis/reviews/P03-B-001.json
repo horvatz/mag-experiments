@@ -1,0 +1,88 @@
+{
+  "collection": "L/1.0",
+  "id": "P03-B-001",
+  "reviewedAt": "2026-09-27T16:06:17.662750+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "687545ddf54ecb581b7e8c4f9582c095e7508ef65915e6a793c88b26e7f2bba3",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija jasno pokrije R01–R12 ter Unicode, več dobesednih besed, točno ime, osebe iz celotnega projekta, filtre med pogledi, ponastavitve, števce in dve vrsti praznega stanja. Izrecno ohrani obstoječi URL izbire pogleda in loči notranje drsenje od širine dokumenta. Projektno mejo, bralne operacije in splošne podatke navede neodvisno od razvojnih primerov.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "TextMatch, statusMatch in assigneeMatch sestavljajo preverljiv predikat nad urejenim T. Norm določa NFD, natančen obseg znamenj in male črke; prazna konjunkcija ter literalni includes sta izrecna. People(T) ostane neodvisen od R, ID-ji in vrstni red znotraj stolpcev izvirajo iz istega rezultata. Prehodi pogleda/projekta/reload/clear ter N/M imajo jasne pogoje.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Specifikacija odkrito ostane načrt pred implementacijo, verifikacijski zapis pa za vseh dvanajst zahtev poveže končno kodo in poimenovane razvojne oziroma lastne scenarije. Item_40 neposredno potrdi zadnji check 51/51. Omejitve ročnega videza, Git/xcrun in uporabe obstoječega mobilnega testa so razkrite. Review.json izrecno pove, da pregledovalec testov ni ponavljal. Lastna preverjanja ne dokazujejo vsake podrobnosti pravil; te konkretne vrzeli so ovrednotene v ločeni dimenziji, ne nadomeščene z modelovim sklepom.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md#rezultati-preverjanja",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md#odstopanja-in-nepreverjeno",
+        "runtime/runs/P03-B-001/submission/docs/agent/review.json",
+        "analysis/evidence/P03-B-001-checks.md#item_40"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čista normalizeSearch je ločena od treh lokalnih uporabniških stanj. People, words, filteredTasks in counts so izpeljani brez shranjevanja podvojene kopije. Tabela in obstoječa tabla uporabljata isti seznam, projektni ključ resetira stanja, števci sledijo rezultatu in operacije ne mutirajo podatkov. Razporeditev kontrol je v CSS; obseg lokalne logike ne zahteva dodatnih modulov.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/src/App.tsx:13",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:19",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:24",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:68",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:71",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:118",
+        "runtime/runs/P03-B-001/submission/src/TaskBoard.tsx:16",
+        "runtime/runs/P03-B-001/submission/src/styles.css:178"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Pet scenarijev koristno preveri besede prek različnih polj, Unicode, literalni .* proti regexu, točno ime z različno velikostjo črk, skrite osebe, projektni reset vseh treh kontrol, nič zadetkov ter reload po spremembi poizvedbe in statusa. Vendar clear spremeni samo query, assignee pri reload ostane all, prazni projekt je lastno preverjen le v tabeli, velikih seznamov in izvora z ID-ji v nesortiranem vrstnem redu ni. Zato pomembne meje širše specifikacije niso razlikovalno preverjene, čeprav osnovni nabor pokrije del njih in končni check 51/51 uspe.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/tests/agent/filters.spec.ts:3",
+        "runtime/runs/P03-B-001/submission/tests/agent/filters.spec.ts:25",
+        "runtime/runs/P03-B-001/submission/tests/agent/filters.spec.ts:44",
+        "runtime/runs/P03-B-001/submission/tests/agent/filters.spec.ts:60",
+        "runtime/runs/P03-B-001/submission/tests/agent/filters.spec.ts:66",
+        "analysis/evidence/P03-B-001-checks.md#item_40"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Končno completed, 981,876 s, 70/70 in 12/12; strogi uspeh. Faze 260,057 / 511,389 / 206,999 s, brez zahtev po popravkih. Popolna poraba 2343456 vhodnih in 39408 izhodnih tokenov; tokeni niso račun API.",
+  "developmentFailureExample": {
+    "description": "Prvi celotni item_23 ima 47/49. Za query vsebina cas pričakuje id-a, čeprav njegov opis vsebuje vsebine, dejansko ustrezen id-c pa izpusti; drugič mount([], ista uporabljena stran) še pokaže prejšnje opravilo namesto praznega projekta. Izpis item_25 potrdi stari prikaz, item_26 pa prvotne podatke. Po testnem posegu item_28 drugi check item_30 doseže 49/50, ker id-a še vedno nima besede vsebina. Item_31 popravi testno pripravo; item_33 potrdi 4/4. Po dodatnem reload testu in števcih sta item_37 in zadnji item_40 oba 51/51. Po začetni implementaciji se spreminjajo testi in predaja, ne funkcionalna koda. Natančen vzrok ohranitve podatkov pri ponovnem mountu ni bil ločeno eksperimentalno diagnosticiran.",
+    "evidence": [
+      "analysis/evidence/P03-B-001-checks.md#item_23",
+      "analysis/evidence/P03-B-001-checks.md#item_25",
+      "analysis/evidence/P03-B-001-checks.md#item_26",
+      "analysis/evidence/P03-B-001-checks.md#item_28",
+      "analysis/evidence/P03-B-001-checks.md#item_30",
+      "analysis/evidence/P03-B-001-checks.md#item_31",
+      "analysis/evidence/P03-B-001-checks.md#item_33",
+      "analysis/evidence/P03-B-001-checks.md#item_40"
+    ]
+  }
+}

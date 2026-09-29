@@ -1,0 +1,1 @@
+`npm run check` je končal uspešno: lint, typecheck, build in vseh 49 Playwright preverjanj so prestali. Izvajalni testi pokrivajo del R01–R12, ne pa vseh robnih primerov; v sledljivosti jih ločujem in nedokončani testni task pustim neoznačen.

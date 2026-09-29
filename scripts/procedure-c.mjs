@@ -27,19 +27,19 @@ export function phaseBudget(stage, remaining, policy = workflow) {
   assert.ok(stages.includes(stage))
   return Math.max(0, remaining - (stage === 'implement' ? policy.convergenceReserveSeconds : 0))
 }
-export function stageCanEdit(stage, path) {
+export function stageCanEdit(stage, path, featurePath = feature) {
   if (stage === 'constitution') return path === '.specify/memory/constitution.md'
-  if (stage === 'converge') return [feature + '/tasks.md', 'docs/agent/convergence.json'].includes(path)
+  if (stage === 'converge') return [featurePath + '/tasks.md', 'docs/agent/convergence.json'].includes(path)
   if (path === '.specify/feature.json') return ['specify', 'plan', 'tasks', 'implement'].includes(stage)
   if (path.startsWith('docs/agent/')) return ['specify', 'plan', 'tasks', 'implement'].includes(stage)
   return stage === 'implement' && /^(src|tests\/agent)\//.test(path)
 }
-export function stageConfiguration(base, app, stage) {
+export function stageConfiguration(base, app, stage, featurePath = feature) {
   assert.ok(stages.includes(stage))
   const config = structuredClone(base)
   const paths = config['permissions.pilot'].filesystem[app]
-  for (const path of ['src', 'tests/agent', 'docs/agent']) paths[path] = stageCanEdit(stage, path + '/probe') ? 'write' : 'read'
-  for (const path of ['.specify/memory/constitution.md', '.specify/feature.json', feature + '/tasks.md', 'docs/agent/convergence.json']) paths[path] = stageCanEdit(stage, path) ? 'write' : 'read'
+  for (const path of ['src', 'tests/agent', 'docs/agent']) paths[path] = stageCanEdit(stage, path + '/probe', featurePath) ? 'write' : 'read'
+  for (const path of ['.specify/memory/constitution.md', '.specify/feature.json', featurePath + '/tasks.md', 'docs/agent/convergence.json']) paths[path] = stageCanEdit(stage, path, featurePath) ? 'write' : 'read'
   return config
 }
 export const convergenceSchema = {

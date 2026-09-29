@@ -1,0 +1,48 @@
+{
+  "id": "P05-B-001",
+  "reviewedAt": "2026-09-22",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Predana specifikacija jasno pokrije R01–R12, prazno in še nenaloženo stanje, stabilni filter pred odsekom, identiteto po ID-jih, razlike med števci in ohranitev stanja pri pogledih/podrobnostih. Loči načrtovane scenarije od dejansko izvedenih preverjanj.",
+      "evidence": ["runs/P05-B-001/submission/docs/agent/specification.md"]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T/F/V, število strani in prikazani indeksi imajo izrecne formule, vključno z N=0 in all. Določene so disjunktne strani s popolno konkatenacijo, prehodi lokalne trojice ter onemogočanje robov. Pravila so dovolj konkretna za preverjanje neodvisno od zapisa kode.",
+      "evidence": ["runs/P05-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Specifikacija ostane označena kot začetna predaja. Implementer v verification.md doda dejanske lokacije, S01–S05/D01–D04 in izide R01–R12; check.log potrdi 56 passed. Pregledovalec izrecno razkrije, da se je oprl na predani dnevnik in posnetke, brez lastnega ponovnega zagona. Prvi neuspešni lastni test je shranjen in pojasnjen.",
+      "evidence": ["runs/P05-B-001/submission/docs/agent/verification.md#dejanska-sledljivost-r01r12", "runs/P05-B-001/submission/docs/agent/check.log", "runs/P05-B-001/submission/docs/agent/check-initial.log", "runs/P05-B-001/submission/docs/agent/review.json"]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Lokalna stanja velikosti/filtra/strani so ločena od izpeljanega skupnega odseka in robnih zastavic. Oba pogleda uporabljata visibleTasks, obstoječi TaskBoard pa samo združuje prejete podatke. Projektni števci ostanejo nad izvorom, življenjska doba projekta zagotovi ponastavitev brez podvojenih učinkov. Nova logika je zgoščena v ProjectView, vendar za ta obseg razumljiva in brez znatnega podvajanja.",
+      "evidence": ["runs/P05-B-001/submission/src/App.tsx:13", "runs/P05-B-001/submission/src/App.tsx:65", "runs/P05-B-001/submission/src/TaskBoard.tsx:13"]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "Pet scenarijev na dveh širinah preveri celotne razdelitve 13 opravil, kratke zadnje strani, onemogočene klike, filter pred razrezom, mešano tablo, oba tipa števcev, 0/1 element, ponastavitve, poseben ID ter nič zapisov API. Prvi zagon je dejansko padel zaradi testne predpostavke o tipki End, popravek je dokumentiran in končni zagon uspe. Pomočnik readonly, uporabljen tudi v S05, poleg zapisovalnih zahtev preveri, da dokument ne presega širine zaslona; visual-check.json poda še ločen posnetek geometrije.",
+      "evidence": ["runs/P05-B-001/submission/tests/agent/pagination.spec.ts", "runs/P05-B-001/submission/docs/agent/check-initial.log", "runs/P05-B-001/submission/docs/agent/check.log", "runs/P05-B-001/submission/docs/agent/visual-check.json"]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena je uspešna 70/70; v pregledani končni oddaji ni potrjene napake glede na uporabljena merila. To ni dokaz pravilnosti za vse vhode.",
+  "developmentFailureExample": {
+    "description": "S05 je na obeh širinah najprej predpostavil, da End izbere zadnjo možnost izvornega selecta. Po pregledu vedenja oddaljenega Chromiuma je implementer uporabil črko k in Enter. Popravljen je bil lastni test, produkcijska koda se zaradi tega ni spremenila.",
+    "evidence": ["runs/P05-B-001/submission/docs/agent/check-initial.log", "runs/P05-B-001/submission/tests/agent/pagination.spec.ts"]
+  }
+}

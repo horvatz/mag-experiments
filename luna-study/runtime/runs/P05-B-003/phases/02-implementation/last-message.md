@@ -1,0 +1,5 @@
+Implementacija straničenja in filtra je zaključena. Filtriranje se izvede pred straničenjem, tabela in tabla pa uporabljata iste ID-je trenutne strani. Stanje se ponastavi ob menjavi projekta ali osvežitvi.
+
+Spremembe so v [App.tsx](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P05-B-003/app/src/App.tsx), [styles.css](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P05-B-003/app/src/styles.css) in [P05-pagination.spec.ts](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P05-B-003/app/tests/agent/P05-pagination.spec.ts). Sledljivost zahtev, rezultati in omejitve so zapisani v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P05-B-003/app/docs/agent/verification.md).
+
+`npm run check` je uspel: lint, tipi, gradnja in vseh 51 testov. Specifikacije nisem spreminjal; napake v njej nisem našel. `git diff` in `git status` nista delovala, ker okolju manjkajo Command Line Tools (`xcrun` napaka), zato stanja Git nisem mogel potrditi.

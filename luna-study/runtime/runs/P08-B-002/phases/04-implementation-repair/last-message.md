@@ -1,0 +1,3 @@
+Ugotovitev R11 sem odpravil z agentnim testom za neprazen projekt s prazno skupino. Test preveri predpisano sporočilo in vrnitev na `all`. Pregleda in specifikacije nisem spreminjal.
+
+Ciljni agentni testi so uspeli **4/4**; končni `npm run check` je uspel, vključno z lintom, tipi, gradnjo in **50/50 testi**. Obravnava ugotovitve in rezultati so zapisani v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P08-B-002/app/docs/agent/verification.md); dodani scenarij je v [P08.spec.ts](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P08-B-002/app/tests/agent/P08.spec.ts).

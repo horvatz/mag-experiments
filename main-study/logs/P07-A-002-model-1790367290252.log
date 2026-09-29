@@ -1,0 +1,18 @@
+Najprej bom prebral pravila in zahteve ter pripravil specifikacijo. Nato bom samostojno izvedel spremembe, zagnal preverjanja in zapisal rezultate ter morebitne omejitve.
+
+Zahteve določajo globalno množico priljubljenih in filter, ki se ob menjavi projekta ponastavi. Posebej bom preveril še neveljavne zapise shrambe, sinhronizacijo med zavihki, ohranitev neznanih ID-jev in delovanje ob napaki shrambe, saj razvojni testi tega ne pokrivajo.
+
+Specifikacija je pripravljena, osnovna izvedba pa že vključuje gumbe v obeh pogledih, filter, števec in obravnavo napak shrambe. Prvi celotni pregled teče; zdaj dodajam teste za robne primere, predvsem validacijo, projektno brisanje in dogodke med zavihki.
+
+Vseh 46 skupnih preverjanj je uspešnih. Pri dodajanju lastnih testov sem popravil dve napaki v testni kodi; razširjeni pregled zdaj teče. Meritve pri širini 390 pik kažejo, da stran ostane široka 390 pik, preglednica in tabla pa se pomikata znotraj prikaza.
+
+Razširjeno preverjanje je uspešno: `npm run check` je opravil lint, gradnjo in vseh 68 testov, vključno z 22 lastnimi. Preizkusi so potrdili tudi sinhronizacijo dveh zavihkov in delovanje ob izjemah shrambe. Zaključujem dokumentacijo s povezavami med zahtevami, kodo in dokazi preverjanja.
+
+Implementirane so zahteve R01–R12, vključno s trajno shrambo, filtriranjem, sinhronizacijo zavihkov in delovanjem ob napakah shrambe.
+
+`npm run check` je uspešen: lint, gradnja in **68/68 testov**.
+
+Dokumentacija: [specifikacija](docs/agent/specification.md) in [preverjanje](docs/agent/verification.md).
+
+Znanih neizpolnjenih zahtev ni. Skriti končni testi niso bili dostopni.
+{"status":"completed","elapsedSeconds":640.296,"allowedChanges":true,"usage":{"input_tokens":694776,"cached_input_tokens":627968,"cache_write_input_tokens":0,"output_tokens":19595,"reasoning_output_tokens":3072}}

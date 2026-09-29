@@ -1,0 +1,1 @@
+Ponovljeni `npm run check` je uspešen: lint, preverjanje tipov, gradnja in vseh 50 Playwright preverjanj so prestali. Zdaj beležim testna dokazila v dnevnik in sledljivost specifikacije; končnih zasebnih testov nisem izvajal.

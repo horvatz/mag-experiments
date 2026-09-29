@@ -1,0 +1,3 @@
+Specifikacijo sem pripravil v [spec.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P04-C-003/app/docs/agent/P04/spec.md) za vseh R01–R12. Vključuje pravila projekcije in sprememb stanja, preverljive sprejemne pogoje, scenarije, merila uspeha, meje ter trenutno nepreverjeno sledljivost. Pot funkcionalnosti je zabeležena v [feature.json](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P04-C-003/app/.specify/feature.json).
+
+Preveril sem, da je JSON veljaven, vseh 12 zahtev in zahtevani razdelki pa so prisotni. Funkcionalnih testov nisem zaganjal; specifikacijski korak ni spreminjal kode ali testov.

@@ -1,0 +1,3 @@
+Specifikacija in zgodovina sta shranjeni v [specification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P10-B-001/app/docs/agent/specification.md) in [specification-history.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P10-B-001/app/docs/agent/specification-history.md). Zajemata R01–R12, prehodna pravila za razveljavitev in ponovitev ter povezave do pregledanih tipov in komponent.
+
+Aplikacije in testov nisem zagnal, kot določa ta vloga. Poskus `git diff --check` je blokiralo okolje z napako `xcrun` — manjkajoča aktivna pot do Command Line Tools. Vse zahteve so pripravljene za implementacijsko predajo.

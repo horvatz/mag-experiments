@@ -1,0 +1,63 @@
+import { expect, test } from '@playwright/test'
+
+test.beforeEach(async ({ request }) => {
+  expect((await request.post('/__test/reset')).ok()).toBeTruthy()
+})
+
+test('D01: odpiranje urejanja pokaže shranjene podatke', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('navigation').getByRole('link', { name: 'Jesenska kampanja' }).click()
+  await page.locator('[data-task-id="launch-02"]').getByRole('link').click()
+  const dialog = page.getByRole('dialog')
+  await dialog.getByRole('button', { name: 'Uredi', exact: true }).click()
+  await expect(dialog.getByRole('textbox', { name: 'Naslov', exact: true })).toHaveValue('Priprava predstavitve')
+  await expect(dialog.getByRole('combobox', { name: 'Stanje', exact: true })).toHaveValue('in_progress')
+})
+
+test('D02: uspešno shranjevanje posodobi preglednico in podrobnosti', async ({ page, request }) => {
+  await page.goto('/#/projects/web/tasks/web-01')
+  const dialog = page.getByRole('dialog')
+  await dialog.getByRole('button', { name: 'Uredi', exact: true }).click()
+  await dialog.getByRole('textbox', { name: 'Naslov', exact: true }).fill('Pregled uvodne strani')
+  await dialog.getByRole('combobox', { name: 'Stanje', exact: true }).selectOption('done')
+  await dialog.getByRole('button', { name: 'Shrani', exact: true }).click()
+  await expect(dialog.getByRole('textbox', { name: 'Naslov', exact: true })).toBeHidden()
+  await expect(dialog.getByRole('heading', { name: 'Pregled uvodne strani', exact: true })).toBeVisible()
+  await expect(dialog.getByText('Končano', { exact: true })).toBeVisible()
+  await expect(page.locator('[data-task-id="web-01"]')).toContainText('Pregled uvodne strani')
+  await expect(page.locator('[data-task-id="web-01"]')).toContainText('Končano')
+  const stored = await (await request.get('/api/tasks/web-01')).json()
+  expect(stored).toMatchObject({ title: 'Pregled uvodne strani', status: 'done' })
+})
+
+test('D03: preklic zavrže vnos in ne pošlje zahteve', async ({ page, request }) => {
+  const before = await (await request.get('/__test/state')).json()
+  await page.goto('/#/projects/web/tasks/web-02')
+  const dialog = page.getByRole('dialog')
+  await dialog.getByRole('button', { name: 'Uredi', exact: true }).click()
+  await dialog.getByRole('textbox', { name: 'Naslov', exact: true }).fill('Začasni naslov')
+  await dialog.getByRole('combobox', { name: 'Stanje', exact: true }).selectOption('done')
+  expect(await (await request.get('/__test/state')).json()).toEqual(before)
+  await dialog.getByRole('button', { name: 'Prekliči', exact: true }).click()
+  await expect(dialog.getByRole('textbox', { name: 'Naslov', exact: true })).toBeHidden()
+  await dialog.getByRole('button', { name: 'Uredi', exact: true }).click()
+  await expect(dialog.getByRole('textbox', { name: 'Naslov', exact: true })).toHaveValue('Pregled vsebine')
+  await expect(dialog.getByRole('combobox', { name: 'Stanje', exact: true })).toHaveValue('todo')
+  expect(await (await request.get('/__test/state')).json()).toEqual(before)
+})
+
+test('D04: prazen naslov pokaže napako, veljaven popravek jo odstrani', async ({ page, request }) => {
+  const before = await (await request.get('/__test/state')).json()
+  await page.goto('/#/projects/web/tasks/web-01')
+  const dialog = page.getByRole('dialog')
+  await dialog.getByRole('button', { name: 'Uredi', exact: true }).click()
+  const title = dialog.getByRole('textbox', { name: 'Naslov', exact: true })
+  await title.fill('   ')
+  await dialog.getByRole('button', { name: 'Shrani', exact: true }).click()
+  await expect(title).toHaveAttribute('aria-invalid', 'true')
+  await expect(dialog.getByRole('alert')).toBeVisible()
+  expect(await (await request.get('/__test/state')).json()).toEqual(before)
+  await title.fill('Dopolnitev strani')
+  await expect(title).not.toHaveAttribute('aria-invalid', 'true')
+  await expect(dialog.getByRole('alert')).toBeHidden()
+})

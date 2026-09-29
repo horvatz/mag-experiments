@@ -1,0 +1,57 @@
+import { test, expect, mount, expectIds, select, click, board, table, details, summary } from '../development/helpers.ts'
+
+test('pagination defaults to all records and filters before paging in both views', async ({ page }) => {
+  await mount(page)
+  await expectIds(page, ['web-01', 'web-02', 'web-03', 'web-04', 'web-05', 'web-06', 'web-07', 'web-08'])
+  await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 1 od 1. Prikazano 1–8 od 8.')
+  await summary(page, [4, 2, 2])
+
+  await select(page, 'Velikost strani', '2')
+  await click(page, 'Naslednja stran')
+  await select(page, 'Filter strani', 'todo')
+  await expectIds(page, ['web-02', 'web-04'])
+  await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 1 od 2. Prikazano 1–2 od 4.')
+  await board(page)
+  await expectIds(page, ['web-02', 'web-04'], false)
+  await click(page, 'Naslednja stran')
+  await expectIds(page, ['web-07', 'web-08'], false)
+  await table(page)
+  await expectIds(page, ['web-07', 'web-08'])
+  await details(page, 'web-07')
+  await expectIds(page, ['web-07', 'web-08'])
+  await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 2 od 2. Prikazano 3–4 od 4.')
+  await expect(page.getByRole('combobox', { name: 'Velikost strani' })).toHaveValue('2')
+  await expect(page.getByRole('combobox', { name: 'Filter strani' })).toHaveValue('todo')
+  await summary(page, [4, 2, 2])
+})
+
+test('an empty filtered result shows zero range and disables navigation', async ({ page }) => {
+  await mount(page, [{ id: 'one', projectId: 'web', title: 'Eno opravilo', description: '', status: 'done', assignee: 'Ana', dueDate: '2026-09-27' }])
+  await select(page, 'Filter strani', 'todo')
+  await expectIds(page, [])
+  await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 0 od 0. Prikazano 0–0 od 0.')
+  for (const label of ['Prva stran', 'Prejšnja stran', 'Naslednja stran', 'Zadnja stran']) {
+    await expect(page.getByRole('button', { name: label, exact: true })).toBeDisabled()
+  }
+  await select(page, 'Filter strani', 'all')
+  await expectIds(page, ['one'])
+  await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 1 od 1. Prikazano 1–1 od 1.')
+})
+
+test('page selection stays local to the project and resets on project change', async ({ page }) => {
+  await mount(page)
+  await select(page, 'Velikost strani', '2')
+  await click(page, 'Naslednja stran')
+  await board(page)
+  await expectIds(page, ['web-03', 'web-04'], false)
+  await page.reload()
+  await expectIds(page, ['web-01', 'web-02', 'web-03', 'web-04', 'web-05', 'web-06', 'web-07', 'web-08'], false)
+  await expect(page.getByRole('combobox', { name: 'Velikost strani' })).toHaveValue('all')
+  await expect(page.getByRole('combobox', { name: 'Filter strani' })).toHaveValue('all')
+  await select(page, 'Velikost strani', '2')
+  await click(page, 'Naslednja stran')
+  await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name: 'Jesenska kampanja', exact: true }).click()
+  await expectIds(page, ['launch-01', 'launch-02'])
+  await expect(page.getByRole('combobox', { name: 'Velikost strani' })).toHaveValue('all')
+  await expect(page.getByRole('combobox', { name: 'Filter strani' })).toHaveValue('all')
+})

@@ -1,0 +1,3 @@
+Specifikacija za R01–R12 je v [spec.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P09-C-002/app/docs/agent/P09/spec.md). Vključuje pravila sprememb stanja, sprejemne pogoje, scenarije preverjanja in sledljivost do ustreznih delov kode. Testi so jasno označeni kot še neizvedeni.
+
+V [feature.json](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P09-C-002/app/.specify/feature.json) je določena mapa `docs/agent/P09`. Veljavnost JSON-a sem preveril; implementacijskih testov nisem zaganjal. Časovnik je ob zadnjem preverjanju pokazal 544 sekund do roka.

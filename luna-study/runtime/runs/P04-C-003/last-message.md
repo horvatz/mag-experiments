@@ -1,0 +1,1 @@
+Agentni scenariji so dodani za primerjave, stanje skozi navigacijo, tablo, ID-je in prazne/enojne projekte. Začenjam celotni `npm run check`; po izidu bom sproti posodobil dokazila in označil zadnjo nalogo samo, če preverjanje uspe.

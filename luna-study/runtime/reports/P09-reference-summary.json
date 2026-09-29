@@ -1,0 +1,398 @@
+{
+  "date": "2026-09-21T21:11:42.468Z",
+  "task": "P09",
+  "baseline": {
+    "repository": "https://github.com/horvatz/mag-app.git",
+    "commit": "6dc1193f32a1fc00722fbc0983907d32b908cb51",
+    "taskVersion": "P09/1.0",
+    "kind": "main"
+  },
+  "sourceHashes": {
+    "baseline.json": "4c7f3cbcc5e9f37b2398c8ec2c47544486939615a37d6c8bd6ae4634bce27e0a",
+    "evaluation/P09/acceptance.spec.ts": "9f56c7a520197632816fd2aae76fb9b39352a8f9ce1cfd39541c033f92c3fcac",
+    "evaluation/P09/mutations.mjs": "3f3c14f5a19f92ac6943ada743eca29f3bdf267f8b2b118aa3a0936991884822",
+    "package-lock.json": "5e3cae728c00882f4b8d93bb727b5e3ed26ef97f5ff3947b8e84f541825fd580",
+    "playwright.main.config.ts": "1d1ee9dee7de479b16b167c590e6471227fda20878a60c804a790fbac93c4de3",
+    "reference/P09/overlay/src/App.tsx": "6a84d61109520bbf601d9a316f1ee66fe8de7a8674a9e2cc5922dab88e15468a",
+    "reference/P09/overlay/src/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/P09/overlay/src/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/P09/overlay/src/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P09/overlay/src/navigation.ts": "bf525d3831d9c7cb06674c406a5bbdcffc9938b9ae588b41a65eca04384d4eee",
+    "reference/P09/overlay/src/TaskBoard.tsx": "efdfe4a6e56552136ec8fe23e143d62a89db15c8be02e274143b28d098a37b5f",
+    "reference/P09/overlay/src/TaskFeature.tsx": "7411fcb208d0a231bf81848930496307f7e9929bc857a5e846ea737fbc0dbee1",
+    "scripts/main.mjs": "578845f029885da9782e20f152b239f5ea501178959ac9ba5770bf9d87e4102d",
+    "scripts/report-utils.mjs": "9fe7c0e240e53b8f239949157e6534d21a6090e5cbbb72d8110b054dac482617",
+    "scripts/start-app.mjs": "4e8b6bc1f40985384db605e409898fd03632d119614f391924229cd91fc2d90b",
+    "scripts/start-main.mjs": "e9072cbbf9e05ce656695ca06b68c2b03d159d5350558edf6922777720271ac3",
+    "support/types.ts": "27ecd2e574b2fa8c45e6f9bf5d9dec92a87e5d150008f64d9d126eee6474612b",
+    "tasks/P09/baseline.json": "03171ae5e19b81a2856d9e02dbfb6b951ed0aa9b7833c786ba16cc49d81ea022",
+    "tasks/P09/development.spec.ts": "b6ce1792c0d760a9c6ee5baf05aeb885cb4cdaddf4b985725ae7dd3191fd144f",
+    "tasks/P09/helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P09/instructions.md": "c3175300770501d3035e2d74f6b4b85e7eb8c4ed5037857eb442570c648955f2",
+    "tasks/P09/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095"
+  },
+  "node": "v24.11.1",
+  "success": true,
+  "total": 70,
+  "counts": {
+    "regression-api": 14,
+    "regression-desktop": 12,
+    "regression-mobile": 12,
+    "development-desktop": 4,
+    "development-mobile": 4,
+    "evaluation-desktop": 12,
+    "evaluation-mobile": 12
+  },
+  "tests": [
+    {
+      "title": "fixture IDs are unique and each project has three tasks",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "a successful update changes only the chosen record and fields",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"\",\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\" \\t\\r\\n\",\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\",\"status\":\"unknown\"}",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\"}",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":42,\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\",\"status\":\"done\",\"projectId\":\"launch\"}",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "invalid update leaves all records unchanged: null",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "rejected save writes nothing and the next request can succeed",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "held request remains unchanged until released with success",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "held request remains unchanged until released with reject",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "reset cancels a pending save and restores a previously changed record",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "normal server does not expose test controls",
+      "project": "regression-api",
+      "status": "expected"
+    },
+    {
+      "title": "projects show their own tasks and all three states",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "projects show their own tasks and all three states",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "duplicate titles open by ID, with complete details and keyboard dismissal",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "duplicate titles open by ID, with complete details and keyboard dismissal",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "direct task links survive refresh and browser back closes details",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "direct task links survive refresh and browser back closes details",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "a saved API change survives browser refresh and project navigation",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "a saved API change survives browser refresh and project navigation",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "unknown locations and task IDs show a recoverable state",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "unknown locations and task IDs show a recoverable state",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "failed /api/projects can be retried",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "failed /api/projects can be retried",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "failed /api/projects/web/tasks can be retried",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "failed /api/projects/web/tasks can be retried",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "an empty project keeps the navigation and shows an empty state",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "an empty project keeps the navigation and shows an empty state",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "switching project during loading never shows the previous project tasks",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "switching project during loading never shows the previous project tasks",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "board navigation preserves the view and opens duplicate titles by ID without writes",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "board navigation preserves the view and opens duplicate titles by ID without writes",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "board reflects saved states on refresh, including empty columns and duplicate titles",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "board reflects saved states on refresh, including empty columns and duplicate titles",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "an empty board keeps all columns and supports switching back to the table",
+      "project": "regression-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "an empty board keeps all columns and supports switching back to the table",
+      "project": "regression-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "D01: direct filtered URL",
+      "project": "development-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "D01: direct filtered URL",
+      "project": "development-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "D02: draft only applies on confirmation",
+      "project": "development-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "D02: draft only applies on confirmation",
+      "project": "development-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "D03: board and reload preserve committed state",
+      "project": "development-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "D03: board and reload preserve committed state",
+      "project": "development-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "D04: reset and no writes",
+      "project": "development-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "D04: reset and no writes",
+      "project": "development-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E01: R01 direct project and detail routes apply state",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E01: R01 direct project and detail routes apply state",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E02: R02 one normalized literal phrase within a single field",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E02: R02 one normalized literal phrase within a single field",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E03: R03 status conjunction and stable title sorting",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E03: R03 status conjunction and stable title sorting",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E04: R04 first parameter wins, invalid values default, no passive rewrite",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E04: R04 first parameter wins, invalid values default, no passive rewrite",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E05: R05 draft changes nothing until one atomic history commit",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E05: R05 draft changes nothing until one atomic history commit",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E06: R06 trim encoding canonical defaults and repeated commit",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E06: R06 trim encoding canonical defaults and repeated commit",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E07: R07 back forward restore controls results and refresh",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E07: R07 back forward restore controls results and refresh",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E08: R08 view changes preserve committed state and discard draft",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E08: R08 view changes preserve committed state and discard draft",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E09: R09 details preserve params view and correct duplicate ID",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E09: R09 details preserve params view and correct duplicate ID",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E10: R10 project navigation resets while direct URL honors params",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E10: R10 project navigation resets while direct URL honors params",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E11: R11 reset history, empty message and whole-project count",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E11: R11 reset history, empty message and whole-project count",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    },
+    {
+      "title": "E12: R12 local read-only behavior and responsive layout",
+      "project": "evaluation-desktop",
+      "status": "expected"
+    },
+    {
+      "title": "E12: R12 local read-only behavior and responsive layout",
+      "project": "evaluation-mobile",
+      "status": "expected"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+Implementacija P08 je končana. Dodal sem koledarsko razvrščanje rokov, števce in filter, ki se ohranita ob preklopu pogleda ter ponastavita ob menjavi projekta ali osvežitvi. Sledljivost zahtev, rezultati in omejitve so v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P08-B-001/app/docs/agent/verification.md).
+
+`npm run check` je uspešno zaključil lint, tipizacijo, gradnjo in vseh 48 testov. Po zadnji spremembi lastnih testov sta uspešno opravila še oba testa implementacije. `git status` ni bil na voljo, ker sistemu manjka `xcrun`; to je zabeleženo za pregledovalca.

@@ -1,7 +1,7 @@
 # mag-experiments
 
-Gradivo in orodja za pripravo eksperimentov magistrske naloge. Prvi korak je
-P01: urejanje naslova in stanja opravila v aplikaciji Folio (`mag-app`).
+Gradivo, merjene oddaje in orodja za eksperimente magistrske naloge nad
+aplikacijo Folio (`mag-app`). P01/P02 sta pilota, P03–P10 glavna zbirka.
 
 Osnova in referenca uporabljata potrjeni dizajn Folio z lebdečim stranskim
 menijem. Natančna skupna različica je zapisana v `baseline.json`.
@@ -9,6 +9,30 @@ menijem. Natančna skupna različica je zapisana v `baseline.json`.
 Repozitorij vsebuje skupna navodila, razvojne teste, ločeno referenčno rešitev
 in končna preverjanja. Namenjen je avtorju raziskave. Agentom pri primerjavi
 ne priključimo tega repozitorija ali nadrejene mape `mag`.
+
+## Glavna raziskava P03–P10
+
+Po naročilu avtorja je obseg glavne zbirke 8 nalog × 3 postopki × 3
+ponovitve = 72 izvedb. P01/P02 sta zaključena pilota in ostajata ločena.
+Tehnična kvalifikacija povratnih zank B/C in prekinitve je zaključena;
+[rezultati kvalifikacije](docs/qualification-results.md) vsebujejo dokazila.
+
+- [Načrt in osem nalog](docs/main-experiment-plan.md).
+- [Protokol M/1.0](docs/main-protocol.md) in [vnaprejšnja rubrika](docs/main-rubric.md).
+- [Vrstni red 72 izvedb](main-study/schedule.json).
+- [Trenutna zbirka in rezultati](main-study/analysis/results.md).
+- [Vodnik za pisanje](main-study/analysis/writing-guide.md) in [vsebinska presoja](main-study/analysis/content-review.md).
+- [Podatki posameznih izvedb](main-study/analysis/run-data.csv), [zahteve](main-study/analysis/requirement-data.csv) in [grafi](main-study/analysis/figures/).
+- [Preverjanje celovitosti](main-study/analysis/integrity-audit.json) in [neuspehi oziroma nepopolne ocene](main-study/analysis/anomalies.json).
+- `main-study/frozen-inputs.json` dokazuje zamrznitev 21. septembra 2026 pred prvim modelskim dogodkom; revizija priprave je `7742a88`.
+
+Vsaka glavna referenca ima 70 preverjanj in šest prevodljivih namernih
+napak. Delovne kopije so izločene iz Gita; zaključene oddaje, dogodki,
+neodvisne ocene in uporabljeni protokoli se ohranijo v `runs/<ID>/`.
+`main-study/status.json` in `active.json` pokažeta napredek čakalne vrste.
+Za raziskovalca: `node scripts/main-study.mjs status`, po zamrznitvi
+`node scripts/main-study.mjs run`; nadaljevanje ne ponavlja merjenih ID-jev.
+Spodnji razdelki ohranjajo navodila in zgodovino pilotov.
 
 ## Kaj je pripravljeno
 
@@ -142,6 +166,37 @@ vsebujejo podrobnosti in omejitve.
 **P01 je zaključen kot prvi pilot vseh treh postopkov.**
 [Skupni pregled](docs/pilot-results.md) vsebuje vseh šest poskusov in
 naslednje korake. P01 ne določa zmagovalca: med umerjanjem sta se
-protokola B in C spreminjala. Naslednja je zahtevnejša pilotna naloga
-P02; pred glavnimi meritvami ostajata dejanski preizkus popravkov po
-pregledu in potrditev merjenja porabe ob prekinitvah.
+protokola B in C spreminjala. Pred glavnimi meritvami ostajata dejanski
+preizkus popravkov po pregledu in potrditev merjenja porabe ob prekinitvah.
+
+## Pilot P02: množična sprememba stanja
+
+21. septembra 2026 so pripravljeni navodila P02 v0.1 z dvanajstimi zahtevami,
+ločena referenca, štirje razvojni in trinajst končnih scenarijev. Naloga
+uporablja isto osnovno aplikacijo kot P01, brez njegove rešitve. Preverja
+izbor več opravil, delni uspeh, zakasnjene odgovore, ponavljanje samo
+neuspelih zapisov in nespremenljivost drugih podatkov.
+
+Referenca je opravila **72/72 preverjanj**, slog, tipe in gradnjo. Testi so
+zaznali **10/10 namernih napak**. Dodatna veljavna zaporedna izvedba je
+opravila 13/13 končnih scenarijev na računalniškem prikazu. To so preverjanja
+reference in meril; rezultate agentov poročamo ločeno.
+
+- [Navodila P02](tasks/P02/instructions.md)
+- [Referenčna pravila in sledljivost](docs/P02-reference-specification.md)
+- [Dokazila in posnetki](docs/p02-verification.md)
+- [Priprava, ukazi in naslednji koraki](docs/p02-setup.md)
+- [Protokol P02/1](docs/p02-pilot-protocol.md)
+- [Izvedbe in rezultati P02](docs/p02-results.md)
+
+Preverjanje: `npm run test:p02`, nato `npm run test:p02:mutations`.
+Predogled reference: `npm run dev:p02`, naslov `http://127.0.0.1:5185`.
+P02 uporablja lastne delovne kopije in poročila. Izvajalnik podpira vse
+tri postopke za P01 in P02; tehnična kopija brez modela je v izolaciji
+opravila 46/46 javnih preverjanj. Vsi trije pilotski postopki so zaključeni
+po vnaprej določenem protokolu z enakimi vhodi in največ 20 minutami na
+postopek: A v 16 min 16 s, B v 16 min 12 s, C v 17 min 37 s.
+Vsaka oddaja je opravila 72/72 neodvisnih preverjanj; poraba je popolno
+zabeležena. B in C nista zahtevala dodatnega kroga popravkov.
+To so trije piloti, ne glavne meritve ali dokaz prednosti posameznega
+postopka. [Pregled P02](docs/p02-results.md) določa preostala preverjanja.

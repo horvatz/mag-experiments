@@ -1,0 +1,1 @@
+V [constitution.md](/Users/zan/Documents/mag/experiments/.work/pilots/P02-C-901/app/.specify/memory/constitution.md) sem zapisal kratka načela za R01, R02 in obvezne meje naloge. Kode nisem spreminjal.

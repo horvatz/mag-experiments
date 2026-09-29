@@ -1,0 +1,1 @@
+Časovni odštevalnik kaže 87 sekund do izteka faze. Zato zdaj zaženem dogovorjeni `npm run check` in takoj za njim shranim dejanske rezultate v predajni zapis, da pregledovalec pravočasno prevzame preostanek časa.

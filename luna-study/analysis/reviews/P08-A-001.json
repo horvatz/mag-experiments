@@ -1,0 +1,83 @@
+{
+  "collection": "L/1.0",
+  "id": "P08-A-001",
+  "reviewedAt": "2026-09-27",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "40fadb2821483b2b68bb57406a1e537dd8a352eb6b65ee0addd70c6000174c88",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija pokrije R01–R12: izrecni začetni datum, prednost done, disjunktne skupine in mejo sedmega dne, koledarske prehode, celoprojektne števce ter stabilno filtriranje. Loči besedilo polja od zadnjega veljavnega datuma, ohranjanje stanja med pogledoma, ponastavitev projekta/osvežitve, prazno skupino/projekt in odsotnost zapisov. Besedilo R11 določi sporočilo in ohranjene kontrolnike, R09 pa ista filtrirana opravila v obeh pogledih; končni neuspeh prisotnosti table ne spremeni te ocene vsebine predpisanih pravil.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "G(t,r) izrecno razvrsti done pred vsemi odprtimi skupinami, nato primerja koledarski datum z r in r+7. Števci računajo celotni projekt pred filtrom; filter je stabilna selekcija, skupine so particija. Veljaven in prazen vnos imata različna prehoda referenčnega datuma, oba pa določita opozorilo; ohranitev pri pogledu in ponastavitev pri projektu sta preverljivi. Formalizacija ne uporablja trenutne ure ali lokalnih časovnih razlik.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Vseh dvanajst vrstic končne sledljivosti poveže pogoj, dejanske funkcije/vrstice in poimenovane D oziroma lastne teste. Verification.md pravilno razloči 14 API + 24 osnovnih + 8 razvojnih + 4 lastne teste in izrecno izključi nedostopne končne teste. Arhivirani item_36 potrdi zadnji check 50/50 z exit 0. Preostala prihodnja poved na koncu specifikacije je zastarela, toda končni dokazi in omejitve so dejansko priloženi. Uspeh posameznega scenarija se ne razlaga kot dokaz vseh kombinacij stanj.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md#zapis-popravkov-specifikacije",
+        "runtime/runs/P08-A-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "runtime/runs/P08-A-001/submission/docs/agent/verification.md#omejitve",
+        "analysis/evidence/P08-A-001-checks.md#item_36"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti funkciji calendarDayNumber in deadlineGroup sta ločeni od prikaza; prva računa ordinalni gregorijanski dan, druga prednostno obravnava done. Lokalno projektno stanje loči osnutek datuma, veljavno referenco in filter; števci ter vidni seznam so izpeljani iz izvornih opravil. Oba pogleda uporabljata visibleTasks, začetni povzetek pa celoten seznam. Projektni ključ upravlja ponastavitev. Vse ostane v App.tsx in opozorilo ima lastno manjše stanje, vendar ni znatnega podvajanja logike. Napačna prednost praznega prikaza je posebej zabeležena funkcionalna napaka po končnem merilu.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/src/App.tsx:24",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:35",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:44",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:76",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:117",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:161"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Štirje uspešni scenariji uporabijo ročno pričakovane ID-je, prestopni februar, +7/+8, prehod leta, prednost done, filtre/nespremenjene števce, zadnji veljavni datum in ohranitev praznega vnosa pri preklopu. Toda prazno skupino preverijo samo v preglednici, ne tudi na tabli; ta kombinacija ostane vrzel in pozneje odpove v E11. Reload sledi projektni ponastavitvi pri že privzetem stanju, zato ne razloči zahtevane ponastavitve spremenjenih nastavitev. Prazni projekt pri 390 px je preverjen, večji nabor in različni časovni pasovi pa nimajo namenskih lastnih scenarijev.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:3",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:38",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:60",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:68",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:88",
+        "analysis/evidence/P08-A-001-checks.md#item_36",
+        "analysis/evidence/P08-A-001-checks.md#final-e11-failures"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E11 odpove na namizni in mobilni širini: po izbiri prazne skupine week ter kliku Tabla pomočnik board pričakuje vidno območje z imenom Tabla opravil. App.tsx:117 pred preverjanjem view najprej izriše sporočilo prazne skupine in s tem nadomesti TaskBoard. To je neuspeh prisotnosti obstoječega prikaza po zamrznjenem končnem merilu, ne opažena napaka koledarskega izračuna. Končni izid je 68/70 in 11/12; R11 ni dokazana. Oddaja ni popravljena ali ponovljena po ocenjevanju.",
+    "evidence": [
+      "analysis/evidence/P08-A-001-checks.md#final-e11-failures",
+      "runtime/runs/P08-A-001/evaluation-summary.json",
+      "runtime/evaluation/P08/acceptance.spec.ts:16",
+      "runtime/tasks/P08/helpers.ts:46",
+      "runtime/runs/P08-A-001/submission/src/App.tsx:117"
+    ]
+  },
+  "finalFailureNote": "Postopek completed po 580,459 s, dovoljen obseg in popolna poraba 1848980 vhodnih / 23927 izhodnih tokenov. Regresija 38/38 in razvojni testi 8/8, končni 22/24; strogi uspeh ne zaradi dveh E11 odpovedi iste zahteve.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Pregledani štirje celoviti razvojni zagoni item_22, item_29, item_32 in item_36 imajo vsi 50/50 ter exit 0. Dopolnitve testov po prvem uspehu niso prikazane kot popravek potrjene razvojne napake. Končni E11 neuspeh se pojavi šele v neodvisnem ocenjevanju."
+}

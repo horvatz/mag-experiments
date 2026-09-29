@@ -1,0 +1,103 @@
+{
+  "collection": "L/1.0",
+  "id": "P04-A-001",
+  "reviewedAt": "2026-09-28T22:46:06.944700+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "63ab25613d8a09ebe3b096b855aaa0b06f40d81c86b73b2cc810bcfede93165d",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija opredeli vhodno polje, vse štiri kontrole in privzete vrednosti, normalizacijo/UTF-16, statusni rang in veljavne datume. Pravila R01–R12 pokrijejo neodvisni smeri, sekundarno primerjavo samo ob primarni enakosti, izvorni indeks, prevlado original, oba pogleda, ohranitev pri podrobnostih, projekt/reload/reset ter nič/eno in nespremenjenost podatkov. Ohranitev relativnega vrstnega reda v stalnih stolpcih je izrecna. Enak primarni in sekundarni ključ ni posebej ponovljen kot stavek, je pa dovoljen z navedenima domenama in določen s splošnim pravilom primerjave.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T, izvorna indeksa, norm, cmp in predznaka smeri natančno določijo rezultat. Primarna neničelna primerjava odloči prva; sekundarna s svojo smerjo sledi le pri primarni enakosti; izvorni indeks je zadnji naraščajoči kriterij. original je izrecen obvoz vseh drugih kontrol. Tabla je stabilna podprojekcija po statusu, razvrščanje ne spremeni izvornih podatkov in projektna instanca določa življenjsko dobo nastavitev. To so preverljive lastnosti, ne samo seznam oznak zahtev.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Vseh dvanajst vrstic poveže pravilo s funkcijami in imenovanimi razvojnimi/lastnimi scenariji; predaja navede dejanske zagone in okoljske omejitve. Item_41 potrdi zadnji 50/50, item_40 zadnje štiri lastne teste. Pozne dopolnitve item_31 in item_37 so pomembne: normalizacija oseb in povzetki so neposredno asertirani, projekt/reload pa se zdaj začneta z vsemi štirimi spremenjenimi kontrolami. Nekateri sklici specifikacije na številke vrstic so približni oziroma zastareli, funkcije in testna imena pa omogočajo preverjanje. Navedbe »enake primarne/sekundarne vrednosti« ne razlagamo kot preizkus izbire istega ključa v obeh kontrolah; tega lasten nabor nima.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P04-A-001/submission/docs/agent/verification.md#izvedeni-ukazi-in-rezultati",
+        "runtime/runs/P04-A-001/submission/docs/agent/verification.md#pokritost-zahtev",
+        "runtime/runs/P04-A-001/submission/docs/agent/verification.md#omejitve",
+        "runtime/runs/P04-A-001/submission/tests/agent/sorting.spec.ts:4",
+        "runtime/runs/P04-A-001/submission/tests/agent/sorting.spec.ts:44",
+        "runtime/runs/P04-A-001/submission/tests/agent/sorting.spec.ts:70",
+        "analysis/evidence/P04-A-001-checks.md#item_31",
+        "analysis/evidence/P04-A-001-checks.md#item_37",
+        "analysis/evidence/P04-A-001-checks.md#item_40",
+        "analysis/evidence/P04-A-001-checks.md#item_41"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "taskSorting.ts loči tipe, privzete vrednosti, normalizacijo, primerjalnike in čisto sortTasks. Urejanje dekorira kopijo z izvorno pozicijo; original vrne slice, podatki se ne spreminjajo. ProjectView hrani le štiri nastavitve in izpelje eno razvrščeno polje, ki ga uporablja preglednica in obstoječa tabla; povzetki berejo izvorne naloge. Ključ projekta zagotovi ponastavitev brez dodatnih učinkov ali shrambe. Posamična stanja in nedestruktivna projekcija sta jasna, logika ni podvojena v obeh pogledih.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/src/taskSorting.ts:14",
+        "runtime/runs/P04-A-001/submission/src/taskSorting.ts:21",
+        "runtime/runs/P04-A-001/submission/src/taskSorting.ts:33",
+        "runtime/runs/P04-A-001/submission/src/taskSorting.ts:46",
+        "runtime/runs/P04-A-001/submission/src/App.tsx:12",
+        "runtime/runs/P04-A-001/submission/src/App.tsx:18",
+        "runtime/runs/P04-A-001/submission/src/App.tsx:62",
+        "runtime/runs/P04-A-001/submission/src/App.tsx:69",
+        "runtime/runs/P04-A-001/submission/src/TaskBoard.tsx:16"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Štirje obsežni scenariji preverijo številčne naslove po UTF-16, Unicode/case izenačitve naslovov in oseb, stabilnost v obeh smereh, sekundarne skupine, original ob neprivzetih kontrolah, relativni vrstni red vseh stolpcev, povzetke pred/po, ID podrobnosti, mešani smeri in vse štiri nastavitve pri resetu/projektu/reloadu. Po zadnji dopolnitvi prehodi res začnejo pri spremenjenih vrednostih. Ostanejo konkretni robovi: ni več kot deset opravil, istega primarnega in sekundarnega ključa z nasprotnima smerema, nič/eno pa sta preverjena le pri eni izbrani kombinaciji, ne prek vseh ključev in smeri iz R10. Ozka širina je preverjena v preglednici z dvema zapisoma. Nabor je koristen in močno izboljšan, vendar te pomembne robove še izpušča.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/tests/agent/sorting.spec.ts:4",
+        "runtime/runs/P04-A-001/submission/tests/agent/sorting.spec.ts:44",
+        "runtime/runs/P04-A-001/submission/tests/agent/sorting.spec.ts:70",
+        "runtime/runs/P04-A-001/submission/tests/agent/sorting.spec.ts:126",
+        "analysis/evidence/P04-A-001-checks.md#item_31",
+        "analysis/evidence/P04-A-001-checks.md#item_37",
+        "analysis/evidence/P04-A-001-checks.md#item_41"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Completed, 548,036 s, 70/70 in 12/12, strogi uspeh. Popolna poraba 2510992 vhodnih in 23075 izhodnih tokenov. Rezultat velja za določen neodvisni nabor, ne za vse možne vhode.",
+  "developmentFailureExample": {
+    "description": "Item_15 odpove pri TS2345, ker SortKey z original ni ustrezno zožen v primerjalnem callbacku; item_16 popravi razvrščevalnik in testno datoteko. Item_18 doseže 48/50: prvo pričakovanje napačno postavi Čaj pred A10/a2, drugi neuspeh pa dobi prazen seznam namesto singletona po ponovni namestitvi podatkov. Testna item_19/20 odpravita ta pričakovanja/pripravo. Ciljni item_21 še doseže 3/4, ker drugi fixture v prvem testu še kaže stare ID-je x namesto t; item_22 doda reload, item_23 uspe 4/4, item_25 50/50. Poznejši item_31 doda normalizacijo oseb in povzetke, item_37 močnejše predpogoje za projekt/reload; oba ohranita štiri teste. Končni item_40 potrdi 4/4, item_41 50/50 (19,2 s). Vseh razvojnih napak zato ne pripisujemo istemu vzroku ali algoritmu.",
+    "evidence": [
+      "analysis/evidence/P04-A-001-checks.md#item_15",
+      "analysis/evidence/P04-A-001-checks.md#item_16",
+      "analysis/evidence/P04-A-001-checks.md#item_18",
+      "analysis/evidence/P04-A-001-checks.md#item_19",
+      "analysis/evidence/P04-A-001-checks.md#item_20",
+      "analysis/evidence/P04-A-001-checks.md#item_21",
+      "analysis/evidence/P04-A-001-checks.md#item_22",
+      "analysis/evidence/P04-A-001-checks.md#item_23",
+      "analysis/evidence/P04-A-001-checks.md#item_25",
+      "analysis/evidence/P04-A-001-checks.md#item_31",
+      "analysis/evidence/P04-A-001-checks.md#item_34",
+      "analysis/evidence/P04-A-001-checks.md#item_36",
+      "analysis/evidence/P04-A-001-checks.md#item_37",
+      "analysis/evidence/P04-A-001-checks.md#item_40",
+      "analysis/evidence/P04-A-001-checks.md#item_41"
+    ]
+  }
+}

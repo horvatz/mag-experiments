@@ -1,0 +1,1 @@
+Prvi polni zagon je končal z 49/50: 38 osnovnih in 8 razvojnih testov je uspelo, en moj agentni scenarij je imel napako v ponovni namestitvi fixture-ja. Razdelil sem prazen projekt v ločen scenarij; vseh 5 agentnih testov zdaj uspe. Polnega `npm run check` po popravku v preostalem času ne morem ponoviti, zato bom to omejitev jasno zabeležil.

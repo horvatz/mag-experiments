@@ -1,0 +1,16 @@
+Najprej bom prebral pravila in zahteve ter pripravil specifikacijo. Nato bom samostojno izvedel spremembe, preveril rešitev in zapisal rezultate ter morebitne omejitve.
+
+Vrstni red bom hranil kot lokalno zaporedje ID-jev z največ 20 razveljavitvami. Preglednica in tabla bosta uporabljali isto stanje; posebej bom preveril premike med različnimi stanji na tabli, ponovitve, vrnitev na začetni vrstni red ter prazne projekte.
+
+Osnovna izvedba je pripravljena: oba pogleda kažeta globalna mesta, premiki pa spreminjajo samo zaporedje ID-jev. Lint in preverjanje tipov sta uspešna. Dodajam teste za daljša zaporedja razveljavitev, omejitev 20 korakov, robna dejanja in ohranitev stanja med pogledi ter podrobnostmi.
+
+Vseh 8 skupnih razvojnih preverjanj je uspešnih na namiznem in mobilnem prikazu. Dodatni testi zdaj pokrivajo tudi 13 opravil s posebnimi ID-ji, 21 premikov, razveljavljivo ponastavitev ter prazne projekte. Teče celoten `npm run check`; nato bom pregledal še videz pri širini 390 pik.
+
+Celoten `npm run check` je uspešen: 55 preverjanj, od tega 38 izhodiščnih, 8 razvojnih in 9 dodatnih. Pri preverjanju prikaza stran na širini 390 pik ostane znotraj zaslona; premik s tipkovnico deluje in ohrani fokus. Zdaj dopolnjujem sledljivost zahtev ter zapis preverjanj.
+
+Naloga P10 je zaključena po postopku A v približno 11 minutah.
+
+Implementirane so zahteve R01–R12. `npm run check` je uspešen: **55/55 preverjanj**. Preverjen je tudi prikaz pri 390 px. Znanih neizpolnjenih zahtev ni; skriti testi niso bili dostopni.
+
+Dokumentacija: [specifikacija](/Users/zan/Documents/mag/experiments/.work/pilots/P10-A-002/app/docs/agent/specification.md) in [preverjanja z dokazi ter omejitvami](/Users/zan/Documents/mag/experiments/.work/pilots/P10-A-002/app/docs/agent/verification.md).
+{"status":"completed","elapsedSeconds":682.126,"allowedChanges":true,"usage":{"input_tokens":722110,"cached_input_tokens":653184,"cache_write_input_tokens":0,"output_tokens":20343,"reasoning_output_tokens":2672}}

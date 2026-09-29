@@ -1,0 +1,1 @@
+TypeScript preverjanje je uspelo. Zdaj začenjam zahtevani `npm run check`; v dnevnik sem zabeležil začetno stanje in dodal uspešen `typecheck`. Če skupni ukaz preseže čas faze, bom jasno navedel, kateri deli so dejansko zaključeni.

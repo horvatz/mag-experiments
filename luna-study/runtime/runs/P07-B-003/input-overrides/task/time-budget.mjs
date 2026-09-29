@@ -1,0 +1,5 @@
+const phase = Number(process.env.MAG_PHASE_DEADLINE_MS)
+const run = Number(process.env.MAG_RUN_DEADLINE_MS)
+if (!Number.isFinite(phase) || !Number.isFinite(run)) throw new Error('No active phase clock')
+const seconds = (end) => Math.max(0, Math.floor((end - Date.now()) / 1000))
+console.log(JSON.stringify({ phaseSecondsRemaining: seconds(phase), totalSecondsRemaining: seconds(run), phaseDeadlineUTC: new Date(phase).toISOString() }))

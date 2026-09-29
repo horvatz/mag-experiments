@@ -1,0 +1,179 @@
+[WebServer] (node:16711) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 70 tests using 1 worker
+
+(node:16721) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [regression-api] › .work/P08/baseline/tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (40ms)
+  ✓   2 [regression-api] › .work/P08/baseline/tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (9ms)
+  ✓   3 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (7ms)
+  ✓   4 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (5ms)
+  ✓   5 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (4ms)
+  ✓   7 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (5ms)
+  ✓   8 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (8ms)
+  ✓   9 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (6ms)
+  ✓  10 [regression-api] › .work/P08/baseline/tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (11ms)
+  ✓  11 [regression-api] › .work/P08/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with success (12ms)
+  ✓  12 [regression-api] › .work/P08/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [regression-api] › .work/P08/baseline/tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (13ms)
+  ✓  14 [regression-api] › .work/P08/baseline/tests/api.spec.ts:91:1 › normal server does not expose test controls (9ms)
+(node:16723) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (593ms)
+  ✓  16 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (552ms)
+  ✓  17 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (587ms)
+  ✓  18 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (774ms)
+  ✓  19 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (712ms)
+  ✓  20 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (387ms)
+  ✓  21 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (359ms)
+  ✓  22 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (356ms)
+  ✓  23 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (336ms)
+  ✓  24 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (926ms)
+  ✓  25 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (579ms)
+  ✓  26 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (422ms)
+(node:16806) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  27 [development-desktop] › tasks/P08/development.spec.ts:2:1 › D01: fixed anchor and overdue tasks (354ms)
+  ✓  28 [development-desktop] › tasks/P08/development.spec.ts:3:1 › D02: inclusive week boundary (286ms)
+  ✓  29 [development-desktop] › tasks/P08/development.spec.ts:4:1 › D03: empty draft retains last valid classification (300ms)
+  ✓  30 [development-desktop] › tasks/P08/development.spec.ts:5:1 › D04: done group, board and no writes (386ms)
+(node:16816) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  31 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:6:1 › E01: R01 fixed date independent of system clock (329ms)
+  ✓  32 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:7:1 › E02: R02 completed tasks never enter open groups (306ms)
+  ✓  33 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:8:1 › E03: R03 strict past and exact today boundaries (306ms)
+  ✓  34 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:9:1 › E04: R04 inclusive seventh day and exclusive eighth (300ms)
+  ✓  35 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:10:1 › E05: R05 calendar month year leap and DST boundaries (317ms)
+  ✓  36 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:11:1 › E06: R06 counters remain whole-project under filters (352ms)
+  ✓  37 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:12:1 › E07: R07 source-relative order for every group (321ms)
+  ✓  38 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:13:1 › E08: R08 changed anchor and empty draft keep filter (325ms)
+  ✓  39 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:14:1 › E09: R09 both views preserve empty draft and last valid anchor (434ms)
+  ✓  40 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:15:1 › E10: R10 project and refresh reset local state (651ms)
+  ✘  41 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project (5.3s)
+(node:16881) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  42 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:17:1 › E12: R12 valid leap dates remain unchanged and no writes (415ms)
+(node:16888) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (486ms)
+  ✓  44 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (712ms)
+  ✓  45 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (563ms)
+  ✓  46 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (699ms)
+  ✓  47 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (459ms)
+  ✓  48 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (402ms)
+  ✓  49 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (404ms)
+  ✓  50 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (370ms)
+  ✓  51 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (372ms)
+  ✓  52 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (895ms)
+  ✓  53 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (726ms)
+  ✓  54 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (454ms)
+(node:16986) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  55 [development-mobile] › tasks/P08/development.spec.ts:2:1 › D01: fixed anchor and overdue tasks (338ms)
+  ✓  56 [development-mobile] › tasks/P08/development.spec.ts:3:1 › D02: inclusive week boundary (339ms)
+  ✓  57 [development-mobile] › tasks/P08/development.spec.ts:4:1 › D03: empty draft retains last valid classification (345ms)
+  ✓  58 [development-mobile] › tasks/P08/development.spec.ts:5:1 › D04: done group, board and no writes (387ms)
+(node:16996) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  59 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:6:1 › E01: R01 fixed date independent of system clock (354ms)
+  ✓  60 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:7:1 › E02: R02 completed tasks never enter open groups (338ms)
+  ✓  61 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:8:1 › E03: R03 strict past and exact today boundaries (341ms)
+  ✓  62 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:9:1 › E04: R04 inclusive seventh day and exclusive eighth (354ms)
+  ✓  63 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:10:1 › E05: R05 calendar month year leap and DST boundaries (351ms)
+  ✓  64 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:11:1 › E06: R06 counters remain whole-project under filters (371ms)
+  ✓  65 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:12:1 › E07: R07 source-relative order for every group (374ms)
+  ✓  66 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:13:1 › E08: R08 changed anchor and empty draft keep filter (353ms)
+  ✓  67 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:14:1 › E09: R09 both views preserve empty draft and last valid anchor (475ms)
+  ✓  68 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:15:1 › E10: R10 project and refresh reset local state (669ms)
+  ✘  69 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project (5.3s)
+(node:17077) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  70 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:17:1 › E12: R12 valid leap dates remain unchanged and no writes (533ms)
+
+
+  1) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil' })
+
+
+       at tasks/P08/helpers.ts:46
+
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+    > 46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+         |                                                                                                                                                                                     ^
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+        at board (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P08/helpers.ts:46:181)
+        at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P08/acceptance.spec.ts:16:255
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-A-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-A-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-A-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-A-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil' })
+
+
+       at tasks/P08/helpers.ts:46
+
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+    > 46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+         |                                                                                                                                                                                     ^
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+        at board (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P08/helpers.ts:46:181)
+        at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P08/acceptance.spec.ts:16:255
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-A-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-A-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-A-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-A-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project 
+  68 passed (38.3s)

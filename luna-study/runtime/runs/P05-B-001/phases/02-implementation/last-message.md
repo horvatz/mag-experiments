@@ -1,0 +1,5 @@
+Implementacija straničenja in filtra je zaključena. Tabela in tabla uporabljata isti odsek opravil; preklop pogleda in podrobnosti ohranijo izbor, menjava projekta in osvežitev pa ga ponastavita.
+
+`npm run check` je uspešno zaključil lint, preverjanje tipov, gradnjo in vseh **49 testov**: 38 osnovnih, 8 razvojnih ter 3 lastne. Rezultati, sledljivost zahtev in omejitve okolja so zapisani v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P05-B-001/app/docs/agent/verification.md).
+
+Pregledovalcu predajam spremembe v [App.tsx](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P05-B-001/app/src/App.tsx), [styles.css](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P05-B-001/app/src/styles.css) in [pagination.spec.ts](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P05-B-001/app/tests/agent/pagination.spec.ts). Predane specifikacije nisem spreminjal. Git status ni bil na voljo, ker okolju manjkajo `xcrun` in ustrezna orodja Command Line Tools; podrobnosti so v predajnem zapisu.

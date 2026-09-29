@@ -1,0 +1,16 @@
+Najprej bom prebral pravila in zahteve ter zapisal specifikacijo. Nato bom izvedel spremembe, preveril rešitev in zabeležil rezultate ter morebitne omejitve.
+
+Zahteve določajo en globalni vrstni red; tudi premik na tabli mora zamenjati globalna soseda, četudi sta v različnih stolpcih. Zgodovino bom hranil pri trenutnem projektu, tako da preklop pogleda in podrobnosti ohranita stanje. Dodatni testi bodo pokrili še mejo 20 razveljavitev, robna dejanja, prazne projekte in ponastavitve.
+
+Prva različica je uspešno prestala vseh 46 skupnih preverjanj, preverjanje tipov in gradnjo. Premiki, razveljavitve in ponovitve že delujejo v obeh pogledih. Zdaj dodajam teste za daljša zaporedja dejanj in primere, ki jih skupni testi ne pokrivajo.
+
+Uspešnih je vseh 53 testov, vključno s sedmimi dodatnimi. Preverjeni so meja 20 razveljavitev, ohranitev ponovitev po robnih dejanjih, ponastavitev zgodovine ob menjavi projekta ali osvežitvi ter prazni projekti. Preverjanje pri širini 390 pik ni zaznalo širjenja strani; pregledal bom še posnetke vmesnika in dopolnil poročilo.
+
+P10 je implementiran: lokalni vrstni red, 20 razveljavitev, ponovitve in ponastavitev v obeh pogledih.
+
+`npm run check` je uspešen: **53/53 testov**, preverjanje tipov in gradnja. Preverjen je tudi prikaz pri 390 pikah.
+
+[Specifikacija](docs/agent/specification.md) · [Poročilo preverjanja](docs/agent/verification.md)
+
+Ni znanih neizpolnjenih zahtev. Skriti končni testi niso bili dostopni.
+{"status":"completed","elapsedSeconds":637.054,"allowedChanges":true,"usage":{"input_tokens":550690,"cached_input_tokens":492544,"cache_write_input_tokens":0,"output_tokens":19849,"reasoning_output_tokens":2935}}

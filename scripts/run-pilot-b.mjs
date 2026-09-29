@@ -1,3 +1,4 @@
+import { pilotTask, hiddenPorts, assertTaskBaseline } from './pilot-tasks.mjs'
 import assert from 'node:assert/strict'
 import { execFileSync, spawn } from 'node:child_process'
 import { createWriteStream, existsSync, mkdirSync, readFileSync, writeFileSync, cpSync } from 'node:fs'
@@ -10,12 +11,14 @@ import { phaseBudget, parseReview, roleCanEdit, workerArguments, runBWorkflow } 
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2]
-assert.match(id, /^P01-B-\d{3}$/)
+assert.match(id, /^P(?:0[1-9]|10)-B-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
 const app = resolve(run, 'app')
+const task = pilotTask(id)
 const readJSON = (name) => JSON.parse(readFileSync(resolve(run, name), 'utf8'))
 const writeJSON = (name, value) => writeFileSync(resolve(run, name), JSON.stringify(value, null, 2) + '\n')
 const manifest = readJSON('manifest.json')
+assertTaskBaseline(root, manifest, task)
 const base = readJSON('config.json')
 const protocol = readJSON('procedure-b.json')
 assert.equal(digest(JSON.stringify(protocol)), manifest.procedureBSha256)
@@ -32,7 +35,6 @@ assert.ok(readJSON('preflight-roles.json').every((item) => item.passed))
 assert.ok(!existsSync(resolve(run, 'execution.json')), 'Never reuse a started run ID')
 const binary = manifest.cli
 assert.equal(execFileSync(binary, ['--version'], { encoding: 'utf8' }).trim(), manifest.cliVersion)
-const hiddenPorts = [5183, 3111, 5184, 3112, 5185, 3113, 5186, 3114]
 async function listening(port) {
   return new Promise((done) => {
     const socket = connect({ host: '127.0.0.1', port })
@@ -144,7 +146,7 @@ async function phase(name, role, resume = false) {
   if (role === 'review' && record.status === 'completed' && existsSync(resolve(folder, 'final-response.json'))) {
     try {
       const response = readFileSync(resolve(folder, 'final-response.json'))
-      parseReview(JSON.parse(response))
+      parseReview(JSON.parse(response), task.requirements)
       writeFileSync(resolve(app, 'docs/agent/review.json'), response)
       record.handoffSource = 'reviewer_structured_final_response'
       record.handoffSha256 = digest(response)
@@ -167,7 +169,7 @@ async function phase(name, role, resume = false) {
 }
 
 try {
-  const outcome = await runBWorkflow({ phase,
+  const outcome = await runBWorkflow({ phase, requirements: task.requirements,
     hasSpecification: () => existsSync(resolve(app, 'docs/agent/specification.md')) && readFileSync(resolve(app, 'docs/agent/specification.md'), 'utf8').trim().length > 0,
     getReview: () => JSON.parse(readFileSync(resolve(app, 'docs/agent/review.json'), 'utf8')) })
   if (outcome.review) metadata.review = outcome.review

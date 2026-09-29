@@ -1,0 +1,3 @@
+To je majhna tehnična kvalifikacija izvajalnika Q, ne polna naloga Folio. Preberi task/instructions.md. Dokumente ohrani zelo kratke. Uporabi samo src/qualification.ts, docs/agent/ in dovoljene procesne datoteke; spoštuj meje dodeljene vloge. Izvedba testa je node task/qualification-check.mjs. Ne uporabljaj brskalnika, javnega interneta ali drugih agentov. Končaj takoj, ko opraviš korak.
+V enem kratkem sporočilu povej, da začenjaš tehnično preverjanje prekinitve. Nato zaženi node -e "console.log('Q_WAIT_STARTED'); setTimeout(() => {}, 600000)" in počakaj na ta ukaz. Ne izvajaj drugih dejanj.
+Zapomni si neobčutljivo kontrolno besedo violet-elm-19. Ne zapiši je v datoteke in je zdaj ne ponavljaj. Poznejše nadaljevanje te bo vprašalo po njej.

@@ -1,0 +1,17 @@
+Najprej bom prebral pravila in predlogo ter pripravil specifikacijo. Nato bom samostojno izvedel spremembe, preveril zahteve in zapisal rezultate ter morebitne omejitve.
+
+Izhodišče že podpira povezave do projektov, opravil in table. Dodal bom ločeno potrjeno stanje iz URL-ja in osnutek kontrol; filtriranje bo skupno preglednici in tabli. Dodatno bom preveril zgodovino, dobesedno iskanje Unicode, ponovljene parametre in enake naslove.
+
+Prvi celotni zagon je uspešen: preverjanje kode, gradnja ter vseh 46 izhodiščnih in razvojnih preverjanj. Zdaj dodajam teste za robne primere, ki jih razvojni testi ne pokrivajo: kodiranje fraz, stabilno urejanje, natančno število vnosov v zgodovino in zavračanje osnutkov ob navigaciji.
+
+Uspešnih je vseh 57 preverjanj, vključno z 11 dodatnimi testi. Pregledal sem tudi posnetka namiznega in mobilnega vmesnika; pri širini 390 pik stran ne sega čez zaslon. Dopolnjujem še sledljivost R01–R12 in zapis dejansko izvedenih preverjanj.
+
+Končni zagon je znova uspešen: 57 od 57 testov. Pri vizualnem pregledu je razvojni strežnik še vračal stare sloge. Okolje je zavrnilo ustavitev z ukazom `kill`; strežnik sem nato ustavil prek njegove odprte seje in bom obnovil posnetka z aktualnimi slogi.
+
+Implementirane so zahteve R01–R12. `npm run check` je uspešen: **57/57 testov**, vključno z 11 lastnimi. Preverjen je tudi mobilni prikaz pri 390 pikah.
+
+- [Specifikacija](docs/agent/specification.md)
+- [Preverjanja, sledljivost in omejitve](docs/agent/verification.md)
+
+Znanih neizpolnjenih zahtev ni. Nedostopni končni testi niso bili izvedeni.
+{"status":"completed","elapsedSeconds":803.131,"allowedChanges":true,"usage":{"input_tokens":878396,"cached_input_tokens":821120,"cache_write_input_tokens":0,"output_tokens":22438,"reasoning_output_tokens":3857}}

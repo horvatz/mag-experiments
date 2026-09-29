@@ -1,0 +1,82 @@
+{
+  "id": "P07-B-001",
+  "reviewedAt": "2026-09-25",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija jasno opredeli vseh R01–R12 in podatkovno domeno: poljubno število, enake naslove, posebne ID-je, neznane nize in globalnost množice. Loči neveljavno vsebino od izjeme dostopa, določi natančen zapis, prazni stanji, življenjsko dobo filtra, projektno odstranjevanje, števce in mejo sočasnosti. Opis izhodiščnih mest kode je izrecno načrt; izvedene dokaze prevzame implementerjev dokument brez spreminjanja avtorstva specifikacije.",
+      "evidence": [
+        "runs/P07-B-001/submission/docs/agent/specification.md",
+        "runs/P07-B-001/submission/docs/agent/specification-history.md"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "P1–P5 natančno določijo validacijo celotnega zapisa, simetrično razliko, kanonični zapis UTF-16, stabilno filtriranje, X/M iz celotnega projekta in razliko F∖Iₚ. Dogodek pravilnega ključa nadomesti množico brez združevanja/zapisa; drugi ključ ne učinkuje. Projekt in osvežitev ponastavita le ustrezno stanje, neveljavna vsebina se ne prepiše, izjema ohrani pomnilniško dejanje. Nespremenjeni podatki/API in ohranjena razvrstitev so preverljive invariante.",
+      "evidence": [
+        "runs/P07-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Specifikacija poveže R–P–načrtovani S/D in jasno pove, da sama testov ni izvajala; implementation.md sklene celotno povezavo s končnimi simboli, dejanskimi imeni in check.log. Izvirni neuspešni/prekinjeni zagon je ohranjen; končni dnevnik potrdi 67/67 in 21 lastnih primerov. Review.md loči branje dnevnika od dodatnega lastnega scenarija; surovi 03-review item_31 z izhodom 0 potrdi objavljeni PASS. Slike in visual-check.json odkrito pojasnijo ponovni zajem namizne table. Vse lokalne dokumentne povezave obstajajo; skriti testi, Chromium in okoljske omejitve so označeni.",
+      "evidence": [
+        "runs/P07-B-001/submission/docs/agent/specification.md",
+        "runs/P07-B-001/submission/docs/agent/implementation.md",
+        "runs/P07-B-001/submission/docs/agent/verification.md",
+        "runs/P07-B-001/submission/docs/agent/check-initial.log",
+        "runs/P07-B-001/submission/docs/agent/check.log",
+        "runs/P07-B-001/submission/docs/agent/review.md",
+        "runs/P07-B-001/submission/docs/agent/review.json",
+        "runs/P07-B-001/submission/docs/agent/visual-check.json",
+        "runs/P07-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Hook useFavorites združi globalno množico in opozorilo, loči čisti parser od branja, zapisa in poslušalca dogodkov s čiščenjem. Lokalni prehodi kopirajo Set; prejemnik ne piše in opozorilo ostane v seji. ProjectView s ključem projekta hrani samo filter, izpelje en visibleTasks za oba pogleda in X/M ter odstranjevanje iz celotnih tasks. FavoriteButton je ponovno uporabljen zunaj povezav. Tabla ohrani stolpce, neposredno dostopno ime pa podpira posebne ID-je. CSS doda omejene kontrolne sloge brez podvajanja podatkovnega toka ali sprememb strežnika.",
+      "evidence": [
+        "runs/P07-B-001/submission/src/useFavorites.ts",
+        "runs/P07-B-001/submission/src/FavoriteButton.tsx",
+        "runs/P07-B-001/submission/src/App.tsx",
+        "runs/P07-B-001/submission/src/TaskBoard.tsx",
+        "runs/P07-B-001/submission/src/styles.css"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "21 uspešnih lastnih primerov pokrije oba pogleda s posebnim ID-jem in enakim naslovom, Space/pravilen dialog/fokus, točen UTF-16 zapis z emojijem/U+E000, deset neveljavnih začetnih oblik brez prepisovanja, 13 nesortiranih opravil, 0/1 pri 390 px in projektno odstranjevanje z ohranitvijo drugih/neznanih ID-jev. Preveri števec celotnega projekta proti vidnim stolpcem, obnovitev in ponastavitev filtra, sintetično nadomestitev/null/drugi ključ brez odmeva ter tri ločene izjeme shrambe z nadaljnjim delom v pomnilniku. Pregledovalec dodatno dejansko izvede dva zavihka, preveri globoko enakost API podatkov, nič zapisov in oba ozka pogleda. Pričakovanja niso izpeljana s produkcijskim parserjem.",
+      "evidence": [
+        "runs/P07-B-001/submission/tests/agent/favorites.spec.ts",
+        "runs/P07-B-001/submission/docs/agent/check.log",
+        "runs/P07-B-001/submission/docs/agent/review.md",
+        "runs/P07-B-001/submission/docs/agent/desktop-board.png",
+        "runs/P07-B-001/submission/docs/agent/mobile-table.png",
+        "runs/P07-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena potrdi 70/70 in 12/12 zahtev, dovoljen obseg, zaključen postopek in popolno porabo. Pregledovalec ne zahteva popravkov; v pregledanih končnih dokazih ni potrjene funkcionalne napake. To ni izčrpen dokaz vseh vhodov iz domene.",
+  "developmentFailureExample": {
+    "description": "Prvi lastni zagon je pričakoval pet opravil v razvojnem projektu, čeprav jih javna testna zbirka vsebuje osem; prikaz aplikacije je bil pravilen. Check-initial.log ohrani 48 uspešnih, 8 neuspešnih, 1 prekinjen in 10 neizvedenih testov. Popravljeno je pričakovanje imenovalca v lastnih testih, nato celotni check uspe 67/67. To je napaka testa, ne dokazana napaka končne aplikacije.",
+    "evidence": [
+      "runs/P07-B-001/submission/docs/agent/check-initial.log",
+      "runs/P07-B-001/submission/docs/agent/check.log",
+      "runs/P07-B-001/submission/tests/agent/favorites.spec.ts",
+      "runs/P07-B-001/phases/02-implementation/events.jsonl.gz"
+    ]
+  },
+  "developmentFailureNote": "Neuspešna sistemska Git in Python ukaza zaradi manjkajočega xcrun sta ločeni omejitvi okolja. Namizna tabla je ponovno zajeta po čakanju na zaključeno navigacijo. Pregledovalec izvede dodaten omejen scenarij, ne ponavlja celotnega check; formalnih povratnih popravkov ni."
+}

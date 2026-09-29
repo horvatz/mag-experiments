@@ -1,0 +1,12 @@
+Najprej bom prebral pravila, navodila in predlogo, nato pripravil specifikacijo pred posegom v kodo. V okviru dovoljenih map bom izvedel implementacijo in preverjanja ter zabeležil njihove rezultate.
+Pravila potrjujejo, da morajo novi filtri ostati lokalni stanji pogleda; projektni podatki ostajajo prek `/api/`. Pripravljam specifikacijo s predikatoma za koledarsko razvrstitev in sledljivostjo vseh R01–R12; za zdaj so preverjanja v njej označena kot načrtovana, dokler jih dejansko ne izvedem.
+Specifikacija je zapisana pred implementacijo. Sedaj bom dodal projektno lokalno stanje filtra, deterministično razvrščanje po koledarskih dneh ter isti filtrirani seznam za oba prikaza; datumi bodo primerjani brez lokalnega časovnega pasu.
+Koda in lastni testi so pripravljeni. Testi vključujejo sedmi/osmi dan, prestopni februar, prehod leta, ohranitev filtra pri menjavi pogleda, ponastavitev ob projektu/osvežitvi, prazen datum, prazno skupino ter API brez zapisov. Zdaj zaganjam predpisani `npm run check`.
+`npm run check` je zaključil brez napak: lint, tipizacija, build ter vseh 50 API, izhodiščnih, razvojnih in lastnih preverjanj je uspelo. Zdaj usklajujem specifikacijo z dejanskimi datotekami in pripravljam `verification.md` z dokazom po zahtevah ter omejitvami preverjanja.
+Dokazila sem razširil še na izrecno izbiro skupine `today` ter ohranitev praznega osnutka datuma pri preklopu tabele in table. Za dokončno oddajo ponovno zaganjam celoten `npm run check`, da se dokumentacija in poročilo opreta na zadnje stanje.
+**P08 je implementiran.** Dodal sem koledarske skupine rokov, števce, filtriranje v preglednici in na tabli ter ponastavitev stanja ob menjavi projekta in osvežitvi.
+
+- Specifikacija in zapis popravka: [specification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P08-A-001/app/docs/agent/specification.md)
+- Izvedena preverjanja in omejitve: [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P08-A-001/app/docs/agent/verification.md)
+- Koda in lastni testi: [App.tsx](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots
+{"status":"completed","elapsedSeconds":580.459,"allowedChanges":true,"usage":{"input_tokens":1848980,"cached_input_tokens":1752576,"cache_write_input_tokens":0,"output_tokens":23927,"reasoning_output_tokens":10446}}

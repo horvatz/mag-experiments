@@ -1,3 +1,4 @@
+import { pilotTask, hiddenPorts, assertTaskBaseline } from './pilot-tasks.mjs'
 import assert from 'node:assert/strict'
 import { execFileSync, spawn } from 'node:child_process'
 import { createWriteStream, existsSync, mkdirSync, readFileSync, writeFileSync, cpSync } from 'node:fs'
@@ -7,16 +8,20 @@ import { fileURLToPath } from 'node:url'
 import { gzipSync } from 'node:zlib'
 import { clientEnvironment, configArguments, digest, inventory, changes, editable, submissionPaths } from './pilot-utils.mjs'
 import { workerArguments } from './procedure-b.mjs'
-import { phaseBudget, parseConvergence, stageCanEdit, requiredArtifacts, feature, runCWorkflow } from './procedure-c.mjs'
+import { phaseBudget, parseConvergence, stageCanEdit, requiredArtifacts as defaultArtifacts, runCWorkflow } from './procedure-c.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2]
-assert.match(id, /^P01-C-\d{3}$/)
+assert.match(id, /^P(?:0[1-9]|10)-C-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
 const app = resolve(run, 'app')
+const task = pilotTask(id)
+const feature = task.feature
+const requiredArtifacts = Object.fromEntries(Object.entries(defaultArtifacts).map(([stage, paths]) => [stage, paths.map(path => path.replace('docs/agent/P01', feature))]))
 const readJSON = (name) => JSON.parse(readFileSync(resolve(run, name), 'utf8'))
 const writeJSON = (name, value) => writeFileSync(resolve(run, name), JSON.stringify(value, null, 2) + '\n')
 const manifest = readJSON('manifest.json')
+assertTaskBaseline(root, manifest, task)
 const base = readJSON('config.json')
 const protocol = readJSON('procedure-c.json')
 assert.equal(digest(JSON.stringify(protocol)), manifest.procedureCSha256)
@@ -36,7 +41,6 @@ assert.ok(readJSON('preflight-c.json').every((item) => item.passed))
 assert.ok(!existsSync(resolve(run, 'execution.json')), 'Never reuse a started run ID')
 const binary = manifest.cli
 assert.equal(execFileSync(binary, ['--version'], { encoding: 'utf8' }).trim(), manifest.cliVersion)
-const hiddenPorts = [5183, 3111, 5184, 3112, 5185, 3113, 5186, 3114]
 async function listening(port) {
   return new Promise((done) => {
     const socket = connect({ host: '127.0.0.1', port })
@@ -164,7 +168,7 @@ async function phase(name) {
     if (name === 'tasks' && !record.handoffError && !/^\s*- \[[ xX]\] \[?T\d+/m.test(readFileSync(resolve(app, feature, 'tasks.md'), 'utf8'))) record.handoffError ??= 'Missing actionable tasks'
   }
   const after = inventory(app)
-  record.fileChanges = changes(before, after, 'C').map((item) => ({ ...item, roleAllowed: stageCanEdit(name, item.path) }))
+  record.fileChanges = changes(before, after, 'C').map((item) => ({ ...item, roleAllowed: stageCanEdit(name, item.path, task.feature) }))
   record.allowedChanges = record.fileChanges.every((item) => item.roleAllowed)
   record.rejectedSymlinks = Object.entries(after).filter(([path, item]) => editable(path, 'C') && item.kind !== 'file').map(([path]) => path)
   for (const path of submissionPaths('C')) {

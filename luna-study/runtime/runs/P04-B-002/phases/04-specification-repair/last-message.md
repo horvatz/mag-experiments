@@ -1,0 +1,1 @@
+Ugotovitev je utemeljena: stara tabela je bila še začetni načrt, čeprav implementacijski zapis vsebuje končne povezave in poročane izide. Posodobil sem vseh 12 vrstic z lokacijami kode, konkretnimi scenariji in sklici na ta zapis; neodvisno nezagnane oziroma nepokrite robove sem ohranil kot omejitve.

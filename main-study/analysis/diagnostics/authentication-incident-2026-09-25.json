@@ -1,0 +1,1284 @@
+{
+  "generatedAt": "2026-09-26T09:02:41.476Z",
+  "incident": "authentication_401_before_model_output",
+  "confirmedCause": "Model service rejected authentication with 401 Unauthorized / Incorrect API key. Subscription exhaustion is not established by these events.",
+  "credentialRootCause": "Not established. A later diagnostic with the same CLI, model and existing ChatGPT login succeeded; no credential edits, logout, account change or credit redemption performed.",
+  "scope": "12 consecutive scheduled runs; four A, four B, four C. All failed before authored output or file changes.",
+  "queueDefect": "Frozen serviceLimitInEvents matches usage/rate/quota failures but not 401, so the queue continued. Frozen code remains unchanged; operator wrapper now checks access before each new model and stops after auth errors.",
+  "analysisPolicy": "Keep all started IDs and original primary denominators. Known short elapsed times are failed authentication attempts, not solution times. No reruns, replacements or zero imputation of content/usage. Content reviews of the six selected 001 submissions are unavailable.",
+  "recoveryEvidence": "main-study/analysis/recovery/restart-2026-09-26.json",
+  "rows": [
+    {
+      "id": "P09-A-001",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T22:43:21.204Z",
+      "finishedAt": "2026-09-25T22:43:51.965Z",
+      "elapsedSeconds": 30.753,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P09-A-001/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P09-A-001/execution.json": "fe9d70188ac381de3420552510c386b31660ef87dbf78061eeba50ccf988054e",
+        "runs/P09-A-001/evaluation-summary.json": "575c49fe62e516e0dced73ec2a832c51b8257300f1f0ebdc14e4ae0a7f092d3a",
+        "runs/P09-A-001/archive-complete.json": "b6f95ddb8140a48759fe6a0c950d616b203a1fa4b6b6a4811d710c003d025b53",
+        "runs/P09-A-001/events.jsonl.gz": "2c7e02935dd5a30a20648d2f08f7523f632a32166d7ead515ebdcd828e18afa1"
+      }
+    },
+    {
+      "id": "P09-B-001",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T22:47:24.703Z",
+      "finishedAt": "2026-09-25T22:47:56.061Z",
+      "elapsedSeconds": 31.358,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P09-B-001/phases/01-specification/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P09-B-001/execution.json": "ffb860aed5ed0be61dc78fcf86710a1f7e33bcddecaf35c5fdc908e58b493f06",
+        "runs/P09-B-001/evaluation-summary.json": "eb0aff3d2fcfe7719b076f2f2c90dad1d47ef8e8f6ab31fed79093259de6e785",
+        "runs/P09-B-001/archive-complete.json": "721252ba20d8828e243ae35f13975706481b5ff979db221352cb0e33867e1132",
+        "runs/P09-B-001/phases/01-specification/events.jsonl.gz": "0d73f843dff9cf7dcfef3c6ed120888850fe8c98d84db21914bf0f9cd26aff67"
+      }
+    },
+    {
+      "id": "P09-C-001",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T22:51:31.926Z",
+      "finishedAt": "2026-09-25T22:52:04.705Z",
+      "elapsedSeconds": 32.777,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P09-C-001/phases/01-constitution/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P09-C-001/execution.json": "222c1890ac81d2ffea891d88cf3a80c403974e3237104ed81863cfabff2bbbbc",
+        "runs/P09-C-001/evaluation-summary.json": "5ef302dc89678cda04609c649801e3383bed1d8386df91b46b40541a8b2c4a13",
+        "runs/P09-C-001/archive-complete.json": "5826c8e1a9fb42fda703f388433b71e30c55300ead7b51190ce7b2ae64f9fd78",
+        "runs/P09-C-001/phases/01-constitution/events.jsonl.gz": "79290ad629016b4445b097773727dff8d59ed4065aecb50489151e85802673e2"
+      }
+    },
+    {
+      "id": "P04-A-001",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T22:55:40.379Z",
+      "finishedAt": "2026-09-25T22:56:11.799Z",
+      "elapsedSeconds": 31.412,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P04-A-001/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P04-A-001/execution.json": "f11ab244ac1039335d59a693c735303e3c899fc9c1a16a22ccd041b5e20651e7",
+        "runs/P04-A-001/evaluation-summary.json": "02b256f1d29a97d7b151738c935d69e4568b7b440c211347057aa38393ffbd94",
+        "runs/P04-A-001/archive-complete.json": "030efd476d35dd66f0e3bc923c4692b69a731dd5c01d32ff6c0a7417619db9de",
+        "runs/P04-A-001/events.jsonl.gz": "6db2e4dac8a8ca3deb95b299836865ab26b2c0385998c137df82b92f1c7a134b"
+      }
+    },
+    {
+      "id": "P04-C-001",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T22:59:51.995Z",
+      "finishedAt": "2026-09-25T23:00:23.004Z",
+      "elapsedSeconds": 31.008,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P04-C-001/phases/01-constitution/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P04-C-001/execution.json": "c9a9637fa90073d5d57fda6be84772dd1dbb1cdfe3b4eaf4f08c88fe70486109",
+        "runs/P04-C-001/evaluation-summary.json": "b62931cae2c3645dcc201a37103004d5a1ad5930e5ce08cf4dd4f7379918062d",
+        "runs/P04-C-001/archive-complete.json": "273dcbe314d554964cfa3103bbb12b9ebe8783ab3b3b59f77f99801b8bc686dd",
+        "runs/P04-C-001/phases/01-constitution/events.jsonl.gz": "dd66c22cfa27fc8401db074bb3ee07839e2d5c9f6139eea9d24c7902a0ca5ef0"
+      }
+    },
+    {
+      "id": "P04-B-001",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T23:03:59.975Z",
+      "finishedAt": "2026-09-25T23:04:31.748Z",
+      "elapsedSeconds": 31.772,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P04-B-001/phases/01-specification/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P04-B-001/execution.json": "76f4af0cf82bbc470cfcdf4373ef261853c7ef71a8930e0b59cce84619bd1b70",
+        "runs/P04-B-001/evaluation-summary.json": "3851ac6817786c5461e53b0ad70c824330d9d016bda06751ac452fc47b37003b",
+        "runs/P04-B-001/archive-complete.json": "d24b0fa1f0cc1e803f44ff2c60ca4406288de326161955493b377bf77f16375e",
+        "runs/P04-B-001/phases/01-specification/events.jsonl.gz": "6a0952333b4d529c2529e84afcd5b26d0a226db81eac1a331f35685faca1b173"
+      }
+    },
+    {
+      "id": "P03-C-003",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T23:08:11.368Z",
+      "finishedAt": "2026-09-25T23:08:44.666Z",
+      "elapsedSeconds": 33.297,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P03-C-003/phases/01-constitution/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P03-C-003/execution.json": "02ba58572987401773cdb2b163c59580d677f12299c2a56e4a67849445d9600f",
+        "runs/P03-C-003/evaluation-summary.json": "42f58f2a64bdbfff7790c4400e1ca5b16bbafec2ff5444bed515b69d05fc1bf2",
+        "runs/P03-C-003/archive-complete.json": "fc33e25e7edfcb49880dc0e9dadcb8f6ed090a7831b5a800eec9ff72d91ea277",
+        "runs/P03-C-003/phases/01-constitution/events.jsonl.gz": "36f1a641cf80d397c8d164f9568bc1573591b15e5b68432d4d69100c47141ef7"
+      }
+    },
+    {
+      "id": "P03-A-003",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T23:12:19.845Z",
+      "finishedAt": "2026-09-25T23:12:50.559Z",
+      "elapsedSeconds": 30.705,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P03-A-003/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P03-A-003/execution.json": "5538a9d9d598b16177b2d731e4fe95ff5c9febd009543f8cb2467849926f48c9",
+        "runs/P03-A-003/evaluation-summary.json": "3c5b29dbd86d01d564917731f6ab01316b4f41310fa4edc9f78d6e0ac4d9c921",
+        "runs/P03-A-003/archive-complete.json": "b8c989dc5056853c3b48581594f9fa17d58715c317f1b497531279ba2714af35",
+        "runs/P03-A-003/events.jsonl.gz": "8553f25ef0eef14c2d412d33f805f942c700f270a1e78069d9efe080745c7d16"
+      }
+    },
+    {
+      "id": "P03-B-003",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T23:16:28.085Z",
+      "finishedAt": "2026-09-25T23:16:59.765Z",
+      "elapsedSeconds": 31.678,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P03-B-003/phases/01-specification/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P03-B-003/execution.json": "bb7f6a3a32fbe6b398a6c03f6a78f68cd13bbb751e21b88c52aaa7d1a0e021f8",
+        "runs/P03-B-003/evaluation-summary.json": "9e1a49310f9608a69639735f1239c08bafba9620995eb97e4dab9eee528c191a",
+        "runs/P03-B-003/archive-complete.json": "c0bf295057ecd21c9cfc94c446c072451ac0f005c79982caccc2ad5495d08bd3",
+        "runs/P03-B-003/phases/01-specification/events.jsonl.gz": "ad3337a5fff62de388d0268856abacbbfa844eb0c8c6149a6af813f01d41c839"
+      }
+    },
+    {
+      "id": "P09-B-002",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T23:20:37.095Z",
+      "finishedAt": "2026-09-25T23:21:09.227Z",
+      "elapsedSeconds": 32.131,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P09-B-002/phases/01-specification/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P09-B-002/execution.json": "d7b6cab8871d80fbbf40fabdc782660307b43117e45fb669cfc90f110ce23238",
+        "runs/P09-B-002/evaluation-summary.json": "6ce642e6a42b656e42f2907f499d30e4580cc2e38a3875860132aa38aea7a086",
+        "runs/P09-B-002/archive-complete.json": "4982cd4aef96411d668d44a75e6fb70abd4e50502d73565225fbaa78fad9eb73",
+        "runs/P09-B-002/phases/01-specification/events.jsonl.gz": "e88d6d9aae9db59c0425a177d1f7136199e947e6c41bdb6e2a2e161bcb8ecf62"
+      }
+    },
+    {
+      "id": "P09-C-002",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T23:24:47.931Z",
+      "finishedAt": "2026-09-25T23:25:18.726Z",
+      "elapsedSeconds": 30.795,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P09-C-002/phases/01-constitution/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P09-C-002/execution.json": "42cc3796bd96cc079caf76553997c7c60bc70989c5f83137fd3fc9eb6c2940a1",
+        "runs/P09-C-002/evaluation-summary.json": "57e03cb9b35e698c8ad003f06d5e12c5b1517c77341b0cc364a2da3a303ac7f3",
+        "runs/P09-C-002/archive-complete.json": "7dfb39a85b7f178bef9aa636a4438f21837e12ae94cd02c9faa1951b2a0e1be2",
+        "runs/P09-C-002/phases/01-constitution/events.jsonl.gz": "e275c0a22a539d36f53647b4d5380fd493e577fee9b4182ee432a342c3e2bafc"
+      }
+    },
+    {
+      "id": "P09-A-002",
+      "status": "execution_failed",
+      "startedAt": "2026-09-25T23:28:52.406Z",
+      "finishedAt": "2026-09-25T23:29:23.494Z",
+      "elapsedSeconds": 31.081,
+      "fileChanges": [],
+      "authoredMessages": 0,
+      "toolEvents": 0,
+      "unauthorizedEvents": 7,
+      "usageComplete": false,
+      "usage": null,
+      "observedUsageBeforeInterruption": null,
+      "strictSuccess": false,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "eventFiles": [
+        "runs/P09-A-002/events.jsonl.gz"
+      ],
+      "evidenceSha256": {
+        "runs/P09-A-002/execution.json": "2b4e52f3f8c7eb878e77dfc3a2c1de62e98fa176ef4f9322a1ebca1b8d27d443",
+        "runs/P09-A-002/evaluation-summary.json": "bce6ada87b052db575c734a1dd9269578fa4055bfbb228792c529c7de25c10b5",
+        "runs/P09-A-002/archive-complete.json": "84a820d151ac3662bc05e3ed6d83202aa54093e8fe1e93093c7957ceaf7e2e20",
+        "runs/P09-A-002/events.jsonl.gz": "2d7c1bd7f3b6ae4504a84526eb508c6c71e51aae783b3db97c20605a3eb4f1dd"
+      }
+    }
+  ]
+}

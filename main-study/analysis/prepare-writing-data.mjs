@@ -1,0 +1,175 @@
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, lstatSync, readlinkSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import assert from 'node:assert/strict'
+import { digest, inventory } from '../../scripts/pilot-utils.mjs'
+import { reportingResults } from './reporting-results.mjs'
+import { writeProcessSummary } from './process-summary.mjs'
+import { writeEvidenceMap } from './evidence-map.mjs'
+
+const dir = dirname(fileURLToPath(import.meta.url)), root = resolve(dir, '../..'), thesis = resolve(root, '../naloga/latex')
+const read = file => JSON.parse(readFileSync(file, 'utf8'))
+const data = reportingResults(), schedule = read(resolve(root, 'main-study/schedule.json'))
+const frozen = read(resolve(root, 'main-study/frozen-inputs.json')), hash = file => createHash('sha256').update(readFileSync(file)).digest('hex')
+const records = new Map(data.data.map(r => [r.id, r])), reviews = [], anomalies = [], audited = [], statuses = {}, phaseRows = [], testRows = []
+const dimensions = ['specificationCoverage', 'predicatesInvariants', 'traceability', 'codeOrganization', 'ownChecks']
+const labels = ['Pokritost specifikacije', 'Predikati/invariante', 'Sledljivost', 'Organizacija kode', 'Lastna preverjanja']
+const isRated = review => review.reviewStatus !== 'unavailable'
+const walk = dir => readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(resolve(dir, e.name)) : [resolve(dir, e.name)])
+for (const [name, expected] of Object.entries(frozen.sources)) assert.equal(hash(resolve(root, name)), expected, `Changed frozen source: ${name}`)
+assert.equal(schedule.runs.length, 72); assert.equal(records.size, data.archived)
+for (const row of data.data) {
+  const folder = resolve(root, 'runs', row.id), marker = read(resolve(folder, 'archive-complete.json'))
+  const summary = read(resolve(folder, 'evaluation-summary.json')), execution = read(resolve(folder, 'execution.json'))
+  assert.equal(marker.id, row.id); assert.equal(summary.id, row.id)
+  assert.equal(digest(JSON.stringify(inventory(resolve(folder, 'submission')))), summary.submissionSha256, `Archived submission differs from evaluated candidate: ${row.id}`)
+  for (const [name, expected] of Object.entries(summary.evaluatorSourceHashes)) assert.equal(expected, frozen.sources[name], `Different evaluator: ${row.id}/${name}`)
+  for (const [name, item] of Object.entries(marker.files)) {
+    const file = resolve(folder, name)
+    if (item.kind === 'file') { assert.ok(lstatSync(file).isFile()); assert.equal(hash(file), item.sha256, `${row.id}/${name}`) }
+    else if (item.kind === 'symlink') assert.equal(readlinkSync(file), item.target)
+    else throw new Error(`Unknown archive inventory kind: ${item.kind}`)
+  }
+  assert.equal(walk(folder).length, Object.keys(marker.files).length + 1, `Archive extra/missing file: ${row.id}`)
+  assert.ok(schedule.runs.some(r => r.id === row.id))
+  assert.equal(row.score.total, 12); assert.equal(row.score.requirements.length, 12)
+  assert.equal(row.score.passed, row.score.requirements.filter(r => r.demonstrated).length)
+  if (!row.usageComplete) assert.equal(row.usage, null)
+  if (row.usage) { assert.ok(row.usage.cached_input_tokens <= row.usage.input_tokens); assert.ok(row.usage.reasoning_output_tokens <= row.usage.output_tokens) }
+  statuses[row.executionStatus] = (statuses[row.executionStatus] ?? 0) + 1
+  const phases = execution.phases?.length ? execution.phases : [{ name: 'combined-agent-work', status: execution.status, startedAt: execution.startedAt, finishedAt: execution.finishedAt, elapsedSeconds: execution.elapsedSeconds }]
+  for (const [index, phase] of phases.entries()) phaseRows.push([row.id, row.task, row.procedure, row.repetition, index + 1, phase.name, phase.status, phase.startedAt, phase.finishedAt, phase.elapsedSeconds])
+  const elapsedPhases = phases.reduce((sum, p) => sum + (p.elapsedSeconds ?? 0), 0)
+  if (execution.phases?.length) phaseRows.push([row.id, row.task, row.procedure, row.repetition, null, 'handoffs-and-orchestration', execution.status, null, null, Number.isFinite(execution.elapsedSeconds) && phases.every(p => Number.isFinite(p.elapsedSeconds)) ? Math.max(0, execution.elapsedSeconds - elapsedPhases) : null])
+  const failedTests = summary.tests.filter(t => t.status !== 'expected').map(({ title, project, status, errors }) => ({ title, project, status, errors }))
+  for (const test of summary.tests) testRows.push([row.id, row.task, row.procedure, row.repetition, test.project, test.title, test.status, JSON.stringify(test.errors ?? []), row.evidence])
+  if (!row.strictSuccess || failedTests.length) anomalies.push({ id: row.id, executionStatus: row.executionStatus, allowedChanges: row.allowedChanges, completeTestRun: row.completeTestRun, checks: row.checks, failedTests, evidence: row.evidence })
+  audited.push({ id: row.id, files: Object.keys(marker.files).length, startedAt: execution.startedAt, finishedAt: execution.finishedAt, ...(execution.finishedAtMeaning ? { finishedAtMeaning: execution.finishedAtMeaning } : {}), archiveCompletedAt: marker.completedAt, markerSha256: hash(resolve(folder, 'archive-complete.json')) })
+  const reviewFile = resolve(dir, 'reviews', `${row.id}.json`)
+  if (row.repetition === 1 && existsSync(reviewFile)) {
+    const review = read(reviewFile)
+    assert.equal(review.id, row.id); assert.equal(review.method, 'AI-podprta, neslepa vsebinska presoja')
+    assert.ok([undefined, 'rated', 'unavailable'].includes(review.reviewStatus))
+    if (!isRated(review)) assert.ok(typeof review.unavailableReason === 'string' && review.unavailableReason.length > 40)
+    assert.deepEqual(review.dimensions.map(d => d.dimension), dimensions)
+    for (const dimension of review.dimensions) {
+      if (isRated(review)) assert.ok([0, 1, 2].includes(dimension.score))
+      else assert.equal(dimension.score, null, 'Unavailable content assessment must not be scored as zero')
+      assert.ok(dimension.rationale.length > 40); assert.ok(dimension.evidence.length)
+      for (const evidence of dimension.evidence) assert.ok(existsSync(resolve(root, evidence.split('#')[0].replace(/:\d+$/, ''))), `Missing review evidence: ${evidence}`)
+    }
+    for (const key of ['finalFailureExample', 'developmentFailureExample']) {
+      const example = review[key]
+      if (example == null) continue
+      assert.equal(typeof example.description, 'string', `Missing example description: ${row.id}/${key}`)
+      assert.ok(example.description.length > 20)
+      assert.ok(Array.isArray(example.evidence) && example.evidence.length, `Missing example evidence: ${row.id}/${key}`)
+      for (const evidence of example.evidence) assert.ok(existsSync(resolve(root, evidence.split('#')[0].replace(/:\d+$/, ''))), `Missing example evidence: ${evidence}`)
+    }
+    reviews.push(review)
+  }
+}
+const ratedReviews = reviews.filter(isRated), unavailableReviews = reviews.filter(r => !isRated(r))
+const processSummary = writeProcessSummary(data, root, dir)
+writeEvidenceMap(data, schedule, reviews, root, dir)
+const reviewDistribution = ['A', 'B', 'C'].map(procedure => {
+  const selected = schedule.runs.filter(r => r.repetition === 1 && r.procedure === procedure)
+  const selectedReviews = reviews.filter(r => selected.some(s => s.id === r.id))
+  const rated = selectedReviews.filter(isRated)
+  return { procedure, planned: selected.length, rated: rated.length,
+    unavailable: selectedReviews.length - rated.length, pending: selected.length - selectedReviews.length,
+    dimensions: dimensions.map((dimension, index) => {
+      const counts = [0, 1, 2].map(score => rated.filter(r => r.dimensions.find(d => d.dimension === dimension).score === score).length)
+      assert.equal(counts.reduce((sum, count) => sum + count, 0), rated.length)
+      return { dimension, label: labels[index], counts }
+    }) }
+})
+writeFileSync(resolve(dir, 'review-distribution.json'), JSON.stringify({
+  sourceGeneratedAt: data.generatedAt, method: 'AI-podprta, neslepa vsebinska presoja',
+  source: 'reviews/<ID>.json; vnaprej izbrana ponovitev 001',
+  interpretation: 'Counts of scores 0, 1, 2 for each separate ordinal dimension. Unavailable and pending reviews are outside score counts. No composite score or human agreement is estimated.',
+  groups: reviewDistribution
+}, null, 2) + '\n')
+const snapshot = { generatedAt: new Date().toISOString(), sourceGeneratedAt: data.generatedAt, archived: data.archived, planned: 72, complete: data.complete,
+  frozenInputsUnchanged: true, archiveIntegrity: true, audited, executionStatuses: statuses, reviewed: ratedReviews.length, reviewUnavailable: unavailableReviews.length, reviewResolved: reviews.length, reviewPlanned: 24 }
+writeFileSync(resolve(dir, 'integrity-audit.json'), JSON.stringify(snapshot, null, 2) + '\n')
+writeFileSync(resolve(dir, 'anomalies.json'), JSON.stringify({ ...snapshot, audited: undefined, anomalies }, null, 2) + '\n')
+const csv = rows => rows.map(row => row.map(value => value === null || value === undefined ? '' : `"${String(value).replaceAll('"', '""')}"`).join(',')).join('\r\n') + '\r\n'
+writeFileSync(resolve(dir, 'review-data.csv'), csv([
+  ['id', 'task', 'procedure', 'repetition', 'archived', 'reviewed', ...dimensions, 'method', 'reviewer', 'reviewed_at', 'human_review', 'inter_rater_agreement', 'evidence', 'review_status', 'unavailable_reason'],
+  ...schedule.runs.filter(r => r.repetition === 1).map(r => {
+    const review = reviews.find(v => v.id === r.id)
+    return [r.id, r.task, r.procedure, r.repetition, records.has(r.id), Boolean(review && isRated(review)), ...dimensions.map(d => review?.dimensions.find(x => x.dimension === d)?.score),
+      review?.method, review?.reviewer, review?.reviewedAt, review?.humanReview, review?.interRaterAgreement, review ? `main-study/analysis/reviews/${r.id}.json` : null,
+      review ? (isRated(review) ? 'rated' : 'unavailable') : 'pending', review?.unavailableReason]
+  })
+]))
+writeFileSync(resolve(dir, 'test-data.csv'), csv([['id', 'task', 'procedure', 'repetition', 'project', 'title', 'status', 'errors_json', 'evidence'], ...testRows]))
+writeFileSync(resolve(dir, 'phase-data.csv'), csv([['id', 'task', 'procedure', 'repetition', 'phase_order', 'phase', 'status', 'started_at_utc', 'finished_at_utc', 'elapsed_seconds'], ...phaseRows]))
+const headers = ['id', 'task', 'procedure', 'repetition', 'block', 'position', 'archived', 'execution_status', 'elapsed_seconds', 'requirements_demonstrated', 'requirements_observed', 'requirement_total', 'demonstrated_fraction', 'strict_success', 'allowed_changes', 'complete_test_run', 'usage_complete', 'input_tokens', 'cached_input_tokens', 'output_tokens', 'reasoning_output_tokens', 'observed_input_lower_bound', 'observed_output_lower_bound', 'own_test_files', 'changed_files', 'evidence']
+writeFileSync(resolve(dir, 'run-data.csv'), csv([headers, ...schedule.runs.map(r => {
+  const a = records.get(r.id)
+  return [r.id, r.task, r.procedure, r.repetition, r.block, r.position, Boolean(a), a?.executionStatus, a?.elapsedSeconds, a?.score.passed, a?.score.observed, 12,
+    a?.score.fraction, a?.strictSuccess, a?.allowedChanges, a?.completeTestRun, a?.usageComplete, a?.usage?.input_tokens, a?.usage?.cached_input_tokens,
+    a?.usage?.output_tokens, a?.usage?.reasoning_output_tokens, a?.observedUsageBeforeInterruption?.input_tokens, a?.observedUsageBeforeInterruption?.output_tokens,
+    a?.ownTestFiles, a?.changedFiles, a?.evidence]
+})]))
+writeFileSync(resolve(dir, 'requirement-data.csv'), csv([['id', 'task', 'procedure', 'repetition', 'requirement', 'archived', 'demonstrated', 'observed'],
+  ...schedule.runs.flatMap(r => Array.from({ length: 12 }, (_, i) => {
+    const a = records.get(r.id), score = a?.score.requirements[i]
+    return [r.id, r.task, r.procedure, r.repetition, 'R' + String(i + 1).padStart(2, '0'), Boolean(a), score?.demonstrated, score?.observed]
+  }))]))
+const missingReviews = schedule.runs.filter(r => r.repetition === 1 && !reviews.some(v => v.id === r.id)).map(r => r.id)
+const md = ['# Vsebinska presoja glavnih oddaj', '', '**AI-podprta, neslepa vsebinska presoja.** Ocenjevalec: Codex, raziskovalčev pomočnik, zunaj merjene seje. To niso človeške ocene in soglasje med ocenjevalci ni izmerjeno.', '',
+  `Vsebinsko ocenjenih je ${ratedReviews.length}/24 vnaprej določenih oddaj (ponovitev 001 za P03–P10 in A/B/C). Število izbranih oddaj z dokumentirano nezmožnostjo ocene: ${unavailableReviews.length}; njihove ocene ostanejo manjkajoče, ne ničelne. Ocene po dimenzijah se ne seštevajo v skupno kakovost.`, '',
+  '| Oddaja | Status presoje | Specifikacija | Predikati | Sledljivost | Koda | Lastni testi |', '| --- | --- | --- | --- | --- | --- | --- |',
+  ...reviews.map(r => `| [${r.id}](reviews/${r.id}.json) | ${isRated(r) ? 'ocenjeno' : 'ocena ni mogoča'} | ${r.dimensions.map(d => d.score ?? '—').join(' | ')} |`), '',
+  `Še neobravnavane izbrane oddaje: ${missingReviews.length ? missingReviews.join(', ') : 'ni'}.`, '',
+  '## Porazdelitev ocen po dimenzijah', '',
+  'Vsaka trojica navaja število ocen 0 / 1 / 2. Manjkajoče in še neopravljene presoje niso ocena 0. Števila so opisna; dimenzij ne seštevamo in ne računamo skupne ocene kakovosti.', '',
+  ...reviewDistribution.map(g => `${g.procedure}: ${g.rated}/${g.planned} številčno ocenjenih, ${g.unavailable} brez možnosti ocene, ${g.pending} še neobravnavanih.`), '',
+  '| Dimenzija | A: 0 / 1 / 2 | B: 0 / 1 / 2 | C: 0 / 1 / 2 |',
+  '| --- | --- | --- | --- |',
+  ...dimensions.map((dimension, index) => `| ${labels[index]} | ${reviewDistribution.map(g => g.dimensions.find(d => d.dimension === dimension).counts.join(' / ')).join(' | ')} |`), '']
+for (const review of reviews) {
+  md.push(`## ${review.id}`, '')
+  if (!isRated(review)) md.push(`**Vsebinska ocena ni mogoča.** ${review.unavailableReason}`, '')
+  review.dimensions.forEach((d, i) => md.push(`**${labels[i]}: ${d.score === null ? 'manjkajoče' : `${d.score}/2`}.** ${d.rationale}`, '', `Dokazi: ${d.evidence.map(e => `[${e.split('/').at(-1)}](../../${e.replace(/:(\d+)$/, '#L$1')})`).join(', ')}.`, ''))
+  md.push(`Končna napaka: ${review.finalFailureNote ?? review.finalFailureExample?.description ?? 'glej izvirno presojo'}`, '')
+  if (review.developmentFailureExample) md.push(`Razvojni popravek: ${review.developmentFailureExample.description}`, '')
+  if (review.developmentFailureNote) md.push(`Opomba o razvojnem poteku: ${review.developmentFailureNote}`, '')
+}
+writeFileSync(resolve(dir, 'content-review.md'), md.join('\n'))
+
+// These inputs update the manuscript snapshot; the frozen experiment never imports them.
+const generated = resolve(thesis, 'generated'); mkdirSync(generated, { recursive: true })
+const tex = value => String(value).replace(/[\\{}%&#_$]/g, ch => ({ '\\': '\\textbackslash{}', '{': '\\{', '}': '\\}', '%': '\\%', '&': '\\&', '#': '\\#', '_': '\\_', '$': '\\$' }[ch]))
+const num = (value, digits = 2) => value === null || value === undefined ? '--' : value.toFixed(digits).replace('.', '{,}')
+const when = data.generatedAt.replace('T', ' ').slice(0, 19) + ' UTC'
+const countText = `Število arhiviranih glavnih izvedb ob ${tex(when)}: ${data.archived} od 72 vnaprej določenih.`
+const statusLabels = { completed: 'normalno zaključen', infrastructure_interrupted: 'infrastrukturno prekinjen', execution_failed: 'neuspešna izvedba', completed_with_phase_time_limit: 'potek s fazno časovno omejitvijo' }
+writeFileSync(resolve(generated, 'study-status.tex'), `% Generated from main-study/analysis/reporting-results.json; do not edit numbers manually.\n${countText}\n${data.complete ? 'Vse načrtovane izvedbe so arhivirane; posamezne neznane meritve ostanejo označene kot manjkajoče.' : 'Zbirka je nepopolna. Naslednje vrednosti so sprotni opis, ne uravnotežena končna primerjava pristopov.'}\nStatusi pristopov: ${Object.entries(statuses).map(([status, n]) => `${tex(statusLabels[status] ?? status)}: ${n}`).join(', ') || 'še ni arhiviranih izvedb'}.\nPiloti P01/P02 in kvalifikacija niso vključeni.\n`)
+const table = (caption, label, columns, header, rows, note) => ['\\begin{table}[htbp]', '\\centering', '\\small', `\\caption{${caption}}`, `\\label{${label}}`, `\\begin{tabular}{${columns}}`, '\\toprule', header + ' \\\\', '\\midrule', ...rows.map(r => r + ' \\\\'), '\\bottomrule', '\\end{tabular}', note ? `\\par\\smallskip\\parbox{0.95\\textwidth}{\\footnotesize ${note}}` : '', '\\end{table}', ''].join('\n')
+writeFileSync(resolve(generated, 'study-summary.tex'), table('Opisni povzetek arhiviranih glavnih izvedb.', 'tab:dejanske-meritve', '@{}lrrrrr@{}', 'Pristop & $n$/24 & Strogi uspehi & Delež zahtev & Čas (s) & Poraba znana',
+  data.groups.map(g => `${g.procedure} & ${g.archived} & ${g.strictSuccesses} & ${num(g.meanDemonstratedFraction, 3)} & ${num(g.meanElapsedSeconds)} & ${g.completeUsageCount}`),
+  'Časovno povprečje manjka, če vsaj en točni čas ni znan; manjkajoča vrednost ni nič. Pri nepopolni zbirki se lahko sestava nalog in ponovitev med pristopi razlikuje.'))
+writeFileSync(resolve(generated, 'study-usage.tex'), table('Tokeni samo izvedb s popolno izmerjeno porabo.', 'tab:dejanska-poraba', '@{}lrrr@{}', 'Pristop & Popolno izmerjenih & Vhodni tokeni & Izhodni tokeni',
+  data.groups.map(g => `${g.procedure} & ${g.completeUsageCount}/${g.archived} & ${num(g.meanInputTokensCompleteOnly, 0)} & ${num(g.meanOutputTokensCompleteOnly, 0)}`),
+  'Povprečja imajo naveden imenovalec in so lahko selektivna. Predpomnjeni tokeni so že vključeni v vhodne. Manjkajoča celotna poraba ni nič; opažene spodnje meje so v spremljajoči zbirki.'))
+writeFileSync(resolve(generated, 'study-comparisons.tex'), data.complete ? table('Parne razlike med pristopi po osmih nalogah.', 'tab:parne-razlike', '@{}llrrr@{}', 'Par & Mera & Razlika & Spodnja meja & Zgornja meja',
+  data.comparisons.map(c => `${c.first}--${c.second} & ${c.metric === 'meanElapsedSeconds' ? 'Čas (s)' : 'Delež zahtev'} & ${num(c.meanDifference, 3)} & ${num(c.lower, 3)} & ${num(c.upper, 3)}`),
+  'Razlika pomeni prvi pristop minus drugega; delež zahtev je na lestvici 0--1. Opisni 95-odstotni percentilni intervali iz 20.000 ponovnih vzorcev osmih nalog. Najprej so povprečene tri ponovitve vsakega pristopa pri isti nalogi. Časovne primerjave z manjkajočo ponovitveno meritvijo so zadržane.') : 'Parne razlike in intervali še niso izračunani, ker vseh 72 izvedb še ni arhiviranih.\n')
+const bp = processSummary.B, cp = processSummary.C
+writeFileSync(resolve(generated, 'revision-process.tex'), [
+  '% Generated from archived formal handoffs; no manual counts.',
+  'Pri pristopu B je število arhiviranih izvedb ' + bp.archived + ', potrjenih strukturiranih predaj pregleda pa ' + bp.validatedReviews + '. Brez potrjene predaje je ' + bp.withoutValidatedReview + ' izvedb. Število predaj z zahtevo za popravek specifikacije je ' + bp.runsRequestingSpecificationRepair + ', z zahtevo za popravek kode pa ' + bp.runsRequestingCodeRepair + '. Začeti/zaključeni povratni koraki specifikacije: ' + bp.specificationRepairsStarted + '/' + bp.specificationRepairsCompleted + '; implementacije: ' + bp.implementationRepairsStarted + '/' + bp.implementationRepairsCompleted + '.', '',
+  'Pri pristopu C je število arhiviranih izvedb ' + cp.archived + '. Potrjenih predaj konvergence je ' + cp.validatedConvergencePasses + ', izvedb brez take predaje pa ' + cp.withoutValidatedConvergence + '. Posamezne predaje imajo naslednje izide: \\texttt{converged} ' + cp.outcomes.converged + ', \\texttt{tasks\\_appended} ' + cp.outcomes.tasks_appended + ' in \\texttt{blocked} ' + cp.outcomes.blocked + '. Začete/zaključene dodatne implementacije: ' + cp.additionalImplementationStarted + '/' + cp.additionalImplementationCompleted + '.', '',
+  'Števci opisujejo formalne korake izvajalnika. Potrjena predaja pomeni zaključen korak s sprejetim strukturiranim odgovorom, katerega zgoščena vrednost se ujema z arhivom. Posamezna izvedba C lahko vsebuje dve predaji konvergence. Odsotna predaja ne pomeni potrditve odsotnosti napak. Zahteva za popravek specifikacije pri B sproži tudi vrnitev implementerju; po popravkih protokol ne načrtuje drugega formalnega pregleda.', '',
+  'Popravki kode ali testov znotraj ene faze niso vključeni med povratne korake. Pristop A nima ločenega pregleda ali konvergence. Števcev zato ne razlagamo kot primerljivih ocen kakovosti, števila razvojnih napak ali vzročnega učinka pristopa. Dokazi za vsako predajo so v spremljajočem zapisu \\texttt{process-summary.json}.', ''
+].join('\n'))
+writeFileSync(resolve(generated, 'study-review.tex'), `Opravljena je AI-podprta, neslepa vsebinska presoja ${ratedReviews.length} od 24 vnaprej izbranih oddaj. Število izbranih oddaj brez možnosti vsebinske ocene: ${unavailableReviews.length}; njihove ocene ostanejo manjkajoče in se ne nadomestijo z ničlo ali drugo ponovitvijo. Posamezne utemeljitve in povezave do dokazov so v spremljajoči zbirki \\texttt{main-study/analysis/content-review.md}. Neodvisna človeška presoja in soglasje med ocenjevalci nista izmerjena.\n`)
+writeFileSync(resolve(generated, 'review-distribution.tex'), table('Porazdelitev vsebinskih ocen po ločenih dimenzijah.', 'tab:porazdelitev-presoj', '@{}lrrr@{}', 'Dimenzija & A: 0 / 1 / 2 & B: 0 / 1 / 2 & C: 0 / 1 / 2',
+  dimensions.map((dimension, index) => `${labels[index]} & ${reviewDistribution.map(g => g.dimensions.find(d => d.dimension === dimension).counts.join(' / ')).join(' & ')}`),
+  'Trojica pomeni število ocen 0, 1 in 2; manjkajoče ocene niso vključene med ničle. ' + reviewDistribution.map(g => `${g.procedure}: ocenjenih ${g.rated}/${g.planned}, brez možnosti ocene ${g.unavailable}, še neobravnavanih ${g.pending}.`).join(' ') + ' Dimenzij ne seštevamo.'))
+console.log(JSON.stringify({ archived: data.archived, integrity: true, reviewed: ratedReviews.length, reviewUnavailable: unavailableReviews.length, anomalies: anomalies.length, snapshot: when }))

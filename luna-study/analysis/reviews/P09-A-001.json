@@ -1,0 +1,115 @@
+{
+  "collection": "L/1.0",
+  "id": "P09-A-001",
+  "reviewedAt": "2026-09-28T21:56:53.054771+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "b6fdd9010fbc70e99a2bd4b9dabc2a7ab7f10f457036c36c23a864fa68bc6541",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija skladno opredeli vedenje vseh R01–R12: normalizacijo, dobesedno frazo v posameznem polju, stabilno urejanje, prve parametre, osnutek in potrditev, kanonizacijo, zgodovino, navigacijo, reset ter omejitve zapisov. Konkretna vrzel je obvezni dogovor o dostopnih imenih kontrol: natančnega imena »Vrstni red v povezavi« ne prenese v specifikacijo ali sledljivost. To je izrecna vhodna zahteva; končna kontrola uporablja krajše ime. Vseh zahtev in bistvenih pravil vmesnika zato ni mogoče šteti za v celoti jasno opredeljene.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/tasks/P09/instructions.md#dogovor-o-vmesniku"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "N(s) natančno določi trim, NFD, odstranitev kombinacijskih znakov in male črke. Izbor je statusni pogoj IN podniz vsaj enega posameznega polja; opis izključi regex in razrez v besede. UTF-16, stabilnost izenačitev, privzete in prve vrednosti ter razlika osnutek/potrjeno stanje so preverljivi. Predikati spremembe potrjenega stanja določijo tudi nov zgodovinski vnos, brezvplivno ponovitev, navigacijske ohranitve in projektni reset.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Dvanajst vrstic poveže pogoje s konkretnimi moduli in poimenovanimi lastnimi oziroma razvojnimi testi. Navedeni uspeh 53/53 je resničen (item_42); omejitve okolja in neizveden ročni pregled so izrecni. Predaja je ob časovni meji ostala pri tem prejšnjem uspehu: ne zajame poznejšega popravka praznega projekta in osmega testa, ki sta dejansko dosegla 54/54 v item_49. To je zastarel obseg, ne izmišljen rezultat ali dokaz zadnje različice. Povezave ostajajo preverljive; preširoke pokritosti posameznih lastnih scenarijev in izpuščeni dogovor o imenu so navedeni ločeno.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P09-A-001/submission/docs/agent/verification.md#izvedeni-zagoni",
+        "runtime/runs/P09-A-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "runtime/runs/P09-A-001/submission/docs/agent/verification.md#omejitve-in-opombe",
+        "analysis/evidence/P09-A-001-checks.md#item_42",
+        "analysis/evidence/P09-A-001-checks.md#item_47",
+        "analysis/evidence/P09-A-001-checks.md#item_48",
+        "analysis/evidence/P09-A-001-checks.md#item_49"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "navigation.ts loči parser, serializacijo, normalizacijo ter naročnino hashchange/popstate s čiščenjem. Čisti selectTasks izpelje vidni seznam, ProjectView hrani le osnutek in potrjuje skupno stanje, route pa ostane vir potrjenih filtrov. Skupni URL gradniki ohranijo filtre pri povezavah table in podrobnosti; projektne povezave uporabijo privzete vrednosti. Ni podvojenega shranjenega rezultata filtriranja ali API zapisov. Napačno dostopno ime je lokalna napaka dogovora vmesnika, ne zmeda odgovornosti celotne implementacije.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/src/navigation.ts:11",
+        "runtime/runs/P09-A-001/submission/src/navigation.ts:20",
+        "runtime/runs/P09-A-001/submission/src/navigation.ts:40",
+        "runtime/runs/P09-A-001/submission/src/navigation.ts:45",
+        "runtime/runs/P09-A-001/submission/src/navigation.ts:64",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:11",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:27",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:37",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:121",
+        "runtime/runs/P09-A-001/submission/src/TaskBoard.tsx:26",
+        "runtime/runs/P09-A-001/submission/src/TaskDetails.tsx:12"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Osem dodatnih scenarijev pokrije Unicode in literalne znake, ID/odgovorno osebo, status, oba vrstna reda in enaka naslova, podvojene/neznane parametre, no-op zgodovino, osnutek pri preklopu, back/forward, podrobnosti, projektne povezave, reset, prazen projekt v obeh pogledih ter 390 px. Vendar testi vrstnega reda in reseta iščejo krajše »Vrstni red«, zato ne uveljavijo natančnega javnega imena. Manjkajo singleton in več kot deset opravil, različna niza z enakim normaliziranim naslovom, atomska sprememba vseh treh kontrol, neuporabljen osnutek pred back/forward, kodiranje ločil q ter zgodovina po resetu. Lastni test back/forward ne izvede reloada; razvojni D03 zagotovi le ožji osnovni reload. Koristni robovi so prisotni, pomembni ostanejo nepokriti.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/tests/agent/P09.spec.ts:3",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09.spec.ts:27",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09.spec.ts:43",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09.spec.ts:62",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09.spec.ts:78",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09.spec.ts:114",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09.spec.ts:126",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09.spec.ts:140",
+        "analysis/evidence/P09-A-001-checks.md#item_49"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E03, E04 in E05 na obeh širinah ne najdejo comboboxa z natančnim zahtevanim imenom »Vrstni red v povezavi«; App.tsx:79 uporablja »Vrstni red«. Vseh šest opaženih napak se ustavi na tej kontroli. Rezultat je 64/70 testov in 9/12 dokazanih zahtev; to ne dokazuje treh različnih napak algoritmov razvrščanja, razčlenjevanja in potrditve. Oddaja tudi doseže časovno mejo. Arhiv se ne popravlja ali ponavlja.",
+    "evidence": [
+      "runtime/runs/P09-A-001/submission/src/App.tsx:79",
+      "runtime/tasks/P09/instructions.md#dogovor-o-vmesniku",
+      "runtime/runs/P09-A-001/evaluation-summary.json",
+      "runtime/runs/P09-A-001/evaluation-tests.log"
+    ]
+  },
+  "finalFailureNote": "Time_limit, 1200,034 s, 64/70 in 9/12, brez strogega uspeha. Popolna poraba je null; opažena spodnja meja 3747862 vhodnih in 45350 izhodnih tokenov. Predaja 53/53 je starejša od zadnjega dejansko uspešnega razvojnega zagona 54/54.",
+  "developmentFailureExample": {
+    "description": "Item_17 odpove pri ESLint odvisnosti učinka; popravek item_18 omogoči 46/46 v item_19. Z dodatnimi testi item_24 doseže 49/52: napačen skupni vrstni red kartic, napačno pričakovan zadetek web-06 za q=pregled in napačen UTF-16 vrstni red naslovov. Po testnem popravku item_26 ostaneta 4/6 v item_27; testni item_28 popravi še filtrirano tablo in odvečni ID. Item_30 uspe 6/6, item_32 52/52. Dopolnitve omogočijo 7/7 in 53/53 v item_34/35 ter končnih 53/53 v item_42. Poznejši item_47 dopolni prazni prikaz, item_48 doda osmi test, item_49 uspe 54/54 (20,0 s), nato časovna meja prepreči zaključek predaje. Lastna preverjanja ne odkrijejo napačnega obveznega imena kontrole.",
+    "evidence": [
+      "analysis/evidence/P09-A-001-checks.md#item_17",
+      "analysis/evidence/P09-A-001-checks.md#item_18",
+      "analysis/evidence/P09-A-001-checks.md#item_19",
+      "analysis/evidence/P09-A-001-checks.md#item_24",
+      "analysis/evidence/P09-A-001-checks.md#item_26",
+      "analysis/evidence/P09-A-001-checks.md#item_27",
+      "analysis/evidence/P09-A-001-checks.md#item_28",
+      "analysis/evidence/P09-A-001-checks.md#item_30",
+      "analysis/evidence/P09-A-001-checks.md#item_32",
+      "analysis/evidence/P09-A-001-checks.md#item_33",
+      "analysis/evidence/P09-A-001-checks.md#item_34",
+      "analysis/evidence/P09-A-001-checks.md#item_35",
+      "analysis/evidence/P09-A-001-checks.md#item_41",
+      "analysis/evidence/P09-A-001-checks.md#item_42",
+      "analysis/evidence/P09-A-001-checks.md#item_47",
+      "analysis/evidence/P09-A-001-checks.md#item_48",
+      "analysis/evidence/P09-A-001-checks.md#item_49"
+    ]
+  }
+}

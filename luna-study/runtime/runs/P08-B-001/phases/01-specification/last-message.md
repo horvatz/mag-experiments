@@ -1,0 +1,3 @@
+Specifikacijo sem dopolnil s pogoji R01–R12, skupinskim predikatom, robnimi scenariji in sledljivostjo do obstoječih tipov in kode. Začetni zapis in spremembe so zabeleženi v [specification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P08-B-001/app/docs/agent/specification.md) in [specification-history.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P08-B-001/app/docs/agent/specification-history.md).
+
+Aplikacije in testov nisem zaganjal, kot določa ta vloga. Preverjanje `git diff --check` ni uspelo, ker okolju manjka `xcrun`; dejanski izidi testov so zato v specifikaciji označeni kot nepreverjeni.

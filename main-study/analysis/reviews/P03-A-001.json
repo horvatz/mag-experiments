@@ -1,0 +1,75 @@
+{
+  "id": "P03-A-001",
+  "reviewedAt": "2026-09-24",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha. Manjkajoča oddaja se ne nadomesti z drugo ponovitvijo.",
+  "reviewStatus": "unavailable",
+  "unavailableReason": "Omejitev uporabe storitve je prekinila izvedbo po 13,293 s pred nastankom avtorske specifikacije, sprememb kode ali lastnih testov (fileChanges=[]). Ohranjeno je izhodišče, ne ocenljiva rešitev P03. Po vnaprej določeni rubriki vseh pet vsebinskih ocen ostane manjkajočih; funkcionalni izid in začeti ID ostaneta v primarni analizi.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": null,
+      "rationale": "Specifikacija ni nastala: model se je ustavil zaradi omejitve storitve, arhiv ne vsebuje avtorskih dokumentov. Pokritosti ne ocenjujemo z ničlo.",
+      "evidence": [
+        "runs/P03-A-001/execution.json",
+        "runs/P03-A-001/events.jsonl.gz",
+        "runs/P03-A-001/archive-complete.json"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": null,
+      "rationale": "Ni oddanih predikatov ali invariant, ker storitev ni dovolila nadaljevanja začetega dela. Odsotna avtorska oddaja je označena kot manjkajoča ocena.",
+      "evidence": [
+        "runs/P03-A-001/execution.json",
+        "runs/P03-A-001/events.jsonl.gz",
+        "runs/P03-A-001/archive-complete.json"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": null,
+      "rationale": "Ni oddanega verifikacijskega zapisa ali matrike zahteva–koda–test. Raziskovalčeva ocena izhodišča ne nadomešča agentove predaje, zato vsebinska ocena manjka.",
+      "evidence": [
+        "runs/P03-A-001/execution.json",
+        "runs/P03-A-001/events.jsonl.gz",
+        "runs/P03-A-001/archive-complete.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Izvajalnik potrjuje nič spremenjenih datotek; arhivirana koda je izhodišče brez implementacije P03. Organizacije izhodišča ne pripišemo kot avtorsko kakovost te prekinjene oddaje.",
+      "evidence": [
+        "runs/P03-A-001/execution.json",
+        "runs/P03-A-001/events.jsonl.gz",
+        "runs/P03-A-001/archive-complete.json"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": null,
+      "rationale": "Lastni testi niso nastali in model ni izvedel svojega preverjanja. Poznejših neodvisnih testov ne obravnavamo kot agentove lastne dokaze; ocena ostane manjkajoča.",
+      "evidence": [
+        "runs/P03-A-001/execution.json",
+        "runs/P03-A-001/events.jsonl.gz",
+        "runs/P03-A-001/archive-complete.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "V nespremenjenem izhodišču ni iskalnega vnosa Išči opravila. D01 zato poteče ob iskanju tega elementa. Neodvisna ocena je izvedena: 38/38 regresijskih, 0/8 razvojnih in 0/24 sprejemnih preverjanj; 0/12 dokazanih zahtev, vseh 12 opaženih. To je končni izid neimplementirane funkcionalnosti po omejitvi storitve, ne dokaz napake v agentovi implementaciji.",
+    "evidence": [
+      "runs/P03-A-001/evaluation-summary.json",
+      "runs/P03-A-001/submission/src/App.tsx",
+      "runs/P03-A-001/events.jsonl.gz"
+    ]
+  },
+  "finalFailureNote": "Postopek execution_failed zaradi izrecnega dogodka usage limit, brez sprememb datotek. Neodvisno 38/70 in 0/12, strogi uspeh false. Čas 13,293 s je znan; celotna poraba je null, opažena spodnja meja 10474 vhodnih / 204 izhodnih tokenov. Kratek prekinjeni čas ni čas uspešne rešitve in ne utemeljuje vzročnega sklepa o postopku A.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Model ni prišel do implementacije ali lastnega testnega zagona. Vrstni red je obstal po arhiviranju; po uporabnikovi ročni ponastavitvi je nadaljevanje pri P03-B-001, brez ponovitve P03-A-001."
+}

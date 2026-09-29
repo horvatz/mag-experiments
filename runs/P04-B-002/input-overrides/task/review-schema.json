@@ -1,0 +1,84 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "complete",
+    "checkedRequirements",
+    "unverified",
+    "specificationChangesRequired",
+    "codeChangesRequired",
+    "summary",
+    "findings"
+  ],
+  "properties": {
+    "complete": {
+      "type": "boolean"
+    },
+    "checkedRequirements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "R01",
+          "R02",
+          "R03",
+          "R04",
+          "R05",
+          "R06",
+          "R07",
+          "R08",
+          "R09",
+          "R10",
+          "R11",
+          "R12"
+        ]
+      }
+    },
+    "unverified": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "specificationChangesRequired": {
+      "type": "boolean"
+    },
+    "codeChangesRequired": {
+      "type": "boolean"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "target",
+          "requirement",
+          "problem",
+          "requestedChange"
+        ],
+        "properties": {
+          "target": {
+            "type": "string",
+            "enum": [
+              "specification",
+              "implementation"
+            ]
+          },
+          "requirement": {
+            "type": "string"
+          },
+          "problem": {
+            "type": "string"
+          },
+          "requestedChange": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

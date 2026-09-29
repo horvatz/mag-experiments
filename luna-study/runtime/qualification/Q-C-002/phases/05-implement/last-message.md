@@ -1,0 +1,3 @@
+Implementiral sem `shift` v [qualification.ts](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P02-C-902/app/src/qualification.ts). Označil sem T001 in T002 kot opravljeni ter zabeležil uspešen javni test v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P02-C-902/app/docs/agent/P02/verification.md). Preverjanje: `node task/qualification-check.mjs` — uspešno.
+
+Kontrolna beseda: `copper-birch-63`

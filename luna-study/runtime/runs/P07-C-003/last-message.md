@@ -1,0 +1,1 @@
+Osnovne interakcije so dodane, vključno s shrambo ID-jev, filtrom in gumbi v obeh pogledih. Lastni test trenutno pokriva glavni tok, ne pa vseh robnih primerov R01–R12; pred preverjanjem bom naloge označil samo tam, kjer je koda/test že pripravljen.

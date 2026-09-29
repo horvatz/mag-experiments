@@ -1,0 +1,1 @@
+Implementiral sem `shift` v `src/qualification.ts`. Javni test je uspešen (`QUALIFICATION_CHECK_PASSED`). Kratko preverjanje je v `docs/agent/verification.md`. Specifikacije nisem spreminjal.

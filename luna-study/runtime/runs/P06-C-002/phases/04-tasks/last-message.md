@@ -1,0 +1,1 @@
+Seznam nalog T001–T008 je v [tasks.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P06-C-002/app/docs/agent/P06/tasks.md). Pokriva zahteve R01–R12, lastne Playwright teste in končno posodobitev sledljivosti z dejanskimi rezultati. Kode nisem spreminjal in testov nisem zaganjal. Preostali čas sem preveril z `node task/time-budget.mjs`.

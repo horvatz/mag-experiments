@@ -1,0 +1,1 @@
+Zapis sledljivosti je dopolnjen, vključno z ugotovljeno omejitvijo, da sistemski `xcrun` preprečuje Git pregled. Po dodanem robnem testu še zadnjič poganjam preverjanje; rezultate predaje dokončam takoj, ko se zaključi.

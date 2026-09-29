@@ -1,0 +1,1 @@
+Popravljeni lastni testi so vsi štirje uspešni, vključno z omejitvijo 20 korakov, obnovitvijo začetnega vrstnega reda, praznim projektom in enim opravilom. Zdaj dopolnjujem zapis preverjanj z natančnimi ukazi in rezultati ter še ločeno preverim slog in tipe po dodanih testih.

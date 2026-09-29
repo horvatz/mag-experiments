@@ -9,22 +9,23 @@ import { fileURLToPath } from 'node:url'
 // the recorded session IDs, never credentials or unrelated conversations.
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2]
-assert.match(id, /^P01-[BC]-\d{3}$/)
+assert.match(id, /^P(?:0[1-9]|10)-[ABC]-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
 const execution = JSON.parse(readFileSync(resolve(run, 'execution.json'), 'utf8'))
 assert.notEqual(execution.status, 'running')
 assert.ok(!existsSync(resolve(run, 'usage-observation.json')), 'Do not overwrite usage evidence')
 const fields = ['input_tokens', 'cached_input_tokens', 'cache_write_input_tokens', 'output_tokens', 'reasoning_output_tokens']
 const rows = []
-for (const [role, session] of Object.entries(execution.sessions)) {
+for (const [role, session] of Object.entries(execution.sessions || {})) {
   assert.match(session, /^[a-f0-9-]{36}$/)
-  const files = execFileSync('rg', ['--files', '--hidden', resolve(homedir(), '.codex/sessions'), '-g', '*' + session + '*'], { encoding: 'utf8' }).trim().split('\n').filter(Boolean)
-  assert.equal(files.length, 1, 'Expected exactly one rollout for ' + session)
-  const events = readFileSync(files[0], 'utf8').trim().split('\n').flatMap((line) => {
+  let files = []
+  try { files = execFileSync('rg', ['--files', '--hidden', resolve(homedir(), '.codex/sessions'), '-g', '*' + session + '*'], { encoding: 'utf8' }).trim().split('\n').filter(Boolean) } catch { /* Missing evidence is unknown, never a zero total. */ }
+  assert.ok(files.length <= 1, 'Ambiguous rollout for ' + session)
+  const events = (files.length ? readFileSync(files[0], 'utf8') : '').trim().split('\n').flatMap((line) => {
     try { const event = JSON.parse(line); return event.type === 'event_msg' && event.payload?.type === 'token_count' && event.payload.info?.total_token_usage ? [event] : [] }
     catch { return [] }
   })
-  const phases = execution.phases.filter((phase) => phase.role === role)
+  const phases = (execution.phases || [{ name: 'agent', role: 'agent', status: execution.status, usage: execution.usage, finishedAt: execution.finishedAt }]).filter((phase) => phase.role === role)
   const last = events.filter((event) => Date.parse(event.timestamp) <= Date.parse(execution.finishedAt)).at(-1)
   const totals = last ? Object.fromEntries(fields.map((field) => [field, last.payload.info.total_token_usage[field]])) : null
   const comparisons = phases.map((phase) => {
@@ -35,8 +36,8 @@ for (const [role, session] of Object.entries(execution.sessions)) {
   rows.push({ role, session, lastTokenEventAt: last?.timestamp ?? null, observedCumulativeUsage: totals, phases: comparisons,
     complete: phases.every((phase) => phase.status === 'completed') && comparisons.every((item) => item.cumulativeMatchesCLI) })
 }
-const complete = rows.length > 0 && rows.every((row) => row.complete)
-const observed = rows.every((row) => row.observedCumulativeUsage) ? Object.fromEntries(fields.map((field) => [field, rows.reduce((sum, row) => sum + row.observedCumulativeUsage[field], 0)])) : null
+const complete = execution.status === 'completed' && rows.length > 0 && rows.every((row) => row.complete)
+const observed = rows.some(row => row.observedCumulativeUsage) ? Object.fromEntries(fields.map((field) => [field, rows.reduce((sum, row) => sum + (row.observedCumulativeUsage?.[field] || 0), 0)])) : null
 const observation = { id, observedAt: new Date().toISOString(), complete, roles: rows,
   usage: complete ? observed : null, observedUsageBeforeInterruption: complete ? null : observed,
   method: 'For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.',

@@ -1,0 +1,95 @@
+{
+  "collection": "L/1.0",
+  "id": "P04-C-001",
+  "reviewedAt": "2026-09-28T23:05:14.233789+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "1945bfdf317c8b577b313dccc670cb0fbca799a0a9adeba69513b7b5c4b3df2f",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija jasno pokrije R01–R12, točna dostopna imena in domene kontrol, privzeto stanje ter lokalnost brez URL/shrambe. Opredeli NFD/UTF-16, statusni rang, veljavne datume, neodvisni smeri, enaka ključa, stabilnost in prevlado original. Določi skupno projekcijo obeh pogledov, vse ohranjene/ponastavljene prehode, izčrpne izbire pri nič/eno, nespremenjene podatke/povzetke/API, ID-je in širino 390 px. Meje vhodov in izključene sočasne spremembe so izrecne.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md#vhodi-in-kontrole",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md#pravila-primerjave-in-projekcije",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md#spremembe-stanja",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md#zahteve-in-pravila",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "D in izvorni indeks, četverica S s S₀, normalizacija N, predznaka in primerjalna rezultata c₁/c₂ natančno določijo urejanje. Sekundarni kriterij sledi le pri primarni enakosti, izvorni indeks je zadnja naraščajoča razrešitev, original pa obide ostale kontrole. Oq formalizira stabilno projekcijo znotraj fiksnih stolpcev. Tabela dogodkov določi neodvisne spremembe komponent S ter ohranitev ali ponastavitev; nespremenjenost podatkov in odsotnost zapisovanja sta ločeni invariantni lastnosti.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md#pravila-primerjave-in-projekcije",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md#spremembe-stanja",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Specifikacija in načrt vse zahteve povežeta s predvidenimi funkcijami/scenariji, vendar ostaneta specifikacija in tasks byte za byte enaka dokumentoma pred implementacijo. Vseh sedem nalog je neoznačenih, verification vsebuje le začetno navedbo, da preverjanj še ni bilo. Dogodki pokažejo nasprotno: item_23 je zaključeni neuspešen check, item_24 popravek in item_25 začet ponovni check brez izida. Sporočilo item_22 označi T001–T006 za opravljene, a ne dopolni končnih dokazov po zahtevah. Gre za delno, zastarelo sledljivost; uspeh lastnih testov ni dokazan. Neodvisna ocena teh manjkajočih zapisov ne nadomesti.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/plan.md#sledljivost-in-preverjanje",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/tasks.md#polish",
+        "runtime/runs/P04-C-001/submission/docs/agent/verification.md:3",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_22",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_23",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_25-started",
+        "analysis/evidence/P04-C-001-checks.md#nespremenjeni-dokumenti-in-komponente"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti taskSorting.ts loči tipe, privzeto stanje, normalizacijo, primerjalnike in stabilno dekoriranje izvornih indeksov. original vrne kopijo; sortiranje ne mutira vhodnega polja. ProjectView hrani eno četverico nastavitev in izpelje sortedTasks, ki ga uporablja za obe predstavitvi; povzetki ostanejo na izvornih opravilih. Ključ projekta zagotovi ponastavitev, obstoječa tabla in podrobnosti ostanejo brez nepotrebnih sprememb. Končna zožitev primaryKey v lokalno konstanto odpravi razvojno tipsko napako. Kontrole so pregledne, odzivni slogi uporabljajo obstoječe spremenljivke.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/src/taskSorting.ts:14",
+        "runtime/runs/P04-C-001/submission/src/taskSorting.ts:25",
+        "runtime/runs/P04-C-001/submission/src/taskSorting.ts:31",
+        "runtime/runs/P04-C-001/submission/src/taskSorting.ts:42",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:12",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:46",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:61",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:105",
+        "runtime/runs/P04-C-001/submission/src/styles.css:66",
+        "analysis/evidence/P04-C-001-checks.md#neodvisno-preverjanje"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Pet napisanih testov vsebuje koristne čiste primere za normalizirane naslove, UTF-16/numerične nize, stabilnost obeh smeri, sekundarni datum ter original; drugi test izčrpno preveri vseh 100 kombinacij nastavitev pri nič in enem opravilu. Brskalniški primeri preverijo štiri privzete vrednosti, povzetek, vse štiri ohranjene nastavitve po tabli/podrobnostih, ID in ozko širino. Vrzeli so konkretne: test table preveri le naslov stolpca, ne vrstnega reda kartic; reset/projekt/reload ne preverijo vseh štirih vrednosti, reload začne že po projektnem resetu. Ni normalizacije oseb, istega ključa z nasprotnima smerema, neposrednega dokaza nespremenjenosti vhodnega polja ali več kot deset zapisov. Prvi check se ustavi pred Playwrightom; drugi nima zaključenega dogodka, zato petih napisanih testov ne navajamo kot uspešno izvedenih.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/tests/agent/P04.spec.ts:7",
+        "runtime/runs/P04-C-001/submission/tests/agent/P04.spec.ts:30",
+        "runtime/runs/P04-C-001/submission/tests/agent/P04.spec.ts:43",
+        "runtime/runs/P04-C-001/submission/tests/agent/P04.spec.ts:63",
+        "runtime/runs/P04-C-001/submission/tests/agent/P04.spec.ts:81",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_23",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_25-started"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Phase_time_limit, 1080,935 s; neodvisno 70/70 in 12/12, lint/tipi/gradnja uspešni. Strogi uspeh ni dosežen zaradi zaključka na meji implementacijske faze; converge ni začet. Celotna poraba null, opažena spodnja meja 2496619 vhodnih in 39335 izhodnih tokenov. Funkcionalna napaka v določenem končnem naboru ni odkrita.",
+  "developmentFailureExample": {
+    "description": "Implementacijski item_23 se po lint ustavi pri TS2345: lastnost settings.primaryKey, katere tip vključuje original, v callbacku ni dovolj zožena. Item_24 uvede lokalno konstanto primaryKey pred zgodnjim izhodom. Item_25 začne ponovni npm run check, vendar do časovne meje ni zaključenega dogodka ali njegovega rezultata. Končna neodvisna kontrola tipov/gradnje in vseh 70 testov uspe. Zato je popravek končne kode preverjen, uspeh petih lastnih testov pa ostane nepotrjen. V ustavi je ločeno zabeležena okoljska napaka Git/xcrun, v specifikaciji pa odsotnost rg z uspešnim prehodom na find.",
+    "evidence": [
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_23",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_24",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_25-started",
+      "analysis/evidence/P04-C-001-checks.md#neodvisno-preverjanje",
+      "analysis/evidence/P04-C-001-checks.md#01-constitution-item_15",
+      "analysis/evidence/P04-C-001-checks.md#02-specify-item_8"
+    ]
+  }
+}

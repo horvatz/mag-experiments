@@ -1,0 +1,161 @@
+% Generated from luna-study/analysis/comparison.json; do not edit numerical values by hand.
+Podatkovni posnetek 2026-09-29 19:54:58 UTC vsebuje 72 od 72 načrtovanih arhivov L/1.0 ter vseh 72 arhivov M/1.0.
+Obe zbirki sta zaključeni. Vsi začeti poskusi ostanejo v imenovalcih.
+Neznana vrednost je označena s črtico. Kratek neuspešen poskus dostopa ni čas uspešne rešitve. Če manjka točen čas katerega od arhiviranih poskusov v skupini, njeno povprečje zadržimo.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Primerjava funkcionalnih izidov in časa po zbirkah.}
+\label{tab:luna-izidi}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Model & Pristop & Arhivi & Strogi uspehi & Zahteve (\%) & Čas (min) \\
+\midrule
+Astra & A & 24/24 & 19/24 & 79{,}2 & 8{,}84 \\
+Astra & B & 24/24 & 19/24 & 83{,}3 & 13{,}24 \\
+Astra & C & 24/24 & 19/24 & 83{,}3 & --- \\
+Luna & A & 24/24 & 17/24 & 97{,}2 & 12{,}09 \\
+Luna & B & 24/24 & 15/24 & 98{,}6 & 16{,}82 \\
+Luna & C & 24/24 & 1/24 & 72{,}2 & 18{,}49 \\
+\bottomrule\end{tabular}
+\par\smallskip\parbox{0.95\textwidth}{\footnotesize Delež zahtev vključuje vse arhivirane poskuse. Strogi uspeh zahteva zaključen pristop, dovoljene spremembe in uspeh vseh preverjanj. Število arhivov ni število uspešnih rešitev.}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Poraba tokenov v podmnožici s popolnim zapisom.}
+\label{tab:luna-poraba}
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Model & Pristop & Popolni zapisi & Vhodni tokeni & Izhodni tokeni \\
+\midrule
+Astra & A & 19/24 & 752234 & 20177 \\
+Astra & B & 19/24 & 1140360 & 27873 \\
+Astra & C & 19/24 & 2794804 & 29236 \\
+Luna & A & 21/24 & 2009793 & 29259 \\
+Luna & B & 18/24 & 2026422 & 39774 \\
+Luna & C & 2/24 & 6096964 & 55775 \\
+\bottomrule\end{tabular}
+\par\smallskip\parbox{0.95\textwidth}{\footnotesize Povprečji sta izračunani samo iz popolnih zapisov; izbor je lahko povezan z izidom. Vhod vključuje predpomnjene tokene, izhod vključuje tokene razmišljanja. Neznana poraba ni nič in se ne pretvarja v denarni strošek.}
+\end{table}
+
+\paragraph{Omejitev zgodovinske primerjave.}
+Astra je bila merjena s CLI 0.154.0, Luna z 0.158.0-alpha.2.1 v poznejšem obdobju. Medzbirčne razlike opisujejo model skupaj z okoljem in obdobjem; ne izolirajo učinka samega modela.
+
+\begin{table}[htbp]\centering\small
+\caption{Razlike med pristopi znotraj Lune.}\label{tab:luna-luna}
+\begin{tabular}{@{}llrrr@{}}\toprule
+Primerjava & Mera & Razlika & Spodnja meja & Zgornja meja \\
+\midrule
+B -- A & Zahteve (o. t.) & 1{,}39 & 0{,}00 & 3{,}47 \\
+C -- A & Zahteve (o. t.) & -25{,}00 & -45{,}83 & -6{,}94 \\
+C -- B & Zahteve (o. t.) & -26{,}39 & -46{,}88 & -7{,}99 \\
+B -- A & Strogi uspeh (o. t.) & -8{,}33 & -29{,}17 & 8{,}33 \\
+C -- A & Strogi uspeh (o. t.) & -66{,}67 & -91{,}67 & -41{,}67 \\
+C -- B & Strogi uspeh (o. t.) & -58{,}33 & -83{,}33 & -33{,}33 \\
+B -- A & Čas (min) & 4{,}73 & 2{,}98 & 6{,}30 \\
+C -- A & Čas (min) & 6{,}40 & 4{,}73 & 7{,}73 \\
+C -- B & Čas (min) & 1{,}67 & 0{,}71 & 2{,}70 \\
+\bottomrule\end{tabular}
+\par\smallskip\parbox{0.95\textwidth}{\footnotesize O. t.: odstotne točke. Opisni 95-odstotni percentilni intervali iz 20.000 ponovnih vzorcev osmih nalog. Najprej so povprečene tri ponovitve pri isti nalogi in pristopu.}
+\end{table}
+\begin{table}[htbp]\centering\small
+\caption{Zgodovinske razlike Luna minus Astra pri istem pristopu.}\label{tab:luna-model}
+\begin{tabular}{@{}llrrr@{}}\toprule
+Primerjava & Mera & Razlika & Spodnja meja & Zgornja meja \\
+\midrule
+A & Zahteve (o. t.) & 18{,}06 & -0{,}35 & 38{,}54 \\
+B & Zahteve (o. t.) & 15{,}28 & 0{,}69 & 33{,}33 \\
+C & Zahteve (o. t.) & -11{,}11 & -38{,}89 & 14{,}58 \\
+A & Strogi uspeh (o. t.) & -8{,}33 & -41{,}67 & 25{,}00 \\
+B & Strogi uspeh (o. t.) & -16{,}67 & -45{,}83 & 12{,}50 \\
+C & Strogi uspeh (o. t.) & -75{,}00 & -91{,}67 & -50{,}00 \\
+A & Čas (min) & 3{,}25 & 0{,}85 & 6{,}03 \\
+B & Čas (min) & 3{,}58 & 0{,}99 & 6{,}73 \\
+\bottomrule\end{tabular}
+\par\smallskip\parbox{0.95\textwidth}{\footnotesize O. t.: odstotne točke. Opisni 95-odstotni percentilni intervali iz 20.000 ponovnih vzorcev osmih nalog. Najprej so povprečene tri ponovitve pri isti nalogi in pristopu.}
+\end{table}
+\begin{table}[htbp]\centering\small
+\caption{Razlike razlik med pristopi v obeh zbirkah.}\label{tab:luna-interakcija}
+\begin{tabular}{@{}llrrr@{}}\toprule
+Primerjava & Mera & Razlika & Spodnja meja & Zgornja meja \\
+\midrule
+(L B--A) -- (A B--A) & Zahteve (o. t.) & -2{,}78 & -12{,}15 & 3{,}13 \\
+(L C--A) -- (A C--A) & Zahteve (o. t.) & -29{,}17 & -46{,}88 & -11{,}46 \\
+(L B--A) -- (A B--A) & Strogi uspeh (o. t.) & -8{,}33 & -29{,}17 & 12{,}50 \\
+(L C--A) -- (A C--A) & Strogi uspeh (o. t.) & -66{,}67 & -95{,}83 & -37{,}50 \\
+(L B--A) -- (A B--A) & Čas (min) & 0{,}32 & -1{,}74 & 2{,}11 \\
+\bottomrule\end{tabular}
+\par\smallskip\parbox{0.95\textwidth}{\footnotesize O. t.: odstotne točke. Opisni 95-odstotni percentilni intervali iz 20.000 ponovnih vzorcev osmih nalog. Najprej so povprečene tri ponovitve pri isti nalogi in pristopu.}
+\end{table}
+Zaradi manjkajočih točnih časov so zadržane primerjave: Luna -- Astra, C; (Luna C--A) -- (Astra C--A).
+Ničelna razlika ali interval z ničlo ne potrjujeta enakovrednosti. Vzorec obsega osem sorodnih, namensko izbranih nalog. Izidi samo zaključenih pristopov so ločen opis izbranega podvzorca in ne nadomeščajo glavnih izidov.
+\paragraph{Nezaključeni pristopi v zbirki L/1.0.}
+Med arhivi je 31 nezaključenih pristopov. Ti ostanejo v glavnih imenovalcih. Uspeh funkcionalnih preverjanj ne nadomesti zaključka pristopa in predaje.
+
+Status \texttt{phase\_\allowbreak{}time\_\allowbreak{}limit}: P05-C-001, P08-C-001, P03-C-002, P04-C-003, P05-C-002, P03-C-001, P10-C-003, P08-C-003, P08-C-002, P04-C-002, P07-C-003, P07-C-002, P06-C-002, P09-C-001, P04-C-001, P03-C-003, P10-C-002. Popolno funkcionalno pokritje 12/12 zahtev ima 12 od 17 teh oddaj.
+
+
+Status \texttt{time\_\allowbreak{}limit}: P10-C-001, P06-C-001, P06-C-003, P07-A-002, P05-C-003, P09-A-001, P09-C-002, P09-B-003. Popolno funkcionalno pokritje 12/12 zahtev ima 1 od 8 teh oddaj.
+
+
+Status \texttt{completed\_\allowbreak{}with\_\allowbreak{}phase\_\allowbreak{}time\_\allowbreak{}limit}: P10-B-003, P04-B-002, P07-B-001, P09-B-002, P10-B-002. Popolno funkcionalno pokritje 12/12 zahtev ima 4 od 5 teh oddaj.
+
+
+Status \texttt{execution\_\allowbreak{}failed}: P04-A-002. Popolno funkcionalno pokritje 12/12 zahtev ima 1 od 1 teh oddaj.
+
+Pri P05--C--001 se je implementacijska faza ustavila ob svoji časovni meji. Dogodki potrdijo končni razvojni zagon 51/51, neodvisna ocena pa 70/70 in 12/12. Vendar je predaja ostala nedokončana in korak konvergence ni bil izveden. Zato nima strogega uspeha; njegova celotna poraba ostane neznana, opažena delna poraba pa je ločena spodnja meja.
+
+\paragraph{Naknadni opis časa priprave.}
+Po 29 arhivih dodatne zbirke smo dodali opisno razčlenitev izvorno zabeleženih faz. Ne spreminja vnaprej določenih kontrastov. Pri C za posamezno izvedbo seštejemo constitution, specify, plan in tasks, tudi če je priprava prekinjena pred implementacijo. Mediana uporablja znane vsote in vključuje tudi neuspešne poskuse dostopa. To ni čas uspešne rešitve ali vzročna ocena učinka pripravljalnih dokumentov. Podrobni časi faz, statusi, imenovalci in izvori so v spremljajočem phase-timing.json.
+
+\begin{table}[htbp]\centering\small
+\caption{Opis priprave in doseženih faz postopka C.}\label{tab:luna-faze}
+\begin{tabular}{@{}lrrrrr@{}}\toprule
+Model & Arhivi C & Znani časi & Mediana (min) & Implement & Converge \\
+\midrule
+Astra & 24 & 24/24 & 7{,}12 & 20/24 & 19/24 \\
+Luna & 24 & 24/24 & 12{,}87 & 19/24 & 2/24 \\
+\bottomrule\end{tabular}
+\par\smallskip\parbox{0.95\textwidth}{\footnotesize Implement in converge pomenita začeti fazi, ne uspešno zaključeni oddaji. Nezačete faze niso izmerjene ničle. Neznana zabeležena faza pomeni neznano vsoto priprave; znani delni časi prekinjene priprave ostanejo vključeni. Razlike med zbirkama vključujejo model, CLI in obdobje.}
+\end{table}
+
+
+\paragraph{Primer omejitve lastnih preverjanj.}
+Za ilustracijo po pregledu izidov izberemo P08--A--001. Štirje celoviti razvojni zagoni potrdijo 50/50, neodvisno končno ocenjevanje pa 68/70 in 11/12 zahtev. Ob prazni izbrani skupini oddaja tablo nadomesti s sporočilom; zamrznjeni test E11 pri preklopu pričakuje tudi ohranjeno območje table. Isti primer odpove na obeh širinah zaslona. Opaženi neuspeh je v ohranitvi prikaza, ne v koledarskem izračunu. Lastni testi posebej preverijo filtre, preklop pogledov in prazno skupino, vendar ne kombinacije prazne skupine s tablo. To pokaže, zakaj uspeh lastnih scenarijev ni dokaz vseh kombinacij stanj. Oddaje ali končnega testa zaradi tega izida nismo popravili in meritve nismo ponovili.
+
+\paragraph{Vsebinska presoja dodatne zbirke.}
+Obravnavanih je 24 od 24 vnaprej izbranih oddaj. Število v celoti ocenjenih oddaj je 22, delno ocenjenih 2, neocenljivih 0; število preostalih presoj je 0. Presoja je AI-podprta in neslepa. Neodvisna človeška presoja in soglasje med ocenjevalci nista izmerjena. Utemeljitve ter dokazne povezave so v spremljajoči datoteki \texttt{luna-study/analysis/content-review.md}.
+
+\begin{table}[htbp]\centering\small
+\caption{Porazdelitev vsebinskih ocen v zbirki L/1.0.}\label{tab:luna-presoja}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Dimenzija & A & B & C \\
+\midrule
+Pokritost specifikacije & 0 / 1 / 7 & 0 / 0 / 8 & 0 / 0 / 8 \\
+Predikati in invariante & 0 / 0 / 8 & 0 / 0 / 8 & 0 / 0 / 8 \\
+Sledljivost & 0 / 0 / 8 & 0 / 1 / 7 & 0 / 7 / 1 \\
+Organizacija kode & 0 / 0 / 8 & 0 / 0 / 8 & 0 / 1 / 5 \\
+Lastna preverjanja & 0 / 5 / 3 & 0 / 8 / 0 & 3 / 4 / 1 \\
+\bottomrule\end{tabular}
+\par\smallskip\parbox{0.95\textwidth}{\footnotesize Trojica pomeni število ocen 0 / 1 / 2. Manjkajoče in še neobravnavane ocene niso ničle. Dimenzij ne seštevamo v skupno oceno.}
+\end{table}
+
+Pri delni presoji ocenimo razpoložljive artefakte; odsotne avtorske kode ne enačimo s slabo organizacijo kode. Odsotna lastna preverjanja imajo po izvirni rubriki oceno 0. Ta razločitev manjkajočih dimenzij je po prvem takem izidu dokumentirana v poročevalskem dodatku in ni bila sprememba merjenega pristopa ali meril 0--2.
+
+Manjkajoče ocene med že obravnavanimi oddajami, po zaporedju A/B/C: pokritost specifikacije 0/0/0; predikati in invariante 0/0/0; sledljivost 0/0/0; organizacija kode 0/0/2; lastna preverjanja 0/0/0. Še neobravnavane presoje niso vključene v ta števila.
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=0.76\textheight,keepaspectratio]{../../experiments/luna-study/analysis/figures/primerjava-zahtev.png}
+\caption{Dokazane zahteve v zbirkah Astra in Luna; vsaka celica je ena ponovitev.}\label{fig:luna-zahteve}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=0.76\textheight,keepaspectratio]{../../experiments/luna-study/analysis/figures/primerjava-casa.png}
+\caption{Modelski čas posameznih izvedb obeh zbirk. Nepopolni pristopi imajo posebno oznako; neznani časi niso narisani.}\label{fig:luna-cas}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=0.76\textheight,keepaspectratio]{../../experiments/luna-study/analysis/figures/primerjava-porabe.png}
+\caption{Posamezne meritve s popolnim zapisom porabe; imenovalci so navedeni na sliki.}\label{fig:luna-tokeni}
+\end{figure}

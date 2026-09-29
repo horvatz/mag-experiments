@@ -1,3 +1,4 @@
+import { pilotTask, hiddenPorts, assertTaskBaseline } from './pilot-tasks.mjs'
 import assert from 'node:assert/strict'
 import { execFileSync, spawn } from 'node:child_process'
 import { createWriteStream, existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync, cpSync } from 'node:fs'
@@ -6,26 +7,29 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { clientEnvironment, configArguments, digest, inventory, changes } from './pilot-utils.mjs'
 
-if (/^P01-B-\d{3}$/.test(process.argv[2] || '')) {
+if (/^P(?:0[1-9]|10)-B-\d{3}$/.test(process.argv[2] || '')) {
   await import('./run-pilot-b.mjs')
   process.exit(0)
 }
-if (/^P01-C-\d{3}$/.test(process.argv[2] || '')) {
+if (/^P(?:0[1-9]|10)-C-\d{3}$/.test(process.argv[2] || '')) {
   await import('./run-pilot-c.mjs')
   process.exit(0)
 }
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const id = process.argv[2] || 'P01-A-001'
-assert.match(id, /^P01-A-\d{3}$/)
+assert.match(id, /^P(?:0[1-9]|10)-A-\d{3}$/)
 const run = resolve(root, '.work/pilots', id)
 const app = resolve(run, 'app')
+const task = pilotTask(id)
 const manifest = JSON.parse(readFileSync(resolve(run, 'manifest.json'), 'utf8'))
+assertTaskBaseline(root, manifest, task)
 const config = JSON.parse(readFileSync(resolve(run, 'config.json'), 'utf8'))
 const prompt = readFileSync(resolve(run, 'prompt.md'), 'utf8')
 assert.equal(digest(prompt), manifest.promptSha256)
 assert.equal(digest(JSON.stringify(config)), manifest.configSha256)
 assert.equal(digest(readFileSync(resolve(run, 'browser.sb'))), manifest.browserProfileSha256)
+for (const [path, hash] of Object.entries(manifest.protocolSourceHashes || {})) assert.equal(digest(readFileSync(resolve(root, path))), hash, 'Runner changed after preparation: ' + path)
 assert.deepEqual(inventory(app), manifest.files, 'Export changed after preparation')
 assert.ok(readFileSync(resolve(run, 'preflight-runtime.log'), 'utf8').includes('38 passed'))
 assert.ok(JSON.parse(readFileSync(resolve(run, 'preflight-filesystem.json'), 'utf8')).filesystem.every((item) => item.blocked))
@@ -39,11 +43,11 @@ async function listening(port) {
     socket.setTimeout(500, () => finish(true)) // uncertainty fails closed
   })
 }
-const hiddenPorts = [5183, 3111, 5184, 3112]
 assert.ok(!(await Promise.all(hiddenPorts.map(listening))).some(Boolean), 'Close reference/evaluation servers first')
 assert.ok(await listening(9223), 'Start the isolated pilot browser first')
 const binary = manifest.cli || realpathSync(resolve(process.env.HOME, '.local/bin/codex'))
-const args = ['exec', '--ignore-user-config', '--ignore-rules', '--ephemeral', '--skip-git-repo-check',
+assert.equal(execFileSync(binary, ['--version'], { encoding: 'utf8' }).trim(), manifest.cliVersion)
+const args = ['exec', '--ignore-user-config', '--ignore-rules', ...(task.main ? [] : ['--ephemeral']), '--skip-git-repo-check',
   '--json', '--color', 'never', '-C', app, ...configArguments(config), '-']
 const metadata = { id, startedAt: new Date().toISOString(), model: config.model,
   reasoningEffort: config.model_reasoning_effort, limitSeconds: manifest.limitSeconds,
@@ -55,6 +59,7 @@ const started = performance.now()
 const events = createWriteStream(resolve(run, 'events.jsonl'), { flags: 'wx' })
 const stderr = createWriteStream(resolve(run, 'stderr.log'), { flags: 'wx' })
 const child = spawn(binary, args, { cwd: app, env: clientEnvironment(config), detached: true, stdio: ['pipe', 'pipe', 'pipe'] })
+child.stdin.on('error', () => {})
 child.stdin.end(prompt)
 let buffer = ''
 let completed = false
@@ -88,14 +93,14 @@ child.stdout.on('data', (chunk) => {
     let event; try { event = JSON.parse(line) } catch { continue }
     if (event.type === 'turn.completed') { completed = true; metadata.usage = event.usage ?? null }
     if (event.type === 'turn.failed' || event.type === 'error') turnFailed = true
-    if (event.type === 'thread.started') metadata.threadId = event.thread_id
+    if (event.type === 'thread.started') { metadata.threadId = event.thread_id; metadata.sessions = { agent: event.thread_id } }
     if (event.type === 'item.completed' && event.item?.type === 'agent_message') {
       writeFileSync(resolve(run, 'last-message.md'), event.item.text + '\n')
       console.log(event.item.text.slice(0, 600))
     }
   }
 })
-child.stderr.pipe(stderr)
+child.stderr.pipe(stderr, { end: false })
 const limit = setTimeout(() => terminate('time_limit'), manifest.limitSeconds * 1000)
 let guardBusy = false
 const guard = setInterval(async () => {
@@ -116,7 +121,7 @@ clearTimeout(limit); clearInterval(guard)
 for (const pid of descendants.toReversed()) { try { process.kill(pid, 'SIGSTOP') } catch {} }
 try { process.kill(-child.pid, 'SIGKILL') } catch {}
 for (const pid of descendants) { try { process.kill(pid, 'SIGKILL') } catch {} }
-events.end(); stderr.end()
+await Promise.all([new Promise(done => events.end(done)), new Promise(done => stderr.end(done))])
 metadata.finishedAt = new Date().toISOString()
 metadata.elapsedSeconds = Number(((performance.now() - started) / 1000).toFixed(3))
 metadata.status = reason || (completed && result.exitCode === 0 && !turnFailed ? 'completed' : 'execution_failed')

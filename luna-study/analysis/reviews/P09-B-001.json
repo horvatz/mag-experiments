@@ -1,0 +1,103 @@
+{
+  "collection": "L/1.0",
+  "id": "P09-B-001",
+  "reviewedAt": "2026-09-28T22:15:22.542829+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "bbe15c7e96a910ffee17228fbbc8f05571a88c12593022dbd513c5a35d0a201f",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Predaja opredeli R01–R12, natančen dogovor kontrol in števca, domeno 0/1/>10 z Unicode in enakimi naslovi ter omejitve javnega API-ja. Loči osnutek in potrjeno stanje, neposredne povezave in projektno navigacijo, prve/neveljavne parametre, kanonizacijo, ponovitve, zgodovino, pogled, podrobnosti in praznino. V vrstici R03 je nenatančen zapis »tri vrednosti statusa«, toda vhodni seznam izrecno našteje all in vse tri dejanske statuse; osnovno pravilo je zato razvidno. Specifikacija ne razglaša načrtovanih preverjanj za opravljena.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md#odprta-vprašanja-in-omejitve",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification-history.md"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Formalizacija določi NFD, odstranitev U+0300–U+036F, male črke in trim iskalnega q, nato dobesedni podniz posameznega polja in konjunkcijo s statusom. Podatkovnih polj ne obrezuje, kar zgodovina specifikacije izrecno razkrije. Originalni vrstni red, UTF-16 in stabilnost izenačitev so določeni; pravila opisujejo tudi prvo pojavitev, atomsko potrditev, nespremenjeno potrditev, navigacijsko obnovo ter števec N/M. Ključne prehode je mogoče preverjati.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification-history.md"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Specifikacija označi predlagana preverjanja in integracijske točke, končna verification.md pa vseh dvanajst zahtev poveže s kodo in konkretnimi scenariji. Surovi implementacijski item_51 potrdi 49/49, popravljalni item_11 50/50. Pomanjkanje neposredne trditve history.length in praznega filtriranega rezultata je odkrito navedeno; kasnejši prazen projekt je dokumentiran posebej. Pregledovalec jasno pove, da testov ni ponovil, ter zahteva in izsledi popravek R11. Navedba neposrednega deep linka pri R10 se opira na R01, katerega lasten scenarij odpre web, ne drugega projekta; tega ne štejemo za samostojen dokaz drugega projekta.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P09-B-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "runtime/runs/P09-B-001/submission/docs/agent/verification.md#preverjanja",
+        "runtime/runs/P09-B-001/submission/docs/agent/verification.md#omejitve",
+        "runtime/runs/P09-B-001/submission/docs/agent/verification.md#nadaljevanje-po-pregledu",
+        "runtime/runs/P09-B-001/submission/docs/agent/review.json",
+        "analysis/evidence/P09-B-001-checks.md#02-implementation-item_51",
+        "analysis/evidence/P09-B-001-checks.md#04-implementation-repair-item_11",
+        "analysis/evidence/P09-B-001-checks.md#ukazi-pregleda"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Parser in skupni gradniki fragmenta so v navigation.ts, ki naroča hashchange s čiščenjem. App hrani osnutek, ProjectView ga ob navigaciji obnovi in izpelje filtriran/stabilno razvrščen seznam brez dodatnega shranjenega rezultata. confirm centralizira trim, primerjavo stanj, nov fragment in replaceState za enako kanonično potrditev. Pogleda ter podrobnosti dobijo potrjene filtre; projektna navigacija izrecno loči sedanji in drug projekt. Koda ne podvaja poslovnih pravil v tabeli in tabli in ne uvaja zapisovalnega API-ja ali shrambe.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:10",
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:24",
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:38",
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:56",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:11",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:19",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:23",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:41",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:119",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:130",
+        "runtime/runs/P09-B-001/submission/src/TaskBoard.tsx:26",
+        "runtime/runs/P09-B-001/submission/src/TaskDetails.tsx:12"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Štirje dodatni scenariji preverijo Unicode frazo iz opisa, prvo neveljavno vrednost statusa brez samodejnega prepisovanja URL-ja, odloženo spremembo statusa/vrstnega reda, back/forward, reset v tabli, preklop projekta z osnutkom ter po pregledu prazen projekt v obeh pogledih. Manjkajo singleton in >10, literalni metaznaki in ostala iskalna polja, normalizirane izenačitve ter naraščajoč red, podvojen q/order, atomska sprememba vseh treh kontrol, ponovitev enake potrditve in history.length, kodiranje ločil ter neposreden URL drugega projekta. Back/forward nima neuporabljenega osnutka tik pred vrnitvijo. Pregledovalčev četrti scenarij izboljša pomemben rob, a ne odpravi ostalih vrzeli.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/tests/agent/p09-views.spec.ts:3",
+        "runtime/runs/P09-B-001/submission/tests/agent/p09-views.spec.ts:17",
+        "runtime/runs/P09-B-001/submission/tests/agent/p09-views.spec.ts:43",
+        "runtime/runs/P09-B-001/submission/tests/agent/p09-views.spec.ts:55",
+        "runtime/runs/P09-B-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "analysis/evidence/P09-B-001-checks.md#04-implementation-repair-item_11"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Completed, 1056,303 s, 70/70 in 12/12, strogi uspeh. Faze 268,842 / 514,114 / 185,531 / 84,750 s. Popolna usklajena poraba 2401040 vhodnih in 49983 izhodnih tokenov; nadaljevana implementacijska seja je šteta enkrat. Uspeh določenega nabora ni dokaz vseh možnih vhodov.",
+  "developmentFailureExample": {
+    "description": "Implementacijski item_28 odkrije manjkajočo odvisnost filters; item_31 jo popravi. Prvi celotni item_40 ima 48/49 zaradi napačnega pričakovanja treh namesto dveh opravil launch; item_45 popravi test. Med dodatno urejeno kanonizacijo in prestavitvijo osnutka item_48 odkrije odvisnost setDraft, po item_50 item_51 uspe 49/49. Pregledovalec pozneje s statičnim pregledom odkrije, da prazen projekt ne pokaže zahtevanega Ni zadetkov. v obeh pogledih; testov ne ponovi. Popravljalni item_7 spremeni dve veji App.tsx, item_8 doda četrti lastni test, item_11 potrdi 50/50. Predhodna različica novega praznega scenarija ni bila zagnana, zato gre za dokazano pregledovalčevo ugotovitev in popravek z naknadno uspešnim testom, ne za zabeležen neuspeh tega testa pred popravkom.",
+    "evidence": [
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_28",
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_31",
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_40",
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_45",
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_48",
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_50",
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_51",
+      "runtime/runs/P09-B-001/submission/docs/agent/review.json",
+      "analysis/evidence/P09-B-001-checks.md#ukazi-pregleda",
+      "analysis/evidence/P09-B-001-checks.md#razlika-popravka",
+      "analysis/evidence/P09-B-001-checks.md#04-implementation-repair-item_7",
+      "analysis/evidence/P09-B-001-checks.md#04-implementation-repair-item_8",
+      "analysis/evidence/P09-B-001-checks.md#04-implementation-repair-item_11"
+    ]
+  }
+}

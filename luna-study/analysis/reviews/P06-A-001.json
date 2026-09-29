@@ -1,0 +1,80 @@
+{
+  "collection": "L/1.0",
+  "id": "P06-A-001",
+  "reviewedAt": "2026-09-27T10:43:36.433602+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0 (ista rubrika v dodatku L/1.0)",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "7ce01b506f67e662090d272518e7863754a17ceed06a1ebcf4eaec4afb6a7ca7",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija jasno pokrije R01–R12: kanonične kolone, izvorni vrstni red, lokalni filter samo za izvoz, onemogočanje praznih primerov, ime/BOM, strogo citiranje in CRLF, natančno nevtralizacijo formul ter ohranitev nastavitev med pogledi in reset ob projektu/osvežitvi. Prazno celico, lokalni prenos, Unicode in ohranitev aplikacije obravnava izrecno.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T/S/F/D/C/O ločijo izvorna opravila, filtrirane vrstice in kanonične izbrane kolone. Predikat ready ter pravila citiranja, podvajanja narekovajev, BOM in zaključnega CRLF so preverljivi. Regex uporablja točno presledek/tab/CR/LF in štiri nevarne začetke; apostrof se doda pred celotni izvorni niz, glave ostanejo ločene. Življenjska doba nastavitev in nespremenjen prikaz sta določena neodvisno od izvoženega nabora.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Vseh dvanajst zahtev ima povezavo do funkcij/komponente in poimenovanih razvojnih oziroma lastnih scenarijev. Verification.md loči 38 osnovnih, 8 razvojnih in 7 lastnih preverjanj ter odkrito navede neizvedene brskalnike, ročni pregled in polja brez namenskih nevarnih nizov. Item_28 neposredno potrdi zadnji check 53/53 z exit 0; predhodni neuspehi niso skriti. Nedostopnih končnih testov model ne pripisuje svojim preverjanjem.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P06-A-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "runtime/runs/P06-A-001/submission/docs/agent/verification.md#omejitve",
+        "analysis/evidence/P06-A-001-checks.md#item_28"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Modul csvExport.ts loči kanonične kolone, čisto serializacijo in prenos prek Blob/začasne povezave. CsvExportControls ima tri lokalna stanja, izpeljane vrstice in enoten canExport za gumb ter obdelovalnik. App in TaskBoard še dobita izvorna opravila; projektni ključ upravlja ponastavitev. Set se kopira pri spremembi, seznam opravil se ne mutira in objektni URL se po začetku prenosa sprosti.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/src/csvExport.ts:3",
+        "runtime/runs/P06-A-001/submission/src/csvExport.ts:16",
+        "runtime/runs/P06-A-001/submission/src/csvExport.ts:30",
+        "runtime/runs/P06-A-001/submission/src/App.tsx:12",
+        "runtime/runs/P06-A-001/submission/src/App.tsx:98"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 2,
+      "rationale": "Sedem uspešnih lastnih scenarijev uporablja tudi neodvisno ročno napisano pričakovano celotno vsebino prenosa. Preveri nesortirane ID-je, drugačen vrstni red izbire kolon, nič kolon, 13 opravil, Unicode/citate/notranje prelome, štiri nevarne začetke po dovoljenih belih znakih in ohranitev navadnega začetnega presledka. Dodatni scenariji pokrijejo zaporedne izvoze, oba pogleda, projekt/reload reset, prazen filter/projekt, odsotnost zapisov in geometrijo 390 px. To so smiselni negativni in mejni primeri; nekatera polja niso posebej napolnjena s formulami, kar je odkrito navedeno in ne pomeni preverjanja vseh možnih vhodov.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/tests/agent/csv-export.spec.ts:3",
+        "runtime/runs/P06-A-001/submission/tests/agent/csv-export.spec.ts:23",
+        "runtime/runs/P06-A-001/submission/tests/agent/csv-export.spec.ts:31",
+        "runtime/runs/P06-A-001/submission/tests/agent/csv-export.spec.ts:54",
+        "runtime/runs/P06-A-001/submission/tests/agent/csv-export.spec.ts:74",
+        "analysis/evidence/P06-A-001-checks.md#item_28"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Končno completed, 852,557 s, 70/70 in 12/12; strogi uspeh. Potrjene končne funkcionalne napake ni. Popolna poraba je 2375298 vhodnih in 40408 izhodnih tokenov; tokeni niso račun API.",
+  "developmentFailureExample": {
+    "description": "Prvi lastni zagon ima 4 uspehe in 1 odpoved: test pričakuje privzeti Opis opravila x-2, čeprav podatki izrecno podajo navadno besedilo. Po popravku pričakovanja naslednji check pokaže 50 uspehov in odpoved pri ponovnem mountu praznega nabora v že uporabljenem scenariju. Ločen test s svežo stranjo uspe; item_18 potrdi 52/52, po dodatnem primeru s 13 opravili in dopolnitvi podatkov pa item_28 potrdi 53/53. To je dokaz popravljenih testnih priprav; natančen mehanizem starega nabora v brskalniku ni bil neodvisno diagnosticiran.",
+    "evidence": [
+      "analysis/evidence/P06-A-001-checks.md#item_11",
+      "analysis/evidence/P06-A-001-checks.md#item_14",
+      "analysis/evidence/P06-A-001-checks.md#item_18",
+      "analysis/evidence/P06-A-001-checks.md#item_28",
+      "runtime/runs/P06-A-001/submission/tests/agent/csv-export.spec.ts"
+    ]
+  }
+}

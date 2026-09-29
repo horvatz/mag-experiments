@@ -1,0 +1,5 @@
+P10 je implementiran: vrstni red in zgodovina razveljavitev/ponovitev sta lokalna za projekt; preglednica in tabla uporabljata isti globalni vrstni red. Dodani so robni kontrolniki, ponastavitev in prikaz mest. Specifikacija in popravek načrta sta v [specification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P10-A-002/app/docs/agent/specification.md), izvedena preverjanja in sledljivost R01–R12 pa v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P10-A-002/app/docs/agent/verification.md).
+
+`npm run check` je uspešno zaključil lint, TypeScript, gradnjo in vseh **53 testov**: 38 izhodiščnih, 8 razvojnih in 7 lastnih. Lastni scenariji so v [P10-order.spec.ts](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P10-A-002/app/tests/agent/P10-order.spec.ts).
+
+Skritih končnih testov ni bilo na voljo. `git status` ni deloval, ker okolju manjkajo aktivna Command Line Tools; to je zabeleženo v preverjanju. Na podlagi dostopnih preverjanj ni ugotovljenih neizpolnjenih zahtev.

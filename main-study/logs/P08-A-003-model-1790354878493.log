@@ -1,0 +1,18 @@
+Najprej bom prebral pravila in zahteve ter pripravil specifikacijo. Nato bom rešitev implementiral in preveril; izvedena preverjanja in morebitne omejitve bom zapisal v dokumentacijo.
+
+Razvrščanje bom vezal na koledarske dneve in začetni datum 2026-09-21. Stanje filtra bo lokalno projektu: preklop med preglednico in tablo ga bo ohranil, menjava projekta ali osvežitev pa ponastavila. Dodatno bom preveril prestopni februar, časovne pasove, prazne skupine in števce pri večjem naboru opravil.
+
+Prvi zagon `npm run check` je uspel: vseh 38 preverjanj izhodišča in 8 razvojnih preverjanj P08 je opravljenih. Dodajam še teste za meje koledarja, ponastavljanje stanja, izvorni vrstni red in nespremenjene števce pri vseh filtrih.
+
+Dodatni testi zdaj pokrivajo tudi 14 opravil z enakimi naslovi, koledarske meje in tri časovne pasove. Celoten pregled ponovno teče; v ločenem lokalnem strežniku bom preveril še postavitev pri širini 390 pik in na namizju.
+
+Vseh 60 preverjanj je uspelo, vključno s 14 dodatnimi testi. Pri lokalnem ogledu stran v obeh pogledih ostane znotraj širine 390 oziroma 1440 pik, brez zaznanih napak JavaScript. Urej am še sledljivost zahtev, rezultate in posnetke v dokumentaciji.
+
+Pilot P08 je zaključen samostojno po postopku A. Implementirane so zahteve R01–R12.
+
+`npm run check` je uspešen: **60/60 testov**, lint in gradnja. Preverjena je tudi postavitev pri 390 px.
+
+Dokumentacija: [specifikacija](docs/agent/specification.md) in [preverjanja](docs/agent/verification.md).
+
+Znanih neizpolnjenih zahtev ni. Skriti končni testi niso bili dostopni.
+{"status":"completed","elapsedSeconds":694.307,"allowedChanges":true,"usage":{"input_tokens":799457,"cached_input_tokens":731136,"cache_write_input_tokens":0,"output_tokens":21366,"reasoning_output_tokens":4079}}

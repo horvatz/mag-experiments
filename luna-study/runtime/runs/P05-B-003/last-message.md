@@ -1,0 +1,3 @@
+Vse tri utemeljene ugotovitve pregledovalca sem obravnaval. Razširil sem agentne teste, da preverijo ponastavitev velikosti pri še veljavni številki strani (R04), ohranitev stanja na drugi strani ob menjavi pogleda in podrobnostih (R07) ter osvežitev iz neprivzetega stanja (R08). Implementacijske kode nisem spreminjal.
+
+`npm run check` je uspel; vseh 51 testov je opravljenih. Obravnava ugotovitev in rezultati so zapisani v [verification.md](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P05-B-003/app/docs/agent/verification.md), novi scenariji pa v [P05-pagination.spec.ts](/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/pilots/P05-B-003/app/tests/agent/P05-pagination.spec.ts).

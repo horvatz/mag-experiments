@@ -1,0 +1,19 @@
+Najprej preberem pravila in zahteve ter zapišem specifikacijo. Nato izvedem spremembe, zaženem preverjanja in zabeležim rezultate ter morebitne omejitve.
+
+Specifikacija je pripravljena za vseh R01–R12. Priljubljene bom hranil na ravni aplikacije, filter pa na ravni projekta. Tako se množica ohrani med projekti, filter pa se ob menjavi ponastavi. Dodatni testi bodo zajeli tudi napačne zapise, neznane ID-je, sinhronizacijo zavihkov in napake shrambe.
+
+Prva izvedba je prestala vseh 46 skupnih preverjanj, vključno z mobilnim prikazom. Zdaj dodajam preverjanja zahtev, ki jih razvojni testi ne pokrivajo: projektno odstranjevanje, števce, validacijo shrambe in delovanje ob njeni nedostopnosti.
+
+Uspešnih je vseh 69 preverjanj: 38 izhodiščnih, 8 razvojnih in 23 dodatnih. Preverjeni so tudi dejanska sinhronizacija dveh zavihkov, izjeme pri dostopu do shrambe ter ohranitev drugih projektov in neznanih ID-jev. Opravim še vizualni pregled obeh pogledov in dokončam poročilo.
+
+Vizualni pregled je potrjen: oba pogleda ostaneta znotraj širine 390 px, kontrole se ustrezno prelomijo in fokus tipkovnice je viden. Specifikacija in poročilo zdaj povezujeta vseh R01–R12 s kodo, izvedenimi testi in dokazi. Neizpolnjenih zahtev nisem ugotovil; nedostopni končni testi niso vključeni v rezultat.
+
+Naloga P07 je izvedena samostojno po postopku A. Implementirane so zahteve R01–R12.
+
+`npm run check` je uspešen: **69/69 testov**, preverjanje kode, tipov in gradnja. Potrjen je tudi prikaz pri širini 390 px.
+
+- [Specifikacija](docs/agent/specification.md)
+- [Poročilo preverjanja](docs/agent/verification.md)
+
+Neizpolnjenih zahtev nisem ugotovil. Nedostopni končni testi niso bili izvedeni.
+{"status":"completed","elapsedSeconds":659.272,"allowedChanges":true,"usage":{"input_tokens":604787,"cached_input_tokens":539008,"cache_write_input_tokens":0,"output_tokens":20590,"reasoning_output_tokens":4210}}
