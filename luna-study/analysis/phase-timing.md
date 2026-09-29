@@ -2,7 +2,7 @@
 
 Naknadna opisna analiza arhivskih faz, dodana po 29 arhivih L/1.0; ni nov potrditveni kontrast ali vzročna analiza. Mediane uporabljajo samo znane čase in navajajo imenovalec. Vključeni so tudi časovno prekinjeni in neuspešni koraki.
 
-Posnetek 2026-09-28T23:47:27.128Z; 134/144 skupnih arhivov. Vmesni opis nepopolne zbirke.
+Posnetek 2026-09-29T19:54:58.948Z; 144/144 skupnih arhivov. Obe zbirki zaključeni.
 
 Čas faze vključuje vse njene modelske korake. A je ena seja in je iz dnevnika ne razdeljujemo na navidezno primerljive vloge. Faze B/C imajo različne vsebine in omejitve. Mediana faz ni mediana celotnega postopka; vsota časov faz lahko zaradi prehodov odstopa od časa izvedbe. Kratka napaka dostopa ni hitro rešena naloga.
 
@@ -22,18 +22,18 @@ Vključene so izvorno zabeležene faze iz execution.json. Izpeljane vrstice hand
 | astra | C | plan | 20/20 | 106,50 | completed: 20 |
 | astra | C | specify | 20/20 | 163,19 | completed: 20 |
 | astra | C | tasks | 20/20 | 70,63 | completed: 20 |
-| luna | A | single-session | 21/21 | 685,01 | completed: 18; execution_failed: 1; time_limit: 2 |
-| luna | B | implementation | 20/20 | 479,79 | completed: 19; phase_time_limit: 1 |
-| luna | B | implementation-repair | 6/6 | 126,62 | completed: 6 |
-| luna | B | review | 20/20 | 182,55 | completed: 19; phase_time_limit: 1 |
-| luna | B | specification | 20/20 | 271,20 | completed: 19; phase_time_limit: 1 |
+| luna | A | single-session | 24/24 | 700,49 | completed: 21; execution_failed: 1; time_limit: 2 |
+| luna | B | implementation | 24/24 | 484,45 | completed: 21; phase_time_limit: 3 |
+| luna | B | implementation-repair | 9/9 | 117,58 | completed: 8; time_limit: 1 |
+| luna | B | review | 24/24 | 195,36 | completed: 23; phase_time_limit: 1 |
+| luna | B | specification | 24/24 | 271,20 | completed: 22; phase_time_limit: 2 |
 | luna | B | specification-repair | 1/1 | 90,04 | phase_time_limit: 1 |
-| luna | C | constitution | 21/21 | 98,89 | completed: 21 |
-| luna | C | converge | 1/1 | 118,26 | completed: 1 |
-| luna | C | implement | 17/17 | 343,99 | phase_time_limit: 16; completed: 1 |
-| luna | C | plan | 21/21 | 148,51 | completed: 21 |
-| luna | C | specify | 21/21 | 351,73 | completed: 21 |
-| luna | C | tasks | 21/21 | 109,83 | completed: 17; time_limit: 4 |
+| luna | C | constitution | 24/24 | 100,78 | completed: 24 |
+| luna | C | converge | 2/2 | 100,70 | completed: 2 |
+| luna | C | implement | 19/19 | 343,99 | phase_time_limit: 17; completed: 2 |
+| luna | C | plan | 24/24 | 148,95 | completed: 24 |
+| luna | C | specify | 24/24 | 359,21 | completed: 24 |
+| luna | C | tasks | 24/24 | 113,44 | completed: 20; time_limit: 4 |
 
 ## Priprava pri C
 
@@ -42,7 +42,7 @@ Za vsako izvedbo C seštejemo zabeležene constitution, specify, plan in tasks. 
 | Model | Arhivi C | Znane vsote priprave | Mediana priprave (s) | Implement začet | Začetni implement completed | Converge začet |
 | --- | --- | --- | --- | --- | --- | --- |
 | astra | 24 | 24/24 | 427,27 | 20/24 | 19/24 | 19/24 |
-| luna | 21 | 21/21 | 762,52 | 17/21 | 1/21 | 1/21 |
+| luna | 24 | 24/24 | 772,02 | 19/24 | 2/24 | 2/24 |
 
 Vsi začetni implement koraki so šteti ne glede na funkcionalni rezultat oddaje. Iz časovne razčlenitve same ne sklepamo, kaj bi model dosegel z drugačnim razporedom časa. Medzbirčna primerjava vključuje razliko modela, CLI in obdobja.
 

@@ -1,3 +1,86 @@
+# Eksperimentalni del zaključen — 29. september 2026
+
+## Preostala objava v GitHub — podpis čaka na uporabnika
+
+Eksperimenti, presoje, končna revizija in gradiva so zaključeni. **Novi
+zaključni commit in push še nista uspela.** Dva poskusa podpisanega commita
+sta končala z `1Password: failed to fill whole buffer` / exit128.
+Git zahteva podpis (commit.gpgsign=true, SSH, op-ssh-sign). Podpisovanja
+nismo izključili. Uporabniku je poslano vprašanje za odklep/potrditev
+1Password; naslednji poskus šele po njegovi potrditvi ali odpravi napake.
+
+Vse spremembe v experiments so pripravljene v indeksu. Lokalni HEAD in
+preverjena oddaljena veja ostajata 4a8a81a9d3f9a898b3b6ffa882de1afa219c06c6.
+GitHub dostop deluje prek obstoječega gh: horvatz je ADMIN zasebnega
+horvatz/mag-experiments. Privzeti HTTPS credential helper manjka; uspešna
+read-only preverba je uporabila samo za ukaz `-c credential.helper=` in
+`-c 'credential.helper=!/opt/homebrew/bin/gh auth git-credential'`.
+Globalnih poverilnic ali nastavitev nismo spreminjali.
+
+Po uporabnikovi potrditvi ustvari podpisani commit
+`Complete 72 Luna experiments and final Astra comparison`, preveri vejo
+`zan/luna-experiments` in pushaj na `refs/heads/zan/luna-experiments`
+z istim gh credential helperjem. Preveri podpis, oddaljeni SHA in čisto
+lokalno stanje. Ne ponavljaj meritev, analiz ali že opravljenega vizualnega
+pregleda samo zaradi objave. Dokaz: analysis/recovery/publication-pending-2026-09-29.json.
+
+**Ni preostalih meritev ali presoj.** Luna L/1.0: 72/72 arhivov,
+24/24 presoj (22 rated + 2 partial). Astra M/1.0: 72/72 arhivov.
+Končna primerjava: 144/144; posnetek 2026-09-29T19:54:58.948Z.
+Končni audit je uspešen: `experiments/luna-study/analysis/final-verification.json`
+(29. september ob 20:03 UTC). Vsi 13 strani PDF-ja, sedem predogledov
+preglednice in trije grafi so vizualno pregledani; formule preverjene.
+
+Luna: 33 strogi uspehi, 51 oddaj z 12/12, 772/864 dokazanih zahtev,
+4.798/5.040 uspešnih neodvisnih preverjanj. Vseh testov torej ni uspešnih.
+A/B/C: zahteve 97,22/98,61/72,22 %; strogi uspehi 17/15/1 od 24;
+čas 12,09/16,82/18,49 minute. A je praktično ravnotežje, B ima največ zahtev,
+C omejuje priprava in razporeditev časovnega proračuna. Zgodovinska
+Astra–Luna primerjava ne izolira učinka modela (CLI, obdobje, dostop).
+
+Za naslednji korak preberi `experiments/luna-study/analysis/final-summary.md`.
+V njem so končni sklepi, meje interpretacije in kazalo dokazov. PDF in XLSX:
+`experiments/outputs/01a0c0dd-8558-70e1-8ed7-03605027f3bd/`.
+Generirani vložek: `naloga/latex/generated/luna-comparison.tex`.
+Poglavja naloge ureja avtor v drugem pogovoru; ta potek jih ni spreminjal.
+
+Vrsta 64410/PID9849 in poročevalec23915 sta končana z exit0. Ključavnice ni,
+active.json je all_runs_archived. Poskusna vrata so zaprta. Združljivostna
+naloga/zapiski/stanje-projekta.md je po preverbi SHA odstranjena.
+Ne zaganjaj vrste, kvalifikacij ali začetih meritev ponovno.
+Vhodi M/L in stari arhivi ostajajo nespremenjeni.
+
+Git: `zan/luna-experiments` → `origin/zan/luna-experiments`,
+repozitorij `horvatz/mag-experiments`. Natančen zaključni commit in objavo
+preveri v Git zgodovini ter oddaljeni veji. Predhodni checkpoint je 4a8a81a.
+Avtorski repozitorij naloga ni del te objave.
+
+Spodnji dnevniki so zgodovina. Ne preglasijo tega končnega stanja.
+
+---
+
+# Nadaljevanje — 29. september 2026, 16:54 UTC
+
+Uporabnik: »prosim nadaljuj«. Premor je preklican; dokončaj preostalih
+10 meritev in vsa primerjalna gradiva. Ob nadaljevanju: 62/72 arhivov,
+24/24 vsebinskih presoj, naslednji še nezačet ID P03-B-003.
+Zamrznjena vhoda M/L, zaprta vrata in odsotnost stare vrste so preverjeni.
+Nova vrsta: **seja 64410, PID 9849** (caffeinate); poročevalec **seja 23915**.
+Živo stanje vedno preveri v luna-study/runtime/main-study/active.json in
+runner.lock; ne zaganjaj dvojnika in ne ponavljaj začetih ID-jev.
+Dokaz nadaljevanja: luna-study/analysis/recovery/resume-2026-09-29.json.
+Ista prijava ChatGPT in nespremenjeni model, CLI, čas ter vrstni red.
+
+Po vseh 72: osveži gradiva, vizualno preglej vse strani PDF-ja, preglednico
+in grafe, izvedi final-audit.py ter zaključi final-summary.md. Združljivostno
+naloga/zapiski/stanje-projekta.md odstrani šele po koncu vrste ob istem SHA.
+Poglavja naloge ureja drug pogovor. Git: zan/luna-experiments; zadnji
+objavljeni podpisani commit ob začetku nadaljevanja je 4a8a81a.
+
+Spodnji premor in stare seje so zgodovinski; ta novi poziv ima prednost.
+
+---
+
 # Shranjen premor — 29. september 2026
 
 Uporabnik: »shrani trenuten napredek, jutri bova nadaljevala«.
@@ -523,7 +606,7 @@ Pregled zahteva samo sledljivost specifikacije; njen popravek doseže
 fazno mejo, naknadni implementer zabeleži spremenjen dokument in potrdi
 celotni check 50/50 (item_10). Poraba null, spodnja meja 3140495/51177.
 Pred pregledom je model popravil napako tipov (item_27) in lasten prehod
-med praznimi/enoelementnimi fixtureji (item_29:48/49); končni check50/50.
+med praznimi/enoelementnimi fixtureji (item_29:48/49); končni check 50/50.
 
 38/72 arhivov, 18 strogih uspehov, 28 popolnih funkcionalnih oddaj,
 402/456 zahtev. Sledi P04-A-002. Vrsta77985/PID80497, spremljevalec81028.
@@ -536,7 +619,7 @@ P04-A-002: execution_failed po omejitvi uporabe, 450,070 s, 70/70 in
 12/12; ni strogega uspeha. Poraba null, spodnja meja 1050498/20512.
 Razvojni item_16 odpove pri lint (neuporabljen uvoz), item_18 ima48/50
 zaradi lastnih testnih scenarijev. Model jih popravi; item_21 potrdi4/4
-in item_23 celotni check50/50 pred napako usage limit. Meritev ostane
+in item_23 celotni check 50/50 pred napako usage limit. Meritev ostane
 arhivirana brez ponovitve. Vrsta se je pravilno ustavila po tem arhivu.
 
 39/72 arhivov,18 strogih uspehov,29 popolnih funkcionalnih oddaj,
@@ -964,3 +1047,32 @@ Samo parent40204/seja52319 ima SIGSTOP; njegov modelrunner29323 in browser
 28619/28621 nadaljujeta do konca že začete meritve. Ne pošlji CONT vrsti.
 Po koncu sledi običajno arhiviranje in končni checkpoint; naslednji nezačet
 P03-B-003 čaka izrecno nadaljevanje. Podrobnosti v recovery/pause-2026-09-29.json.
+
+## Nadaljevanje: arhivi 63–65, 29. september 2026 ob 17:52 UTC
+
+- P03-B-003: completed, 924,558 s, 70/70, 12/12, strogi uspeh.
+- P09-B-002: completed_with_phase_time_limit, 1100,206 s, 70/70, 12/12,
+  brez strogega uspeha zaradi meje specifikacije 360,034 s. Pregled odkrije
+  izgubo dodatnega vprašaja v q; povratna faza popravi parser in doda test
+  (47/47). Osma naknadna ilustracija 002/003 je v development-cases.md
+  in evidence/P09-B-002-url-repair.md, zunaj formalnih presoj001.
+- P09-C-002: time_limit, 1118,789 s, 38/70, 0/12. Dokumentacijske faze
+  209,127 / 537,159 / 229,472 / 140,906 s; implementacija se ni začela.
+- Skupaj 65/72, 29 strogih, 44 s 12/12, 688/780 zahtev. Naslednji P09-A-002.
+- Vrsta 64410/PID9849 in poročevalec 23915 nadaljujeta. Merjenih ponovitev ni.
+
+## Nadaljevanje: arhivi 66–69, 29. september 2026 ob 19:00 UTC
+
+- P09-A-002: completed, 841,791 s, 70/70, 12/12, strogi uspeh; zadnji lastni check 54/54.
+- P10-C-002: phase_time_limit, 1080,659 s, 70/70, 12/12, brez strogega uspeha.
+  Pripravljalne faze 113,349 / 395,584 / 188,152 / 111,242 s; implementacija
+  se je začela, potrjen je typecheck, celotni razvojni check ni zaključil pred mejo.
+- P10-B-002: completed_with_phase_time_limit, 1141,127 s, 70/70, 12/12.
+  Specifikacija completed 356,646 s; implementacija phase_time_limit 482,836 s;
+  pregled 212,181 s; popravek 87,304 s. Pregledovalec sam ponovi check 48/49 in
+  zahteva ločitev ponovljenega mount-a; avtor popravi samo teste/predajo, zadnji
+  check 50/50. Strogega uspeha ni; ne dodajamo še ene naknadne ilustracije.
+- P10-A-002: completed, 709,328 s, 70/70, 12/12, strogi uspeh; zadnji check 53/53.
+- Skupaj 69/72, 31 strogih, 48 s 12/12, 736/828 zahtev. Teče P09-C-003; sledita P09-A-003, P09-B-003.
+- Vrsta 64410/PID9849 in poročevalec 23915 sta aktivna. Brez ponovitev ali posegov v model.
+- Končna gradiva/audit/summary/push še čakajo vseh 72.

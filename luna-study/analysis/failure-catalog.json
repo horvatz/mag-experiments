@@ -1,13 +1,13 @@
 {
   "collection": "L/1.0",
-  "reportingSnapshot": "2026-09-28T23:47:27.070Z",
-  "archived": 62,
+  "reportingSnapshot": "2026-09-29T19:54:58.892Z",
+  "archived": 72,
   "planned": 72,
-  "complete": false,
+  "complete": true,
   "selection": "All archived runs without strict success; no outcome-based subset within that population.",
   "scope": "Final archived evaluations only. Development failures and explanatory case reviews are separate. Missing or skipped tests are not inferred to be failures.",
-  "nonStrictCount": 34,
-  "testsWithoutPass": 210,
+  "nonStrictCount": 39,
+  "testsWithoutPass": 242,
   "entries": [
     {
       "id": "P05-C-001",
@@ -4193,6 +4193,613 @@
       "scenariosWithoutPass": [],
       "evidence": "runtime/runs/P03-C-003/evaluation-summary.json",
       "executionEvidence": "runtime/runs/P03-C-003/execution.json"
+    },
+    {
+      "id": "P09-B-002",
+      "task": "P09",
+      "procedure": "B",
+      "repetition": 2,
+      "executionStatus": "completed_with_phase_time_limit",
+      "strictSuccess": false,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "requirements": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": true,
+            "observed": true
+          }
+        ],
+        "passed": 12,
+        "observed": 12,
+        "total": 12,
+        "fraction": 1
+      },
+      "testsRecorded": 70,
+      "testsExpected": 70,
+      "testsWithoutPass": 0,
+      "failedChecks": [],
+      "scenariosWithoutPass": [],
+      "evidence": "runtime/runs/P09-B-002/evaluation-summary.json",
+      "executionEvidence": "runtime/runs/P09-B-002/execution.json"
+    },
+    {
+      "id": "P09-C-002",
+      "task": "P09",
+      "procedure": "C",
+      "repetition": 2,
+      "executionStatus": "time_limit",
+      "strictSuccess": false,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "requirements": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "testsRecorded": 70,
+      "testsExpected": 38,
+      "testsWithoutPass": 32,
+      "failedChecks": [
+        {
+          "name": "tests",
+          "exitCode": 1
+        }
+      ],
+      "scenariosWithoutPass": [
+        {
+          "title": "D01: direct filtered URL",
+          "status": "unexpected",
+          "projects": [
+            "development-desktop",
+            "development-mobile"
+          ],
+          "firstErrorLines": [
+            "Error: expect(received).toEqual(expected) // deep equality"
+          ]
+        },
+        {
+          "title": "D02: draft only applies on confirmation",
+          "status": "unexpected",
+          "projects": [
+            "development-desktop",
+            "development-mobile"
+          ],
+          "firstErrorLines": [
+            "TimeoutError: locator.selectOption: Timeout 5000ms exceeded."
+          ]
+        },
+        {
+          "title": "D03: board and reload preserve committed state",
+          "status": "unexpected",
+          "projects": [
+            "development-desktop",
+            "development-mobile"
+          ],
+          "firstErrorLines": [
+            "Error: expect(received).toEqual(expected) // deep equality"
+          ]
+        },
+        {
+          "title": "D04: reset and no writes",
+          "status": "unexpected",
+          "projects": [
+            "development-desktop",
+            "development-mobile"
+          ],
+          "firstErrorLines": [
+            "Error: expect(received).toEqual(expected) // deep equality"
+          ]
+        },
+        {
+          "title": "E01: R01 direct project and detail routes apply state",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "Error: expect(received).toEqual(expected) // deep equality"
+          ]
+        },
+        {
+          "title": "E02: R02 one normalized literal phrase within a single field",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "Error: expect(received).toEqual(expected) // deep equality"
+          ]
+        },
+        {
+          "title": "E03: R03 status conjunction and stable title sorting",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "Error: expect(received).toEqual(expected) // deep equality"
+          ]
+        },
+        {
+          "title": "E04: R04 first parameter wins, invalid values default, no passive rewrite",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "Error: expect(received).toEqual(expected) // deep equality"
+          ]
+        },
+        {
+          "title": "E05: R05 draft changes nothing until one atomic history commit",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "TimeoutError: locator.fill: Timeout 5000ms exceeded."
+          ]
+        },
+        {
+          "title": "E06: R06 trim encoding canonical defaults and repeated commit",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "TimeoutError: locator.click: Timeout 5000ms exceeded."
+          ]
+        },
+        {
+          "title": "E07: R07 back forward restore controls results and refresh",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "TimeoutError: locator.selectOption: Timeout 5000ms exceeded."
+          ]
+        },
+        {
+          "title": "E08: R08 view changes preserve committed state and discard draft",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "TimeoutError: locator.fill: Timeout 5000ms exceeded."
+          ]
+        },
+        {
+          "title": "E09: R09 details preserve params view and correct duplicate ID",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "TimeoutError: locator.fill: Timeout 5000ms exceeded."
+          ]
+        },
+        {
+          "title": "E10: R10 project navigation resets while direct URL honors params",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "Error: expect(received).toEqual(expected) // deep equality"
+          ]
+        },
+        {
+          "title": "E11: R11 reset history, empty message and whole-project count",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "Error: expect(received).toEqual(expected) // deep equality"
+          ]
+        },
+        {
+          "title": "E12: R12 local read-only behavior and responsive layout",
+          "status": "unexpected",
+          "projects": [
+            "evaluation-desktop",
+            "evaluation-mobile"
+          ],
+          "firstErrorLines": [
+            "TimeoutError: locator.selectOption: Timeout 5000ms exceeded."
+          ]
+        }
+      ],
+      "evidence": "runtime/runs/P09-C-002/evaluation-summary.json",
+      "executionEvidence": "runtime/runs/P09-C-002/execution.json"
+    },
+    {
+      "id": "P10-C-002",
+      "task": "P10",
+      "procedure": "C",
+      "repetition": 2,
+      "executionStatus": "phase_time_limit",
+      "strictSuccess": false,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "requirements": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": true,
+            "observed": true
+          }
+        ],
+        "passed": 12,
+        "observed": 12,
+        "total": 12,
+        "fraction": 1
+      },
+      "testsRecorded": 70,
+      "testsExpected": 70,
+      "testsWithoutPass": 0,
+      "failedChecks": [],
+      "scenariosWithoutPass": [],
+      "evidence": "runtime/runs/P10-C-002/evaluation-summary.json",
+      "executionEvidence": "runtime/runs/P10-C-002/execution.json"
+    },
+    {
+      "id": "P10-B-002",
+      "task": "P10",
+      "procedure": "B",
+      "repetition": 2,
+      "executionStatus": "completed_with_phase_time_limit",
+      "strictSuccess": false,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "requirements": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": true,
+            "observed": true
+          }
+        ],
+        "passed": 12,
+        "observed": 12,
+        "total": 12,
+        "fraction": 1
+      },
+      "testsRecorded": 70,
+      "testsExpected": 70,
+      "testsWithoutPass": 0,
+      "failedChecks": [],
+      "scenariosWithoutPass": [],
+      "evidence": "runtime/runs/P10-B-002/evaluation-summary.json",
+      "executionEvidence": "runtime/runs/P10-B-002/execution.json"
+    },
+    {
+      "id": "P09-B-003",
+      "task": "P09",
+      "procedure": "B",
+      "repetition": 3,
+      "executionStatus": "time_limit",
+      "strictSuccess": false,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "requirements": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": true,
+            "observed": true
+          }
+        ],
+        "passed": 12,
+        "observed": 12,
+        "total": 12,
+        "fraction": 1
+      },
+      "testsRecorded": 70,
+      "testsExpected": 70,
+      "testsWithoutPass": 0,
+      "failedChecks": [],
+      "scenariosWithoutPass": [],
+      "evidence": "runtime/runs/P09-B-003/evaluation-summary.json",
+      "executionEvidence": "runtime/runs/P09-B-003/execution.json"
     }
   ]
 }

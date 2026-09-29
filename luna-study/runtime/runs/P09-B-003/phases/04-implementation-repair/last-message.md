@@ -1,0 +1,1 @@
+Ugotovitev R11 je odpravljena in namenski test je dodan. Ker je ostala le zaključna minuta, zaženem kratko lint, tipno in ciljno preverjanje prav tega primera; celoten nabor bo ostal jasno označen kot neizveden, če ga rok ne dopušča.

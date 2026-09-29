@@ -1,6 +1,6 @@
 # Odstopanja v končnih izidih L/1.0
 
-Posnetek: 2026-09-28T23:47:27.070Z. Arhiviranih 62/72, brez strogega uspeha 34.
+Posnetek: 2026-09-29T19:54:58.892Z. Arhiviranih 72/72, brez strogega uspeha 39.
 
 Popis zajame vse arhivirane oddaje brez strogega uspeha. Razlogov ne sklepa iz samega statusa; navaja dejanske končne izide in dokazne povezave. Razvojne odpovedi med delom modela so opisane ločeno v vsebinskih presojah in razvojnih primerih. Neizmerjena zahteva ali preskočen test nista samodejno neuspešna testa.
 
@@ -40,6 +40,11 @@ Popis zajame vse arhivirane oddaje brez strogega uspeha. Razlogov ne sklepa iz s
 | [P09-C-001](../runtime/runs/P09-C-001/evaluation-summary.json) | phase_time_limit | 8/12 | 52/70 | lint, types, tests |
 | [P04-C-001](../runtime/runs/P04-C-001/evaluation-summary.json) | phase_time_limit | 12/12 | 70/70 | — |
 | [P03-C-003](../runtime/runs/P03-C-003/evaluation-summary.json) | phase_time_limit | 12/12 | 70/70 | — |
+| [P09-B-002](../runtime/runs/P09-B-002/evaluation-summary.json) | completed_with_phase_time_limit | 12/12 | 70/70 | — |
+| [P09-C-002](../runtime/runs/P09-C-002/evaluation-summary.json) | time_limit | 0/12 | 38/70 | tests |
+| [P10-C-002](../runtime/runs/P10-C-002/evaluation-summary.json) | phase_time_limit | 12/12 | 70/70 | — |
+| [P10-B-002](../runtime/runs/P10-B-002/evaluation-summary.json) | completed_with_phase_time_limit | 12/12 | 70/70 | — |
+| [P09-B-003](../runtime/runs/P09-B-003/evaluation-summary.json) | time_limit | 12/12 | 70/70 | — |
 
 ## P05-C-001
 
@@ -503,5 +508,72 @@ Status: phase_time_limit. Dovoljen obseg sprememb: da. Celoten predvideni testni
 Opazovane, vendar nedokazane zahteve: —. Neizmerjene zahteve: —.
 
 Dokaza: [neodvisna ocena](../runtime/runs/P03-C-003/evaluation-summary.json), [izvedba postopka](../runtime/runs/P03-C-003/execution.json).
+
+V zabeleženih testih ni izida brez uspeha. Strogi uspeh lahko kljub temu manjka zaradi zaključka postopka, obsega sprememb, drugih kontrol ali nepopolnosti merjenja; glej zgornje podatke in dokaz izvedbe.
+
+## P09-B-002
+
+Status: completed_with_phase_time_limit. Dovoljen obseg sprememb: da. Celoten predvideni testni nabor: da.
+
+Opazovane, vendar nedokazane zahteve: —. Neizmerjene zahteve: —.
+
+Dokaza: [neodvisna ocena](../runtime/runs/P09-B-002/evaluation-summary.json), [izvedba postopka](../runtime/runs/P09-B-002/execution.json).
+
+V zabeleženih testih ni izida brez uspeha. Strogi uspeh lahko kljub temu manjka zaradi zaključka postopka, obsega sprememb, drugih kontrol ali nepopolnosti merjenja; glej zgornje podatke in dokaz izvedbe.
+
+## P09-C-002
+
+Status: time_limit. Dovoljen obseg sprememb: da. Celoten predvideni testni nabor: da.
+
+Opazovane, vendar nedokazane zahteve: R01, R02, R03, R04, R05, R06, R07, R08, R09, R10, R11, R12. Neizmerjene zahteve: —.
+
+Dokaza: [neodvisna ocena](../runtime/runs/P09-C-002/evaluation-summary.json), [izvedba postopka](../runtime/runs/P09-C-002/execution.json).
+
+| Končni scenarij | Zabeleženi status | Izvedbe | Prva vrstica napake |
+| --- | --- | --- | --- |
+| D01: direct filtered URL | unexpected | development-desktop, development-mobile | Error: expect(received).toEqual(expected) // deep equality |
+| D02: draft only applies on confirmation | unexpected | development-desktop, development-mobile | TimeoutError: locator.selectOption: Timeout 5000ms exceeded. |
+| D03: board and reload preserve committed state | unexpected | development-desktop, development-mobile | Error: expect(received).toEqual(expected) // deep equality |
+| D04: reset and no writes | unexpected | development-desktop, development-mobile | Error: expect(received).toEqual(expected) // deep equality |
+| E01: R01 direct project and detail routes apply state | unexpected | evaluation-desktop, evaluation-mobile | Error: expect(received).toEqual(expected) // deep equality |
+| E02: R02 one normalized literal phrase within a single field | unexpected | evaluation-desktop, evaluation-mobile | Error: expect(received).toEqual(expected) // deep equality |
+| E03: R03 status conjunction and stable title sorting | unexpected | evaluation-desktop, evaluation-mobile | Error: expect(received).toEqual(expected) // deep equality |
+| E04: R04 first parameter wins, invalid values default, no passive rewrite | unexpected | evaluation-desktop, evaluation-mobile | Error: expect(received).toEqual(expected) // deep equality |
+| E05: R05 draft changes nothing until one atomic history commit | unexpected | evaluation-desktop, evaluation-mobile | TimeoutError: locator.fill: Timeout 5000ms exceeded. |
+| E06: R06 trim encoding canonical defaults and repeated commit | unexpected | evaluation-desktop, evaluation-mobile | TimeoutError: locator.click: Timeout 5000ms exceeded. |
+| E07: R07 back forward restore controls results and refresh | unexpected | evaluation-desktop, evaluation-mobile | TimeoutError: locator.selectOption: Timeout 5000ms exceeded. |
+| E08: R08 view changes preserve committed state and discard draft | unexpected | evaluation-desktop, evaluation-mobile | TimeoutError: locator.fill: Timeout 5000ms exceeded. |
+| E09: R09 details preserve params view and correct duplicate ID | unexpected | evaluation-desktop, evaluation-mobile | TimeoutError: locator.fill: Timeout 5000ms exceeded. |
+| E10: R10 project navigation resets while direct URL honors params | unexpected | evaluation-desktop, evaluation-mobile | Error: expect(received).toEqual(expected) // deep equality |
+| E11: R11 reset history, empty message and whole-project count | unexpected | evaluation-desktop, evaluation-mobile | Error: expect(received).toEqual(expected) // deep equality |
+| E12: R12 local read-only behavior and responsive layout | unexpected | evaluation-desktop, evaluation-mobile | TimeoutError: locator.selectOption: Timeout 5000ms exceeded. |
+
+## P10-C-002
+
+Status: phase_time_limit. Dovoljen obseg sprememb: da. Celoten predvideni testni nabor: da.
+
+Opazovane, vendar nedokazane zahteve: —. Neizmerjene zahteve: —.
+
+Dokaza: [neodvisna ocena](../runtime/runs/P10-C-002/evaluation-summary.json), [izvedba postopka](../runtime/runs/P10-C-002/execution.json).
+
+V zabeleženih testih ni izida brez uspeha. Strogi uspeh lahko kljub temu manjka zaradi zaključka postopka, obsega sprememb, drugih kontrol ali nepopolnosti merjenja; glej zgornje podatke in dokaz izvedbe.
+
+## P10-B-002
+
+Status: completed_with_phase_time_limit. Dovoljen obseg sprememb: da. Celoten predvideni testni nabor: da.
+
+Opazovane, vendar nedokazane zahteve: —. Neizmerjene zahteve: —.
+
+Dokaza: [neodvisna ocena](../runtime/runs/P10-B-002/evaluation-summary.json), [izvedba postopka](../runtime/runs/P10-B-002/execution.json).
+
+V zabeleženih testih ni izida brez uspeha. Strogi uspeh lahko kljub temu manjka zaradi zaključka postopka, obsega sprememb, drugih kontrol ali nepopolnosti merjenja; glej zgornje podatke in dokaz izvedbe.
+
+## P09-B-003
+
+Status: time_limit. Dovoljen obseg sprememb: da. Celoten predvideni testni nabor: da.
+
+Opazovane, vendar nedokazane zahteve: —. Neizmerjene zahteve: —.
+
+Dokaza: [neodvisna ocena](../runtime/runs/P09-B-003/evaluation-summary.json), [izvedba postopka](../runtime/runs/P09-B-003/execution.json).
 
 V zabeleženih testih ni izida brez uspeha. Strogi uspeh lahko kljub temu manjka zaradi zaključka postopka, obsega sprememb, drugih kontrol ali nepopolnosti merjenja; glej zgornje podatke in dokaz izvedbe.

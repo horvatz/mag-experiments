@@ -1,6 +1,6 @@
 # Razvojni primeri L/1.0
 
-Vmesni opis doslej pregledanih arhivov. Primeri so ilustrativno izbrani po pregledu
+Zaključen nabor naknadnih ilustracij. Primeri so ilustrativno izbrani po pregledu
 izidov; niso nove meritve ali nadomestilo za vse izide. Formalna presoja
 ponovitev 001 je vnaprej določena in shranjena ločeno.
 
@@ -480,3 +480,37 @@ Dokazi: [tri ugotovitve pregleda](../runtime/runs/P05-B-003/submission/docs/agen
 [končni testi](../runtime/runs/P05-B-003/submission/tests/agent/P05-pagination.spec.ts),
 [končna predaja](../runtime/runs/P05-B-003/submission/docs/agent/verification.md),
 [neodvisna ocena](../runtime/runs/P05-B-003/evaluation-summary.json).
+
+
+## P09-B-002: pregled odkrije napako parserja in sproži popravek kode
+
+Naknadna ilustracija ponovitve 002 je zunaj formalnega vzorca 001.
+Pregledovalec ob branju kode odkrije, da `hash.split('?')` z uporabo samo
+prvih dveh delov odreže iskalno frazo pri dodatnem vprašaju. Pri povezavi
+`#/projects/web?q=foo?bar` tako v stanje pride `foo` namesto `foo?bar`.
+Zahteva popravek R02. Testov sam ne izvede in to omejitev navede v predaji.
+
+Povratna implementacijska faza traja 102,418 s. Avtor zamenja razcep z
+iskanjem prvega vprašaja in rezanjem celotnega preostanka. Doda en lasten
+test, ki preveri zadetek, nespremenjeno frazo v iskalnem polju in URL.
+Arhivirana posnetka kode potrdita dejansko spremembo parserja. Pred pregledom
+item_38 potrdi razvojni check 46/46; po popravku item_11 potrdi 47/47.
+Novi test pri prejšnjem parserju ne bi mogel potrditi vrednosti polja
+`foo?bar`; to sledi iz primerjave kode in trditve testa, ne iz raziskovalčeve
+ponovitve stare oddaje. Pred pregledom so bile odpravljene tudi štiri
+regresijske odpovedi praznega projekta oziroma prazne table na dveh širinah.
+
+Končna neodvisna ocena je 70/70 in 12/12. Skupni čas je 1100,206 s, status
+pa completed_with_phase_time_limit: specifikacija je prej dosegla mejo
+360,034 s. Zato strogega uspeha ni, čeprav so implementacija, pregled in
+popravek zaključeni. Celotna poraba ostane neznana; opažena spodnja meja je
+1892623 vhodnih in 36489 izhodnih tokenov. Neodvisni testi so bili izvedeni
+samo po končni oddaji, zato iz teh podatkov ne računamo izboljšanja njihovega
+rezultata med pregledom. Primer kaže konkreten koristen popravek, ne dokazuje
+pogostosti ali vzročne prednosti postopka B in ne dodaja ordinalne ocene.
+
+Dokazi: [pregledovalčeva ugotovitev](../runtime/runs/P09-B-002/submission/docs/agent/review.json),
+[surovi izidi in natančna sprememba parserja](evidence/P09-B-002-url-repair.md),
+[končni test](../runtime/runs/P09-B-002/submission/tests/agent/P09-review.spec.ts),
+[izvedbene faze](../runtime/runs/P09-B-002/execution.json),
+[neodvisna ocena](../runtime/runs/P09-B-002/evaluation-summary.json).

@@ -8113,3 +8113,1367 @@ Call log:
 "P03-A-003","P03","A","3","evaluation-mobile","E11: R11 clear atomically restores source order","expected",""
 "P03-A-003","P03","A","3","evaluation-desktop","E12: R12 read-only details and responsive layout","expected",""
 "P03-A-003","P03","A","3","evaluation-mobile","E12: R12 read-only details and responsive layout","expected",""
+"P03-B-003","P03","B","3","regression-api","fixture IDs are unique and each project has three tasks","expected",""
+"P03-B-003","P03","B","3","regression-api","a successful update changes only the chosen record and fields","expected",""
+"P03-B-003","P03","B","3","regression-api","invalid update leaves all records unchanged: {""title"":"""",""status"":""done""}","expected",""
+"P03-B-003","P03","B","3","regression-api","invalid update leaves all records unchanged: {""title"":"" \t\r\n"",""status"":""done""}","expected",""
+"P03-B-003","P03","B","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""unknown""}","expected",""
+"P03-B-003","P03","B","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov""}","expected",""
+"P03-B-003","P03","B","3","regression-api","invalid update leaves all records unchanged: {""title"":42,""status"":""done""}","expected",""
+"P03-B-003","P03","B","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""done"",""projectId"":""launch""}","expected",""
+"P03-B-003","P03","B","3","regression-api","invalid update leaves all records unchanged: null","expected",""
+"P03-B-003","P03","B","3","regression-api","rejected save writes nothing and the next request can succeed","expected",""
+"P03-B-003","P03","B","3","regression-api","held request remains unchanged until released with success","expected",""
+"P03-B-003","P03","B","3","regression-api","held request remains unchanged until released with reject","expected",""
+"P03-B-003","P03","B","3","regression-api","reset cancels a pending save and restores a previously changed record","expected",""
+"P03-B-003","P03","B","3","regression-api","normal server does not expose test controls","expected",""
+"P03-B-003","P03","B","3","regression-desktop","projects show their own tasks and all three states","expected",""
+"P03-B-003","P03","B","3","regression-mobile","projects show their own tasks and all three states","expected",""
+"P03-B-003","P03","B","3","regression-desktop","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P03-B-003","P03","B","3","regression-mobile","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P03-B-003","P03","B","3","regression-desktop","direct task links survive refresh and browser back closes details","expected",""
+"P03-B-003","P03","B","3","regression-mobile","direct task links survive refresh and browser back closes details","expected",""
+"P03-B-003","P03","B","3","regression-desktop","a saved API change survives browser refresh and project navigation","expected",""
+"P03-B-003","P03","B","3","regression-mobile","a saved API change survives browser refresh and project navigation","expected",""
+"P03-B-003","P03","B","3","regression-desktop","unknown locations and task IDs show a recoverable state","expected",""
+"P03-B-003","P03","B","3","regression-mobile","unknown locations and task IDs show a recoverable state","expected",""
+"P03-B-003","P03","B","3","regression-desktop","failed /api/projects can be retried","expected",""
+"P03-B-003","P03","B","3","regression-mobile","failed /api/projects can be retried","expected",""
+"P03-B-003","P03","B","3","regression-desktop","failed /api/projects/web/tasks can be retried","expected",""
+"P03-B-003","P03","B","3","regression-mobile","failed /api/projects/web/tasks can be retried","expected",""
+"P03-B-003","P03","B","3","regression-desktop","an empty project keeps the navigation and shows an empty state","expected",""
+"P03-B-003","P03","B","3","regression-mobile","an empty project keeps the navigation and shows an empty state","expected",""
+"P03-B-003","P03","B","3","regression-desktop","switching project during loading never shows the previous project tasks","expected",""
+"P03-B-003","P03","B","3","regression-mobile","switching project during loading never shows the previous project tasks","expected",""
+"P03-B-003","P03","B","3","regression-desktop","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P03-B-003","P03","B","3","regression-mobile","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P03-B-003","P03","B","3","regression-desktop","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P03-B-003","P03","B","3","regression-mobile","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P03-B-003","P03","B","3","regression-desktop","an empty board keeps all columns and supports switching back to the table","expected",""
+"P03-B-003","P03","B","3","regression-mobile","an empty board keeps all columns and supports switching back to the table","expected",""
+"P03-B-003","P03","B","3","development-desktop","D01: default list and literal normalized search","expected",""
+"P03-B-003","P03","B","3","development-mobile","D01: default list and literal normalized search","expected",""
+"P03-B-003","P03","B","3","development-desktop","D02: combined filters and view persistence","expected",""
+"P03-B-003","P03","B","3","development-mobile","D02: combined filters and view persistence","expected",""
+"P03-B-003","P03","B","3","development-desktop","D03: empty result and clear","expected",""
+"P03-B-003","P03","B","3","development-mobile","D03: empty result and clear","expected",""
+"P03-B-003","P03","B","3","development-desktop","D04: counts and read-only behavior","expected",""
+"P03-B-003","P03","B","3","development-mobile","D04: counts and read-only behavior","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E01: R01 defaults preserve received order","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E01: R01 defaults preserve received order","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E02: R02 normalization across all four fields","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E02: R02 normalization across all four fields","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E03: R03 all tokens, cross fields and literal punctuation","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E03: R03 all tokens, cross fields and literal punctuation","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E04: R04 three-way conjunction and exact owner","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E04: R04 three-way conjunction and exact owner","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E05: R05 owner options independent of active filters","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E05: R05 owner options independent of active filters","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E06: R06 same selection in both views and correct columns","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E06: R06 same selection in both views and correct columns","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E07: R07 project switch resets every filter","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E07: R07 project switch resets every filter","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E08: R08 refresh resets and does not persist","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E08: R08 refresh resets and does not persist","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E09: R09 result and state counts use visible selection","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E09: R09 result and state counts use visible selection","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E10: R10 empty selection and genuinely empty project","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E10: R10 empty selection and genuinely empty project","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E11: R11 clear atomically restores source order","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E11: R11 clear atomically restores source order","expected",""
+"P03-B-003","P03","B","3","evaluation-desktop","E12: R12 read-only details and responsive layout","expected",""
+"P03-B-003","P03","B","3","evaluation-mobile","E12: R12 read-only details and responsive layout","expected",""
+"P09-B-002","P09","B","2","regression-api","fixture IDs are unique and each project has three tasks","expected",""
+"P09-B-002","P09","B","2","regression-api","a successful update changes only the chosen record and fields","expected",""
+"P09-B-002","P09","B","2","regression-api","invalid update leaves all records unchanged: {""title"":"""",""status"":""done""}","expected",""
+"P09-B-002","P09","B","2","regression-api","invalid update leaves all records unchanged: {""title"":"" \t\r\n"",""status"":""done""}","expected",""
+"P09-B-002","P09","B","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""unknown""}","expected",""
+"P09-B-002","P09","B","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov""}","expected",""
+"P09-B-002","P09","B","2","regression-api","invalid update leaves all records unchanged: {""title"":42,""status"":""done""}","expected",""
+"P09-B-002","P09","B","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""done"",""projectId"":""launch""}","expected",""
+"P09-B-002","P09","B","2","regression-api","invalid update leaves all records unchanged: null","expected",""
+"P09-B-002","P09","B","2","regression-api","rejected save writes nothing and the next request can succeed","expected",""
+"P09-B-002","P09","B","2","regression-api","held request remains unchanged until released with success","expected",""
+"P09-B-002","P09","B","2","regression-api","held request remains unchanged until released with reject","expected",""
+"P09-B-002","P09","B","2","regression-api","reset cancels a pending save and restores a previously changed record","expected",""
+"P09-B-002","P09","B","2","regression-api","normal server does not expose test controls","expected",""
+"P09-B-002","P09","B","2","regression-desktop","projects show their own tasks and all three states","expected",""
+"P09-B-002","P09","B","2","regression-mobile","projects show their own tasks and all three states","expected",""
+"P09-B-002","P09","B","2","regression-desktop","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-B-002","P09","B","2","regression-mobile","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-B-002","P09","B","2","regression-desktop","direct task links survive refresh and browser back closes details","expected",""
+"P09-B-002","P09","B","2","regression-mobile","direct task links survive refresh and browser back closes details","expected",""
+"P09-B-002","P09","B","2","regression-desktop","a saved API change survives browser refresh and project navigation","expected",""
+"P09-B-002","P09","B","2","regression-mobile","a saved API change survives browser refresh and project navigation","expected",""
+"P09-B-002","P09","B","2","regression-desktop","unknown locations and task IDs show a recoverable state","expected",""
+"P09-B-002","P09","B","2","regression-mobile","unknown locations and task IDs show a recoverable state","expected",""
+"P09-B-002","P09","B","2","regression-desktop","failed /api/projects can be retried","expected",""
+"P09-B-002","P09","B","2","regression-mobile","failed /api/projects can be retried","expected",""
+"P09-B-002","P09","B","2","regression-desktop","failed /api/projects/web/tasks can be retried","expected",""
+"P09-B-002","P09","B","2","regression-mobile","failed /api/projects/web/tasks can be retried","expected",""
+"P09-B-002","P09","B","2","regression-desktop","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-B-002","P09","B","2","regression-mobile","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-B-002","P09","B","2","regression-desktop","switching project during loading never shows the previous project tasks","expected",""
+"P09-B-002","P09","B","2","regression-mobile","switching project during loading never shows the previous project tasks","expected",""
+"P09-B-002","P09","B","2","regression-desktop","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-B-002","P09","B","2","regression-mobile","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-B-002","P09","B","2","regression-desktop","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-B-002","P09","B","2","regression-mobile","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-B-002","P09","B","2","regression-desktop","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-B-002","P09","B","2","regression-mobile","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-B-002","P09","B","2","development-desktop","D01: direct filtered URL","expected",""
+"P09-B-002","P09","B","2","development-mobile","D01: direct filtered URL","expected",""
+"P09-B-002","P09","B","2","development-desktop","D02: draft only applies on confirmation","expected",""
+"P09-B-002","P09","B","2","development-mobile","D02: draft only applies on confirmation","expected",""
+"P09-B-002","P09","B","2","development-desktop","D03: board and reload preserve committed state","expected",""
+"P09-B-002","P09","B","2","development-mobile","D03: board and reload preserve committed state","expected",""
+"P09-B-002","P09","B","2","development-desktop","D04: reset and no writes","expected",""
+"P09-B-002","P09","B","2","development-mobile","D04: reset and no writes","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E01: R01 direct project and detail routes apply state","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E01: R01 direct project and detail routes apply state","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E02: R02 one normalized literal phrase within a single field","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E02: R02 one normalized literal phrase within a single field","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E03: R03 status conjunction and stable title sorting","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E03: R03 status conjunction and stable title sorting","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E04: R04 first parameter wins, invalid values default, no passive rewrite","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E04: R04 first parameter wins, invalid values default, no passive rewrite","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E05: R05 draft changes nothing until one atomic history commit","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E05: R05 draft changes nothing until one atomic history commit","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E06: R06 trim encoding canonical defaults and repeated commit","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E06: R06 trim encoding canonical defaults and repeated commit","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E07: R07 back forward restore controls results and refresh","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E07: R07 back forward restore controls results and refresh","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E08: R08 view changes preserve committed state and discard draft","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E08: R08 view changes preserve committed state and discard draft","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E09: R09 details preserve params view and correct duplicate ID","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E09: R09 details preserve params view and correct duplicate ID","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E10: R10 project navigation resets while direct URL honors params","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E10: R10 project navigation resets while direct URL honors params","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E11: R11 reset history, empty message and whole-project count","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E11: R11 reset history, empty message and whole-project count","expected",""
+"P09-B-002","P09","B","2","evaluation-desktop","E12: R12 local read-only behavior and responsive layout","expected",""
+"P09-B-002","P09","B","2","evaluation-mobile","E12: R12 local read-only behavior and responsive layout","expected",""
+"P09-C-002","P09","C","2","regression-api","fixture IDs are unique and each project has three tasks","expected",""
+"P09-C-002","P09","C","2","regression-api","a successful update changes only the chosen record and fields","expected",""
+"P09-C-002","P09","C","2","regression-api","invalid update leaves all records unchanged: {""title"":"""",""status"":""done""}","expected",""
+"P09-C-002","P09","C","2","regression-api","invalid update leaves all records unchanged: {""title"":"" \t\r\n"",""status"":""done""}","expected",""
+"P09-C-002","P09","C","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""unknown""}","expected",""
+"P09-C-002","P09","C","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov""}","expected",""
+"P09-C-002","P09","C","2","regression-api","invalid update leaves all records unchanged: {""title"":42,""status"":""done""}","expected",""
+"P09-C-002","P09","C","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""done"",""projectId"":""launch""}","expected",""
+"P09-C-002","P09","C","2","regression-api","invalid update leaves all records unchanged: null","expected",""
+"P09-C-002","P09","C","2","regression-api","rejected save writes nothing and the next request can succeed","expected",""
+"P09-C-002","P09","C","2","regression-api","held request remains unchanged until released with success","expected",""
+"P09-C-002","P09","C","2","regression-api","held request remains unchanged until released with reject","expected",""
+"P09-C-002","P09","C","2","regression-api","reset cancels a pending save and restores a previously changed record","expected",""
+"P09-C-002","P09","C","2","regression-api","normal server does not expose test controls","expected",""
+"P09-C-002","P09","C","2","regression-desktop","projects show their own tasks and all three states","expected",""
+"P09-C-002","P09","C","2","regression-mobile","projects show their own tasks and all three states","expected",""
+"P09-C-002","P09","C","2","regression-desktop","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-C-002","P09","C","2","regression-mobile","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-C-002","P09","C","2","regression-desktop","direct task links survive refresh and browser back closes details","expected",""
+"P09-C-002","P09","C","2","regression-mobile","direct task links survive refresh and browser back closes details","expected",""
+"P09-C-002","P09","C","2","regression-desktop","a saved API change survives browser refresh and project navigation","expected",""
+"P09-C-002","P09","C","2","regression-mobile","a saved API change survives browser refresh and project navigation","expected",""
+"P09-C-002","P09","C","2","regression-desktop","unknown locations and task IDs show a recoverable state","expected",""
+"P09-C-002","P09","C","2","regression-mobile","unknown locations and task IDs show a recoverable state","expected",""
+"P09-C-002","P09","C","2","regression-desktop","failed /api/projects can be retried","expected",""
+"P09-C-002","P09","C","2","regression-mobile","failed /api/projects can be retried","expected",""
+"P09-C-002","P09","C","2","regression-desktop","failed /api/projects/web/tasks can be retried","expected",""
+"P09-C-002","P09","C","2","regression-mobile","failed /api/projects/web/tasks can be retried","expected",""
+"P09-C-002","P09","C","2","regression-desktop","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-C-002","P09","C","2","regression-mobile","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-C-002","P09","C","2","regression-desktop","switching project during loading never shows the previous project tasks","expected",""
+"P09-C-002","P09","C","2","regression-mobile","switching project during loading never shows the previous project tasks","expected",""
+"P09-C-002","P09","C","2","regression-desktop","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-C-002","P09","C","2","regression-mobile","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-C-002","P09","C","2","regression-desktop","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-C-002","P09","C","2","regression-mobile","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-C-002","P09","C","2","regression-desktop","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-C-002","P09","C","2","regression-mobile","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-C-002","P09","C","2","development-desktop","D01: direct filtered URL","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 7
+
+  Array [
++   ""web-01"",
++   ""web-02"",
+    ""web-03"",
++   ""web-04"",
++   ""web-05"",
++   ""web-06"",
++   ""web-07"",
++   ""web-08"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/development.spec.ts:2:132"
+"P09-C-002","P09","C","2","development-mobile","D01: direct filtered URL","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 7
+
+  Array [
++   ""web-01"",
++   ""web-02"",
+    ""web-03"",
++   ""web-04"",
++   ""web-05"",
++   ""web-06"",
++   ""web-07"",
++   ""web-08"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/development.spec.ts:2:132"
+"P09-C-002","P09","C","2","development-desktop","D02: draft only applies on confirmation","unexpected","TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('combobox', { name: 'Stanje v povezavi', exact: true })
+
+
+   at tasks/P09/helpers.ts:48
+
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+  47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+> 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+     |                                                                                                                      ^
+  49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+  50 | export async function project(page: Page, id: 'web' | 'launch') {
+  51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+    at select (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:48:118)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/development.spec.ts:3:96"
+"P09-C-002","P09","C","2","development-mobile","D02: draft only applies on confirmation","unexpected","TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('combobox', { name: 'Stanje v povezavi', exact: true })
+
+
+   at tasks/P09/helpers.ts:48
+
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+  47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+> 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+     |                                                                                                                      ^
+  49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+  50 | export async function project(page: Page, id: 'web' | 'launch') {
+  51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+    at select (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:48:118)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/development.spec.ts:3:96"
+"P09-C-002","P09","C","2","development-desktop","D03: board and reload preserve committed state","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 6
+
+  Array [
++   ""web-02"",
++   ""web-04"",
++   ""web-07"",
++   ""web-08"",
++   ""web-01"",
++   ""web-05"",
+    ""web-03"",
+    ""web-06"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/development.spec.ts:4:184"
+"P09-C-002","P09","C","2","development-mobile","D03: board and reload preserve committed state","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 6
+
+  Array [
++   ""web-02"",
++   ""web-04"",
++   ""web-07"",
++   ""web-08"",
++   ""web-01"",
++   ""web-05"",
+    ""web-03"",
+    ""web-06"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/development.spec.ts:4:184"
+"P09-C-002","P09","C","2","development-desktop","D04: reset and no writes","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  -  1
++ Received  + 10
+
+- Array []
++ Array [
++   ""web-01"",
++   ""web-02"",
++   ""web-03"",
++   ""web-04"",
++   ""web-05"",
++   ""web-06"",
++   ""web-07"",
++   ""web-08"",
++ ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/development.spec.ts:5:139"
+"P09-C-002","P09","C","2","development-mobile","D04: reset and no writes","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  -  1
++ Received  + 10
+
+- Array []
++ Array [
++   ""web-01"",
++   ""web-02"",
++   ""web-03"",
++   ""web-04"",
++   ""web-05"",
++   ""web-06"",
++   ""web-07"",
++   ""web-08"",
++ ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/development.spec.ts:5:139"
+"P09-C-002","P09","C","2","evaluation-desktop","E01: R01 direct project and detail routes apply state","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 7
+
+  Array [
++   ""web-01"",
++   ""web-02"",
+    ""web-03"",
++   ""web-04"",
++   ""web-05"",
++   ""web-06"",
++   ""web-07"",
++   ""web-08"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:4:272"
+"P09-C-002","P09","C","2","evaluation-mobile","E01: R01 direct project and detail routes apply state","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 7
+
+  Array [
++   ""web-01"",
++   ""web-02"",
+    ""web-03"",
++   ""web-04"",
++   ""web-05"",
++   ""web-06"",
++   ""web-07"",
++   ""web-08"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:4:272"
+"P09-C-002","P09","C","2","evaluation-desktop","E02: R02 one normalized literal phrase within a single field","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 1
+
+  Array [
+    ""a"",
++   ""b"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:5:279"
+"P09-C-002","P09","C","2","evaluation-mobile","E02: R02 one normalized literal phrase within a single field","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 1
+
+  Array [
+    ""a"",
++   ""b"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:5:279"
+"P09-C-002","P09","C","2","evaluation-desktop","E03: R03 status conjunction and stable title sorting","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 1
+
+  Array [
++   ""z"",
+    ""x"",
+    ""y"",
+    ""n"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:6:321"
+"P09-C-002","P09","C","2","evaluation-mobile","E03: R03 status conjunction and stable title sorting","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 1
+
+  Array [
++   ""z"",
+    ""x"",
+    ""y"",
+    ""n"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:6:321"
+"P09-C-002","P09","C","2","evaluation-desktop","E04: R04 first parameter wins, invalid values default, no passive rewrite","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 5
+
+  Array [
+    ""web-01"",
+    ""web-02"",
+    ""web-03"",
++   ""web-04"",
++   ""web-05"",
++   ""web-06"",
++   ""web-07"",
++   ""web-08"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:7:247"
+"P09-C-002","P09","C","2","evaluation-mobile","E04: R04 first parameter wins, invalid values default, no passive rewrite","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 5
+
+  Array [
+    ""web-01"",
+    ""web-02"",
+    ""web-03"",
++   ""web-04"",
++   ""web-05"",
++   ""web-06"",
++   ""web-07"",
++   ""web-08"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:7:247"
+"P09-C-002","P09","C","2","evaluation-desktop","E05: R05 draft changes nothing until one atomic history commit","unexpected","TimeoutError: locator.fill: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true })
+
+
+   6 | test('E03: R03 status conjunction and stable title sorting',async({page})=>{await mount(page,[makeTask('z',{title:'Žoga'}),makeTask('x',{title:'alfa 2',status:'done'}),makeTask('y',{title:'Álfa 2',status:'done'}),makeTask('n',{title:'Alfa 10',status:'done'})],'#/projects/web?q=alfa&status=done&order=title-desc');await expectIds(page,['x','y','n']);await select(page,'Vrstni red v povezavi','title-asc');await click(page,'Uporabi pogled');await expectIds(page,['n','x','y'])})
+   7 | test('E04: R04 first parameter wins, invalid values default, no passive rewrite',async({page})=>{const hash='#/projects/web?status=invalid&status=done&order=bad&order=title-desc&q=pregled&q=other&extra=%23';await mount(page,undefined,hash);await expectIds(page,['web-01','web-02','web-03']);expect(new URL(page.url()).hash).toBe(hash);await expect(page.getByRole('combobox',{name:'Stanje v povezavi',exact:true})).toHaveValue('all');await expect(page.getByRole('combobox',{name:'Vrstni red v povezavi',exact:true})).toHaveValue('original')})
+>  8 | test('E05: R05 draft changes nothing until one atomic history commit',async({page})=>{await mount(page);const before=page.url(),length=await page.evaluate(()=>history.length);await search(page).fill('pregled');await select(page,'Stanje v povezavi','done');await select(page,'Vrstni red v povezavi','title-desc');await expectIds(page,webIds());expect(page.url()).toBe(before);expect(await page.evaluate(()=>history.length)).toBe(length);await click(page,'Uporabi pogled');await expectIds(page,['web-03']);expect(await page.evaluate(()=>history.length)).toBe(length+1);await page.goBack();await expectIds(page,webIds());await expect(search(page)).toHaveValue('')})
+     |                                                                                                                                                                                                   ^
+   9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page."
+"P09-C-002","P09","C","2","evaluation-mobile","E05: R05 draft changes nothing until one atomic history commit","unexpected","TimeoutError: locator.fill: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true })
+
+
+   6 | test('E03: R03 status conjunction and stable title sorting',async({page})=>{await mount(page,[makeTask('z',{title:'Žoga'}),makeTask('x',{title:'alfa 2',status:'done'}),makeTask('y',{title:'Álfa 2',status:'done'}),makeTask('n',{title:'Alfa 10',status:'done'})],'#/projects/web?q=alfa&status=done&order=title-desc');await expectIds(page,['x','y','n']);await select(page,'Vrstni red v povezavi','title-asc');await click(page,'Uporabi pogled');await expectIds(page,['n','x','y'])})
+   7 | test('E04: R04 first parameter wins, invalid values default, no passive rewrite',async({page})=>{const hash='#/projects/web?status=invalid&status=done&order=bad&order=title-desc&q=pregled&q=other&extra=%23';await mount(page,undefined,hash);await expectIds(page,['web-01','web-02','web-03']);expect(new URL(page.url()).hash).toBe(hash);await expect(page.getByRole('combobox',{name:'Stanje v povezavi',exact:true})).toHaveValue('all');await expect(page.getByRole('combobox',{name:'Vrstni red v povezavi',exact:true})).toHaveValue('original')})
+>  8 | test('E05: R05 draft changes nothing until one atomic history commit',async({page})=>{await mount(page);const before=page.url(),length=await page.evaluate(()=>history.length);await search(page).fill('pregled');await select(page,'Stanje v povezavi','done');await select(page,'Vrstni red v povezavi','title-desc');await expectIds(page,webIds());expect(page.url()).toBe(before);expect(await page.evaluate(()=>history.length)).toBe(length);await click(page,'Uporabi pogled');await expectIds(page,['web-03']);expect(await page.evaluate(()=>history.length)).toBe(length+1);await page.goBack();await expectIds(page,webIds());await expect(search(page)).toHaveValue('')})
+     |                                                                                                                                                                                                   ^
+   9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page."
+"P09-C-002","P09","C","2","evaluation-desktop","E06: R06 trim encoding canonical defaults and repeated commit","unexpected","TimeoutError: locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+   at tasks/P09/helpers.ts:49
+
+  47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+  48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+> 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+     |                                                                                                    ^
+  50 | export async function project(page: Page, id: 'web' | 'launch') {
+  51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+  52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+    at click (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:49:100)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:9:240"
+"P09-C-002","P09","C","2","evaluation-mobile","E06: R06 trim encoding canonical defaults and repeated commit","unexpected","TimeoutError: locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+   at tasks/P09/helpers.ts:49
+
+  47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+  48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+> 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+     |                                                                                                    ^
+  50 | export async function project(page: Page, id: 'web' | 'launch') {
+  51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+  52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+    at click (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:49:100)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:9:240"
+"P09-C-002","P09","C","2","evaluation-desktop","E07: R07 back forward restore controls results and refresh","unexpected","TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('combobox', { name: 'Stanje v povezavi', exact: true })
+
+
+   at tasks/P09/helpers.ts:48
+
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+  47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+> 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+     |                                                                                                                      ^
+  49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+  50 | export async function project(page: Page, id: 'web' | 'launch') {
+  51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+    at select (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:48:118)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:10:107"
+"P09-C-002","P09","C","2","evaluation-mobile","E07: R07 back forward restore controls results and refresh","unexpected","TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('combobox', { name: 'Stanje v povezavi', exact: true })
+
+
+   at tasks/P09/helpers.ts:48
+
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+  47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+> 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+     |                                                                                                                      ^
+  49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+  50 | export async function project(page: Page, id: 'web' | 'launch') {
+  51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+    at select (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:48:118)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:10:107"
+"P09-C-002","P09","C","2","evaluation-desktop","E08: R08 view changes preserve committed state and discard draft","unexpected","TimeoutError: locator.fill: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true })
+
+
+   9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page.evaluate(()=>history.length)).toBe(length);await search(page).fill('  Čaj + & ? #  ');await click(page,'Uporabi pogled');await expect(search(page)).toHaveValue('Čaj + & ? #');expect(params(page).get('q')).toBe('Čaj + & ? #');expect(params(page).get('view')).toBe('board');const committed=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(await page.evaluate(()=>history.length)).toBe(committed)})
+  10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+> 11 | test('E08: R08 view changes preserve committed state and discard draft',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&order=title-desc');await search(page).fill('uncommitted');await board(page);await expectIds(page,['web-03']);await expect(search(page)).toHaveValue('pregled');expect(params(page).get('order')).toBe('title-desc');await select(page,'Stanje v povezavi','todo');await table(page);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done');await expectIds(page,['web-03'])})
+     |                                                                           "
+"P09-C-002","P09","C","2","evaluation-mobile","E08: R08 view changes preserve committed state and discard draft","unexpected","TimeoutError: locator.fill: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true })
+
+
+   9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page.evaluate(()=>history.length)).toBe(length);await search(page).fill('  Čaj + & ? #  ');await click(page,'Uporabi pogled');await expect(search(page)).toHaveValue('Čaj + & ? #');expect(params(page).get('q')).toBe('Čaj + & ? #');expect(params(page).get('view')).toBe('board');const committed=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(await page.evaluate(()=>history.length)).toBe(committed)})
+  10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+> 11 | test('E08: R08 view changes preserve committed state and discard draft',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&order=title-desc');await search(page).fill('uncommitted');await board(page);await expectIds(page,['web-03']);await expect(search(page)).toHaveValue('pregled');expect(params(page).get('order')).toBe('title-desc');await select(page,'Stanje v povezavi','todo');await table(page);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done');await expectIds(page,['web-03'])})
+     |                                                                           "
+"P09-C-002","P09","C","2","evaluation-desktop","E09: R09 details preserve params view and correct duplicate ID","unexpected","TimeoutError: locator.fill: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true })
+
+
+  10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+  11 | test('E08: R08 view changes preserve committed state and discard draft',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&order=title-desc');await search(page).fill('uncommitted');await board(page);await expectIds(page,['web-03']);await expect(search(page)).toHaveValue('pregled');expect(params(page).get('order')).toBe('title-desc');await select(page,'Stanje v povezavi','todo');await table(page);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done');await expectIds(page,['web-03'])})
+> 12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id=""web-03""]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})
+     |                                                                                                                                                            "
+"P09-C-002","P09","C","2","evaluation-mobile","E09: R09 details preserve params view and correct duplicate ID","unexpected","TimeoutError: locator.fill: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true })
+
+
+  10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+  11 | test('E08: R08 view changes preserve committed state and discard draft',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&order=title-desc');await search(page).fill('uncommitted');await board(page);await expectIds(page,['web-03']);await expect(search(page)).toHaveValue('pregled');expect(params(page).get('order')).toBe('title-desc');await select(page,'Stanje v povezavi','todo');await table(page);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done');await expectIds(page,['web-03'])})
+> 12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id=""web-03""]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})
+     |                                                                                                                                                            "
+"P09-C-002","P09","C","2","evaluation-desktop","E10: R10 project navigation resets while direct URL honors params","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 1
+
+  Array [
++   ""launch-01"",
+    ""launch-02"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:13:369"
+"P09-C-002","P09","C","2","evaluation-mobile","E10: R10 project navigation resets while direct URL honors params","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 0
++ Received  + 1
+
+  Array [
++   ""launch-01"",
+    ""launch-02"",
+  ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:13:369"
+"P09-C-002","P09","C","2","evaluation-desktop","E11: R11 reset history, empty message and whole-project count","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  -  1
++ Received  + 10
+
+- Array []
++ Array [
++   ""web-02"",
++   ""web-04"",
++   ""web-07"",
++   ""web-08"",
++   ""web-01"",
++   ""web-05"",
++   ""web-03"",
++   ""web-06"",
++ ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:14:158"
+"P09-C-002","P09","C","2","evaluation-mobile","E11: R11 reset history, empty message and whole-project count","unexpected","Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  -  1
++ Received  + 10
+
+- Array []
++ Array [
++   ""web-02"",
++   ""web-04"",
++   ""web-07"",
++   ""web-08"",
++   ""web-01"",
++   ""web-05"",
++   ""web-03"",
++   ""web-06"",
++ ]
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+
+   at tasks/P09/helpers.ts:43
+
+  41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+  42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+> 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+     |                                                                                                              ^
+  44 | }
+  45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+    at expectIds (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:43:110)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:14:158"
+"P09-C-002","P09","C","2","evaluation-desktop","E12: R12 local read-only behavior and responsive layout","unexpected","TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('combobox', { name: 'Stanje v povezavi', exact: true })
+
+
+   at tasks/P09/helpers.ts:48
+
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+  47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+> 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+     |                                                                                                                      ^
+  49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+  50 | export async function project(page: Page, id: 'web' | 'launch') {
+  51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+    at select (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:48:118)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:15:117"
+"P09-C-002","P09","C","2","evaluation-mobile","E12: R12 local read-only behavior and responsive layout","unexpected","TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByRole('combobox', { name: 'Stanje v povezavi', exact: true })
+
+
+   at tasks/P09/helpers.ts:48
+
+  46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+  47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+> 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+     |                                                                                                                      ^
+  49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+  50 | export async function project(page: Page, id: 'web' | 'launch') {
+  51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+    at select (/Users/zan/Documents/mag/experiments/luna-study/runtime/tasks/P09/helpers.ts:48:118)
+    at /Users/zan/Documents/mag/experiments/luna-study/runtime/evaluation/P09/acceptance.spec.ts:15:117"
+"P09-A-002","P09","A","2","regression-api","fixture IDs are unique and each project has three tasks","expected",""
+"P09-A-002","P09","A","2","regression-api","a successful update changes only the chosen record and fields","expected",""
+"P09-A-002","P09","A","2","regression-api","invalid update leaves all records unchanged: {""title"":"""",""status"":""done""}","expected",""
+"P09-A-002","P09","A","2","regression-api","invalid update leaves all records unchanged: {""title"":"" \t\r\n"",""status"":""done""}","expected",""
+"P09-A-002","P09","A","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""unknown""}","expected",""
+"P09-A-002","P09","A","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov""}","expected",""
+"P09-A-002","P09","A","2","regression-api","invalid update leaves all records unchanged: {""title"":42,""status"":""done""}","expected",""
+"P09-A-002","P09","A","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""done"",""projectId"":""launch""}","expected",""
+"P09-A-002","P09","A","2","regression-api","invalid update leaves all records unchanged: null","expected",""
+"P09-A-002","P09","A","2","regression-api","rejected save writes nothing and the next request can succeed","expected",""
+"P09-A-002","P09","A","2","regression-api","held request remains unchanged until released with success","expected",""
+"P09-A-002","P09","A","2","regression-api","held request remains unchanged until released with reject","expected",""
+"P09-A-002","P09","A","2","regression-api","reset cancels a pending save and restores a previously changed record","expected",""
+"P09-A-002","P09","A","2","regression-api","normal server does not expose test controls","expected",""
+"P09-A-002","P09","A","2","regression-desktop","projects show their own tasks and all three states","expected",""
+"P09-A-002","P09","A","2","regression-mobile","projects show their own tasks and all three states","expected",""
+"P09-A-002","P09","A","2","regression-desktop","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-A-002","P09","A","2","regression-mobile","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-A-002","P09","A","2","regression-desktop","direct task links survive refresh and browser back closes details","expected",""
+"P09-A-002","P09","A","2","regression-mobile","direct task links survive refresh and browser back closes details","expected",""
+"P09-A-002","P09","A","2","regression-desktop","a saved API change survives browser refresh and project navigation","expected",""
+"P09-A-002","P09","A","2","regression-mobile","a saved API change survives browser refresh and project navigation","expected",""
+"P09-A-002","P09","A","2","regression-desktop","unknown locations and task IDs show a recoverable state","expected",""
+"P09-A-002","P09","A","2","regression-mobile","unknown locations and task IDs show a recoverable state","expected",""
+"P09-A-002","P09","A","2","regression-desktop","failed /api/projects can be retried","expected",""
+"P09-A-002","P09","A","2","regression-mobile","failed /api/projects can be retried","expected",""
+"P09-A-002","P09","A","2","regression-desktop","failed /api/projects/web/tasks can be retried","expected",""
+"P09-A-002","P09","A","2","regression-mobile","failed /api/projects/web/tasks can be retried","expected",""
+"P09-A-002","P09","A","2","regression-desktop","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-A-002","P09","A","2","regression-mobile","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-A-002","P09","A","2","regression-desktop","switching project during loading never shows the previous project tasks","expected",""
+"P09-A-002","P09","A","2","regression-mobile","switching project during loading never shows the previous project tasks","expected",""
+"P09-A-002","P09","A","2","regression-desktop","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-A-002","P09","A","2","regression-mobile","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-A-002","P09","A","2","regression-desktop","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-A-002","P09","A","2","regression-mobile","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-A-002","P09","A","2","regression-desktop","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-A-002","P09","A","2","regression-mobile","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-A-002","P09","A","2","development-desktop","D01: direct filtered URL","expected",""
+"P09-A-002","P09","A","2","development-mobile","D01: direct filtered URL","expected",""
+"P09-A-002","P09","A","2","development-desktop","D02: draft only applies on confirmation","expected",""
+"P09-A-002","P09","A","2","development-mobile","D02: draft only applies on confirmation","expected",""
+"P09-A-002","P09","A","2","development-desktop","D03: board and reload preserve committed state","expected",""
+"P09-A-002","P09","A","2","development-mobile","D03: board and reload preserve committed state","expected",""
+"P09-A-002","P09","A","2","development-desktop","D04: reset and no writes","expected",""
+"P09-A-002","P09","A","2","development-mobile","D04: reset and no writes","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E01: R01 direct project and detail routes apply state","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E01: R01 direct project and detail routes apply state","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E02: R02 one normalized literal phrase within a single field","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E02: R02 one normalized literal phrase within a single field","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E03: R03 status conjunction and stable title sorting","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E03: R03 status conjunction and stable title sorting","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E04: R04 first parameter wins, invalid values default, no passive rewrite","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E04: R04 first parameter wins, invalid values default, no passive rewrite","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E05: R05 draft changes nothing until one atomic history commit","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E05: R05 draft changes nothing until one atomic history commit","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E06: R06 trim encoding canonical defaults and repeated commit","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E06: R06 trim encoding canonical defaults and repeated commit","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E07: R07 back forward restore controls results and refresh","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E07: R07 back forward restore controls results and refresh","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E08: R08 view changes preserve committed state and discard draft","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E08: R08 view changes preserve committed state and discard draft","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E09: R09 details preserve params view and correct duplicate ID","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E09: R09 details preserve params view and correct duplicate ID","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E10: R10 project navigation resets while direct URL honors params","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E10: R10 project navigation resets while direct URL honors params","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E11: R11 reset history, empty message and whole-project count","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E11: R11 reset history, empty message and whole-project count","expected",""
+"P09-A-002","P09","A","2","evaluation-desktop","E12: R12 local read-only behavior and responsive layout","expected",""
+"P09-A-002","P09","A","2","evaluation-mobile","E12: R12 local read-only behavior and responsive layout","expected",""
+"P10-C-002","P10","C","2","regression-api","fixture IDs are unique and each project has three tasks","expected",""
+"P10-C-002","P10","C","2","regression-api","a successful update changes only the chosen record and fields","expected",""
+"P10-C-002","P10","C","2","regression-api","invalid update leaves all records unchanged: {""title"":"""",""status"":""done""}","expected",""
+"P10-C-002","P10","C","2","regression-api","invalid update leaves all records unchanged: {""title"":"" \t\r\n"",""status"":""done""}","expected",""
+"P10-C-002","P10","C","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""unknown""}","expected",""
+"P10-C-002","P10","C","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov""}","expected",""
+"P10-C-002","P10","C","2","regression-api","invalid update leaves all records unchanged: {""title"":42,""status"":""done""}","expected",""
+"P10-C-002","P10","C","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""done"",""projectId"":""launch""}","expected",""
+"P10-C-002","P10","C","2","regression-api","invalid update leaves all records unchanged: null","expected",""
+"P10-C-002","P10","C","2","regression-api","rejected save writes nothing and the next request can succeed","expected",""
+"P10-C-002","P10","C","2","regression-api","held request remains unchanged until released with success","expected",""
+"P10-C-002","P10","C","2","regression-api","held request remains unchanged until released with reject","expected",""
+"P10-C-002","P10","C","2","regression-api","reset cancels a pending save and restores a previously changed record","expected",""
+"P10-C-002","P10","C","2","regression-api","normal server does not expose test controls","expected",""
+"P10-C-002","P10","C","2","regression-desktop","projects show their own tasks and all three states","expected",""
+"P10-C-002","P10","C","2","regression-mobile","projects show their own tasks and all three states","expected",""
+"P10-C-002","P10","C","2","regression-desktop","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P10-C-002","P10","C","2","regression-mobile","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P10-C-002","P10","C","2","regression-desktop","direct task links survive refresh and browser back closes details","expected",""
+"P10-C-002","P10","C","2","regression-mobile","direct task links survive refresh and browser back closes details","expected",""
+"P10-C-002","P10","C","2","regression-desktop","a saved API change survives browser refresh and project navigation","expected",""
+"P10-C-002","P10","C","2","regression-mobile","a saved API change survives browser refresh and project navigation","expected",""
+"P10-C-002","P10","C","2","regression-desktop","unknown locations and task IDs show a recoverable state","expected",""
+"P10-C-002","P10","C","2","regression-mobile","unknown locations and task IDs show a recoverable state","expected",""
+"P10-C-002","P10","C","2","regression-desktop","failed /api/projects can be retried","expected",""
+"P10-C-002","P10","C","2","regression-mobile","failed /api/projects can be retried","expected",""
+"P10-C-002","P10","C","2","regression-desktop","failed /api/projects/web/tasks can be retried","expected",""
+"P10-C-002","P10","C","2","regression-mobile","failed /api/projects/web/tasks can be retried","expected",""
+"P10-C-002","P10","C","2","regression-desktop","an empty project keeps the navigation and shows an empty state","expected",""
+"P10-C-002","P10","C","2","regression-mobile","an empty project keeps the navigation and shows an empty state","expected",""
+"P10-C-002","P10","C","2","regression-desktop","switching project during loading never shows the previous project tasks","expected",""
+"P10-C-002","P10","C","2","regression-mobile","switching project during loading never shows the previous project tasks","expected",""
+"P10-C-002","P10","C","2","regression-desktop","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P10-C-002","P10","C","2","regression-mobile","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P10-C-002","P10","C","2","regression-desktop","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P10-C-002","P10","C","2","regression-mobile","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P10-C-002","P10","C","2","regression-desktop","an empty board keeps all columns and supports switching back to the table","expected",""
+"P10-C-002","P10","C","2","regression-mobile","an empty board keeps all columns and supports switching back to the table","expected",""
+"P10-C-002","P10","C","2","development-desktop","D01: one move and boundary","expected",""
+"P10-C-002","P10","C","2","development-mobile","D01: one move and boundary","expected",""
+"P10-C-002","P10","C","2","development-desktop","D02: undo and redo","expected",""
+"P10-C-002","P10","C","2","development-mobile","D02: undo and redo","expected",""
+"P10-C-002","P10","C","2","development-desktop","D03: new move clears redo","expected",""
+"P10-C-002","P10","C","2","development-mobile","D03: new move clears redo","expected",""
+"P10-C-002","P10","C","2","development-desktop","D04: board global rank, reset and no writes","expected",""
+"P10-C-002","P10","C","2","development-mobile","D04: board global rank, reset and no writes","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E01: R01 initial global ranks independent of title","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E01: R01 initial global ranks independent of title","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E02: R02 moves swap exactly one global neighbor","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E02: R02 moves swap exactly one global neighbor","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E03: R03 boundaries disabled and no history changes","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E03: R03 boundaries disabled and no history changes","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E04: R04 undo restores full permutation","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E04: R04 undo restores full permutation","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E05: R05 multi-step redo order without lost IDs","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E05: R05 multi-step redo order without lost IDs","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E06: R06 new branch clears redo, invalid boundary does not","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E06: R06 new branch clears redo, invalid boundary does not","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E07: R07 bounded history retains most recent twenty steps","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E07: R07 bounded history retains most recent twenty steps","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E08: R08 reset is undoable and original reset is no-op","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E08: R08 reset is undoable and original reset is no-op","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E09: R09 board actions use global neighbors across status columns","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E09: R09 board actions use global neighbors across status columns","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E10: R10 view details retain stacks; project reload reset","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E10: R10 view details retain stacks; project reload reset","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E11: R11 empty and singleton controls have zero history","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E11: R11 empty and singleton controls have zero history","expected",""
+"P10-C-002","P10","C","2","evaluation-desktop","E12: R12 fields, counts and API unchanged across moves","expected",""
+"P10-C-002","P10","C","2","evaluation-mobile","E12: R12 fields, counts and API unchanged across moves","expected",""
+"P10-B-002","P10","B","2","regression-api","fixture IDs are unique and each project has three tasks","expected",""
+"P10-B-002","P10","B","2","regression-api","a successful update changes only the chosen record and fields","expected",""
+"P10-B-002","P10","B","2","regression-api","invalid update leaves all records unchanged: {""title"":"""",""status"":""done""}","expected",""
+"P10-B-002","P10","B","2","regression-api","invalid update leaves all records unchanged: {""title"":"" \t\r\n"",""status"":""done""}","expected",""
+"P10-B-002","P10","B","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""unknown""}","expected",""
+"P10-B-002","P10","B","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov""}","expected",""
+"P10-B-002","P10","B","2","regression-api","invalid update leaves all records unchanged: {""title"":42,""status"":""done""}","expected",""
+"P10-B-002","P10","B","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""done"",""projectId"":""launch""}","expected",""
+"P10-B-002","P10","B","2","regression-api","invalid update leaves all records unchanged: null","expected",""
+"P10-B-002","P10","B","2","regression-api","rejected save writes nothing and the next request can succeed","expected",""
+"P10-B-002","P10","B","2","regression-api","held request remains unchanged until released with success","expected",""
+"P10-B-002","P10","B","2","regression-api","held request remains unchanged until released with reject","expected",""
+"P10-B-002","P10","B","2","regression-api","reset cancels a pending save and restores a previously changed record","expected",""
+"P10-B-002","P10","B","2","regression-api","normal server does not expose test controls","expected",""
+"P10-B-002","P10","B","2","regression-desktop","projects show their own tasks and all three states","expected",""
+"P10-B-002","P10","B","2","regression-mobile","projects show their own tasks and all three states","expected",""
+"P10-B-002","P10","B","2","regression-desktop","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P10-B-002","P10","B","2","regression-mobile","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P10-B-002","P10","B","2","regression-desktop","direct task links survive refresh and browser back closes details","expected",""
+"P10-B-002","P10","B","2","regression-mobile","direct task links survive refresh and browser back closes details","expected",""
+"P10-B-002","P10","B","2","regression-desktop","a saved API change survives browser refresh and project navigation","expected",""
+"P10-B-002","P10","B","2","regression-mobile","a saved API change survives browser refresh and project navigation","expected",""
+"P10-B-002","P10","B","2","regression-desktop","unknown locations and task IDs show a recoverable state","expected",""
+"P10-B-002","P10","B","2","regression-mobile","unknown locations and task IDs show a recoverable state","expected",""
+"P10-B-002","P10","B","2","regression-desktop","failed /api/projects can be retried","expected",""
+"P10-B-002","P10","B","2","regression-mobile","failed /api/projects can be retried","expected",""
+"P10-B-002","P10","B","2","regression-desktop","failed /api/projects/web/tasks can be retried","expected",""
+"P10-B-002","P10","B","2","regression-mobile","failed /api/projects/web/tasks can be retried","expected",""
+"P10-B-002","P10","B","2","regression-desktop","an empty project keeps the navigation and shows an empty state","expected",""
+"P10-B-002","P10","B","2","regression-mobile","an empty project keeps the navigation and shows an empty state","expected",""
+"P10-B-002","P10","B","2","regression-desktop","switching project during loading never shows the previous project tasks","expected",""
+"P10-B-002","P10","B","2","regression-mobile","switching project during loading never shows the previous project tasks","expected",""
+"P10-B-002","P10","B","2","regression-desktop","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P10-B-002","P10","B","2","regression-mobile","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P10-B-002","P10","B","2","regression-desktop","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P10-B-002","P10","B","2","regression-mobile","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P10-B-002","P10","B","2","regression-desktop","an empty board keeps all columns and supports switching back to the table","expected",""
+"P10-B-002","P10","B","2","regression-mobile","an empty board keeps all columns and supports switching back to the table","expected",""
+"P10-B-002","P10","B","2","development-desktop","D01: one move and boundary","expected",""
+"P10-B-002","P10","B","2","development-mobile","D01: one move and boundary","expected",""
+"P10-B-002","P10","B","2","development-desktop","D02: undo and redo","expected",""
+"P10-B-002","P10","B","2","development-mobile","D02: undo and redo","expected",""
+"P10-B-002","P10","B","2","development-desktop","D03: new move clears redo","expected",""
+"P10-B-002","P10","B","2","development-mobile","D03: new move clears redo","expected",""
+"P10-B-002","P10","B","2","development-desktop","D04: board global rank, reset and no writes","expected",""
+"P10-B-002","P10","B","2","development-mobile","D04: board global rank, reset and no writes","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E01: R01 initial global ranks independent of title","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E01: R01 initial global ranks independent of title","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E02: R02 moves swap exactly one global neighbor","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E02: R02 moves swap exactly one global neighbor","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E03: R03 boundaries disabled and no history changes","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E03: R03 boundaries disabled and no history changes","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E04: R04 undo restores full permutation","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E04: R04 undo restores full permutation","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E05: R05 multi-step redo order without lost IDs","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E05: R05 multi-step redo order without lost IDs","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E06: R06 new branch clears redo, invalid boundary does not","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E06: R06 new branch clears redo, invalid boundary does not","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E07: R07 bounded history retains most recent twenty steps","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E07: R07 bounded history retains most recent twenty steps","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E08: R08 reset is undoable and original reset is no-op","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E08: R08 reset is undoable and original reset is no-op","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E09: R09 board actions use global neighbors across status columns","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E09: R09 board actions use global neighbors across status columns","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E10: R10 view details retain stacks; project reload reset","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E10: R10 view details retain stacks; project reload reset","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E11: R11 empty and singleton controls have zero history","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E11: R11 empty and singleton controls have zero history","expected",""
+"P10-B-002","P10","B","2","evaluation-desktop","E12: R12 fields, counts and API unchanged across moves","expected",""
+"P10-B-002","P10","B","2","evaluation-mobile","E12: R12 fields, counts and API unchanged across moves","expected",""
+"P10-A-002","P10","A","2","regression-api","fixture IDs are unique and each project has three tasks","expected",""
+"P10-A-002","P10","A","2","regression-api","a successful update changes only the chosen record and fields","expected",""
+"P10-A-002","P10","A","2","regression-api","invalid update leaves all records unchanged: {""title"":"""",""status"":""done""}","expected",""
+"P10-A-002","P10","A","2","regression-api","invalid update leaves all records unchanged: {""title"":"" \t\r\n"",""status"":""done""}","expected",""
+"P10-A-002","P10","A","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""unknown""}","expected",""
+"P10-A-002","P10","A","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov""}","expected",""
+"P10-A-002","P10","A","2","regression-api","invalid update leaves all records unchanged: {""title"":42,""status"":""done""}","expected",""
+"P10-A-002","P10","A","2","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""done"",""projectId"":""launch""}","expected",""
+"P10-A-002","P10","A","2","regression-api","invalid update leaves all records unchanged: null","expected",""
+"P10-A-002","P10","A","2","regression-api","rejected save writes nothing and the next request can succeed","expected",""
+"P10-A-002","P10","A","2","regression-api","held request remains unchanged until released with success","expected",""
+"P10-A-002","P10","A","2","regression-api","held request remains unchanged until released with reject","expected",""
+"P10-A-002","P10","A","2","regression-api","reset cancels a pending save and restores a previously changed record","expected",""
+"P10-A-002","P10","A","2","regression-api","normal server does not expose test controls","expected",""
+"P10-A-002","P10","A","2","regression-desktop","projects show their own tasks and all three states","expected",""
+"P10-A-002","P10","A","2","regression-mobile","projects show their own tasks and all three states","expected",""
+"P10-A-002","P10","A","2","regression-desktop","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P10-A-002","P10","A","2","regression-mobile","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P10-A-002","P10","A","2","regression-desktop","direct task links survive refresh and browser back closes details","expected",""
+"P10-A-002","P10","A","2","regression-mobile","direct task links survive refresh and browser back closes details","expected",""
+"P10-A-002","P10","A","2","regression-desktop","a saved API change survives browser refresh and project navigation","expected",""
+"P10-A-002","P10","A","2","regression-mobile","a saved API change survives browser refresh and project navigation","expected",""
+"P10-A-002","P10","A","2","regression-desktop","unknown locations and task IDs show a recoverable state","expected",""
+"P10-A-002","P10","A","2","regression-mobile","unknown locations and task IDs show a recoverable state","expected",""
+"P10-A-002","P10","A","2","regression-desktop","failed /api/projects can be retried","expected",""
+"P10-A-002","P10","A","2","regression-mobile","failed /api/projects can be retried","expected",""
+"P10-A-002","P10","A","2","regression-desktop","failed /api/projects/web/tasks can be retried","expected",""
+"P10-A-002","P10","A","2","regression-mobile","failed /api/projects/web/tasks can be retried","expected",""
+"P10-A-002","P10","A","2","regression-desktop","an empty project keeps the navigation and shows an empty state","expected",""
+"P10-A-002","P10","A","2","regression-mobile","an empty project keeps the navigation and shows an empty state","expected",""
+"P10-A-002","P10","A","2","regression-desktop","switching project during loading never shows the previous project tasks","expected",""
+"P10-A-002","P10","A","2","regression-mobile","switching project during loading never shows the previous project tasks","expected",""
+"P10-A-002","P10","A","2","regression-desktop","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P10-A-002","P10","A","2","regression-mobile","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P10-A-002","P10","A","2","regression-desktop","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P10-A-002","P10","A","2","regression-mobile","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P10-A-002","P10","A","2","regression-desktop","an empty board keeps all columns and supports switching back to the table","expected",""
+"P10-A-002","P10","A","2","regression-mobile","an empty board keeps all columns and supports switching back to the table","expected",""
+"P10-A-002","P10","A","2","development-desktop","D01: one move and boundary","expected",""
+"P10-A-002","P10","A","2","development-mobile","D01: one move and boundary","expected",""
+"P10-A-002","P10","A","2","development-desktop","D02: undo and redo","expected",""
+"P10-A-002","P10","A","2","development-mobile","D02: undo and redo","expected",""
+"P10-A-002","P10","A","2","development-desktop","D03: new move clears redo","expected",""
+"P10-A-002","P10","A","2","development-mobile","D03: new move clears redo","expected",""
+"P10-A-002","P10","A","2","development-desktop","D04: board global rank, reset and no writes","expected",""
+"P10-A-002","P10","A","2","development-mobile","D04: board global rank, reset and no writes","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E01: R01 initial global ranks independent of title","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E01: R01 initial global ranks independent of title","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E02: R02 moves swap exactly one global neighbor","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E02: R02 moves swap exactly one global neighbor","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E03: R03 boundaries disabled and no history changes","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E03: R03 boundaries disabled and no history changes","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E04: R04 undo restores full permutation","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E04: R04 undo restores full permutation","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E05: R05 multi-step redo order without lost IDs","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E05: R05 multi-step redo order without lost IDs","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E06: R06 new branch clears redo, invalid boundary does not","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E06: R06 new branch clears redo, invalid boundary does not","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E07: R07 bounded history retains most recent twenty steps","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E07: R07 bounded history retains most recent twenty steps","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E08: R08 reset is undoable and original reset is no-op","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E08: R08 reset is undoable and original reset is no-op","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E09: R09 board actions use global neighbors across status columns","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E09: R09 board actions use global neighbors across status columns","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E10: R10 view details retain stacks; project reload reset","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E10: R10 view details retain stacks; project reload reset","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E11: R11 empty and singleton controls have zero history","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E11: R11 empty and singleton controls have zero history","expected",""
+"P10-A-002","P10","A","2","evaluation-desktop","E12: R12 fields, counts and API unchanged across moves","expected",""
+"P10-A-002","P10","A","2","evaluation-mobile","E12: R12 fields, counts and API unchanged across moves","expected",""
+"P09-C-003","P09","C","3","regression-api","fixture IDs are unique and each project has three tasks","expected",""
+"P09-C-003","P09","C","3","regression-api","a successful update changes only the chosen record and fields","expected",""
+"P09-C-003","P09","C","3","regression-api","invalid update leaves all records unchanged: {""title"":"""",""status"":""done""}","expected",""
+"P09-C-003","P09","C","3","regression-api","invalid update leaves all records unchanged: {""title"":"" \t\r\n"",""status"":""done""}","expected",""
+"P09-C-003","P09","C","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""unknown""}","expected",""
+"P09-C-003","P09","C","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov""}","expected",""
+"P09-C-003","P09","C","3","regression-api","invalid update leaves all records unchanged: {""title"":42,""status"":""done""}","expected",""
+"P09-C-003","P09","C","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""done"",""projectId"":""launch""}","expected",""
+"P09-C-003","P09","C","3","regression-api","invalid update leaves all records unchanged: null","expected",""
+"P09-C-003","P09","C","3","regression-api","rejected save writes nothing and the next request can succeed","expected",""
+"P09-C-003","P09","C","3","regression-api","held request remains unchanged until released with success","expected",""
+"P09-C-003","P09","C","3","regression-api","held request remains unchanged until released with reject","expected",""
+"P09-C-003","P09","C","3","regression-api","reset cancels a pending save and restores a previously changed record","expected",""
+"P09-C-003","P09","C","3","regression-api","normal server does not expose test controls","expected",""
+"P09-C-003","P09","C","3","regression-desktop","projects show their own tasks and all three states","expected",""
+"P09-C-003","P09","C","3","regression-mobile","projects show their own tasks and all three states","expected",""
+"P09-C-003","P09","C","3","regression-desktop","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-C-003","P09","C","3","regression-mobile","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-C-003","P09","C","3","regression-desktop","direct task links survive refresh and browser back closes details","expected",""
+"P09-C-003","P09","C","3","regression-mobile","direct task links survive refresh and browser back closes details","expected",""
+"P09-C-003","P09","C","3","regression-desktop","a saved API change survives browser refresh and project navigation","expected",""
+"P09-C-003","P09","C","3","regression-mobile","a saved API change survives browser refresh and project navigation","expected",""
+"P09-C-003","P09","C","3","regression-desktop","unknown locations and task IDs show a recoverable state","expected",""
+"P09-C-003","P09","C","3","regression-mobile","unknown locations and task IDs show a recoverable state","expected",""
+"P09-C-003","P09","C","3","regression-desktop","failed /api/projects can be retried","expected",""
+"P09-C-003","P09","C","3","regression-mobile","failed /api/projects can be retried","expected",""
+"P09-C-003","P09","C","3","regression-desktop","failed /api/projects/web/tasks can be retried","expected",""
+"P09-C-003","P09","C","3","regression-mobile","failed /api/projects/web/tasks can be retried","expected",""
+"P09-C-003","P09","C","3","regression-desktop","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-C-003","P09","C","3","regression-mobile","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-C-003","P09","C","3","regression-desktop","switching project during loading never shows the previous project tasks","expected",""
+"P09-C-003","P09","C","3","regression-mobile","switching project during loading never shows the previous project tasks","expected",""
+"P09-C-003","P09","C","3","regression-desktop","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-C-003","P09","C","3","regression-mobile","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-C-003","P09","C","3","regression-desktop","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-C-003","P09","C","3","regression-mobile","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-C-003","P09","C","3","regression-desktop","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-C-003","P09","C","3","regression-mobile","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-C-003","P09","C","3","development-desktop","D01: direct filtered URL","expected",""
+"P09-C-003","P09","C","3","development-mobile","D01: direct filtered URL","expected",""
+"P09-C-003","P09","C","3","development-desktop","D02: draft only applies on confirmation","expected",""
+"P09-C-003","P09","C","3","development-mobile","D02: draft only applies on confirmation","expected",""
+"P09-C-003","P09","C","3","development-desktop","D03: board and reload preserve committed state","expected",""
+"P09-C-003","P09","C","3","development-mobile","D03: board and reload preserve committed state","expected",""
+"P09-C-003","P09","C","3","development-desktop","D04: reset and no writes","expected",""
+"P09-C-003","P09","C","3","development-mobile","D04: reset and no writes","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E01: R01 direct project and detail routes apply state","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E01: R01 direct project and detail routes apply state","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E02: R02 one normalized literal phrase within a single field","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E02: R02 one normalized literal phrase within a single field","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E03: R03 status conjunction and stable title sorting","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E03: R03 status conjunction and stable title sorting","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E04: R04 first parameter wins, invalid values default, no passive rewrite","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E04: R04 first parameter wins, invalid values default, no passive rewrite","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E05: R05 draft changes nothing until one atomic history commit","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E05: R05 draft changes nothing until one atomic history commit","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E06: R06 trim encoding canonical defaults and repeated commit","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E06: R06 trim encoding canonical defaults and repeated commit","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E07: R07 back forward restore controls results and refresh","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E07: R07 back forward restore controls results and refresh","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E08: R08 view changes preserve committed state and discard draft","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E08: R08 view changes preserve committed state and discard draft","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E09: R09 details preserve params view and correct duplicate ID","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E09: R09 details preserve params view and correct duplicate ID","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E10: R10 project navigation resets while direct URL honors params","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E10: R10 project navigation resets while direct URL honors params","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E11: R11 reset history, empty message and whole-project count","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E11: R11 reset history, empty message and whole-project count","expected",""
+"P09-C-003","P09","C","3","evaluation-desktop","E12: R12 local read-only behavior and responsive layout","expected",""
+"P09-C-003","P09","C","3","evaluation-mobile","E12: R12 local read-only behavior and responsive layout","expected",""
+"P09-A-003","P09","A","3","regression-api","fixture IDs are unique and each project has three tasks","expected",""
+"P09-A-003","P09","A","3","regression-api","a successful update changes only the chosen record and fields","expected",""
+"P09-A-003","P09","A","3","regression-api","invalid update leaves all records unchanged: {""title"":"""",""status"":""done""}","expected",""
+"P09-A-003","P09","A","3","regression-api","invalid update leaves all records unchanged: {""title"":"" \t\r\n"",""status"":""done""}","expected",""
+"P09-A-003","P09","A","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""unknown""}","expected",""
+"P09-A-003","P09","A","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov""}","expected",""
+"P09-A-003","P09","A","3","regression-api","invalid update leaves all records unchanged: {""title"":42,""status"":""done""}","expected",""
+"P09-A-003","P09","A","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""done"",""projectId"":""launch""}","expected",""
+"P09-A-003","P09","A","3","regression-api","invalid update leaves all records unchanged: null","expected",""
+"P09-A-003","P09","A","3","regression-api","rejected save writes nothing and the next request can succeed","expected",""
+"P09-A-003","P09","A","3","regression-api","held request remains unchanged until released with success","expected",""
+"P09-A-003","P09","A","3","regression-api","held request remains unchanged until released with reject","expected",""
+"P09-A-003","P09","A","3","regression-api","reset cancels a pending save and restores a previously changed record","expected",""
+"P09-A-003","P09","A","3","regression-api","normal server does not expose test controls","expected",""
+"P09-A-003","P09","A","3","regression-desktop","projects show their own tasks and all three states","expected",""
+"P09-A-003","P09","A","3","regression-mobile","projects show their own tasks and all three states","expected",""
+"P09-A-003","P09","A","3","regression-desktop","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-A-003","P09","A","3","regression-mobile","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-A-003","P09","A","3","regression-desktop","direct task links survive refresh and browser back closes details","expected",""
+"P09-A-003","P09","A","3","regression-mobile","direct task links survive refresh and browser back closes details","expected",""
+"P09-A-003","P09","A","3","regression-desktop","a saved API change survives browser refresh and project navigation","expected",""
+"P09-A-003","P09","A","3","regression-mobile","a saved API change survives browser refresh and project navigation","expected",""
+"P09-A-003","P09","A","3","regression-desktop","unknown locations and task IDs show a recoverable state","expected",""
+"P09-A-003","P09","A","3","regression-mobile","unknown locations and task IDs show a recoverable state","expected",""
+"P09-A-003","P09","A","3","regression-desktop","failed /api/projects can be retried","expected",""
+"P09-A-003","P09","A","3","regression-mobile","failed /api/projects can be retried","expected",""
+"P09-A-003","P09","A","3","regression-desktop","failed /api/projects/web/tasks can be retried","expected",""
+"P09-A-003","P09","A","3","regression-mobile","failed /api/projects/web/tasks can be retried","expected",""
+"P09-A-003","P09","A","3","regression-desktop","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-A-003","P09","A","3","regression-mobile","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-A-003","P09","A","3","regression-desktop","switching project during loading never shows the previous project tasks","expected",""
+"P09-A-003","P09","A","3","regression-mobile","switching project during loading never shows the previous project tasks","expected",""
+"P09-A-003","P09","A","3","regression-desktop","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-A-003","P09","A","3","regression-mobile","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-A-003","P09","A","3","regression-desktop","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-A-003","P09","A","3","regression-mobile","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-A-003","P09","A","3","regression-desktop","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-A-003","P09","A","3","regression-mobile","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-A-003","P09","A","3","development-desktop","D01: direct filtered URL","expected",""
+"P09-A-003","P09","A","3","development-mobile","D01: direct filtered URL","expected",""
+"P09-A-003","P09","A","3","development-desktop","D02: draft only applies on confirmation","expected",""
+"P09-A-003","P09","A","3","development-mobile","D02: draft only applies on confirmation","expected",""
+"P09-A-003","P09","A","3","development-desktop","D03: board and reload preserve committed state","expected",""
+"P09-A-003","P09","A","3","development-mobile","D03: board and reload preserve committed state","expected",""
+"P09-A-003","P09","A","3","development-desktop","D04: reset and no writes","expected",""
+"P09-A-003","P09","A","3","development-mobile","D04: reset and no writes","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E01: R01 direct project and detail routes apply state","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E01: R01 direct project and detail routes apply state","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E02: R02 one normalized literal phrase within a single field","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E02: R02 one normalized literal phrase within a single field","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E03: R03 status conjunction and stable title sorting","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E03: R03 status conjunction and stable title sorting","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E04: R04 first parameter wins, invalid values default, no passive rewrite","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E04: R04 first parameter wins, invalid values default, no passive rewrite","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E05: R05 draft changes nothing until one atomic history commit","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E05: R05 draft changes nothing until one atomic history commit","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E06: R06 trim encoding canonical defaults and repeated commit","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E06: R06 trim encoding canonical defaults and repeated commit","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E07: R07 back forward restore controls results and refresh","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E07: R07 back forward restore controls results and refresh","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E08: R08 view changes preserve committed state and discard draft","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E08: R08 view changes preserve committed state and discard draft","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E09: R09 details preserve params view and correct duplicate ID","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E09: R09 details preserve params view and correct duplicate ID","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E10: R10 project navigation resets while direct URL honors params","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E10: R10 project navigation resets while direct URL honors params","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E11: R11 reset history, empty message and whole-project count","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E11: R11 reset history, empty message and whole-project count","expected",""
+"P09-A-003","P09","A","3","evaluation-desktop","E12: R12 local read-only behavior and responsive layout","expected",""
+"P09-A-003","P09","A","3","evaluation-mobile","E12: R12 local read-only behavior and responsive layout","expected",""
+"P09-B-003","P09","B","3","regression-api","fixture IDs are unique and each project has three tasks","expected",""
+"P09-B-003","P09","B","3","regression-api","a successful update changes only the chosen record and fields","expected",""
+"P09-B-003","P09","B","3","regression-api","invalid update leaves all records unchanged: {""title"":"""",""status"":""done""}","expected",""
+"P09-B-003","P09","B","3","regression-api","invalid update leaves all records unchanged: {""title"":"" \t\r\n"",""status"":""done""}","expected",""
+"P09-B-003","P09","B","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""unknown""}","expected",""
+"P09-B-003","P09","B","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov""}","expected",""
+"P09-B-003","P09","B","3","regression-api","invalid update leaves all records unchanged: {""title"":42,""status"":""done""}","expected",""
+"P09-B-003","P09","B","3","regression-api","invalid update leaves all records unchanged: {""title"":""Veljaven naslov"",""status"":""done"",""projectId"":""launch""}","expected",""
+"P09-B-003","P09","B","3","regression-api","invalid update leaves all records unchanged: null","expected",""
+"P09-B-003","P09","B","3","regression-api","rejected save writes nothing and the next request can succeed","expected",""
+"P09-B-003","P09","B","3","regression-api","held request remains unchanged until released with success","expected",""
+"P09-B-003","P09","B","3","regression-api","held request remains unchanged until released with reject","expected",""
+"P09-B-003","P09","B","3","regression-api","reset cancels a pending save and restores a previously changed record","expected",""
+"P09-B-003","P09","B","3","regression-api","normal server does not expose test controls","expected",""
+"P09-B-003","P09","B","3","regression-desktop","projects show their own tasks and all three states","expected",""
+"P09-B-003","P09","B","3","regression-mobile","projects show their own tasks and all three states","expected",""
+"P09-B-003","P09","B","3","regression-desktop","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-B-003","P09","B","3","regression-mobile","duplicate titles open by ID, with complete details and keyboard dismissal","expected",""
+"P09-B-003","P09","B","3","regression-desktop","direct task links survive refresh and browser back closes details","expected",""
+"P09-B-003","P09","B","3","regression-mobile","direct task links survive refresh and browser back closes details","expected",""
+"P09-B-003","P09","B","3","regression-desktop","a saved API change survives browser refresh and project navigation","expected",""
+"P09-B-003","P09","B","3","regression-mobile","a saved API change survives browser refresh and project navigation","expected",""
+"P09-B-003","P09","B","3","regression-desktop","unknown locations and task IDs show a recoverable state","expected",""
+"P09-B-003","P09","B","3","regression-mobile","unknown locations and task IDs show a recoverable state","expected",""
+"P09-B-003","P09","B","3","regression-desktop","failed /api/projects can be retried","expected",""
+"P09-B-003","P09","B","3","regression-mobile","failed /api/projects can be retried","expected",""
+"P09-B-003","P09","B","3","regression-desktop","failed /api/projects/web/tasks can be retried","expected",""
+"P09-B-003","P09","B","3","regression-mobile","failed /api/projects/web/tasks can be retried","expected",""
+"P09-B-003","P09","B","3","regression-desktop","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-B-003","P09","B","3","regression-mobile","an empty project keeps the navigation and shows an empty state","expected",""
+"P09-B-003","P09","B","3","regression-desktop","switching project during loading never shows the previous project tasks","expected",""
+"P09-B-003","P09","B","3","regression-mobile","switching project during loading never shows the previous project tasks","expected",""
+"P09-B-003","P09","B","3","regression-desktop","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-B-003","P09","B","3","regression-mobile","board navigation preserves the view and opens duplicate titles by ID without writes","expected",""
+"P09-B-003","P09","B","3","regression-desktop","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-B-003","P09","B","3","regression-mobile","board reflects saved states on refresh, including empty columns and duplicate titles","expected",""
+"P09-B-003","P09","B","3","regression-desktop","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-B-003","P09","B","3","regression-mobile","an empty board keeps all columns and supports switching back to the table","expected",""
+"P09-B-003","P09","B","3","development-desktop","D01: direct filtered URL","expected",""
+"P09-B-003","P09","B","3","development-mobile","D01: direct filtered URL","expected",""
+"P09-B-003","P09","B","3","development-desktop","D02: draft only applies on confirmation","expected",""
+"P09-B-003","P09","B","3","development-mobile","D02: draft only applies on confirmation","expected",""
+"P09-B-003","P09","B","3","development-desktop","D03: board and reload preserve committed state","expected",""
+"P09-B-003","P09","B","3","development-mobile","D03: board and reload preserve committed state","expected",""
+"P09-B-003","P09","B","3","development-desktop","D04: reset and no writes","expected",""
+"P09-B-003","P09","B","3","development-mobile","D04: reset and no writes","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E01: R01 direct project and detail routes apply state","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E01: R01 direct project and detail routes apply state","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E02: R02 one normalized literal phrase within a single field","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E02: R02 one normalized literal phrase within a single field","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E03: R03 status conjunction and stable title sorting","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E03: R03 status conjunction and stable title sorting","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E04: R04 first parameter wins, invalid values default, no passive rewrite","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E04: R04 first parameter wins, invalid values default, no passive rewrite","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E05: R05 draft changes nothing until one atomic history commit","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E05: R05 draft changes nothing until one atomic history commit","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E06: R06 trim encoding canonical defaults and repeated commit","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E06: R06 trim encoding canonical defaults and repeated commit","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E07: R07 back forward restore controls results and refresh","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E07: R07 back forward restore controls results and refresh","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E08: R08 view changes preserve committed state and discard draft","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E08: R08 view changes preserve committed state and discard draft","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E09: R09 details preserve params view and correct duplicate ID","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E09: R09 details preserve params view and correct duplicate ID","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E10: R10 project navigation resets while direct URL honors params","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E10: R10 project navigation resets while direct URL honors params","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E11: R11 reset history, empty message and whole-project count","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E11: R11 reset history, empty message and whole-project count","expected",""
+"P09-B-003","P09","B","3","evaluation-desktop","E12: R12 local read-only behavior and responsive layout","expected",""
+"P09-B-003","P09","B","3","evaluation-mobile","E12: R12 local read-only behavior and responsive layout","expected",""

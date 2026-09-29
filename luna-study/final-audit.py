@@ -43,6 +43,26 @@ probe=read(root/usage_recovery['serviceProbe'])
 assert probe['passed'] and probe['excludedFromMeasurements']
 assert probe['model']=='gpt-6-luna' and probe['reasoningEffort']=='xhigh'
 assert read(s/'runtime/runs'/usage_recovery['nextUnusedId']/'execution.json')['startedAt']>=usage_recovery['modelStartedAt']
+pause=read(a/'recovery/pause-2026-09-29.json')
+resume=read(a/'recovery/resume-2026-09-29.json')
+assert pause['state']=='paused' and not pause['measuredModelInterrupted']
+assert pause['repeatedMeasuredRuns']==0 and not pause['nextMeasuredRunStarted']
+assert pause['archivedAfterPause']==resume['startingArchived']==62
+paused_archive=s/'runtime/runs'/pause['currentId']
+assert sha(paused_archive/'execution.json')==pause['executionSha256']
+assert sha(paused_archive/'archive-complete.json')==pause['archiveReceiptSha256']
+assert read(paused_archive/'execution.json')['status']=='completed'
+assert resume['frozenInputsVerified'] and resume['preStartMeasuredExecutionAbsent']
+assert not resume['inputsOrBudgetsChanged'] and not resume['startedIdsRepeated']
+assert pause['nextUnusedId']==resume['nextUnusedId']==schedule[62]['id']
+assert sha(root/resume['serviceProbe'])==resume['serviceProbeSha256']
+resume_probe=read(root/resume['serviceProbe'])
+assert resume_probe['passed'] and resume_probe['excludedFromMeasurements']
+assert resume_probe['model']=='gpt-6-luna' and resume_probe['reasoningEffort']=='xhigh'
+assert sha(s/'runtime/runs'/resume['nextUnusedId']/'preflight-filesystem.json')==resume['preflightFilesystemSha256']
+assert pause['measuredFinishedAt']<resume['modelStartedAt']
+for entry in schedule[62:]:
+ assert read(s/'runtime/runs'/entry['id']/'execution.json')['startedAt']>=resume['modelStartedAt']
 archive=read(a/'archive-verification.json'); assert archive['passed'] and archive['complete'] and archive['archived']==72
 for r in archive['archives']:
  assert sha(s/'runtime/runs'/r['id']/'archive-complete.json')==r['archiveSha256']
@@ -134,7 +154,12 @@ assert len(timing['preparation'])==48
 for prep in timing['preparation']:
  selected=[r for r in timing['records'] if r['collection']==prep['collection'] and r['id']==prep['id']]
  docs=[r for r in selected if r['phase'] in ['constitution','specify','plan','tasks']]
- expected=sum(r['seconds'] for r in docs) if docs and all(r['seconds'] is not None for r in docs) else None
+ expected=None
+ if docs and all(r['seconds'] is not None for r in docs):
+  # Match the reporting script's left-to-right JavaScript reduction exactly.
+  # Python 3.12+ sum() compensates floats and can differ below 1e-12 seconds.
+  expected=0
+  for phase in docs: expected+=phase['seconds']
  assert prep['preparationSeconds']==expected and prep['preparationPhasesRecorded']==len(docs)
  for field,name in [('implementationStarted','implement'),('convergenceStarted','converge')]:
   assert prep[field]==any(r['phase']==name for r in selected)

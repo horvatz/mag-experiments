@@ -40,7 +40,11 @@ styles={
 }
 def clean(s):return str(s).replace('−','-').replace('—','-').replace('–','-').replace('\u2011','-')
 def p(s,style='body'):return Paragraph(escape(clean(s)),styles[style])
-def num(v,d=1,factor=1):return '-' if v is None else f'{v*factor:,.{d}f}'.replace(',',' ').replace('.',',')
+def num(v,d=1,factor=1):
+ if v is None:return '-'
+ scaled=round(v*factor,d)
+ if scaled==0:scaled=0 # Do not display a floating-point negative zero.
+ return f'{scaled:,.{d}f}'.replace(',',' ').replace('.',',')
 W=A4[0]-88
 story=[]
 def add(s,style='body'):story.append(p(s,style))
@@ -101,7 +105,8 @@ if c['complete']:
   values=[]
   for x in filter(include,c['contrasts']):
    fraction=x['metric']!='elapsedSeconds';metric={'elapsedSeconds':'Čas (min)','demonstratedFraction':'Zahteve (o. t.)','strictSuccessFraction':'Strogi uspeh (o. t.)'}[x['metric']]
-   values.append([x['label'].replace('luna, ','').replace('astra, ','').replace('Luna − Astra, ','').replace('(Luna ','(L ').replace('(Astra ','(A '),metric,num(x['meanDifference'],2,100 if fraction else 1/60),num(x['lower'],2,100 if fraction else 1/60),num(x['upper'],2,100 if fraction else 1/60)])
+   label=x['label'].replace('luna, ','').replace('astra, ','').replace('Luna − Astra, ','')
+   values.append([label,metric,num(x['meanDifference'],2,100 if fraction else 1/60),num(x['lower'],2,100 if fraction else 1/60),num(x['upper'],2,100 if fraction else 1/60)])
   table(['Primerjava','Mera','Razlika','Spodaj','Zgoraj'],values,[.3,.25,.15,.15,.15])
   withheld=list(filter(include,c['withheld']))
   if withheld:add('Zadržano zaradi manjkajočega časa: '+ '; '.join(x['label'] for x in withheld)+'.')

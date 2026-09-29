@@ -1,12 +1,12 @@
 # Glavna zbirka P03–P10
 
-Arhiviranih je 62 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
+Arhiviranih je 72 od 72 vnaprej določenih izvedb. Zbirka je popolna.
 
 | Postopek | Arhivirano | Strogi uspehi | Dokazane zahteve, povprečni delež | Čas, povprečje s | Popolna poraba |
 | --- | --- | --- | --- | --- | --- |
-| A | 21/24 | 14 | 0.97 | 717.26 | 18/21 |
-| B | 20/24 | 14 | 0.98 | 992.73 | 17/20 |
-| C | 21/24 | 0 | 0.73 | 1107.92 | 1/21 |
+| A | 24/24 | 17 | 0.97 | 725.33 | 21/24 |
+| B | 24/24 | 15 | 0.99 | 1009.20 | 18/24 |
+| C | 24/24 | 1 | 0.72 | 1109.51 | 2/24 |
 
 Vsaka zahteva potrebuje uspeh na obeh velikostih zaslona. Neopaženo preverjanje pomeni nedokazano zahtevo, ne potrjene funkcionalne napake. Strogi uspeh zahteva še zaključek postopka, dovoljene spremembe, lint, tipe, gradnjo in vseh 70 preverjanj.
 
@@ -76,5 +76,28 @@ Vhodni tokeni vključujejo predpomnjene, izhodni vključujejo reasoning. Nepopol
 | [P04-B-001](../../runs/P04-B-001/report.md) | completed | 12/12 | 12/12 | 875.748 | da |
 | [P03-C-003](../../runs/P03-C-003/report.md) | phase_time_limit | 12/12 | 12/12 | 1080.982 | ne |
 | [P03-A-003](../../runs/P03-A-003/report.md) | completed | 12/12 | 12/12 | 514.316 | da |
+| [P03-B-003](../../runs/P03-B-003/report.md) | completed | 12/12 | 12/12 | 924.558 | da |
+| [P09-B-002](../../runs/P09-B-002/report.md) | completed_with_phase_time_limit | 12/12 | 12/12 | 1100.206 | ne |
+| [P09-C-002](../../runs/P09-C-002/report.md) | time_limit | 0/12 | 12/12 | 1118.789 | ne |
+| [P09-A-002](../../runs/P09-A-002/report.md) | completed | 12/12 | 12/12 | 841.791 | da |
+| [P10-C-002](../../runs/P10-C-002/report.md) | phase_time_limit | 12/12 | 12/12 | 1080.659 | ne |
+| [P10-B-002](../../runs/P10-B-002/report.md) | completed_with_phase_time_limit | 12/12 | 12/12 | 1141.127 | ne |
+| [P10-A-002](../../runs/P10-A-002/report.md) | completed | 12/12 | 12/12 | 709.328 | da |
+| [P09-C-003](../../runs/P09-C-003/report.md) | completed | 12/12 | 12/12 | 1162.258 | da |
+| [P09-A-003](../../runs/P09-A-003/report.md) | completed | 12/12 | 12/12 | 794.387 | da |
+| [P09-B-003](../../runs/P09-B-003/report.md) | time_limit | 12/12 | 12/12 | 1200.321 | ne |
+
+## Parne razlike po nalogah
+
+| Primerjava | Mera | Razlika | 95 % percentilni interval |
+| --- | --- | --- | --- |
+| A − B | meanDemonstratedFraction | -0.01 | -0.03 do 0.00 |
+| A − B | meanElapsedSeconds | -283.87 | -378.18 do -178.63 |
+| A − C | meanDemonstratedFraction | 0.25 | 0.07 do 0.46 |
+| A − C | meanElapsedSeconds | -384.17 | -464.01 do -284.29 |
+| B − C | meanDemonstratedFraction | 0.26 | 0.08 do 0.47 |
+| B − C | meanElapsedSeconds | -100.31 | -162.49 do -42.77 |
+
+Opisni intervali ponovno vzorčijo osem nalog; ne posameznih zahtev ali testov. Seme in 20.000 ponovitev sta določena pred meritvami.
 
 Vsebinska rubrika, človeška presoja in pisanje interpretacije so ločeni koraki; prisotnost testov ali dokumentov ni samodejna ocena njihove kakovosti.

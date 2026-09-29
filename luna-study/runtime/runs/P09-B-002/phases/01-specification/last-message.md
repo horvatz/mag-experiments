@@ -1,0 +1,1 @@
+Koda in tipi so zdaj preverjeni: `Project` ima `id/name`; `Task` ima `id`, `projectId`, `title`, `description`, status iz treh vrednosti, `assignee` in `dueDate`. Izhodišče še nima filtrov; razvojni testi D01–D04 pokrivajo le del obsega. Dopolnjujem dokument s predikati, navigacijskimi pravili in sledljivostjo, pri čemer so vsi testi označeni kot pregledani, ne zagnani.

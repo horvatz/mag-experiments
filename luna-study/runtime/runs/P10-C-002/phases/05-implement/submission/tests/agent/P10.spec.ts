@@ -1,0 +1,71 @@
+import { test, expect, mount, expectIds, webIds, click, board, columnIds, readonly, project } from '../development/helpers.ts'
+
+test('P10 initial order, ID-based places, adjacent moves and edges', async ({ page }) => {
+  await mount(page)
+  await expectIds(page, webIds())
+  await expect(page.getByLabel('Mesto opravila web-02', { exact: true })).toHaveText('2')
+  await expect(page.getByRole('button', { name: 'Premakni web-01 gor', exact: true })).toBeDisabled()
+  await click(page, 'Premakni web-02 gor')
+  await expectIds(page, ['web-02', 'web-01', 'web-03', 'web-04', 'web-05', 'web-06', 'web-07', 'web-08'])
+  await click(page, 'Premakni web-02 dol')
+  await expectIds(page, webIds())
+})
+
+test('P10 undo, redo, branch, reset and capped history', async ({ page }) => {
+  await mount(page)
+  await click(page, 'Premakni web-02 gor')
+  await click(page, 'Razveljavi premik')
+  await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 0. Ponovitve: 1.')
+  await expect(page.getByRole('button', { name: 'Ponovi premik', exact: true })).toBeEnabled()
+  await expect(page.getByRole('button', { name: 'Premakni web-01 gor', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Ponovi premik', exact: true })).toBeEnabled()
+  await click(page, 'Premakni web-03 gor')
+  await expect(page.getByRole('button', { name: 'Ponovi premik', exact: true })).toBeDisabled()
+  await click(page, 'Začetni vrstni red')
+  await expectIds(page, webIds())
+  await click(page, 'Razveljavi premik')
+  await expect(page.getByRole('button', { name: 'Začetni vrstni red', exact: true })).toBeEnabled()
+  for (let i = 0; i < 21; i++) {
+    await click(page, 'Premakni web-01 dol')
+    await click(page, 'Premakni web-01 gor')
+  }
+  await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toContainText('Razveljavitve: 20.')
+})
+
+test('P10 board uses global neighbors and keeps status columns stable', async ({ page }) => {
+  await mount(page)
+  await board(page)
+  await click(page, 'Premakni web-01 dol')
+  await expect(page.getByLabel('Mesto opravila web-01', { exact: true })).toHaveText('2')
+  await columnIds(page, 'V delu', ['web-01', 'web-05'])
+  await columnIds(page, 'Pripravljeno', ['web-02', 'web-04', 'web-07', 'web-08'])
+})
+
+test('P10 preserves local order across details and views, resets on project change, makes no writes', async ({ page }) => {
+  const writes = await mount(page)
+  await click(page, 'Premakni web-02 gor')
+  await click(page, 'Premakni web-03 gor')
+  await click(page, 'Razveljavi premik')
+  await page.locator('[data-task-id="web-02"]').getByRole('link').click()
+  await expect(page.getByRole('dialog')).toBeVisible()
+  await page.keyboard.press('Escape')
+  await board(page)
+  await expect(page.getByLabel('Mesto opravila web-02', { exact: true })).toHaveText('1')
+  await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 1. Ponovitve: 1.')
+  await page.reload()
+  await expect(page.getByLabel('Mesto opravila web-02', { exact: true })).toHaveText('2')
+  await page.setViewportSize({ width: 390, height: 844 })
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  await project(page, 'launch')
+  await expect(page.getByLabel('Mesto opravila launch-01', { exact: true })).toHaveText('1')
+  await readonly(page, writes)
+})
+
+test('P10 handles empty and single-task projects', async ({ page }) => {
+  await mount(page, [])
+  await expect(page.getByText('V tem projektu še ni opravil')).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Razveljavi premik', exact: true })).toBeDisabled()
+  await mount(page, [{ id: 'only', projectId: 'web', title: 'Eno', description: '', status: 'todo', assignee: 'Ana', dueDate: '2026-09-21' }])
+  await expect(page.getByRole('button', { name: 'Premakni only gor', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Premakni only dol', exact: true })).toBeDisabled()
+})

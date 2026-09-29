@@ -1,0 +1,10 @@
+Pilot P09, postopek B: trije ločeni agenti si zaporedno predajo specifikacijo, implementacijo in pregled. Vsak ima svojo zgodovino; popravke opravi prvotni avtor v nadaljevani seji. Skupaj je na voljo največ 20 minut, vključno s predajami. Ne zaganjaj drugih agentov.
+
+Preberi PROJECT_RULES.md, task/instructions.md in task/specification-template.md. Izvirne zahteve ostajajo obvezne tudi, če jih predana specifikacija izpusti. Ohrani obstoječi dizajn. Dovoljeni so samo izvoz in lokalne storitve te naloge. Infrastruktura, odvisnosti, skupni testi in navodila so samo berljivi.
+
+V svoji vlogi najprej shrani uporaben začetni zapis, nato ga dopolnjuj. Ko opraviš obveznosti vloge, zaključi z jedrnatim končnim odgovorom. Rok faze je naveden spodaj. Čas lahko preveriš z node task/time-budget.mjs; preveri ga pred daljšim preverjanjem in vsaj 60 sekund pred rokom zaključi zapis predaje.
+Odvisnosti in Chromium so že nameščeni. npm run check preveri slog, tipe, gradnjo in vse dostopne teste: 38 osnovnih, 8 razvojnih P09 in lastne teste. Lastne teste dodajaj v tests/agent/. Samo razvojne teste zaženeš z npx playwright test --project=development-desktop --project=development-mobile. Testni strežnik uporablja 5174/3102. Za ročni ogled uporabi WEB_PORT=5193 API_PORT=3123 npm run dev. V lastnih skriptah preberi wsEndpoint iz task/browser.json in uporabi chromium.connect(wsEndpoint); chromium.launch() v tem okolju ne deluje. Javni internet je blokiran. Omejitve okolja zabeleži.
+
+Nadaljuj kot isti avtor implementacije. Preberi review.json, trenutno specifikacijo in njeno zgodovino. Obravnavaj vsako ugotovitev: utemeljeno napako odpravi, neutemeljeno obrazloženo zavrni. Ne spreminjaj specifikacije ali pregleda. Izvedi ustrezna preverjanja ter v verification.md sproti zapisuj obravnavo ugotovitev in rezultate. Zaključi v preostalem skupnem času.
+
+Ta faza ima največ 143 sekund, do 2026-09-29T19:54:27.031Z. Do skupne omejitve ostaja 143 sekund. Preostanek preveri z node task/time-budget.mjs. Zadnjo minuto nameni predaji in končnemu odgovoru.
