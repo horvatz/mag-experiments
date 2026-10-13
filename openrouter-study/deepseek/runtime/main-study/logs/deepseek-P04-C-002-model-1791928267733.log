@@ -1,0 +1,117 @@
+Starting constitution (1199 seconds available)
+[constitution] I'll read the project rules, task instructions, template, and current constitution state.
+
+
+[constitution] Now I'll write the constitution with short project principles derived from `PROJECT_RULES.md` and the shared template.
+
+
+[constitution] Writing the constitution now.
+
+
+[constitution] Heredoc failed due to sandbox temp restrictions; switching to `printf` redirect.
+
+
+[constitution] The file is written, but I stripped Slovenian diacritics; let me restore proper Slovenian spelling to match repo style.
+
+
+[constitution] Constitution completed in `.specify/memory/constitution.md` (v1.0.0, ratified 2026-10-13).
+
+**Principles** (derived from `PROJECT_RULES.md` and the shared template, no new requirements):
+- `I. Meje dovoljenih sprememb` — writes limited to `src/`, `tests/agent/`, `docs/agent/`, plus the two Spec Kit process files; infrastructure stays untouched.
+- `II. Podatki samo prek javnega API-ja` — data via `/api/` only, select by `id`; no `/__test/` use, no `localStorage`, no new write APIs.
+- `III. Ohranitev potrjenega dizajna Folio` — keeps Slovenian naming, Folio styling, `data-task-id`, ARIA labels, 
+constitution: completed, 56.913s
+Starting specify (1141 seconds available)
+[specify] I'll check the feature directory, `feature.json`, and app structure before writing the spec.
+
+
+[specify] Quick look at the current app structure toground the spec.
+[specify] Writing `feature.json` and the full P04 spec now.
+
+
+[specify] Verifying spec completeness and encoding.
+
+
+[specify] Specification created for the P04 feature path.
+
+**Artifacts**
+- `.specify/feature.json` — set to `{"feature_directory": "docs/agent/P04"}` (path was pre-determined; no question needed).
+- `docs/agent/P04/spec.md` — full spec covering R01–R12 with problem/context, inputs-actions-outcomes (including state-change rules: default `D = (original, asc, none, asc)`, project change/refresh/reset → `D`, view toggle/details → `S` unchanged), formal predicates (`normalize`, UTF-16 `<`/`>`, `rank`, `cmp_K`, direction negation, stable two-key sort), the requirement/rule/verification table, a traceability t
+specify: completed, 161.032s
+Starting plan (980 seconds available)
+[plan] Reading the skill context and current code needed for a grounded plan.
+
+
+[plan] Reading the rest of the dev-test helpers to align the plan with the expected control interface.
+
+
+[plan] Writing the implementation plan.
+
+
+[plan] Plan written to `docs/agent/P04/plan.md`.
+
+**Plan highlights**
+- Technical context: existing React/TS/Vite stack, no new dependencies, `/api/` reads only, Playwright for tests.
+- Key decisions: pure `src/sortTasks.ts` module (normalize/UTF-16 compare, status rank, date order, explicit-index stable sort); control state in `ProjectView` with project-change remount reset; `useMemo` sorted projection shared by table and board; four labeled `select`s plus the `Izvorni vrstni red` button; Folio design/ARIA preserved.
+- Files: `src/sortTasks.ts` (new), `src/App.tsx`, `src/TaskBoard.tsx`, `src/styles.
+plan: completed, 71.777s
+Starting tasks (908 seconds available)
+[tasks] Writing the task breakdown.
+
+
+[tasks] Task breakdown written to `docs/agent/P04/tasks.md`.
+
+**Structure (14 tasks, dependency-ordered)**
+- Setup: T001 `src/sortTasks.ts` pure sorting logic; T002 `src/App.tsx` control state, defaults, project-change reset, memo projection.
+- Interface: T003 labeled selects + reset button; T004 `src/styles.css` layout/390px; T005 `src/TaskBoard.tsx` relative order; T006 preservation checks (IDs, ARIA, details).
+- Own tests: T007–T009 `tests/agent/p04.spec.ts` scenarios A–L covering R01–R12.
+- Verification: T010 own tests, T011 unchanged shared tests, T012 optional dev cases D01–D04, T013 no-write/`/
+tasks: completed, 27.86s
+Starting implement (759 seconds available)
+[implement] Starting implementation. First, reading remaining context (App tail, configs, scripts).
+
+
+[implement] Reading types and styles before writing code.
+
+
+[implement] Creating the pure sorting module and the initial verification log.
+
+
+[implement] Now patching `App.tsx` via a small Node script (no `apply_patch` available).
+
+
+[implement] Now writing the agent test suite (using a placeholder for quotes, then converting).
+
+
+[implement] Creating the verification log, then running typecheck and lint.
+
+
+[implement] Quote-stripping mangled `sortTasks.ts`; rewriting it with the placeholder approach.
+
+
+[implement] Typecheck passes. Running lint and the agent test suite.
+
+
+[implement] All 20 agent tests pass. Running the full `npm run check` now.
+
+
+[implement] Everything passes (66/66). Updating tasks, verification log, and spec traceability with real evidence.
+
+
+[implement] Final scope checks (no `/__test/` in `src/`, changed files limited to allowed paths).
+
+
+[implement] All tasks complete and verified.
+
+**Implementation**
+- `src/sortTasks.ts` (new): `normalize` (NFD, U+0300–U+036F removed, lowercase), UTF-16 string comparison, status rank, chronological `YYYY-MM-DD`, direction negation, explicit-index stable sort; `original` always returns source order.
+- `src/App.tsx`: four controls with defaults `original/asc/none/asc`, `useMemo` sorted projection, reset via `Izvorni vrstni red`, project-change reset (`key={project.id}`), no storage/URL.
+- `src/styles.css`: control layout, 390px-safe, visible focus. `TaskBoard` needed no change (filters sorted array; column
+implement: completed, 496.81s
+Starting converge (382 seconds available)
+[converge] Running converge checks: prerequisites script, extensions, and an evidence review.
+
+
+[converge] {"outcome":"converged","summary":"Pregled skladnosti P04: vseh 12 zahtev (R01–R12) je izvedenih in pokritih z dejansko izvedenimi testi — 20 lastnih testov (tests/agent/p04.spec.ts, scenariji A–L), 8 referenčnih razvojnih D01–D04 in 38 skupnih, skupaj 66 uspešnih v npm run check; typecheck in lint sta čista. Načrt je v celoti uresničen: src/sortTasks.ts (normalizacija, UTF-16 primerjava, rank, datumi, stabilno urejanje z izvornim indeksom), stanje v src/App.tsx s privzetimi vrednostmi in ponastavitvijo ob menjavi projekta, memo projekcija za preglednico in tablo, TaskBoard brez potrebnih sprem
+converge: completed, 51.202s
+{"status":"completed","elapsedSeconds":869.696,"allowedChanges":true,"usage":null}

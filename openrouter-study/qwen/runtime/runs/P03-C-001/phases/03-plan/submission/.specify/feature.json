@@ -1,0 +1,100 @@
+{
+  "name": "P03 - Iskanje in Filtri",
+  "version": "1.0.0",
+  "feature_directory": "docs/agent/P03/",
+  "requirements": ["R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08", "R09", "R10", "R11", "R12"],
+  "features": {
+    "search": [
+      {
+        "id": "R01",
+        "title": "Iskalna vrstica privzeto prazna",
+        "summary": "Iskalna vrstica mora biti ob nalaganju prazna ali nastavljena na vse in mora prikazovati vsa opravila trenutnega projekta."
+      },
+      {
+        "id": "R02",
+        "title": "Uporaba Unicode NFD za normalizacijo",
+        "summary": "Iskanje mora pretvoriti vhod v NFD format, odstraniti kombinacijska znamenja in pretvoriti v male črke."
+      },
+      {
+        "id": "R03",
+        "title": "Razcep iskalnega vnosu in partičijska podpora",
+        "summary": "Iskalni vnos se razdeli na neprazne besede po belih presledkih. Vsaka beseda mora biti podniz kdaj kolikornih polj."
+      },
+      {
+        "id": "R04",
+        "title": "Logični IN za kombiniranje filtriran",
+        "summary": "Filter stanja in filter odgovorne osebe delujeta skupaj z iskanjem po logičnem IN."
+      },
+      {
+        "id": "R05",
+        "title": "Izbirnik oseb z vsebino vseh možnih oseb",
+        "summary": "Izbirnik oseb vključuje možnost all in vse različna neprazna imena iz celotnega trenutnega projekta."
+      },
+      {
+        "id": "R06",
+        "title": "Enotni prikaz v Preglednici in Table",
+        "summary": "Preglednica in tabla kažeta iste ustrezne ID-e; preklop pogleda ohrani vse filtre."
+      },
+      {
+        "id": "R07",
+        "title": "Ponastava filtriranj ob menjavi projekta",
+        "summary": "Menjava projekta ponastavi iskanje in oba filtra; filtri se ne uporabljajo na podatkih drugega projekta."
+      },
+      {
+        "id": "R08",
+        "title": "Privzeti filtri pri osvežitvi strani",
+        "summary": "Osvežitev strani začne s privzetimi filtri; filtri se ne shranjujejo v URL ali trajno shrambo brskalnika."
+      },
+      {
+        "id": "R09",
+        "title": "Številčno prikazano število rezultatov N od M",
+        "summary": "Število rezultatov prikazuje število N in skupno število M opravil v aktivnem projektu."
+      },
+      {
+        "id": "R10",
+        "title": "Sporočilo Ni zadetkov ob praznih rezultatih",
+        "summary": "Če v nepraznem projektu nobeno opravilo ne ustreza, se prikaže sporočilo Ni zadetkov.."
+      },
+      {
+        "id": "R11",
+        "title": "Počisti filtre vrne vse tri kontrole na privzete vrednosti",
+        "summary": "Gumb Počisti filtre v enem dejanju vrne vse tri kontrole na privzete vrednosti in prikaže vsa opravila."
+      },
+      {
+        "id": "R12",
+        "title": "Navigacija in bralne podrobnosti delujeta ob filtriranju",
+        "summary": "Navigacija in bralne podrobnosti delujeta ob filtriranju; filtriranje ne pošlje POST/PATCH/PUT/DELETE na /api/."
+      }
+    ],
+    "status_rules": [
+      {
+        "id": "RS01",
+        "title": "Stanje prikaže zadnje vnosno stanje opravila",
+        "summary": "Stanje vsakega opravila prikazuje zadnje vnosno stanje opravila. Zamenjava projekta ponastavi stanje na prazno."
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C01",
+        "title": "Uporaba obstoječih API vmesnikov brez spremembe",
+        "summary": "Uporaba obstoječega API vmesnika brez spremembe obstoječe funkcionalnosti."
+      },
+      {
+        "id": "C02",
+        "title": "Folioski dizajn in lokacija",
+        "summary": "Ohranjanje Folio dizajna in pogajanja v mapp/."
+      },
+      {
+        "id": "C03",
+        "title": "Testiranje le z lastnimi testi",
+        "summary": "Testiranje preverjanja z lastnimi testi v tests/agent/, brez spremembe skupnih testov."
+      }
+    ],
+    "tech_stack": [
+      "React",
+      "CSS",
+      "State Management (useMemo, useEffect)",
+      "API Consumer (GET /api/tasks)"
+    ]
+  }
+}

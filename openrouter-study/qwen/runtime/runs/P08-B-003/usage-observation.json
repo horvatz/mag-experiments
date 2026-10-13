@@ -1,0 +1,61 @@
+{
+  "id": "P08-B-003",
+  "observedAt": "2026-10-13T02:39:24.034Z",
+  "complete": false,
+  "roles": [
+    {
+      "role": "specification",
+      "session": "01a13315-2dc3-78c0-afed-06fced593443",
+      "lastTokenEventAt": "2026-10-13T02:31:56.043Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 252669,
+        "cached_input_tokens": 52224,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 8739,
+        "reasoning_output_tokens": 673
+      },
+      "phases": [
+        {
+          "name": "specification",
+          "status": "phase_time_limit",
+          "cliUsage": null,
+          "lastTokenEventAt": "2026-10-13T02:31:56.043Z",
+          "cumulativeMatchesCLI": false
+        }
+      ],
+      "complete": false
+    },
+    {
+      "role": "implementation",
+      "session": "01a1331a-ae22-7932-9094-c43b41ea7886",
+      "lastTokenEventAt": "2026-10-13T02:39:14.402Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 217950,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4505,
+        "reasoning_output_tokens": 429
+      },
+      "phases": [
+        {
+          "name": "implementation",
+          "status": "execution_failed",
+          "cliUsage": null,
+          "lastTokenEventAt": "2026-10-13T02:39:14.402Z",
+          "cumulativeMatchesCLI": false
+        }
+      ],
+      "complete": false
+    }
+  ],
+  "usage": null,
+  "observedUsageBeforeInterruption": {
+    "input_tokens": 470619,
+    "cached_input_tokens": 52224,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 13244,
+    "reasoning_output_tokens": 1102
+  },
+  "method": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+  "note": "Incomplete events are a partial observation, not zero or a complete token total. No monetary cost is inferred."
+}

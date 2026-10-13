@@ -1,0 +1,87 @@
+{
+  "id": "P10-A-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "reviewStatus": "completed-without-implementation",
+  "limitation": "Arhiv je berljiv in vsebuje prazno avtorsko specifikacijo ter nespremenjeno aplikacijo. Odsotnost vsebine ocenimo pri dokumentaciji in preverjanjih; organizacija neoddane kode ostane manjkajoča. Zaključek seje completed ne dokazuje dokončanja naloge. Izrecna napaka API ni zabeležena. Poznejši API vhodi ohranijo dva neuspešna heredoc zapisa zaradi originalnega sandboxa; uspešno kvalificirana druga orodja za pisanje so bila na voljo. Poskusni osnutek v argumentih neuspešnega ukaza ni oddani dokument.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 0,
+      "rationale": "Edini avtorski dokument docs/agent/specification.md ima 0 bajtov. Končno sporočilo zatrdi pokritost R01–R12, vendar niti arhivirana datoteka niti sporočila item_5–item_7 ne vsebujejo zahtev, robov ali dejanske specifikacije. Priložene vhodne zahteve in raziskovalčevi testi niso avtorska specifikacija. Berljiva prazna oddaja zato pomeni odsotnost vsebinske pokritosti, ne manjkajoč arhiv.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md",
+        "runtime/runs/P10-A-001/last-message.md",
+        "runtime/runs/P10-A-001/events.jsonl.gz",
+        "runtime/runs/P10-A-001/final-inventory.json.gz"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 0,
+      "rationale": "Prazna specifikacija nima domene stanja, predikatov permutacije, pravil za premik/undo/redo/reset, omejitve skladov ali ohranitev. Kratek opis namena v sporočilu ne poda preverljivih prehodov. Formalizacije iz izvirnih navodil ne pripišemo modelu.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md",
+        "runtime/runs/P10-A-001/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Zaključno sporočilo trdi, da je specifikacija ustvarjena in pokriva R01–R12, čeprav je dokument prazen. Ne vsebuje povezav zahteva–koda–test, verification.md ni nastal in implementacija ni oddana. Napoved nadaljnje implementacije ob že končani seji ni dokaz izvedbe. Zunanji neodvisni testi ne predstavljajo modelove sledljivosti.",
+      "evidence": [
+        "runtime/runs/P10-A-001/last-message.md",
+        "runtime/runs/P10-A-001/execution.json",
+        "runtime/runs/P10-A-001/archive-complete.json",
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Execution fileChanges vsebuje samo dodano prazno specifikacijo, nobene spremembe v src ali tests/agent. Modelu ne pripišemo organizacije začetne aplikacije; za presojo organizacije nove implementacije ni avtorsko oddane kode. Ta dimenzija ostane manjkajoča, neuspeh funkcionalne naloge pa ostane v primarnem rezultatu.",
+      "evidence": [
+        "runtime/runs/P10-A-001/execution.json",
+        "runtime/runs/P10-A-001/final-inventory.json.gz",
+        "runtime/runs/P10-A-001/archive-complete.json"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Lastni testi in verifikacijski zapis niso nastali. Trije uspešni ukazi v native dogodkih berejo pravila, imenik ter vhodne datoteke. Poznejši shranjeni zahtevki API dodatno razkrijejo neveljavni write_stdin za neobstoječi proces in dva neuspešna poskusa pisanja specifikacije; ti niso funkcionalna preverjanja. Ni zagona testov, lint, tipov ali gradnje. Raziskovalčevih poznejših preverjanj ne pripišemo agentu.",
+      "evidence": [
+        "runtime/runs/P10-A-001/events.jsonl.gz",
+        "runtime/runs/P10-A-001/execution.json",
+        "runtime/runs/P10-A-001/last-message.md",
+        "analysis/P10-A-001-tool-failures.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "D01 ne najde gumba Premakni web-01 gor. Končna aplikacija ohrani vseh 38 izhodiščnih preverjanj, a ne opravi nobenega od 8 razvojnih in 24 skritih testov nove funkcionalnosti. Manjkajoča implementacija je potrjena tudi z edino spremembo: prazno specifikacijo.",
+    "evidence": [
+      "runtime/runs/P10-A-001/evaluation-summary.json",
+      "runtime/runs/P10-A-001/execution.json"
+    ]
+  },
+  "finalFailureNote": "Completed po 210,449 s; 38/70, 0/12, dovoljenost/lint/types/build true, strogi uspeh false. Vseh 7 zahtev ima popoln račun 0,0100882 USD, izrecna napaka odziva API ni zabeležena. Model konča z napovedjo nadaljevanja, ki se v izvirnem postopku A ne zgodi. Začete meritve ne ponavljamo ali dopolnjujemo.",
+  "developmentFailureExample": {
+    "description": "Shranjena naslednja zahtevka API ohranita dva poskusa cat > specification.md s heredoc; oba vrneta exit 1 z operation not permitted pri začasni datoteki. Drugi poskus ponovi isti način pisanja, nato model v final response zatrdi ustvarjeno specifikacijo, čeprav je datoteka prazna. Pred tem write_stdin zahteva neobstoječi proces 3. Native dogodki teh neuspešnih orodnih klicev ne pokažejo, zato opis temelji na ohranjenih funkcijskih klicih/odgovorih v naslednjih API inputih. Ta omejitev izvajalnega okolja se poroča; začetih poskusov ne popravljamo ali ponavljamo.",
+    "evidence": [
+      "analysis/P10-A-001-tool-failures.json",
+      "api/P10-A-001/model/request-00005.json.gz",
+      "api/P10-A-001/model/request-00006.json.gz",
+      "api/P10-A-001/model/request-00007.json.gz",
+      "runtime/runs/P10-A-001/last-message.md",
+      "runtime/runs/P10-A-001/submission/docs/agent/specification.md"
+    ]
+  },
+  "developmentFailureNote": "Item_4 poleg tega bere neobstoječi task/task.json in ukaz vrne exit 1; druge navedene datoteke se izpišejo. Model svojih funkcionalnih preverjanj ni zagnal. Odprave omejitve sandboxa v merjeno sejo ni bilo; dokumentacijo neuspešnih klicev smo dodali samo v raziskovalčevo analizo."
+}

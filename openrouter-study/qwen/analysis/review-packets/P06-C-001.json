@@ -1,0 +1,83 @@
+{
+  "at": "2026-10-09T03:03:29.331Z",
+  "slug": "qwen",
+  "id": "P06-C-001",
+  "researcherOnly": true,
+  "limitations": [
+    "This is a source index, not a qualitative grade or a substitute for reading authored files.",
+    "Later API inputs can preserve failed tool calls omitted from native events. A final call without a subsequent input may be absent.",
+    "Attempted writes do not constitute delivered documents. The final immutable submission is authoritative.",
+    "Do not feed researcher evaluations or this packet to measured model sessions."
+  ],
+  "execution": {
+    "status": "execution_failed",
+    "elapsedSeconds": 564.033,
+    "phases": [
+      {
+        "name": "constitution",
+        "status": "execution_failed",
+        "elapsedSeconds": 562.922
+      }
+    ],
+    "fileChanges": []
+  },
+  "evaluation": {
+    "executionStatus": "execution_failed",
+    "groups": {
+      "regression": {
+        "passed": 38,
+        "total": 38
+      },
+      "development": {
+        "passed": 0,
+        "total": 8
+      },
+      "holdout": {
+        "passed": 0,
+        "total": 24
+      }
+    },
+    "checks": [
+      {
+        "name": "lint",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.633,
+        "passed": true
+      },
+      {
+        "name": "types",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.605,
+        "passed": true
+      },
+      {
+        "name": "build",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.202,
+        "passed": true
+      },
+      {
+        "name": "tests",
+        "exitCode": 1,
+        "signal": null,
+        "elapsedSeconds": 189.792,
+        "passed": false
+      }
+    ]
+  },
+  "phaseResults": [
+    {
+      "source": "runtime/runs/P06-C-001/phases/01-constitution/result.json",
+      "name": "constitution",
+      "status": "execution_failed",
+      "elapsedSeconds": 562.922,
+      "signal": null
+    }
+  ],
+  "authoredFiles": [],
+  "nativeCommands": [],
+  "preservedToolCalls": []
+}

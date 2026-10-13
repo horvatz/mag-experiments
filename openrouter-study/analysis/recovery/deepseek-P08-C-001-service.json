@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-09T04:53:53.989141+00:00",
+  "researcherOnly": true,
+  "id": "deepseek/P08-C-001",
+  "confirmed": "Last request36 sent upstream to frozen DeepInfra/fp8 returns HTTP520 in0.430s. Error message Provider returned error, raw error code520; native reports the same HTTP520. No responseId or usage. Implementation stops, converge not started.",
+  "rootCause": "Unknown. Generic provider error does not identify an outage, transport mechanism or model defect. This is distinct from previously diagnosed image-tool422.",
+  "lastRequest": {
+    "number": 36,
+    "model": "deepseek/deepseek-v4.1-flash",
+    "provider": "deepinfra/fp8",
+    "startedAt": "2026-10-09T04:49:49.279Z",
+    "finishedAt": "2026-10-09T04:49:49.709Z",
+    "httpStatus": 520,
+    "status": "http_error",
+    "sentUpstream": true,
+    "retryAfter": null
+  },
+  "providerError": {
+    "message": "Provider returned error",
+    "code": 520,
+    "metadata": {
+      "raw": "error code: 520\n",
+      "provider_name": "DeepInfra",
+      "is_byok": false
+    }
+  },
+  "requestEvidence": "deepseek/api/P08-C-001/model/request-00036.json.gz",
+  "diagnostic": {
+    "at": "2026-10-09T04:51:38.881Z",
+    "model": "deepseek/deepseek-v4.1-flash",
+    "provider": "deepinfra/fp8",
+    "httpStatus": 200,
+    "responseStatus": "completed",
+    "text": "CONNECTION_OK",
+    "error": null,
+    "passed": true,
+    "excludedFromMeasurements": true,
+    "costComplete": true,
+    "costUSD": 2.198e-05
+  },
+  "diagnosticLimitation": "Short same-provider text reply passed. It does not establish reliability of measured tool responses or identify the HTTP520 cause.",
+  "outcome": "execution_failed927.944s; four preparation phases completed597.408s, implement failed327.846s, no converge. Independent66/70,11/12, lint/types/build/allowed true. Empty board regression and E11 fail on both widths; code and evidence retained.",
+  "cost": {
+    "complete": false,
+    "costUSD": null,
+    "knownCostUSD": 0.04574927780000001,
+    "unknownRequests": [
+      36
+    ],
+    "note": "HTTP520 without responseId/usage is unknown, not zero. Frozen400/401/403/404 zero rule does not apply; budget conservatively reserves maximum endpoint request cost."
+  },
+  "evidence": [
+    "deepseek/runtime/runs/P08-C-001/archive-complete.json",
+    "deepseek/runtime/runs/P08-C-001/execution.json",
+    "deepseek/runtime/runs/P08-C-001/phases/05-implement/events.jsonl.gz",
+    "deepseek/runtime/runs/P08-C-001/evaluation-summary.json",
+    "deepseek/api/P08-C-001/model/api-ledger.jsonl",
+    "deepseek/qualification/service-2026-10-09T04-51-37-480Z/result.json",
+    "analysis/recovery/known-service-classifier-checks.json"
+  ],
+  "continuation": "Preserve started ID without retry/repair. Researcher-only classifier adds only this exact pinned-provider/native/error shape, requiring fresh same-provider connectivity.38 archived-fixture checks pass; other failures stop. Next unused ID is Qwen/P08-C-001 position32; archival/hash/input guards precede continuation."
+}

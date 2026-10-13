@@ -1,0 +1,39 @@
+{
+  "observedAt": "2026-10-08T23:28:00Z",
+  "observedAtApproximate": true,
+  "slug": "deepseek",
+  "id": "P05-C-001",
+  "executionStatus": "isolation_interrupted",
+  "phase": "converge",
+  "phaseStartedAt": "2026-10-08T23:26:56.094Z",
+  "phaseElapsedSeconds": 0.012,
+  "convergeEventsEmpty": true,
+  "implementationCompleted": true,
+  "modelVisibleChecksPassed": 59,
+  "researcherChecksPassed": 70,
+  "demonstratedRequirements": 12,
+  "strictSuccess": false,
+  "frozenGuard": {
+    "source": "deepseek/runtime/runs/P05-C-001/protocol-at-launch/run-pilot-c.mjs",
+    "watchedPorts": [5183, 3111, 5184, 3112, 5185, 3113, 5186, 3114, 5187, 3115, 5188, 3116],
+    "pollIntervalMilliseconds": 3000,
+    "connectTimeoutMilliseconds": 500,
+    "timeoutTreatedAsListening": true,
+    "specificTriggerPortRecorded": false
+  },
+  "laterObservation": {
+    "command": "lsof -nP over the twelve watched ports with LISTEN filter",
+    "exitCode": 1,
+    "outputEmpty": true,
+    "interpretation": "No listener was found at the later check; this cannot establish the earlier trigger or rule out a transient listener or timeout."
+  },
+  "cause": "unconfirmed; isolation guard outcome is not evidence of a poor model implementation",
+  "inferences": [
+    "The guard is asynchronous and calls a global stop/active function. A pending callback from the preceding phase could affect the new phase, but the logs do not confirm that mechanism.",
+    "The preserved implementation commands use normal test ports. No command launching a watched-port preview was found; that alone cannot establish what was listening at the guard trigger."
+  ],
+  "archivePreserved": true,
+  "measurementRepeated": false,
+  "frozenInputsChanged": false,
+  "queueContinued": "The same queue proceeded to never-started glm/P10-A-001 after its normal preflight."
+}

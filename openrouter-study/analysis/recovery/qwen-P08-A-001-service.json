@@ -1,0 +1,93 @@
+{
+  "at": "2026-10-09T04:34:31.826998+00:00",
+  "researcherOnly": true,
+  "id": "qwen/P08-A-001",
+  "confirmed": "HTTP200 response.failed at request31; native stream disconnected before completion: stream closed with reason: error. Final request5.897s,42441input,1output(all reasoning); two authored partial files, no delivered UI/test changes.",
+  "rootCause": "Unknown. Frozen relay does not preserve final response error object. No outage, timeout cause or model tool-format failure established by this generic response failure.",
+  "lastRequest": {
+    "number": 31,
+    "label": "qwen/P08-A-001/measured",
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "startedAt": "2026-10-09T04:29:05.921Z",
+    "status": "finished",
+    "requestedParallelToolCalls": true,
+    "mergedDeveloperMessages": 1,
+    "requestedReasoning": {
+      "effort": "xhigh",
+      "summary": "auto"
+    },
+    "sentReasoning": {
+      "enabled": true,
+      "summary": "auto"
+    },
+    "balanceBefore": {
+      "at": "2026-10-09T04:29:05.943Z",
+      "totalCreditsUSD": 40,
+      "totalUsageUSD": 4.185736702,
+      "remainingUSD": 35.814263298
+    },
+    "budgetBefore": {
+      "knownUSD": 4.233541152000002,
+      "unknownRequests": 9,
+      "unknownReservedUSD": 0.7425226100000001,
+      "maximumRequestCost": 0.06160375
+    },
+    "sentUpstream": true,
+    "httpStatus": 200,
+    "retryAfter": null,
+    "finishedAt": "2026-10-09T04:29:11.818Z",
+    "bytes": 73650,
+    "responseId": "gen-1791520145-WlfGqyNPSTOpHpycKH9R",
+    "usage": {
+      "input_tokens": 42441,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1,
+      "output_tokens_details": {
+        "reasoning_tokens": 1
+      },
+      "total_tokens": 42442,
+      "cost": 0,
+      "is_byok": false,
+      "cost_details": {
+        "upstream_inference_cost": 0.00424425,
+        "upstream_inference_input_cost": 0.0042441,
+        "upstream_inference_output_cost": 1.5e-07
+      }
+    },
+    "openrouterMetadata": null,
+    "responseStatus": "failed"
+  },
+  "diagnostic": {
+    "at": "2026-10-09T04:32:42.291Z",
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "httpStatus": 200,
+    "responseStatus": "completed",
+    "text": "CONNECTION_OK",
+    "error": null,
+    "passed": true,
+    "excludedFromMeasurements": true,
+    "costComplete": true,
+    "costUSD": 4.41e-05
+  },
+  "diagnosticLimitation": "Short text connectivity passed; it does not establish reliability of measured responses or identify the cause of this failure.",
+  "outcome": "Execution_failed 532,686 s; 38/70, 0/12, lint/types false, build/allowed true, strogi uspeh false. Popolni račun 0,09225645 USD za 31 zahtev. Zadnja HTTP200 zahteva vrne response.failed in native stream closed with reason error; vzrok ni potrjen. Last request traja 5,897 s, en output token je reasoning; ni končne avtorske oddaje.",
+  "cost": {
+    "complete": true,
+    "costUSD": 0.09225645000000002,
+    "source": "qwen/api/P08-A-001/model/api-cost.json",
+    "note": "Final request explicitly returns usage.cost=0; upstream_inference_cost0.00424425 is separate accounting. Generation lookup404; frozen usage-cost fallback used, no zero imputation of unknowns."
+  },
+  "evidence": [
+    "qwen/runtime/runs/P08-A-001/archive-complete.json",
+    "qwen/runtime/runs/P08-A-001/events.jsonl.gz",
+    "qwen/analysis/review-packets/P08-A-001.json",
+    "qwen/api/P08-A-001/model/api-ledger.jsonl",
+    "qwen/qualification/service-2026-10-09T04-32-32-898Z/result.json",
+    "analysis/recovery/known-service-resumes.jsonl"
+  ],
+  "continuation": "Supervisor classified only this already observed exact failure, verified archive/input hashes and unused next ID, passed fresh same-provider text health, and continued unchanged queue at unused DeepSeek/P08-C-001 position31. No measured retry or replacement."
+}

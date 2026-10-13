@@ -1,0 +1,94 @@
+{
+  "id": "P05-C-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "R01–R12 in bistveni robovi so jasno, skladno opredeljeni: poljubna dolžina in izvirni vrstni red, filter pred globalnim odsekom za oba pogleda, lokalno stanje brez trajne shrambe ali URL, reset/ohranitve, natančna dostopna imena in status, all/ničelni/singleton primer, števci projekta in trenutnih stolpcev ter read-only API in ozki prikaz. Načrtovani scenariji ločijo prazen projekt od praznega filtra in zahtevajo odsotnost izgube/podvajanj.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T/M/Size/n/lastPage/Page/A/B in odsek imajo uporabne enačbe z izrecnimi vejami all in ničelnega rezultata. Opisani so štirje prehodi strani, onemogočeni robovi, reset ob velikosti/filtru/projektu/osvežitvi, ohranitev ob pogledu/podrobnostih, globalni odsek in dva različna tipa števcev. Preverljiva lastnost unije zaporednih odsekov brez izgubljenih ali podvojenih ID-jev dopolni lokalne formule.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#simboli-in-stanje",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#nadzorovali-in-dejanja",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md:64"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Končna matrika za vsako R navede dejanski imenovani lastni test, vrstico in kodni del; verification pošteno zabeleži napake in potrjenih 12/12 ter 58/58, skrita in ročna preverjanja označi neizvedena. Povezave pa ne ločijo celotnega pogoja od dejanske omejene pokritosti: R08/testni naslov trdita tudi refresh, test izvede le goto drugega projekta; R11 preveri en tekst 4 in stolpce, ne vseh projektnih števcev ali njihove invariance ob filtru. R07 neposredno preveri le status. Zato so individualne povezave koristne, vendar označitev nepreverjenih delov ostane nepopolna. Verifikacijski zapis v imeniku značilnosti je pri vsebinski rubriki enakovreden; ločeno ostane dejanska napaka obvezne poti pri predaji izvajalniku.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/verification.md",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:119",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:134",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:164",
+        "runtime/runs/P05-C-001/phases/05-implement/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čiste funkcije filtriranja, števila strani, omejitve veljavne strani, odseka in meja statusa so ločene v pagination.ts. ProjectView hrani tri lokalna stanja, preostalo izpelje iz podatkov; oba pogleda uporabljata isti currentTasks, projektni števci pa prvotno polje. Key projekta zagotovi reset, podrobnosti ohranijo isti ProjectView. Ni redundantno shranjenega filtriranega seznama ali podvojene logike straničenja po stolpcih. Mobilni slogi kontrol so ločeni in prilagojeni obstoječemu vmesniku.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/src/pagination.ts",
+        "runtime/runs/P05-C-001/submission/src/App.tsx:12",
+        "runtime/runs/P05-C-001/submission/src/App.tsx:35",
+        "runtime/runs/P05-C-001/submission/src/App.tsx:92",
+        "runtime/runs/P05-C-001/submission/src/App.tsx:136",
+        "runtime/runs/P05-C-001/submission/src/styles.css:181"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Dvanajst potrjenih testov uporabi 12 opravil, popolni razdelitvi velikosti 5/10 z natančno unijo ID-jev v izvornem zaporedju, prvo/zadnjo stran velikosti 2 in prisilni klik onemogočenega gumba, zadnji kratki odsek, reset velikosti/filtra, oba pogleda/podrobnosti, menjavo projekta z višje strani, prazen projekt, lokalne števce, nepisanje API in dejansko geometrijo 390 px. Pomembne vrzeli ostanejo: ni singleton primera ali prazen-filter→all, refresh ni izveden kljub naslovu, velikost 2 nima celotne razdelitve, projektni števci so šibko preverjeni, zahtevni ID-ji/enaki naslovi manjkajo. Po preklopu nazaj neposredna evaluateAll brez čakanja na preglednico in sortiranje primerjave ne dokazujeta obnovljenega vrstnega reda. To so omejitve lastnih dokazov, ne potrjene končne funkcionalne napake.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:17",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:53",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:70",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:107",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:134",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:155",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:164",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:173",
+        "runtime/runs/P05-C-001/phases/05-implement/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Po uspešni implementaciji izvajalnik zavrne predajo: Missing artifact: docs/agent/verification.md. Model je zapis ustvaril le na docs/agent/P05/verification.md. Pet faz je completed, konvergenca se ne začne. Oddaja sicer prestane vseh 70 avtomatiziranih preverjanj in 12/12 zahtev ter dovoljenost/lint/types/build, vendar status invalid_stage_handoff pomeni strogi uspeh false. Raziskovalec artefakta ne premika ali popravlja.",
+    "evidence": [
+      "runtime/runs/P05-C-001/execution.json",
+      "runtime/runs/P05-C-001/protocol-at-launch/procedure-c.mjs",
+      "runtime/runs/P05-C-001/protocol-at-launch/run-pilot-c.mjs:163",
+      "runtime/runs/P05-C-001/phases/05-implement/last-message.md",
+      "runtime/runs/P05-C-001/submission/docs/agent/P05/verification.md",
+      "runtime/runs/P05-C-001/evaluation-summary.json"
+    ]
+  },
+  "finalFailureNote": "Čas 586,513 s; popoln API obračun 0,244427791 USD za 42 zahtev. Zaključek postopka in funkcionalnost se poročata ločeno. Vsebinska rubrika pri C sprejme enakovredne dokumente značilnosti; to ne spremeni obvezne poti ali strogega rezultata izvajalnika.",
+  "developmentFailureExample": {
+    "description": "Po odpravi neuporabljenega parametra in nullable DOM ID-jev prvi lastni zagon doseže 9/12: primerja globalni vrstni red table, nima mock drugega projekta in pričakuje napačen zadnji filtrirani odsek. Popravek pričakovanj doseže 11/12, preostala neposredna primerjava po preklopu nazaj pa še odpove zaradi vrstnega reda. Model jo zamenja s sortiranimi ID-ji brez čakanja na dokončan preklop. Poznejši ciljni zagon potrdi 12/12, npm run check 58/58; zadnji cilj 12/12 v 4,8 s. Končni sprejemni testi ne pokažejo funkcionalne napake, šibkost lastnega dokaza preklopa ostane v presoji.",
+    "evidence": [
+      "runtime/runs/P05-C-001/phases/05-implement/events.jsonl.gz",
+      "runtime/runs/P05-C-001/submission/docs/agent/P05/verification.md:12",
+      "runtime/runs/P05-C-001/submission/tests/agent/p05.spec.ts:115"
+    ]
+  }
+}

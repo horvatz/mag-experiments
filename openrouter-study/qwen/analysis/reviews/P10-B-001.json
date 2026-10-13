@@ -1,0 +1,88 @@
+{
+  "id": "P10-B-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "reviewStatus": "missing-authored-submission",
+  "limitation": "Arhiv je berljiv, vendar ni nobene avtorske spremembe. Specifikacijska faza doseže rok 360 s, dokument manjka in izvedba se ustavi pred implementacijo. Vse vsebinske dimenzije so po pravilu za manjkajočo oddajo null; meritev ostane v imenovalcu funkcionalnosti in strogega uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": null,
+      "rationale": "Avtorska specifikacija ni oddana. Po faznem roku je fileChanges prazen, arhiv pa vsebuje samo izhodišče in raziskovalčeve zapise. Vhodnih zahtev ali napovedi ustvarjanja dokumenta ne pripišemo modelovi specifikaciji. Po rubriki manjkajoča avtorska oddaja ostane manjkajoča, ne 0.",
+      "evidence": [
+        "runtime/runs/P10-B-001/execution.json",
+        "runtime/runs/P10-B-001/archive-complete.json",
+        "runtime/runs/P10-B-001/last-message.md",
+        "analysis/review-packets/P10-B-001.json"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": null,
+      "rationale": "Ni oddane avtorske dokumentacije ali implementacije, iz katere bi bilo mogoče presoditi formalizacijo. Predikatov iz priloženih izvirnih navodil ne štejemo kot modelove. Ker celotna avtorska oddaja manjka, je dimenzija manjkajoča.",
+      "evidence": [
+        "runtime/runs/P10-B-001/execution.json",
+        "runtime/runs/P10-B-001/archive-complete.json",
+        "runtime/runs/P10-B-001/last-message.md",
+        "analysis/review-packets/P10-B-001.json"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": null,
+      "rationale": "Ni oddanih dokumentov, kode, matrike ali verifikacijskega zapisa. Zadnje sporočilo ustvarjanje specifikacije šele napove. Sledljivost manjkajoče avtorske oddaje po rubriki ostane manjkajoča, raziskovalčevi arhivi in testi je ne nadomestijo.",
+      "evidence": [
+        "runtime/runs/P10-B-001/execution.json",
+        "runtime/runs/P10-B-001/archive-complete.json",
+        "runtime/runs/P10-B-001/last-message.md",
+        "analysis/review-packets/P10-B-001.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Ni avtorskih sprememb v src ali drugih oddanih datotekah. Organizacije začetne aplikacije ne pripišemo modelu in neoddanega programa ne ocenjujemo z ničlo. Dimenzija ostane manjkajoča.",
+      "evidence": [
+        "runtime/runs/P10-B-001/execution.json",
+        "runtime/runs/P10-B-001/archive-complete.json",
+        "runtime/runs/P10-B-001/last-message.md",
+        "analysis/review-packets/P10-B-001.json"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": null,
+      "rationale": "Ni avtorske oddaje, dodatnih testov ali verifikacijskega zapisa; specifikacijska vloga se konča pred implementacijo. Po pravilu za manjkajočo celotno oddajo dimenzija ostane manjkajoča. To se razlikuje od 0 za odsotna preverjanja v sicer avtorsko oddani rešitvi.",
+      "evidence": [
+        "runtime/runs/P10-B-001/execution.json",
+        "runtime/runs/P10-B-001/archive-complete.json",
+        "runtime/runs/P10-B-001/last-message.md",
+        "analysis/review-packets/P10-B-001.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "D01 ne najde gumba Premakni web-01 gor. Nespremenjeno izhodišče opravi 38 regresijskih preverjanj, ne pa nobenega od 8 razvojnih in 24 skritih testov P10; model pred faznim rokom ni oddal nobene spremembe.",
+    "evidence": [
+      "runtime/runs/P10-B-001/evaluation-summary.json",
+      "runtime/runs/P10-B-001/execution.json"
+    ]
+  },
+  "finalFailureNote": "Missing_specification po 360,537 s; edina faza specification ima phase_time_limit po 360,03 s in SIGKILL. 38/70, 0/12, dovoljenost/lint/types/build true, strogi uspeh false. Native poraba nepopolna. Račun v arhivu delni: 0,00661965 USD znane spodnje meje za 6 zahtev, 6 neznana. Zadnji zahtevek je HTTP 200/client_aborted po 286,572 s brez končnega odziva ob faznem roku; izrecna napaka odziva API ni zabeležena in vzrok ni potrjen. Meritve in manjkajoče vsebinske oddaje ne nadomeščamo. Poznejša uskladitev zunaj arhiva izkaže popolni račun 0,00969675 USD. Generation za zahtevo 6 izkaže 6.860 izhodnih tokenov in finishReason null; generiranje je potekalo, vendar ni zaključnega odziva pred rokom. To ne potrdi natančnega vzroka prekinitve. Prvotni arhiv ostaja nespremenjen.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Specifikacijska vloga bere izhodišče in napove zapis dokumenta, a avtorski dokument ni dostavljen. Implementacija in modelovo funkcionalno preverjanje se ne začneta; ni potrjene avtorske razvojne funkcionalne napake, ki bi jo lahko ponazorili.",
+  "costReconciliation": {
+    "at": "2026-10-09T01:13:11.906Z",
+    "source": "api/P10-B-001/model/api-cost.json",
+    "complete": true,
+    "costUSD": 0.00969675,
+    "knownCostUSD": 0.00969675,
+    "originalArchivePreserved": true
+  }
+}

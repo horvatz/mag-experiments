@@ -1,0 +1,87 @@
+{
+  "id": "P05-B-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-08",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija skladno navede R01–R12, poljubne podatke, filter pred odsekom, ohranitve in ponastavitve, prazni primer, ločene števce ter natančne dostopne oznake. Branje in odsotnost zapisov/URL/shrambe so jasni; geometrijska meja 390 px je izrecna. Predvidene scenarije loči od izvedenih dokazov.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#dogovor-o-vmesniku-dostopnost-in-selektorji"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Definirani so P/F/N, Y/X, meje gumbov, ohranjen vrstni red, skupni odsek in števci. Ostane konkretna vrzel pri centralni formalizaciji indeksov: A=(X−1)·S+1 nima ničelne veje in pri praznem all vrne 1, čeprav je status 0–0. Zapis V=F[A−1 .. B] ne pove, da je desni 0-osnovni indeks izključen; ob vključujočem branju bi odsek imel dodatni element. Koda uporablja pravilen polodprti slice in poseben prazni status, zato to ni potrjena funkcionalna napaka, je pa nepopolna natančnost specifikacijskih predikatov.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P05-B-001/submission/src/pagination.ts:22",
+        "runtime/runs/P05-B-001/submission/src/pagination.ts:28"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Matrika vseh R poveže načrtovane pogoje z razvojnimi/lastnimi scenariji in datotekami ter pošteno ohrani ni izvedeno. Verification.md navede dejanske nosilce kode, vendar razdelek rezultatov ostane prazen; zapis review.json je osnutek complete=false. Arhivski dogodki potrjujejo popravljeni lastni zagon 6 passed in pregledovalčev zagon 10 passed (6 lastnih + 4 razvojni desktop), toda ti dokazi niso preneseni v zaključni zapis ali veljavno predajo. Sledljivost ostane delna brez izmišljenih uspehov.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P05-B-001/submission/docs/agent/verification.md",
+        "runtime/runs/P05-B-001/submission/docs/agent/review.json",
+        "runtime/runs/P05-B-001/phases/02-implementation/events.jsonl.gz",
+        "runtime/runs/P05-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čiste funkcije filterTasks/pageCount/pageSlice/pageStatusText ločijo izračun od prikaza. ProjectView drži tri lokalna stanja, izpeljane filteredTasks/current/visibleTasks in nefiltrirane števce; oba pogleda dobita isti odsek. GoToPage omeji meje, spremembi velikosti/filtra ponastavita stran in ključ projekta ponastavi lokalno stanje. Nova logika ni podvojena med pogledoma, obstoječa podatkovna plast ostane nespremenjena.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/src/pagination.ts:9",
+        "runtime/runs/P05-B-001/submission/src/pagination.ts:17",
+        "runtime/runs/P05-B-001/submission/src/App.tsx:15",
+        "runtime/runs/P05-B-001/submission/src/App.tsx:34",
+        "runtime/runs/P05-B-001/submission/src/App.tsx:125"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Šest koristnih scenarijev zajame unijo vseh štirih odsekov velikosti 2 brez podvajanj, velikosti 5/10, filtriranje, nefiltrirane in stolpčne števce, pogled/podrobnosti, prazen rezultat/projekt, osvežitev/projekt, odsotnost zapisov in dejansko mejo 390 px. A04 je po neuspehu razdeljen na ločen prazni projekt A06. Manjkajo nabor nad deset opravil in večstranski razrez velikosti 10, zahtevni ID-ji/enaki naslovi ter splošna preverba razdelitev 5/10. Samo branje končnih testov ali raziskovalčevih 70 preverjanj ne šteje za lastni dokaz.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/tests/agent/p05.spec.ts:7",
+        "runtime/runs/P05-B-001/submission/tests/agent/p05.spec.ts:45",
+        "runtime/runs/P05-B-001/submission/tests/agent/p05.spec.ts:83",
+        "runtime/runs/P05-B-001/submission/tests/agent/p05.spec.ts:97",
+        "runtime/runs/P05-B-001/submission/tests/agent/p05.spec.ts:104",
+        "runtime/runs/P05-B-001/phases/02-implementation/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "V pregledani končni funkcionalnosti ni potrjene napake: neodvisno 70/70, 12/12, dovoljene spremembe in lint/types/build true. Strogi uspeh je false zaradi invalid_review_handoff po faznih rokih implementacije in pregleda. To je neuspeh zaključka postopka, ne končni funkcionalni neuspeh. Čas 1081,166 s; v prvotnem arhivu končni strošek manjka zaradi dveh client_aborted zahtev, znana spodnja meja je 0,0588293016 USD. Poznejši zunanji obračun uskladi obe zahtevi: popolni končni račun je 0,075157483 USD.",
+  "developmentFailureExample": {
+    "description": "Izvajalčevi testi prvotno vsebujejo tipovno napako collected:string[] proti ID-jem string|null in pozneje neuspešna A04/A05. Po popravkih tipa in testnih scenarijev arhiv potrdi 6 uspešnih lastnih preverjanj; pregledovalec ponovi teh 6 in 4 razvojna desktop preverjanja z 10 passed. Ni potrjene preostale funkcionalne napake; zapisi o rezultatih ostanejo nedokončani zaradi roka.",
+    "evidence": [
+      "runtime/runs/P05-B-001/phases/02-implementation/events.jsonl.gz",
+      "runtime/runs/P05-B-001/phases/03-review/events.jsonl.gz",
+      "runtime/runs/P05-B-001/submission/tests/agent/p05.spec.ts:19"
+    ]
+  },
+  "costReconciliation": {
+    "observedAt": "2026-10-08T22:11:52.150Z",
+    "source": "api/P05-B-001/model/api-cost.json",
+    "complete": true,
+    "costUSD": 0.075157483,
+    "knownCostUSD": 0.075157483,
+    "immutableArchivePreserved": true
+  }
+}

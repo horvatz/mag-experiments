@@ -1,0 +1,115 @@
+{
+  "at": "2026-10-09T02:10:18.392Z",
+  "researcherOnly": true,
+  "measuredRun": "deepseek/P06-A-001",
+  "classification": "Image function_call_output rejected by pinned Responses/provider route",
+  "measuredRequest": 24,
+  "ledger": {
+    "number": 24,
+    "label": "deepseek/P06-A-001/measured",
+    "model": "deepseek/deepseek-v4.1-flash",
+    "provider": "deepinfra/fp8",
+    "startedAt": "2026-10-09T02:03:10.704Z",
+    "status": "http_error",
+    "requestedParallelToolCalls": true,
+    "mergedDeveloperMessages": 1,
+    "requestedReasoning": {
+      "effort": "xhigh",
+      "summary": "auto"
+    },
+    "sentReasoning": {
+      "effort": "max",
+      "summary": "auto"
+    },
+    "balanceBefore": {
+      "at": "2026-10-09T02:03:10.718Z",
+      "totalCreditsUSD": 40,
+      "totalUsageUSD": 3.114311874,
+      "remainingUSD": 36.885688126
+    },
+    "budgetBefore": {
+      "knownUSD": 3.1236529088000022,
+      "unknownRequests": 6,
+      "unknownReservedUSD": 0.2772171,
+      "maximumRequestCost": 0.20185088
+    },
+    "sentUpstream": true,
+    "httpStatus": 422,
+    "retryAfter": null,
+    "providerError": "{\"error\":{\"message\":\"Provider returned error\",\"code\":422,\"metadata\":{\"raw\":\"{\\\"error\\\":{\\\"message\\\":\\\"Input should be a valid string\\\",\\\"type\\\":\\\"invalid_request_error\\\",\\\"param\\\":\\\"messages.60.tool.content.str\\\",\\\"code\\\":null}}\",\"provider_name\":\"DeepInfra\",\"is_byok\":false}},\"user_id\":\"user_3KIQcE4D6zHX4cA9gK0uFBsjy3f\"}",
+    "finishedAt": "2026-10-09T02:03:11.700Z",
+    "bytes": 321,
+    "usage": null,
+    "openrouterMetadata": null,
+    "responseStatus": null
+  },
+  "inputShape": [
+    {
+      "type": "function_call",
+      "name": "view_image",
+      "call_id": "chatcmpl-tool-939c5179b95d276a",
+      "outputType": "undefined"
+    },
+    {
+      "type": "function_call",
+      "name": "view_image",
+      "call_id": "chatcmpl-tool-ae2ddfa2f04baa62",
+      "outputType": "undefined"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "chatcmpl-tool-939c5179b95d276a",
+      "outputType": "array",
+      "contentTypes": [
+        "input_image"
+      ]
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "chatcmpl-tool-ae2ddfa2f04baa62",
+      "outputType": "array",
+      "contentTypes": [
+        "input_image"
+      ]
+    }
+  ],
+  "diagnostic": {
+    "at": "2026-10-09T02:08:52.682Z",
+    "model": "deepseek/deepseek-v4.1-flash",
+    "provider": "deepinfra/fp8",
+    "results": [
+      {
+        "mode": "text-tool-control",
+        "excludedFromMeasurements": true,
+        "httpStatus": 200,
+        "responseStatus": "completed",
+        "output": "CONNECTION_OK",
+        "passed": true
+      },
+      {
+        "mode": "image-tool",
+        "excludedFromMeasurements": true,
+        "httpStatus": 422,
+        "responseStatus": null,
+        "output": "",
+        "passed": false
+      },
+      {
+        "mode": "image-user-control",
+        "excludedFromMeasurements": true,
+        "httpStatus": 200,
+        "responseStatus": "completed",
+        "output": "CONNECTION_OK",
+        "passed": true
+      }
+    ],
+    "costComplete": false,
+    "costUSD": null,
+    "excludedFromMeasurements": true
+  },
+  "diagnosticEvidence": "deepseek/qualification/image-tool-2026-10-09T02-08-47-766Z",
+  "interpretation": "Text tool result and user image succeed; image tool result returns HTTP422 in synthetic diagnostic. Evidence isolates input placement incompatibility on pinned route; exact internal conversion responsible is not observable. Initial qualification did not exercise image tool results.",
+  "decision": "Retain measured execution_failed and all evidence without repair/retry. Continue unused IDs under unchanged frozen O/1.0 configuration. Count explicit service/transport errors separately and disclose image tool transport limitation; no general coding-ability conclusion from this failure.",
+  "noMeasuredRepetition": true,
+  "noFrozenChanges": true
+}

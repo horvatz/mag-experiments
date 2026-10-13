@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-10T15:08:59.564348+00:00",
+  "researcherOnly": true,
+  "id": "deepseek/P04-B-003",
+  "executionStatus": "invalid_review_handoff",
+  "elapsedSeconds": 1105.673,
+  "phases": [
+    {
+      "name": "specification",
+      "status": "completed",
+      "elapsedSeconds": 331.355,
+      "signal": null
+    },
+    {
+      "name": "implementation",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 507.59,
+      "signal": "SIGKILL"
+    },
+    {
+      "name": "review",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 231.045,
+      "signal": "SIGKILL"
+    }
+  ],
+  "testsPassed": 70,
+  "requirementsPassed": 12,
+  "allStaticAndAllowedPassed": true,
+  "strictSuccess": false,
+  "explicitAPIErrors": [],
+  "selectedForQualitativeReview": false,
+  "cost": {
+    "complete": true,
+    "costUSD": 0.051768145,
+    "requests": 45,
+    "lastRequest45": {
+      "number": 45,
+      "responseId": "gen-1791644643-hVM8lg4KAbgNO7SWfk8E",
+      "costUSD": 0.00611576,
+      "generation": {
+        "id": "gen-1791644643-hVM8lg4KAbgNO7SWfk8E",
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "provider": "DeepInfra",
+        "totalCostUSD": 0.00611576,
+        "promptTokens": 43405,
+        "completionTokens": 93,
+        "finishReason": null
+      },
+      "billingLookupStatus": 200,
+      "usage": null,
+      "transportStatus": "client_aborted"
+    }
+  },
+  "interpretation": "Implementation and review reached existing phase deadlines/SIGKILL. Review handoff invalid; no repair. All70 independent checks passed. No explicit response/transport API error. No measured rerun or archive mutation."
+}

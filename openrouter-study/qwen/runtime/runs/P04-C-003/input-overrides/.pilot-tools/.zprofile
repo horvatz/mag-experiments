@@ -1,0 +1,1 @@
+export PATH='/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P04-C-003/app/.pilot-tools:/Users/zan/.nvm/versions/node/v24.11.1/bin:/Users/zan/Documents/mag/experiments/.work/tools/spec-kit-cli-1.0.8/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin'

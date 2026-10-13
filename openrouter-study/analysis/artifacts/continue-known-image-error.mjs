@@ -1,0 +1,85 @@
+// Researcher-only continuation of unused IDs after the independently diagnosed
+// DeepInfra image-tool rejection. Never changes or repeats a measured run.
+import assert from 'node:assert/strict'
+import fs from 'node:fs'
+import { createHash } from 'node:crypto'
+import { execFileSync, spawn } from 'node:child_process'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { gunzipSync } from 'node:zlib'
+import { verify } from '../../verify.mjs'
+
+export function diagnosedImageError(row, body) {
+  if (row.model !== 'deepseek/deepseek-v4.1-flash' || row.provider !== 'deepinfra/fp8' || row.httpStatus !== 422 || row.status !== 'http_error') return false
+  let error
+  try { error = JSON.parse(JSON.parse(row.providerError).error.metadata.raw).error } catch { return false }
+  if (error.message !== 'Input should be a valid string' || !/^messages\.\d+\.tool\.content\.str$/.test(error.param || '')) return false
+  if (body.model !== row.model || body.provider?.only?.length !== 1 || body.provider.only[0] !== row.provider || body.provider.allow_fallbacks !== false) return false
+  const images = (body.input || []).filter(x => x.type === 'function_call_output' && Array.isArray(x.output) && x.output.some(c => c.type === 'input_image'))
+  return images.length > 0 && images.every(x => body.input.some(c => c.type === 'function_call' && c.call_id === x.call_id && c.name === 'view_image'))
+}
+
+async function main() {
+  const study = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+  const recovery = resolve(study, 'analysis/recovery')
+  const json = path => JSON.parse(fs.readFileSync(path))
+  const lock = resolve(recovery, 'known-image-resumer.lock')
+  const fd = fs.openSync(lock, 'wx'); fs.writeFileSync(fd, String(process.pid)); fs.closeSync(fd)
+  const save = value => { const row = { at: new Date().toISOString(), ...value }; fs.appendFileSync(resolve(recovery, 'known-image-resumes.jsonl'), JSON.stringify(row) + '\n'); console.log(JSON.stringify(row)) }
+  const processCommand = pid => { try { return execFileSync('/bin/ps', ['-p', String(pid), '-o', 'args='], { encoding: 'utf8' }).trim() } catch { return '' } }
+  const expectedCommand = 'node openrouter-study/run.mjs'
+  let pid = Number(process.argv[2]), previousCount = -1
+  try {
+    assert.ok(Number.isInteger(pid) && pid > 1)
+    assert.equal(processCommand(pid), expectedCommand, 'Attach only to verified current runner')
+    save({ action: 'attached', runnerPid: pid, rationale: 'Only diagnosed DeepInfra image-tool HTTP422 may continue; all other failures stop.' })
+    while (true) {
+      while (processCommand(pid) === expectedCommand) await new Promise(done => setTimeout(done, 5000))
+      const status = json(resolve(study, 'status.json'))
+      if (status.archived === 216) { save({ action: 'all_measurements_archived', archived: 216 }); break }
+      assert.ok(!fs.existsSync(resolve(study, 'runner.lock')), 'A different runner or incomplete exit needs inspection')
+      const active = json(resolve(study, 'active.json'))
+      assert.equal(active.pid, pid)
+      assert.equal(active.stage, 'service_failure_archived')
+      assert.equal(active.slug, 'deepseek')
+      assert.ok(status.archived > previousCount, 'Continuation must make archival progress')
+      const run = resolve(study, 'deepseek/runtime/runs', active.id)
+      const manifest = json(resolve(run, 'archive-complete.json'))
+      assert.equal(manifest.id, active.id)
+      assert.equal(json(resolve(run, 'execution.json')).status, 'execution_failed')
+      for (const [file, entry] of Object.entries(manifest.files)) {
+        assert.ok(!file.startsWith('/') && !file.split('/').includes('..'))
+        if (entry.kind === 'file') assert.equal(createHash('sha256').update(fs.readFileSync(resolve(run, file))).digest('hex'), entry.sha256)
+      }
+      const api = resolve(study, 'deepseek/api', active.id, 'model')
+      const rows = fs.readFileSync(resolve(api, 'api-ledger.jsonl'), 'utf8').trim().split('\n').map(JSON.parse)
+      const errors = rows.filter(r => r.httpStatus !== undefined && r.httpStatus !== 200 || ['failed', 'incomplete'].includes(r.responseStatus) || ['transport_error', 'rejected_before_upstream'].includes(r.status))
+      assert.ok(errors.length > 0)
+      for (const row of errors) {
+        const body = JSON.parse(gunzipSync(fs.readFileSync(resolve(api, `request-${String(row.number).padStart(5, '0')}.json.gz`))))
+        assert.equal(diagnosedImageError(row, body), true, 'New failure type needs researcher inspection')
+      }
+      const plan = json(resolve(study, 'models.json'))
+      const schedule = json(resolve(study, plan.models[0].slug, 'runtime/main-study/schedule.json')).runs
+      const jobs = schedule.flatMap((entry, index) => plan.models.map((_, offset) => ({ ...entry, slug: plan.models[(index + offset) % plan.models.length].slug })))
+      assert.equal(jobs[active.position - 1].slug, active.slug); assert.equal(jobs[active.position - 1].id, active.id)
+      for (const job of jobs.slice(0, active.position)) assert.ok(fs.existsSync(resolve(study, job.slug, 'runtime/runs', job.id, 'archive-complete.json')))
+      const next = jobs[active.position]
+      assert.ok(next, 'Expected unused next ID')
+      for (const path of [resolve(study, next.slug, 'runtime/.work/pilots', next.id, 'execution.json'), resolve(study, next.slug, 'api', next.id, 'model/api-ledger.jsonl'), resolve(study, next.slug, 'runtime/runs', next.id)]) assert.ok(!fs.existsSync(path), 'Next ID has already started; never repeat it')
+      verify()
+      const incident = { action: 'continue_unused_ids', archived: status.archived, previousRun: active.slug + '/' + active.id, errorRequests: errors.map(r => r.number), nextRun: next.slug + '/' + next.id, diagnosis: 'analysis/recovery/deepseek-P06-A-001-image-tool.json', unchangedFrozenProtocol: true, archivedHashesVerified: true, measuredRetry: false, serviceCheck: 'Unchanged runner performs connectivity check before the next measured start.' }
+      save(incident)
+      previousCount = status.archived
+      const child = spawn('/usr/bin/caffeinate', ['-i', process.execPath, 'openrouter-study/run.mjs'], { cwd: resolve(study, '..'), env: process.env, stdio: 'inherit' })
+      const code = await new Promise((done, reject) => { child.once('error', reject); child.once('close', done) })
+      const newest = json(resolve(study, 'active.json'))
+      pid = newest.pid
+      save({ action: 'runner_exited', runnerPid: pid, exitCode: code })
+    }
+  } catch (error) {
+    save({ action: 'stopped_for_researcher', error: String(error.message).replace(/sk-or-v1-[A-Za-z0-9_-]+/g, '[REDACTED]') })
+    process.exitCode = 1
+  } finally { fs.rmSync(lock) }
+}
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main()

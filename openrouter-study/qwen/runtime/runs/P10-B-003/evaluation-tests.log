@@ -1,0 +1,1721 @@
+[WebServer] (node:74800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 70 tests using 1 worker
+
+(node:74801) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [regression-api] › .work/P10/baseline/tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (38ms)
+  ✓   2 [regression-api] › .work/P10/baseline/tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (7ms)
+  ✓   3 [regression-api] › .work/P10/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (6ms)
+  ✓   4 [regression-api] › .work/P10/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (5ms)
+  ✓   5 [regression-api] › .work/P10/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [regression-api] › .work/P10/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (4ms)
+  ✓   7 [regression-api] › .work/P10/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (4ms)
+  ✓   8 [regression-api] › .work/P10/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (4ms)
+  ✓   9 [regression-api] › .work/P10/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (4ms)
+  ✓  10 [regression-api] › .work/P10/baseline/tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (10ms)
+  ✓  11 [regression-api] › .work/P10/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with success (12ms)
+  ✓  12 [regression-api] › .work/P10/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (9ms)
+  ✓  13 [regression-api] › .work/P10/baseline/tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (10ms)
+  ✓  14 [regression-api] › .work/P10/baseline/tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:74807) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (462ms)
+  ✓  16 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (451ms)
+  ✓  17 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (498ms)
+  ✓  18 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (620ms)
+  ✓  19 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (440ms)
+  ✓  20 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (331ms)
+  ✓  21 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (348ms)
+  ✓  22 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (318ms)
+  ✓  23 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (316ms)
+[WebServer] 2:09:13 AM [vite] (client) [Unhandled error] ReferenceError: TaskRow is not defined
+[WebServer]  > src/TaskBoard.tsx:16:9
+[WebServer]     14 |      >
+[WebServer]     15 |        {tasks.map((task, index) => (
+[WebServer]     16 |          <TaskRow key={task.id} task={task} index={index} onDrop={handleDrop} />
+[WebServer]        |           ^
+[WebServer]     17 |        ))}
+[WebServer]     18 |      </div>
+[WebServer]  > TaskBoard src/TaskBoard.tsx:15:13
+[WebServer]  > Object.react_stack_bottom_frame ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+[WebServer]  > renderWithHooks ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+[WebServer]  > updateFunctionComponent ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+[WebServer]  > beginWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+[WebServer]  > runWithFiberInDEV ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+[WebServer]  > performUnitOfWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+[WebServer]  > workLoopSync ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+[WebServer] 
+[WebServer] 2:09:13 AM [vite] (client) [console.warn] An error occurred in the <TaskBoard> component.
+[WebServer] 
+[WebServer] Consider adding an error boundary to your tree to customize error handling behavior.
+[WebServer] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[WebServer] 
+  ✘  24 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (5.3s)
+(node:74854) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 2:09:18 AM [vite] (client) [Unhandled error] ReferenceError: TaskRow is not defined
+[WebServer]  > src/TaskBoard.tsx:16:9
+[WebServer]     14 |      >
+[WebServer]     15 |        {tasks.map((task, index) => (
+[WebServer]     16 |          <TaskRow key={task.id} task={task} index={index} onDrop={handleDrop} />
+[WebServer]        |           ^
+[WebServer]     17 |        ))}
+[WebServer]     18 |      </div>
+[WebServer]  > TaskBoard src/TaskBoard.tsx:15:13
+[WebServer]  > Object.react_stack_bottom_frame ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+[WebServer]  > renderWithHooks ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+[WebServer]  > updateFunctionComponent ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+[WebServer]  > beginWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+[WebServer]  > runWithFiberInDEV ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+[WebServer]  > performUnitOfWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+[WebServer]  > workLoopSync ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+[WebServer] 
+[WebServer] 2:09:18 AM [vite] (client) [console.warn] An error occurred in the <TaskBoard> component.
+[WebServer] 
+[WebServer] Consider adding an error boundary to your tree to customize error handling behavior.
+[WebServer] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[WebServer] 
+  ✘  25 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (5.3s)
+(node:74865) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  26 [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (5.3s)
+(node:74877) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  27 [development-desktop] › tasks/P10/development.spec.ts:2:1 › D01: one move and boundary (5.3s)
+(node:74904) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  28 [development-desktop] › tasks/P10/development.spec.ts:3:1 › D02: undo and redo (5.3s)
+(node:74915) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  29 [development-desktop] › tasks/P10/development.spec.ts:4:1 › D03: new move clears redo (5.3s)
+(node:74921) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 2:09:46 AM [vite] (client) [Unhandled error] ReferenceError: TaskRow is not defined
+[WebServer]  > src/TaskBoard.tsx:16:9
+[WebServer]     14 |      >
+[WebServer]     15 |        {tasks.map((task, index) => (
+[WebServer]     16 |          <TaskRow key={task.id} task={task} index={index} onDrop={handleDrop} />
+[WebServer]        |           ^
+[WebServer]     17 |        ))}
+[WebServer]     18 |      </div>
+[WebServer]  > TaskBoard src/TaskBoard.tsx:15:13
+[WebServer]  > Object.react_stack_bottom_frame ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+[WebServer]  > renderWithHooks ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+[WebServer]  > updateFunctionComponent ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+[WebServer]  > beginWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+[WebServer]  > runWithFiberInDEV ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+[WebServer]  > performUnitOfWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+[WebServer]  > workLoopSync ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+[WebServer] 
+[WebServer] 2:09:46 AM [vite] (client) [console.warn] An error occurred in the <TaskBoard> component.
+[WebServer] 
+[WebServer] Consider adding an error boundary to your tree to customize error handling behavior.
+[WebServer] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[WebServer] 
+  ✘  30 [development-desktop] › tasks/P10/development.spec.ts:5:1 › D04: board global rank, reset and no writes (5.3s)
+(node:74932) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  31 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:4:1 › E01: R01 initial global ranks independent of title (5.3s)
+(node:74938) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  32 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:5:1 › E02: R02 moves swap exactly one global neighbor (5.3s)
+(node:74949) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  33 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:6:1 › E03: R03 boundaries disabled and no history changes (5.3s)
+(node:74956) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  34 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:7:1 › E04: R04 undo restores full permutation (5.3s)
+(node:74967) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  35 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:8:1 › E05: R05 multi-step redo order without lost IDs (5.3s)
+(node:75205) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  36 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:9:1 › E06: R06 new branch clears redo, invalid boundary does not (5.3s)
+(node:75216) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  37 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:10:1 › E07: R07 bounded history retains most recent twenty steps (5.3s)
+(node:75226) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  38 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:11:1 › E08: R08 reset is undoable and original reset is no-op (5.3s)
+(node:75233) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 2:10:36 AM [vite] (client) [Unhandled error] ReferenceError: TaskRow is not defined
+[WebServer]  > src/TaskBoard.tsx:16:9
+[WebServer]     14 |      >
+[WebServer]     15 |        {tasks.map((task, index) => (
+[WebServer]     16 |          <TaskRow key={task.id} task={task} index={index} onDrop={handleDrop} />
+[WebServer]        |           ^
+[WebServer]     17 |        ))}
+[WebServer]     18 |      </div>
+[WebServer]  > TaskBoard src/TaskBoard.tsx:15:13
+[WebServer]  > Object.react_stack_bottom_frame ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+[WebServer]  > renderWithHooks ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+[WebServer]  > updateFunctionComponent ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+[WebServer]  > beginWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+[WebServer]  > runWithFiberInDEV ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+[WebServer]  > performUnitOfWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+[WebServer]  > workLoopSync ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+[WebServer] 
+[WebServer] 2:10:36 AM [vite] (client) [console.warn] An error occurred in the <TaskBoard> component.
+[WebServer] 
+[WebServer] Consider adding an error boundary to your tree to customize error handling behavior.
+[WebServer] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[WebServer] 
+  ✘  39 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:12:1 › E09: R09 board actions use global neighbors across status columns (5.3s)
+(node:75243) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  40 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:13:1 › E10: R10 view details retain stacks; project reload reset (5.3s)
+(node:75252) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  41 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:14:1 › E11: R11 empty and singleton controls have zero history (5.3s)
+(node:75262) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  42 [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:15:1 › E12: R12 fields, counts and API unchanged across moves (5.3s)
+(node:75271) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (362ms)
+  ✓  44 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (465ms)
+  ✓  45 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (489ms)
+  ✓  46 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (653ms)
+  ✓  47 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (430ms)
+  ✓  48 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (398ms)
+  ✓  49 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (362ms)
+  ✓  50 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (332ms)
+  ✓  51 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (351ms)
+[WebServer] 2:11:02 AM [vite] (client) [Unhandled error] ReferenceError: TaskRow is not defined
+[WebServer]  > src/TaskBoard.tsx:16:9
+[WebServer]     14 |      >
+[WebServer]     15 |        {tasks.map((task, index) => (
+[WebServer]     16 |          <TaskRow key={task.id} task={task} index={index} onDrop={handleDrop} />
+[WebServer]        |           ^
+[WebServer]     17 |        ))}
+[WebServer]     18 |      </div>
+[WebServer]  > TaskBoard src/TaskBoard.tsx:15:13
+[WebServer]  > Object.react_stack_bottom_frame ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+[WebServer]  > renderWithHooks ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+[WebServer]  > updateFunctionComponent ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+[WebServer]  > beginWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+[WebServer]  > runWithFiberInDEV ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+[WebServer]  > performUnitOfWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+[WebServer]  > workLoopSync ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+[WebServer] 
+[WebServer] 2:11:02 AM [vite] (client) [console.warn] An error occurred in the <TaskBoard> component.
+[WebServer] 
+[WebServer] Consider adding an error boundary to your tree to customize error handling behavior.
+[WebServer] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[WebServer] 
+  ✘  52 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (5.3s)
+(node:75522) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 2:11:07 AM [vite] (client) [Unhandled error] ReferenceError: TaskRow is not defined
+[WebServer]  > src/TaskBoard.tsx:16:9
+[WebServer]     14 |      >
+[WebServer]     15 |        {tasks.map((task, index) => (
+[WebServer]     16 |          <TaskRow key={task.id} task={task} index={index} onDrop={handleDrop} />
+[WebServer]        |           ^
+[WebServer]     17 |        ))}
+[WebServer]     18 |      </div>
+[WebServer]  > TaskBoard src/TaskBoard.tsx:15:13
+[WebServer]  > Object.react_stack_bottom_frame ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+[WebServer]  > renderWithHooks ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+[WebServer]  > updateFunctionComponent ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+[WebServer]  > beginWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+[WebServer]  > runWithFiberInDEV ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+[WebServer]  > performUnitOfWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+[WebServer]  > workLoopSync ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+[WebServer] 
+[WebServer] 2:11:07 AM [vite] (client) [console.warn] An error occurred in the <TaskBoard> component.
+[WebServer] 
+[WebServer] Consider adding an error boundary to your tree to customize error handling behavior.
+[WebServer] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[WebServer] 
+  ✘  53 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (5.3s)
+(node:75532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  54 [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (5.3s)
+(node:75540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  55 [development-mobile] › tasks/P10/development.spec.ts:2:1 › D01: one move and boundary (5.3s)
+(node:75550) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  56 [development-mobile] › tasks/P10/development.spec.ts:3:1 › D02: undo and redo (5.3s)
+(node:75557) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  57 [development-mobile] › tasks/P10/development.spec.ts:4:1 › D03: new move clears redo (5.3s)
+(node:75567) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 2:11:35 AM [vite] (client) [Unhandled error] ReferenceError: TaskRow is not defined
+[WebServer]  > src/TaskBoard.tsx:16:9
+[WebServer]     14 |      >
+[WebServer]     15 |        {tasks.map((task, index) => (
+[WebServer]     16 |          <TaskRow key={task.id} task={task} index={index} onDrop={handleDrop} />
+[WebServer]        |           ^
+[WebServer]     17 |        ))}
+[WebServer]     18 |      </div>
+[WebServer]  > TaskBoard src/TaskBoard.tsx:15:13
+[WebServer]  > Object.react_stack_bottom_frame ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+[WebServer]  > renderWithHooks ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+[WebServer]  > updateFunctionComponent ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+[WebServer]  > beginWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+[WebServer]  > runWithFiberInDEV ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+[WebServer]  > performUnitOfWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+[WebServer]  > workLoopSync ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+[WebServer] 
+[WebServer] 2:11:35 AM [vite] (client) [console.warn] An error occurred in the <TaskBoard> component.
+[WebServer] 
+[WebServer] Consider adding an error boundary to your tree to customize error handling behavior.
+[WebServer] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[WebServer] 
+  ✘  58 [development-mobile] › tasks/P10/development.spec.ts:5:1 › D04: board global rank, reset and no writes (5.3s)
+(node:75574) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  59 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:4:1 › E01: R01 initial global ranks independent of title (5.3s)
+(node:75584) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  60 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:5:1 › E02: R02 moves swap exactly one global neighbor (5.3s)
+(node:75595) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  61 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:6:1 › E03: R03 boundaries disabled and no history changes (5.3s)
+(node:75601) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  62 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:7:1 › E04: R04 undo restores full permutation (5.3s)
+(node:75613) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  63 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:8:1 › E05: R05 multi-step redo order without lost IDs (5.3s)
+(node:75620) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  64 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:9:1 › E06: R06 new branch clears redo, invalid boundary does not (5.3s)
+(node:75631) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  65 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:10:1 › E07: R07 bounded history retains most recent twenty steps (5.3s)
+(node:75637) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  66 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:11:1 › E08: R08 reset is undoable and original reset is no-op (5.3s)
+(node:75648) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 2:12:25 AM [vite] (client) [Unhandled error] ReferenceError: TaskRow is not defined
+[WebServer]  > src/TaskBoard.tsx:16:9
+[WebServer]     14 |      >
+[WebServer]     15 |        {tasks.map((task, index) => (
+[WebServer]     16 |          <TaskRow key={task.id} task={task} index={index} onDrop={handleDrop} />
+[WebServer]        |           ^
+[WebServer]     17 |        ))}
+[WebServer]     18 |      </div>
+[WebServer]  > TaskBoard src/TaskBoard.tsx:15:13
+[WebServer]  > Object.react_stack_bottom_frame ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+[WebServer]  > renderWithHooks ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+[WebServer]  > updateFunctionComponent ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+[WebServer]  > beginWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+[WebServer]  > runWithFiberInDEV ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+[WebServer]  > performUnitOfWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+[WebServer]  > workLoopSync ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+[WebServer] 
+[WebServer] 2:12:25 AM [vite] (client) [console.warn] An error occurred in the <TaskBoard> component.
+[WebServer] 
+[WebServer] Consider adding an error boundary to your tree to customize error handling behavior.
+[WebServer] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[WebServer] 
+  ✘  67 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:12:1 › E09: R09 board actions use global neighbors across status columns (5.3s)
+(node:75657) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  68 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:13:1 › E10: R10 view details retain stacks; project reload reset (5.3s)
+(node:75667) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  69 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:14:1 › E11: R11 empty and singleton controls have zero history (5.3s)
+(node:75674) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  70 [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:15:1 › E12: R12 fields, counts and API unchanged across moves (5.3s)
+
+
+  1) [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil', exact: true }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true })
+
+
+      139 |   await page.getByRole('button', { name: 'Tabla', exact: true }).click()
+      140 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 141 |   await expect(board).toBeVisible()
+          |                       ^
+      142 |   await expect(page.getByRole('table')).toHaveCount(0)
+      143 |   await expect(page.getByRole('button', { name: 'Tabla', exact: true })).toHaveAttribute('aria-pressed', 'true')
+      144 |   for (const [status, id] of [['Pripravljeno', 'web-02'], ['V delu', 'web-01'], ['Končano', 'web-03']]) {
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P10/baseline/tests/baseline.spec.ts:141:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link')
+    Expected: 3
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      175 |   await page.goto('/#/projects/web?view=board')
+      176 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 177 |   await expect(board.getByRole('link')).toHaveCount(3)
+          |                                         ^
+      178 |   expect((await request.patch('/api/tasks/web-02', { data: { title: 'Pregled vsebine', status: 'done' } })).status()).toBe(200)
+      179 |   await page.reload()
+      180 |   const ready = board.getByRole('region', { name: 'Pripravljeno', exact: true })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P10/baseline/tests/baseline.spec.ts:177:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region')
+    Expected: 3
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      195 |   await page.goto('/#/projects/web?view=board')
+      196 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 197 |   await expect(board.getByRole('region')).toHaveCount(3)
+          |                                           ^
+      198 |   await expect(board.getByRole('link')).toHaveCount(0)
+      199 |   await expect(board.getByText('Ni opravil v tem stanju.')).toHaveCount(3)
+      200 |   await page.getByRole('button', { name: 'Preglednica', exact: true }).click()
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P10/baseline/tests/baseline.spec.ts:197:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [development-desktop] › tasks/P10/development.spec.ts:2:1 › D01: one move and boundary ────────
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator: getByRole('button', { name: 'Premakni web-01 gor', exact: true })
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeDisabled" getByRole('button', { name: 'Premakni web-01 gor', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Premakni web-01 gor', exact: true })
+
+
+      1 | import { test, expect, mount, expectIds, webIds, click, board, readonly } from './helpers.ts'
+    > 2 | test('D01: one move and boundary', async ({ page }) => { await mount(page); await expect(page.getByRole('button', { name: 'Premakni web-01 gor', exact: true })).toBeDisabled(); await click(page, 'Premakni web-02 gor'); await expectIds(page, ['web-02','web-01','web-03','web-04','web-05','web-06','web-07','web-08']) })
+        |                                                                                                                                                                  ^
+      3 | test('D02: undo and redo', async ({ page }) => { await mount(page); await click(page, 'Premakni web-02 gor'); await click(page, 'Razveljavi premik'); await expectIds(page, webIds()); await click(page, 'Ponovi premik'); await expect(page.getByLabel('Mesto opravila web-02', { exact: true })).toHaveText('1') })
+      4 | test('D03: new move clears redo', async ({ page }) => { await mount(page); await click(page, 'Premakni web-02 gor'); await click(page, 'Razveljavi premik'); await click(page, 'Premakni web-03 gor'); await expect(page.getByRole('button', { name: 'Ponovi premik', exact: true })).toBeDisabled(); await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 1. Ponovitve: 0.') })
+      5 | test('D04: board global rank, reset and no writes', async ({ page }) => { const writes = await mount(page); await board(page); await click(page, 'Premakni web-02 gor'); await expect(page.getByLabel('Mesto opravila web-02', { exact: true })).toHaveText('1'); await click(page, 'Začetni vrstni red'); await expect(page.getByLabel('Mesto opravila web-02', { exact: true })).toHaveText('2'); await readonly(page, writes) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/development.spec.ts:2:162
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D01-one-move-and-boundary-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/development-D01-one-move-and-boundary-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D01-one-move-and-boundary-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/development-D01-one-move-and-boundary-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [development-desktop] › tasks/P10/development.spec.ts:3:1 › D02: undo and redo ────────────────
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/development.spec.ts:3:75
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D02-undo-and-redo-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/development-D02-undo-and-redo-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D02-undo-and-redo-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/development-D02-undo-and-redo-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [development-desktop] › tasks/P10/development.spec.ts:4:1 › D03: new move clears redo ─────────
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/development.spec.ts:4:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D03-new-move-clears-redo-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/development-D03-new-move-clears-redo-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D03-new-move-clears-redo-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/development-D03-new-move-clears-redo-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [development-desktop] › tasks/P10/development.spec.ts:5:1 › D04: board global rank, reset and no writes 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil' })
+
+
+       at tasks/P10/helpers.ts:46
+
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+    > 46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+         |                                                                                                                                                                                     ^
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+        at board (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:46:181)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/development.spec.ts:5:109
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D04-board-global-rank-reset-and-no-writes-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/development-D04-board-global-rank-reset-and-no-writes-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D04-board-global-rank-reset-and-no-writes-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/development-D04-board-global-rank-reset-and-no-writes-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:4:1 › E01: R01 initial global ranks independent of title 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByLabel('Mesto opravila web-01', { exact: true })
+    Expected: "1"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" getByLabel('Mesto opravila web-01', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Mesto opravila web-01', { exact: true })
+
+
+      2 | import type { Page } from '@playwright/test'
+      3 | const rank=(page:Page,id:string)=>page.getByLabel('Mesto opravila '+id,{exact:true}), history=(page:Page)=>page.getByRole('status',{name:'Zgodovina vrstnega reda'})
+    > 4 | test('E01: R01 initial global ranks independent of title',async({page})=>{await mount(page);await expectIds(page,webIds());for(const [i,id]of webIds().entries())await expect(rank(page,id)).toHaveText(String(i+1));await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.')})
+        |                                                                                                                                                                                              ^
+      5 | test('E02: R02 moves swap exactly one global neighbor',async({page})=>{await mount(page);await click(page,'Premakni web-03 gor');await expectIds(page,['web-01','web-03','web-02','web-04','web-05','web-06','web-07','web-08']);await click(page,'Premakni web-03 dol');await expectIds(page,webIds());await expect(page.locator('[data-task-id="web-03"]').getByText('Končano',{exact:true})).toBeVisible();await expect(history(page)).toHaveText('Razveljavitve: 2. Ponovitve: 0.')})
+      6 | test('E03: R03 boundaries disabled and no history changes',async({page})=>{await mount(page);for(const label of ['Premakni web-01 gor','Premakni web-08 dol']){const button=page.getByRole('button',{name:label,exact:true});await expect(button).toBeDisabled();await button.evaluate(el=>(el as HTMLButtonElement).click())}await expectIds(page,webIds());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.')})
+      7 | test('E04: R04 undo restores full permutation',async({page})=>{await mount(page);await click(page,'Premakni web-03 gor');await click(page,'Premakni web-08 gor');await click(page,'Razveljavi premik');await expectIds(page,['web-01','web-03','web-02','web-04','web-05','web-06','web-07','web-08']);await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 1.');await click(page,'Razveljavi premik');await expectIds(page,webIds())})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:4:190
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E01-R01-initial-global-ranks-independent-of-title-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E01-R01-initial-global-ranks-independent-of-title-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E01-R01-initial-global-ranks-independent-of-title-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E01-R01-initial-global-ranks-independent-of-title-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:5:1 › E02: R02 moves swap exactly one global neighbor 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-03 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:5:96
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E02-R02-moves-swap-exactly-one-global-neighbor-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E02-R02-moves-swap-exactly-one-global-neighbor-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E02-R02-moves-swap-exactly-one-global-neighbor-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E02-R02-moves-swap-exactly-one-global-neighbor-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:6:1 › E03: R03 boundaries disabled and no history changes 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator: getByRole('button', { name: 'Premakni web-01 gor', exact: true })
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeDisabled" getByRole('button', { name: 'Premakni web-01 gor', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Premakni web-01 gor', exact: true })
+
+
+      4 | test('E01: R01 initial global ranks independent of title',async({page})=>{await mount(page);await expectIds(page,webIds());for(const [i,id]of webIds().entries())await expect(rank(page,id)).toHaveText(String(i+1));await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.')})
+      5 | test('E02: R02 moves swap exactly one global neighbor',async({page})=>{await mount(page);await click(page,'Premakni web-03 gor');await expectIds(page,['web-01','web-03','web-02','web-04','web-05','web-06','web-07','web-08']);await click(page,'Premakni web-03 dol');await expectIds(page,webIds());await expect(page.locator('[data-task-id="web-03"]').getByText('Končano',{exact:true})).toBeVisible();await expect(history(page)).toHaveText('Razveljavitve: 2. Ponovitve: 0.')})
+    > 6 | test('E03: R03 boundaries disabled and no history changes',async({page})=>{await mount(page);for(const label of ['Premakni web-01 gor','Premakni web-08 dol']){const button=page.getByRole('button',{name:label,exact:true});await expect(button).toBeDisabled();await button.evaluate(el=>(el as HTMLButtonElement).click())}await expectIds(page,webIds());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.')})
+        |                                                                                                                                                                                                                                                   ^
+      7 | test('E04: R04 undo restores full permutation',async({page})=>{await mount(page);await click(page,'Premakni web-03 gor');await click(page,'Premakni web-08 gor');await click(page,'Razveljavi premik');await expectIds(page,['web-01','web-03','web-02','web-04','web-05','web-06','web-07','web-08']);await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 1.');await click(page,'Razveljavi premik');await expectIds(page,webIds())})
+      8 | test('E05: R05 multi-step redo order without lost IDs',async({page})=>{await mount(page);await click(page,'Premakni web-02 gor');await click(page,'Premakni web-03 gor');await click(page,'Premakni web-04 gor');for(let i=0;i<3;i++)await click(page,'Razveljavi premik');await expectIds(page,webIds());await click(page,'Ponovi premik');await expectIds(page,['web-02','web-01','web-03','web-04','web-05','web-06','web-07','web-08']);await click(page,'Ponovi premik');await expectIds(page,['web-02','web-03','web-01','web-04','web-05','web-06','web-07','web-08']);await click(page,'Ponovi premik');await expectIds(page,['web-02','web-03','web-04','web-01','web-05','web-06','web-07','web-08']);await expect(history(page)).toHaveText('Razveljavitve: 3. Ponovitve: 0.')})
+      9 | test('E06: R06 new branch clears redo, invalid boundary does not',async({page})=>{await mount(page);await click(page,'Premakni web-02 gor');await click(page,'Razveljavi premik');await page.getByRole('button',{name:'Premakni web-01 gor',exact:true}).evaluate(el=>(el as HTMLButtonElement).click());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 1.');await click(page,'Premakni web-03 gor');await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 0.');await expect(page.getByRole('button',{name:'Ponovi premik',exact:true})).toBeDisabled()})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:6:243
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E03-R03-boundar-7d5b5-bled-and-no-history-changes-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E03-R03-boundar-7d5b5-bled-and-no-history-changes-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E03-R03-boundar-7d5b5-bled-and-no-history-changes-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E03-R03-boundar-7d5b5-bled-and-no-history-changes-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:7:1 › E04: R04 undo restores full permutation 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-03 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:7:88
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E04-R04-undo-restores-full-permutation-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E04-R04-undo-restores-full-permutation-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E04-R04-undo-restores-full-permutation-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E04-R04-undo-restores-full-permutation-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:8:1 › E05: R05 multi-step redo order without lost IDs 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:8:96
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E05-R05-multi-step-redo-order-without-lost-IDs-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E05-R05-multi-step-redo-order-without-lost-IDs-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E05-R05-multi-step-redo-order-without-lost-IDs-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E05-R05-multi-step-redo-order-without-lost-IDs-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:9:1 › E06: R06 new branch clears redo, invalid boundary does not 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:9:107
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E06-R06-new-bra-08265-o-invalid-boundary-does-not-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E06-R06-new-bra-08265-o-invalid-boundary-does-not-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E06-R06-new-bra-08265-o-invalid-boundary-does-not-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E06-R06-new-bra-08265-o-invalid-boundary-does-not-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:10:1 › E07: R07 bounded history retains most recent twenty steps 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni a dol', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:10:181
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E07-R07-bounded-7793d-ns-most-recent-twenty-steps-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E07-R07-bounded-7793d-ns-most-recent-twenty-steps-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E07-R07-bounded-7793d-ns-most-recent-twenty-steps-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E07-R07-bounded-7793d-ns-most-recent-twenty-steps-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:11:1 › E08: R08 reset is undoable and original reset is no-op 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator: getByRole('button', { name: 'Začetni vrstni red', exact: true })
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeDisabled" getByRole('button', { name: 'Začetni vrstni red', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Začetni vrstni red', exact: true })
+
+
+       9 | test('E06: R06 new branch clears redo, invalid boundary does not',async({page})=>{await mount(page);await click(page,'Premakni web-02 gor');await click(page,'Razveljavi premik');await page.getByRole('button',{name:'Premakni web-01 gor',exact:true}).evaluate(el=>(el as HTMLButtonElement).click());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 1.');await click(page,'Premakni web-03 gor');await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 0.');await expect(page.getByRole('button',{name:'Ponovi premik',exact:true})).toBeDisabled()})
+      10 | test('E07: R07 bounded history retains most recent twenty steps',async({page})=>{test.setTimeout(45_000);await mount(page,[makeTask('a'),makeTask('b')]);for(let i=0;i<21;i++)await click(page,`Premakni a ${i%2===0?'dol':'gor'}`);await expect(history(page)).toHaveText('Razveljavitve: 20. Ponovitve: 0.');for(let i=0;i<20;i++)await click(page,'Razveljavi premik');await expectIds(page,['b','a']);await expect(page.getByRole('button',{name:'Razveljavi premik',exact:true})).toBeDisabled();await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 20.');for(let i=0;i<20;i++)await click(page,'Ponovi premik');await expectIds(page,['b','a']);await expect(history(page)).toHaveText('Razveljavitve: 20. Ponovitve: 0.')})
+    > 11 | test('E08: R08 reset is undoable and original reset is no-op',async({page})=>{await mount(page);await expect(page.getByRole('button',{name:'Začetni vrstni red',exact:true})).toBeDisabled();await click(page,'Premakni web-02 gor');await click(page,'Premakni web-03 gor');await click(page,'Razveljavi premik');await click(page,'Začetni vrstni red');await expectIds(page,webIds());await expect(history(page)).toHaveText('Razveljavitve: 2. Ponovitve: 0.');await click(page,'Razveljavi premik');await expectIds(page,['web-02','web-01','web-03','web-04','web-05','web-06','web-07','web-08']);await click(page,'Ponovi premik');await expectIds(page,webIds())})
+         |                                                                                                                                                                               ^
+      12 | test('E09: R09 board actions use global neighbors across status columns',async({page})=>{await mount(page);await board(page);await click(page,'Premakni web-02 gor');await expect(rank(page,'web-02')).toHaveText('1');await expect(rank(page,'web-01')).toHaveText('2');await columnIds(page,'Pripravljeno',['web-02','web-04','web-07','web-08']);await click(page,'Premakni web-04 gor');await click(page,'Premakni web-04 gor');await click(page,'Premakni web-04 gor');await columnIds(page,'Pripravljeno',['web-04','web-02','web-07','web-08']);await table(page);await expectIds(page,['web-04','web-02','web-01','web-03','web-05','web-06','web-07','web-08'])})
+      13 | test('E10: R10 view details retain stacks; project reload reset',async({page})=>{await mount(page);await click(page,'Premakni web-02 gor');await click(page,'Premakni web-03 gor');await click(page,'Razveljavi premik');await details(page,'web-02');await board(page);await details(page,'web-03');await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 1.');await table(page);await expectIds(page,['web-02','web-01','web-03','web-04','web-05','web-06','web-07','web-08']);await project(page,'launch');await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');await project(page,'web');await click(page,'Premakni web-02 gor');await page.reload();await expectIds(page,webIds());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');expect(await page.evaluate(()=>localStorage.length)).toBe(0)})
+      14 | test('E11: R11 empty and singleton controls have zero history',async({page})=>{await mount(page,[makeTask('one')]);for(const name of ['Premakni one gor','Premakni one dol','Razveljavi premik','Ponovi premik','Začetni vrstni red'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled();await expect(rank(page,'one')).toHaveText('1');await project(page,'launch');await expectIds(page,[]);await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');await board(page);for(const name of ['Razveljavi premik','Ponovi premik','Začetni vrstni red'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled()})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:11:175
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E08-R08-reset-i-daabf-and-original-reset-is-no-op-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E08-R08-reset-i-daabf-and-original-reset-is-no-op-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E08-R08-reset-i-daabf-and-original-reset-is-no-op-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E08-R08-reset-i-daabf-and-original-reset-is-no-op-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:12:1 › E09: R09 board actions use global neighbors across status columns 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil' })
+
+
+       at tasks/P10/helpers.ts:46
+
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+    > 46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+         |                                                                                                                                                                                     ^
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+        at board (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:46:181)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:12:108
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E09-R09-board-a-6e0ed-hbors-across-status-columns-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E09-R09-board-a-6e0ed-hbors-across-status-columns-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E09-R09-board-a-6e0ed-hbors-across-status-columns-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E09-R09-board-a-6e0ed-hbors-across-status-columns-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:13:1 › E10: R10 view details retain stacks; project reload reset 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:13:106
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E10-R10-view-de-12d63-stacks-project-reload-reset-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E10-R10-view-de-12d63-stacks-project-reload-reset-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E10-R10-view-de-12d63-stacks-project-reload-reset-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E10-R10-view-de-12d63-stacks-project-reload-reset-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:14:1 › E11: R11 empty and singleton controls have zero history 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator: getByRole('button', { name: 'Premakni one gor', exact: true })
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeDisabled" getByRole('button', { name: 'Premakni one gor', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Premakni one gor', exact: true })
+
+
+      12 | test('E09: R09 board actions use global neighbors across status columns',async({page})=>{await mount(page);await board(page);await click(page,'Premakni web-02 gor');await expect(rank(page,'web-02')).toHaveText('1');await expect(rank(page,'web-01')).toHaveText('2');await columnIds(page,'Pripravljeno',['web-02','web-04','web-07','web-08']);await click(page,'Premakni web-04 gor');await click(page,'Premakni web-04 gor');await click(page,'Premakni web-04 gor');await columnIds(page,'Pripravljeno',['web-04','web-02','web-07','web-08']);await table(page);await expectIds(page,['web-04','web-02','web-01','web-03','web-05','web-06','web-07','web-08'])})
+      13 | test('E10: R10 view details retain stacks; project reload reset',async({page})=>{await mount(page);await click(page,'Premakni web-02 gor');await click(page,'Premakni web-03 gor');await click(page,'Razveljavi premik');await details(page,'web-02');await board(page);await details(page,'web-03');await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 1.');await table(page);await expectIds(page,['web-02','web-01','web-03','web-04','web-05','web-06','web-07','web-08']);await project(page,'launch');await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');await project(page,'web');await click(page,'Premakni web-02 gor');await page.reload();await expectIds(page,webIds());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');expect(await page.evaluate(()=>localStorage.length)).toBe(0)})
+    > 14 | test('E11: R11 empty and singleton controls have zero history',async({page})=>{await mount(page,[makeTask('one')]);for(const name of ['Premakni one gor','Premakni one dol','Razveljavi premik','Ponovi premik','Začetni vrstni red'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled();await expect(rank(page,'one')).toHaveText('1');await project(page,'launch');await expectIds(page,[]);await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');await board(page);for(const name of ['Razveljavi premik','Ponovi premik','Začetni vrstni red'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled()})
+         |                                                                                                                                                                                                                                                                                                ^
+      15 | test('E12: R12 fields, counts and API unchanged across moves',async({page})=>{const writes=await mount(page);await click(page,'Premakni web-02 gor');await summary(page,[4,2,2]);await expect(page.locator('[data-task-id="web-02"] time')).toHaveAttribute('datetime','2026-09-22');await details(page,'web-02');await board(page);await click(page,'Premakni web-03 gor');await expectIds(page,webIds(),false);await readonly(page,writes)})
+      16 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:14:288
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E11-R11-empty-a-5fa83--controls-have-zero-history-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E11-R11-empty-a-5fa83--controls-have-zero-history-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E11-R11-empty-a-5fa83--controls-have-zero-history-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E11-R11-empty-a-5fa83--controls-have-zero-history-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:15:1 › E12: R12 fields, counts and API unchanged across moves 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:15:116
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E12-R12-fields--1d3a3--API-unchanged-across-moves-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E12-R12-fields--1d3a3--API-unchanged-across-moves-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E12-R12-fields--1d3a3--API-unchanged-across-moves-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E12-R12-fields--1d3a3--API-unchanged-across-moves-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil', exact: true }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true })
+
+
+      139 |   await page.getByRole('button', { name: 'Tabla', exact: true }).click()
+      140 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 141 |   await expect(board).toBeVisible()
+          |                       ^
+      142 |   await expect(page.getByRole('table')).toHaveCount(0)
+      143 |   await expect(page.getByRole('button', { name: 'Tabla', exact: true })).toHaveAttribute('aria-pressed', 'true')
+      144 |   for (const [status, id] of [['Pripravljeno', 'web-02'], ['V delu', 'web-01'], ['Končano', 'web-03']]) {
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P10/baseline/tests/baseline.spec.ts:141:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link')
+    Expected: 3
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      175 |   await page.goto('/#/projects/web?view=board')
+      176 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 177 |   await expect(board.getByRole('link')).toHaveCount(3)
+          |                                         ^
+      178 |   expect((await request.patch('/api/tasks/web-02', { data: { title: 'Pregled vsebine', status: 'done' } })).status()).toBe(200)
+      179 |   await page.reload()
+      180 |   const ready = board.getByRole('region', { name: 'Pripravljeno', exact: true })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P10/baseline/tests/baseline.spec.ts:177:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region')
+    Expected: 3
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      195 |   await page.goto('/#/projects/web?view=board')
+      196 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 197 |   await expect(board.getByRole('region')).toHaveCount(3)
+          |                                           ^
+      198 |   await expect(board.getByRole('link')).toHaveCount(0)
+      199 |   await expect(board.getByText('Ni opravil v tem stanju.')).toHaveCount(3)
+      200 |   await page.getByRole('button', { name: 'Preglednica', exact: true }).click()
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P10/baseline/tests/baseline.spec.ts:197:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) [development-mobile] › tasks/P10/development.spec.ts:2:1 › D01: one move and boundary ────────
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator: getByRole('button', { name: 'Premakni web-01 gor', exact: true })
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeDisabled" getByRole('button', { name: 'Premakni web-01 gor', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Premakni web-01 gor', exact: true })
+
+
+      1 | import { test, expect, mount, expectIds, webIds, click, board, readonly } from './helpers.ts'
+    > 2 | test('D01: one move and boundary', async ({ page }) => { await mount(page); await expect(page.getByRole('button', { name: 'Premakni web-01 gor', exact: true })).toBeDisabled(); await click(page, 'Premakni web-02 gor'); await expectIds(page, ['web-02','web-01','web-03','web-04','web-05','web-06','web-07','web-08']) })
+        |                                                                                                                                                                  ^
+      3 | test('D02: undo and redo', async ({ page }) => { await mount(page); await click(page, 'Premakni web-02 gor'); await click(page, 'Razveljavi premik'); await expectIds(page, webIds()); await click(page, 'Ponovi premik'); await expect(page.getByLabel('Mesto opravila web-02', { exact: true })).toHaveText('1') })
+      4 | test('D03: new move clears redo', async ({ page }) => { await mount(page); await click(page, 'Premakni web-02 gor'); await click(page, 'Razveljavi premik'); await click(page, 'Premakni web-03 gor'); await expect(page.getByRole('button', { name: 'Ponovi premik', exact: true })).toBeDisabled(); await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 1. Ponovitve: 0.') })
+      5 | test('D04: board global rank, reset and no writes', async ({ page }) => { const writes = await mount(page); await board(page); await click(page, 'Premakni web-02 gor'); await expect(page.getByLabel('Mesto opravila web-02', { exact: true })).toHaveText('1'); await click(page, 'Začetni vrstni red'); await expect(page.getByLabel('Mesto opravila web-02', { exact: true })).toHaveText('2'); await readonly(page, writes) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/development.spec.ts:2:162
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D01-one-move-and-boundary-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/development-D01-one-move-and-boundary-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D01-one-move-and-boundary-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/development-D01-one-move-and-boundary-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) [development-mobile] › tasks/P10/development.spec.ts:3:1 › D02: undo and redo ────────────────
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/development.spec.ts:3:75
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D02-undo-and-redo-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/development-D02-undo-and-redo-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D02-undo-and-redo-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/development-D02-undo-and-redo-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  25) [development-mobile] › tasks/P10/development.spec.ts:4:1 › D03: new move clears redo ─────────
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/development.spec.ts:4:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D03-new-move-clears-redo-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/development-D03-new-move-clears-redo-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D03-new-move-clears-redo-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/development-D03-new-move-clears-redo-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  26) [development-mobile] › tasks/P10/development.spec.ts:5:1 › D04: board global rank, reset and no writes 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil' })
+
+
+       at tasks/P10/helpers.ts:46
+
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+    > 46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+         |                                                                                                                                                                                     ^
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+        at board (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:46:181)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/development.spec.ts:5:109
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D04-board-global-rank-reset-and-no-writes-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/development-D04-board-global-rank-reset-and-no-writes-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/development-D04-board-global-rank-reset-and-no-writes-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/development-D04-board-global-rank-reset-and-no-writes-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  27) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:4:1 › E01: R01 initial global ranks independent of title 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByLabel('Mesto opravila web-01', { exact: true })
+    Expected: "1"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" getByLabel('Mesto opravila web-01', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Mesto opravila web-01', { exact: true })
+
+
+      2 | import type { Page } from '@playwright/test'
+      3 | const rank=(page:Page,id:string)=>page.getByLabel('Mesto opravila '+id,{exact:true}), history=(page:Page)=>page.getByRole('status',{name:'Zgodovina vrstnega reda'})
+    > 4 | test('E01: R01 initial global ranks independent of title',async({page})=>{await mount(page);await expectIds(page,webIds());for(const [i,id]of webIds().entries())await expect(rank(page,id)).toHaveText(String(i+1));await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.')})
+        |                                                                                                                                                                                              ^
+      5 | test('E02: R02 moves swap exactly one global neighbor',async({page})=>{await mount(page);await click(page,'Premakni web-03 gor');await expectIds(page,['web-01','web-03','web-02','web-04','web-05','web-06','web-07','web-08']);await click(page,'Premakni web-03 dol');await expectIds(page,webIds());await expect(page.locator('[data-task-id="web-03"]').getByText('Končano',{exact:true})).toBeVisible();await expect(history(page)).toHaveText('Razveljavitve: 2. Ponovitve: 0.')})
+      6 | test('E03: R03 boundaries disabled and no history changes',async({page})=>{await mount(page);for(const label of ['Premakni web-01 gor','Premakni web-08 dol']){const button=page.getByRole('button',{name:label,exact:true});await expect(button).toBeDisabled();await button.evaluate(el=>(el as HTMLButtonElement).click())}await expectIds(page,webIds());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.')})
+      7 | test('E04: R04 undo restores full permutation',async({page})=>{await mount(page);await click(page,'Premakni web-03 gor');await click(page,'Premakni web-08 gor');await click(page,'Razveljavi premik');await expectIds(page,['web-01','web-03','web-02','web-04','web-05','web-06','web-07','web-08']);await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 1.');await click(page,'Razveljavi premik');await expectIds(page,webIds())})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:4:190
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E01-R01-initial-global-ranks-independent-of-title-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E01-R01-initial-global-ranks-independent-of-title-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E01-R01-initial-global-ranks-independent-of-title-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E01-R01-initial-global-ranks-independent-of-title-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  28) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:5:1 › E02: R02 moves swap exactly one global neighbor 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-03 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:5:96
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E02-R02-moves-swap-exactly-one-global-neighbor-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E02-R02-moves-swap-exactly-one-global-neighbor-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E02-R02-moves-swap-exactly-one-global-neighbor-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E02-R02-moves-swap-exactly-one-global-neighbor-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  29) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:6:1 › E03: R03 boundaries disabled and no history changes 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator: getByRole('button', { name: 'Premakni web-01 gor', exact: true })
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeDisabled" getByRole('button', { name: 'Premakni web-01 gor', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Premakni web-01 gor', exact: true })
+
+
+      4 | test('E01: R01 initial global ranks independent of title',async({page})=>{await mount(page);await expectIds(page,webIds());for(const [i,id]of webIds().entries())await expect(rank(page,id)).toHaveText(String(i+1));await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.')})
+      5 | test('E02: R02 moves swap exactly one global neighbor',async({page})=>{await mount(page);await click(page,'Premakni web-03 gor');await expectIds(page,['web-01','web-03','web-02','web-04','web-05','web-06','web-07','web-08']);await click(page,'Premakni web-03 dol');await expectIds(page,webIds());await expect(page.locator('[data-task-id="web-03"]').getByText('Končano',{exact:true})).toBeVisible();await expect(history(page)).toHaveText('Razveljavitve: 2. Ponovitve: 0.')})
+    > 6 | test('E03: R03 boundaries disabled and no history changes',async({page})=>{await mount(page);for(const label of ['Premakni web-01 gor','Premakni web-08 dol']){const button=page.getByRole('button',{name:label,exact:true});await expect(button).toBeDisabled();await button.evaluate(el=>(el as HTMLButtonElement).click())}await expectIds(page,webIds());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.')})
+        |                                                                                                                                                                                                                                                   ^
+      7 | test('E04: R04 undo restores full permutation',async({page})=>{await mount(page);await click(page,'Premakni web-03 gor');await click(page,'Premakni web-08 gor');await click(page,'Razveljavi premik');await expectIds(page,['web-01','web-03','web-02','web-04','web-05','web-06','web-07','web-08']);await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 1.');await click(page,'Razveljavi premik');await expectIds(page,webIds())})
+      8 | test('E05: R05 multi-step redo order without lost IDs',async({page})=>{await mount(page);await click(page,'Premakni web-02 gor');await click(page,'Premakni web-03 gor');await click(page,'Premakni web-04 gor');for(let i=0;i<3;i++)await click(page,'Razveljavi premik');await expectIds(page,webIds());await click(page,'Ponovi premik');await expectIds(page,['web-02','web-01','web-03','web-04','web-05','web-06','web-07','web-08']);await click(page,'Ponovi premik');await expectIds(page,['web-02','web-03','web-01','web-04','web-05','web-06','web-07','web-08']);await click(page,'Ponovi premik');await expectIds(page,['web-02','web-03','web-04','web-01','web-05','web-06','web-07','web-08']);await expect(history(page)).toHaveText('Razveljavitve: 3. Ponovitve: 0.')})
+      9 | test('E06: R06 new branch clears redo, invalid boundary does not',async({page})=>{await mount(page);await click(page,'Premakni web-02 gor');await click(page,'Razveljavi premik');await page.getByRole('button',{name:'Premakni web-01 gor',exact:true}).evaluate(el=>(el as HTMLButtonElement).click());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 1.');await click(page,'Premakni web-03 gor');await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 0.');await expect(page.getByRole('button',{name:'Ponovi premik',exact:true})).toBeDisabled()})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:6:243
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E03-R03-boundar-7d5b5-bled-and-no-history-changes-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E03-R03-boundar-7d5b5-bled-and-no-history-changes-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E03-R03-boundar-7d5b5-bled-and-no-history-changes-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E03-R03-boundar-7d5b5-bled-and-no-history-changes-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  30) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:7:1 › E04: R04 undo restores full permutation 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-03 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:7:88
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E04-R04-undo-restores-full-permutation-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E04-R04-undo-restores-full-permutation-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E04-R04-undo-restores-full-permutation-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E04-R04-undo-restores-full-permutation-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  31) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:8:1 › E05: R05 multi-step redo order without lost IDs 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:8:96
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E05-R05-multi-step-redo-order-without-lost-IDs-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E05-R05-multi-step-redo-order-without-lost-IDs-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E05-R05-multi-step-redo-order-without-lost-IDs-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E05-R05-multi-step-redo-order-without-lost-IDs-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:9:1 › E06: R06 new branch clears redo, invalid boundary does not 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:9:107
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E06-R06-new-bra-08265-o-invalid-boundary-does-not-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E06-R06-new-bra-08265-o-invalid-boundary-does-not-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E06-R06-new-bra-08265-o-invalid-boundary-does-not-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E06-R06-new-bra-08265-o-invalid-boundary-does-not-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  33) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:10:1 › E07: R07 bounded history retains most recent twenty steps 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni a dol', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:10:181
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E07-R07-bounded-7793d-ns-most-recent-twenty-steps-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E07-R07-bounded-7793d-ns-most-recent-twenty-steps-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E07-R07-bounded-7793d-ns-most-recent-twenty-steps-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E07-R07-bounded-7793d-ns-most-recent-twenty-steps-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  34) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:11:1 › E08: R08 reset is undoable and original reset is no-op 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator: getByRole('button', { name: 'Začetni vrstni red', exact: true })
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeDisabled" getByRole('button', { name: 'Začetni vrstni red', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Začetni vrstni red', exact: true })
+
+
+       9 | test('E06: R06 new branch clears redo, invalid boundary does not',async({page})=>{await mount(page);await click(page,'Premakni web-02 gor');await click(page,'Razveljavi premik');await page.getByRole('button',{name:'Premakni web-01 gor',exact:true}).evaluate(el=>(el as HTMLButtonElement).click());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 1.');await click(page,'Premakni web-03 gor');await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 0.');await expect(page.getByRole('button',{name:'Ponovi premik',exact:true})).toBeDisabled()})
+      10 | test('E07: R07 bounded history retains most recent twenty steps',async({page})=>{test.setTimeout(45_000);await mount(page,[makeTask('a'),makeTask('b')]);for(let i=0;i<21;i++)await click(page,`Premakni a ${i%2===0?'dol':'gor'}`);await expect(history(page)).toHaveText('Razveljavitve: 20. Ponovitve: 0.');for(let i=0;i<20;i++)await click(page,'Razveljavi premik');await expectIds(page,['b','a']);await expect(page.getByRole('button',{name:'Razveljavi premik',exact:true})).toBeDisabled();await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 20.');for(let i=0;i<20;i++)await click(page,'Ponovi premik');await expectIds(page,['b','a']);await expect(history(page)).toHaveText('Razveljavitve: 20. Ponovitve: 0.')})
+    > 11 | test('E08: R08 reset is undoable and original reset is no-op',async({page})=>{await mount(page);await expect(page.getByRole('button',{name:'Začetni vrstni red',exact:true})).toBeDisabled();await click(page,'Premakni web-02 gor');await click(page,'Premakni web-03 gor');await click(page,'Razveljavi premik');await click(page,'Začetni vrstni red');await expectIds(page,webIds());await expect(history(page)).toHaveText('Razveljavitve: 2. Ponovitve: 0.');await click(page,'Razveljavi premik');await expectIds(page,['web-02','web-01','web-03','web-04','web-05','web-06','web-07','web-08']);await click(page,'Ponovi premik');await expectIds(page,webIds())})
+         |                                                                                                                                                                               ^
+      12 | test('E09: R09 board actions use global neighbors across status columns',async({page})=>{await mount(page);await board(page);await click(page,'Premakni web-02 gor');await expect(rank(page,'web-02')).toHaveText('1');await expect(rank(page,'web-01')).toHaveText('2');await columnIds(page,'Pripravljeno',['web-02','web-04','web-07','web-08']);await click(page,'Premakni web-04 gor');await click(page,'Premakni web-04 gor');await click(page,'Premakni web-04 gor');await columnIds(page,'Pripravljeno',['web-04','web-02','web-07','web-08']);await table(page);await expectIds(page,['web-04','web-02','web-01','web-03','web-05','web-06','web-07','web-08'])})
+      13 | test('E10: R10 view details retain stacks; project reload reset',async({page})=>{await mount(page);await click(page,'Premakni web-02 gor');await click(page,'Premakni web-03 gor');await click(page,'Razveljavi premik');await details(page,'web-02');await board(page);await details(page,'web-03');await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 1.');await table(page);await expectIds(page,['web-02','web-01','web-03','web-04','web-05','web-06','web-07','web-08']);await project(page,'launch');await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');await project(page,'web');await click(page,'Premakni web-02 gor');await page.reload();await expectIds(page,webIds());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');expect(await page.evaluate(()=>localStorage.length)).toBe(0)})
+      14 | test('E11: R11 empty and singleton controls have zero history',async({page})=>{await mount(page,[makeTask('one')]);for(const name of ['Premakni one gor','Premakni one dol','Razveljavi premik','Ponovi premik','Začetni vrstni red'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled();await expect(rank(page,'one')).toHaveText('1');await project(page,'launch');await expectIds(page,[]);await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');await board(page);for(const name of ['Razveljavi premik','Ponovi premik','Začetni vrstni red'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled()})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:11:175
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E08-R08-reset-i-daabf-and-original-reset-is-no-op-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E08-R08-reset-i-daabf-and-original-reset-is-no-op-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E08-R08-reset-i-daabf-and-original-reset-is-no-op-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E08-R08-reset-i-daabf-and-original-reset-is-no-op-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  35) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:12:1 › E09: R09 board actions use global neighbors across status columns 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil' })
+
+
+       at tasks/P10/helpers.ts:46
+
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+    > 46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+         |                                                                                                                                                                                     ^
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+        at board (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:46:181)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:12:108
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E09-R09-board-a-6e0ed-hbors-across-status-columns-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E09-R09-board-a-6e0ed-hbors-across-status-columns-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E09-R09-board-a-6e0ed-hbors-across-status-columns-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E09-R09-board-a-6e0ed-hbors-across-status-columns-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  36) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:13:1 › E10: R10 view details retain stacks; project reload reset 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:13:106
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E10-R10-view-de-12d63-stacks-project-reload-reset-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E10-R10-view-de-12d63-stacks-project-reload-reset-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E10-R10-view-de-12d63-stacks-project-reload-reset-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E10-R10-view-de-12d63-stacks-project-reload-reset-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  37) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:14:1 › E11: R11 empty and singleton controls have zero history 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator: getByRole('button', { name: 'Premakni one gor', exact: true })
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeDisabled" getByRole('button', { name: 'Premakni one gor', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Premakni one gor', exact: true })
+
+
+      12 | test('E09: R09 board actions use global neighbors across status columns',async({page})=>{await mount(page);await board(page);await click(page,'Premakni web-02 gor');await expect(rank(page,'web-02')).toHaveText('1');await expect(rank(page,'web-01')).toHaveText('2');await columnIds(page,'Pripravljeno',['web-02','web-04','web-07','web-08']);await click(page,'Premakni web-04 gor');await click(page,'Premakni web-04 gor');await click(page,'Premakni web-04 gor');await columnIds(page,'Pripravljeno',['web-04','web-02','web-07','web-08']);await table(page);await expectIds(page,['web-04','web-02','web-01','web-03','web-05','web-06','web-07','web-08'])})
+      13 | test('E10: R10 view details retain stacks; project reload reset',async({page})=>{await mount(page);await click(page,'Premakni web-02 gor');await click(page,'Premakni web-03 gor');await click(page,'Razveljavi premik');await details(page,'web-02');await board(page);await details(page,'web-03');await expect(history(page)).toHaveText('Razveljavitve: 1. Ponovitve: 1.');await table(page);await expectIds(page,['web-02','web-01','web-03','web-04','web-05','web-06','web-07','web-08']);await project(page,'launch');await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');await project(page,'web');await click(page,'Premakni web-02 gor');await page.reload();await expectIds(page,webIds());await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');expect(await page.evaluate(()=>localStorage.length)).toBe(0)})
+    > 14 | test('E11: R11 empty and singleton controls have zero history',async({page})=>{await mount(page,[makeTask('one')]);for(const name of ['Premakni one gor','Premakni one dol','Razveljavi premik','Ponovi premik','Začetni vrstni red'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled();await expect(rank(page,'one')).toHaveText('1');await project(page,'launch');await expectIds(page,[]);await expect(history(page)).toHaveText('Razveljavitve: 0. Ponovitve: 0.');await board(page);for(const name of ['Razveljavi premik','Ponovi premik','Začetni vrstni red'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled()})
+         |                                                                                                                                                                                                                                                                                                ^
+      15 | test('E12: R12 fields, counts and API unchanged across moves',async({page})=>{const writes=await mount(page);await click(page,'Premakni web-02 gor');await summary(page,[4,2,2]);await expect(page.locator('[data-task-id="web-02"] time')).toHaveAttribute('datetime','2026-09-22');await details(page,'web-02');await board(page);await click(page,'Premakni web-03 gor');await expectIds(page,webIds(),false);await readonly(page,writes)})
+      16 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:14:288
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E11-R11-empty-a-5fa83--controls-have-zero-history-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E11-R11-empty-a-5fa83--controls-have-zero-history-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E11-R11-empty-a-5fa83--controls-have-zero-history-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E11-R11-empty-a-5fa83--controls-have-zero-history-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  38) [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:15:1 › E12: R12 fields, counts and API unchanged across moves 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Premakni web-02 gor', exact: true })
+
+
+       at tasks/P10/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P10/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts:15:116
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E12-R12-fields--1d3a3--API-unchanged-across-moves-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E12-R12-fields--1d3a3--API-unchanged-across-moves-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E12-R12-fields--1d3a3--API-unchanged-across-moves-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P10-B-003/evaluation-artifacts/acceptance-E12-R12-fields--1d3a3--API-unchanged-across-moves-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  38 failed
+    [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes 
+    [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles 
+    [regression-desktop] › .work/P10/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table 
+    [development-desktop] › tasks/P10/development.spec.ts:2:1 › D01: one move and boundary ─────────
+    [development-desktop] › tasks/P10/development.spec.ts:3:1 › D02: undo and redo ─────────────────
+    [development-desktop] › tasks/P10/development.spec.ts:4:1 › D03: new move clears redo ──────────
+    [development-desktop] › tasks/P10/development.spec.ts:5:1 › D04: board global rank, reset and no writes 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:4:1 › E01: R01 initial global ranks independent of title 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:5:1 › E02: R02 moves swap exactly one global neighbor 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:6:1 › E03: R03 boundaries disabled and no history changes 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:7:1 › E04: R04 undo restores full permutation 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:8:1 › E05: R05 multi-step redo order without lost IDs 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:9:1 › E06: R06 new branch clears redo, invalid boundary does not 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:10:1 › E07: R07 bounded history retains most recent twenty steps 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:11:1 › E08: R08 reset is undoable and original reset is no-op 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:12:1 › E09: R09 board actions use global neighbors across status columns 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:13:1 › E10: R10 view details retain stacks; project reload reset 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:14:1 › E11: R11 empty and singleton controls have zero history 
+    [evaluation-desktop] › evaluation/P10/acceptance.spec.ts:15:1 › E12: R12 fields, counts and API unchanged across moves 
+    [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes 
+    [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles 
+    [regression-mobile] › .work/P10/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table 
+    [development-mobile] › tasks/P10/development.spec.ts:2:1 › D01: one move and boundary ──────────
+    [development-mobile] › tasks/P10/development.spec.ts:3:1 › D02: undo and redo ──────────────────
+    [development-mobile] › tasks/P10/development.spec.ts:4:1 › D03: new move clears redo ───────────
+    [development-mobile] › tasks/P10/development.spec.ts:5:1 › D04: board global rank, reset and no writes 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:4:1 › E01: R01 initial global ranks independent of title 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:5:1 › E02: R02 moves swap exactly one global neighbor 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:6:1 › E03: R03 boundaries disabled and no history changes 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:7:1 › E04: R04 undo restores full permutation 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:8:1 › E05: R05 multi-step redo order without lost IDs 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:9:1 › E06: R06 new branch clears redo, invalid boundary does not 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:10:1 › E07: R07 bounded history retains most recent twenty steps 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:11:1 › E08: R08 reset is undoable and original reset is no-op 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:12:1 › E09: R09 board actions use global neighbors across status columns 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:13:1 › E10: R10 view details retain stacks; project reload reset 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:14:1 › E11: R11 empty and singleton controls have zero history 
+    [evaluation-mobile] › evaluation/P10/acceptance.spec.ts:15:1 › E12: R12 fields, counts and API unchanged across moves 
+  32 passed (3.6m)

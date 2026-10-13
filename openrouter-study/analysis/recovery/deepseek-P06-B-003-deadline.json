@@ -1,0 +1,91 @@
+{
+  "at": "2026-10-10T11:53:39.549518+00:00",
+  "researcherOnly": true,
+  "run": "deepseek/P06-B-003",
+  "position": 47,
+  "executionStatus": "invalid_review_handoff",
+  "elapsedSeconds": 1080.545,
+  "phases": [
+    {
+      "name": "specification",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 360.037,
+      "signal": "SIGKILL",
+      "startedAt": "2026-10-10T11:33:11.953Z",
+      "finishedAt": "2026-10-10T11:39:11.990Z"
+    },
+    {
+      "name": "implementation",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 479.492,
+      "signal": "SIGKILL",
+      "startedAt": "2026-10-10T11:39:12.506Z",
+      "finishedAt": "2026-10-10T11:47:11.999Z"
+    },
+    {
+      "name": "review",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 239.485,
+      "signal": "SIGKILL",
+      "startedAt": "2026-10-10T11:47:12.505Z",
+      "finishedAt": "2026-10-10T11:51:11.991Z"
+    }
+  ],
+  "groups": {
+    "regression": {
+      "passed": 38,
+      "total": 38
+    },
+    "development": {
+      "passed": 8,
+      "total": 8
+    },
+    "holdout": {
+      "passed": 24,
+      "total": 24
+    }
+  },
+  "checks": [
+    {
+      "name": "lint",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.652,
+      "passed": true
+    },
+    {
+      "name": "types",
+      "exitCode": 2,
+      "signal": null,
+      "elapsedSeconds": 0.637,
+      "passed": false
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.203,
+      "passed": true
+    },
+    {
+      "name": "tests",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 29.297,
+      "passed": true
+    }
+  ],
+  "completeTestRun": true,
+  "allChecksPassed": false,
+  "explicitAPIErrorRequests": [],
+  "cost": {
+    "at": "2026-10-10T11:51:29.140Z",
+    "complete": true,
+    "costUSD": 0.071650858,
+    "knownCostUSD": 0.071650858
+  },
+  "requests": 44,
+  "selectedQualitativeReview": false,
+  "measuredRetry": false,
+  "archiveUnchanged": true
+}

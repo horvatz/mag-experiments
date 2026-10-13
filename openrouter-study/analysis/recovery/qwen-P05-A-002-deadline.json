@@ -1,0 +1,104 @@
+{
+  "at": "2026-10-11T14:58:36.456098+00:00",
+  "researcherOnly": true,
+  "position": 70,
+  "slug": "qwen",
+  "id": "P05-A-002",
+  "execution": {
+    "status": "time_limit",
+    "elapsedSeconds": 1200.048,
+    "startedAt": "2026-10-11T14:31:52.224Z",
+    "finishedAt": "2026-10-11T14:51:52.281Z"
+  },
+  "evaluation": {
+    "groups": {
+      "regression": {
+        "passed": 14,
+        "total": 38
+      },
+      "development": {
+        "passed": 0,
+        "total": 8
+      },
+      "holdout": {
+        "passed": 0,
+        "total": 24
+      }
+    },
+    "checks": [
+      {
+        "name": "lint",
+        "exitCode": 1,
+        "signal": null,
+        "elapsedSeconds": 0.715,
+        "passed": false
+      },
+      {
+        "name": "types",
+        "exitCode": 2,
+        "signal": null,
+        "elapsedSeconds": 0.66,
+        "passed": false
+      },
+      {
+        "name": "build",
+        "exitCode": 1,
+        "signal": null,
+        "elapsedSeconds": 0.237,
+        "passed": false
+      },
+      {
+        "name": "tests",
+        "exitCode": 1,
+        "signal": null,
+        "elapsedSeconds": 314.774,
+        "passed": false
+      }
+    ],
+    "allowedChanges": true,
+    "completeTestRun": true,
+    "allChecksPassed": false
+  },
+  "explicitApiErrors": [],
+  "archiveCost": {
+    "complete": false,
+    "knownCostUSD": 0.2906675999999999,
+    "requests": 84,
+    "unknown": [
+      {
+        "number": 84,
+        "responseId": null,
+        "costUSD": null,
+        "transportStatus": "client_aborted",
+        "billingLookupStatus": null
+      }
+    ]
+  },
+  "interpretation": [
+    "Original whole-run deadline reached; independent full 70-test evaluation completed, with14 baseline API tests passing and no new functional requirements demonstrated.",
+    "Lint/types/build fail; no observed explicit API response/transport error.",
+    "Any client-aborted charge without receipt remains unknown, not zero. No measured retry or qualitative grade for repetition002."
+  ],
+  "sources": [
+    {
+      "path": "openrouter-study/qwen/runtime/runs/P05-A-002/execution.json",
+      "sha256": "da777b31ce2dda60457431dc60d9d7a25ead8f9d5bf54844506878919d7a45c8"
+    },
+    {
+      "path": "openrouter-study/qwen/runtime/runs/P05-A-002/evaluation-summary.json",
+      "sha256": "25b0bc03190a79e8f6f6ec4c3a75acd6d00083025657d4698fd883801944d83c"
+    },
+    {
+      "path": "openrouter-study/qwen/runtime/runs/P05-A-002/api-cost.json",
+      "sha256": "1beb8ec64a5aefe1808761a2627d1a6d2150b7eb50da78fc982788af893eb44a"
+    },
+    {
+      "path": "openrouter-study/qwen/api/P05-A-002/model/api-ledger.jsonl",
+      "sha256": "4203447720a776f578159b9cb7617f3cb65f40413ef1323cea1bbd20f5e72fcd"
+    },
+    {
+      "path": "openrouter-study/qwen/api/P05-A-002/model/request-00084.json.gz",
+      "sha256": "944a3839c42ffd06c3f0399def93400a9fb55ec9b9fd104b04cd16545882f116"
+    }
+  ]
+}

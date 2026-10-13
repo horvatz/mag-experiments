@@ -1,0 +1,178 @@
+{
+  "at": "2026-10-11T13:49:26.261730+00:00",
+  "researcherOnly": true,
+  "position": 67,
+  "slug": "deepseek",
+  "id": "P05-C-002",
+  "execution": {
+    "status": "execution_failed",
+    "elapsedSeconds": 676.091,
+    "startedAt": "2026-10-11T13:33:44.293Z",
+    "finishedAt": "2026-10-11T13:45:00.388Z"
+  },
+  "phases": [
+    {
+      "name": "constitution",
+      "status": "completed",
+      "elapsedSeconds": 81.547,
+      "signal": null
+    },
+    {
+      "name": "specify",
+      "status": "completed",
+      "elapsedSeconds": 108.027,
+      "signal": null
+    },
+    {
+      "name": "plan",
+      "status": "completed",
+      "elapsedSeconds": 37.153,
+      "signal": null
+    },
+    {
+      "name": "tasks",
+      "status": "completed",
+      "elapsedSeconds": 29.045,
+      "signal": null
+    },
+    {
+      "name": "implement",
+      "status": "execution_failed",
+      "elapsedSeconds": 417.707,
+      "signal": null
+    }
+  ],
+  "evaluation": {
+    "groups": {
+      "regression": {
+        "passed": 38,
+        "total": 38
+      },
+      "development": {
+        "passed": 8,
+        "total": 8
+      },
+      "holdout": {
+        "passed": 24,
+        "total": 24
+      }
+    },
+    "checks": [
+      {
+        "name": "lint",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.531,
+        "passed": true
+      },
+      {
+        "name": "types",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.572,
+        "passed": true
+      },
+      {
+        "name": "build",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.147,
+        "passed": true
+      },
+      {
+        "name": "tests",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 27.012,
+        "passed": true
+      }
+    ],
+    "allowedChanges": true,
+    "completeTestRun": true,
+    "allChecksPassed": false
+  },
+  "apiIncident": {
+    "number": 44,
+    "status": "http_error",
+    "httpStatus": 422,
+    "startedAt": "2026-10-11T13:44:56.637Z",
+    "finishedAt": "2026-10-11T13:44:59.863Z",
+    "sentUpstream": true,
+    "retryAfter": null,
+    "responseId": null,
+    "usage": null
+  },
+  "providerError": {
+    "code": 422,
+    "message": "Provider returned error",
+    "provider": "DeepInfra",
+    "rawError": {
+      "message": "Input should be a valid string",
+      "type": "invalid_request_error",
+      "param": "messages.107.tool.content.str",
+      "code": null
+    }
+  },
+  "preservedImageToolEvidence": {
+    "imageOutputCount": 1,
+    "matchingToolNames": [
+      "view_image"
+    ]
+  },
+  "archiveCost": {
+    "complete": false,
+    "knownCostUSD": 0.05177934300000001,
+    "requests": 44,
+    "unknown": [
+      44
+    ]
+  },
+  "supervisorContinuation": {
+    "at": "2026-10-11T13:45:50.642Z",
+    "action": "continue_unused_ids",
+    "archived": 67,
+    "previousRun": "deepseek/P05-C-002",
+    "errorRequests": [
+      44
+    ],
+    "classifications": [
+      "deepinfra-image-tool"
+    ],
+    "nextRun": "qwen/P05-C-002",
+    "diagnosis": "analysis/recovery/deepseek-P06-A-001-image-tool.json",
+    "diagnostic": null,
+    "unchangedFrozenProtocol": true,
+    "archivedHashesVerified": true,
+    "measuredRetry": false,
+    "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
+  },
+  "nextRunnerPid": 63630,
+  "interpretation": [
+    "All 70 functional tests and all 12 requirements passed; strictSuccess false because native implementation ended on HTTP422 before converge.",
+    "Exact previously diagnosed DeepInfra rejection of image tool output, not a functional assertion failure. Frozen transport/provider/protocol unchanged.",
+    "Request44 sent upstream without responseId or usage: charge unknown, not zero.",
+    "No measured retry or qualitative grade for repetition002. Supervisor next unused ID guarded; unchanged runner checks next-model connectivity."
+  ],
+  "sources": [
+    {
+      "path": "openrouter-study/deepseek/runtime/runs/P05-C-002/execution.json",
+      "sha256": "c3a597bb84e0636b5f73f0fecbd0db228cccd2967884ee11902732b78d33cbec"
+    },
+    {
+      "path": "openrouter-study/deepseek/runtime/runs/P05-C-002/evaluation-summary.json",
+      "sha256": "14642a85dd8b5cd30805244a1f5314b915c0d0ecfcc67f10d338fd821bb376a2"
+    },
+    {
+      "path": "openrouter-study/deepseek/runtime/runs/P05-C-002/api-cost.json",
+      "sha256": "6470f998800a8ab3e34968843224995d7a19b13a4dea7be0ecb96908319d9e45"
+    },
+    {
+      "path": "openrouter-study/deepseek/api/P05-C-002/model/api-ledger.jsonl",
+      "sha256": "131a81a517acdbad2c149c6d75215ec01ab80c50747b6ce423cbb64e672ca498"
+    },
+    {
+      "path": "openrouter-study/deepseek/api/P05-C-002/model/request-00044.json.gz",
+      "sha256": "171de40377cfdf2b80c337af38d3d5e6dc07b933a6c17e2c31f60dd0e2ebe268"
+    }
+  ]
+}

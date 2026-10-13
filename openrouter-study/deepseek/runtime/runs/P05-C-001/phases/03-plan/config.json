@@ -1,0 +1,186 @@
+{
+  "model": "deepseek/deepseek-v4.1-flash",
+  "model_reasoning_effort": "xhigh",
+  "model_provider": "openrouter_study",
+  "model_providers.openrouter_study": {
+    "name": "OpenRouter study relay",
+    "base_url": "http://127.0.0.1:9238/v1",
+    "wire_api": "responses",
+    "env_key": "MAG_RELAY_TOKEN",
+    "request_max_retries": 0,
+    "stream_max_retries": 0
+  },
+  "approval_policy": "never",
+  "default_permissions": "pilot",
+  "permissions.pilot": {
+    "description": "Pilot: exported app and required runtimes only",
+    "filesystem": {
+      ":root": "deny",
+      ":minimal": "read",
+      ":tmpdir": "write",
+      ":slash_tmp": "deny",
+      "/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/.work/pilots/P05-C-001/app": {
+        ".": "read",
+        "src": "read",
+        "tests/agent": "read",
+        "docs/agent": "write",
+        ".tmp": "write",
+        ".vite": "write",
+        "dist": "write",
+        "test-results": "write",
+        "playwright-report": "write",
+        "node_modules/.vite": "write",
+        "node_modules/.vite-temp": "write",
+        ".specify/memory/constitution.md": "read",
+        ".specify/feature.json": "write",
+        "docs/agent/P05/tasks.md": "write",
+        "docs/agent/convergence.json": "write"
+      },
+      "/Users/zan/.local/bin/codex": "read",
+      "/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS": "read",
+      "/Users/zan/.nvm/versions/node/v24.11.1": "read",
+      "/Users/zan/Library/Caches/ms-playwright": "read",
+      "/System": "read",
+      "/Library/Fonts": "read",
+      "/Users/zan/Documents/mag/experiments/.work/tools/spec-kit-cli-1.0.8": "read",
+      "/Users/zan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python": "read"
+    },
+    "network": {
+      "enabled": true,
+      "allow_local_binding": true,
+      "domains": {
+        "127.0.0.1": "allow",
+        "localhost": "allow"
+      }
+    }
+  },
+  "web_search": "disabled",
+  "features.network_proxy": true,
+  "features.skip_host_skill_discovery": true,
+  "features.apps": false,
+  "features.plugins": false,
+  "features.browser_use": false,
+  "features.browser_use_external": false,
+  "features.computer_use": false,
+  "features.in_app_browser": false,
+  "features.image_generation": false,
+  "features.memories": false,
+  "features.multi_agent": false,
+  "features.multi_agent_v2": false,
+  "features.hooks": false,
+  "features.shell_snapshot": false,
+  "features.skill_search": false,
+  "features.workspace_dependencies": false,
+  "features.goals": false,
+  "shell_environment_policy.inherit": "none",
+  "shell_environment_policy.set": {
+    "PATH": "/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/.work/pilots/P05-C-001/app/.pilot-tools:/Users/zan/.nvm/versions/node/v24.11.1/bin:/Users/zan/Documents/mag/experiments/.work/tools/spec-kit-cli-1.0.8/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+    "TMPDIR": "/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/.work/pilots/P05-C-001/app/.tmp",
+    "PLAYWRIGHT_BROWSERS_PATH": "/Users/zan/Library/Caches/ms-playwright",
+    "npm_config_cache": "/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/.work/pilots/P05-C-001/app/.tmp/npm",
+    "CI": "1",
+    "LANG": "en_US.UTF-8",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "ZDOTDIR": "/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/.work/pilots/P05-C-001/app/.pilot-tools",
+    "SPECIFY_INIT_DIR": "/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/.work/pilots/P05-C-001/app",
+    "SPECIFY_FEATURE_DIRECTORY": "docs/agent/P05",
+    "MAG_PHASE_DEADLINE_MS": "1791502167189",
+    "MAG_RUN_DEADLINE_MS": "1791502167189"
+  },
+  "shell_environment_policy.experimental_use_profile": false,
+  "skills.config": [
+    {
+      "path": "/Users/zan/.codex/skills/.system/imagegen/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-automate/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.codex/skills/.system/openai-docs/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-doctor/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-contribute/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.codex/skills/.system/skill-installer/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-browser/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.codex/skills/.system/plugin-creator/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-orchestrate/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-computer/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/find-skills/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.codex/skills/.system/skill-creator/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/next-cache-components-adoption/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/react-doctor/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.codex/skills/.system/review-agent/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-setup/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-10x/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-page/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-feedback/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-standup/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-plugins/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.agents/skills/superset-integrations/SKILL.md",
+      "enabled": false
+    },
+    {
+      "path": "/Users/zan/.codex/skills/.system/plugin-creator/SKILL.md",
+      "enabled": false
+    }
+  ],
+  "project_doc_max_bytes": 32768
+}

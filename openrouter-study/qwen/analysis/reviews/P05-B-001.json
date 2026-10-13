@@ -1,0 +1,96 @@
+{
+  "id": "P05-B-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Osnovna pravila R01–R12, poljubno število opravil, prazni primer in 390 px so navedeni. Ostanejo konkretne vrzeli: dogovor predpiše input in oznako Filter stanj namesto izbirnika Filter strani; obseg v uvodu omeji na preglednico, R06 pa nejasno omenja drugi pogled. R12 ne pove prepovedi lokalne shrambe ali URL za prikazno stanje, niti ohranitve vrstnega reda in podrobnosti ob vseh prehodih; pravilo geometrije dovoli notranje drsenje brez konkretne meje celotne strani. To ni skladna, popolna izvedbena specifikacija.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md:9",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md:25",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md:42",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md:59"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Preverljive so privzete vrednosti, reset na 1 ob spremembi velikosti/filtra, ponastavitve ob reloadu/projektu, filter pred razrezom, nepokrivanje odsekov in status 0–0. Manjkajo izračuni Y/A/B/N, natančna meja zadnje strani in predikati enakosti globalnega odseka v obeh pogledih. Zapis številčenja in robnih gumbov ostane opisni; ni popolne formalizacije ključnih prehodov.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md:29",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md:37"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Verification vsebuje samo R–pogoj–načrtovano ime prihodnjega testa z Neizveden, brez povezav do dejanske kode, testne datoteke ali rezultata. Poštena oznaka Neizveden sama ne ustvari preverljive povezave zahteva–koda–test. Zgodovina trdi verziji 1.1/1.2, toda ne navede konkretnih sprememb. Review.json je prazna datoteka, veljavne predaje ni. Pregledovalčev dejanski npm run check odpove že pri lint; nikjer ni dokazljivega zaključnega preverjanja ali lastnih testov.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/verification.md:8",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification-history.md",
+        "runtime/runs/P05-B-001/submission/docs/agent/review.json",
+        "runtime/runs/P05-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 0,
+      "rationale": "Ocenjena je dejansko avtorska delna koda, ne nespremenjeni baseline. Edina nova datoteka navigation_NEW.ts podvoji obstoječo navigacijo in poskuša shranjevati stran/velikost/filter v URL, kar nasprotuje lokalnemu prikaznemu stanju. Sestavljanje poti in njihovo razčlenjevanje sta neusklajena; vidni pokvarjeni nizi in izrazi preprečijo razčlenitev. Datoteka ni vključena v aplikacijo, ni ločenega izračuna filtra/odseka ali prikaznega stanja. Podvajanje, nepovezanost in težko sledljiva sestava poti utemeljijo 0; gre za ocenljivo delno implementacijo, zato ocena ni manjkajoča.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/src/navigation_NEW.ts:13",
+        "runtime/runs/P05-B-001/submission/src/navigation_NEW.ts:37",
+        "runtime/runs/P05-B-001/submission/src/navigation.ts",
+        "runtime/runs/P05-B-001/submission/src/App.tsx",
+        "runtime/runs/P05-B-001/evaluation-lint.log",
+        "runtime/runs/P05-B-001/evaluation-types.log"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Ni dodanih lastnih testov ali izvedenih smiselnih dodatnih preverjanj. Verification je le načrt; implementacijski dogodki kažejo branje datotek in neuspele poskuse zapisovanja. Pregledovalec zažene obstoječi npm run check, ki se ustavi pri napaki lint, zato ne potrdi zagona testov. Raziskovalčeva neodvisna ocena se ne pripiše modelovim lastnim preverjanjem.",
+      "evidence": [
+        "runtime/runs/P05-B-001/final-inventory.json.gz",
+        "runtime/runs/P05-B-001/submission/docs/agent/verification.md:25",
+        "runtime/runs/P05-B-001/phases/02-implementation/events.jsonl.gz",
+        "runtime/runs/P05-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "D01 na obeh zaslonih ne najde izbirnika Velikost strani; vsa razvojna in sprejemna preverjanja novih zahtev odpovejo. Avtorski navigation_NEW.ts ima že v vrstici 1 neveljaven import, nadalje pokvarjene predloge in izraze; lint/types odpovesta. Obstoječa aplikacija ostane nespremenjena, zato gradnja in 38 osnovnih preverjanj uspejo. Neodvisno 38/70, 0/12, dovoljene spremembe true, strogi uspeh false.",
+    "evidence": [
+      "runtime/runs/P05-B-001/evaluation-summary.json",
+      "runtime/runs/P05-B-001/evaluation-tests.log",
+      "runtime/runs/P05-B-001/evaluation-lint.log",
+      "runtime/runs/P05-B-001/evaluation-types.log",
+      "runtime/runs/P05-B-001/submission/src/navigation_NEW.ts:1"
+    ]
+  },
+  "finalFailureNote": "invalid_review_handoff po časovnih mejah implementacije in pregleda; 1081,331 s. Ni potrjene izrecne napake odziva API med tem poskusom. Delna implementacija in prazna predaja sta ohranjeni, brez popravka ali ponovitve. V prvotnem arhivu končni strošek ni znan: spodnja meja 0,1560229 USD, neznani zahtevi 62 in 79 sta client_aborted ob faznih rokih. Poznejši zunanji obračun uskladi79; znana spodnja meja je 0,15907605 USD, zahteva62 še ni obračunana.",
+  "developmentFailureExample": {
+    "description": "Implementacija se večkrat zatakne pri shell quoting in sed: item_55 neveljaven sed, item_59 parse error, item_61 unescaped newline, item_70 parse error, item_74 parse error in item_86 neuspel sestavljeni printf. Končna nova datoteka vsebuje pokvarjeno besedilo; pregledovalčev item_36 potrdi lint failure, item_53 pa zaradi unmatched quote ne ustvari veljavnega JSON. Raziskovalec nobene od teh napak ne popravlja.",
+    "evidence": [
+      "runtime/runs/P05-B-001/phases/02-implementation/events.jsonl.gz",
+      "runtime/runs/P05-B-001/phases/03-review/events.jsonl.gz",
+      "runtime/runs/P05-B-001/submission/src/navigation_NEW.ts",
+      "runtime/runs/P05-B-001/submission/docs/agent/review.json"
+    ]
+  },
+  "costReconciliation": {
+    "observedAt": "2026-10-08T23:08:57.601Z",
+    "source": "api/P05-B-001/model/api-cost.json",
+    "complete": false,
+    "costUSD": null,
+    "knownCostUSD": 0.15907605000000002,
+    "immutableArchivePreserved": true
+  }
+}

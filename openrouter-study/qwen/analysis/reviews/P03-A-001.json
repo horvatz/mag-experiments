@@ -1,0 +1,97 @@
+{
+  "id": "P03-A-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-11",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Presoja vseh štirih dejansko dostavljenih avtorskih datotek, 30 native ukazov in 43 preserviranih klicev. Zavrnjeni ali sintaktično napačni poskusi daljše aplikacije se ne štejejo kot dostavljena koda. Časovna prekoračitev ostane primarni rezultat, brez dodatnega časa, ponovitve ali raziskovalčevih popravkov.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Dokument navede R01–R12, štiri iskana polja, AND besed/filtrov, reset treh kontrol, projekt/reload, lokalnost, oba pogleda in bralnost. Toda formalna normalizacija odstrani vse nečrkovne/neštevilčne znake, kar izgubi dobesedna ločila in beline ter nasprotuje R03 in točnemu območju oznak. Končni filteredTasks ob praznem iskanju preskoči tudi status/osebo. Možnosti ne opredeli iz celotnega nefiltriranega projekta, N/M nimata jasnih pomenov/vidnih stolpčnih števcev, res prazen projekt ni ločen od prazne izbire. Ozka širina je le nepreverjena omejitev, dogovorjene dostopne oznake/status niso v celoti določeni. Osnovni obseg je naveden, pomembni pogoji ostajajo napačni ali nepopolni.",
+      "evidence": [
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:30",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:53",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:65",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:83",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:112"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Posamični filterTasks ima uporabna pravila status!==all in assignee!==all ter strogo enakost; matches uporabi every in prazen seznam besed ne omejuje. Vendar ne poveže pravil v pravilno formalizacijo: normalizeSearch prejme splitQuery array namesto string, odstrani dobesedna ločila, task polja niso normalizirana, pri praznem iskanju se status/oseba obideta. Reset in ohranjanje pogledov sta le opisna, števci/nemutacija nimajo celovitih predikatov. Obstaja nekaj preverljivih pogojev, celotna invarianta sestavljenega filtra pa ni skladna.",
+      "evidence": [
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:52",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:63",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:72",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:82",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:22"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Matrika vsebuje generične scenarije in imena datotek, izidi pa so imena predvidenih funkcij, ne dejansko izvedeni testi ali dnevniki. Končna TaskFilters nima normalizeSearch/matches/countDisplay/empty state iz matrike, App nima route.handle ali React stanja. Verifikacijski zapis in lastni testi niso predani, native/preservirani klici ne vsebujejo zagona lint/types/build/Playwright. Odkrito navede nepreverjeni390/API napake, vendar to ne zagotovi sledljivosti R do dejanske kode in dokazanega testa.",
+      "evidence": [
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:93",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:110",
+        "runtime/runs/P03-A-001/submission/src/TaskFilters.tsx:18",
+        "runtime/runs/P03-A-001/submission/src/App.tsx:1",
+        "runtime/runs/P03-A-001/execution.json",
+        "runtime/runs/P03-A-001/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 0,
+      "rationale": "Oddaja razbije obstoječo sestavo: App.tsx vsebuje samo8uvozov brez App/ProjectView, več uvozov iz TaskDetails ne obstaja. Nova TaskFilters ni priključena aplikaciji; notranji assignees senči istoimensko funkcijo in se uporablja pred deklaracijo, podatkov opravil sploh ne prejme. N/M uporabita isti totalCount. Navigation nadomesti veljavno pot z /#/projects/id/view, parser pa za tak hash pričakuje drug segment in izgubi reaktivni useSyncExternalStore; TaskView in tretji taskUrl argument iz izhodišča izgineta. Ločeno uporabna funkcija status/oseba ne odtehta nepovezane, kontradiktorne organizacije in prekinjene aplikacije.",
+      "evidence": [
+        "runtime/runs/P03-A-001/submission/src/App.tsx:1",
+        "runtime/runs/P03-A-001/submission/src/App.tsx:7",
+        "runtime/runs/P03-A-001/submission/src/TaskFilters.tsx:16",
+        "runtime/runs/P03-A-001/submission/src/TaskFilters.tsx:29",
+        "runtime/runs/P03-A-001/submission/src/TaskFilters.tsx:37",
+        "runtime/runs/P03-A-001/submission/src/TaskFilters.tsx:79",
+        "runtime/runs/P03-A-001/submission/src/navigation.ts:13",
+        "runtime/runs/P03-A-001/submission/src/navigation.ts:21",
+        "runtime/runs/P03-A-001/evaluation-types.log"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Ni dostavljenih lastnih testov niti zagona obstoječih preverjanj. Branje datotek in curl GET proti nedelujočim/napačnim vratom oziroma /api/tasks z napačnim UUID vzorcem nimata pričakovanj ali dobljenih uporabnih odgovorov; pipeline exit0 ne dokazuje uspeha. Generični načrtovani scenariji v specifikaciji niso izvedena ali smiselno implementirana dodatna preverjanja. Neodvisnih14API regresij ne pripišemo modelovim lastnim testom.",
+      "evidence": [
+        "runtime/runs/P03-A-001/execution.json",
+        "runtime/runs/P03-A-001/events.jsonl.gz",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:30",
+        "runtime/runs/P03-A-001/submission/docs/agent/specification.md:93"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Končna App.tsx je8uvozov brez izvoza App; main.tsx zato ne more zagnati vmesnika. Types/build/lint odpovejo, UI testi ne dosežejo prikaza. Od70 uspe samo14 regression-api, razvojni0/8 in holdout0/24, zahteve0/12. Time_limit1200,034s, allowedChanges/completeTestRun true, strictfalse. To je dejanska delna oddaja ob prvotnem roku, brez raziskovalčevega popravka ali ponovitve.",
+    "evidence": [
+      "runtime/runs/P03-A-001/submission/src/App.tsx:1",
+      "runtime/runs/P03-A-001/evaluation-types.log",
+      "runtime/runs/P03-A-001/evaluation-build.log",
+      "runtime/runs/P03-A-001/evaluation-summary.json"
+    ]
+  },
+  "finalFailureNote": "Ni izrecne napake odziva/transporta API. Račun partialknown0,11303205USD za44zahtev; zadnja44 je client_aborted brez responseId/invoice in ostane unknown, ne0. Nedokončana aplikacija in časovna prekoračitev ostaneta v primarni analizi.",
+  "developmentFailureExample": {
+    "description": "Model po več zavrnjenih heredocih uspešno z echo/printf zapiše specifikacijo, modul in navigacijo. Item_39 izprazni App, nato napiše le uvoze. Poskus polne obnove v preserviranem call01a12bbafa43716c3ac38fdd3b07db1b odpove s SyntaxError; poskusa /tmp/update_app.js in /Users/zan/.bashrc sta operationnotpermitted, zato ne pomenita sprememb zunaj dovoljenega obsega. Uspešni Node zapis item_58 je TaskFilters, ne popravljena App. Manjka razvojno funkcionalno vrednotenje in noben testni popravek ni potrjen; opisani so opaženi orodni/pisalni neuspehi, ločeni od končnega testnega izida.",
+    "evidence": [
+      "analysis/review-packets/P03-A-001.json",
+      "runtime/runs/P03-A-001/events.jsonl.gz",
+      "runtime/runs/P03-A-001/submission/src/App.tsx:1",
+      "runtime/runs/P03-A-001/submission/src/TaskFilters.tsx:29"
+    ]
+  }
+}

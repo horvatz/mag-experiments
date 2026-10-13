@@ -1,0 +1,93 @@
+{
+  "id": "P10-C-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "reviewStatus": "partial-authored-submission",
+  "limitation": "Prva faza completed, specifikacija doseže skupni rok; implementacija ni začeta. Zadnji zahtevek HTTP 200 ostane brez končnega odziva 879,255 s do client_aborted ob roku. Natančen vzrok ni potrjen; odsotnost izrecne API napake ne dokazuje, da je bil odziv pravočasen. Ocenjena je ohranjena delna dokumentacija, ne nedokončan osnutek v argumentih neuspešnih ukazov. Poznejši račun generacije za zahtevo 17 izkaže 20.266 izhodnih tokenov in finishReason null. Zabeleženo čakanje je zato čakanje na zaključek odziva, ne dokaz odsotnosti generiranja ali potrjen izpad ponudnika.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 0,
+      "rationale": "Specifikacija ima le kontekst in tri kratke odstavke: začetni red po API/ID in mesta 1–N, lokalno permutacijo brez zapisov/sprememb polj ter mejo 20 in omembo razveljavitve. Ustava doda splošna načela. Večina pogojev manjka: natančna sosednja zamenjava, robna identiteta in oba sklada, red več undo/redo, veja po undo, razveljavljiv reset in njegov no-op, življenjska doba projekta/pogleda/podrobnosti/reload, prazni/enoopravilni projekti, exact status/ARIA ter geometrija 390. Sklic ustave na dogovor o vmesniku ne nadomesti opredelitve teh pravil.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md",
+        "runtime/runs/P10-C-001/submission/.specify/memory/constitution.md#nepogojna-pravila",
+        "runtime/runs/P10-C-001/input-overrides/task/instructions.md"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Naravnojezikovni pogoji začetnega reda po prejetem polju, globalnih mest 1–N, lokalne permutacije brez sprememb polj/zapisov ter največ 20 shranjenih permutacij so preverljivi. Vendar ni definicije stanja obeh skladov ali prehodov move/undo/redo/reset, pravil robne identitete in izrecne izbire najstarejšega. Večina ključne dinamike zato ostane neopredeljena. Delni ohranitveni pogoji upravičijo 1, ne popolne formalizacije.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#začetno-stanje",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#začetno-delovanje",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#zadnje-stanje",
+        "runtime/runs/P10-C-001/submission/.specify/memory/constitution.md#nepogojna-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Oddani spec.md nima matrike zahtev, imenovanih testov, kodnih povezav ali izvedenih dokazov; verification.md ni nastal in implementacija ni začeta. Dokument ne trdi uspešnih testov, vendar splošna načela in zapis mape značilnosti ne omogočijo sledljivosti zahteva–koda–test. Raziskovalčevih neodvisnih rezultatov ne pripišemo modelovi dokumentaciji.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md",
+        "runtime/runs/P10-C-001/submission/.specify/feature.json",
+        "runtime/runs/P10-C-001/execution.json",
+        "runtime/runs/P10-C-001/archive-complete.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "FileChanges vsebuje samo .specify/feature.json, projektno ustavo in delno specifikacijo. Ni avtorsko spremenjene kode v src ali tests/agent; organizacije izhodiščne aplikacije ne pripišemo modelu. Dimenzija nove implementacije ostane manjkajoča, neuspeh zahtev pa ostane v primarnem rezultatu.",
+      "evidence": [
+        "runtime/runs/P10-C-001/execution.json",
+        "runtime/runs/P10-C-001/final-inventory.json.gz",
+        "runtime/runs/P10-C-001/archive-complete.json"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Lastni testi in verifikacijski zapis niso nastali. Ukazi berejo vhodne dokumente, zapisujejo/poskušajo zapisovati dokumentacijo in preverjajo časovni rok; funkcionalnega testiranja, lint, tipov ali gradnje agent ni zagnal. Shranjeni poznejši API vhodi ne dodajo izvedenega funkcionalnega preverjanja. Raziskovalčeva ocena izhodiščne aplikacije ni modelov lastni test.",
+      "evidence": [
+        "analysis/review-packets/P10-C-001.json",
+        "runtime/runs/P10-C-001/phases/02-specify/events.jsonl.gz",
+        "runtime/runs/P10-C-001/execution.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "D01 ne najde gumba Premakni web-01 gor. Nespremenjena aplikacija opravi 38 regresijskih preverjanj, vseh 8 razvojnih in 24 skritih pa ne; nova implementacija ni oddana pred skupnim rokom.",
+    "evidence": [
+      "runtime/runs/P10-C-001/evaluation-summary.json",
+      "runtime/runs/P10-C-001/execution.json"
+    ]
+  },
+  "finalFailureNote": "Time_limit po 1200,907 s; constitution completed 54,654 s, specify time_limit 1144,649 s in SIGKILL, nadaljnjih faz ni. 38/70, 0/12, dovoljenost/lint/types/build true, strogi uspeh false. Native poraba nepopolna, račun v arhivu delni: 0,0333206 USD znane spodnje meje za 17 zahtev, 17 neznana. Brez ponovitve ali dopolnitve oddaje. Poznejša uskladitev zunaj arhiva izkaže popolni račun 0,0396811 USD; prvotni delni račun ostaja nespremenjen.",
+  "developmentFailureExample": {
+    "description": "Model večkrat poskuša ustvariti specifikacijo in opazi, da datoteka ne obstaja; native item_21 to izrecno navede. Poznejši printf v item_25 uspe, a končni dokument obsega le 970 bajtov in nima večine zahtevanih razdelkov. Shranjeni klici vsebujejo tudi neuspešne poskuse zapisa; zadnji API zahtevek ne zaključi odziva do časovnega roka. Raziskovalec ne popravlja dokumenta, začetih klicev ali meritev.",
+    "evidence": [
+      "runtime/runs/P10-C-001/phases/02-specify/events.jsonl.gz",
+      "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md",
+      "analysis/review-packets/P10-C-001.json",
+      "analysis/P10-C-001-pending-response.json",
+      "api/P10-C-001/model/api-cost.json"
+    ]
+  },
+  "costReconciliation": {
+    "at": "2026-10-09T00:51:09.770Z",
+    "source": "api/P10-C-001/model/api-cost.json",
+    "complete": true,
+    "costUSD": 0.0396811,
+    "knownCostUSD": 0.0396811,
+    "originalArchivePreserved": true
+  }
+}

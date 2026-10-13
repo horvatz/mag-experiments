@@ -1,0 +1,88 @@
+{
+  "id": "P06-B-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Implementacija je prekinjena ob HTTP404 No endpoints found that support image input po view_image na zamrznjeni besedilni GLM poti. Pregled se ne začne. Ta omejitev modalnosti ne dokazuje slabe implementacije. Poleg tega končni typecheck odpove v lastnem avtorskem testu; rezultat in arhiv ostaneta nespremenjena.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "R01–R12 podrobno določijo izvorni red in domeno 0/1/>10, kanonične kolone, prazen izbor/rezultat, lokalni prenos, ime/BOM, obe ločili, citiranje in podvojene narekovaje, končni CRLF, natančne znake/predpone formul, Unicode/raw status/datum, ohranitev med pogledoma in reset projekta/reloada ter odsotnost zapisov/shrambe. Checkboxi/select in dostopna imena so izrecni. Konkretna vrzel ostane v ohranjenih data-task-id/ARIA imenih in prilagodljivem videzu: dokument ne opredeli 390 px, neširjenja strani in dovoljenega notranjega drsenja preglednice ter table. Splošna ohranitev obstoječega prikaza teh sprejemnih pogojev ne nadomesti.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:19",
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:46",
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:101"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "enabled je ekvivalenca obstoja izbrane kolone in vidne vrstice; visible določa trenutni projekt in all/statusni filter. Kanonični red je izpeljan iz konstantnega seznama ne glede na klike, izvoz ohrani prikaz in podatke. Natančen algoritem določi surova polja, nevtralizacijo pred citiranjem, podvojitev narekovajev, BOM in CRLF tudi na koncu. Preklop ohrani tri nastavitve, projekt/reload jih ponastavita; ista nastavitev med pogledoma ustvari iste bajte. Ključne lastnosti so splošne in preverljive.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:48",
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:54",
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:67"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Predaja specifikacije odkrito loči načrtovane razvojne in dodatne teste od izvedenih dokazov. Matrika pokrije skupine vseh R, vendar ima samo načrtovane module/mesta, ne končnih funkcij/izidov. Verification je dopolnjen z dejansko dodanimi datotekami, nato ostane pri naslednjem koraku lastnih testov in neizvedenih preverjanj. Ne zajame poznejših treh neuspešnih lastnih scenarijev, typecheck napake ali prekinitve API. Delna in nedokončana sledljivost ni izmišljena trditev o uspehu; pregleda ni bilo.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:91",
+        "runtime/runs/P06-B-001/submission/docs/agent/verification.md:35",
+        "runtime/runs/P06-B-001/submission/docs/agent/verification.md:39",
+        "runtime/runs/P06-B-001/phases/02-implementation/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "csvExport.ts loči čisto filtriranje, nevtralizacijo, citiranje in sestavljanje od stranskega učinka prenosa. Kanonični csvColumns in tipi so skupni vir. CsvExportControls ima projektno lokalne tri nastavitve, izpelje projectTasks/exportedTasks/canExport ter kopira Set pred spremembo. Form handler in disabled uporabljata isti predpogoj; začasno povezavo in URL odstrani. App ohrani celotna opravila in števce ter isto komponento med pogledoma, ključ projekta pa poskrbi za reset. Ni znatnega podvajanja domen med prikazoma ali mutacije opravil. Typecheck napaka je v lastnem testu, ne v produkcijski organizaciji.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/src/csvExport.ts:3",
+        "runtime/runs/P06-B-001/submission/src/csvExport.ts:18",
+        "runtime/runs/P06-B-001/submission/src/csvExport.ts:31",
+        "runtime/runs/P06-B-001/submission/src/csvExport.ts:45",
+        "runtime/runs/P06-B-001/submission/src/CsvExportControls.tsx:13",
+        "runtime/runs/P06-B-001/submission/src/CsvExportControls.tsx:22",
+        "runtime/runs/P06-B-001/submission/src/CsvExportControls.tsx:31",
+        "runtime/runs/P06-B-001/submission/src/App.tsx:41"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Tri dostavljene scenarije ocenjujemo po dejanskem preverjanju, ne po njihovih naslovih. Prvi zagon lastnih testov se ustavi zaradi že uporabljenih vrat, naslednji 3/3 odpove pri resetu zaradi EPERM na 5195, zadnji 3/3 pa že ob prvih kontrolah Stolpec id/projectId oziroma Filter izvoza. Noben ne doseže svojih vsebinskih orakljev izvoza; uspešnega dodatnega funkcionalnega preverjanja ni potrjenega. Testi ostanejo tudi nepripravljeni za veljaven končni zagon: dispatchEventEvent povzroči končni TS2551, A02 pričakuje nenavedena polja id/web-02 kljub pravilu citiranja, prenosni orakelj pa ponovno uporabi produkcijsko neutralizeFormula. Posamezne neposredne neodvisne trditve za formule so šele za predhodno blokiranim delom A01 in niso dokazane kot izvedene. Ocena 0 pomeni odsotnost uporabnih izvedenih dodatnih preverjanj v tej oddaji; ne pomeni, da je izvorna aplikacija funkcionalno napačna ali da so vse težave okolja krivda modela.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/tests/agent/P06-implementation.spec.ts:7",
+        "runtime/runs/P06-B-001/submission/tests/agent/P06-implementation.spec.ts:18",
+        "runtime/runs/P06-B-001/submission/tests/agent/P06-implementation.spec.ts:23",
+        "runtime/runs/P06-B-001/submission/tests/agent/P06-implementation.spec.ts:35",
+        "runtime/runs/P06-B-001/submission/tests/agent/P06-implementation.spec.ts:54",
+        "runtime/runs/P06-B-001/submission/tests/agent/P06-implementation.spec.ts:70",
+        "runtime/runs/P06-B-001/phases/02-implementation/events.jsonl.gz",
+        "runtime/runs/P06-B-001/evaluation-types.log"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Ni potrjene končne funkcionalne napake: 70/70 in 12/12, lint/build/allowed true. Typecheck false: TS2551 v tests/agent/P06-implementation.spec.ts:23, dispatchEventEvent ne obstaja. Execution_failed po 403,541 s: specification completed 109,211 s, implementation execution_failed 292,868 s po slikovnem HTTP404, pregled ni začet. Strogi uspeh false iz obeh razlogov. Po zamrznjenih računskih pravilih popolni strošek 0,1763963 USD za 50 zahtev; zavrnjen HTTP404 brez responseId se šteje 0 po pravilu za zavrnitev pred endpointom, ne na podlagi returned usage ali generation računa.",
+  "developmentFailureExample": {
+    "description": "Item_32 ne more zagnati izvirnega Playwright strežnika zaradi zasedenih vrat. Model pripravi začasno testno konfiguracijo; item_39 ima 3 failed ob API resetu zaradi EPERM 5195. Naslednja konfiguracija v item_41 ima 3 failed zaradi timeoutov že pri prvih izvoznih kontrolah. Konkreten vzrok njihove odsotnosti v tem raziskovanem okolju ni potrjen, zato jih ne razlagamo kot dokaz napake končne aplikacije, ki pozneje opravi 70/70. Pri poskusu pregledati zajeto sliko view_image naslednja zahteva 50 naleti na nepodprt slikovni vhod in seja se konča. Končni typecheck odkrije še dostavljeno tipkarsko napako dispatchEventEvent v lastnem testu. Raziskovalec ne popravlja testa, kode, ponudnika ali merjenega protokola.",
+    "evidence": [
+      "runtime/runs/P06-B-001/phases/02-implementation/events.jsonl.gz",
+      "runtime/runs/P06-B-001/submission/tests/agent/P06-implementation.spec.ts:23",
+      "runtime/runs/P06-B-001/evaluation-types.log",
+      "api/P06-B-001/model/api-ledger.jsonl",
+      "api/P06-B-001/model/request-00050.json.gz",
+      "analysis/review-packets/P06-B-001.json"
+    ]
+  }
+}

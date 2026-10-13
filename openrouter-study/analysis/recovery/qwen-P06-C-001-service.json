@@ -1,0 +1,86 @@
+{
+  "at": "2026-10-09T03:04:49.721Z",
+  "researcherOnly": true,
+  "id": "qwen/P06-C-001",
+  "confirmed": "First and only request HTTP200/response.failed after562.120s,11524 reported reasoning tokens, no delivered tool or authored file; execution_failed564.033s.",
+  "rootCause": "Unknown. Frozen relay does not retain final response error object. Generation receipt404. Same observed stream-failure symptom as P05-A/P06-A; no particular provider mechanism or model bug confirmed.",
+  "lastRequest": {
+    "number": 1,
+    "label": "qwen/P06-C-001/measured",
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "startedAt": "2026-10-09T02:49:47.509Z",
+    "status": "finished",
+    "requestedParallelToolCalls": true,
+    "mergedDeveloperMessages": 1,
+    "requestedReasoning": {
+      "effort": "xhigh",
+      "summary": "auto"
+    },
+    "sentReasoning": {
+      "enabled": true,
+      "summary": "auto"
+    },
+    "balanceBefore": {
+      "at": "2026-10-09T02:49:47.521Z",
+      "totalCreditsUSD": 40,
+      "totalUsageUSD": 3.177076467,
+      "remainingUSD": 36.822923533
+    },
+    "budgetBefore": {
+      "knownUSD": 3.177821592800002,
+      "unknownRequests": 8,
+      "unknownReservedUSD": 0.6809188600000001,
+      "maximumRequestCost": 0.06160375
+    },
+    "sentUpstream": true,
+    "httpStatus": 200,
+    "retryAfter": null,
+    "finishedAt": "2026-10-09T02:59:09.629Z",
+    "bytes": 1842663,
+    "responseId": "gen-1791514187-nTogQekQx6kbNmdyQDRl",
+    "usage": {
+      "input_tokens": 8669,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 11524,
+      "output_tokens_details": {
+        "reasoning_tokens": 11524
+      },
+      "total_tokens": 20193,
+      "cost": 0,
+      "is_byok": false,
+      "cost_details": {
+        "upstream_inference_cost": 0.0025955,
+        "upstream_inference_input_cost": 0.0008669,
+        "upstream_inference_output_cost": 0.0017286
+      }
+    },
+    "openrouterMetadata": null,
+    "responseStatus": "failed"
+  },
+  "diagnostic": {
+    "at": "2026-10-09T03:03:35.271Z",
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "httpStatus": 200,
+    "responseStatus": "completed",
+    "text": "CONNECTION_OK",
+    "error": null,
+    "passed": true,
+    "excludedFromMeasurements": true,
+    "costComplete": true,
+    "costUSD": 0.0000537
+  },
+  "outcome": "38/70,0/12; all five content dimensions null because the entire authored submission is absent; strict false.",
+  "cost": {
+    "complete": true,
+    "costUSD": 0,
+    "source": "qwen/api/P06-C-001/model/api-cost.json",
+    "note": "Explicit returned usage.cost=0; no zero imputation. Upstream inference cost is not substituted for user cost."
+  },
+  "continuation": "Researcher controller verifies all archived hashes/frozen sources and unused GLM/P06-C-001 position24; fresh same-route connectivity passes. No measured run repeated or changed.",
+  "controllerEvidence": "analysis/recovery/known-service-resumes.jsonl",
+  "measuredRetry": false
+}

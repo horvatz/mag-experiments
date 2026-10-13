@@ -1,0 +1,1 @@
+Done. Implemented `shift` in src/qualification.ts:1 (returns a new array with each value + 1, input untouched, empty → empty), ran `node task/qualification-check.mjs` → `QUALIFICATION_CHECK_PASSED`, and wrote a short docs/agent/verification.md:1. The specification was not modified.

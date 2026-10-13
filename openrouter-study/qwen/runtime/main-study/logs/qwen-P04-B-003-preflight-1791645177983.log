@@ -1,0 +1,191 @@
+{"filesystem":[{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P01/acceptance.spec.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/reference/P01/overlay/src/TaskEditor.tsx","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P02/acceptance.spec.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/reference/P02/overlay/src/useBulkTasks.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P03/acceptance.spec.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/reference/P03/overlay/src/TaskFeature.tsx","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P04/acceptance.spec.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/reference/P04/overlay/src/TaskFeature.tsx","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/reference/P05/overlay/src/TaskFeature.tsx","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/reference/P06/overlay/src/TaskFeature.tsx","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/reference/P07/overlay/src/TaskFeature.tsx","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P08/acceptance.spec.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/reference/P08/overlay/src/TaskFeature.tsx","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/reference/P09/overlay/src/TaskFeature.tsx","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P10/acceptance.spec.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/reference/P10/overlay/src/TaskFeature.tsx","blocked":true},{"path":"/Users/zan/Documents/mag/naloga/notes/experiment-handoff.md","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/evaluation/P03/acceptance.spec.ts","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/runs/P03-B-001/submission/src/App.tsx","blocked":true},{"path":"/Users/zan/Documents/mag/experiments/luna-study/runtime/runs/P03-B-001/submission/src/App.tsx","blocked":true},{"path":"/Users/zan/.codex/auth.json","blocked":true}],"allowedReadWrite":true,"protectedInfrastructure":true}
+All three role boundaries passed.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+node:internal/child_process:1120
+    result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);
+                   ^
+
+<ref *1> Error: spawnSync /Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS/codex ETIMEDOUT
+    at Object.spawnSync (node:internal/child_process:1120:20)
+    at spawnSync (node:child_process:911:24)
+    at execFileSync (node:child_process:954:15)
+    at file:///Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/scripts/preflight-pilot.mjs:83:19
+    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:671:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -60,
+  code: 'ETIMEDOUT',
+  syscall: 'spawnSync /Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS/codex',
+  path: '/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS/codex',
+  spawnargs: [
+    'sandbox',
+    '-c',
+    'model="qwen/qwen3.5-9b"',
+    '-c',
+    'model_reasoning_effort="xhigh"',
+    '-c',
+    'model_provider="openrouter_study"',
+    '-c',
+    'model_providers.openrouter_study={"name"="OpenRouter study relay","base_url"="http://127.0.0.1:9238/v1","wire_api"="responses","env_key"="MAG_RELAY_TOKEN","request_max_retries"=0,"stream_max_retries"=0}',
+    '-c',
+    'approval_policy="never"',
+    '-c',
+    'default_permissions="pilot"',
+    '-c',
+    'permissions.pilot={"description"="Pilot: exported app and required runtimes only","filesystem"={":root"="deny",":minimal"="read",":tmpdir"="write",":slash_tmp"="deny","/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P04-B-003/app"={"."="read","src"="write","tests/agent"="write","docs/agent"="write",".tmp"="write",".vite"="write","dist"="write","test-results"="write","playwright-report"="write","node_modules/.vite"="write","node_modules/.vite-temp"="write"},"/Users/zan/.local/bin/codex"="read","/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS"="read","/Users/zan/.nvm/versions/node/v24.11.1"="read","/Users/zan/Library/Caches/ms-playwright"="read","/System"="read","/Library/Fonts"="read"},"network"={"enabled"=true,"allow_local_binding"=true,"domains"={"127.0.0.1"="allow","localhost"="allow"}}}',
+    '-c',
+    'web_search="disabled"',
+    '-c',
+    'features.network_proxy=true',
+    '-c',
+    'features.skip_host_skill_discovery=true',
+    '-c',
+    'features.apps=false',
+    '-c',
+    'features.plugins=false',
+    '-c',
+    'features.browser_use=false',
+    '-c',
+    'features.browser_use_external=false',
+    '-c',
+    'features.computer_use=false',
+    '-c',
+    'features.in_app_browser=false',
+    '-c',
+    'features.image_generation=false',
+    '-c',
+    'features.memories=false',
+    '-c',
+    'features.multi_agent=false',
+    '-c',
+    'features.multi_agent_v2=false',
+    '-c',
+    'features.hooks=false',
+    '-c',
+    'features.shell_snapshot=false',
+    '-c',
+    'features.skill_search=false',
+    '-c',
+    'features.workspace_dependencies=false',
+    '-c',
+    'features.goals=false',
+    '-c',
+    'shell_environment_policy.inherit="none"',
+    '-c',
+    'shell_environment_policy.set={"PATH"="/Users/zan/.nvm/versions/node/v24.11.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin","TMPDIR"="/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P04-B-003/app/.tmp","PLAYWRIGHT_BROWSERS_PATH"="/Users/zan/Library/Caches/ms-playwright","npm_config_cache"="/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P04-B-003/app/.tmp/npm","CI"="1","LANG"="en_US.UTF-8"}',
+    '-c',
+    'shell_environment_policy.experimental_use_profile=false',
+    '-c',
+    'skills.config=[{"path"="/Users/zan/.agents/skills/superset-orchestrate/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-page/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-doctor/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-integrations/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-feedback/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/react-doctor/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-contribute/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/find-skills/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-automate/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-browser/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-plugins/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-computer/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-setup/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-standup/SKILL.md","enabled"=false},{"path"="/Users/zan/.codex/skills/.system/imagegen/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/superset-10x/SKILL.md","enabled"=false},{"path"="/Users/zan/.codex/skills/.system/skill-creator/SKILL.md","enabled"=false},{"path"="/Users/zan/.codex/skills/.system/openai-docs/SKILL.md","enabled"=false},{"path"="/Users/zan/.codex/skills/.system/review-agent/SKILL.md","enabled"=false},{"path"="/Users/zan/.agents/skills/next-cache-components-adoption/SKILL.md","enabled"=false},{"path"="/Users/zan/.codex/skills/.system/plugin-creator/SKILL.md","enabled"=false},{"path"="/Users/zan/.codex/skills/.system/skill-installer/SKILL.md","enabled"=false},{"path"="/Users/zan/.codex/skills/.system/plugin-creator/SKILL.md","enabled"=false}]',
+    '-c',
+    'project_doc_max_bytes=32768',
+    '-P',
+    'pilot',
+    '-C',
+    '/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P04-B-003/app',
+    '/bin/sh',
+    '-c',
+    'npm run lint && npm run build && npx playwright test --project=api --project=desktop --project=mobile'
+  ],
+  error: [Circular *1],
+  status: null,
+  signal: 'SIGTERM',
+  output: [
+    null,
+    '\n' +
+      '> folio@0.1.0 lint\n' +
+      '> eslint .\n' +
+      '\n' +
+      '\n' +
+      '> folio@0.1.0 build\n' +
+      '> npm run typecheck && vite build\n' +
+      '\n' +
+      '\n' +
+      '> folio@0.1.0 typecheck\n' +
+      '> tsc --noEmit\n' +
+      '\n' +
+      '\x1B[36mvite v8.3.0 \x1B[32mbuilding client environment for production...\x1B[36m\x1B[39m\n' +
+      'transforming...\n' +
+      '✓ 1875 modules transformed.\n' +
+      'rendering chunks...\n' +
+      'computing gzip size...\n' +
+      'dist/index.html                   0.61 kB │ gzip:  0.36 kB\n' +
+      'dist/assets/index-DGDHMV1h.css   12.60 kB │ gzip:  3.51 kB\n' +
+      'dist/assets/index-CAAmSzsC.js   239.29 kB │ gzip: 74.64 kB\n' +
+      '\n' +
+      '\x1B[32m✓ built in 1.66s\x1B[39m\n' +
+      '\n' +
+      'Running 38 tests using 1 worker\n' +
+      '\n' +
+      '  ✓   1 [api] › tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (396ms)\n' +
+      '  ✓   2 [api] › tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (32ms)\n' +
+      '  ✓   3 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (18ms)\n' +
+      '  ✓   4 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \\t\\r\\n","status":"done"} (23ms)\n' +
+      '  ✓   5 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (18ms)\n' +
+      '  ✓   6 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (24ms)\n' +
+      '  ✓   7 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (19ms)\n' +
+      '  ✓   8 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (16ms)\n' +
+      '  ✓   9 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (19ms)\n' +
+      '  ✓  10 [api] › tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (52ms)\n' +
+      '  ✓  11 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with success (55ms)\n' +
+      '  ✓  12 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (64ms)\n' +
+      '  ✓  13 [api] › tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (39ms)\n' +
+      '  ✓  14 [api] › tests/api.spec.ts:91:1 › normal server does not expose test controls (38ms)\n',
+    'npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.\n' +
+      'npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.\n' +
+      'npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.\n' +
+      'npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.\n' +
+      '[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.\n'
+  ],
+  pid: 12964,
+  stdout: '\n' +
+    '> folio@0.1.0 lint\n' +
+    '> eslint .\n' +
+    '\n' +
+    '\n' +
+    '> folio@0.1.0 build\n' +
+    '> npm run typecheck && vite build\n' +
+    '\n' +
+    '\n' +
+    '> folio@0.1.0 typecheck\n' +
+    '> tsc --noEmit\n' +
+    '\n' +
+    '\x1B[36mvite v8.3.0 \x1B[32mbuilding client environment for production...\x1B[36m\x1B[39m\n' +
+    'transforming...\n' +
+    '✓ 1875 modules transformed.\n' +
+    'rendering chunks...\n' +
+    'computing gzip size...\n' +
+    'dist/index.html                   0.61 kB │ gzip:  0.36 kB\n' +
+    'dist/assets/index-DGDHMV1h.css   12.60 kB │ gzip:  3.51 kB\n' +
+    'dist/assets/index-CAAmSzsC.js   239.29 kB │ gzip: 74.64 kB\n' +
+    '\n' +
+    '\x1B[32m✓ built in 1.66s\x1B[39m\n' +
+    '\n' +
+    'Running 38 tests using 1 worker\n' +
+    '\n' +
+    '  ✓   1 [api] › tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (396ms)\n' +
+    '  ✓   2 [api] › tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (32ms)\n' +
+    '  ✓   3 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (18ms)\n' +
+    '  ✓   4 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \\t\\r\\n","status":"done"} (23ms)\n' +
+    '  ✓   5 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (18ms)\n' +
+    '  ✓   6 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (24ms)\n' +
+    '  ✓   7 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (19ms)\n' +
+    '  ✓   8 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (16ms)\n' +
+    '  ✓   9 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (19ms)\n' +
+    '  ✓  10 [api] › tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (52ms)\n' +
+    '  ✓  11 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with success (55ms)\n' +
+    '  ✓  12 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (64ms)\n' +
+    '  ✓  13 [api] › tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (39ms)\n' +
+    '  ✓  14 [api] › tests/api.spec.ts:91:1 › normal server does not expose test controls (38ms)\n',
+  stderr: 'npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.\n' +
+    'npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.\n' +
+    'npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.\n' +
+    'npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.\n' +
+    '[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.\n'
+}
+
+Node.js v24.11.1

@@ -1,0 +1,79 @@
+{
+  "at": "2026-10-09T05:34:37.965450+00:00",
+  "researcherOnly": true,
+  "id": "qwen/P08-B-001",
+  "confirmed": "HTTP200 responseStatus failed; native stream disconnected before completion: stream closed with reason: error. Request9 lasts 103.541 s, no returned usage. No authored submission.",
+  "rootCause": "Unknown. The generic native failure and frozen relay metadata do not identify outage, timeout or tool-format cause.",
+  "lastRequest": {
+    "number": 9,
+    "label": "qwen/P08-B-001/measured",
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "startedAt": "2026-10-09T05:28:09.788Z",
+    "status": "finished",
+    "requestedParallelToolCalls": true,
+    "mergedDeveloperMessages": 1,
+    "requestedReasoning": {
+      "effort": "xhigh",
+      "summary": "auto"
+    },
+    "sentReasoning": {
+      "enabled": true,
+      "summary": "auto"
+    },
+    "balanceBefore": {
+      "at": "2026-10-09T05:28:09.803Z",
+      "totalCreditsUSD": 40,
+      "totalUsageUSD": 5.328144509,
+      "remainingUSD": 34.671855491
+    },
+    "budgetBefore": {
+      "knownUSD": 5.339998172400007,
+      "unknownRequests": 10,
+      "unknownReservedUSD": 0.94437349,
+      "maximumRequestCost": 0.06160375
+    },
+    "sentUpstream": true,
+    "httpStatus": 200,
+    "retryAfter": null,
+    "finishedAt": "2026-10-09T05:29:53.329Z",
+    "bytes": 72847,
+    "responseId": "gen-1791523689-DdmJ3abNCapCiWD7oKK0",
+    "usage": null,
+    "openrouterMetadata": null,
+    "responseStatus": "failed"
+  },
+  "diagnostic": {
+    "at": "2026-10-09T05:33:30.310Z",
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "httpStatus": 200,
+    "responseStatus": "completed",
+    "text": "CONNECTION_OK",
+    "error": null,
+    "passed": true,
+    "excludedFromMeasurements": true,
+    "costComplete": true,
+    "costUSD": 0.0001371
+  },
+  "diagnosticLimitation": "A short same-provider reply passed; it does not establish reliability of long requests.",
+  "outcome": "execution_failed 189,939 s; specification 189,407 s, druge faze niso začete. Neodvisno 38/70 in 0/12, lint/types/build/allowed true, strict false. Request9 vrne HTTP200/response.failed v 103,541 s; native stream disconnected before completion: stream closed with reason: error. Odgovor nima usage; vzrok ni potrjen. Model pred prekinitvijo ne dostavi sprememb. Vseh pet vsebinskih ocen zato ostane NULL; napaka storitve sama ne dokazuje slabe implementacijske sposobnosti. Poskus ni ponovljen.",
+  "cost": {
+    "complete": false,
+    "knownCostUSD": 0.0111866,
+    "unknownRequests": [
+      9
+    ],
+    "source": "qwen/runtime/runs/P08-B-001/api-cost.json",
+    "note": "Request9 has no returned usage and generation lookup404. Unknown cost is not zero. External reconciliation may later provide a receipt without changing this archive."
+  },
+  "continuation": "V4 supervisor84327 verifies archives, frozen inputs and unused ID, passes fresh Qwen health05:33:30.310 at0.0001371 USD, then continues unchanged queue at unused GLM/P08-B-001 position35. No measured retry or replacement.",
+  "evidence": [
+    "qwen/runtime/runs/P08-B-001/archive-complete.json",
+    "qwen/runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+    "qwen/analysis/review-packets/P08-B-001.json",
+    "qwen/api/P08-B-001/model/api-ledger.jsonl",
+    "qwen/qualification/service-2026-10-09T05-33-09-019Z/result.json",
+    "analysis/recovery/known-service-resumes.jsonl"
+  ]
+}

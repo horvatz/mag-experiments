@@ -1,0 +1,8 @@
+(version 1)
+(allow default)
+(deny file-read-data (require-not (require-any (literal "/") (subpath "/System") (subpath "/usr") (subpath "/bin") (subpath "/sbin") (subpath "/dev") (subpath "/private/etc") (subpath "/private/var/db/timezone") (subpath "/Library/Fonts") (subpath "/Users/zan/.nvm/versions/node/v24.11.1") (subpath "/Users/zan/Library/Caches/ms-playwright") (subpath "/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/.work/pilots/P10-C-001/app"))))
+(deny file-write* (require-not (require-any (subpath "/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/.work/pilots/P10-C-001/app/.tmp/browser") (subpath "/dev") (regex "^/private/var/folders/y7/1g3qs7794xq9_vnwq4qj14040000gn/T/\\.org\\.chromium\\.Chromium\\.[A-Za-z0-9][A-Za-z0-9][A-Za-z0-9][A-Za-z0-9][A-Za-z0-9][A-Za-z0-9]$"))))
+(deny network*)
+(allow network-bind (local ip "*:9223"))
+(allow network-inbound (local ip "localhost:9223"))
+(allow network-outbound (remote tcp "localhost:5174") (remote tcp "localhost:3102") (remote tcp "localhost:5193") (remote tcp "localhost:3123"))

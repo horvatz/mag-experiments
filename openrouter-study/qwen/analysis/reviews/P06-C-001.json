@@ -1,0 +1,79 @@
+{
+  "id": "P06-C-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "reviewStatus": "missing-authored-submission",
+  "limitation": "Prvi odziv API se konča response.failed, preden model dostavi avtorsko datoteko ali orodni klic. Vse dimenzije so null; izvedba ostane v primarnih imenovalcih.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": null,
+      "rationale": "Prva faza constitution se konča execution_failed, preden model dostavi prvo orodje ali datoteko. Avtorska specifikacija in celotna oddaja manjkata; izvirnih vhodnih dokumentov ne štejemo kot modelove. Dimenzija je po pravilu za manjkajočo celotno oddajo null.",
+      "evidence": [
+        "runtime/runs/P06-C-001/execution.json",
+        "runtime/runs/P06-C-001/archive-complete.json",
+        "analysis/review-packets/P06-C-001.json"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": null,
+      "rationale": "Ni nobenega avtorskega dokumenta, odgovora z uporabljenimi predikati ali implementacije. Prebrati ni mogoče modelove formalizacije; vhodnih pravil mu ne pripišemo. Ker celotna avtorska oddaja manjka, ocena ostane null.",
+      "evidence": [
+        "runtime/runs/P06-C-001/execution.json",
+        "runtime/runs/P06-C-001/archive-complete.json",
+        "analysis/review-packets/P06-C-001.json"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": null,
+      "rationale": "Ni oddane matrike, načrta, kode, testov ali verifikacijskega zapisa. Model ne dostavi niti prvega orodnega klica. Raziskovalčevi zapisi arhiva in neodvisno ocenjevanje ne nadomestijo avtorske sledljivosti; dimenzija je manjkajoča.",
+      "evidence": [
+        "runtime/runs/P06-C-001/execution.json",
+        "runtime/runs/P06-C-001/archive-complete.json",
+        "analysis/review-packets/P06-C-001.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Src in vse ostale vhodne datoteke so nespremenjeni. Organizacije izhodišča ne pripišemo modelu, neoddane kode pa ne označimo s slabo oceno. Ob manjkajoči celotni avtorski oddaji je organizacija null.",
+      "evidence": [
+        "runtime/runs/P06-C-001/execution.json",
+        "runtime/runs/P06-C-001/archive-complete.json",
+        "analysis/review-packets/P06-C-001.json"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": null,
+      "rationale": "Ni avtorske oddaje ali izvedenega orodnega ukaza, zato tudi ni lastnih testov oziroma funkcionalnih preverjanj. Po pravilu za manjkajočo celotno oddajo je dimenzija null, drugače kot odsotna preverjanja pri sicer dostavljeni dokumentacijski ali kodni rešitvi.",
+      "evidence": [
+        "runtime/runs/P06-C-001/execution.json",
+        "runtime/runs/P06-C-001/archive-complete.json",
+        "analysis/review-packets/P06-C-001.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Edina zahteva 1 vrne HTTP 200/response.failed po 562,120 s. Native CLI zapiše stream disconnected before completion in prva faza constitution execution_failed po 562,922 s; celotna izvedba 564,033 s. Nobena avtorska sprememba ali orodni klic ni dostavljen. Izhodišče uspe 38/38 regresijskih, 0/8 razvojnih, 0/24 skritih in 0/12 zahtev. Lint/types/build/allowed true, strogi uspeh false. Vzrok napake API ni potrjen.",
+    "evidence": [
+      "runtime/runs/P06-C-001/execution.json",
+      "runtime/runs/P06-C-001/evaluation-summary.json",
+      "runtime/runs/P06-C-001/phases/01-constitution/events.jsonl.gz",
+      "api/P06-C-001/model/api-ledger.jsonl",
+      "analysis/review-packets/P06-C-001.json",
+      "qualification/service-2026-10-09T03-03-28-396Z/result.json"
+    ]
+  },
+  "finalFailureNote": "Odziv API poroča 8.669 vhodnih in 11.524 izhodnih tokenov, vsi izhodni reasoning; končnega odgovora ali orodja ni. Izrecni usage.cost=0 je po zamrznjenem fallback pravilu znani račun 0 USD, ne imputacija neznanega stroška. Generation receipt vrne HTTP 404; upstream_inference_cost=0,0025955 je ločeno ponudnikovo polje. Kratek povezovalni preizkus iste poti ob 03:03:35 UTC uspe; zanesljivosti dolgega odziva ne potrjuje. Brez ponovitve/popravka.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Ni avtorske implementacije, lastnega testa ali izvedenega orodja; potrjene avtorske razvojne funkcionalne napake ni mogoče oceniti."
+}

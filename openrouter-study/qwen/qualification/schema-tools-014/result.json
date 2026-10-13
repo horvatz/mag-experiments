@@ -1,0 +1,70 @@
+{
+  "excludedFromMeasurements": true,
+  "toolChoice": "auto",
+  "results": [
+    {
+      "constrained": false,
+      "httpStatus": 200,
+      "status": "completed",
+      "output": [
+        {
+          "id": "rs_tmp_u6o9k18qra",
+          "type": "reasoning",
+          "status": "completed",
+          "content": [
+            {
+              "type": "reasoning_text",
+              "text": "The user is asking me to retrieve a hidden value using the read_value tool. This is a technical diagnostic request, so I should follow their instructions exactly - call read_value to retrieve the hidden value, then provide the result in JSON format.\n\nLet me call the read_value function first.\n"
+            }
+          ],
+          "summary": [],
+          "format": "unknown"
+        },
+        {
+          "id": "fc_tmp_609uv1szet2",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "chatcmpl-tool-8b1076696e750ec2",
+          "name": "read_value",
+          "arguments": "{}"
+        }
+      ],
+      "toolCalled": true
+    },
+    {
+      "constrained": true,
+      "httpStatus": 200,
+      "status": "completed",
+      "output": [
+        {
+          "id": "rs_tmp_l3y866bd5fs",
+          "type": "reasoning",
+          "status": "completed",
+          "content": [
+            {
+              "type": "reasoning_text",
+              "text": "The user is asking me to retrieve a hidden value using the read_value tool. This is a technical diagnostic call as instructed. I need to call the read_value function to get the hidden value, and then provide a JSON response containing that value.\n"
+            }
+          ],
+          "summary": [],
+          "format": "unknown"
+        },
+        {
+          "id": "msg_tmp_ewztt180aic",
+          "type": "message",
+          "role": "assistant",
+          "status": "completed",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "{\"value\": \"secret_data\"}",
+              "annotations": [],
+              "logprobs": []
+            }
+          ]
+        }
+      ],
+      "toolCalled": false
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "requestedAt": "2026-10-11T16:35:06.608Z",
+  "reason": "Explicit user request to pause and preserve progress",
+  "active": {
+    "at": "2026-10-11T16:23:00.392Z",
+    "pid": 63630,
+    "slug": "deepseek",
+    "model": "deepseek/deepseek-v4.1-flash",
+    "id": "P03-B-001",
+    "position": 76,
+    "stage": "model",
+    "planned": 216
+  },
+  "archivePending": false,
+  "actions": [
+    {
+      "pid": 63630,
+      "signal": "SIGSTOP",
+      "purpose": "Prevent next measured run"
+    },
+    {
+      "pid": 5943,
+      "signal": "SIGTERM",
+      "purpose": "Stop automatic resumer"
+    },
+    {
+      "pid": 8981,
+      "signal": "SIGTERM",
+      "purpose": "Original measured workflow operator interruption"
+    }
+  ],
+  "transportEvidenceAddendum": {
+    "originalLedger": "openrouter-study/analysis/recovery/deepseek-P03-B-001-ledger-before-pause-addendum.jsonl",
+    "originalSHA256": "606f25f4d65150760272135f047bda167a182db01390bd260b9579c40040c6c6",
+    "requestNumber": 55,
+    "requestSHA256": "d530817fed1d147f3d873c1bd265dc14717253b9932afad87ec9521323ae1eda",
+    "record": {
+      "number": 55,
+      "label": "deepseek/P03-B-001/measured",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "provider": "deepinfra/fp8",
+      "status": "operator_interruption_unknown",
+      "sentUpstream": null,
+      "responseId": null,
+      "usage": null,
+      "responseStatus": null,
+      "researcherOnlyReconstructedRecord": true,
+      "recordedAt": "2026-10-12T21:50:21.739Z",
+      "requestFileModifiedAt": "2026-10-11T16:34:55.103Z",
+      "note": "Request file preserved but relay final record absent after explicit user pause; whether sent upstream, HTTP outcome, usage and cost are unknown. This is not an observed API failure or a zero-cost request. Reserve pinned maximum cost until reconciled."
+    },
+    "rationale": "Stopped relay could not finalize request. Preserve original observations separately from researcher uncertainty record."
+  },
+  "processesStoppedVerifiedAt": "2026-10-12T21:50:21.744Z",
+  "finishedAt": "2026-10-12T21:51:14.052Z",
+  "archive": "deepseek/runtime/runs/P03-B-001",
+  "executionStatus": "operator_interruption",
+  "elapsedSeconds": 727.047,
+  "groups": {
+    "regression": {
+      "passed": 38,
+      "total": 38
+    },
+    "development": {
+      "passed": 8,
+      "total": 8
+    },
+    "holdout": {
+      "passed": 24,
+      "total": 24
+    }
+  },
+  "allChecksPassed": false,
+  "checks": [
+    {
+      "name": "lint",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.788,
+      "passed": true
+    },
+    {
+      "name": "types",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.687,
+      "passed": true
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.259,
+      "passed": true
+    },
+    {
+      "name": "tests",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 26.742,
+      "passed": true
+    }
+  ],
+  "cost": {
+    "complete": false,
+    "costUSD": null,
+    "knownCostUSD": 0.049290356000000014,
+    "requests": 55
+  },
+  "spend": {
+    "knownUSD": 14.575447255799993,
+    "unknownRequests": 20,
+    "unknownReservedUSD": 5.072877359999996
+  },
+  "nextUnused": "qwen/P03-B-001",
+  "nextPosition": 77,
+  "noMeasuredRetry": true,
+  "note": "User interruption is retained explicitly; do not attribute this shortened run to model ability or rerun it. Final report must disclose it."
+}

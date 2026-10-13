@@ -1,0 +1,3 @@
+Uporabim echo:
+
+

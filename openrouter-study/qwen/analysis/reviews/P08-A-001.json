@@ -1,0 +1,95 @@
+{
+  "id": "P08-A-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Delna oddaja dveh datotek po prekinitvi odziva API; ni povezana implementacija ali lastnih testov. Vzrok response.failed ostane neznan, zato te napake ne pripisujemo kakovosti kode. Ocenjujemo samo dejansko dostavljeno vsebino; neuspešni zapisi v ukazih niso datoteke oddaje.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Dokument vsebuje R01–R12, datum/all, done prednost, osnovne skupine, UTC, števce, select, opozorilo, oba pogleda in prazna stanja. Konkretne vrzeli: stabilni izvorni red, ohranitev reference/besedila/filtra pri preklopu, pravi reload reset in 390 px niso jasno določeni. Sporočilo prazne skupine je le opozorilo, brez zahtevane vsebine. Omejitve sicer povedo ohranitev zadnjih veljavnih rezultatov, vendar vrstica 76 izrecno shrani filter v localStorage in hkrati zanika trajno shrambo, kar nasprotuje nalogi. Osnovni pogoji so prisotni, popolne/skladne specifikacije ni.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:17",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:38",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:45",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:48",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:72",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:76"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Done ne glede na datum, < oziroma = referenci ter interval +1..+7 so uporabni preverljivi pogoji. Ni pa formalizacije izčrpne disjunktne particije, števcev kot kardinalnosti celotnega projekta, stabilnega filtra ali stanja osnutek/referenca/skupina. Preklop je samo enakost ID-jev, brez ohranjenih nastavitev; reset izpusti osvežitev. UTC je opisna namera, formatDate z timeZone UTC je prikazni format in ne predikat pravilnega seštevanja koledarskih dni. Nasprotje glede localStorage ostane nerešeno.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:39",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:42",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:46",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:59",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:76"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Matrika ima številke R in D, vendar ne poda dejanskih zagonov ali izidov. Sklici na nov container/števce/select v nespremenjenem App.tsx, src/constants.ts in src/useTaskContext.ts ne ustrezajo dostavljeni oddaji; navedeni isOverdue/isToday/getTaskGroup niso funkcije dostavljenega helperja. R06/R09/R10/R11 lastni testi in verification.md manjkajo. Zaključna trditev o vseh zahtevah, preverjenih z razvojnimi in lastnimi testi, ni podprta z dogodki. Posamezni obstoječi D sklici niso preverljiva končna sled zahteva–koda–test.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:55",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:57",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:60",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:64",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:80",
+        "runtime/runs/P08-A-001/submission/src/hooks/useTaskGrouping.ts:5"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 0,
+      "rationale": "Edina avtorska produkcijska datoteka je neuporabljen delni helper; App, oba prikaza in lokalno stanje ostanejo izhodiščni. groupTask sestavi neveljavne datumske nize z dodatnim 0000-00-00T in vrne done za prazno referenco. getTaskCounts sploh ne sprejme reference, za vsa odprta opravila kliče groupTask z praznim nizom in nato done count prepiše, zato jih izgubi. Neizpeljani števec in razvrščanje nimata skladne pogodbe ali uporabniške povezave; TaskStatus je neuporabljen netipski uvoz in povzroči lint/TS1484/TS6133. To je ocena delne dostavljene organizacije, ne vzroka prekinitve API.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/src/hooks/useTaskGrouping.ts:1",
+        "runtime/runs/P08-A-001/submission/src/hooks/useTaskGrouping.ts:9",
+        "runtime/runs/P08-A-001/submission/src/hooks/useTaskGrouping.ts:27",
+        "runtime/runs/P08-A-001/submission/src/hooks/useTaskGrouping.ts:33",
+        "runtime/runs/P08-A-001/submission/src/hooks/useTaskGrouping.ts:37"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Lastne testne datoteke ali smiselnega dodatnega funkcionalnega preverjanja ni. Model pretežno bere izhodišče in piše dokument/helper; 44 izvirnih ukazov ter 49 preserviranih orodnih klicev ne potrdi zagona lastnih ali razvojnih testov. Napovedane R06/R09/R11 trditve v specifikaciji niso izvedeni dokazi. Neodvisni poznejši 38/70 ne štejejo za modelne lastne teste.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:60",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:63",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:65",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:80"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Koledarski uporabniški del manjka: App.tsx in pogledi niso spremenjeni, dodan helper ni uvožen. Vseh osem razvojnih in 24 skritih preverjanj nove naloge odpove; ostane 38/38 regresije. Neodvisna lint in types odpovesta zaradi neuporabljenega TaskStatus in TS1484, build uspe, ker delni helper ni povezan. Napak ne popravljamo in jih ločimo od response.failed.",
+    "evidence": [
+      "runtime/runs/P08-A-001/execution.json",
+      "runtime/runs/P08-A-001/evaluation-summary.json",
+      "runtime/runs/P08-A-001/evaluation-lint.log",
+      "runtime/runs/P08-A-001/evaluation-types.log",
+      "runtime/runs/P08-A-001/submission/src/hooks/useTaskGrouping.ts:1"
+    ]
+  },
+  "finalFailureNote": "Execution_failed 532,686 s; 38/70, 0/12, lint/types false, build/allowed true, strogi uspeh false. Popolni račun 0,09225645 USD za 31 zahtev. Zadnja HTTP200 zahteva vrne response.failed in native stream closed with reason error; vzrok ni potrjen. Last request traja 5,897 s, en output token je reasoning; ni končne avtorske oddaje.",
+  "developmentFailureExample": {
+    "description": "Item_57 heredoc odpove zaradi izvirnega sandboxa, čeprav native exit kaže 0; poznejši echo/printf zapisi dejansko ustvarijo specifikacijo in helper. Item_63 ima unmatched quote, item_67 manjkajoči xcrun, item_80 najprej piše v neobstoječi src/hooks, item_87 pa v neobstoječi .work/fix_part.ts. Preservirani odgovori razkrijejo še dva write_stdin za neobstoječi proces 4, ki nista izvirna command_execution dogodka. Zadnja prekinitev odziva API je ločena od teh potrjenih lokalnih težav. Neuspešni argumenti z osnutki niso končne oddane datoteke.",
+    "evidence": [
+      "runtime/runs/P08-A-001/events.jsonl.gz",
+      "analysis/review-packets/P08-A-001.json",
+      "runtime/runs/P08-A-001/submission/src/hooks/useTaskGrouping.ts:1",
+      "api/P08-A-001/model/api-ledger.jsonl"
+    ]
+  }
+}

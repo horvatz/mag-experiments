@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-09T06:19:47.056667+00:00",
+  "researcherOnly": true,
+  "reason": "Rubric calibration exposed inconsistent treatment of useful authored but unexecuted checks. This correction changes analysis only, never archived evidence or a measured run.",
+  "changed": "deepseek/analysis/reviews/P08-C-001.json",
+  "dimensionBefore": {
+    "dimension": "ownChecks",
+    "score": 0,
+    "rationale": "Dostavljena datoteka vsebuje štiri smiselno zasnovane U01–U04: neveljavne formate/datum, prestopnost, meje skupin, prednost done, vsoto/števce in stabilni filter. Vendar jih model pred HTTP520 ne zažene; ne izvede niti typecheck/lint/build ali lastnega UI scenarija. 27 izvirnih dokončanih ukazov in 39 preserviranih orodnih klicev tega ne potrdi, verification in tasks odkrito ostaneta ni še izvedeno/unchecked. Zato ocena 0 pomeni odsotnost dejansko izvedenega dodatnega preverjanja, ne da je napisana testna datoteka brez uporabnih idej ali da neodvisna aplikacija nič ne zmore. Poznejši raziskovalčevih 66/70 ni modelno lastno preverjanje.",
+    "evidence": [
+      "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:16",
+      "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:27",
+      "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:37",
+      "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:54",
+      "runtime/runs/P08-C-001/submission/docs/agent/P08/tasks.md:15",
+      "runtime/runs/P08-C-001/submission/docs/agent/P08/tasks.md:28",
+      "runtime/runs/P08-C-001/submission/docs/agent/verification.md:10"
+    ]
+  },
+  "dimensionAfter": {
+    "dimension": "ownChecks",
+    "score": 1,
+    "rationale": "Dostavljena datoteka vsebuje štiri smiselne U01–U04 z neodvisnimi ročnimi pričakovanji: neveljaven/prestopni datum, koledarske prehode, meje -1/0/+1/+7/+8, prednost done, ročne števce in stabilni filter. Toda model jih pred HTTP520 ne zažene; 27 native ukazov in 39 preserviranih klicev ne potrdi nobenega lastnega testnega rezultata. Verification/tasks odkrito ostaneta ni še izvedeno/unchecked. Ocena 1 vrednoti uporabno, nepopolno zasnovo dodatnih preverjanj, skladno s primerljivo L/1.0 P04-C-001, in ne pomeni izvedenega uspeha. Manjkajo lastni UI scenariji praznega vnosa med pogledoma, prazne skupine/projekta, reseta, bralnosti in 390 px ter večji/nesortirani podatki ali sprememba ure/pasu. Raziskovalčevo končno 66/70 ni modelno lastno preverjanje.",
+    "evidence": [
+      "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:16",
+      "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:27",
+      "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:37",
+      "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:54",
+      "runtime/runs/P08-C-001/submission/docs/agent/P08/tasks.md:15",
+      "runtime/runs/P08-C-001/submission/docs/agent/P08/tasks.md:28",
+      "runtime/runs/P08-C-001/submission/docs/agent/verification.md:10"
+    ]
+  },
+  "calibrationReference": "luna-study/analysis/reviews/P04-C-001.json",
+  "calibrationReferenceSha256": "d23109175af49c76e4141705184d3fbc0e8fb3b389581196d17c3f9c483fb6c7",
+  "unchangedCounterexample": "GLM/P06-B-001 remains0: delivered test contains TS2551 and incorrect CSV oracle/production oracle reuse, all runs blocked before substantive assertions; reason is not mere absence of successful execution.",
+  "noNewTests": true,
+  "noMeasuredRetry": true
+}

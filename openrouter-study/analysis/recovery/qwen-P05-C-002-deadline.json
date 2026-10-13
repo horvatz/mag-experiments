@@ -1,0 +1,140 @@
+{
+  "at": "2026-10-11T14:14:07.637973+00:00",
+  "researcherOnly": true,
+  "position": 68,
+  "slug": "qwen",
+  "id": "P05-C-002",
+  "execution": {
+    "status": "phase_time_limit",
+    "elapsedSeconds": 1080.538,
+    "startedAt": "2026-10-11T13:51:27.922Z",
+    "finishedAt": "2026-10-11T14:09:28.461Z"
+  },
+  "phases": [
+    {
+      "name": "constitution",
+      "status": "completed",
+      "elapsedSeconds": 128.801,
+      "signal": null
+    },
+    {
+      "name": "specify",
+      "status": "completed",
+      "elapsedSeconds": 406.795,
+      "signal": null
+    },
+    {
+      "name": "plan",
+      "status": "completed",
+      "elapsedSeconds": 139.445,
+      "signal": null
+    },
+    {
+      "name": "tasks",
+      "status": "completed",
+      "elapsedSeconds": 149.734,
+      "signal": null
+    },
+    {
+      "name": "implement",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 253.174,
+      "signal": "SIGKILL"
+    }
+  ],
+  "evaluation": {
+    "groups": {
+      "regression": {
+        "passed": 38,
+        "total": 38
+      },
+      "development": {
+        "passed": 0,
+        "total": 8
+      },
+      "holdout": {
+        "passed": 0,
+        "total": 24
+      }
+    },
+    "checks": [
+      {
+        "name": "lint",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.53,
+        "passed": true
+      },
+      {
+        "name": "types",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.566,
+        "passed": true
+      },
+      {
+        "name": "build",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.146,
+        "passed": true
+      },
+      {
+        "name": "tests",
+        "exitCode": 1,
+        "signal": null,
+        "elapsedSeconds": 189.548,
+        "passed": false
+      }
+    ],
+    "allowedChanges": true,
+    "completeTestRun": true,
+    "allChecksPassed": false
+  },
+  "explicitApiErrors": [],
+  "archiveCost": {
+    "complete": true,
+    "costUSD": 0.24080435000000008,
+    "knownCostUSD": 0.24080435000000008,
+    "requests": 76,
+    "lastRequest": {
+      "number": 76,
+      "responseId": "gen-1791727751-jezGQN3L75f5KPxVnRoo",
+      "costUSD": 0.00533015,
+      "transportStatus": "client_aborted",
+      "billingLookupStatus": 200,
+      "generation": {
+        "id": "gen-1791727751-jezGQN3L75f5KPxVnRoo",
+        "model": "qwen/qwen3.5-9b-20260310",
+        "provider": "SiliconFlow",
+        "totalCostUSD": 0.00533015,
+        "promptTokens": 53267,
+        "completionTokens": 23,
+        "finishReason": null
+      }
+    }
+  },
+  "interpretation": [
+    "All four preparation phases completed; implementation hit original phase deadline and converge was not started.",
+    "No observed explicit API response/transport error; client abort at deadline is not a service failure.",
+    "No measured retry or qualitative grade for repetition002."
+  ],
+  "sources": [
+    {
+      "path": "openrouter-study/qwen/runtime/runs/P05-C-002/execution.json",
+      "sha256": "7040e470d43804a4730d55108b88a1fdf39b78c4137f39b061cb54fa657d0d3c"
+    },
+    {
+      "path": "openrouter-study/qwen/runtime/runs/P05-C-002/evaluation-summary.json",
+      "sha256": "a0b1b5487652c9004afcac0764e9246f30ecd4ef6c8ffd2d664350c4e207ed54"
+    },
+    {
+      "path": "openrouter-study/qwen/runtime/runs/P05-C-002/api-cost.json",
+      "sha256": "daed11cc28d5c6639621e72005b8ec8e1fc789f7bb409c9ef77e9dce582f7cc8"
+    },
+    {
+      "path": "openrouter-study/qwen/api/P05-C-002/model/api-ledger.jsonl",
+      "sha256": "0cdeacee84d2e4748c6c74c6705663422b24141ef388f0a9d03c22f4067d8a52"
+    }
+  ]
+}

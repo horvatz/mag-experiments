@@ -1,0 +1,68 @@
+Starting constitution (1199 seconds available)
+[constitution] I'll start by checking the time budget and reading the required inputs.
+
+
+[constitution] Context is clear. Now I'll write the short project constitution derived from `PROJECT_RULES.md` and the shared template, with today's ratification date.
+
+
+[constitution] Heredoc is blocked by the sandbox; I'll use `apply_patch` instead.
+
+
+[constitution] No `apply_patch` binary exists in this sandbox, so I'll write the file with `printf` (no heredocs).
+
+
+[constitution] Ustava je zapisana v `.specify/memory/constitution.md` (različica 1.0.0, sprejeto 2026-10-10).
+
+**Opravljeno**
+- Iz `PROJECT_RULES.md`, skupne predloge in `task/instructions.md` izpeljanih pet temeljnih načel: omejene spremembe (`src/`, `tests/agent/`, `docs/agent/` + procesni izjemi), javni API `/api/` kot edini vir podatkov brez `/__test/`, ohranjen videz Folio in slovenska poimenovanja, sledljivost R01–R12 z dejanskimi dokazi, prepoved širjenja obsega.
+- Dodane omejitve (nepromenjeno izhodišče, lokalno stanje, 390 px), razvojni tok (skupni + lastni testi, resnično poročanje) in upravljanje 
+constitution: completed, 211.687s
+Starting specify (987 seconds available)
+[specify] Now writing `.specify/feature.json` and the specification for R01–R12.
+
+
+[specify] Part 1 is in place. Appending the traceability table and limitations.
+
+
+[specify] Specifikacija je zapisana v `docs/agent/P06/spec.md`, pot pa v `.specify/feature.json`.
+
+**Opravljeno**
+- `.specify/feature.json` → `{ "feature_directory": "docs/agent/P06" }` (pot že določena, brez dodatnega vprašanja).
+- `docs/agent/P06/spec.md` po skupni predlogi: problem in kontekst, vhodi/dejanja/izidi s simboli C, S, F in scenariji, pravila P1–P7 (omogočenost, vsebina, navedba, nevtralizacija formul, CRLF, prenos, brez stranskih učinkov).
+- Tabela zahtev R01–R12 s sprejemnimi pogoji in načinom preverjanja; dogovor o vmesniku (dostopna imena, `data-task-id`, 390 px) povzet brez novih zaht
+specify: completed, 316.006s
+Starting plan (669 seconds available)
+[plan] Context loaded from `spec.md`, the constitution, and the existing code. Writing the concise plan now.
+
+
+[plan] Načrt je zapisan v `docs/agent/P06/plan.md`.
+
+**Opravljeno**
+- Tehnični kontekst: React 19.3 + TS 6 + Vite 8, obstoječe odvisnosti, API prek `useResource`, brez novih odvisnosti.
+- Odločitve: čista logika v `src/csv.ts` (fiksni vrstni red kolon, nevtralizacija formul, navedba, BOM + CRLF, prenos prek Blob/object URL), kontrolniki v `src/ExportControls.tsx`, vgradnja v `src/App.tsx`, minimalni slogi v `src/styles.css`.
+- Stanje izvoza z `key={project.id}`: preklop pogleda ga ohrani (R10), menjava projekta/osvežitev ponastavi (R11), filtriranje vpliva le na izvoz (R04).
+- Testi: `tests/agent/exp
+plan: completed, 139.175s
+Starting tasks (529 seconds available)
+[tasks] Seznam nalog je zapisan v `docs/agent/P06/tasks.md`.
+
+**Opravljeno**
+- 12 zaporednih nalog v obliki `- [ ] T001 …` po fazah: priprava (T001–T002), temelj (T003–T006), jedro R01–R09 (T007–T008), povezovanje R10–R12 (T009), preverjanje in predaja (T010–T012).
+- Vsaka naloga navaja ciljno datoteko (`src/csv.ts`, `src/ExportControls.tsx`, `src/App.tsx`, `src/styles.css`, `tests/agent/export.spec.ts`, `docs/agent/P06/spec.md`) in zahteve, ki jih pokriva.
+- Preverjanja iz skupne predloge so vključena: skupni testi, typecheck/build/lint, dokazi v tabeli sledljivosti in kontrola meja dovoljenih datote
+tasks: completed, 60.638s
+Starting implement (348 seconds available)
+[implement] Implementation step — time is tight, so I'll move fast. First, loading the exact interfaces I must satisfy.
+
+
+[implement] Interfaces are clear (ProjectView is already keyed by project id; dev tests expect exact names). Writing the implementation now.
+
+
+[implement] Small patch artifact: the inserted import kept a trailing quote. Fixing it now.
+
+
+[implement] Now styles, own tests, and the verification file skeleton.
+
+
+implement: phase_time_limit, 348.192s
+{"status":"phase_time_limit","elapsedSeconds":1081.332,"allowedChanges":true,"usage":null}

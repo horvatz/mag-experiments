@@ -1,0 +1,415 @@
+{
+  "at": "2026-10-09T05:34:00.983Z",
+  "slug": "qwen",
+  "id": "P08-B-001",
+  "researcherOnly": true,
+  "limitations": [
+    "This is a source index, not a qualitative grade or a substitute for reading authored files.",
+    "Later API inputs can preserve failed tool calls omitted from native events. A final call without a subsequent input may be absent.",
+    "Attempted writes do not constitute delivered documents. The final immutable submission is authoritative.",
+    "Do not feed researcher evaluations or this packet to measured model sessions."
+  ],
+  "execution": {
+    "status": "execution_failed",
+    "elapsedSeconds": 189.939,
+    "phases": [
+      {
+        "name": "specification",
+        "status": "execution_failed",
+        "elapsedSeconds": 189.407
+      }
+    ],
+    "fileChanges": []
+  },
+  "evaluation": {
+    "executionStatus": "execution_failed",
+    "groups": {
+      "regression": {
+        "passed": 38,
+        "total": 38
+      },
+      "development": {
+        "passed": 0,
+        "total": 8
+      },
+      "holdout": {
+        "passed": 0,
+        "total": 24
+      }
+    },
+    "checks": [
+      {
+        "name": "lint",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.632,
+        "passed": true
+      },
+      {
+        "name": "types",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.591,
+        "passed": true
+      },
+      {
+        "name": "build",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.199,
+        "passed": true
+      },
+      {
+        "name": "tests",
+        "exitCode": 1,
+        "signal": null,
+        "elapsedSeconds": 189.512,
+        "passed": false
+      }
+    ]
+  },
+  "phaseResults": [
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/result.json",
+      "name": "specification",
+      "status": "execution_failed",
+      "elapsedSeconds": 189.407,
+      "signal": null
+    }
+  ],
+  "authoredFiles": [],
+  "nativeCommands": [
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_2",
+      "command": "/bin/zsh -lc 'node task/time-budget.mjs'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "{\"phaseSecondsRemaining\":350,\"totalSecondsRemaining\":1190,\"phaseDeadlineUTC\":\"2026-10-09T05:32:44.312Z\"}\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_3",
+      "command": "/bin/zsh -lc 'cat PROJECT_RULES.md'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "# Skupna pravila dela v aplikaciji\n\nTo je začetna aplikacija za pilot P08. Konkretne zahteve prejme agent skupaj\nz nalogo; ta dokument določa izhodišče in mejo dovoljenih sprememb.\n\n## Dovoljene spremembe\n\n- Koda uporabniškega vmesnika v `src/`, vključno s slogi in uporabo javnega API-ja.\n- Lastni dodatni testi v `tests/agent/` in lastna dokumentacija v `docs/agent/`.\n\nZačetni podatki, strežnik v `server/`, skupni tipi v `shared/`, skupni testi\n`tests/baseline.spec.ts` in `tests/api.spec.ts`, odvisnosti ter nastavitve\nzagona in preverjanja ostanejo enaki. Sprememba skupne infrastrukture zahteva\nenako, vnaprej dogovorjeno posodobitev izhodišča za vse postopke.\n\n## Pričakovano delo\n\n1. Preberi zahteve naloge in uporabi priloženo predlogo specifikacije.\n2. Dopolni obstoječi vmesnik; ohrani slovenska poimenovanja in potrjeni videz Folio iz `docs/dizajn.md`.\n3. Podatke beri in shranjuj prek javnega vmesnika `/api/`. Izbiraj po `id`.\n4. Preveri rešitev s skupnimi testi in smiselno dodaj lastna preverjanja.\n5. Ob koncu opiši spremembe, izvedena preverjanja, njihove rezultate in\n   morebitne neizpolnjene zahteve. Ne navajaj neizvedenih testov kot uspešnih.\n\nTestne kontrole `/__test/` uporablja samo testni program. Uporabniški vmesnik\nne sme z njimi nastavljati odzivov, brati testnega stanja ali ponastavljati\npodatkov. Ne nadomeščaj strežnika z lokalno kopijo podatkov ali `localStorage`.\n\nTesti izhodišča preverjajo začetno delovanje in infrastrukturo. Konkretne\nzahteve P08 je treba preveriti tudi z ločeno pripravljenimi testi te naloge.\nPred agentno izvedbo izvajalec izvozi samo dovoljene datoteke. Prisotnost teh\npravil sama po sebi ne preprečuje dostopa do drugih map ali sprememb datotek.\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_4",
+      "command": "/bin/zsh -lc 'cat task/instructions.md'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "# P08: Koledarski pregled rokov\n\nRazličica 1.0, glavna naloga. Vsi postopki prejmejo iste zahteve, izhodišče in razvojne teste. Začetni Folio ne vsebuje rešitve pilotov ali drugih glavnih nalog.\n\n## Zahteve\n\n| ID | Pričakovano delovanje |\n| --- | --- |\n| R01 | Referenčni datum je ob vsakem začetku projekta izrecno 2026-09-21; ni odvisen od trenutne ure naprave. Začetni izbrani pogled rokov je all. |\n| R02 | Opravilo s statusom done vedno spada v skupino done ne glede na rok; ne šteje v nobeno od štirih skupin odprtih opravil. |\n| R03 | Odprto opravilo z dueDate pred referenčnim datumom spada v overdue; z enakim datumom v today. |\n| R04 | Odprto opravilo z datumom od naslednjega dne do vključno sedmega dne spada v week; poznejši rok spada v later. Skupine so disjunktne in skupaj vsebujejo vsa opravila. |\n| R05 | Datumi se obravnavajo kot koledarski YYYY-MM-DD neodvisno od časovnega pasu in poletnega časa. Seštevanje dni deluje čez meje meseca, leta in prestopni februar. |\n| R06 | Pet števcev prikazuje število opravil celotnega trenutnega projekta v skupinah overdue/today/week/later/done; aktivni filter ne spremeni teh števil. |\n| R07 | Izbirnik Pogled rokov all/overdue/today/week/later/done prikazuje ustrezno skupino v izvornem vrstnem redu. Izbor ne spreminja datumov ali stanj opravil. |\n| R08 | Veljaven nov referenčni datum takoj preračuna skupine in vidne vrstice, pri tem pa ohrani aktivni filter. Prazno polje prikaže opozorilo in ohrani zadnji veljavni preračun; ponoven veljavni datum opozorilo odstrani. |\n| R09 | Preglednica in tabla prikazujeta iste filtrirane ID-je. Preklop pogleda ohrani referenčni datum, trenutno besedilo polja in izbrano skupino. |\n| R10 | Menjava projekta in osvežitev ponastavita datum in skupino na začetni vrednosti. Noben podatek o filtru se ne hrani v trajni shrambi ali URL-ju. |\n| R11 | Prazen projekt daje pet ničel. Prazna skupina v nepraznem projektu prikaže Ni opravil v izbrani skupini. ter omogoča preklop na drugo skupino ali all. |\n| R12 | Datumi podatkov so veljavni YYYY-MM-DD, tudi prestopni. Pregled ne pošilja zapisov na API; polja in bralne podrobnosti ostanejo nespremenjeni, ohranjen je prilagodljiv Folio. |\n\n## Dogovor o vmesniku\n\n- input type=date z oznako Referenčni datum; HTML select Pogled rokov: all/overdue/today/week/later/done.\n- Pet elementov ima aria-label=Število rokov <ključ> in samo številsko vrednost, npr. Število rokov overdue.\n- Prazen datum: role=alert z besedilom Vnesi veljaven referenčni datum. Imena skupin so Zapadlo, Danes, Naslednjih 7 dni, Pozneje in Končano.\n\nOhrani `data-task-id` na vrsticah in karticah, dostopna imena obstoječih pogledov in stolpcev ter `aria-label=\"Pregled stanj opravil\"`. Nova dejanja ob opravilu morajo biti zunaj njegove povezave. Na širini 390 pik se cela stran ne razširi; notranje drsenje preglednice in table je dovoljeno. Besedilo, ki ni izrecno določeno zgoraj, in razporeditev novih kontrol nista predpisana.\n\n## Podatki, obseg in preverjanje\n\nPodatke preberi iz obstoječega javnega API-ja. Testi lahko vrnejo poljubno število opravil (tudi nič, eno in več kot deset), drugačne enkratne ID-je, enake naslove, različno zaporedje in veljavne koledarske datume. Tipi in polja so enaki izhodišču. Projekta sta lahko prazna. Naslovi, opisi in imena so navadno besedilo, tudi z Unicode znaki in ločili. V nalogah z izbiro odgovorne osebe so imena neprazna in različna od rezervirane vrednosti `all`. Vsako opravilo pripada svojemu projektu.\n\nJavni pripomoček razvojnih testov podaja dodatne podatke z nadzorovanimi GET odgovori. To je testni mehanizem, ki ga uporabniški vmesnik ne sme uvažati ali uporabljati. Aplikacija bere samo `/api/`; ne bere testnih kontrol `/__test/`. Strežnika, infrastrukture, odvisnosti in skupnih tipov ne spreminjaj. Razvojni primeri niso celoten obseg zahtev; končni primeri lahko uporabijo drugačne podatke iz opisane domene.\n\nNavigacije med nezaključenim nalaganjem in novih sočasnih sprememb podatkov brez osvežitve ne širimo prek obstoječih regresijskih zahtev. Če posamezna zahteva ne določa trajne shrambe ali URL-ja, je stanje nove funkcionalnosti lokalno trenutnemu projektu. Ne dodajaj novih zapisovalnih API-jev.\n\n## Oddaja\n\nSpreminjaj samo `src/`, lastne teste v `tests/agent/` in dokumente v `docs/agent/`. Veljajo projektna pravila; omembe pilotov v dokumentih izhodišča so zgodovinske. Pripravi specifikacijo po skupni predlogi in poveži vseh R01–R12 s pogoji, kodo in dejansko izvedenimi testi. Izbrane pogoje opredeli tudi s predikati. Zapiši nepreverjene dele in omejitve; nedostopnih končnih testov ne navajaj kot opravljenih.\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_5",
+      "command": "/bin/zsh -lc 'cat task/specification-template.md'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "# Predloga razvojne specifikacije\n\nPredloga je enaka za vse postopke. Izpolnjena vsebina je izdelek postopka,\nne vnaprej dana referenčna rešitev. Če postopek ustvari več dokumentov,\nlahko navede povezave na ustrezne dele namesto podvajanja vsebine.\n\n## Problem in kontekst\n\nOpiši uporabnikov namen, začetno delovanje aplikacije in predvideno spremembo.\n\n## Vhodi, dejanja in izidi\n\nDoloči relevantna podatkovna polja, dovoljena dejanja, pogoje uporabe in\npričakovano stanje po uspehu, preklicu ter napaki.\n\n## Zahteve in pravila\n\nZa vsako zahtevo iz navodil navedi, kako bo zajeta. Izbrane zahteve izrazi\ns predikati ali pravili spremembe stanja. Pojasni simbole in predpostavke.\nLoči splošno pravilo od posameznega testnega primera.\n\n| Zahteva | Pravilo oziroma sprejemni pogoj | Način preverjanja |\n| --- | --- | --- |\n| R… | … | … |\n\n## Izvedba in sledljivost\n\n| Zahteva | Pogoj | Test ali scenarij | Datoteka in del kode | Izid ter dokaz |\n| --- | --- | --- | --- | --- |\n| R… | … | … | … | … |\n\nIzida ne označi kot uspešnega brez dejanskega preverjanja. Navedi, če test\nni izveden. Izvor rezultata naj bo določljiv, npr. ime testa in dnevnik zagona.\nPo popravkih posodobi povezave in ohrani zgodovino sprememb specifikacije.\n\n## Odprta vprašanja in omejitve\n\nZapiši nejasnosti, uporabljena pojasnila, nepreverjene scenarije ter odstopanja.\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_8",
+      "command": "/bin/zsh -lc 'cat shared/tasks.ts'",
+      "status": "failed",
+      "exitCode": 1,
+      "output": "cat: shared/tasks.ts: No such file or directory\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_10",
+      "command": "/bin/zsh -lc 'cat server/api/tasks.ts'",
+      "status": "failed",
+      "exitCode": 1,
+      "output": "cat: server/api/tasks.ts: No such file or directory\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_12",
+      "command": "/bin/zsh -lc 'ls src/'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "App.tsx\nTaskBoard.tsx\nTaskDetails.tsx\napi.ts\ncomponents.tsx\nformatDate.ts\nmain.tsx\nnavigation.ts\nstyles.css\nuseResource.ts\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_13",
+      "command": "/bin/zsh -lc 'cat docs/dizajn.md'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "# Folio — potrjeni dizajn\n\nPotrjeno 15. septembra 2026. Ta videz je skupno izhodišče za naloge;\nposamezna dopolnitev naj uporablja obstoječe gradnike in slogovne spremenljivke.\n\n- Ime je **Folio**, z modrim znakom F. Repozitorij ostaja `mag-app`.\n- Lev meni je širok 224 pik, odmaknjen 16 pik od robov, z zaobljenostjo\n  16 pik. Ima svetel rob `#e6e9ef` in nežno dvojno senco\n  `0 8px 24px #20355609, 0 1px 3px #20355604`.\n- Pri širini do 760 pik se navigacija prestavi nad vsebino; projekta\n  ostaneta neposredno dostopna pod logotipom.\n- Pisava je sistemska. Ozadje je `#fbfbfd`, kartice so bele, glavno besedilo\n  `#1d1d1f`, poudarek pa `#2f6dcc`. Modra označuje izbor, stanje V delu in\n  glavna dejanja; večina površin ostane nevtralna.\n- Ikone so majhne, s tankimi potezami. Spremljajo besedilne oznake projektov,\n  stanj, pogledov in rokov. Dekorativne ikone imajo `aria-hidden=\"true\"`.\n- Kartice imajo notranji odmik 16 pik, naslov, eno vrstico opisa ter osebo\n  in rok. Celoten opis je v podrobnostih. Višina se po potrebi prilagodi\n  dolgemu naslovu ali prelomljenim podatkom.\n- Preglednica in tabla se na ozkem zaslonu pomikata znotraj svojega prikaza.\n  Fokus pri uporabi tipkovnice mora ostati viden.\n\nAktualni posnetki so v `predogled/`. Vir postavitve in barv je\n`src/styles.css`; ta dokument pojasnjuje potrjeno usmeritev. Raziskovalno\nizhodišče je pripeto na natančen commit v `mag-experiments/baseline.json`.\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_14",
+      "command": "/bin/zsh -lc 'cat src/api.ts'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "import type { Task, TaskUpdate } from '../shared/types.ts'\n\nexport async function request<T>(path: string, options?: RequestInit): Promise<T> {\n  const response = await fetch(path, options)\n  if (!response.ok) {\n    const body = await response.json().catch(() => null)\n    throw new Error(body?.message || 'Podatkov ni mogoče pridobiti. Poskusi znova.')\n  }\n  return response.json() as Promise<T>\n}\n\n// Prepared API for P01. The baseline interface only reads tasks.\nexport function updateTask(id: string, values: TaskUpdate): Promise<Task> {\n  return request(`/api/tasks/${encodeURIComponent(id)}`, {\n    method: 'PATCH',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify(values),\n  })\n}\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_15",
+      "command": "/bin/zsh -lc 'cat src/components.tsx'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "import { AlertCircle, Circle, CircleCheck, CircleDashed, RotateCw } from 'lucide-react'\nimport type { TaskStatus } from '../shared/types.ts'\n\nexport function StatusIcon({ status, size = 14 }: { status: TaskStatus; size?: number }) {\n  const Icon = { todo: Circle, in_progress: CircleDashed, done: CircleCheck }[status]\n  return <Icon className={`status-symbol status-symbol-${status}`} size={size} strokeWidth={1.6} aria-hidden=\"true\" />\n}\n\nexport function StatusBadge({ status }: { status: TaskStatus }) {\n  const labels = { todo: 'Pripravljeno', in_progress: 'V delu', done: 'Končano' }\n  return <span className={`status-badge status-${status}`}><StatusIcon status={status} size={12} />{labels[status]}</span>\n}\n\nexport function Avatar({ name }: { name: string }) {\n  return <span className=\"avatar\" aria-hidden=\"true\">{name.split(' ').map((part) => part[0]).join('')}</span>\n}\n\nexport function Loading({ label = 'Nalaganje podatkov …' }: { label?: string }) {\n  return <div className=\"state-message\" role=\"status\"><span className=\"spinner\" aria-hidden=\"true\" /><p>{label}</p></div>\n}\n\nexport function LoadError({ message, retry }: { message: string; retry: () => void }) {\n  return <div className=\"state-message error-state\" role=\"alert\">\n    <AlertCircle size={24} aria-hidden=\"true\" />\n    <h3>Podatki niso na voljo</h3><p>{message}</p>\n    <button className=\"button\" onClick={retry}><RotateCw size={15} aria-hidden=\"true\" />Poskusi znova</button>\n  </div>\n}\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_16",
+      "command": "/bin/zsh -lc 'cat src/App.tsx'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "import { ArrowUpRight, Check, Columns3, FolderClosed, ListTodo, Table2 } from 'lucide-react'\nimport type { Project, Task } from '../shared/types.ts'\nimport { Avatar, LoadError, Loading, StatusBadge } from './components.tsx'\nimport { formatDate } from './formatDate.ts'\nimport { projectUrl, taskUrl, useRoute, type TaskView } from './navigation.ts'\nimport { TaskBoard } from './TaskBoard.tsx'\nimport { TaskDetails } from './TaskDetails.tsx'\nimport { useResource } from './useResource.ts'\n\nfunction ProjectView({ project, taskId, view }: { project: Project; taskId: string | null; view: TaskView }) {\n  const { data: tasks, error, loading, retry } = useResource<Task[]>(`/api/projects/${encodeURIComponent(project.id)}/tasks`)\n  const counts = {\n    todo: tasks?.filter((task) => task.status === 'todo').length ?? 0,\n    in_progress: tasks?.filter((task) => task.status === 'in_progress').length ?? 0,\n    done: tasks?.filter((task) => task.status === 'done').length ?? 0,\n  }\n\n  return <>\n    <div className=\"project-overview\">\n      <div className=\"project-heading\">\n        <h1>{project.name}</h1>\n        <p className=\"project-intro\">Opravila, odgovornosti in roki na enem mestu.</p>\n      </div>\n      {tasks && <div className=\"summary-grid\" aria-label=\"Pregled stanj opravil\">\n        <div className=\"summary-item\"><span className=\"summary-label\">Pripravljeno</span><strong>{counts.todo}</strong></div>\n        <div className=\"summary-item\"><span className=\"summary-label\">V delu</span><strong>{counts.in_progress}</strong></div>\n        <div className=\"summary-item\"><span className=\"summary-label\">Končano</span><strong>{counts.done}</strong></div>\n      </div>}\n    </div>\n\n    {loading && <Loading label=\"Nalaganje opravil …\" />}\n    {error && <LoadError message={error} retry={retry} />}\n    {tasks && <>\n      <section className=\"task-section\" aria-labelledby=\"tasks-title\">\n        <div className=\"section-heading\">\n          <div><ListTodo className=\"section-icon\" size={17} strokeWidth={1.6} aria-hidden=\"true\" /><h2 id=\"tasks-title\">Opravila</h2><span className=\"count-badge\">{tasks.length}</span></div>\n          <div className=\"view-switch\" role=\"group\" aria-label=\"Prikaz opravil\">\n            <button type=\"button\" aria-pressed={view === 'table'} onClick={() => { window.location.hash = projectUrl(project.id) }}><Table2 size={15} aria-hidden=\"true\" />Preglednica</button>\n            <button type=\"button\" aria-pressed={view === 'board'} onClick={() => { window.location.hash = projectUrl(project.id, 'board') }}><Columns3 size={15} aria-hidden=\"true\" />Tabla</button>\n          </div>\n        </div>\n        {view === 'board' ? <TaskBoard tasks={tasks} /> : tasks.length === 0 ? <div className=\"state-message\"><ListTodo size={28} aria-hidden=\"true\" /><h3>V tem projektu še ni opravil</h3><p>Opravila bodo prikazana tukaj.</p></div> : <div className=\"table-scroll\">\n          <table>\n            <caption className=\"visually-hidden\">Opravila projekta {project.name}</caption>\n            <thead><tr><th scope=\"col\">Opravilo</th><th scope=\"col\">Stanje</th><th scope=\"col\">Odgovorna oseba</th><th scope=\"col\">Rok</th><th scope=\"col\"><span className=\"visually-hidden\">Podrobnosti</span></th></tr></thead>\n            <tbody>{tasks.map((task) => <tr key={task.id} data-task-id={task.id}>\n              <td><div className=\"task-cell\"><span className={`task-state-icon ${task.status === 'done' ? 'completed' : ''}`} aria-hidden=\"true\">{task.status === 'done' ? <Check size={13} /> : task.status === 'in_progress' ? <span /> : null}</span><a className=\"task-link\" href={taskUrl(project.id, task.id)}><span>{task.title}</span><span className=\"task-id\">{task.id}</span></a></div></td>\n              <td><StatusBadge status={task.status} /></td>\n              <td><span className=\"person\"><Avatar name={task.assignee} /><span>{task.assignee}</span></span></td>\n              <td className=\"date-cell\"><time dateTime={task.dueDate}>{formatDate(task.dueDate)}</time></td>\n              <td className=\"row-arrow\"><ArrowUpRight size={17} aria-hidden=\"true\" /></td>\n            </tr>)}</tbody>\n          </table>\n        </div>}\n        {tasks.length > 0 && <div className=\"table-footer\"><span>Pregled vseh opravil projekta</span><span>{counts.done} / {tasks.length} končanih</span></div>}\n      </section>\n    </>}\n    {taskId && <TaskDetails key={taskId} project={project} taskId={taskId} view={view} />}\n  </>\n}\n\nexport function App() {\n  const route = useRoute()\n  const view = route?.view ?? 'table'\n  const { data: projects, error, loading, retry } = useResource<Project[]>('/api/projects')\n  const project = projects?.find((entry) => entry.id === route?.projectId)\n\n  return <div className=\"app-shell\">\n    <a className=\"skip-link\" href=\"#main-content\" onClick={(event) => { event.preventDefault(); document.getElementById('main-content')?.focus() }}>Preskoči na vsebino</a>\n    <aside className=\"app-sidebar\" aria-label=\"Delovni prostor\">\n      <a className=\"brand\" href={projectUrl(projects?.[0]?.id ?? 'web', view)} aria-label=\"Folio – začetna stran\"><img src=\"/favicon.svg\" alt=\"\" width=\"28\" height=\"28\" /><span>Folio</span></a>\n      <div className=\"sidebar-projects\">\n        <p className=\"nav-label\">Projekti</p>\n        <nav className=\"project-nav\" aria-label=\"Projekti\">\n          {projects?.map((entry) => <a key={entry.id} href={projectUrl(entry.id, view)} className={`project-nav-link ${project?.id === entry.id ? 'active' : ''}`} aria-current={project?.id === entry.id ? 'page' : undefined}><FolderClosed size={15} strokeWidth={1.6} aria-hidden=\"true\" /><span>{entry.name}</span></a>)}\n        </nav>\n      </div>\n      <span className=\"workspace-label\">Delovni prostor</span>\n    </aside>\n\n    <div className=\"workspace\">\n      <main id=\"main-content\" tabIndex={-1}>\n        {loading && <Loading label=\"Nalaganje projektov …\" />}\n        {error && <LoadError message={error} retry={retry} />}\n        {projects && !project && <div className=\"state-message\"><FolderClosed size={30} aria-hidden=\"true\" /><h1>Projekt ne obstaja</h1><p>Izberi enega od projektov v navigaciji.</p>{projects[0] && <a className=\"button\" href={projectUrl(projects[0].id, view)}>Nazaj na projekte</a>}</div>}\n        {project && <ProjectView key={project.id} project={project} taskId={route?.taskId ?? null} view={view} />}\n      </main>\n    </div>\n  </div>\n}\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_17",
+      "command": "/bin/zsh -lc 'cat shared/types.ts'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "export type TaskStatus = 'todo' | 'in_progress' | 'done'\n\nexport interface Project {\n  id: string\n  name: string\n}\n\nexport interface Task {\n  id: string\n  projectId: string\n  title: string\n  description: string\n  status: TaskStatus\n  assignee: string\n  dueDate: string\n}\n\nexport interface TaskUpdate {\n  title: string\n  status: TaskStatus\n}\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_18",
+      "command": "/bin/zsh -lc 'cat src/navigation.ts'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "import { useSyncExternalStore } from 'react'\n\nexport type TaskView = 'table' | 'board'\n\nfunction subscribe(onChange: () => void) {\n  window.addEventListener('hashchange', onChange)\n  return () => window.removeEventListener('hashchange', onChange)\n}\n\nexport function projectUrl(projectId: string, view: TaskView = 'table') {\n  return `#/projects/${encodeURIComponent(projectId)}${view === 'board' ? '?view=board' : ''}`\n}\n\nexport function taskUrl(projectId: string, taskId: string, view: TaskView = 'table') {\n  return `${projectUrl(projectId)}/tasks/${encodeURIComponent(taskId)}${view === 'board' ? '?view=board' : ''}`\n}\n\nexport function useRoute() {\n  const hash = useSyncExternalStore(subscribe, () => window.location.hash)\n  const [path, query] = hash.split('?')\n  const view: TaskView = new URLSearchParams(query).get('view') === 'board' ? 'board' : 'table'\n  if (!path || path === '#' || path === '#/') return { projectId: 'web', taskId: null, view }\n  const match = path.match(/^#\\/projects\\/([^/]+)(?:\\/tasks\\/([^/]+))?$/)\n  if (!match) return null\n  try {\n    return { projectId: decodeURIComponent(match[1]), taskId: match[2] ? decodeURIComponent(match[2]) : null, view }\n  } catch {\n    return null\n  }\n}\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_19",
+      "command": "/bin/zsh -lc 'cat tests/agent/01-calendar-navigation.spec.ts'",
+      "status": "failed",
+      "exitCode": 1,
+      "output": "cat: tests/agent/01-calendar-navigation.spec.ts: No such file or directory\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_20",
+      "command": "/bin/zsh -lc 'ls tests/agent/'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_21",
+      "command": "/bin/zsh -lc 'ls tests/baseline.spec.ts'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "tests/baseline.spec.ts\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_22",
+      "command": "/bin/zsh -lc 'cat tests/api.spec.ts 2>/dev/null || echo \"Ne obstaja\"'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "import type { AddressInfo } from 'node:net'\nimport { expect, test } from '@playwright/test'\nimport type { Task } from '../shared/types.ts'\nimport { createMockServer } from '../server/http.ts'\n\ntest.beforeEach(async ({ request }) => {\n  expect((await request.post('/__test/reset')).ok()).toBeTruthy()\n})\n\ntest('fixture IDs are unique and each project has three tasks', async ({ request }) => {\n  const projects = await (await request.get('/api/projects')).json()\n  expect(projects.map((project: { id: string }) => project.id)).toEqual(['web', 'launch'])\n  const records: Task[] = []\n  for (const project of projects) {\n    const tasks: Task[] = await (await request.get(`/api/projects/${project.id}/tasks`)).json()\n    expect(tasks).toHaveLength(3)\n    expect(tasks.every((task) => task.projectId === project.id)).toBeTruthy()\n    for (const task of tasks) expect(await (await request.get(`/api/tasks/${task.id}`)).json()).toEqual(task)\n    records.push(...tasks)\n  }\n  expect(new Set(records.map((task) => task.id)).size).toBe(6)\n  expect(records.filter((task) => task.title === 'Pregled vsebine')).toHaveLength(3)\n  expect((await request.get('/api/tasks/missing')).status()).toBe(404)\n  expect((await request.get('/api/projects/missing/tasks')).status()).toBe(404)\n})\n\ntest('a successful update changes only the chosen record and fields', async ({ request }) => {\n  const before = await (await request.get('/__test/state')).json()\n  const response = await request.patch('/api/tasks/web-02', { data: { title: ' \\tŽanov  pregled\\r\\n', status: 'done' } })\n  expect(response.status()).toBe(200)\n  const expected = before.tasks.map((task: Task) => task.id === 'web-02' ? { ...task, title: 'Žanov  pregled', status: 'done' } : task)\n  const after = await (await request.get('/__test/state')).json()\n  expect(after.tasks).toEqual(expected)\n  expect(after.saveRequests).toBe(1)\n  expect(await (await request.get('/api/tasks/web-02')).json()).toEqual(expected.find((task: Task) => task.id === 'web-02'))\n})\n\nfor (const input of [\n  { title: '', status: 'done' },\n  { title: ' \\t\\r\\n', status: 'done' },\n  { title: 'Veljaven naslov', status: 'unknown' },\n  { title: 'Veljaven naslov' },\n  { title: 42, status: 'done' },\n  { title: 'Veljaven naslov', status: 'done', projectId: 'launch' },\n  null,\n]) {\n  test(`invalid update leaves all records unchanged: ${JSON.stringify(input)}`, async ({ request }) => {\n    const before = await (await request.get('/__test/state')).json()\n    const response = await request.patch('/api/tasks/web-01', { data: JSON.stringify(input), headers: { 'Content-Type': 'application/json' } })\n    expect(response.status()).toBe(400)\n    expect((await (await request.get('/__test/state')).json()).tasks).toEqual(before.tasks)\n  })\n}\n\ntest('rejected save writes nothing and the next request can succeed', async ({ request }) => {\n  const before = await (await request.get('/__test/state')).json()\n  await request.post('/__test/next-save', { data: { mode: 'reject' } })\n  const update = { title: 'Nov naslov', status: 'todo' }\n  expect((await request.patch('/api/tasks/web-01', { data: update })).status()).toBe(503)\n  expect((await (await request.get('/__test/state')).json()).tasks).toEqual(before.tasks)\n  expect((await request.patch('/api/tasks/web-01', { data: update })).status()).toBe(200)\n  expect(await (await request.get('/api/tasks/web-01')).json()).toMatchObject(update)\n})\n\nfor (const outcome of ['success', 'reject']) {\n  test(`held request remains unchanged until released with ${outcome}`, async ({ request }) => {\n    const before = await (await request.get('/api/tasks/web-01')).json()\n    await request.post('/__test/next-save', { data: { mode: 'hold' } })\n    const update = { title: 'Zadržana sprememba', status: 'done' }\n    const pending = request.patch('/api/tasks/web-01', { data: update })\n    await expect.poll(async () => (await (await request.get('/__test/state')).json()).pending).toBe(1)\n    expect(await (await request.get('/api/tasks/web-01')).json()).toEqual(before)\n    await request.post('/__test/release', { data: { outcome } })\n    expect((await pending).status()).toBe(outcome === 'success' ? 200 : 503)\n    expect(await (await request.get('/api/tasks/web-01')).json()).toEqual(outcome === 'success' ? { ...before, ...update } : before)\n    expect((await (await request.get('/__test/state')).json()).pending).toBe(0)\n  })\n}\n\ntest('reset cancels a pending save and restores a previously changed record', async ({ request }) => {\n  const before = await (await request.get('/__test/state')).json()\n  await request.patch('/api/tasks/launch-01', { data: { title: 'Spremenjeno', status: 'done' } })\n  await request.post('/__test/next-save', { data: { mode: 'hold' } })\n  const pending = request.patch('/api/tasks/web-01', { data: { title: 'Pozni zapis', status: 'done' } })\n  await expect.poll(async () => (await (await request.get('/__test/state')).json()).pending).toBe(1)\n  await request.post('/__test/reset')\n  expect((await pending).status()).toBe(409)\n  expect(await (await request.get('/__test/state')).json()).toEqual(before)\n})\n\ntest('normal server does not expose test controls', async ({ request }) => {\n  const { server } = createMockServer({ testControl: false })\n  await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve))\n  const url = `http://127.0.0.1:${(server.address() as AddressInfo).port}`\n  try {\n    expect((await request.get(`${url}/api/projects`)).status()).toBe(200)\n    expect((await request.get(`${url}/__test/state`)).status()).toBe(404)\n    expect((await request.post(`${url}/__test/reset`)).status()).toBe(404)\n  } finally {\n    await new Promise<void>((resolve, reject) => server.close((error) => error ? reject(error) : resolve()))\n  }\n})\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_23",
+      "command": "/bin/zsh -lc 'ls server/'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "dev.ts\nfixtures.ts\nhttp.ts\nstore.ts\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_24",
+      "command": "/bin/zsh -lc 'find server -name \"*.ts\" -type f'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "server/fixtures.ts\nserver/dev.ts\nserver/http.ts\nserver/store.ts\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_25",
+      "command": "/bin/zsh -lc 'cat server/http.ts'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "import { createServer, type IncomingMessage, type ServerResponse } from 'node:http'\nimport { ApiError, createStore } from './store.ts'\n\nasync function readJson(request: IncomingMessage): Promise<unknown> {\n  if (!request.headers['content-type']?.startsWith('application/json')) {\n    throw new ApiError(415, 'Uporabi application/json.')\n  }\n  const chunks: Buffer[] = []\n  let size = 0\n  for await (const chunk of request) {\n    size += chunk.length\n    if (size > 16_384) throw new ApiError(413, 'Zahteva je prevelika.')\n    chunks.push(chunk)\n  }\n  try { return JSON.parse(Buffer.concat(chunks).toString()) }\n  catch { throw new ApiError(400, 'Neveljavna oblika JSON.') }\n}\n\nfunction json(response: ServerResponse, status: number, data: unknown) {\n  response.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' })\n  response.end(JSON.stringify(data))\n}\n\nexport function createMockServer(options: { testControl: boolean }) {\n  const store = createStore()\n  const server = createServer(async (request, response) => {\n    try {\n      const url = new URL(request.url || '/', 'http://127.0.0.1')\n      const path = url.pathname\n      if (request.method === 'GET' && path === '/api/health') return json(response, 200, { status: 'ok' })\n      if (request.method === 'GET' && path === '/api/projects') return json(response, 200, store.projects())\n      const projectTasks = path.match(/^\\/api\\/projects\\/([^/]+)\\/tasks$/)\n      if (request.method === 'GET' && projectTasks) return json(response, 200, store.tasks(projectTasks[1]))\n      const task = path.match(/^\\/api\\/tasks\\/([^/]+)$/)\n      if (task && request.method === 'GET') return json(response, 200, store.task(task[1]))\n      if (task && request.method === 'PATCH') return json(response, 200, await store.update(task[1], await readJson(request)))\n\n      // Controls belong to the test runner. They are not exposed in normal dev/preview.\n      if (options.testControl && path.startsWith('/__test/')) {\n        if (request.method === 'GET' && path === '/__test/state') return json(response, 200, store.state())\n        if (request.method === 'POST' && path === '/__test/reset') {\n          store.reset()\n          return json(response, 200, { reset: true })\n        }\n        if (request.method === 'POST' && ['/__test/next-save', '/__test/release'].includes(path)) {\n          const value = await readJson(request)\n          if (!value || typeof value !== 'object') throw new ApiError(400, 'Neveljavna nastavitev.')\n          const settings = value as Record<string, unknown>\n          if (path.endsWith('next-save')) store.setNextMode(settings.mode)\n          else store.release(settings.outcome)\n          return json(response, 200, { ok: true })\n        }\n      }\n      throw new ApiError(404, 'Pot ne obstaja.')\n    } catch (error) {\n      const known = error instanceof ApiError\n      if (!known) console.error(error)\n      json(response, known ? error.status : 500, { message: known ? error.message : 'Napaka strežnika.' })\n    }\n  })\n  return { server, store }\n}\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_26",
+      "command": "/bin/zsh -lc 'cat server/store.ts'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "import type { Task, TaskUpdate } from '../shared/types.ts'\nimport { projects, tasks } from './fixtures.ts'\n\nexport class ApiError extends Error {\n  status: number\n  constructor(status: number, message: string) {\n    super(message)\n    this.status = status\n  }\n}\n\ntype Outcome = 'success' | 'reject'\ntype Mode = Outcome | 'hold'\n\n// A fresh store is created on every server run. Browser refreshes never reset it.\nexport function createStore() {\n  let records = structuredClone(tasks)\n  let nextMode: Mode = 'success'\n  let saveRequests = 0\n  let generation = 0\n  let sequence = 0\n  const pending = new Map<number, (outcome: Outcome | 'reset') => void>()\n\n  function findTask(id: string): Task {\n    const task = records.find((entry) => entry.id === id)\n    if (!task) throw new ApiError(404, 'Opravilo ne obstaja.')\n    return task\n  }\n\n  function parseUpdate(value: unknown): TaskUpdate {\n    if (!value || typeof value !== 'object' || Array.isArray(value)) {\n      throw new ApiError(400, 'Pričakovana sta naslov in stanje opravila.')\n    }\n    const input = value as Record<string, unknown>\n    if (Object.keys(input).some((key) => !['title', 'status'].includes(key))) {\n      throw new ApiError(400, 'Spreminjati je mogoče samo naslov in stanje.')\n    }\n    if (typeof input.title !== 'string') throw new ApiError(400, 'Naslov je obvezen.')\n    const title = input.title.replace(/^[ \\t\\r\\n]+|[ \\t\\r\\n]+$/g, '')\n    if (!title) throw new ApiError(400, 'Naslov ne sme biti prazen.')\n    if (!['todo', 'in_progress', 'done'].includes(input.status as string)) {\n      throw new ApiError(400, 'Izberi veljavno stanje.')\n    }\n    return { title, status: input.status as TaskUpdate['status'] }\n  }\n\n  return {\n    projects: () => structuredClone(projects),\n    tasks(projectId: string) {\n      if (!projects.some((project) => project.id === projectId)) {\n        throw new ApiError(404, 'Projekt ne obstaja.')\n      }\n      return structuredClone(records.filter((task) => task.projectId === projectId))\n    },\n    task: (id: string) => structuredClone(findTask(id)),\n    async update(id: string, input: unknown) {\n      saveRequests += 1\n      findTask(id)\n      const values = parseUpdate(input)\n      const startedIn = generation\n      const mode = nextMode\n      nextMode = 'success'\n      let outcome: Outcome | 'reset' = mode === 'hold' ? 'success' : mode\n      if (mode === 'hold') {\n        const requestId = ++sequence\n        outcome = await new Promise<Outcome | 'reset'>((resolve) => pending.set(requestId, resolve))\n        pending.delete(requestId)\n      }\n      if (outcome === 'reset' || generation !== startedIn) {\n        throw new ApiError(409, 'Izvedba je bila ponastavljena.')\n      }\n      if (outcome === 'reject') throw new ApiError(503, 'Shranjevanje ni uspelo. Poskusi znova.')\n      // Both fields change together, after the response outcome is known.\n      const task = findTask(id)\n      Object.assign(task, values)\n      return structuredClone(task)\n    },\n    reset() {\n      generation += 1\n      for (const resolve of pending.values()) resolve('reset')\n      pending.clear()\n      records = structuredClone(tasks)\n      nextMode = 'success'\n      saveRequests = 0\n    },\n    setNextMode(mode: unknown) {\n      if (!['success', 'reject', 'hold'].includes(mode as string)) {\n        throw new ApiError(400, 'Neveljaven način odziva.')\n      }\n      nextMode = mode as Mode\n    },\n    release(outcome: unknown) {\n      if (outcome !== 'success' && outcome !== 'reject') throw new ApiError(400, 'Neveljaven izid.')\n      const entry = pending.values().next()\n      if (entry.done) throw new ApiError(409, 'Ni zadržane zahteve.')\n      entry.value(outcome)\n    },\n    state: () => ({ tasks: structuredClone(records), saveRequests, pending: pending.size, nextMode }),\n  }\n}\n"
+    },
+    {
+      "source": "runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_28",
+      "command": "/bin/zsh -lc 'node task/time-budget.mjs'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "{\"phaseSecondsRemaining\":274,\"totalSecondsRemaining\":1114,\"phaseDeadlineUTC\":\"2026-10-09T05:32:44.312Z\"}\n"
+    }
+  ],
+  "preservedToolCalls": [
+    {
+      "source": "api/P08-B-001/model/request-00002.json.gz",
+      "callId": "01a11f20e5f0d0c3908b32afb19a8b1d",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"node task/time-budget.mjs\"}",
+      "output": "Chunk ID: 1ea75a\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 27\nOutput:\n{\"phaseSecondsRemaining\":350,\"totalSecondsRemaining\":1190,\"phaseDeadlineUTC\":\"2026-10-09T05:32:44.312Z\"}\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00002.json.gz",
+      "callId": "01a11f20ec3bf8a9fd192d26dabc09a9",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat PROJECT_RULES.md\"}",
+      "output": "Chunk ID: a9cccc\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 434\nOutput:\n# Skupna pravila dela v aplikaciji\n\nTo je začetna aplikacija za pilot P08. Konkretne zahteve prejme agent skupaj\nz nalogo; ta dokument določa izhodišče in mejo dovoljenih sprememb.\n\n## Dovoljene spremembe\n\n- Koda uporabniškega vmesnika v `src/`, vključno s slogi in uporabo javnega API-ja.\n- Lastni dodatni testi v `tests/agent/` in lastna dokumentacija v `docs/agent/`.\n\nZačetni podatki, strežnik v `server/`, skupni tipi v `shared/`, skupni testi\n`tests/baseline.spec.ts` in `tests/api.spec.ts`, odvisnosti ter nastavitve\nzagona in preverjanja ostanejo enaki. Sprememba skupne infrastrukture zahteva\nenako, vnaprej dogovorjeno posodobitev izhodišča za vse postopke.\n\n## Pričakovano delo\n\n1. Preberi zahteve naloge in uporabi priloženo predlogo specifikacije.\n2. Dopolni obstoječi vmesnik; ohrani slovenska poimenovanja in potrjeni videz Folio iz `docs/dizajn.md`.\n3. Podatke beri in shranjuj prek javnega vmesnika `/api/`. Izbiraj po `id`.\n4. Preveri rešitev s skupnimi testi in smiselno dodaj lastna preverjanja.\n5. Ob koncu opiši spremembe, izvedena preverjanja, njihove rezultate in\n   morebitne neizpolnjene zahteve. Ne navajaj neizvedenih testov kot uspešnih.\n\nTestne kontrole `/__test/` uporablja samo testni program. Uporabniški vmesnik\nne sme z njimi nastavljati odzivov, brati testnega stanja ali ponastavljati\npodatkov. Ne nadomeščaj strežnika z lokalno kopijo podatkov ali `localStorage`.\n\nTesti izhodišča preverjajo začetno delovanje in infrastrukturo. Konkretne\nzahteve P08 je treba preveriti tudi z ločeno pripravljenimi testi te naloge.\nPred agentno izvedbo izvajalec izvozi samo dovoljene datoteke. Prisotnost teh\npravil sama po sebi ne preprečuje dostopa do drugih map ali sprememb datotek.\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00002.json.gz",
+      "callId": "01a11f20f70ed1a61f400fa8ea808d8b",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat task/instructions.md\"}",
+      "output": "Chunk ID: a659ed\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 1172\nOutput:\n# P08: Koledarski pregled rokov\n\nRazličica 1.0, glavna naloga. Vsi postopki prejmejo iste zahteve, izhodišče in razvojne teste. Začetni Folio ne vsebuje rešitve pilotov ali drugih glavnih nalog.\n\n## Zahteve\n\n| ID | Pričakovano delovanje |\n| --- | --- |\n| R01 | Referenčni datum je ob vsakem začetku projekta izrecno 2026-09-21; ni odvisen od trenutne ure naprave. Začetni izbrani pogled rokov je all. |\n| R02 | Opravilo s statusom done vedno spada v skupino done ne glede na rok; ne šteje v nobeno od štirih skupin odprtih opravil. |\n| R03 | Odprto opravilo z dueDate pred referenčnim datumom spada v overdue; z enakim datumom v today. |\n| R04 | Odprto opravilo z datumom od naslednjega dne do vključno sedmega dne spada v week; poznejši rok spada v later. Skupine so disjunktne in skupaj vsebujejo vsa opravila. |\n| R05 | Datumi se obravnavajo kot koledarski YYYY-MM-DD neodvisno od časovnega pasu in poletnega časa. Seštevanje dni deluje čez meje meseca, leta in prestopni februar. |\n| R06 | Pet števcev prikazuje število opravil celotnega trenutnega projekta v skupinah overdue/today/week/later/done; aktivni filter ne spremeni teh števil. |\n| R07 | Izbirnik Pogled rokov all/overdue/today/week/later/done prikazuje ustrezno skupino v izvornem vrstnem redu. Izbor ne spreminja datumov ali stanj opravil. |\n| R08 | Veljaven nov referenčni datum takoj preračuna skupine in vidne vrstice, pri tem pa ohrani aktivni filter. Prazno polje prikaže opozorilo in ohrani zadnji veljavni preračun; ponoven veljavni datum opozorilo odstrani. |\n| R09 | Preglednica in tabla prikazujeta iste filtrirane ID-je. Preklop pogleda ohrani referenčni datum, trenutno besedilo polja in izbrano skupino. |\n| R10 | Menjava projekta in osvežitev ponastavita datum in skupino na začetni vrednosti. Noben podatek o filtru se ne hrani v trajni shrambi ali URL-ju. |\n| R11 | Prazen projekt daje pet ničel. Prazna skupina v nepraznem projektu prikaže Ni opravil v izbrani skupini. ter omogoča preklop na drugo skupino ali all. |\n| R12 | Datumi podatkov so veljavni YYYY-MM-DD, tudi prestopni. Pregled ne pošilja zapisov na API; polja in bralne podrobnosti ostanejo nespremenjeni, ohranjen je prilagodljiv Folio. |\n\n## Dogovor o vmesniku\n\n- input type=date z oznako Referenčni datum; HTML select Pogled rokov: all/overdue/today/week/later/done.\n- Pet elementov ima aria-label=Število rokov <ključ> in samo številsko vrednost, npr. Število rokov overdue.\n- Prazen datum: role=alert z besedilom Vnesi veljaven referenčni datum. Imena skupin so Zapadlo, Danes, Naslednjih 7 dni, Pozneje in Končano.\n\nOhrani `data-task-id` na vrsticah in karticah, dostopna imena obstoječih pogledov in stolpcev ter `aria-label=\"Pregled stanj opravil\"`. Nova dejanja ob opravilu morajo biti zunaj njegove povezave. Na širini 390 pik se cela stran ne razširi; notranje drsenje preglednice in table je dovoljeno. Besedilo, ki ni izrecno določeno zgoraj, in razporeditev novih kontrol nista predpisana.\n\n## Podatki, obseg in preverjanje\n\nPodatke preberi iz obstoječega javnega API-ja. Testi lahko vrnejo poljubno število opravil (tudi nič, eno in več kot deset), drugačne enkratne ID-je, enake naslove, različno zaporedje in veljavne koledarske datume. Tipi in polja so enaki izhodišču. Projekta sta lahko prazna. Naslovi, opisi in imena so navadno besedilo, tudi z Unicode znaki in ločili. V nalogah z izbiro odgovorne osebe so imena neprazna in različna od rezervirane vrednosti `all`. Vsako opravilo pripada svojemu projektu.\n\nJavni pripomoček razvojnih testov podaja dodatne podatke z nadzorovanimi GET odgovori. To je testni mehanizem, ki ga uporabniški vmesnik ne sme uvažati ali uporabljati. Aplikacija bere samo `/api/`; ne bere testnih kontrol `/__test/`. Strežnika, infrastrukture, odvisnosti in skupnih tipov ne spreminjaj. Razvojni primeri niso celoten obseg zahtev; končni primeri lahko uporabijo drugačne podatke iz opisane domene.\n\nNavigacije med nezaključenim nalaganjem in novih sočasnih sprememb podatkov brez osvežitve ne širimo prek obstoječih regresijskih zahtev. Če posamezna zahteva ne določa trajne shrambe ali URL-ja, je stanje nove funkcionalnosti lokalno trenutnemu projektu. Ne dodajaj novih zapisovalnih API-jev.\n\n## Oddaja\n\nSpreminjaj samo `src/`, lastne teste v `tests/agent/` in dokumente v `docs/agent/`. Veljajo projektna pravila; omembe pilotov v dokumentih izhodišča so zgodovinske. Pripravi specifikacijo po skupni predlogi in poveži vseh R01–R12 s pogoji, kodo in dejansko izvedenimi testi. Izbrane pogoje opredeli tudi s predikati. Zapiši nepreverjene dele in omejitve; nedostopnih končnih testov ne navajaj kot opravljenih.\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00002.json.gz",
+      "callId": "01a11f20fc86065e071626d3b4ddd059",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat task/specification-template.md\"}",
+      "output": "Chunk ID: 162f2a\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 345\nOutput:\n# Predloga razvojne specifikacije\n\nPredloga je enaka za vse postopke. Izpolnjena vsebina je izdelek postopka,\nne vnaprej dana referenčna rešitev. Če postopek ustvari več dokumentov,\nlahko navede povezave na ustrezne dele namesto podvajanja vsebine.\n\n## Problem in kontekst\n\nOpiši uporabnikov namen, začetno delovanje aplikacije in predvideno spremembo.\n\n## Vhodi, dejanja in izidi\n\nDoloči relevantna podatkovna polja, dovoljena dejanja, pogoje uporabe in\npričakovano stanje po uspehu, preklicu ter napaki.\n\n## Zahteve in pravila\n\nZa vsako zahtevo iz navodil navedi, kako bo zajeta. Izbrane zahteve izrazi\ns predikati ali pravili spremembe stanja. Pojasni simbole in predpostavke.\nLoči splošno pravilo od posameznega testnega primera.\n\n| Zahteva | Pravilo oziroma sprejemni pogoj | Način preverjanja |\n| --- | --- | --- |\n| R… | … | … |\n\n## Izvedba in sledljivost\n\n| Zahteva | Pogoj | Test ali scenarij | Datoteka in del kode | Izid ter dokaz |\n| --- | --- | --- | --- | --- |\n| R… | … | … | … | … |\n\nIzida ne označi kot uspešnega brez dejanskega preverjanja. Navedi, če test\nni izveden. Izvor rezultata naj bo določljiv, npr. ime testa in dnevnik zagona.\nPo popravkih posodobi povezave in ohrani zgodovino sprememb specifikacije.\n\n## Odprta vprašanja in omejitve\n\nZapiši nejasnosti, uporabljena pojasnila, nepreverjene scenarije ter odstopanja.\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00003.json.gz",
+      "callId": "01a11f2127bd3a7203eccc2cf2bf496a",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat shared/tasks.ts\"}",
+      "output": "Chunk ID: ce00ae\nWall time: 0.0000 seconds\nProcess exited with code 1\nOriginal token count: 12\nOutput:\ncat: shared/tasks.ts: No such file or directory\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00003.json.gz",
+      "callId": "01a11f212cb1554f57d6a113e92f8a47",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat server/api/tasks.ts\"}",
+      "output": "Chunk ID: 5fa4d0\nWall time: 0.0000 seconds\nProcess exited with code 1\nOriginal token count: 13\nOutput:\ncat: server/api/tasks.ts: No such file or directory\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00003.json.gz",
+      "callId": "01a11f2131cffadf88f0f901cb644211",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"ls src/\"}",
+      "output": "Chunk ID: 896a5d\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 31\nOutput:\nApp.tsx\nTaskBoard.tsx\nTaskDetails.tsx\napi.ts\ncomponents.tsx\nformatDate.ts\nmain.tsx\nnavigation.ts\nstyles.css\nuseResource.ts\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00003.json.gz",
+      "callId": "01a11f2136994fa6639ce7845308f883",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat docs/dizajn.md\"}",
+      "output": "Chunk ID: 320c23\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 361\nOutput:\n# Folio — potrjeni dizajn\n\nPotrjeno 15. septembra 2026. Ta videz je skupno izhodišče za naloge;\nposamezna dopolnitev naj uporablja obstoječe gradnike in slogovne spremenljivke.\n\n- Ime je **Folio**, z modrim znakom F. Repozitorij ostaja `mag-app`.\n- Lev meni je širok 224 pik, odmaknjen 16 pik od robov, z zaobljenostjo\n  16 pik. Ima svetel rob `#e6e9ef` in nežno dvojno senco\n  `0 8px 24px #20355609, 0 1px 3px #20355604`.\n- Pri širini do 760 pik se navigacija prestavi nad vsebino; projekta\n  ostaneta neposredno dostopna pod logotipom.\n- Pisava je sistemska. Ozadje je `#fbfbfd`, kartice so bele, glavno besedilo\n  `#1d1d1f`, poudarek pa `#2f6dcc`. Modra označuje izbor, stanje V delu in\n  glavna dejanja; večina površin ostane nevtralna.\n- Ikone so majhne, s tankimi potezami. Spremljajo besedilne oznake projektov,\n  stanj, pogledov in rokov. Dekorativne ikone imajo `aria-hidden=\"true\"`.\n- Kartice imajo notranji odmik 16 pik, naslov, eno vrstico opisa ter osebo\n  in rok. Celoten opis je v podrobnostih. Višina se po potrebi prilagodi\n  dolgemu naslovu ali prelomljenim podatkom.\n- Preglednica in tabla se na ozkem zaslonu pomikata znotraj svojega prikaza.\n  Fokus pri uporabi tipkovnice mora ostati viden.\n\nAktualni posnetki so v `predogled/`. Vir postavitve in barv je\n`src/styles.css`; ta dokument pojasnjuje potrjeno usmeritev. Raziskovalno\nizhodišče je pripeto na natančen commit v `mag-experiments/baseline.json`.\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00004.json.gz",
+      "callId": "01a11f214f0490b89a59345f19816f0a",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat src/api.ts\"}",
+      "output": "Chunk ID: 84bf42\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 180\nOutput:\nimport type { Task, TaskUpdate } from '../shared/types.ts'\n\nexport async function request<T>(path: string, options?: RequestInit): Promise<T> {\n  const response = await fetch(path, options)\n  if (!response.ok) {\n    const body = await response.json().catch(() => null)\n    throw new Error(body?.message || 'Podatkov ni mogoče pridobiti. Poskusi znova.')\n  }\n  return response.json() as Promise<T>\n}\n\n// Prepared API for P01. The baseline interface only reads tasks.\nexport function updateTask(id: string, values: TaskUpdate): Promise<Task> {\n  return request(`/api/tasks/${encodeURIComponent(id)}`, {\n    method: 'PATCH',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify(values),\n  })\n}\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00004.json.gz",
+      "callId": "01a11f215599a2f268505b8918c625ad",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat src/components.tsx\"}",
+      "output": "Chunk ID: af126d\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 367\nOutput:\nimport { AlertCircle, Circle, CircleCheck, CircleDashed, RotateCw } from 'lucide-react'\nimport type { TaskStatus } from '../shared/types.ts'\n\nexport function StatusIcon({ status, size = 14 }: { status: TaskStatus; size?: number }) {\n  const Icon = { todo: Circle, in_progress: CircleDashed, done: CircleCheck }[status]\n  return <Icon className={`status-symbol status-symbol-${status}`} size={size} strokeWidth={1.6} aria-hidden=\"true\" />\n}\n\nexport function StatusBadge({ status }: { status: TaskStatus }) {\n  const labels = { todo: 'Pripravljeno', in_progress: 'V delu', done: 'Končano' }\n  return <span className={`status-badge status-${status}`}><StatusIcon status={status} size={12} />{labels[status]}</span>\n}\n\nexport function Avatar({ name }: { name: string }) {\n  return <span className=\"avatar\" aria-hidden=\"true\">{name.split(' ').map((part) => part[0]).join('')}</span>\n}\n\nexport function Loading({ label = 'Nalaganje podatkov …' }: { label?: string }) {\n  return <div className=\"state-message\" role=\"status\"><span className=\"spinner\" aria-hidden=\"true\" /><p>{label}</p></div>\n}\n\nexport function LoadError({ message, retry }: { message: string; retry: () => void }) {\n  return <div className=\"state-message error-state\" role=\"alert\">\n    <AlertCircle size={24} aria-hidden=\"true\" />\n    <h3>Podatki niso na voljo</h3><p>{message}</p>\n    <button className=\"button\" onClick={retry}><RotateCw size={15} aria-hidden=\"true\" />Poskusi znova</button>\n  </div>\n}\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00004.json.gz",
+      "callId": "01a11f215bbef52064cf36bf3fc1d330",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat src/App.tsx\"}",
+      "output": "Chunk ID: dca51c\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 1593\nOutput:\nimport { ArrowUpRight, Check, Columns3, FolderClosed, ListTodo, Table2 } from 'lucide-react'\nimport type { Project, Task } from '../shared/types.ts'\nimport { Avatar, LoadError, Loading, StatusBadge } from './components.tsx'\nimport { formatDate } from './formatDate.ts'\nimport { projectUrl, taskUrl, useRoute, type TaskView } from './navigation.ts'\nimport { TaskBoard } from './TaskBoard.tsx'\nimport { TaskDetails } from './TaskDetails.tsx'\nimport { useResource } from './useResource.ts'\n\nfunction ProjectView({ project, taskId, view }: { project: Project; taskId: string | null; view: TaskView }) {\n  const { data: tasks, error, loading, retry } = useResource<Task[]>(`/api/projects/${encodeURIComponent(project.id)}/tasks`)\n  const counts = {\n    todo: tasks?.filter((task) => task.status === 'todo').length ?? 0,\n    in_progress: tasks?.filter((task) => task.status === 'in_progress').length ?? 0,\n    done: tasks?.filter((task) => task.status === 'done').length ?? 0,\n  }\n\n  return <>\n    <div className=\"project-overview\">\n      <div className=\"project-heading\">\n        <h1>{project.name}</h1>\n        <p className=\"project-intro\">Opravila, odgovornosti in roki na enem mestu.</p>\n      </div>\n      {tasks && <div className=\"summary-grid\" aria-label=\"Pregled stanj opravil\">\n        <div className=\"summary-item\"><span className=\"summary-label\">Pripravljeno</span><strong>{counts.todo}</strong></div>\n        <div className=\"summary-item\"><span className=\"summary-label\">V delu</span><strong>{counts.in_progress}</strong></div>\n        <div className=\"summary-item\"><span className=\"summary-label\">Končano</span><strong>{counts.done}</strong></div>\n      </div>}\n    </div>\n\n    {loading && <Loading label=\"Nalaganje opravil …\" />}\n    {error && <LoadError message={error} retry={retry} />}\n    {tasks && <>\n      <section className=\"task-section\" aria-labelledby=\"tasks-title\">\n        <div className=\"section-heading\">\n          <div><ListTodo className=\"section-icon\" size={17} strokeWidth={1.6} aria-hidden=\"true\" /><h2 id=\"tasks-title\">Opravila</h2><span className=\"count-badge\">{tasks.length}</span></div>\n          <div className=\"view-switch\" role=\"group\" aria-label=\"Prikaz opravil\">\n            <button type=\"button\" aria-pressed={view === 'table'} onClick={() => { window.location.hash = projectUrl(project.id) }}><Table2 size={15} aria-hidden=\"true\" />Preglednica</button>\n            <button type=\"button\" aria-pressed={view === 'board'} onClick={() => { window.location.hash = projectUrl(project.id, 'board') }}><Columns3 size={15} aria-hidden=\"true\" />Tabla</button>\n          </div>\n        </div>\n        {view === 'board' ? <TaskBoard tasks={tasks} /> : tasks.length === 0 ? <div className=\"state-message\"><ListTodo size={28} aria-hidden=\"true\" /><h3>V tem projektu še ni opravil</h3><p>Opravila bodo prikazana tukaj.</p></div> : <div className=\"table-scroll\">\n          <table>\n            <caption className=\"visually-hidden\">Opravila projekta {project.name}</caption>\n            <thead><tr><th scope=\"col\">Opravilo</th><th scope=\"col\">Stanje</th><th scope=\"col\">Odgovorna oseba</th><th scope=\"col\">Rok</th><th scope=\"col\"><span className=\"visually-hidden\">Podrobnosti</span></th></tr></thead>\n            <tbody>{tasks.map((task) => <tr key={task.id} data-task-id={task.id}>\n              <td><div className=\"task-cell\"><span className={`task-state-icon ${task.status === 'done' ? 'completed' : ''}`} aria-hidden=\"true\">{task.status === 'done' ? <Check size={13} /> : task.status === 'in_progress' ? <span /> : null}</span><a className=\"task-link\" href={taskUrl(project.id, task.id)}><span>{task.title}</span><span className=\"task-id\">{task.id}</span></a></div></td>\n              <td><StatusBadge status={task.status} /></td>\n              <td><span className=\"person\"><Avatar name={task.assignee} /><span>{task.assignee}</span></span></td>\n              <td className=\"date-cell\"><time dateTime={task.dueDate}>{formatDate(task.dueDate)}</time></td>\n              <td className=\"row-arrow\"><ArrowUpRight size={17} aria-hidden=\"true\" /></td>\n            </tr>)}</tbody>\n          </table>\n        </div>}\n        {tasks.length > 0 && <div className=\"table-footer\"><span>Pregled vseh opravil projekta</span><span>{counts.done} / {tasks.length} končanih</span></div>}\n      </section>\n    </>}\n    {taskId && <TaskDetails key={taskId} project={project} taskId={taskId} view={view} />}\n  </>\n}\n\nexport function App() {\n  const route = useRoute()\n  const view = route?.view ?? 'table'\n  const { data: projects, error, loading, retry } = useResource<Project[]>('/api/projects')\n  const project = projects?.find((entry) => entry.id === route?.projectId)\n\n  return <div className=\"app-shell\">\n    <a className=\"skip-link\" href=\"#main-content\" onClick={(event) => { event.preventDefault(); document.getElementById('main-content')?.focus() }}>Preskoči na vsebino</a>\n    <aside className=\"app-sidebar\" aria-label=\"Delovni prostor\">\n      <a className=\"brand\" href={projectUrl(projects?.[0]?.id ?? 'web', view)} aria-label=\"Folio – začetna stran\"><img src=\"/favicon.svg\" alt=\"\" width=\"28\" height=\"28\" /><span>Folio</span></a>\n      <div className=\"sidebar-projects\">\n        <p className=\"nav-label\">Projekti</p>\n        <nav className=\"project-nav\" aria-label=\"Projekti\">\n          {projects?.map((entry) => <a key={entry.id} href={projectUrl(entry.id, view)} className={`project-nav-link ${project?.id === entry.id ? 'active' : ''}`} aria-current={project?.id === entry.id ? 'page' : undefined}><FolderClosed size={15} strokeWidth={1.6} aria-hidden=\"true\" /><span>{entry.name}</span></a>)}\n        </nav>\n      </div>\n      <span className=\"workspace-label\">Delovni prostor</span>\n    </aside>\n\n    <div className=\"workspace\">\n      <main id=\"main-content\" tabIndex={-1}>\n        {loading && <Loading label=\"Nalaganje projektov …\" />}\n        {error && <LoadError message={error} retry={retry} />}\n        {projects && !project && <div className=\"state-message\"><FolderClosed size={30} aria-hidden=\"true\" /><h1>Projekt ne obstaja</h1><p>Izberi enega od projektov v navigaciji.</p>{projects[0] && <a className=\"button\" href={projectUrl(projects[0].id, view)}>Nazaj na projekte</a>}</div>}\n        {project && <ProjectView key={project.id} project={project} taskId={route?.taskId ?? null} view={view} />}\n      </main>\n    </div>\n  </div>\n}\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00005.json.gz",
+      "callId": "01a11f2172279bf175576b03bbd286b5",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat shared/types.ts\"}",
+      "output": "Chunk ID: 8e8165\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 86\nOutput:\nexport type TaskStatus = 'todo' | 'in_progress' | 'done'\n\nexport interface Project {\n  id: string\n  name: string\n}\n\nexport interface Task {\n  id: string\n  projectId: string\n  title: string\n  description: string\n  status: TaskStatus\n  assignee: string\n  dueDate: string\n}\n\nexport interface TaskUpdate {\n  title: string\n  status: TaskStatus\n}\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00005.json.gz",
+      "callId": "01a11f2177f3cb8464bf554a81e6fab3",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat src/navigation.ts\"}",
+      "output": "Chunk ID: 406784\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 305\nOutput:\nimport { useSyncExternalStore } from 'react'\n\nexport type TaskView = 'table' | 'board'\n\nfunction subscribe(onChange: () => void) {\n  window.addEventListener('hashchange', onChange)\n  return () => window.removeEventListener('hashchange', onChange)\n}\n\nexport function projectUrl(projectId: string, view: TaskView = 'table') {\n  return `#/projects/${encodeURIComponent(projectId)}${view === 'board' ? '?view=board' : ''}`\n}\n\nexport function taskUrl(projectId: string, taskId: string, view: TaskView = 'table') {\n  return `${projectUrl(projectId)}/tasks/${encodeURIComponent(taskId)}${view === 'board' ? '?view=board' : ''}`\n}\n\nexport function useRoute() {\n  const hash = useSyncExternalStore(subscribe, () => window.location.hash)\n  const [path, query] = hash.split('?')\n  const view: TaskView = new URLSearchParams(query).get('view') === 'board' ? 'board' : 'table'\n  if (!path || path === '#' || path === '#/') return { projectId: 'web', taskId: null, view }\n  const match = path.match(/^#\\/projects\\/([^/]+)(?:\\/tasks\\/([^/]+))?$/)\n  if (!match) return null\n  try {\n    return { projectId: decodeURIComponent(match[1]), taskId: match[2] ? decodeURIComponent(match[2]) : null, view }\n  } catch {\n    return null\n  }\n}\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00005.json.gz",
+      "callId": "01a11f217e1097ed9df6517eafe49bec",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat tests/agent/01-calendar-navigation.spec.ts\"}",
+      "output": "Chunk ID: 0eaea7\nWall time: 0.0000 seconds\nProcess exited with code 1\nOriginal token count: 19\nOutput:\ncat: tests/agent/01-calendar-navigation.spec.ts: No such file or directory\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00006.json.gz",
+      "callId": "01a11f21a1168d9139578d4fba43254e",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"ls tests/agent/\"}",
+      "output": "Chunk ID: b34fea\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 0\nOutput:\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00006.json.gz",
+      "callId": "01a11f21a62373ba858f1912dbfdcb94",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"ls tests/baseline.spec.ts\"}",
+      "output": "Chunk ID: 9537c9\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 6\nOutput:\ntests/baseline.spec.ts\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00006.json.gz",
+      "callId": "01a11f21ab8db88d073987263557f970",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat tests/api.spec.ts 2>/dev/null || echo \\\"Ne obstaja\\\"\"}",
+      "output": "Chunk ID: 851400\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 1436\nOutput:\nimport type { AddressInfo } from 'node:net'\nimport { expect, test } from '@playwright/test'\nimport type { Task } from '../shared/types.ts'\nimport { createMockServer } from '../server/http.ts'\n\ntest.beforeEach(async ({ request }) => {\n  expect((await request.post('/__test/reset')).ok()).toBeTruthy()\n})\n\ntest('fixture IDs are unique and each project has three tasks', async ({ request }) => {\n  const projects = await (await request.get('/api/projects')).json()\n  expect(projects.map((project: { id: string }) => project.id)).toEqual(['web', 'launch'])\n  const records: Task[] = []\n  for (const project of projects) {\n    const tasks: Task[] = await (await request.get(`/api/projects/${project.id}/tasks`)).json()\n    expect(tasks).toHaveLength(3)\n    expect(tasks.every((task) => task.projectId === project.id)).toBeTruthy()\n    for (const task of tasks) expect(await (await request.get(`/api/tasks/${task.id}`)).json()).toEqual(task)\n    records.push(...tasks)\n  }\n  expect(new Set(records.map((task) => task.id)).size).toBe(6)\n  expect(records.filter((task) => task.title === 'Pregled vsebine')).toHaveLength(3)\n  expect((await request.get('/api/tasks/missing')).status()).toBe(404)\n  expect((await request.get('/api/projects/missing/tasks')).status()).toBe(404)\n})\n\ntest('a successful update changes only the chosen record and fields', async ({ request }) => {\n  const before = await (await request.get('/__test/state')).json()\n  const response = await request.patch('/api/tasks/web-02', { data: { title: ' \\tŽanov  pregled\\r\\n', status: 'done' } })\n  expect(response.status()).toBe(200)\n  const expected = before.tasks.map((task: Task) => task.id === 'web-02' ? { ...task, title: 'Žanov  pregled', status: 'done' } : task)\n  const after = await (await request.get('/__test/state')).json()\n  expect(after.tasks).toEqual(expected)\n  expect(after.saveRequests).toBe(1)\n  expect(await (await request.get('/api/tasks/web-02')).json()).toEqual(expected.find((task: Task) => task.id === 'web-02'))\n})\n\nfor (const input of [\n  { title: '', status: 'done' },\n  { title: ' \\t\\r\\n', status: 'done' },\n  { title: 'Veljaven naslov', status: 'unknown' },\n  { title: 'Veljaven naslov' },\n  { title: 42, status: 'done' },\n  { title: 'Veljaven naslov', status: 'done', projectId: 'launch' },\n  null,\n]) {\n  test(`invalid update leaves all records unchanged: ${JSON.stringify(input)}`, async ({ request }) => {\n    const before = await (await request.get('/__test/state')).json()\n    const response = await request.patch('/api/tasks/web-01', { data: JSON.stringify(input), headers: { 'Content-Type': 'application/json' } })\n    expect(response.status()).toBe(400)\n    expect((await (await request.get('/__test/state')).json()).tasks).toEqual(before.tasks)\n  })\n}\n\ntest('rejected save writes nothing and the next request can succeed', async ({ request }) => {\n  const before = await (await request.get('/__test/state')).json()\n  await request.post('/__test/next-save', { data: { mode: 'reject' } })\n  const update = { title: 'Nov naslov', status: 'todo' }\n  expect((await request.patch('/api/tasks/web-01', { data: update })).status()).toBe(503)\n  expect((await (await request.get('/__test/state')).json()).tasks).toEqual(before.tasks)\n  expect((await request.patch('/api/tasks/web-01', { data: update })).status()).toBe(200)\n  expect(await (await request.get('/api/tasks/web-01')).json()).toMatchObject(update)\n})\n\nfor (const outcome of ['success', 'reject']) {\n  test(`held request remains unchanged until released with ${outcome}`, async ({ request }) => {\n    const before = await (await request.get('/api/tasks/web-01')).json()\n    await request.post('/__test/next-save', { data: { mode: 'hold' } })\n    const update = { title: 'Zadržana sprememba', status: 'done' }\n    const pending = request.patch('/api/tasks/web-01', { data: update })\n    await expect.poll(async () => (await (await request.get('/__test/state')).json()).pending).toBe(1)\n    expect(await (await request.get('/api/tasks/web-01')).json()).toEqual(before)\n    await request.post('/__test/release', { data: { outcome } })\n    expect((await pending).status()).toBe(outcome === 'success' ? 200 : 503)\n    expect(await (await request.get('/api/tasks/web-01')).json()).toEqual(outcome === 'success' ? { ...before, ...update } : before)\n    expect((await (await request.get('/__test/state')).json()).pending).toBe(0)\n  })\n}\n\ntest('reset cancels a pending save and restores a previously changed record', async ({ request }) => {\n  const before = await (await request.get('/__test/state')).json()\n  await request.patch('/api/tasks/launch-01', { data: { title: 'Spremenjeno', status: 'done' } })\n  await request.post('/__test/next-save', { data: { mode: 'hold' } })\n  const pending = request.patch('/api/tasks/web-01', { data: { title: 'Pozni zapis', status: 'done' } })\n  await expect.poll(async () => (await (await request.get('/__test/state')).json()).pending).toBe(1)\n  await request.post('/__test/reset')\n  expect((await pending).status()).toBe(409)\n  expect(await (await request.get('/__test/state')).json()).toEqual(before)\n})\n\ntest('normal server does not expose test controls', async ({ request }) => {\n  const { server } = createMockServer({ testControl: false })\n  await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve))\n  const url = `http://127.0.0.1:${(server.address() as AddressInfo).port}`\n  try {\n    expect((await request.get(`${url}/api/projects`)).status()).toBe(200)\n    expect((await request.get(`${url}/__test/state`)).status()).toBe(404)\n    expect((await request.post(`${url}/__test/reset`)).status()).toBe(404)\n  } finally {\n    await new Promise<void>((resolve, reject) => server.close((error) => error ? reject(error) : resolve()))\n  }\n})\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00007.json.gz",
+      "callId": "01a11f21d066256c3caac7de49fad8e6",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"ls server/\"}",
+      "output": "Chunk ID: 69fdff\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 9\nOutput:\ndev.ts\nfixtures.ts\nhttp.ts\nstore.ts\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00007.json.gz",
+      "callId": "01a11f21d50d6c72efe29fc63b2a1a70",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"find server -name \\\"*.ts\\\" -type f\"}",
+      "output": "Chunk ID: 2c7459\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 16\nOutput:\nserver/fixtures.ts\nserver/dev.ts\nserver/http.ts\nserver/store.ts\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00008.json.gz",
+      "callId": "01a11f21f6260f3323fd4abe59ead92b",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat server/http.ts\"}",
+      "output": "Chunk ID: 4a4507\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 768\nOutput:\nimport { createServer, type IncomingMessage, type ServerResponse } from 'node:http'\nimport { ApiError, createStore } from './store.ts'\n\nasync function readJson(request: IncomingMessage): Promise<unknown> {\n  if (!request.headers['content-type']?.startsWith('application/json')) {\n    throw new ApiError(415, 'Uporabi application/json.')\n  }\n  const chunks: Buffer[] = []\n  let size = 0\n  for await (const chunk of request) {\n    size += chunk.length\n    if (size > 16_384) throw new ApiError(413, 'Zahteva je prevelika.')\n    chunks.push(chunk)\n  }\n  try { return JSON.parse(Buffer.concat(chunks).toString()) }\n  catch { throw new ApiError(400, 'Neveljavna oblika JSON.') }\n}\n\nfunction json(response: ServerResponse, status: number, data: unknown) {\n  response.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' })\n  response.end(JSON.stringify(data))\n}\n\nexport function createMockServer(options: { testControl: boolean }) {\n  const store = createStore()\n  const server = createServer(async (request, response) => {\n    try {\n      const url = new URL(request.url || '/', 'http://127.0.0.1')\n      const path = url.pathname\n      if (request.method === 'GET' && path === '/api/health') return json(response, 200, { status: 'ok' })\n      if (request.method === 'GET' && path === '/api/projects') return json(response, 200, store.projects())\n      const projectTasks = path.match(/^\\/api\\/projects\\/([^/]+)\\/tasks$/)\n      if (request.method === 'GET' && projectTasks) return json(response, 200, store.tasks(projectTasks[1]))\n      const task = path.match(/^\\/api\\/tasks\\/([^/]+)$/)\n      if (task && request.method === 'GET') return json(response, 200, store.task(task[1]))\n      if (task && request.method === 'PATCH') return json(response, 200, await store.update(task[1], await readJson(request)))\n\n      // Controls belong to the test runner. They are not exposed in normal dev/preview.\n      if (options.testControl && path.startsWith('/__test/')) {\n        if (request.method === 'GET' && path === '/__test/state') return json(response, 200, store.state())\n        if (request.method === 'POST' && path === '/__test/reset') {\n          store.reset()\n          return json(response, 200, { reset: true })\n        }\n        if (request.method === 'POST' && ['/__test/next-save', '/__test/release'].includes(path)) {\n          const value = await readJson(request)\n          if (!value || typeof value !== 'object') throw new ApiError(400, 'Neveljavna nastavitev.')\n          const settings = value as Record<string, unknown>\n          if (path.endsWith('next-save')) store.setNextMode(settings.mode)\n          else store.release(settings.outcome)\n          return json(response, 200, { ok: true })\n        }\n      }\n      throw new ApiError(404, 'Pot ne obstaja.')\n    } catch (error) {\n      const known = error instanceof ApiError\n      if (!known) console.error(error)\n      json(response, known ? error.status : 500, { message: known ? error.message : 'Napaka strežnika.' })\n    }\n  })\n  return { server, store }\n}\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00008.json.gz",
+      "callId": "01a11f21fc25ab4f1fc67c72dd363bff",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat server/store.ts\"}",
+      "output": "Chunk ID: f73577\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 951\nOutput:\nimport type { Task, TaskUpdate } from '../shared/types.ts'\nimport { projects, tasks } from './fixtures.ts'\n\nexport class ApiError extends Error {\n  status: number\n  constructor(status: number, message: string) {\n    super(message)\n    this.status = status\n  }\n}\n\ntype Outcome = 'success' | 'reject'\ntype Mode = Outcome | 'hold'\n\n// A fresh store is created on every server run. Browser refreshes never reset it.\nexport function createStore() {\n  let records = structuredClone(tasks)\n  let nextMode: Mode = 'success'\n  let saveRequests = 0\n  let generation = 0\n  let sequence = 0\n  const pending = new Map<number, (outcome: Outcome | 'reset') => void>()\n\n  function findTask(id: string): Task {\n    const task = records.find((entry) => entry.id === id)\n    if (!task) throw new ApiError(404, 'Opravilo ne obstaja.')\n    return task\n  }\n\n  function parseUpdate(value: unknown): TaskUpdate {\n    if (!value || typeof value !== 'object' || Array.isArray(value)) {\n      throw new ApiError(400, 'Pričakovana sta naslov in stanje opravila.')\n    }\n    const input = value as Record<string, unknown>\n    if (Object.keys(input).some((key) => !['title', 'status'].includes(key))) {\n      throw new ApiError(400, 'Spreminjati je mogoče samo naslov in stanje.')\n    }\n    if (typeof input.title !== 'string') throw new ApiError(400, 'Naslov je obvezen.')\n    const title = input.title.replace(/^[ \\t\\r\\n]+|[ \\t\\r\\n]+$/g, '')\n    if (!title) throw new ApiError(400, 'Naslov ne sme biti prazen.')\n    if (!['todo', 'in_progress', 'done'].includes(input.status as string)) {\n      throw new ApiError(400, 'Izberi veljavno stanje.')\n    }\n    return { title, status: input.status as TaskUpdate['status'] }\n  }\n\n  return {\n    projects: () => structuredClone(projects),\n    tasks(projectId: string) {\n      if (!projects.some((project) => project.id === projectId)) {\n        throw new ApiError(404, 'Projekt ne obstaja.')\n      }\n      return structuredClone(records.filter((task) => task.projectId === projectId))\n    },\n    task: (id: string) => structuredClone(findTask(id)),\n    async update(id: string, input: unknown) {\n      saveRequests += 1\n      findTask(id)\n      const values = parseUpdate(input)\n      const startedIn = generation\n      const mode = nextMode\n      nextMode = 'success'\n      let outcome: Outcome | 'reset' = mode === 'hold' ? 'success' : mode\n      if (mode === 'hold') {\n        const requestId = ++sequence\n        outcome = await new Promise<Outcome | 'reset'>((resolve) => pending.set(requestId, resolve))\n        pending.delete(requestId)\n      }\n      if (outcome === 'reset' || generation !== startedIn) {\n        throw new ApiError(409, 'Izvedba je bila ponastavljena.')\n      }\n      if (outcome === 'reject') throw new ApiError(503, 'Shranjevanje ni uspelo. Poskusi znova.')\n      // Both fields change together, after the response outcome is known.\n      const task = findTask(id)\n      Object.assign(task, values)\n      return structuredClone(task)\n    },\n    reset() {\n      generation += 1\n      for (const resolve of pending.values()) resolve('reset')\n      pending.clear()\n      records = structuredClone(tasks)\n      nextMode = 'success'\n      saveRequests = 0\n    },\n    setNextMode(mode: unknown) {\n      if (!['success', 'reject', 'hold'].includes(mode as string)) {\n        throw new ApiError(400, 'Neveljaven način odziva.')\n      }\n      nextMode = mode as Mode\n    },\n    release(outcome: unknown) {\n      if (outcome !== 'success' && outcome !== 'reject') throw new ApiError(400, 'Neveljaven izid.')\n      const entry = pending.values().next()\n      if (entry.done) throw new ApiError(409, 'Ni zadržane zahteve.')\n      entry.value(outcome)\n    },\n    state: () => ({ tasks: structuredClone(records), saveRequests, pending: pending.size, nextMode }),\n  }\n}\n"
+    },
+    {
+      "source": "api/P08-B-001/model/request-00009.json.gz",
+      "callId": "01a11f2211d552aa8da6ab1f38f73216",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"node task/time-budget.mjs\"}",
+      "output": "Chunk ID: 85653e\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 27\nOutput:\n{\"phaseSecondsRemaining\":274,\"totalSecondsRemaining\":1114,\"phaseDeadlineUTC\":\"2026-10-09T05:32:44.312Z\"}\n"
+    }
+  ]
+}

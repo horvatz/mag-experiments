@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-09T06:14:57.901904+00:00",
+  "researcherOnly": true,
+  "id": "P08-B-001",
+  "slug": "deepseek",
+  "executionStatus": "completed_with_phase_time_limit",
+  "elapsedSeconds": 1080.535,
+  "phases": [
+    {
+      "name": "specification",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 360.037,
+      "signal": "SIGKILL"
+    },
+    {
+      "name": "implementation",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 479.483,
+      "signal": "SIGKILL"
+    },
+    {
+      "name": "review",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 239.485,
+      "signal": "SIGKILL"
+    }
+  ],
+  "interpretation": "Ordinary phase deadlines; B continues with already delivered valid prerequisites. Not a service failure; not ordinary completed. No retry, replacement, or post-evaluation repair.",
+  "finalResult": {
+    "testsPassed": 68,
+    "testsTotal": 70,
+    "requirements": 11,
+    "strictSuccess": false
+  },
+  "costAtCheckpoint": {
+    "knownLowerBoundUSD": 0.0656038678,
+    "requestCount": 44,
+    "unknownRequests": [
+      44
+    ],
+    "lastStatus": "client_aborted",
+    "httpStatus": 200,
+    "responseStatus": null
+  },
+  "evidence": [
+    "deepseek/runtime/runs/P08-B-001/execution.json",
+    "deepseek/runtime/runs/P08-B-001/evaluation-summary.json",
+    "deepseek/api/P08-B-001/model/api-ledger.jsonl",
+    "deepseek/analysis/review-packets/P08-B-001.json",
+    "deepseek/analysis/reviews/P08-B-001.json"
+  ],
+  "note": "External billing can reconcile later outside immutable archive. Unknown cost is not zero.",
+  "laterExternalReconciliation": {
+    "at": "2026-10-09T06:17:15.341Z",
+    "complete": true,
+    "costUSD": 0.07068726600000001,
+    "lastRequestCostUSD": 0.0050834,
+    "source": "deepseek/api/P08-B-001/model/api-cost.json"
+  }
+}

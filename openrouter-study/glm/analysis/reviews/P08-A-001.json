@@ -1,0 +1,96 @@
+{
+  "id": "P08-A-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Presoja končne dostavljene specifikacije, kode in sedmih lastnih testov, preverjena z dejanskimi dnevniki. Modelne navedbe niso nadomestilo za neodvisno vrednotenje. Oddaja in razvojne napake ostanejo nespremenjene.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "R01–R12 pokrijejo fiksni začetni datum/all, prednost done, koledarsko aritmetiko, števce celega projekta, stabilni filter, preklop pogledov, reset, prazna stanja, bralnost in 390 px. Ostanejo konkretne vrzeli: niso določeni natančna vloga/besedilo opozorila, pet prikaznih imen in dostopna imena številskih števcev ter natančni tipi kontrol. R08 vključuje inputText v stanje, povrnjeno na zadnje veljavno stanje, čeprav mora prazen osnutek ostati prazen; R04 s sicer later ne omeji pogoja na prihodnje odprte datume in dobesedno nasprotuje R03. Zato dokument ni v celoti skladen s sprejemnimi pogoji.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:10",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:24",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:28",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:32"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Uporabni so done prednost, overdue/today, števec kot kardinalnost celotnega projekta, stabilni filter in reset. Ključni prehod praznega osnutka pa formalno ohranja tudi inputText zadnjega veljavnega stanja, namesto da bi ločil zadnjo veljavno referenco od praznega besedila. R04 sicer later za vse odprte datume zunaj [1,7] prekriva overdue/today iz R03, čeprav hkrati zahteva disjunktno particijo. Pravilna implementacija teh dveh nejasnosti ne popravi formalizacije dokumenta.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:22",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:24",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:26",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:28",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:30"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Verification poveže posamezne R z dejanskimi naslovi sedmih scenarijev in moduli; navedeni 7/7, 8/8 in končni 53/53 so potrjeni, tudi popravljena regresija praznega projekta pri prvem full check je resnična. Specifikacijska matrika je le skupinska vrstica R01–R12 brez funkcij. Meja +8 je napovedana v specifikaciji, lastni test pa uporablja +10; reload preverja že ponastavljeno stanje po menjavi projekta. Preklop praznega osnutka ne preveri njegovega besedila/opozorila po preklopu. Trditev, da je nepreverjeno izključno zunaj veljavne domene, teh vrzeli ne razkrije. Povezave so koristne, vendar delne.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:24",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:38",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:42",
+        "runtime/runs/P08-A-001/submission/docs/agent/verification.md:10",
+        "runtime/runs/P08-A-001/submission/docs/agent/verification.md:14",
+        "runtime/runs/P08-A-001/submission/docs/agent/verification.md:20",
+        "runtime/runs/P08-A-001/submission/docs/agent/verification.md:35",
+        "runtime/runs/P08-A-001/submission/tests/agent/p08.spec.ts:92"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "dateGroups.ts loči čisto validacijo, gregorijansko dnevno aritmetiko, razvrščanje, štetje in stabilni filter brez odvisnosti od Date/časovnega pasu. ProjectView loči referenceDate, dateInput, dateInvalid in selectedGroup, števce in vidna opravila pa izpelje iz istih nespremenjenih podatkov. Veljaven vnos spremeni referenco, prazen samo osnutek/opozorilo. Enotne kontrole veljajo za oba prikaza; ključ projekta zagotovi lokalni reset, view ni del ključa. Prazno skupino in res prazen projekt loči, tabla ostane izrisana tudi prazna. Ni znatnega nepotrebnega podvajanja domenske logike.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/src/dateGroups.ts:9",
+        "runtime/runs/P08-A-001/submission/src/dateGroups.ts:25",
+        "runtime/runs/P08-A-001/submission/src/dateGroups.ts:40",
+        "runtime/runs/P08-A-001/submission/src/dateGroups.ts:48",
+        "runtime/runs/P08-A-001/submission/src/dateGroups.ts:54",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:31",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:38",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:88",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:101",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:145"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Sedem dejansko uspešnih scenarijev vsebuje neodvisne pričakovane ID-je/števce, vseh pet skupin, done pred/na/po referenci, +1/+7, prestopni februar in prehod leta, izvorni red, prazen osnutek, oba prikaza, reset projekta, obe prazni stanji ter bralnost/podrobnosti pri 390 px. Pomembne vrzeli ostanejo: namesto neposredne +8 meje je +10; prazni osnutek se začne na privzetem datumu in po preklopu ne preveri praznega besedila/opozorila; reload sledi že ponastavljenemu stanju in ne preveri res spremenjenega stanja. URL orakelj gleda le search in izpusti hash, lokalna shramba le vzorec imen ključev; 390 px preveri samo tablo, prazno skupino samo preglednico. Koristni robovi ne pomenijo popolne lastne pokritosti ključnih prehodov.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/tests/agent/p08.spec.ts:4",
+        "runtime/runs/P08-A-001/submission/tests/agent/p08.spec.ts:19",
+        "runtime/runs/P08-A-001/submission/tests/agent/p08.spec.ts:41",
+        "runtime/runs/P08-A-001/submission/tests/agent/p08.spec.ts:50",
+        "runtime/runs/P08-A-001/submission/tests/agent/p08.spec.ts:68",
+        "runtime/runs/P08-A-001/submission/tests/agent/p08.spec.ts:84",
+        "runtime/runs/P08-A-001/submission/tests/agent/p08.spec.ts:100",
+        "runtime/runs/P08-A-001/submission/tests/agent/p08.spec.ts:117"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Ni odkrite končne napake: completed 608,510 s, neodvisno 70/70 in 12/12, lint/types/build/allowed true, strogi uspeh true. Popolni strošek 0,266534519 USD za 57 zahtev. Lastni testi 7/7 in končni full check 53/53 potrjeni v item_51 ter item_71.",
+  "developmentFailureExample": {
+    "description": "Razvojni dnevniki ohranijo več TS sintaktičnih/tipovnih napak, nato napačna pričakovanja lastnih testov: item_41 pričakuje dva overdue ID-ja ob napačni referenci, item_44/46/50 pa globalni red table namesto obstoječega združevanja po statusnih stolpcih. Model popravi lastne oraklje. Item_55 res odkrije izgubo izhodiščnega sporočila praznega projekta; po popravku aplikacije item_59 odpove samo še lastno pričakovanje napačnega praznega sporočila. Končni item_61 in po popravku stilov item_71 potrdita 53/53. Razvojnih neuspehov ne štejejo za končne napake.",
+    "evidence": [
+      "runtime/runs/P08-A-001/events.jsonl.gz",
+      "runtime/runs/P08-A-001/submission/tests/agent/p08.spec.ts:59",
+      "runtime/runs/P08-A-001/submission/tests/agent/p08.spec.ts:104",
+      "runtime/runs/P08-A-001/submission/docs/agent/verification.md:14",
+      "analysis/review-packets/P08-A-001.json"
+    ]
+  }
+}

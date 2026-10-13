@@ -1,0 +1,52 @@
+{
+  "id": "P05-A-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-08",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "reviewStatus": "partial-authored-submission",
+  "limitation": "API vrne končni status failed, preden agent dokonča implementacijo. Ocenjena je ohranjena delna oddaja, ne sposobnost dokončanja brez prekinitve. Natančen vzrok API napake ni potrjen.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Tabela navede vseh dvanajst osnovnih pravil, filter pred razrezom, ponastavitve, skupni odsek in prazni primer. Ostanejo konkretne vrzeli in protislovja: R04 omenja page=1 v URL/hash, čeprav mora biti stanje le lokalno; R03 navede disabled pri page=last+1 namesto jasnih pogojev za zadnjo veljavno stran. R12 izpusti širino 390 px in ohranitev povezav/podrobnosti, manjkajo natančne formule indeksov.",
+      "evidence": ["runtime/runs/P05-A-001/submission/docs/agent/specification.md#zaprte-zahteve-in-pravila", "runtime/runs/P05-A-001/input-overrides/task/instructions.md"]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Domena koordinat size/filter/page, ceil za število strani, filter pred razrezom in neprekrivanje odsekov so delno preverljivi. Formalizacija ne določi pravilnih A/B ter veljavnega obsega strani; zapis R09 o odštevanju od 1 je nenatančen, R10 pa uporablja tasks.length namesto izrecnega filtriranega števila. Ključne ohranitve in robni prehodi ostanejo pretežno opisni.",
+      "evidence": ["runtime/runs/P05-A-001/submission/docs/agent/specification.md#prikazno-stanje", "runtime/runs/P05-A-001/submission/docs/agent/specification.md#zaprte-zahteve-in-pravila"]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Stolpec Način preverjanja vsebuje opisne pogoje in formule, brez imenovanih testov, povezav do dejanske implementacije ali izvedenih dokazov. Matrika zahteva–koda–test in verification.md nista nastala. Uspehov ne izmišljuje, vendar pregledana delna oddaja še nima uporabne sledljivosti izvedbe; poznejših raziskovalčevih testov ne pripišemo agentu.",
+      "evidence": ["runtime/runs/P05-A-001/submission/docs/agent/specification.md", "runtime/runs/P05-A-001/archive-complete.json", "runtime/runs/P05-A-001/events.jsonl.gz"]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Avtorski dodatki so le tip Coordinate v usePagination.ts in ena vrstica neuporabljenih uvozov v Task.tsx. Nobena nova aplikacijska logika ali komponenta ni implementirana oziroma vključena v App. Organizacije začetne aplikacije zato ne pripišemo Qwenu; organizacije neoddane implementacije ne ocenimo z ničlo. Primarna lint/types napaka ostane zabeležena ločeno.",
+      "evidence": ["runtime/runs/P05-A-001/submission/src/usePagination.ts:2", "runtime/runs/P05-A-001/submission/src/Task.tsx:1", "runtime/runs/P05-A-001/execution.json", "runtime/runs/P05-A-001/evaluation-lint.log", "runtime/runs/P05-A-001/evaluation-types.log"]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Lastni testi in verifikacijski zapis niso nastali, dogodki pa ne vsebujejo agentovega zagona funkcionalnih preverjanj. Predlagani pogoji v specifikaciji niso izvedeni testi. Po isti rubriki odsotnost smiselnih dodatnih preverjanj v sicer delno avtorski oddaji pomeni 0; prekinitev storitve je omejitev razlage te ocene.",
+      "evidence": ["runtime/runs/P05-A-001/archive-complete.json", "runtime/runs/P05-A-001/execution.json", "runtime/runs/P05-A-001/events.jsonl.gz"]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Končna ohranjena aplikacija nima izbirnika Velikost strani, zato D01 poteče pri njegovem iskanju. App ni povezan z novo funkcionalnostjo; neodvisno uspe 38 izhodiščnih preverjanj, vseh 8 razvojnih in 24 skritih pa ne. To je izid nedokončane oddaje po napaki odziva API, ne dokaz napake v dokončani Qwenovi rešitvi.",
+    "evidence": ["runtime/runs/P05-A-001/evaluation-summary.json", "runtime/runs/P05-A-001/execution.json", "runtime/runs/P05-A-001/submission/src/Task.tsx:1"]
+  },
+  "finalFailureNote": "Execution_failed po 495,728 s, dovoljene spremembe true, lint/types false, build true, 38/70 in 0/12, strogi uspeh false. Izvedba je nespremenljivo arhivirana in ni ponovljena. Celotna poraba CLI manjka; račun API je popoln, 0,040674 USD za 28 zahtev. Zahteva 28 ima HTTP 200 in končni responseStatus failed; natančen vzrok ni potrjen.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Agent ni prišel do svojega preverjanja. Raziskovalčevih poznejših lint/types napak ali neodvisnih testov ne prikazujemo kot napake, ki jih je odkril model."
+}

@@ -1,0 +1,167 @@
+{
+  "id": "P06-B-003",
+  "procedure": "B",
+  "startedAt": "2026-10-10T11:54:31.871Z",
+  "model": "qwen/qwen3.5-9b",
+  "reasoningEffort": "xhigh",
+  "limitSeconds": 1200,
+  "status": "invalid_review_handoff",
+  "cli": "/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS/codex",
+  "cliVersion": "codex-cli 0.158.0-alpha.2.1",
+  "phases": [
+    {
+      "name": "specification",
+      "role": "specification",
+      "resumed": false,
+      "startedAt": "2026-10-10T11:54:32.091Z",
+      "limitSeconds": 360,
+      "status": "completed",
+      "usage": {
+        "input_tokens": 528557,
+        "cached_input_tokens": 109824,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9242,
+        "reasoning_output_tokens": 805
+      },
+      "threadId": "01a125aa-2d32-7463-9ec8-46deee864bbe",
+      "finishedAt": "2026-10-10T12:00:17.008Z",
+      "elapsedSeconds": 344.915,
+      "exitCode": 0,
+      "signal": null,
+      "fileChanges": [
+        {
+          "path": "docs/agent/specification-history.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/specification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "implementation",
+      "role": "implementation",
+      "resumed": false,
+      "startedAt": "2026-10-10T12:00:17.539Z",
+      "limitSeconds": 494.558,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a125af-729d-7ad3-869b-ddd1853b0313",
+      "finishedAt": "2026-10-10T12:08:32.138Z",
+      "elapsedSeconds": 494.598,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [
+        {
+          "path": "docs/agent/verification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/ExportTrigger.tsx",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/collection-of-exports.ts",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/components.tsx",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "review",
+      "role": "review",
+      "resumed": false,
+      "startedAt": "2026-10-10T12:08:32.645Z",
+      "limitSeconds": 239.449,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a125b7-00a1-75e3-9147-7003e5494760",
+      "finishedAt": "2026-10-10T12:12:32.133Z",
+      "elapsedSeconds": 239.488,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [
+        {
+          "path": "docs/agent/review.json",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    }
+  ],
+  "sessions": {
+    "specification": "01a125aa-2d32-7463-9ec8-46deee864bbe",
+    "implementation": "01a125af-729d-7ad3-869b-ddd1853b0313",
+    "review": "01a125b7-00a1-75e3-9147-7003e5494760"
+  },
+  "intervention": "No operator hints, code edits or hidden-test feedback during execution; deterministic handoffs only.",
+  "usage": null,
+  "monetaryCost": null,
+  "costNote": "OpenRouter API; provider usage and invoiced cost are recorded separately by the researcher relay.",
+  "handoffError": "A draft is not a completed review\n\nfalse !== true\n",
+  "finishedAt": "2026-10-10T12:12:32.465Z",
+  "elapsedSeconds": 1080.589,
+  "usageNote": "Raw CLI usage is recorded per phase. Aggregate is withheld if a resumed session requires reconciliation or any phase lacks a final usage event.",
+  "fileChanges": [
+    {
+      "path": "docs/agent/review.json",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "docs/agent/specification-history.md",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "docs/agent/specification.md",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "docs/agent/verification.md",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "src/ExportTrigger.tsx",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "src/collection-of-exports.ts",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "src/components.tsx",
+      "allowed": true,
+      "kind": "modified"
+    }
+  ],
+  "rejectedSymlinks": [],
+  "allowedChanges": true
+}

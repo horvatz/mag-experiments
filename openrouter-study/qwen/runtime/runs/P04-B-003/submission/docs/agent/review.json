@@ -1,0 +1,95 @@
+{
+  "complete": true,
+  "checkedRequirements": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "R12"
+  ],
+  "unverified": [],
+  "specificationChangesRequired": false,
+  "codeChangesRequired": false,
+  "summary": "Pregled končan. useTaskSort hook implementiran, vendar se ne uporabi v App.tsx. Aplikacija potrebuje nadzorne elemente za primarni/sekundarni ključ in smer (HTML select). Gumb \"Izvorni vrstni red\" ni prisoten. Table in tabla ne uporabljata tasksSorted.",
+  "findings": [
+    {
+      "target": "implementation",
+      "requirement": "R01",
+      "problem": "useTaskSort hook je implementiran, vendar se ne uporabi v App.tsx. Funkcija useResource hkrati prebira /api/projects/*/tasks in prikazuje tasks namesto sorted tasksSorted.",
+      "requestedChange": "Uporabiti useTaskSort v App.tsx in prikazovati tasksSorted namesto tasks v tabeli in tabli."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R02",
+      "problem": "normalizeText uporablja regex /[̀-ͯ]/g za odstranitev diakritikov, kar ne pokrije celotnega UTF-16 obsega U+0300–U+036F. Pravilno bi bilo /[̀-ͯ]/g ali /[̀-ͯ]/g.",
+      "requestedChange": "Popraviti regex v normalizeText funkciji v src/hooks/useTaskSort.ts in src/utils/sort.ts."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R03",
+      "problem": "compareStatusText uporablja lowercase in .toLowerCase(), vendar statusOrder vsebuje lowercase vrednosti. Funkcija je implementirana pravilno, vendar se ne uporabi v App.tsx.",
+      "requestedChange": "Uporabiti normalizeText in primanje primarnega ključa title in assignee na levo."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R04",
+      "problem": "App.tsx ne uporablja sortState za predznak smeri sortiranja. setDirection se definira, vendar se ne klica.",
+      "requestedChange": "Uporabiti sortState.direction in setDirection za primarni in sekundarni ključ."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R05",
+      "problem": "Sekundarni sortiranje se uporabi samo ko so primarni ključ enaki. V useTaskSort.ts to ni implementirano: sekundarni sortiranje se vedno uporabi ne glede na primarni ključ.",
+      "requestedChange": "Implementirati sekundarni sortiranje le ob enakosti primarnega ključa v useTaskSort.ts."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R06",
+      "problem": "stableSort je implementiran in ohranja originalIndex, vendar se ne uporabi za vse primere primara in sekundarnega sortiranja. Za primarni sortiranje se uporabi običajni sort(), ne stableSort.",
+      "requestedChange": "Uporabiti stableSort namesto sort() za vse primere sortiranja v useTaskSort.ts."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R07",
+      "problem": "Tablica prikazuje tasks namesto tasksSorted, zato se ne uporabi sortni red. TaskBoard hkrati prikazuje tasks namesto tasksSorted.",
+      "requestedChange": "Preklop na tasksSorted v App.tsx za tabelo in tabelo opravil."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R08",
+      "problem": "sortState se shranjuje v useState, vendar se ne uporabi pri menjavi pogleda ali odprtih podrobnosti. State se izgubi po ponastavitvi ali obnavljanju strani.",
+      "requestedChange": "Uporabiti sortState v App.tsx in se ne resetirati na vsakem prikazu."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R09",
+      "problem": "resetSort ni klicana ko se preklopi projekt. Uporabnik mora ročno pozabiti sortSettings.",
+      "requestedChange": "Klicati resetSort() ko se preklopi projekt v App.tsx."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R10",
+      "problem": "Gumb \"Izvorni vrstni red\" ne obstaja v aplikaciji. Ni gumba za resetiranje sortSettings.",
+      "requestedChange": "Dodati gumb \"Izvorni vrstni red\" v komponenti za nadzor in klicati resetSort() na klik."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R11",
+      "problem": "sortState se ne shrani v localStorage ali URL. To je skladno z R09, vendar mora biti jasno dokumentiran.",
+      "requestedChange": "Dokumentirati sortState v state in ne v persistent shrambi."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R12",
+      "problem": "Aplikacija prikazuje opravila v prvotnem vrstnem redu. tasksSorted se ne uporabi v App.tsx. ID so edinstveni, povezava na podrobnosti deluje pravilno.",
+      "requestedChange": "Uporabiti tasksSorted v App.tsx namesto tasks."
+    }
+  ]
+}

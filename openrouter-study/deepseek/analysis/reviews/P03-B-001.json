@@ -1,0 +1,101 @@
+{
+  "id": "P03-B-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-12",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "V celoti prebranih8 dostavljenih avtorskih datotek; pregledan indeks66 native ukazov/79 ohranjenih klicev ter dejanski izidi preverjanj. Izvedba je uporabniško prekinjena med pregledom; nepopolnega postopka in skrajšanega časa ne pripisujemo modelovi sposobnosti. Ocene niso vrnjene merjenemu modelu.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Vseh R01–R12 je skladno opredeljenih: združena štiri polja, NFD/točno območje U+0300–U+036F/male črke, neprazne besede in dobesedni AND, konjunkcija stanja/natančne osebe, enkratne celoprojektne možnosti, reset ob projektu/reload/clear in ohranitev ob pogledu. Loči prazni rezultat od praznega projekta, zahteva uporabne prazne stolpce, N/M ter vidne statusne/stolpčne števce. Izrecno določi dostopna imena, data-task-id, bralnost, Folio in390px. Formalizacija velja za poljubni T, čeprav velikosti0/1/>10 niso posebej naštete v dokumentu.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:28",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:63",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:78",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:114"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Norm/hay/hit/visible izrecno ločijo normalizirano iskanje od natančne osebe in nespremenjenega izvora T. Kvantifikator vseh nepraznih besed je dobesedni podniz; prazna množica ne omejuje. N je velikost vidnih, M celotnega projekta; izvorni vrstni red in polja ostajajo. Prehodi clear/projekt/reload nastavijo vsa tri privzeta stanja, menjava pogleda jih ohrani. M>0/N=0 in M=0 imata različna sprejemna pogoja, stolpci so statusna projekcija istega vidnega seznama. Pravila so preverljiva in splošna.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:30",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:36",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:44",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:69",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:73"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Specifikacija pošteno označi predvidene dokaze kot neizvedene v fazi pisanja in vsebuje vseh12 povezav do pogojev, razvojnih scenarijev ter okvirnih mest kode. Verification nato točno navede typecheck/lint, dev8/8 in own11/11 ter neizveden npm run check; native implementation item26/28/40 to potrjuje. Pregled še izvede19/19 in38/38, vendar docs/review.json ostane samo začetni complete:false zapis zaradi uporabniške prekinitve. Matrika verification še vedno povsod navaja neizvedeno, brez neposrednih povezav do dejanskih11 testov; nekatera načrtovana preverjanja (različna točna diakritična imena, celovit reload/projekt reset) niso izvedena. Zato povezave omogočajo delno preverjanje, niso pa zaključene.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:91",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:99",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md:7",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md:37",
+        "runtime/runs/P03-B-001/submission/docs/agent/review.json:1",
+        "analysis/review-packets/P03-B-001.json",
+        "runtime/runs/P03-B-001/phases/02-implementation/events.jsonl.gz",
+        "runtime/runs/P03-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti filterTasks.ts loči normalizacijo, besede, ujemanje, konjunkcijo filtrov, imena in statusne števce. ProjectView ima tri lokalna stanja, imena iz celotnega tasks in eno izpeljano visibleTasks za povzetek, oba pogleda ter števce. Clear je en handler; projektni key ponastavi komponento, pogled istega projekta pa ohrani stanje. Ni mutiranja podatkov ali trajne shrambe. Bralne podrobnosti in navigacija ostanejo ločene, slogi novih kontrol ter ozkega prikaza v CSS; prazni rezultat je ločeno sporočilo nad ohranjenim TaskBoard. Rešitev je razumljiva brez znatnega nepotrebnega podvajanja.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/src/filterTasks.ts:5",
+        "runtime/runs/P03-B-001/submission/src/filterTasks.ts:19",
+        "runtime/runs/P03-B-001/submission/src/filterTasks.ts:27",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:12",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:71",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:116",
+        "runtime/runs/P03-B-001/submission/src/styles.css:56",
+        "runtime/runs/P03-B-001/submission/src/styles.css:176"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "11 dejansko uspešnih lastnih testov preveri privzeti vrstni red, velikost/diakritiko, literalne oklepaje, vrstni red dveh besed, beline, pozitiven/negativen sestavljeni filter, podvojena in skrita imena, N/M in prazne stolpce, oba prazna prikaza, prazen projekt, resničen reset vseh3 kontrol ob clear in primerjavo besedila vrstic. Dodano odpiranje/Escape,390px in readonly. Dev8, own11, review19 in baseline38 so potrjeni. Toda projekt/reload ne spremenita osebe, reload je niti ne preveri; menjava pogleda testira samo stanje. Lastni nabor največ4 in večinoma8 baseline opravil, brez singleton/>10, razlikujočih Unicode oseb/decomposed/out-of-range marks, negativnega literalnega vzorca ali razlikujočega AND besed čez polja. Ozka širina lastno preverjena le v preglednici. Koristna preverjanja, z bistvenimi domenskimi vrzelmi.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/tests/agent/P03-implementation.spec.ts:17",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03-implementation.spec.ts:33",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03-implementation.spec.ts:45",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03-implementation.spec.ts:58",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03-implementation.spec.ts:71",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03-implementation.spec.ts:87",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03-implementation.spec.ts:102",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03-implementation.spec.ts:125",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03-implementation.spec.ts:141",
+        "runtime/runs/P03-B-001/phases/02-implementation/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Postopek B je na izrecno uporabnikovo zahtevo prekinjen med pregledom:727,047s, review171,047s/operator_interruption, začetni review.json complete:false. To je nepopoln postopek zaradi premora, ne dokazana modelova funkcionalna napaka: neodvisno70/70,12/12 in vse statične/allowedChanges/completeTestRun kontrole true, strogi uspeh false zaradi statusa. Oddaja ni ponovljena ali popravljena; skrajšan čas je treba razkriti.",
+    "evidence": [
+      "runtime/runs/P03-B-001/execution.json",
+      "runtime/runs/P03-B-001/evaluation-summary.json",
+      "runtime/runs/P03-B-001/submission/docs/agent/review.json:1"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Prvi poskus lastnih testov implementation item30 po zavrnjenem heredoc pokaže No tests found kljub pipeline exit0. Poznejši uspešni apply_patch zapisi so ohranjeni v API vhodih, nato so dejansko izvedeni7/9/10/11 testi, zadnji11/11 v item40. Ni dokazane funkcionalne testne napake v dostavljeni logiki; zavrnjena pisanja niso dostavljene spremembe. Pregled pozneje potrdi19/19 in38/38.",
+    "evidence": [
+      "analysis/review-packets/P03-B-001.json",
+      "runtime/runs/P03-B-001/phases/02-implementation/events.jsonl.gz",
+      "runtime/runs/P03-B-001/phases/03-review/events.jsonl.gz",
+      "runtime/runs/P03-B-001/submission/docs/agent/verification.md:39"
+    ]
+  }
+}

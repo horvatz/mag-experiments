@@ -1,0 +1,45 @@
+Starting constitution (1199 seconds available)
+[constitution] Korak `$speckit-constitution` je opravljen.
+
+**Izdelek**: `.specify/memory/constitution.md` — Folio Projektna ustava, različica 1.0.0, potrjena 2026-10-13. Povzema obstoječa pravila (brez novih zahtev, odvisnosti ali arhitekturnih preureditev) v petih načelih: omejen obseg sprememb, ohranjen potrjeni videz Folio, javni API kot edini vir podatkov, trditve le z dejanskimi dokazi, sledljiva specifikacija po skupni predlogi; dodan je kratek razvojni potek in upravljanje.
+
+**Opombe**:
+- Viri: `PROJECT_RULES.md`, `task/instructions.md`, `docs/dizajn.md`.
+- `.specify/feature.json` je v tem peskovniku
+constitution: completed, 374.749s
+Starting specify (824 seconds available)
+[specify] Now I’ll write the specification and set the feature path.
+
+
+[specify] Korak `$speckit-specify` je opravljen.
+
+**Izdelek**: `docs/agent/P08/spec.md` (155 vrstic)
+- Problem in kontekst, vhodi/dejanja/izidi ter pravila spremembe stanja s predikati (`G(t)`, `c_k`, `V`, prehodi `setDate`, `setFilter`, preklop pogleda, ponastavitev).
+- Preglednica R01–R12 s sprejemnimi pogoji in načinom preverjanja; vsa dogovorjena pravila vmesnika (imena skupin, `aria-label`, `data-task-id`, 390 pik).
+- Uporabniški scenariji P1–P4, merila uspeha SC-001–SC-005, robni primeri, odprta vprašanja in predpostavke.
+- Sledljivost je za zdaj povezana na `docs/agent/P08/plan.md` in `tasks.md`,
+specify: completed, 318.269s
+Starting plan (505 seconds available)
+[plan] Korak `$speckit-plan` je opravljen.
+
+**Izdelek**: `docs/agent/P08/plan.md` (67 vrstic)
+- Tehnični kontekst: obstoječi React 19/TS/Vite, javni API prek `useResource`, Playwright (projekt `agent`), brez novih odvisnosti.
+- Odločitve: čisti koledarski modul `src/deadlines.ts` (UTC, brez ure naprave), nova komponenta `src/DeadlineControls.tsx`, stanje v `ProjectView` z remontom ob menjavi projekta, en vir filtriranih opravil za oba pogleda, prazna stanja, ohranjen videz Folio.
+- Datoteke: `src/deadlines.ts`, `src/DeadlineControls.tsx`, `src/App.tsx`, `src/TaskBoard.tsx`, `src/styles.css`, `tests/a
+plan: completed, 154.744s
+Starting tasks (350 seconds available)
+[tasks] Korak `$speckit-tasks` je opravljen.
+
+**Izdelek**: `docs/agent/P08/tasks.md` (38 vrstic, 16 nalog T001–T016)
+- Faza 1 priprava (T001), faza 2 temelj (T002–T005: `src/deadlines.ts`, `src/DeadlineControls.tsx`, `src/App.tsx`, `src/styles.css`).
+- Faze po prioriteti scenarijev: P1 števci/filter (T006–T007), P2 referenčni datum (T008–T009), P3/P4 pogledi in ponastavitev (T010–T012).
+- Zaključek (T013–T016): `typecheck`, `lint`, `npx playwright test --project=agent`, razvojni testi `tests/development/P08.spec.ts`, izpolnitev sledljivosti v `spec.md`, predaja.
+
+Vse naloge so v obliki `- [ ] T0xx` z 
+tasks: completed, 64.558s
+Starting implement (165 seconds available)
+[implement] Writing implementation now — fast.
+
+
+implement: phase_time_limit, 165.527s
+{"status":"phase_time_limit","elapsedSeconds":1081.16,"allowedChanges":true,"usage":null}

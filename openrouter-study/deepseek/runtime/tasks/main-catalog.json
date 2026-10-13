@@ -1,0 +1,146 @@
+[
+  {
+    "id": "P03", "title": "Iskanje in sestavljeni filtri", "kind": "main",
+    "requirements": [
+      "Ob nalaganju so iskalni vnos in filtra prazni oziroma nastavljeni na vse; prikazana so vsa opravila trenutnega projekta v izvornem vrstnem redu.",
+      "Iskanje pregleduje združene id, title, description in assignee. Obe strani pretvori z Unicode NFD, odstrani kombinacijska znamenja U+0300–U+036F in pretvori v male črke; zato crka č in c ter velikost črk ne razlikujeta zadetkov.",
+      "Iskalni vnos razdeli po belinah v neprazne besede; opravilo ustreza, če so vse besede dobesedni podnizi združenih polj. Vrstni red besed ni pomemben, ločila niso regularni izrazi. Prazen vnos ne omejuje.",
+      "Filter stanja in filter odgovorne osebe delujeta skupaj z iskanjem po logičnem IN. Stanje ima vrednosti all, todo, in_progress, done; odgovorna oseba se primerja natančno, brez normalizacije.",
+      "Izbirnik oseb vsebuje možnost all in vsako različno neprazno ime iz celotnega trenutnega projekta natanko enkrat, tudi če je trenutno skrito zaradi drugih pogojev. Preklop projekta ne ohrani stare osebe.",
+      "Preglednica in tabla kažeta iste ustrezne ID-je; preklop pogleda ohrani vse filtre. Stolpci table vsebujejo samo ustrezna opravila svojega stanja.",
+      "Menjava projekta ponastavi iskanje in oba filtra. Filtri se nikoli ne uporabijo na podatkih drugega projekta.",
+      "Osvežitev strani začne s privzetimi filtri. Filtri se ne shranjujejo v URL ali trajno shrambo brskalnika.",
+      "Število rezultatov je Prikazano: N od M., kjer je M velikost celotnega trenutnega projekta. Pregled stanj in števci stolpcev štejejo prikazane rezultate.",
+      "Če v nepraznem projektu nobeno opravilo ne ustreza, je prikazano sporočilo Ni zadetkov. in oba pogleda ostaneta uporabna. Prazen projekt ohrani običajno prazno stanje in števec 0 od 0.",
+      "Počisti filtre v enem dejanju vrne vse tri kontrole na privzete vrednosti in prikaže vsa opravila. Uporaba filtrov ne spremeni izvornega vrstnega reda ali polj podatkov.",
+      "Obstoječa navigacija in bralne podrobnosti delujejo. Nobeno dejanje filtriranja ne pošlje POST/PATCH/PUT/DELETE na /api/. Ohranjen je Folio in prikaz pri ozki širini."
+    ],
+    "ui": ["Iskalni input type=search: Išči opravila.", "HTML select: Filter stanja (all/todo/in_progress/done) in Filter odgovorne osebe (all ali točno ime).", "Gumb Počisti filtre. Element role=status, aria-label=Rezultati filtriranja, besedilo Prikazano: N od M.."]
+  },
+  {
+    "id": "P04", "title": "Stabilno razvrščanje z dvema ključema", "kind": "main",
+    "requirements": [
+      "Privzeti primarni ključ je original, smer asc; sekundarni ključ none, smer asc. Prikaz ohrani vrstni red prejetega polja.",
+      "Primarni ključ title ali assignee primerja normalizirane nize: NFD, odstranitev U+0300–U+036F, male črke, nato leksikografska primerjava po UTF-16 z < in >. Ne uporablja jeziku ali številkam prilagojenega razvrščanja.",
+      "Primarni ključ status ima vrstni red todo, in_progress, done. dueDate razvršča veljavne koledarske datume YYYY-MM-DD kronološko.",
+      "Smer asc oziroma desc obrne samo izid primerjave izbranega ključa; ne obrača celotnega končnega polja in ne obrača vrstnega reda izenačenih elementov.",
+      "Sekundarni ključ none, title, assignee, status ali dueDate se uporabi samo ob enakosti primarnega ključa in ima svojo neodvisno smer.",
+      "Ob enakosti obeh ključev ostane izvorni vrstni red. Enak sekundarni in primarni ključ je dovoljen in ne uvede dodatnega obrata. original na primarnem ključu vedno vrne izvorni vrstni red ne glede na druge kontrole.",
+      "Tabla ohrani stalni vrstni red treh stolpcev; znotraj vsakega stolpca uporabi relativni vrstni red istega razvrščenega polja kot preglednica.",
+      "Preklop pogleda ohrani vse štiri nastavitve. Odpiranje in zapiranje podrobnosti ne ponastavi vrstnega reda.",
+      "Menjava projekta ponastavi vse štiri nastavitve. Osvežitev prav tako začne s privzetimi vrednostmi; nastavitev ni v trajni shrambi ali URL-ju.",
+      "Gumb Izvorni vrstni red ponastavi vse štiri kontrole. Prazen projekt in projekt z enim opravilom delujeta pri vseh ključih in smereh.",
+      "Razvrščanje je samo projekcija: ne spreminja polj opravil, pripadnosti, skupnih števil ali izvornega polja. Sprememba vrstnega reda ne pošilja zapisov na API.",
+      "Vsi ID-ji ostanejo prikazani natanko enkrat in odpirajo prave podrobnosti tudi pri enakih naslovih. Ohranijo se ostale bralne funkcije in prilagodljiv videz Folio."
+    ],
+    "ui": ["HTML select Primarni ključ: original/title/assignee/status/dueDate; Primarna smer: asc/desc.", "HTML select Sekundarni ključ: none/title/assignee/status/dueDate; Sekundarna smer: asc/desc.", "Gumb Izvorni vrstni red. Datumi podatkov so veljavni YYYY-MM-DD, imena in naslovi so nizi; končni testi ne zahtevajo podpore manjkajočim datumom."]
+  },
+  {
+    "id": "P05", "title": "Straničenje in filter stanja", "kind": "main",
+    "requirements": [
+      "Privzeto je velikost strani all in filter all; vidna so vsa opravila v izvornem vrstnem redu.",
+      "Velikosti 2, 5 in 10 razdelijo trenutno filtrirano polje na zaporedne, neprekrivajoče se odseke. Zadnja stran je lahko krajša; noben ID se ne izgubi ali podvoji.",
+      "Prva stran, Prejšnja stran, Naslednja stran in Zadnja stran vodijo na ustrezno stran. Na robu je neveljavno dejanje onemogočeno in ne spremeni stanja.",
+      "Sprememba velikosti strani vedno vrne na prvo stran nove velikosti, tudi če bi bila prejšnja številka še veljavna. all pomeni eno stran pri nepraznem rezultatu.",
+      "Filter all/todo/in_progress/done se uporabi pred straničenjem; njegova sprememba vrne na prvo stran. Ne vpliva na vrstni red ujemajočih se opravil.",
+      "Preglednica in tabla kažeta iste ID-je trenutne strani. Tabla združi šele ta odsek v stolpce; ne straniči vsakega stolpca ločeno.",
+      "Preklop pogleda ter odpiranje in zapiranje podrobnosti ohranijo stran, velikost in filter.",
+      "Menjava projekta in osvežitev ponastavita velikost na all, filter na all ter stran na prvo. Stanje se ne hrani v trajni shrambi ali URL-ju.",
+      "Za neprazen rezultat status vsebuje Stran X od Y. Prikazano A–B od N., kjer sta A/B indeksa z začetkom 1 in N velikost filtriranega polja.",
+      "Za prazen projekt ali prazen rezultat filtra status vsebuje Stran 0 od 0. Prikazano 0–0 od 0. in vsi štirje gumbi za premik so onemogočeni. Ob odstranitvi filtra je spet prva stran.",
+      "Pregled stanj šteje celoten nefiltrirani projekt; števci stolpcev table štejejo prikazana opravila trenutne strani. Število vseh opravil se zaradi straničenja ne spremeni.",
+      "Straničenje ne spreminja podatkov in ne pošilja zapisov na API. Obstoječe povezave, pravilni ID-ji, podrobnosti, nalaganje in prilagodljiv videz Folio ostanejo uporabni."
+    ],
+    "ui": ["HTML select Velikost strani: all/2/5/10; Filter strani: all/todo/in_progress/done.", "Gumbi Prva stran, Prejšnja stran, Naslednja stran, Zadnja stran.", "Element role=status in aria-label=Stanje straničenja z natančnim besedilom iz zahtev (pomišljaj – med indeksoma)."]
+  },
+  {
+    "id": "P06", "title": "Nastavljiv izvoz CSV", "kind": "main",
+    "requirements": [
+      "Izvoz zajame opravila trenutnega projekta v izvornem vrstnem redu. Privzeti filter je all, izbrane so vse dovoljene kolone, ločilo je podpičje.",
+      "Izbrati je mogoče kolone id, projectId, title, status, assignee, dueDate, description. Glava in vrednosti sledijo temu nespremenljivemu vrstnemu redu ne glede na vrstni red klikov.",
+      "Če nobena kolona ni izbrana, je izvoz onemogočen in ne ustvari prenosa. Ponovni izbor kolone izvoz omogoči, če obstajajo ustrezne vrstice.",
+      "Filter all/todo/in_progress/done omeji samo izvožene vrstice. Vmesnik še prikazuje celoten projekt. Prazen projekt ali prazen filtrirani rezultat onemogoči izvoz.",
+      "Izvoz prenese datoteko folio-<projectId>.csv z UTF-8 BOM U+FEFF na začetku. Ne odpre nove strani in ne pošlje vsebine na strežnik.",
+      "Ločilo je nastavljivo na ; ali ,. Vsaka glava in vsaka vrednost sta vedno obdani z dvojnimi narekovaji. Vsak notranji dvojni narekovaj je podvojen.",
+      "Vrstice CSV so ločene s CRLF; tudi zadnja vrstica se konča s CRLF. Ločila in prelomi vrstic v vrednostih ostanejo znotraj pravilno navedene vrednosti in se ne izgubijo.",
+      "Pred navedbo vrednosti nevtraliziraj formulo: če se izvirni niz po poljubnih začetnih znakih presledek, tabulator, CR ali LF začne z =, +, - ali @, dodaj apostrof na sam začetek izvirnega niza. Drugih nizov ne spreminjaj. Pravilo velja za vse podatkovne kolone, ne za glavo.",
+      "Šumniki, drugi Unicode znaki, presledki in vsebina opisov ostanejo ohranjeni, razen izrecne nevtralizacije formul. status se izvozi kot interna vrednost, datum kot izvirni YYYY-MM-DD.",
+      "Preklop Preglednica/Tabla ohrani izbor kolon, ločilo in filter; isti nastavitvi v obeh pogledih ustvarita iste bajte datoteke.",
+      "Menjava projekta ter osvežitev ponastavita izbrane kolone, ločilo in filter na privzete vrednosti. Zaporedna izvoza po spremembi nastavitev vedno odražata trenutne nastavitve.",
+      "Izvoz in njegove kontrole ne spreminjajo nobenega opravila, izvornega polja ali obstoječih bralnih funkcij. Ne pošiljajo zapisov na API. Videz Folio ostane prilagodljiv."
+    ],
+    "ui": ["Checkbox za vsako kolono ima dostopno ime Stolpec <ime>, npr. Stolpec title.", "HTML select Ločilo CSV z vrednostma ; in ,; HTML select Filter izvoza z vrednostmi all/todo/in_progress/done.", "Gumb Izvozi CSV. Imena projektov oziroma ID-ji v obsegu imajo črke, številke in vezaje."]
+  },
+  {
+    "id": "P07", "title": "Priljubljena opravila in trajna shramba", "kind": "main",
+    "requirements": [
+      "Vsako opravilo v preglednici in na tabli ima ločen gumb Priljubljeno opravilo <id> z aria-pressed. Klik preklopi samo ta ID in ne odpre podrobnosti; enaki naslovi ostanejo neodvisni.",
+      "Priljubljene hrani v localStorage pod ključem folio:favorites:v1 kot JSON {version:1,ids:[...]}. Ob zapisu so ID-ji enkratni nizi in razvrščeni po UTF-16. Polja opravil se ne zapisujejo v shrambo.",
+      "Osvežitev obnovi shranjene ID-je. Veljaven zapis lahko vsebuje podvojene ali trenutno neznane ID-je: podvojene obravnava kot enega, neznane ohrani za druge projekte, vendar ne ustvarja izmišljenih opravil.",
+      "Manjkajoč ključ, neveljaven JSON, napačna version, manjkajoči ids ali katerikoli neniz v ids pomenijo prazno začetno množico. Aplikacija ne odpove in ob nalaganju sama ne prepisuje shrambe.",
+      "Checkbox Prikaži le priljubljena omeji prikaz na priljubljene trenutnega projekta, v izvornem vrstnem redu. Njegova privzeta vrednost je false.",
+      "Odstranitev priljubljenega med aktivnim filtrom ga takoj odstrani iz prikaza. Ko ni rezultatov, se pokaže Ni priljubljenih opravil. in kontrole omogočajo izklop filtra.",
+      "Preglednica in tabla uporabljata isto množico in filter; preklop pogleda ne izgubi sprememb. Podrobnosti ostanejo dostopne po pravilnem ID-ju.",
+      "Menjava projekta ohrani globalno množico priljubljenih, filter pa ponastavi na false. Osvežitev obnovi množico, filter pa je prav tako false.",
+      "Gumb Odstrani priljubljene tega projekta odstrani samo ID-je opravil celotnega trenutnega projekta. ID-ji drugih projektov in neznani ID-ji ostanejo. Brez priljubljenih tega projekta je gumb onemogočen.",
+      "Element števca vedno kaže Priljubljeno: X od M., kjer se X/M nanašata na celoten trenutni projekt, tudi ko je filter aktiven. Števci stolpcev table štejejo vidna opravila.",
+      "Dogodek storage za pravi ključ takoj uskladi množico z novo vrednostjo po istih pravilih validacije; null jo izprazni. Drug ključ se ignorira. Dogodek ne sproži povratnega zapisa. Če branje ali zapis shrambe vrže izjemo, aplikacija ostane uporabna v pomnilniku in prikaže opozorilo o nedostopni shrambi.",
+      "Vse spremembe priljubljenih so lokalne: ni zapisov na API in nobeno polje opravila se ne spremeni. Ohranjen je Folio, nalaganje, navigacija in ozki prikaz."
+    ],
+    "ui": ["Gumbi Priljubljeno opravilo <id> z aria-pressed=true/false, postavljeni ločeno od povezave opravila.", "Checkbox Prikaži le priljubljena; gumb Odstrani priljubljene tega projekta.", "Element role=status, aria-label=Število priljubljenih, besedilo Priljubljeno: X od M.. Napaka shrambe ima role=alert in vsebuje besedo shramba."]
+  },
+  {
+    "id": "P08", "title": "Koledarski pregled rokov", "kind": "main",
+    "requirements": [
+      "Referenčni datum je ob vsakem začetku projekta izrecno 2026-09-21; ni odvisen od trenutne ure naprave. Začetni izbrani pogled rokov je all.",
+      "Opravilo s statusom done vedno spada v skupino done ne glede na rok; ne šteje v nobeno od štirih skupin odprtih opravil.",
+      "Odprto opravilo z dueDate pred referenčnim datumom spada v overdue; z enakim datumom v today.",
+      "Odprto opravilo z datumom od naslednjega dne do vključno sedmega dne spada v week; poznejši rok spada v later. Skupine so disjunktne in skupaj vsebujejo vsa opravila.",
+      "Datumi se obravnavajo kot koledarski YYYY-MM-DD neodvisno od časovnega pasu in poletnega časa. Seštevanje dni deluje čez meje meseca, leta in prestopni februar.",
+      "Pet števcev prikazuje število opravil celotnega trenutnega projekta v skupinah overdue/today/week/later/done; aktivni filter ne spremeni teh števil.",
+      "Izbirnik Pogled rokov all/overdue/today/week/later/done prikazuje ustrezno skupino v izvornem vrstnem redu. Izbor ne spreminja datumov ali stanj opravil.",
+      "Veljaven nov referenčni datum takoj preračuna skupine in vidne vrstice, pri tem pa ohrani aktivni filter. Prazno polje prikaže opozorilo in ohrani zadnji veljavni preračun; ponoven veljavni datum opozorilo odstrani.",
+      "Preglednica in tabla prikazujeta iste filtrirane ID-je. Preklop pogleda ohrani referenčni datum, trenutno besedilo polja in izbrano skupino.",
+      "Menjava projekta in osvežitev ponastavita datum in skupino na začetni vrednosti. Noben podatek o filtru se ne hrani v trajni shrambi ali URL-ju.",
+      "Prazen projekt daje pet ničel. Prazna skupina v nepraznem projektu prikaže Ni opravil v izbrani skupini. ter omogoča preklop na drugo skupino ali all.",
+      "Datumi podatkov so veljavni YYYY-MM-DD, tudi prestopni. Pregled ne pošilja zapisov na API; polja in bralne podrobnosti ostanejo nespremenjeni, ohranjen je prilagodljiv Folio."
+    ],
+    "ui": ["input type=date z oznako Referenčni datum; HTML select Pogled rokov: all/overdue/today/week/later/done.", "Pet elementov ima aria-label=Število rokov <ključ> in samo številsko vrednost, npr. Število rokov overdue.", "Prazen datum: role=alert z besedilom Vnesi veljaven referenčni datum. Imena skupin so Zapadlo, Danes, Naslednjih 7 dni, Pozneje in Končano."]
+  },
+  {
+    "id": "P09", "title": "Stanje pogleda v povezavi in zgodovini", "kind": "main",
+    "requirements": [
+      "Stanje pregleda je določeno s parametri q, status in order v query delu URL fragmenta za obstoječo pot projekta ali opravila. Privzeto je q prazen, status all, order original. Ob neposrednem odprtju povezave se stanje uporabi brez dodatnega klika.",
+      "q je ena dobesedna fraza: trim zunanjih belin, NFD, odstranitev U+0300–U+036F in male črke za iskanje po title, description, assignee ali id. Fraza mora biti podniz vsaj enega polja; ni regularni izraz in se ne razdeli v besede.",
+      "status podpira all/todo/in_progress/done in deluje skupaj z q po IN. order je original/title-asc/title-desc; naslov se primerja po isti normalizaciji in UTF-16, ob izenačenju ostane izvorni vrstni red.",
+      "Neznana vrednost status/order pomeni privzeto vrednost. Pri ponovljenem parametru velja prva pojavitev. Neznani parametri ne vplivajo na prikaz. Razčlenjevanje ne povzroči samodejnega prepisovanja URL-ja.",
+      "Spreminjanje treh kontrol ureja osnutek in še ne spremeni prikaza ali URL-ja. Gumb Uporabi pogled potrdi vse tri vrednosti hkrati in ustvari eno novo zgodovinsko stanje, če se potrjeno stanje spremeni.",
+      "Pri potrditvi se q obreže, privzeti parametri izpustijo, preostali pravilno URL-kodirajo. Obstoječi view=board se ohrani, neznani parametri se odstranijo. Ponovitev enake potrditve ne doda novega zgodovinskega stanja.",
+      "Nazaj in Naprej v brskalniku obnovita potrjene filtre, prikaz in osnutek kontrol. Osvežitev ohrani potrjeno stanje iz URL-ja.",
+      "Preklop Preglednica/Tabla ohrani potrjene parametre in prikaže iste ID-je. Nepotrjen osnutek se ob vsaki navigaciji zavrže.",
+      "Odpiranje podrobnosti in zapiranje z gumbom ali Escape ohranita potrjene parametre in način pogleda. Povezava do pravilnega ID-ja deluje tudi pri enakih naslovih.",
+      "Klik na drugi projekt začne njegov privzeti pregled (q prazen, status all, order original) in ohrani table/board. Neposredna povezava do drugega projekta s parametri pa jih upošteva.",
+      "Gumb Ponastavi pogled počisti tri filtre in osnutek ter posodobi zgodovino po istem pravilu kot potrditev; obdrži trenutni način pogleda. Prazen rezultat pokaže Ni zadetkov.; števec kaže Prikazano: N od M..",
+      "Nobeno dejanje ne spremeni podatkov ali pošlje zapisov na API. Stanje ni v localStorage. Delujejo obstoječa neznana pot, nalaganje, podrobnosti in prilagodljiv videz Folio."
+    ],
+    "ui": ["input type=search z oznako Iskanje v povezavi; select Stanje v povezavi: all/todo/in_progress/done; select Vrstni red v povezavi: original/title-asc/title-desc.", "Gumba Uporabi pogled in Ponastavi pogled; role=status, aria-label=Rezultati povezave, besedilo Prikazano: N od M..", "Primer: #/projects/web?view=board&q=Pregled&status=todo&order=title-desc. Vrstni red samih URL-parametrov ni predpisan."]
+  },
+  {
+    "id": "P10", "title": "Lokalni vrstni red z razveljavitvami", "kind": "main",
+    "requirements": [
+      "Ob začetku je vrstni red enak prejetemu polju. Vsako opravilo ima prikazano globalno mesto od 1 do N po svojem ID-ju; enaki naslovi se ne povezujejo.",
+      "Gumb Premakni <id> gor zamenja opravilo z neposrednim globalnim predhodnikom; Premakni <id> dol z neposrednim naslednikom. Polja opravil in status ostanejo nespremenjeni.",
+      "Premik gor za prvo oziroma dol za zadnje opravilo je onemogočen. Neveljavno ali ponovljeno robno dejanje ne spremeni vrstnega reda in ne doda zgodovine.",
+      "Vsak veljaven premik doda prejšnjo celotno permutacijo v zgodovino razveljavitev. Gumb Razveljavi premik obnovi zadnjo prejšnjo permutacijo in trenutni vrstni red shrani za ponovno izvedbo.",
+      "Gumb Ponovi premik obnovi zadnjo razveljavljeno permutacijo. Več razveljavitev in ponovitev ohrani pravilni zaporedji brez izgube ali podvajanja ID-jev.",
+      "Nov veljaven premik po razveljavitvi zavrže vso zgodovino ponovitev. Neveljaven premik na robu zgodovine ponovitev ne zavrže.",
+      "Hrani se največ 20 prejšnjih permutacij za razveljavitev; ob 21. veljavnem premiku se zavrže najstarejša. Ponovitve delujejo za vse trenutno razveljavljene korake.",
+      "Gumb Začetni vrstni red vrne izvorno permutacijo kot eno novo razveljavljivo dejanje in počisti ponovitve. Če je vrstni red že izvoren, je gumb onemogočen in ne spreminja zgodovine.",
+      "Preglednica prikazuje globalni vrstni red, tabla pa njegov relativni vrstni red znotraj stalnih stolpcev stanj. Na tabli premiki še vedno uporabljajo globalnega soseda, kar pokaže globalno mesto; ne spreminjajo statusa.",
+      "Preklop pogleda in odpiranje/zapiranje podrobnosti ohranita vrstni red ter obe zgodovini. Menjava projekta in osvežitev vse ponastavita na njegovo izhodišče. Podatki se ne shranjujejo trajno.",
+      "Števec kaže Razveljavitve: U. Ponovitve: R. in je usklajen z gumboma, ki sta onemogočena pri ničli. Prazen projekt in projekt z enim opravilom ostaneta uporabna brez dovoljenega premika.",
+      "Vse spremembe so lokalne permutacije iste množice ID-jev; ni zapisov na API ali sprememb polj. Števci stanj in pravilne podrobnosti ostanejo enaki, prilagodljiv Folio je ohranjen."
+    ],
+    "ui": ["Ob vrstici/kartici: gumba Premakni <id> gor in Premakni <id> dol, ločena od povezave; element aria-label=Mesto opravila <id> z globalno številko.", "Gumbi Razveljavi premik, Ponovi premik, Začetni vrstni red.", "Element role=status, aria-label=Zgodovina vrstnega reda, besedilo Razveljavitve: U. Ponovitve: R.."]
+  }
+]

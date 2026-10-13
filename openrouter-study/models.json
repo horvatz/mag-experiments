@@ -1,0 +1,44 @@
+{
+  "collection": "O/1.0",
+  "plannedRuns": 216,
+  "transport": "OpenRouter Responses API via researcher-owned loopback relay",
+  "cliSource": "../luna-study/setup.json",
+  "credentialItem": "Openrouter key",
+  "budget": "Existing OpenRouter balance authorized by user; no top-up",
+  "models": [
+    {
+      "slug": "glm",
+      "collection": "O-GLM/1.0",
+      "id": "z-ai/glm-5.3",
+      "provider": "wafer/us",
+      "effort": "max",
+      "quantization": "unknown",
+      "transportQualification": "transport-917"
+    },
+    {
+      "slug": "deepseek",
+      "collection": "O-DS/1.0",
+      "id": "deepseek/deepseek-v4.1-flash",
+      "provider": "deepinfra/fp8",
+      "effort": "max",
+      "quantization": "fp8",
+      "transportQualification": "transport-917"
+    },
+    {
+      "slug": "qwen",
+      "collection": "O-QW/1.0",
+      "id": "qwen/qwen3.5-9b",
+      "provider": "siliconflow/fp8",
+      "effort": null,
+      "quantization": "fp8",
+      "transportQualification": "transport-918"
+    }
+  ],
+  "providerChangeBeforeFreeze": {
+    "at": "2026-10-08T20:39:12.108Z",
+    "model": "qwen/qwen3.5-9b",
+    "from": "deepinfra/bf16",
+    "to": "siliconflow/fp8",
+    "reason": "Repeated HTTP 429 upstream_provider_shared_pool / engine_overloaded in qualification, not model task quality. No measured runs had started. Old diagnostics retained."
+  }
+}

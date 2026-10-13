@@ -1,0 +1,21 @@
+{
+  "id": "qwen/P05-A-001",
+  "observedAt": "2026-10-08T21:24:56Z",
+  "confirmed": "The pinned provider returned HTTP 200 but the final Responses status was failed. The native client reported stream disconnected before completion and preserved execution_failed after 495.728 seconds.",
+  "rootCause": "Unknown. The original frozen relay records final status and usage but not the final response error object. A generation metadata lookup returned 404. Neither provider overload nor a particular model tool-format error is confirmed.",
+  "measuredEvidence": [
+    "qwen/api/P05-A-001/model/api-ledger.jsonl (request 28)",
+    "qwen/runtime/runs/P05-A-001/events.jsonl.gz",
+    "qwen/runtime/runs/P05-A-001/execution.json",
+    "qwen/runtime/runs/P05-A-001/evaluation-summary.json",
+    "qwen/runtime/runs/P05-A-001/archive-complete.json"
+  ],
+  "outcome": "The incomplete authored submission is independently evaluated and archived: regression 38/38, development 0/8, holdout 0/24, 0/12 demonstrated requirements, strict success false. Lint and types fail. No measured ID is repeated or replaced.",
+  "serviceCheck": {
+    "evidence": "qwen/qualification/service-2026-10-08T21-26-58-927Z/validation.json",
+    "passed": true,
+    "description": "A single unmeasured connectivity-only response completed with assistant output_text CONNECTION_OK on the unchanged provider. This does not establish reliability of long tool responses.",
+    "recorderCorrection": "The initial diagnostic recorder concatenated reasoning_text with output_text and incorrectly classified the exact reply. The original response and result are preserved; separate validation correctly parses that same response. No second request was made."
+  },
+  "continuation": "After archive and inspection, resume the unchanged frozen queue at unused DeepSeek P05-B-001, position 4. Retain all three existing archives. Continue per-run service checks; future explicit response failures again stop after archive. No provider, prompt, phase, test or source adjustment."
+}

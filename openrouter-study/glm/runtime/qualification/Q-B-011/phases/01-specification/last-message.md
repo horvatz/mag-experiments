@@ -1,0 +1,3 @@
+- Pripravil sem `docs/agent/specification.md:1` z zahtevama R01 in R02 ter točno vrstico `Q01: result[i] = input[i] + 1`.
+- Kode nisem pisal.
+- Kontrolni ukaz ni uspel, ker manjka `src/qualification.ts`; dokumentacija je bila uspešno ustvarjena.

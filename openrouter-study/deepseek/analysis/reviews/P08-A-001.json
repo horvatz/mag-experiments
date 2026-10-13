@@ -1,0 +1,100 @@
+{
+  "id": "P08-A-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Presoja končne avtorske oddaje in dejanskih izvirnih/preserviranih dnevnikov. Napaka prazne skupine na tabli je potrjena neodvisno na obeh širinah; nobenega popravka ali ponovitve merjene oddaje ni.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "R01–R12 jasno opredelijo izrecni začetni datum/all brez ure naprave, prednost done, vse disjunktne meje vključno +7/+8, UTC koledarsko aritmetiko, števce celega projekta z dostopnimi imeni in stabilni filter. Loči dateText od zadnje veljavne reference, ohrani filter pri preračunu, besedilo pri preklopu ter določi projektni/reload reset, odsotnost URL/shrambe, prazni stanji, bralnost, ohranjene ID-je/dostopnost in Folio pri 390 px. R11 določi sporočilo in dosegljiv izbirnik, R09 pa oba filtrirana pogleda. Enako kot pri primerljivi Luna P08-A presoji ločeno ocenjujemo specifikacijo in končno napako prednosti praznega prikaza; ta ne izbriše pravil dokumenta.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:20",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:35",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:40",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:48",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:51"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "ref je izrecno zadnja veljavna referenca. done implikacija in štirje odprti razredi določijo disjunktno/izčrpno particijo z mejami d<ref, d=ref, ref+1≤d≤ref+7 in d>ref+7. Ključne ohranjene lastnosti so preverljive: števec celotnega projekta neodvisno od filtra, stabilni vrstni red brez sprememb, neveljaven vnos ne spremeni izračuna, veljaven ohrani filter, preklop ohrani ref/besedilo/skupino, projekt in reload ponastavita začetno stanje. Ni formalne dvoumnosti sicer later ali povrnitve praznega besedila na prejšnji veljavni vnos.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:35",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:40",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:43",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:45",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:47",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:49"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Specifikacijska matrika poveže vse R z moduli in konkretnimi funkcijami/elementi ter poimenovanimi lastnimi oziroma razvojnimi scenariji; verification doda dejanske izide. Native item_33 potrdi 20/20, item_35 58/58 ter item_31/32 statična preverjanja. Omejitve odkrito izključijo skrite teste, fizično napravo in ročni vizualni ogled. Verification celo izrecno navede, da sporočilo na prazni tabli nadomesti stolpce: to je sledljivo priznano obnašanje, ki se ločeno izkaže za napako po neodvisnem E11. Ocenjujemo preverljivost navedb, ne njihove funkcionalne pravilnosti. Posamezen uspešen scenarij ne dokazuje vseh kombinacij; vrzeli so navedene v ownChecks.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:61",
+        "runtime/runs/P08-A-001/submission/docs/agent/specification.md:68",
+        "runtime/runs/P08-A-001/submission/docs/agent/verification.md:11",
+        "runtime/runs/P08-A-001/submission/docs/agent/verification.md:24",
+        "runtime/runs/P08-A-001/submission/docs/agent/verification.md:48",
+        "runtime/runs/P08-A-001/submission/docs/agent/verification.md:55"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti dueGroups.ts loči validacijo, dodajanje koledarskih dni, razvrščanje, štetje in stabilno filtriranje. ProjectView hrani samo dateText, referenceDate in filter, veljavnost/števce/vidne vrstice pa izpelje; neveljaven osnutek ne zamenja reference. Konstantni ključi/oznake služijo kontrolam in povzetku, oba prikaza prejmeta isti seznam. Projektni ključ upravlja reset, bralni podatki in podrobnosti ostanejo ločeni. En sam pogoj emptyGroup napačno prehiti izris table, vendar je napaka lokalna in jasno sledljiva, ne dokaz znatnega podvajanja ali slabe razmejitve odgovornosti.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/src/dueGroups.ts:16",
+        "runtime/runs/P08-A-001/submission/src/dueGroups.ts:27",
+        "runtime/runs/P08-A-001/submission/src/dueGroups.ts:33",
+        "runtime/runs/P08-A-001/submission/src/dueGroups.ts:41",
+        "runtime/runs/P08-A-001/submission/src/dueGroups.ts:47",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:23",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:29",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:74",
+        "runtime/runs/P08-A-001/submission/src/App.tsx:118"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Dvanajst uspešnih lastnih scenarijev ima uporabne negativne/mejne oraklje: druga ura naprave, done pred/po referenci, +1/+7/+8, prestopni februar/prehod leta, neodvisne ID-je in števce, stabilen nesortiran red, vseh šest filtrov, celoprojektni povzetek, prazen vnos, pravi reset spremenjenih nastavitev pri reloadu in menjavi projekta, URL/shrambo ter obe širini/pogleda. Toda R11 prazno skupino preveri samo v preglednici, zato ne zazna manjkajoče table, ki pozneje odpove v E11 na obeh širinah. R09 uporablja privzeti datum in veljavno besedilo, R08 prazni samo privzeto referenco: preklop praznega osnutka po spremenjeni referenci ni lastno preverjen. Ni namenskih različnih časovnih pasov/DST/stoletnih robov. Več testov samo po sebi ne zapre teh pomembnih kombinacij.",
+      "evidence": [
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:14",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:38",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:61",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:85",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:103",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:121",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:135",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:159",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:179",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:188",
+        "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:197"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E11 na namizju in telefonu odpove, ker po izbiri prazne skupine in preklopu na tablo ni regije Tabla opravil. App.tsx:74 prednostno vrne samo state-message za emptyGroup in ne izriše TaskBoard. Izbirnik ostane, toda zahtevani prazen prikaz table izgine. Lastni R11 preverja samo preglednico, R09 pa ima v vsaki skupini vsaj eno opravilo. Končni rezultat je 68/70 in 11/12 dokazanih zahtev; razvojna in regresijska sklopa sta v celoti uspešna.",
+    "evidence": [
+      "runtime/runs/P08-A-001/submission/src/App.tsx:33",
+      "runtime/runs/P08-A-001/submission/src/App.tsx:74",
+      "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:135",
+      "runtime/runs/P08-A-001/submission/tests/agent/P08.spec.ts:188",
+      "runtime/runs/P08-A-001/evaluation-tests.log",
+      "runtime/runs/P08-A-001/evaluation-summary.json"
+    ]
+  },
+  "finalFailureNote": "Completed 676,417 s; 38/38 regresija, 8/8 razvoj, 22/24 skriti, 11/12 zahtev. Lint/types/build/allowed true, strogi uspeh false zaradi E11 na obeh širinah. Popolni strošek 0,0260986324 USD za 23 zahtev. Lastni 12/12 in full 58/58 potrjeni; ni izrecne napake API.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "V ohranjenih 22 dokončanih izvirnih ukazih ni neuspešnega izhoda; dejanski 20/20 in 58/58 sta potrjena tudi v besedilu rezultata, ne le prek izhoda cevovoda tail. Pregled preserviranih orodnih odgovorov ne potrdi dodatnega razvojnega neuspeha. Zato razvojnega primera ne izmišljamo; poznejši neodvisni E11 je ločen končni izid."
+}

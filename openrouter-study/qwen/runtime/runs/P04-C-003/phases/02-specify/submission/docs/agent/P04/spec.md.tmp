@@ -1,0 +1,16 @@
+## Zahteve in pravila
+
+| Zahteva | Pravilo oziroma sprejemni pogoj | Način preverjanja |
+| --- | --- | --- |
+| R01 | Privzeti `sortKey=original`, `sortOrder=asc`; sekundarna `sortKey=none`, `sortOrder=asc`; ohrani izvorni vrstni red polja | Pregled odziva z privzetimi parametri |
+| R02 | `title` in `assignee` primerja normalizirane nize: NFD, odstranitev U+0300–U+036F, male črke; UTF-16 leksikografska primerjava z < in > | Preizkus normalizacije |
+| R03 | `status`: vrstni red todo < in_progress < done; `dueDate`: veljavni datumi YYYY-MM-DD kronološko | Preizkus sortiranja statusov in datumov |
+| R04 | `asc/desc` obrne samo rezultat primerjave izbranega ključa; enaki elementi ohranjajo vrstni red | Preverjanje smeri in stabilnosti |
+| R05 | Sekundarni ključ se uporabi samo ob enakosti primarnega ključa; smer sekundarnega je neodvisna | Preizkus prioritete ključev |
+| R06 | Enak primarna in sekundarna vrednost: izvorni vrstni red; `original` kot primarni ključ vedno vrne izvorni vrstni red | Preizkus stabilnosti pri enakih parih |
+| R07 | 3 stolpca (title, assignee, status); relativni vrstni red znotraj stolpca ustreza leksikografskemu vrstnemu redu | Pregled HTML ohranja vrstni red |
+| R08 | Preklop pogleda, odpiranje/zapiranje podrobnosti: shrani vse štiri nastavitve; ne ponastavi vrstnega reda | Simulirati klik in osvežitev |
+| R09 | Spreminjanje projekta ali osvežitev: resetira vse štiri nastavitve na privzete | Preverjanje resetiranja |
+| R10 | Gumb Izvorni vrstni red: resetira štiri kontrole; prazen projekt in en prispijo za vse parametre | Preizkusi robnih primerov |
+| R11 | Razvrščanje = projekcija; ni spremembe podatkov; odziv API posodobi vmesnik brez pošiljanja na API | Primerjati odziv in API stanje |
+| R12 | Vsi ID-ji natanko enkrat prikazani; enak naslov z različnim ID-jem odpira pravo podrobnost; ostale bralne funkcije ohranjene | Preverjanje unikatnosti in identifikacije |

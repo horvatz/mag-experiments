@@ -1,0 +1,115 @@
+{
+  "at": "2026-10-11T11:16:59.683459+00:00",
+  "researcherOnly": true,
+  "id": "qwen/P04-A-003",
+  "confirmed": "Request24 HTTP200 response.failed; native stream disconnected before completion: stream closed with reason: error.",
+  "rootCause": "Unknown; generic native message does not establish underlying cause.",
+  "lastRequest": {
+    "number": 24,
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "status": "finished",
+    "httpStatus": 200,
+    "responseStatus": "failed",
+    "responseId": "gen-1791716926-QsOfyqkVJOUcLXTirRZK",
+    "sentUpstream": true,
+    "startedAt": "2026-10-11T11:08:46.425Z",
+    "finishedAt": "2026-10-11T11:11:42.940Z",
+    "usage": {
+      "input_tokens": 40423,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1,
+      "output_tokens_details": {
+        "reasoning_tokens": 1
+      },
+      "total_tokens": 40424,
+      "cost": 0,
+      "is_byok": false,
+      "cost_details": {
+        "upstream_inference_cost": 0.00404245,
+        "upstream_inference_input_cost": 0.0040423,
+        "upstream_inference_output_cost": 1.5e-07
+      }
+    }
+  },
+  "lastDurationSeconds": 176.515,
+  "outcome": {
+    "status": "execution_failed",
+    "elapsedSeconds": 542.453,
+    "testsPassed": 38,
+    "requirementsPassed": 0,
+    "allStaticAndAllowedPassed": true,
+    "strictSuccess": false,
+    "completeTestRun": true,
+    "selectedForQualitativeReview": false
+  },
+  "archiveCost": {
+    "complete": true,
+    "costUSD": 0.0559054,
+    "knownCostUSD": 0.0559054
+  },
+  "requests": 24,
+  "lastArchivedReceipt": {
+    "number": 24,
+    "responseId": "gen-1791716926-QsOfyqkVJOUcLXTirRZK",
+    "costUSD": 0,
+    "generation": {
+      "id": "gen-1791716926-QsOfyqkVJOUcLXTirRZK",
+      "model": "qwen/qwen3.5-9b-20260310",
+      "provider": "SiliconFlow",
+      "totalCostUSD": 0,
+      "promptTokens": 40423,
+      "completionTokens": 1,
+      "finishReason": "error"
+    },
+    "billingLookupStatus": 200,
+    "usage": {
+      "input_tokens": 40423,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1,
+      "output_tokens_details": {
+        "reasoning_tokens": 1
+      },
+      "total_tokens": 40424,
+      "cost": 0,
+      "is_byok": false,
+      "cost_details": {
+        "upstream_inference_cost": 0.00404245,
+        "upstream_inference_input_cost": 0.0040423,
+        "upstream_inference_output_cost": 1.5e-07
+      }
+    },
+    "transportStatus": "finished"
+  },
+  "costInterpretation": "Generation receipt200 confirms request24 totalCostUSD0. Separate upstream inference cost is not substituted for charge.",
+  "diagnostic": {
+    "at": "2026-10-11T11:15:19.034Z",
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "httpStatus": 200,
+    "responseStatus": "completed",
+    "text": "CONNECTION_OK",
+    "error": null,
+    "passed": true,
+    "excludedFromMeasurements": true,
+    "costComplete": true,
+    "costUSD": 5.175e-05,
+    "evidence": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/qualification/service-2026-10-11T11-15-10-396Z"
+  },
+  "diagnosticLimitation": "Short response passed; long tool response reliability remains unknown.",
+  "continuation": {
+    "supervisor": 5943,
+    "previousRunner5034Exited": true,
+    "newUnchangedRunner": 15227,
+    "nextUnused": "glm/P04-A-003",
+    "position": 60,
+    "outputPTY": 42209,
+    "allInputsAndArchivesVerified": true,
+    "measuredRetry": false,
+    "providerOrProtocolChange": false
+  }
+}

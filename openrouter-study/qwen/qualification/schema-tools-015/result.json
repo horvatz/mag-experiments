@@ -1,0 +1,64 @@
+{
+  "excludedFromMeasurements": true,
+  "toolChoice": "auto",
+  "results": [
+    {
+      "constrained": false,
+      "httpStatus": 200,
+      "status": "completed",
+      "output": [
+        {
+          "id": "rs_tmp_x8fsr95rx2",
+          "type": "reasoning",
+          "status": "completed",
+          "content": [
+            {
+              "type": "reasoning_text",
+              "text": "The user is asking me to retrieve a hidden value using the available tool. I need to call the read_value function to get this hidden value, and then respond with the value in JSON format as instructed.\n"
+            }
+          ],
+          "summary": [],
+          "format": "unknown"
+        },
+        {
+          "id": "fc_tmp_wem2pqrcmd",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "chatcmpl-tool-88bfe21f1d05921d",
+          "name": "read_value",
+          "arguments": "{}"
+        }
+      ],
+      "toolCalled": true
+    },
+    {
+      "constrained": true,
+      "httpStatus": 200,
+      "status": "completed",
+      "output": [
+        {
+          "id": "rs_tmp_3j5m7htxxps",
+          "type": "reasoning",
+          "status": "completed",
+          "content": [
+            {
+              "type": "reasoning_text",
+              "text": "The user is asking me to retrieve a hidden value using the read_value tool. This is a technical diagnostic task as mentioned. I need to call the read_value function to get the hidden value, then provide the result in JSON format as specified.\n\nLet me call the read_value function first.\n"
+            }
+          ],
+          "summary": [],
+          "format": "unknown"
+        },
+        {
+          "id": "fc_tmp_tp5tcc10lr",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "chatcmpl-tool-849ea70091effffa",
+          "name": "read_value",
+          "arguments": "{}"
+        }
+      ],
+      "toolCalled": true
+    }
+  ]
+}

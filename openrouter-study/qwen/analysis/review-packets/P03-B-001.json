@@ -1,0 +1,257 @@
+{
+  "at": "2026-10-12T22:02:40.335Z",
+  "slug": "qwen",
+  "id": "P03-B-001",
+  "researcherOnly": true,
+  "limitations": [
+    "This is a source index, not a qualitative grade or a substitute for reading authored files.",
+    "Later API inputs can preserve failed tool calls omitted from native events. A final call without a subsequent input may be absent.",
+    "Attempted writes do not constitute delivered documents. The final immutable submission is authoritative.",
+    "Do not feed researcher evaluations or this packet to measured model sessions."
+  ],
+  "execution": {
+    "status": "missing_specification",
+    "elapsedSeconds": 98.298,
+    "phases": [
+      {
+        "name": "specification",
+        "status": "completed",
+        "elapsedSeconds": 97.159
+      }
+    ],
+    "fileChanges": []
+  },
+  "evaluation": {
+    "executionStatus": "missing_specification",
+    "groups": {
+      "regression": {
+        "passed": 38,
+        "total": 38
+      },
+      "development": {
+        "passed": 0,
+        "total": 8
+      },
+      "holdout": {
+        "passed": 0,
+        "total": 24
+      }
+    },
+    "checks": [
+      {
+        "name": "lint",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.701,
+        "passed": true
+      },
+      {
+        "name": "types",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.625,
+        "passed": true
+      },
+      {
+        "name": "build",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.223,
+        "passed": true
+      },
+      {
+        "name": "tests",
+        "exitCode": 1,
+        "signal": null,
+        "elapsedSeconds": 192.027,
+        "passed": false
+      }
+    ]
+  },
+  "phaseResults": [
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/result.json",
+      "name": "specification",
+      "status": "completed",
+      "elapsedSeconds": 97.159,
+      "signal": null
+    }
+  ],
+  "authoredFiles": [],
+  "nativeCommands": [
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_2",
+      "command": "/bin/zsh -lc 'cat PROJECT_RULES.md'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "# Skupna pravila dela v aplikaciji\n\nTo je začetna aplikacija za pilot P03. Konkretne zahteve prejme agent skupaj\nz nalogo; ta dokument določa izhodišče in mejo dovoljenih sprememb.\n\n## Dovoljene spremembe\n\n- Koda uporabniškega vmesnika v `src/`, vključno s slogi in uporabo javnega API-ja.\n- Lastni dodatni testi v `tests/agent/` in lastna dokumentacija v `docs/agent/`.\n\nZačetni podatki, strežnik v `server/`, skupni tipi v `shared/`, skupni testi\n`tests/baseline.spec.ts` in `tests/api.spec.ts`, odvisnosti ter nastavitve\nzagona in preverjanja ostanejo enaki. Sprememba skupne infrastrukture zahteva\nenako, vnaprej dogovorjeno posodobitev izhodišča za vse postopke.\n\n## Pričakovano delo\n\n1. Preberi zahteve naloge in uporabi priloženo predlogo specifikacije.\n2. Dopolni obstoječi vmesnik; ohrani slovenska poimenovanja in potrjeni videz Folio iz `docs/dizajn.md`.\n3. Podatke beri in shranjuj prek javnega vmesnika `/api/`. Izbiraj po `id`.\n4. Preveri rešitev s skupnimi testi in smiselno dodaj lastna preverjanja.\n5. Ob koncu opiši spremembe, izvedena preverjanja, njihove rezultate in\n   morebitne neizpolnjene zahteve. Ne navajaj neizvedenih testov kot uspešnih.\n\nTestne kontrole `/__test/` uporablja samo testni program. Uporabniški vmesnik\nne sme z njimi nastavljati odzivov, brati testnega stanja ali ponastavljati\npodatkov. Ne nadomeščaj strežnika z lokalno kopijo podatkov ali `localStorage`.\n\nTesti izhodišča preverjajo začetno delovanje in infrastrukturo. Konkretne\nzahteve P03 je treba preveriti tudi z ločeno pripravljenimi testi te naloge.\nPred agentno izvedbo izvajalec izvozi samo dovoljene datoteke. Prisotnost teh\npravil sama po sebi ne preprečuje dostopa do drugih map ali sprememb datotek.\n"
+    },
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_3",
+      "command": "/bin/zsh -lc 'cat task/instructions.md'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "# P03: Iskanje in sestavljeni filtri\n\nRazličica 1.0, glavna naloga. Vsi postopki prejmejo iste zahteve, izhodišče in razvojne teste. Začetni Folio ne vsebuje rešitve pilotov ali drugih glavnih nalog.\n\n## Zahteve\n\n| ID | Pričakovano delovanje |\n| --- | --- |\n| R01 | Ob nalaganju so iskalni vnos in filtra prazni oziroma nastavljeni na vse; prikazana so vsa opravila trenutnega projekta v izvornem vrstnem redu. |\n| R02 | Iskanje pregleduje združene id, title, description in assignee. Obe strani pretvori z Unicode NFD, odstrani kombinacijska znamenja U+0300–U+036F in pretvori v male črke; zato crka č in c ter velikost črk ne razlikujeta zadetkov. |\n| R03 | Iskalni vnos razdeli po belinah v neprazne besede; opravilo ustreza, če so vse besede dobesedni podnizi združenih polj. Vrstni red besed ni pomemben, ločila niso regularni izrazi. Prazen vnos ne omejuje. |\n| R04 | Filter stanja in filter odgovorne osebe delujeta skupaj z iskanjem po logičnem IN. Stanje ima vrednosti all, todo, in_progress, done; odgovorna oseba se primerja natančno, brez normalizacije. |\n| R05 | Izbirnik oseb vsebuje možnost all in vsako različno neprazno ime iz celotnega trenutnega projekta natanko enkrat, tudi če je trenutno skrito zaradi drugih pogojev. Preklop projekta ne ohrani stare osebe. |\n| R06 | Preglednica in tabla kažeta iste ustrezne ID-je; preklop pogleda ohrani vse filtre. Stolpci table vsebujejo samo ustrezna opravila svojega stanja. |\n| R07 | Menjava projekta ponastavi iskanje in oba filtra. Filtri se nikoli ne uporabijo na podatkih drugega projekta. |\n| R08 | Osvežitev strani začne s privzetimi filtri. Filtri se ne shranjujejo v URL ali trajno shrambo brskalnika. |\n| R09 | Število rezultatov je Prikazano: N od M., kjer je M velikost celotnega trenutnega projekta. Pregled stanj in števci stolpcev štejejo prikazane rezultate. |\n| R10 | Če v nepraznem projektu nobeno opravilo ne ustreza, je prikazano sporočilo Ni zadetkov. in oba pogleda ostaneta uporabna. Prazen projekt ohrani običajno prazno stanje in števec 0 od 0. |\n| R11 | Počisti filtre v enem dejanju vrne vse tri kontrole na privzete vrednosti in prikaže vsa opravila. Uporaba filtrov ne spremeni izvornega vrstnega reda ali polj podatkov. |\n| R12 | Obstoječa navigacija in bralne podrobnosti delujejo. Nobeno dejanje filtriranja ne pošlje POST/PATCH/PUT/DELETE na /api/. Ohranjen je Folio in prikaz pri ozki širini. |\n\n## Dogovor o vmesniku\n\n- Iskalni input type=search: Išči opravila.\n- HTML select: Filter stanja (all/todo/in_progress/done) in Filter odgovorne osebe (all ali točno ime).\n- Gumb Počisti filtre. Element role=status, aria-label=Rezultati filtriranja, besedilo Prikazano: N od M..\n\nOhrani `data-task-id` na vrsticah in karticah, dostopna imena obstoječih pogledov in stolpcev ter `aria-label=\"Pregled stanj opravil\"`. Nova dejanja ob opravilu morajo biti zunaj njegove povezave. Na širini 390 pik se cela stran ne razširi; notranje drsenje preglednice in table je dovoljeno. Besedilo, ki ni izrecno določeno zgoraj, in razporeditev novih kontrol nista predpisana.\n\n## Podatki, obseg in preverjanje\n\nPodatke preberi iz obstoječega javnega API-ja. Testi lahko vrnejo poljubno število opravil (tudi nič, eno in več kot deset), drugačne enkratne ID-je, enake naslove, različno zaporedje in veljavne koledarske datume. Tipi in polja so enaki izhodišču. Projekta sta lahko prazna. Naslovi, opisi in imena so navadno besedilo, tudi z Unicode znaki in ločili. V nalogah z izbiro odgovorne osebe so imena neprazna in različna od rezervirane vrednosti `all`. Vsako opravilo pripada svojemu projektu.\n\nJavni pripomoček razvojnih testov podaja dodatne podatke z nadzorovanimi GET odgovori. To je testni mehanizem, ki ga uporabniški vmesnik ne sme uvažati ali uporabljati. Aplikacija bere samo `/api/`; ne bere testnih kontrol `/__test/`. Strežnika, infrastrukture, odvisnosti in skupnih tipov ne spreminjaj. Razvojni primeri niso celoten obseg zahtev; končni primeri lahko uporabijo drugačne podatke iz opisane domene.\n\nNavigacije med nezaključenim nalaganjem in novih sočasnih sprememb podatkov brez osvežitve ne širimo prek obstoječih regresijskih zahtev. Če posamezna zahteva ne določa trajne shrambe ali URL-ja, je stanje nove funkcionalnosti lokalno trenutnemu projektu. Ne dodajaj novih zapisovalnih API-jev.\n\n## Oddaja\n\nSpreminjaj samo `src/`, lastne teste v `tests/agent/` in dokumente v `docs/agent/`. Veljajo projektna pravila; omembe pilotov v dokumentih izhodišča so zgodovinske. Pripravi specifikacijo po skupni predlogi in poveži vseh R01–R12 s pogoji, kodo in dejansko izvedenimi testi. Izbrane pogoje opredeli tudi s predikati. Zapiši nepreverjene dele in omejitve; nedostopnih končnih testov ne navajaj kot opravljenih.\n"
+    },
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_4",
+      "command": "/bin/zsh -lc 'cat task/specification-template.md'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "# Predloga razvojne specifikacije\n\nPredloga je enaka za vse postopke. Izpolnjena vsebina je izdelek postopka,\nne vnaprej dana referenčna rešitev. Če postopek ustvari več dokumentov,\nlahko navede povezave na ustrezne dele namesto podvajanja vsebine.\n\n## Problem in kontekst\n\nOpiši uporabnikov namen, začetno delovanje aplikacije in predvideno spremembo.\n\n## Vhodi, dejanja in izidi\n\nDoloči relevantna podatkovna polja, dovoljena dejanja, pogoje uporabe in\npričakovano stanje po uspehu, preklicu ter napaki.\n\n## Zahteve in pravila\n\nZa vsako zahtevo iz navodil navedi, kako bo zajeta. Izbrane zahteve izrazi\ns predikati ali pravili spremembe stanja. Pojasni simbole in predpostavke.\nLoči splošno pravilo od posameznega testnega primera.\n\n| Zahteva | Pravilo oziroma sprejemni pogoj | Način preverjanja |\n| --- | --- | --- |\n| R… | … | … |\n\n## Izvedba in sledljivost\n\n| Zahteva | Pogoj | Test ali scenarij | Datoteka in del kode | Izid ter dokaz |\n| --- | --- | --- | --- | --- |\n| R… | … | … | … | … |\n\nIzida ne označi kot uspešnega brez dejanskega preverjanja. Navedi, če test\nni izveden. Izvor rezultata naj bo določljiv, npr. ime testa in dnevnik zagona.\nPo popravkih posodobi povezave in ohrani zgodovino sprememb specifikacije.\n\n## Odprta vprašanja in omejitve\n\nZapiši nejasnosti, uporabljena pojasnila, nepreverjene scenarije ter odstopanja.\n"
+    },
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_5",
+      "command": "/bin/zsh -lc 'node task/time-budget.mjs'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "{\"phaseSecondsRemaining\":352,\"totalSecondsRemaining\":1192,\"phaseDeadlineUTC\":\"2026-10-12T22:02:55.371Z\"}\n"
+    },
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_6",
+      "command": "/bin/zsh -lc 'find src/ shared/ -type f -name \"*.ts\" | head -20'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "src/useResource.ts\nsrc/navigation.ts\nsrc/api.ts\nsrc/formatDate.ts\nshared/types.ts\n"
+    },
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_7",
+      "command": "/bin/zsh -lc 'cat shared/types.ts'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "export type TaskStatus = 'todo' | 'in_progress' | 'done'\n\nexport interface Project {\n  id: string\n  name: string\n}\n\nexport interface Task {\n  id: string\n  projectId: string\n  title: string\n  description: string\n  status: TaskStatus\n  assignee: string\n  dueDate: string\n}\n\nexport interface TaskUpdate {\n  title: string\n  status: TaskStatus\n}\n"
+    },
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_8",
+      "command": "/bin/zsh -lc 'cat src/api.ts'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "import type { Task, TaskUpdate } from '../shared/types.ts'\n\nexport async function request<T>(path: string, options?: RequestInit): Promise<T> {\n  const response = await fetch(path, options)\n  if (!response.ok) {\n    const body = await response.json().catch(() => null)\n    throw new Error(body?.message || 'Podatkov ni mogoče pridobiti. Poskusi znova.')\n  }\n  return response.json() as Promise<T>\n}\n\n// Prepared API for P01. The baseline interface only reads tasks.\nexport function updateTask(id: string, values: TaskUpdate): Promise<Task> {\n  return request(`/api/tasks/${encodeURIComponent(id)}`, {\n    method: 'PATCH',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify(values),\n  })\n}\n"
+    },
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_9",
+      "command": "/bin/zsh -lc 'cat src/useResource.ts'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "import { useCallback, useEffect, useState } from 'react'\nimport { request } from './api.ts'\n\nexport function useResource<T>(path: string | null) {\n  const [attempt, setAttempt] = useState(0)\n  const key = `${path}:${attempt}`\n  const [result, setResult] = useState<{ key: string; data: T | null; error: string | null } | null>(null)\n  const retry = useCallback(() => setAttempt((value) => value + 1), [])\n\n  useEffect(() => {\n    if (!path) return\n    const controller = new AbortController()\n    request<T>(path, { signal: controller.signal })\n      .then((data) => {\n        if (!controller.signal.aborted) setResult({ key, data, error: null })\n      })\n      .catch((error: unknown) => {\n        if (!controller.signal.aborted) {\n          setResult({ key, data: null, error: error instanceof Error ? error.message : 'Podatkov ni mogoče pridobiti.' })\n        }\n      })\n    return () => controller.abort()\n  }, [path, key])\n\n  const current = result?.key === key ? result : null\n  return { data: current?.data ?? null, error: current?.error ?? null, loading: !!path && !current, retry }\n}\n"
+    },
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_10",
+      "command": "/bin/zsh -lc 'grep -r \"/api/\" src/ --include=\"*.ts\" | head -10'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "src/api.ts:  return request(`/api/tasks/${encodeURIComponent(id)}`, {\n"
+    },
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_11",
+      "command": "/bin/zsh -lc 'ls tests/ && cat tests/baseline.spec.ts 2>/dev/null | head -50'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "agent\napi.spec.ts\nbaseline.spec.ts\ndevelopment\nimport { expect, test } from '@playwright/test'\n\ntest.beforeEach(async ({ request }) => {\n  const response = await request.post('/__test/reset')\n  expect(response.ok()).toBeTruthy()\n})\n\ntest('projects show their own tasks and all three states', async ({ page }) => {\n  await page.goto('/')\n  await expect(page.getByRole('heading', { name: 'Spletna prenova', exact: true })).toBeVisible()\n  const table = page.getByRole('table')\n  await expect(table.getByRole('row')).toHaveCount(4)\n  await expect(table.getByText('Pregled vsebine', { exact: true })).toHaveCount(2)\n  for (const status of ['Pripravljeno', 'V delu', 'Končano']) await expect(table.getByText(status, { exact: true })).toBeVisible()\n  await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name: 'Jesenska kampanja' }).click()\n  await expect(page.getByRole('heading', { name: 'Jesenska kampanja', exact: true })).toBeVisible()\n  await expect(table.getByText('Uskladitev časovnice')).toBeVisible()\n  await expect(table.getByText('Priprava oblikovnih smernic')).toHaveCount(0)\n  await page.goBack()\n  await expect(table.getByText('Priprava oblikovnih smernic')).toBeVisible()\n  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBeTruthy()\n})\n\ntest('duplicate titles open by ID, with complete details and keyboard dismissal', async ({ page, request }) => {\n  await page.goto('/')\n  const second = page.locator('[data-task-id=\"web-02\"]').getByRole('link')\n  await second.click()\n  const dialog = page.getByRole('dialog')\n  await expect(dialog).toBeVisible()\n  await expect(dialog.getByRole('heading', { name: 'Pregled vsebine' })).toBeVisible()\n  const bounds = await dialog.boundingBox()\n  expect(bounds!.x).toBeGreaterThanOrEqual(0)\n  expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(page.viewportSize()!.width)\n  await expect(dialog.getByText('Luka Kovač', { exact: true })).toBeVisible()\n  await expect(dialog.getByText('Pripravljeno', { exact: true })).toBeVisible()\n  await expect(dialog.getByText('Spletna prenova', { exact: true })).toBeVisible()\n  await expect(dialog.locator('time')).toHaveAttribute('datetime', '2026-09-22')\n  await expect(dialog.getByText(/Preglej vsebino strani s pogostimi vprašanji/)).toBeVisible()\n  await page.keyboard.press('Escape')\n  await expect(dialog).toHaveCount(0)\n  await expect(second).toBeFocused()\n  await page.locator('[data-task-id=\"web-01\"]').getByRole('link').click()\n  await expect(dialog.getByText('Ana Novak', { exact: true })).toBeVisible()\n  await expect(dialog.getByText('V delu', { exact: true })).toBeVisible()\n  await dialog.getByRole('button', { name: 'Zapri podrobnosti' }).click()\n  const state = await (await request.get('/__test/state')).json()\n  expect(state.saveRequests).toBe(0)\n})\n\ntest('direct task links survive refresh and browser back closes details', async ({ page }) => {\n"
+    },
+    {
+      "source": "runtime/runs/P03-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_12",
+      "command": "/bin/zsh -lc 'node -e \"setTimeout(() => process.exit(0), 60000)\"'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "preservedToolCalls": [
+    {
+      "source": "api/P03-B-001/model/request-00002.json.gz",
+      "callId": "01a1321e747a7f69150ab2a256661521",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat PROJECT_RULES.md\"}",
+      "output": "Chunk ID: 442bc2\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 434\nOutput:\n# Skupna pravila dela v aplikaciji\n\nTo je začetna aplikacija za pilot P03. Konkretne zahteve prejme agent skupaj\nz nalogo; ta dokument določa izhodišče in mejo dovoljenih sprememb.\n\n## Dovoljene spremembe\n\n- Koda uporabniškega vmesnika v `src/`, vključno s slogi in uporabo javnega API-ja.\n- Lastni dodatni testi v `tests/agent/` in lastna dokumentacija v `docs/agent/`.\n\nZačetni podatki, strežnik v `server/`, skupni tipi v `shared/`, skupni testi\n`tests/baseline.spec.ts` in `tests/api.spec.ts`, odvisnosti ter nastavitve\nzagona in preverjanja ostanejo enaki. Sprememba skupne infrastrukture zahteva\nenako, vnaprej dogovorjeno posodobitev izhodišča za vse postopke.\n\n## Pričakovano delo\n\n1. Preberi zahteve naloge in uporabi priloženo predlogo specifikacije.\n2. Dopolni obstoječi vmesnik; ohrani slovenska poimenovanja in potrjeni videz Folio iz `docs/dizajn.md`.\n3. Podatke beri in shranjuj prek javnega vmesnika `/api/`. Izbiraj po `id`.\n4. Preveri rešitev s skupnimi testi in smiselno dodaj lastna preverjanja.\n5. Ob koncu opiši spremembe, izvedena preverjanja, njihove rezultate in\n   morebitne neizpolnjene zahteve. Ne navajaj neizvedenih testov kot uspešnih.\n\nTestne kontrole `/__test/` uporablja samo testni program. Uporabniški vmesnik\nne sme z njimi nastavljati odzivov, brati testnega stanja ali ponastavljati\npodatkov. Ne nadomeščaj strežnika z lokalno kopijo podatkov ali `localStorage`.\n\nTesti izhodišča preverjajo začetno delovanje in infrastrukturo. Konkretne\nzahteve P03 je treba preveriti tudi z ločeno pripravljenimi testi te naloge.\nPred agentno izvedbo izvajalec izvozi samo dovoljene datoteke. Prisotnost teh\npravil sama po sebi ne preprečuje dostopa do drugih map ali sprememb datotek.\n"
+    },
+    {
+      "source": "api/P03-B-001/model/request-00002.json.gz",
+      "callId": "01a1321e7796a5bd3fca7102951e7f31",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat task/instructions.md\"}",
+      "output": "Chunk ID: 14978e\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 1197\nOutput:\n# P03: Iskanje in sestavljeni filtri\n\nRazličica 1.0, glavna naloga. Vsi postopki prejmejo iste zahteve, izhodišče in razvojne teste. Začetni Folio ne vsebuje rešitve pilotov ali drugih glavnih nalog.\n\n## Zahteve\n\n| ID | Pričakovano delovanje |\n| --- | --- |\n| R01 | Ob nalaganju so iskalni vnos in filtra prazni oziroma nastavljeni na vse; prikazana so vsa opravila trenutnega projekta v izvornem vrstnem redu. |\n| R02 | Iskanje pregleduje združene id, title, description in assignee. Obe strani pretvori z Unicode NFD, odstrani kombinacijska znamenja U+0300–U+036F in pretvori v male črke; zato crka č in c ter velikost črk ne razlikujeta zadetkov. |\n| R03 | Iskalni vnos razdeli po belinah v neprazne besede; opravilo ustreza, če so vse besede dobesedni podnizi združenih polj. Vrstni red besed ni pomemben, ločila niso regularni izrazi. Prazen vnos ne omejuje. |\n| R04 | Filter stanja in filter odgovorne osebe delujeta skupaj z iskanjem po logičnem IN. Stanje ima vrednosti all, todo, in_progress, done; odgovorna oseba se primerja natančno, brez normalizacije. |\n| R05 | Izbirnik oseb vsebuje možnost all in vsako različno neprazno ime iz celotnega trenutnega projekta natanko enkrat, tudi če je trenutno skrito zaradi drugih pogojev. Preklop projekta ne ohrani stare osebe. |\n| R06 | Preglednica in tabla kažeta iste ustrezne ID-je; preklop pogleda ohrani vse filtre. Stolpci table vsebujejo samo ustrezna opravila svojega stanja. |\n| R07 | Menjava projekta ponastavi iskanje in oba filtra. Filtri se nikoli ne uporabijo na podatkih drugega projekta. |\n| R08 | Osvežitev strani začne s privzetimi filtri. Filtri se ne shranjujejo v URL ali trajno shrambo brskalnika. |\n| R09 | Število rezultatov je Prikazano: N od M., kjer je M velikost celotnega trenutnega projekta. Pregled stanj in števci stolpcev štejejo prikazane rezultate. |\n| R10 | Če v nepraznem projektu nobeno opravilo ne ustreza, je prikazano sporočilo Ni zadetkov. in oba pogleda ostaneta uporabna. Prazen projekt ohrani običajno prazno stanje in števec 0 od 0. |\n| R11 | Počisti filtre v enem dejanju vrne vse tri kontrole na privzete vrednosti in prikaže vsa opravila. Uporaba filtrov ne spremeni izvornega vrstnega reda ali polj podatkov. |\n| R12 | Obstoječa navigacija in bralne podrobnosti delujejo. Nobeno dejanje filtriranja ne pošlje POST/PATCH/PUT/DELETE na /api/. Ohranjen je Folio in prikaz pri ozki širini. |\n\n## Dogovor o vmesniku\n\n- Iskalni input type=search: Išči opravila.\n- HTML select: Filter stanja (all/todo/in_progress/done) in Filter odgovorne osebe (all ali točno ime).\n- Gumb Počisti filtre. Element role=status, aria-label=Rezultati filtriranja, besedilo Prikazano: N od M..\n\nOhrani `data-task-id` na vrsticah in karticah, dostopna imena obstoječih pogledov in stolpcev ter `aria-label=\"Pregled stanj opravil\"`. Nova dejanja ob opravilu morajo biti zunaj njegove povezave. Na širini 390 pik se cela stran ne razširi; notranje drsenje preglednice in table je dovoljeno. Besedilo, ki ni izrecno določeno zgoraj, in razporeditev novih kontrol nista predpisana.\n\n## Podatki, obseg in preverjanje\n\nPodatke preberi iz obstoječega javnega API-ja. Testi lahko vrnejo poljubno število opravil (tudi nič, eno in več kot deset), drugačne enkratne ID-je, enake naslove, različno zaporedje in veljavne koledarske datume. Tipi in polja so enaki izhodišču. Projekta sta lahko prazna. Naslovi, opisi in imena so navadno besedilo, tudi z Unicode znaki in ločili. V nalogah z izbiro odgovorne osebe so imena neprazna in različna od rezervirane vrednosti `all`. Vsako opravilo pripada svojemu projektu.\n\nJavni pripomoček razvojnih testov podaja dodatne podatke z nadzorovanimi GET odgovori. To je testni mehanizem, ki ga uporabniški vmesnik ne sme uvažati ali uporabljati. Aplikacija bere samo `/api/`; ne bere testnih kontrol `/__test/`. Strežnika, infrastrukture, odvisnosti in skupnih tipov ne spreminjaj. Razvojni primeri niso celoten obseg zahtev; končni primeri lahko uporabijo drugačne podatke iz opisane domene.\n\nNavigacije med nezaključenim nalaganjem in novih sočasnih sprememb podatkov brez osvežitve ne širimo prek obstoječih regresijskih zahtev. Če posamezna zahteva ne določa trajne shrambe ali URL-ja, je stanje nove funkcionalnosti lokalno trenutnemu projektu. Ne dodajaj novih zapisovalnih API-jev.\n\n## Oddaja\n\nSpreminjaj samo `src/`, lastne teste v `tests/agent/` in dokumente v `docs/agent/`. Veljajo projektna pravila; omembe pilotov v dokumentih izhodišča so zgodovinske. Pripravi specifikacijo po skupni predlogi in poveži vseh R01–R12 s pogoji, kodo in dejansko izvedenimi testi. Izbrane pogoje opredeli tudi s predikati. Zapiši nepreverjene dele in omejitve; nedostopnih končnih testov ne navajaj kot opravljenih.\n"
+    },
+    {
+      "source": "api/P03-B-001/model/request-00002.json.gz",
+      "callId": "01a1321e7b11448ae630a56401e8bb47",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat task/specification-template.md\"}",
+      "output": "Chunk ID: 0c2f1f\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 345\nOutput:\n# Predloga razvojne specifikacije\n\nPredloga je enaka za vse postopke. Izpolnjena vsebina je izdelek postopka,\nne vnaprej dana referenčna rešitev. Če postopek ustvari več dokumentov,\nlahko navede povezave na ustrezne dele namesto podvajanja vsebine.\n\n## Problem in kontekst\n\nOpiši uporabnikov namen, začetno delovanje aplikacije in predvideno spremembo.\n\n## Vhodi, dejanja in izidi\n\nDoloči relevantna podatkovna polja, dovoljena dejanja, pogoje uporabe in\npričakovano stanje po uspehu, preklicu ter napaki.\n\n## Zahteve in pravila\n\nZa vsako zahtevo iz navodil navedi, kako bo zajeta. Izbrane zahteve izrazi\ns predikati ali pravili spremembe stanja. Pojasni simbole in predpostavke.\nLoči splošno pravilo od posameznega testnega primera.\n\n| Zahteva | Pravilo oziroma sprejemni pogoj | Način preverjanja |\n| --- | --- | --- |\n| R… | … | … |\n\n## Izvedba in sledljivost\n\n| Zahteva | Pogoj | Test ali scenarij | Datoteka in del kode | Izid ter dokaz |\n| --- | --- | --- | --- | --- |\n| R… | … | … | … | … |\n\nIzida ne označi kot uspešnega brez dejanskega preverjanja. Navedi, če test\nni izveden. Izvor rezultata naj bo določljiv, npr. ime testa in dnevnik zagona.\nPo popravkih posodobi povezave in ohrani zgodovino sprememb specifikacije.\n\n## Odprta vprašanja in omejitve\n\nZapiši nejasnosti, uporabljena pojasnila, nepreverjene scenarije ter odstopanja.\n"
+    },
+    {
+      "source": "api/P03-B-001/model/request-00002.json.gz",
+      "callId": "01a1321e7ed83bc7fcc4a7c3782ca601",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"node task/time-budget.mjs\"}",
+      "output": "Chunk ID: 3ae69f\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 27\nOutput:\n{\"phaseSecondsRemaining\":352,\"totalSecondsRemaining\":1192,\"phaseDeadlineUTC\":\"2026-10-12T22:02:55.371Z\"}\n"
+    },
+    {
+      "source": "api/P03-B-001/model/request-00003.json.gz",
+      "callId": "01a1321e908435fc3d7bf335bee3e4b1",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"find src/ shared/ -type f -name \\\"*.ts\\\" | head -20\"}",
+      "output": "Chunk ID: 43dcdc\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 21\nOutput:\nsrc/useResource.ts\nsrc/navigation.ts\nsrc/api.ts\nsrc/formatDate.ts\nshared/types.ts\n"
+    },
+    {
+      "source": "api/P03-B-001/model/request-00003.json.gz",
+      "callId": "01a1321e93667c30bb999457bfb89a2e",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat shared/types.ts\"}",
+      "output": "Chunk ID: 6d4a6b\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 86\nOutput:\nexport type TaskStatus = 'todo' | 'in_progress' | 'done'\n\nexport interface Project {\n  id: string\n  name: string\n}\n\nexport interface Task {\n  id: string\n  projectId: string\n  title: string\n  description: string\n  status: TaskStatus\n  assignee: string\n  dueDate: string\n}\n\nexport interface TaskUpdate {\n  title: string\n  status: TaskStatus\n}\n"
+    },
+    {
+      "source": "api/P03-B-001/model/request-00004.json.gz",
+      "callId": "01a1321ea2cf857a12fe4cc06d6f050f",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat src/api.ts\"}",
+      "output": "Chunk ID: 9490e8\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 180\nOutput:\nimport type { Task, TaskUpdate } from '../shared/types.ts'\n\nexport async function request<T>(path: string, options?: RequestInit): Promise<T> {\n  const response = await fetch(path, options)\n  if (!response.ok) {\n    const body = await response.json().catch(() => null)\n    throw new Error(body?.message || 'Podatkov ni mogoče pridobiti. Poskusi znova.')\n  }\n  return response.json() as Promise<T>\n}\n\n// Prepared API for P01. The baseline interface only reads tasks.\nexport function updateTask(id: string, values: TaskUpdate): Promise<Task> {\n  return request(`/api/tasks/${encodeURIComponent(id)}`, {\n    method: 'PATCH',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify(values),\n  })\n}\n"
+    },
+    {
+      "source": "api/P03-B-001/model/request-00004.json.gz",
+      "callId": "01a1321ea4c3cda5a6363139c1a5d7b3",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat src/useResource.ts\"}",
+      "output": "Chunk ID: 019466\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 274\nOutput:\nimport { useCallback, useEffect, useState } from 'react'\nimport { request } from './api.ts'\n\nexport function useResource<T>(path: string | null) {\n  const [attempt, setAttempt] = useState(0)\n  const key = `${path}:${attempt}`\n  const [result, setResult] = useState<{ key: string; data: T | null; error: string | null } | null>(null)\n  const retry = useCallback(() => setAttempt((value) => value + 1), [])\n\n  useEffect(() => {\n    if (!path) return\n    const controller = new AbortController()\n    request<T>(path, { signal: controller.signal })\n      .then((data) => {\n        if (!controller.signal.aborted) setResult({ key, data, error: null })\n      })\n      .catch((error: unknown) => {\n        if (!controller.signal.aborted) {\n          setResult({ key, data: null, error: error instanceof Error ? error.message : 'Podatkov ni mogoče pridobiti.' })\n        }\n      })\n    return () => controller.abort()\n  }, [path, key])\n\n  const current = result?.key === key ? result : null\n  return { data: current?.data ?? null, error: current?.error ?? null, loading: !!path && !current, retry }\n}\n"
+    },
+    {
+      "source": "api/P03-B-001/model/request-00005.json.gz",
+      "callId": "01a1321eb1cb71fb227b7f2ed3160840",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"grep -r \\\"/api/\\\" src/ --include=\\\"*.ts\\\" | head -10\"}",
+      "output": "Chunk ID: ec9f52\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 18\nOutput:\nsrc/api.ts:  return request(`/api/tasks/${encodeURIComponent(id)}`, {\n"
+    },
+    {
+      "source": "api/P03-B-001/model/request-00005.json.gz",
+      "callId": "01a1321eb4be1a101b70792af06a0304",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"ls tests/ && cat tests/baseline.spec.ts 2>/dev/null | head -50\"}",
+      "output": "Chunk ID: e16fd1\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 737\nOutput:\nagent\napi.spec.ts\nbaseline.spec.ts\ndevelopment\nimport { expect, test } from '@playwright/test'\n\ntest.beforeEach(async ({ request }) => {\n  const response = await request.post('/__test/reset')\n  expect(response.ok()).toBeTruthy()\n})\n\ntest('projects show their own tasks and all three states', async ({ page }) => {\n  await page.goto('/')\n  await expect(page.getByRole('heading', { name: 'Spletna prenova', exact: true })).toBeVisible()\n  const table = page.getByRole('table')\n  await expect(table.getByRole('row')).toHaveCount(4)\n  await expect(table.getByText('Pregled vsebine', { exact: true })).toHaveCount(2)\n  for (const status of ['Pripravljeno', 'V delu', 'Končano']) await expect(table.getByText(status, { exact: true })).toBeVisible()\n  await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name: 'Jesenska kampanja' }).click()\n  await expect(page.getByRole('heading', { name: 'Jesenska kampanja', exact: true })).toBeVisible()\n  await expect(table.getByText('Uskladitev časovnice')).toBeVisible()\n  await expect(table.getByText('Priprava oblikovnih smernic')).toHaveCount(0)\n  await page.goBack()\n  await expect(table.getByText('Priprava oblikovnih smernic')).toBeVisible()\n  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBeTruthy()\n})\n\ntest('duplicate titles open by ID, with complete details and keyboard dismissal', async ({ page, request }) => {\n  await page.goto('/')\n  const second = page.locator('[data-task-id=\"web-02\"]').getByRole('link')\n  await second.click()\n  const dialog = page.getByRole('dialog')\n  await expect(dialog).toBeVisible()\n  await expect(dialog.getByRole('heading', { name: 'Pregled vsebine' })).toBeVisible()\n  const bounds = await dialog.boundingBox()\n  expect(bounds!.x).toBeGreaterThanOrEqual(0)\n  expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(page.viewportSize()!.width)\n  await expect(dialog.getByText('Luka Kovač', { exact: true })).toBeVisible()\n  await expect(dialog.getByText('Pripravljeno', { exact: true })).toBeVisible()\n  await expect(dialog.getByText('Spletna prenova', { exact: true })).toBeVisible()\n  await expect(dialog.locator('time')).toHaveAttribute('datetime', '2026-09-22')\n  await expect(dialog.getByText(/Preglej vsebino strani s pogostimi vprašanji/)).toBeVisible()\n  await page.keyboard.press('Escape')\n  await expect(dialog).toHaveCount(0)\n  await expect(second).toBeFocused()\n  await page.locator('[data-task-id=\"web-01\"]').getByRole('link').click()\n  await expect(dialog.getByText('Ana Novak', { exact: true })).toBeVisible()\n  await expect(dialog.getByText('V delu', { exact: true })).toBeVisible()\n  await dialog.getByRole('button', { name: 'Zapri podrobnosti' }).click()\n  const state = await (await request.get('/__test/state')).json()\n  expect(state.saveRequests).toBe(0)\n})\n\ntest('direct task links survive refresh and browser back closes details', async ({ page }) => {\n"
+    },
+    {
+      "source": "api/P03-B-001/model/request-00006.json.gz",
+      "callId": "01a1321ec1db873c8ccc351a67c509d7",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"node -e \\\"setTimeout(() => process.exit(0), 60000)\\\"\"}",
+      "output": "Chunk ID: c3764a\nWall time: 10.0015 seconds\nProcess running with session ID 33414\nOriginal token count: 0\nOutput:\n"
+    },
+    {
+      "source": "api/P03-B-001/model/request-00007.json.gz",
+      "callId": "01a1321f01cbcb0eae24320f43b03478",
+      "name": "write_stdin",
+      "arguments": "{\"session_id\": 33414, \"yield_time_ms\": 2000}",
+      "output": "Chunk ID: 16bbd8\nWall time: 5.0015 seconds\nProcess running with session ID 33414\nOriginal token count: 0\nOutput:\n"
+    }
+  ]
+}

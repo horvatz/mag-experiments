@@ -1,0 +1,153 @@
+import './styles.css'
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowUpRight, Check, Columns3, FolderClosed, ListTodo, Table2 } from 'lucide-react'
+import type { Project, Task } from '../shared/types.ts'
+import { Avatar, LoadError, Loading, StatusBadge } from './components.tsx'
+import { formatDate } from './formatDate.ts'
+import { projectUrl, taskUrl, useRoute, type TaskView } from './navigation.ts'
+import { TaskBoard } from './TaskBoard.tsx'
+import { TaskDetails } from './TaskDetails.tsx'
+import { useResource } from './useResource.ts'
+import type { TaskStatus } from '../shared/types.ts'
+
+function PaginationControls({ currentPage, pageSize, totalPages, onPageChange, onSizeChange }: {
+  currentPage: number
+  pageSize: 'all' | number
+  totalPages: number
+  onPageChange: (page: number) => void
+  onSizeChange: (size: 'all' | number) => void
+}) {
+  const sizes: ('all' | number)[] = ['all', 2, 5, 10]
+  
+  const start = (currentPage - 1) * (pageSize === 'all' ? 1 : pageSize)
+  const end = Math.min(start + (pageSize === 'all' ? 1 : pageSize), totalCount)
+  const pageTasks = tasks.slice(start, end)
+  
+  const firstDisabled = currentPage === 1
+  const prevDisabled = currentPage === 1
+  const nextDisabled = currentPage >= totalPages
+  const lastDisabled = currentPage >= totalPages
+  
+  return (
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '0.5rem',
+      marginInline: '1rem'
+    }}>
+      <select
+        value={pageSize}
+        onChange={(e) => onSizeChange(e.target.value as 'all' | number)}
+        disabled={totalPages === 1 && totalCount > 0}
+        style={{ padding: '0.25rem', fontSize: '0.85rem' }}
+      >
+        <option value="all">all</option>
+        <option value={2}>2</option>
+        <option value={5}>5</option>
+        <option value={10}>10</option>
+      </select>
+      
+      {totalPages > 1 && (
+        <>
+          <button
+            onClick={() => onPageChange(1)}
+            disabled={firstDisabled}
+            aria-label="First page"
+            style={{
+              padding: '0.25rem 0.5rem',
+              cursor: firstDisabled ? 'not-allowed' : 'pointer',
+              opacity: firstDisabled ? 0.5 : 1
+            }}
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <button
+            onClick={() => onPageChange(currentPage - 1)}
+            disabled={prevDisabled}
+            aria-label="Previous page"
+            style={{
+              padding: '0.25rem 0.5rem',
+              cursor: prevDisabled ? 'not-allowed' : 'pointer',
+              opacity: prevDisabled ? 0.5 : 1
+            }}
+          >
+            <ArrowLeft size={16} />
+          </button>
+          <button
+            onClick={() => onPageChange(currentPage + 1)}
+            disabled={nextDisabled}
+            aria-label="Next page"
+            style={{
+              padding: '0.25rem 0.5rem',
+              cursor: nextDisabled ? 'not-allowed' : 'pointer',
+              opacity: nextDisabled ? 0.5 : 1
+            }}
+          >
+            <ArrowRight size={16} />
+          </button>
+          <button
+            onClick={() => onPageChange(totalPages)}
+            disabled={lastDisabled}
+            aria-label="Last page"
+            style={{
+              padding: '0.25rem 0.5rem',
+              cursor: lastDisabled ? 'not-allowed' : 'pointer',
+              opacity: lastDisabled ? 0.5 : 1
+            }}
+          >
+            <ChevronRight size={16} />
+          </button>
+        </>
+      )}
+    </div>
+  )
+}
+function TaskFilters({ currentPage, filter, onFilterChange, setPage }: {
+  currentPage: number
+  filter: 'all' | 'todo' | 'in_progress' | 'done'
+  onFilterChange: (filter: 'all' | 'todo' | 'in_progress' | 'done') => void
+  setPage: (page: number) => void
+}) {
+  const filters: ('all' | 'todo' | 'in_progress' | 'done')[] = ['all', 'todo', 'in_progress', 'done']
+  
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '0.5rem',
+        marginBottom: '0.5rem',
+        padding: '0.75rem',
+        background: '#f8f9fa',
+        borderRadius: '8px',
+        width: 'fit-content'
+      }}
+    >
+      <span style={{ fontSize: '0.85rem', marginRight: '0.5rem', fontWeight: 'bold' }}>Filter:</span>
+      {filters.map((filterValue) => (
+        <button
+          key={filterValue}
+          onClick={() => {
+            onFilterChange(filterValue)
+            setPage(1)
+          }}
+          style={{
+            padding: '0.25rem 0.75rem',
+            background: filterValue === currentPage ? '#0d6efd' : '#fff',
+            color: filterValue === currentPage ? '#fff' : '#000',
+            border: '1px solid #dee2e6',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontWeight: filterValue === currentPage ? '600' : '400',
+            transition: 'background 0.15s, color 0.15s'
+          }}
+          aria-pressed={filterValue === currentPage}
+        >
+          {filterValue}
+        </button>
+      ))}
+    </div>
+  )
+}

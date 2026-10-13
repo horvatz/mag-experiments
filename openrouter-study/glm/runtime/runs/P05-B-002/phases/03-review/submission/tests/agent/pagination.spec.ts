@@ -1,0 +1,75 @@
+import { expect, test, mount, expectIds, select, click, board, table, details, project, summary, readonly, makeTask, webIds, type Task } from '../development/helpers.ts'
+
+const records: Task[] = Array.from({ length: 11 }, (_, index) => makeTask('task-' + String(index + 1).padStart(2, '0'), {
+  status: index === 2 || index === 5 ? 'done' : 'todo',
+}))
+const allIds = records.map((task) => task.id)
+
+test('A01: straničenje, filtri, prazen rezultat in ponastavitev projekta', async ({ page }) => {
+  const writes = await mount(page, records)
+  await expect(page.getByRole('combobox', { name: 'Velikost strani', exact: true })).toHaveValue('all')
+  await expect(page.getByRole('combobox', { name: 'Filter strani', exact: true })).toHaveValue('all')
+  await expectIds(page, allIds)
+  await summary(page, [9, 0, 2])
+
+  await select(page, 'Velikost strani', '5')
+  await expectIds(page, allIds.slice(0, 5))
+  await expect(page.getByRole('button', { name: 'Prva stran', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Prejšnja stran', exact: true })).toBeDisabled()
+  await click(page, 'Naslednja stran')
+  await expectIds(page, allIds.slice(5, 10))
+  await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 2 od 3. Prikazano 6–10 od 11.')
+  await click(page, 'Zadnja stran')
+  await expectIds(page, [allIds[10]])
+  await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 3 od 3. Prikazano 11–11 od 11.')
+ await expect(page.getByRole('button', { name: 'Naslednja stran', exact: true })).toBeDisabled()
+ await expect(page.getByRole('button', { name: 'Zadnja stran', exact: true })).toBeDisabled()
+
+  await select(page, 'Velikost strani', '10')
+  await expectIds(page, allIds.slice(0, 10))
+  await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 1 od 2. Prikazano 1–10 od 11.')
+  await click(page, 'Naslednja stran')
+  await expectIds(page, [allIds[10]])
+  await click(page, 'Prva stran')
+  await expectIds(page, allIds.slice(0, 10))
+
+  await select(page, 'Filter strani', 'in_progress')
+  await expectIds(page, [])
+  await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 0 od 0. Prikazano 0–0 od 0.')
+  for (const name of ['Prva stran', 'Prejšnja stran', 'Naslednja stran', 'Zadnja stran']) {
+    await expect(page.getByRole('button', { name, exact: true })).toBeDisabled()
+  }
+ await select(page, 'Filter strani', 'all')
+  await expectIds(page, allIds.slice(0, 10))
+ await summary(page, [9, 0, 2])
+
+  await project(page, 'launch')
+  await expect(page.getByRole('combobox', { name: 'Velikost strani', exact: true })).toHaveValue('all')
+  await expect(page.getByRole('combobox', { name: 'Filter strani', exact: true })).toHaveValue('all')
+  await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 0 od 0. Prikazano 0–0 od 0.')
+  expect(new URL(page.url()).searchParams.size).toBe(0)
+  expect(await page.evaluate(() => localStorage.length)).toBe(0)
+  await readonly(page, writes)
+})
+
+test('A02: skupni odsek, podrobnosti in odzivnost na 390 px', async ({ page }) => {
+  const writes = await mount(page)
+  await page.setViewportSize({ width: 390, height: 844 })
+  await select(page, 'Velikost strani', '2')
+  await click(page, 'Naslednja stran')
+  await expectIds(page, ['web-03', 'web-04'])
+ await board(page)
+  await expectIds(page, ['web-03', 'web-04'], false)
+ await details(page, 'web-03')
+  await expectIds(page, ['web-03', 'web-04'], false)
+  await table(page)
+  await expectIds(page, ['web-03', 'web-04'])
+ await expect(page.getByRole('combobox', { name: 'Velikost strani', exact: true })).toHaveValue('2')
+ await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 2 od 4. Prikazano 3–4 od 8.')
+  await page.reload()
+  await expect(page.getByRole('combobox', { name: 'Velikost strani', exact: true })).toHaveValue('all')
+  await expect(page.getByRole('combobox', { name: 'Filter strani', exact: true })).toHaveValue('all')
+  await expectIds(page, webIds())
+  await expect(page.getByRole('status', { name: 'Stanje straničenja' })).toHaveText('Stran 1 od 1. Prikazano 1–8 od 8.')
+ await readonly(page, writes)
+})

@@ -1,0 +1,1 @@
+Začenjam tehnično preverjanje prekinitve; grem le na zahtevani ukaz in čakam.

@@ -1,0 +1,139 @@
+{
+  "id": "P08-B-002",
+  "procedure": "B",
+  "startedAt": "2026-10-13T06:09:58.174Z",
+  "model": "qwen/qwen3.5-9b",
+  "reasoningEffort": "xhigh",
+  "limitSeconds": 1200,
+  "status": "invalid_review_handoff",
+  "cli": "/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS/codex",
+  "cliVersion": "codex-cli 0.158.0-alpha.2.1",
+  "phases": [
+    {
+      "name": "specification",
+      "role": "specification",
+      "resumed": false,
+      "startedAt": "2026-10-13T06:09:58.396Z",
+      "limitSeconds": 360,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a133e1-cc93-7a93-959f-741c23457908",
+      "finishedAt": "2026-10-13T06:15:58.431Z",
+      "elapsedSeconds": 360.034,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [
+        {
+          "path": "docs/agent/specification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "implementation",
+      "role": "implementation",
+      "resumed": false,
+      "startedAt": "2026-10-13T06:15:58.934Z",
+      "limitSeconds": 479.46,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a133e7-4cf2-77c2-9acd-41837bfc5a71",
+      "finishedAt": "2026-10-13T06:23:58.438Z",
+      "elapsedSeconds": 479.502,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [
+        {
+          "path": "docs/agent/verification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/App.tsx",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/useCalendarConfig.tsx",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "review",
+      "role": "review",
+      "resumed": false,
+      "startedAt": "2026-10-13T06:23:59.564Z",
+      "limitSeconds": 238.831,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a133ee-a268-7f31-9db6-007211717140",
+      "finishedAt": "2026-10-13T06:27:58.432Z",
+      "elapsedSeconds": 238.867,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [
+        {
+          "path": "docs/agent/review.json",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    }
+  ],
+  "sessions": {
+    "specification": "01a133e1-cc93-7a93-959f-741c23457908",
+    "implementation": "01a133e7-4cf2-77c2-9acd-41837bfc5a71",
+    "review": "01a133ee-a268-7f31-9db6-007211717140"
+  },
+  "intervention": "No operator hints, code edits or hidden-test feedback during execution; deterministic handoffs only.",
+  "usage": null,
+  "monetaryCost": null,
+  "costNote": "OpenRouter API; provider usage and invoiced cost are recorded separately by the researcher relay.",
+  "handoffError": "Unexpected end of JSON input",
+  "finishedAt": "2026-10-13T06:27:59.287Z",
+  "elapsedSeconds": 1081.11,
+  "usageNote": "Raw CLI usage is recorded per phase. Aggregate is withheld if a resumed session requires reconciliation or any phase lacks a final usage event.",
+  "fileChanges": [
+    {
+      "path": "docs/agent/review.json",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "docs/agent/specification.md",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "docs/agent/verification.md",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "src/App.tsx",
+      "allowed": true,
+      "kind": "modified"
+    },
+    {
+      "path": "src/useCalendarConfig.tsx",
+      "allowed": true,
+      "kind": "added"
+    }
+  ],
+  "rejectedSymlinks": [],
+  "allowedChanges": true
+}

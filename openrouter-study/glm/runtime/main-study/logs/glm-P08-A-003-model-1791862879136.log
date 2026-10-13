@@ -1,0 +1,22 @@
+Preberem projektna pravila in specifikacijo naloge, nato pripravim specifikacijo.
+Pravila so jasna. Zdaj pregledam obstoječi vmesnik in testne primere.
+Pripravim specifikacijo s predikati, sledljivostjo R01–R12 in načrtom lastnih preverjanj.
+Orodje `apply_patch` ni na voljo v tej lupini, zato spisek ustvarim v dovoljeni mapi z lokalnim zapisom datoteke.
+Specifikacija je pripravljena. Sedaj dodam datumsko logiko, kontrole in enoten filter za tabelo ter tablo.
+Osnovna implementacija je na mestu. Zdaj preverim tipiziranje in slog, pred tem pa dodam lastne teste.
+Dodam lastne Playwright teste za mejne datume, števce, preklop pogleda, ponastavitev, prazne skupine in mobilno širino.
+Tipi in slog so čisti. Zdaj zaženem lastne teste v ločenem Chromiumu.
+Lastni testi so uspešni. Zdaj preverim skupne razvojne primere P08 na namizju in mobilni širini.
+Razvojni testi so zeleni. Zaženem še celotno preverjanje `npm run check`, ki vključi izhodišče, P08 in lastne teste.
+Celotno preverjanje je uspešno (53/53). Zdaj posodobim sledljivost specifikacije in zapišem dejanske rezultate preverjanj.
+**Rezultat**
+- Specifikacijo s predikati in sledljivostjo R01–R12 pripravil v `docs/agent/specification.md:1`.
+- Dodal fiksni referenčni datum, UTC koledarsko logiko, šest skupin, pet števcev, opozorilo za prazen datum in enoten filter v `src/App.tsx:21` ter `src/deadlines.ts:3`.
+- Prilagodil Folio postavitev in preveril širino 390 px v `src/styles.css:51`.
+- Dodal 7 lastnih preverjanj v `tests/agent/P08.spec.ts:5`.
+
+**Preverjanje**
+- `npm run check`: uspešno, 53/53 Playwright preverjanj.
+- `npm run lint`: uspešno; produkcijska izgradnja uspešna.
+- Dejanske rezultate in omejitve zapisal v `doc
+{"status":"completed","elapsedSeconds":368.47,"allowedChanges":true,"usage":{"input_tokens":3076018,"cached_input_tokens":3021056,"cache_write_input_tokens":0,"output_tokens":28582,"reasoning_output_tokens":22671}}

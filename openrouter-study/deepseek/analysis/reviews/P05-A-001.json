@@ -1,0 +1,49 @@
+{
+  "id": "P05-A-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-08",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija skladno pokrije R01–R12, prednost filtra pred razrezom, skupni odsek obeh pogledov, ponastavitve in ohranjanje stanja, prazni primer ter različni osnovi števcev. Tabela dejanj jasno loči onemogočene robne prehode od običajnih sprememb strani. Lokalnost stanja in odsotnost zapisovalnih klicev sta izrecni.",
+      "evidence": ["runtime/runs/P05-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi", "runtime/runs/P05-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Definirani so izvorni P, filtrirani F, M, velikost, število strani Y, omejena stran X in 1-osnovna indeksa A/B. Pravila izrecno pokrijejo ničelni primer, ohranjanje vrstnega reda, neprekrivanje odsekov, prehode in enakost množic obeh pogledov. Formalizacija je skladna s čistim izračunom paginate.",
+      "evidence": ["runtime/runs/P05-A-001/submission/docs/agent/specification.md#zahteve-in-pravila", "runtime/runs/P05-A-001/submission/src/pagination.ts:29"]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Vsaka R je povezana z imenovanim scenarijem in delom kode, verifikacija pa loči izvedene dokaze od splošnega pravila. Arhivski dogodki potrjujejo prvotni izid 2 failed/16 passed, popravljeni zagon 18 passed in skupni zagon 56 passed. Zapis odkrito pojasni popravek napačnih pričakovanj vrstnega reda table, odsotnost ročnega vizualnega pregleda in nepreverjene nabore nad deset opravil; skritih testov ne pripisuje agentu.",
+      "evidence": ["runtime/runs/P05-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost", "runtime/runs/P05-A-001/submission/docs/agent/verification.md", "runtime/runs/P05-A-001/events.jsonl.gz"]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti generični paginate združi odsek, indekse in robove, PaginationControls loči predstavitev od dejanj, ProjectView pa drži tri lokalna stanja in izpeljani filter. Preglednica in tabla prejmeta isti pageTasks, nefiltrirani števci ostanejo ločeni. Projektni ključ zagotovi ponastavitev brez podvojenega stanja ali sinhronizacijskih učinkov.",
+      "evidence": ["runtime/runs/P05-A-001/submission/src/pagination.ts:20", "runtime/runs/P05-A-001/submission/src/PaginationControls.tsx:4", "runtime/runs/P05-A-001/submission/src/App.tsx:13", "runtime/runs/P05-A-001/submission/src/App.tsx:101"]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Deset koristnih scenarijev preveri vse štiri strani pri velikosti 2, meje gumbov, filtre, prazen projekt in rezultat, števce, podrobnosti, menjava projekta/osvežitev ter odsotnost zapisov in shrambe. A10 dejansko preveri geometrijsko mejo 390 px. Manjkajo nabor nad deset opravil in večstranski razrez pri velikosti 10, enaki naslovi in zahtevni ID-ji; to so pomembne vrzeli v dodatnih preverjanjih, čeprav so pošteno navedene.",
+      "evidence": ["runtime/runs/P05-A-001/submission/tests/agent/pagination.spec.ts:14", "runtime/runs/P05-A-001/submission/tests/agent/pagination.spec.ts:35", "runtime/runs/P05-A-001/submission/tests/agent/pagination.spec.ts:69", "runtime/runs/P05-A-001/submission/tests/agent/pagination.spec.ts:93", "runtime/runs/P05-A-001/submission/tests/agent/pagination.spec.ts:126", "runtime/runs/P05-A-001/submission/tests/agent/pagination.spec.ts:139", "runtime/runs/P05-A-001/submission/docs/agent/verification.md#omejitve-in-neizvedeno"]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena uspe 70/70, z 12/12 dokazanimi zahtevami. V pregledani končni funkcionalnosti ni potrjene napake. To ni dokaz pravilnosti za vse možne vhode; vsebinske vrzeli lastnih testov ne spreminjajo avtomatiziranega izida.",
+  "developmentFailureExample": {
+    "description": "Lastna A07/A08 prvotno pričakujeta izvorni vrstni red tudi v tabli. Arhivski dogodki potrjujejo dva neuspeha; po spremembi primerjave v množico ID-jev uspe 18 razvojnih/lastnih in 56 skupnih preverjanj. Pregledana koda uporablja skupni odsek in tablo po stolpcih, zato gre za popravljeno napako testnega pričakovanja, ne potrjeno končno funkcionalno napako.",
+    "evidence": ["runtime/runs/P05-A-001/events.jsonl.gz", "runtime/runs/P05-A-001/submission/tests/agent/pagination.spec.ts:93", "runtime/runs/P05-A-001/submission/docs/agent/verification.md#popravki-med-preverjanjem"]
+  }
+}

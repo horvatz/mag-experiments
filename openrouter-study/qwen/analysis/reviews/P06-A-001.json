@@ -1,0 +1,79 @@
+{
+  "id": "P06-A-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "reviewStatus": "missing-authored-submission",
+  "limitation": "Celotna avtorska oddaja manjka po izrecni napaki odziva API. Vse dimenzije so null; meritev ostane v imenovalcih funkcionalnosti in strogega uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": null,
+      "rationale": "Avtorska specifikacija ni oddana; fileChanges=[] in raziskovalčev inventar potrdita odsotnost vseh avtorskih datotek. Prebrana navodila in napoved pregleda razvojnih testov niso modelova specifikacija. Po pravilu za manjkajočo celotno oddajo je ocena null.",
+      "evidence": [
+        "runtime/runs/P06-A-001/execution.json",
+        "runtime/runs/P06-A-001/archive-complete.json",
+        "analysis/review-packets/P06-A-001.json"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": null,
+      "rationale": "Ni avtorske dokumentacije ali kode, iz katere bi bilo mogoče oceniti formalizacijo. Predikati v izvirnih vhodih niso modelovi. Ker celotna avtorska oddaja manjka po prekinitvi odziva API, dimenzija ostane manjkajoča.",
+      "evidence": [
+        "runtime/runs/P06-A-001/execution.json",
+        "runtime/runs/P06-A-001/archive-complete.json",
+        "analysis/review-packets/P06-A-001.json"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": null,
+      "rationale": "Ni avtorske matrike, dokumentov, kode ali verifikacijskega zapisa. Devet izvedenih ukazov bere vhodne datoteke; raziskovalčevi arhivi in testni rezultati ne nadomestijo modelove sledljivosti. Manjkajoče celotne oddaje ne ocenimo z ničlo.",
+      "evidence": [
+        "runtime/runs/P06-A-001/execution.json",
+        "runtime/runs/P06-A-001/archive-complete.json",
+        "analysis/review-packets/P06-A-001.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Src je nespremenjen in nobena druga avtorska datoteka ni oddana. Organizacije izhodiščne aplikacije ne pripišemo modelu, neoddane implementacije pa ne ocenimo kot slabo organizirano. Ocena ostane null.",
+      "evidence": [
+        "runtime/runs/P06-A-001/execution.json",
+        "runtime/runs/P06-A-001/archive-complete.json",
+        "analysis/review-packets/P06-A-001.json"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": null,
+      "rationale": "Model prebere razvojne teste, vendar ne napiše ali izvede lastnih funkcionalnih testov in ne odda nobenega avtorskega artefakta. Za manjkajočo celotno oddajo velja null; to se razlikuje od 0 za odsotna preverjanja v sicer avtorsko oddani rešitvi.",
+      "evidence": [
+        "runtime/runs/P06-A-001/execution.json",
+        "runtime/runs/P06-A-001/archive-complete.json",
+        "analysis/review-packets/P06-A-001.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Zadnja zahteva 6 vrne HTTP 200/response.failed; native CLI zapiše stream disconnected before completion in execution_failed po 528,042 s. Ni avtorskih sprememb. Nespremenjeno izhodišče opravi 38/38 regresijskih, 0/8 razvojnih, 0/24 skritih in 0/12 zahtev; izvoznih kontrol ni. Lint/types/build/allowed true, strogi uspeh false. Vzrok napake ni potrjen in to ni opazovana slaba implementacija.",
+    "evidence": [
+      "runtime/runs/P06-A-001/evaluation-summary.json",
+      "runtime/runs/P06-A-001/execution.json",
+      "runtime/runs/P06-A-001/events.jsonl.gz",
+      "api/P06-A-001/model/api-ledger.jsonl",
+      "analysis/review-packets/P06-A-001.json",
+      "qualification/service-2026-10-09T02-22-03-694Z/result.json"
+    ]
+  },
+  "finalFailureNote": "Zadnja zahteva traja 495,669 s in vrne 10.812 reasoning tokenov, a nobenega dostavljenega popravka. Kratek povezovalni preizkus istega ponudnika uspe; ne dokazuje zanesljivosti dolgih odgovorov. Meritev se ne ponavlja. Popolni račun po zamrznjenem fallback pravilu je 0,0058937 USD za 6 zahtev; zadnja izrecna usage.cost=0, generation HTTP 404. Provider upstream_inference_cost je ločeno polje, ne samodejni uporabnikov račun.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Pred prekinitvijo je izvedenih devet bralnih ukazov. Brez avtorske implementacije ali lastnih zagonov ni potrjene avtorske razvojne funkcionalne napake."
+}

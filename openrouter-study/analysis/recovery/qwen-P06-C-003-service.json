@@ -1,0 +1,92 @@
+{
+  "at": "2026-10-10T13:41:42.769287+00:00",
+  "researcherOnly": true,
+  "id": "qwen/P06-C-003",
+  "confirmed": "Request53 HTTP200 response.failed; native stream disconnected before completion: stream closed with reason: error.",
+  "rootCause": "Unknown. The generic native message does not identify the underlying provider or transport cause.",
+  "lastRequest": {
+    "number": 53,
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "startedAt": "2026-10-10T13:31:37.001Z",
+    "finishedAt": "2026-10-10T13:31:44.265Z",
+    "status": "finished",
+    "httpStatus": 200,
+    "responseStatus": "failed",
+    "responseId": "gen-1791639097-hyi3l9833fOWvehH6Xlv",
+    "sentUpstream": true,
+    "usage": {
+      "input_tokens": 46076,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1,
+      "output_tokens_details": {
+        "reasoning_tokens": 1
+      },
+      "total_tokens": 46077,
+      "cost": 0,
+      "is_byok": false,
+      "cost_details": {
+        "upstream_inference_cost": 0.00460775,
+        "upstream_inference_input_cost": 0.0046076,
+        "upstream_inference_output_cost": 1.5e-07
+      }
+    }
+  },
+  "durationSeconds": 7.264,
+  "diagnostic": {
+    "at": "2026-10-10T13:35:46.480Z",
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "httpStatus": 200,
+    "responseStatus": "completed",
+    "text": "CONNECTION_OK",
+    "error": null,
+    "passed": true,
+    "excludedFromMeasurements": true,
+    "costComplete": true,
+    "costUSD": 9.255e-05,
+    "evidence": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/qualification/service-2026-10-10T13-35-27-882Z"
+  },
+  "diagnosticLimitation": "A short same-provider response passed; long tool response reliability remains unknown.",
+  "outcome": {
+    "executionStatus": "execution_failed",
+    "elapsedSeconds": 1062.678,
+    "phases": [
+      {
+        "name": "constitution",
+        "status": "completed",
+        "elapsedSeconds": 250.938
+      },
+      {
+        "name": "specify",
+        "status": "execution_failed",
+        "elapsedSeconds": 810.675
+      }
+    ],
+    "testsPassed": 38,
+    "testsTotal": 70,
+    "requirements": 0,
+    "staticAndAllowedPassed": true,
+    "strictSuccess": false,
+    "selectedForQualitativeReview": false
+  },
+  "cost": {
+    "complete": true,
+    "costUSD": 0.15129104999999998,
+    "requests": 53,
+    "lastReturnedUsageCost": 0,
+    "lastBillingLookupStatus": 200,
+    "note": "Generation receipt totalCostUSD0 confirms request53 cost0; not an imputed zero. Separate upstream inference cost is not substituted for charge."
+  },
+  "continuation": "Supervisor45848 checked archive/input hashes and next unused ID plus fresh same-provider health. Previous runner45054 exited1 after archiving. Unchanged runner71671 now proceeds to glm/P06-C-003 position53. No measured retry, replacement or protocol/provider change.",
+  "evidence": [
+    "qwen/runtime/runs/P06-C-003/archive-complete.json",
+    "qwen/runtime/runs/P06-C-003/evaluation-summary.json",
+    "qwen/runtime/runs/P06-C-003/phases/02-specify/events.jsonl.gz",
+    "qwen/api/P06-C-003/model/api-ledger.jsonl",
+    "qwen/qualification/service-2026-10-10T13-35-27-882Z/result.json",
+    "analysis/recovery/known-service-resumes.jsonl"
+  ]
+}

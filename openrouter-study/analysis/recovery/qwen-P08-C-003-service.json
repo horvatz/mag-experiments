@@ -1,0 +1,129 @@
+{
+  "at": "2026-10-13T04:10:59.607625+00:00",
+  "researcherOnly": true,
+  "position": 97,
+  "slug": "qwen",
+  "id": "P08-C-003",
+  "executionStatus": "execution_failed",
+  "elapsedSeconds": 921.135,
+  "strictSuccess": false,
+  "demonstrated": 0,
+  "requirementsPassed": 0,
+  "functionalTestsPassed": 38,
+  "functionalTestsTotal": 70,
+  "groups": {
+    "regression": {
+      "passed": 38,
+      "total": 38
+    },
+    "development": {
+      "passed": 0,
+      "total": 8
+    },
+    "holdout": {
+      "passed": 0,
+      "total": 24
+    }
+  },
+  "checks": [
+    {
+      "name": "lint",
+      "passed": true
+    },
+    {
+      "name": "types",
+      "passed": true
+    },
+    {
+      "name": "build",
+      "passed": true
+    },
+    {
+      "name": "tests",
+      "passed": false
+    }
+  ],
+  "allowedChanges": true,
+  "completeTestRun": true,
+  "phases": [
+    {
+      "name": "constitution",
+      "elapsedSeconds": 920.034,
+      "status": "execution_failed"
+    }
+  ],
+  "costComplete": false,
+  "costUSD": null,
+  "knownCostUSD": 0.09976689999999999,
+  "apiRequests": 39,
+  "archiveSha256": "b0921b47ca42adcff9fd511552102b38395ffbf405f44ed3d41c0feb6408b671",
+  "authoredFiles": [
+    {
+      "path": ".specify/memory/constitution.md",
+      "allowed": true,
+      "kind": "modified"
+    }
+  ],
+  "constitutionBytes": 2453,
+  "apiFailure": {
+    "request": 39,
+    "httpStatus": 200,
+    "responseStatus": "failed",
+    "nativeError": "stream disconnected before completion: Provider returned an empty response",
+    "originCause": "unknown",
+    "originalReceipt": {
+      "number": 39,
+      "responseId": "gen-1791864223-ZXatSS5HSIGSKopOgWhw",
+      "costUSD": null,
+      "generation": null,
+      "billingLookupStatus": 404,
+      "usage": null,
+      "transportStatus": "finished"
+    }
+  },
+  "continuation": {
+    "at": "2026-10-13T04:10:37.318Z",
+    "action": "continue_unused_ids",
+    "archived": 97,
+    "previousRun": "qwen/P08-C-003",
+    "errorRequests": [
+      39
+    ],
+    "classifications": [
+      "qwen-empty-response-cause-unknown"
+    ],
+    "nextRun": "glm/P08-C-003",
+    "diagnosis": "analysis/recovery/qwen-P06-B-001-service.json",
+    "diagnostic": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/qualification/service-2026-10-13T04-10-22-734Z",
+    "unchangedFrozenProtocol": true,
+    "archivedHashesVerified": true,
+    "measuredRetry": false,
+    "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
+  },
+  "diagnostic": {
+    "at": "2026-10-13T04:10:36.087Z",
+    "action": "service_check_passed",
+    "diagnostic": {
+      "at": "2026-10-13T04:10:35.755Z",
+      "model": "qwen/qwen3.5-9b",
+      "provider": "siliconflow/fp8",
+      "httpStatus": 200,
+      "responseStatus": "completed",
+      "text": "CONNECTION_OK",
+      "error": null,
+      "passed": true,
+      "excludedFromMeasurements": true,
+      "costComplete": true,
+      "costUSD": 4.695e-05,
+      "evidence": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/qualification/service-2026-10-13T04-10-22-734Z"
+    },
+    "limitation": "Short reply success does not establish reliability of long tool responses."
+  },
+  "newRunnerPID": 76085,
+  "evidence": [
+    "qwen/runtime/runs/P08-C-003/execution.json",
+    "qwen/runtime/runs/P08-C-003/submission/.specify/memory/constitution.md",
+    "qwen/runtime/runs/P08-C-003/api-cost.json",
+    "analysis/recovery/known-service-resumes.jsonl"
+  ]
+}

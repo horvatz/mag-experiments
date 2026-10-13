@@ -1,0 +1,90 @@
+{
+  "id": "P08-C-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Dokumentna oddaja po constitution completed in specify execution_failed zaradi response.failed. Plan/tasks/implement/converge niso začeti. Ni avtorske produkcijske kode ali lastnih testov. Napaka odziva API ima neznan vzrok; dokumentno vsebino ocenjujemo ločeno od odsotne implementacije in ne sklepamo na splošno sposobnost modela.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "R01–R12 zajamejo fiksni datum/all, osnovne meje skupin, celoprojektne števce, select, preračun in ohranitev filtra, oba pogleda, reset projekta/reloada, prazna stanja, bralnost ter 390 px. Ostanejo konkretne vrzeli: status je napačno opredeljen kot enum open/done, namesto todo/in_progress/done; opis done brez izključitve iz aktivnih skupin nasprotuje R02. Ni zahteve stabilnega izvornega reda, ločitve praznega osnutka od zadnje veljavne reference, ohranitve besedila ob preklopu ali prepovedi trajne shrambe/URL. R05 ne opredeli pravilnega seštevanja čez mesec/leto/prestopnost, opozorilo nima točnega besedila, zahtevana dostopna imena in ohranjene bralne podrobnosti niso celovito navedeni.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:27",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:43",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:47",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:55",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:59",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:62",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:75"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Uporabni so R01 ref/all, done prednost v R02, primerjave < in = ter interval delta1..7/>7 in števci celega projekta neodvisni od filtra. Vendar formalizacija odprto veže na neobstoječi status=open, ni disjunktne/izčrpne particije, stabilnega filter predikata ali stanja osnutek/veljavna referenca. Prazen ref le da opozorilo, ne formalizira ohranjenega zadnjega izračuna. Preklop ohranja ref/select, izpusti besedilo; R07 group=select ne določi posebne vrednosti all. So preverljive osnove, ne vsa ključna ohranjanja.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:55",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:57",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:58",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:60",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:61",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:62",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:63"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Dokument vsebuje predlagane sprejemne predikate, vendar nima matrike povezav v dejanske module/funkcije in poimenovane teste ali njihove dnevnike. Reference na navodila/pravila/dizajn niso sled zahteva–koda–test. Predaja specify ni zaključena, načrt in izvedba se ne začneta, verification in lastni testi manjkajo. Ne pripisujemo izmišljenih zelenih izidov, saj jih dokument ne trdi; ocena 0 pomeni odsotne uporabne končne povezave.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:11",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:53",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:70"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Avtorska produkcijska koda ni dostavljena: vse tri spremembe so feature metapodatki, ustava in specifikacija. Izvajanje se konča v specify; izhodiščnega App/helperjev ne ocenjujemo kot novo organizacijo modela. Manjkajoče je null, ne 0.",
+      "evidence": [
+        "runtime/runs/P08-C-001/execution.json",
+        "analysis/review-packets/P08-C-001.json"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Lastnih testov ali dodatnega funkcionalnega preverjanja ni. Trinajst izvirnih ukazov in petnajst preserviranih orodnih klicev potrdi samo branje pravil/predlog in zapis dokumentov, ne zagona razvojnih ali lastnih testov. Stolpec Preverjanje v specifikaciji opisuje nameravane pogoje, ne izvedenih preverjanj. Poznejših 38/70 izvajalca ne šteje za lastne teste.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:53",
+        "runtime/runs/P08-C-001/phases/01-constitution/events.jsonl.gz",
+        "runtime/runs/P08-C-001/phases/02-specify/events.jsonl.gz",
+        "analysis/review-packets/P08-C-001.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Implementacija nove funkcionalnosti ni dostavljena: ni datumskega polja, selecta ali petih novih števcev. Zato vseh8 razvojnih in24 skritih preverjanj naloge odpove, regresija38/38 pa uspe. Lint/types/build/allowed true za nespremenjeno aplikacijo ne pomeni izpolnjenih novih zahtev. Končni execution_failed je posledica napake odziva pred plan/implement; ne gre za dokaz slabe organizacije kode, ki ni oddana.",
+    "evidence": [
+      "runtime/runs/P08-C-001/execution.json",
+      "runtime/runs/P08-C-001/evaluation-summary.json",
+      "analysis/review-packets/P08-C-001.json"
+    ]
+  },
+  "finalFailureNote": "Execution_failed319,976 s; constitution60,641 s completed, specify258,273 s failed, druge faze niso začete.38/70 in0/12; lint/types/build/allowed true, strogi uspeh false. Popolni strošek0,02655115 USD/17; request17 HTTP200/response.failed traja5,566s,23756input/21output(all reasoning). Native stream closed with reason error, vzrok neznan; zadnja returned usage.cost0 in generation404.",
+  "developmentFailureExample": {
+    "description": "Specify item_18 vrne zsh:80 unmatched double quote in ne zapiše svojega osnutka; dejanska predhodno oddana4526-bajtna specifikacija ostane. Dve naslednji zahtevi sta ohranjeni; zadnja17 v5,566s vrne response.failed in native turn.failed, zato specify ne zaključi. Napaka zapisa in neznan vzrok odziva sta ločena; neuspešnega osnutka ne ocenjujemo kot datoteko oddaje.",
+    "evidence": [
+      "runtime/runs/P08-C-001/phases/02-specify/events.jsonl.gz",
+      "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:1",
+      "api/P08-C-001/model/api-ledger.jsonl",
+      "analysis/review-packets/P08-C-001.json"
+    ]
+  }
+}

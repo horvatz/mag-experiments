@@ -1,0 +1,49 @@
+{
+  "id": "P05-A-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-08",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Tabela R01–R12 jasno loči filter pred odsekom, globalno stran obeh pogledov, projektne in stolpčne števce, ponastavitve ter prazni primer 0/0. Lokalnost stanja, odsotnost zapisovalnih zahtev in nespremenjena podatkovna domena so navedene brez nasprotujočih si pogojev.",
+      "evidence": ["runtime/runs/P05-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Opisani so preverljivi robovi 1..Y, neprekrivanje odsekov, isti nabor ID-jev in ohranjanje stanja. Specifikacija pa ne definira Y=ceil(N/k) ali izračunov indeksov A/B; osrednja formalizacija ostane v kodi, sprejemni pogoji za indekse so večinoma opisni.",
+      "evidence": ["runtime/runs/P05-A-001/submission/docs/agent/specification.md#zahteve-in-pravila", "runtime/runs/P05-A-001/submission/src/App.tsx:27"]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Vsaka R ima povezavo na test in kodo. Arhivski dogodki potrjujejo 6 lastnih, 8 razvojnih in 52 skupnih uspešnih preverjanj. Nekatere trditve presegajo dejanske dodatne preverbe: zapis R12 navaja odsotnost horizontalnega širjenja pri 390 px, test pa le nastavi širino in preveri odsotnost zapisov. R07 pri preklopu nazaj v preglednico pričakuje vrstni red table, zato povezava ne daje zanesljivega dokaza izvornega vrstnega reda.",
+      "evidence": ["runtime/runs/P05-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost", "runtime/runs/P05-A-001/submission/docs/agent/verification.md#povezava-z-zahtevami", "runtime/runs/P05-A-001/submission/tests/agent/P05.spec.ts:64", "runtime/runs/P05-A-001/submission/tests/agent/P05.spec.ts:97", "runtime/runs/P05-A-001/events.jsonl.gz"]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Tri lokalna stanja so ločena od izpeljanih filtriranih podatkov, števila strani in odseka. Preglednica in obstoječa tabla prejmeta isti visibleTasks, projektni števci ostanejo nefiltrirani. Ključ projekta ponastavi stanje brez sinhronizacijskih učinkov, mejni prehodi so omejeni v goToPage. Nova logika je enotna, brez podvojene implementacije straničenja.",
+      "evidence": ["runtime/runs/P05-A-001/submission/src/App.tsx:21", "runtime/runs/P05-A-001/submission/src/App.tsx:40", "runtime/runs/P05-A-001/submission/src/App.tsx:88", "runtime/runs/P05-A-001/submission/src/App.tsx:132"]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Šest koristnih scenarijev zajame velikosti, robove, filtre, ohranjanje stanja, prazni projekt in prazen filter ter odsotnost zapisov. Manjkajo nabor z več kot deset opravili, splošna preverba vseh odsekov in dejanska geometrijska meja 390 px. R07 po kliku preglednice brez čakanja na aktiven pogled pričakuje [web-04,web-03], čeprav izvorno zaporedje odseka zahteva [web-03,web-04]; uspešen zagon zato ne potrdi tega dela pogoja in lahko ujame še prejšnji DOM table.",
+      "evidence": ["runtime/runs/P05-A-001/submission/tests/agent/P05.spec.ts:8", "runtime/runs/P05-A-001/submission/tests/agent/P05.spec.ts:64", "runtime/runs/P05-A-001/submission/tests/agent/P05.spec.ts:88", "runtime/runs/P05-A-001/submission/tests/agent/P05.spec.ts:97", "runtime/runs/P05-A-001/submission/tests/agent/P05.spec.ts:107", "runtime/runs/P05-A-001/input-overrides/tests/development/helpers.ts:43"]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Neodvisna ocena uspe 70/70, z 12/12 dokazanimi zahtevami. V pregledani končni funkcionalnosti ni potrjene napake. Vsebinske slabosti preverjanj ne spreminjajo avtomatiziranega izida.",
+  "developmentFailureExample": {
+    "description": "Prvi lastni zagon ima štiri neuspehe; med prilagajanjem testov nastane tudi sintaktična napaka. Končni zagon 6/6 in celotno preverjanje 52/52 sta arhivsko potrjena. To so odkrite težave lastnih preverjanj, ne potrjena napaka končne funkcionalnosti.",
+    "evidence": ["runtime/runs/P05-A-001/events.jsonl.gz", "runtime/runs/P05-A-001/submission/tests/agent/P05.spec.ts"]
+  }
+}

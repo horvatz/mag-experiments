@@ -1,0 +1,84 @@
+{
+  "version": "O/1.0",
+  "status": "ready to freeze",
+  "purpose": "Compare the confirmed GLM, DeepSeek and Qwen models under the existing A/B/C development procedures.",
+  "design": {
+    "tasks": [
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10"
+    ],
+    "procedures": [
+      "A",
+      "B",
+      "C"
+    ],
+    "repetitions": 3,
+    "runsPerModel": 72,
+    "newMeasuredRuns": 216,
+    "testsPerRun": {
+      "regression": 38,
+      "development": 8,
+      "holdout": 24
+    },
+    "requirementsPerTask": 12,
+    "totalAgentBudgetSeconds": 1200,
+    "workflowAndPhaseBudgets": "Unmodified M/1.0 source files procedure-b.mjs and procedure-c.mjs.",
+    "order": "Each model retains the original deterministic 72-run schedule. Within each schedule row, cycle model order glm/deepseek/qwen by row index modulo three.",
+    "historicalCollections": [
+      "M/1.0 Astra",
+      "L/1.0 Luna"
+    ]
+  },
+  "inputs": {
+    "source": "Frozen M/1.0 tasks, public tests, private evaluators, references, baselines and workflow prompts.",
+    "isolation": "Independent clean exports; no access to holdout tests, reference solutions, previous submissions, host skills, other agents, credentials or public internet.",
+    "credential": "Researcher-only ignored temporary file. The model client receives a random relay token which shell commands do not inherit.",
+    "immutable": "Never modify frozen M/L inputs or archived submissions. Never repeat, replace or delete a started measured run because of its result."
+  },
+  "transportAdaptations": [
+    "Use the pinned full Luna Codex CLI package for all three new models, with a custom Responses provider and researcher relay.",
+    "Route to the exact approved model and qualified provider from models.json, with no model or provider fallback and no automatic request/stream retries.",
+    "The CLI retains its requested xhigh setting. Send max for GLM and DeepSeek, their highest advertised effort. Qwen has no advertised effort selector; enable its native reasoning mode.",
+    "Omit parallel_tool_calls uniformly because the selected providers do not advertise this optional OpenAI parameter; keep the local tool definitions unchanged.",
+    "Merge high-priority system/developer CLI text verbatim and in order into one leading instructions field, because open-weight backends reject consecutive system messages. Do not repair task prompts or model outputs.",
+    "Add explicit denial of the bundled plugin-creator skill path when the host inventory omits it.",
+    "Use researcher cost and generation records for invoices, retaining original CLI usage and session reconciliation as separate evidence.",
+    "For every schema-constrained CLI turn, transmit the exact final JSON Schema verbatim in leading instructions instead of native constrained decoding. Diagnostics 014 show all three selected providers suppress auto tool calls under native json_schema, whereas 015 tests the transport fix. Keep tool_choice auto, workflow prompts and original final JSON validation; never repair answers."
+  ],
+  "qualification": {
+    "technical": "Browser lifecycle, filesystem and role/stage boundaries, 38 baseline tests, 8 public reference tests, equality of exported task inputs.",
+    "transport": "Real shell calls, file write/read, schema-conforming JSON and persistent session memory for each model. All attempts retained with unused diagnostic IDs.",
+    "workflows": "Original small Q/1 B/C/I qualifications, including predeclared fault injection and interruption; outcomes and API evidence preserved.",
+    "excludedFromMeasuredResults": true,
+    "policy": "Correct only infrastructure faults before freezing. Do not adjust workflow prompts, budgets or model settings in response to task quality. Transport/isolation and valid orchestration are required; diagnostic model timeouts or semantic failures remain evidence and do not justify exclusion, prompt tuning or replacement. Original Q/1 recorder failure after an invalid review is separately audited; the unchanged measured B runner catches this invalid handoff.",
+    "auditedAt": "2026-10-08T20:49:32.114Z"
+  },
+  "budget": {
+    "authorizationFile": "budget.json",
+    "currency": "USD as reported by OpenRouter",
+    "includePilotSpend": true,
+    "topUp": false,
+    "unknownCosts": "Remain null; reserve the pinned endpoint maximum input plus output price for budget control. Account credit snapshots are not per-run invoices.",
+    "posthocReconciliation": "Retry missing provider generation lookups before unused runs and retain later invoices beside the immutable submission archive. Never change archived initial evidence; unresolved costs remain null."
+  },
+  "analysis": {
+    "primary": "All started runs remain in the denominator. A demonstrated requirement needs both acceptance viewports and permitted changes; strict success additionally needs completed procedure, lint, types, build and all 70 tests.",
+    "missing": "Unknown time, token usage, costs and qualitative ratings remain missing, never zero. Preserve execution failures and account/provider incidents.",
+    "paired": "Average three repetitions by task/procedure, then compare across eight tasks with the existing seeded 20000-resample paired descriptive intervals.",
+    "contentReview": "Same five-dimensional rubric and predeclared repetition-1 sample: 24 submissions per model. AI-assisted review must be labeled and never presented as independent human judgment."
+  },
+  "limitations": [
+    "Historical Astra and Luna used ChatGPT authentication and different time periods; Astra used another CLI version. Cross-collection differences do not isolate a causal model effect.",
+    "New model comparisons include provider implementations, advertised quantization, caching, latency and model-specific reasoning controls. GLM provider quantization is not advertised.",
+    "These models have public weights; their licenses differ. Do not describe all three as uniformly strict open-source software.",
+    "GLM is advertised as text-only; DeepSeek and Qwen accept image input. Modality and context limits are model capabilities and must be reported.",
+    "Final structured-output constraints use a textual schema with original workflow validation, because selected OpenRouter constrained decoders suppress automatic tool calls. This differs from historical native structured-output enforcement and is identical across the three new collections.",
+    "Pinned CLI has no native metadata entries for these OpenRouter names and uses fallback metadata. All three receive the same four qualified function tools; historical OpenAI models used their native metadata. Interpret results as model/provider/client-stack comparisons."
+  ]
+}

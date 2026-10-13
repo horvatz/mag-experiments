@@ -1,0 +1,20 @@
+Najprej preberem pravila in navodila naloge, nato pripravim specifikacijo pred implementacijo.
+Pravila so jasna. Zdaj pregledam obstoječi vmesnik, tipe in razvojne teste, da specifikacijo uskladim z dejansko kodo.
+Zasnova je določena: lokalni permutacijski stanji z omejenima skladoma `undo`/`redo`, globalnimi mesti in novimi gumbi zunaj povezav. Najprej zapišem specifikacijo.
+Specifikacija je pripravljena. Zdaj implementiram stanje permutacij, kontrole in Folio postavitev v obeh pogledih.
+Osnovna implementacija je v mestu. Zdaj jo preverim s tipi in lintom, preden dodam lastne scenarije.
+Tipi in izgradnja so uspešni. Zdaj poženem skupne razvojne teste P10 in popravim morebitne neuspehe.
+Skupni P10 testi so zeleni. Dodam lastne teste za zgodovine, mejo 20, tabla, podrobnosti, preklop projekta, robne primere in ozko postavitev.
+Lastna testa sta odkrila le napaki v pričakovanjih testov, ne v implementaciji: reset pravilno doda drugo razveljavljivo dejanje, datum pa se prikaže formatiran. Popravim testna pričakovanja.
+Lastni testi so zdaj zeleni. Pred končno dokumentacijo poženem celotni `npm run check`, da preverim še lint, build in vsa izhodiščna testiranja.
+Celotni `npm run check` je uspešen (51 testov). Še dopolnim lastni test za osvežitev in zapišem dejansko verifikacijo ter zgodovino specifikacije.
+Dokumentacija je usklajena. Zadnjič poženem celoten `npm run check` po vseh spremembah.
+Vse je zeleno po končnem zagonu. Še pregledam spremenjene datoteke in ključne vrstice za zaključno predajo.
+**Rezultat**
+- Implementiral sem lokalni vrstni red z gumbi za premik, razveljavitev, ponovitev in reset v `src/taskOrder.ts:21`, `src/App.tsx:13` in `src/TaskBoard.tsx:9`.
+- Dodal sem globalna mesta, števce zgodovine in prilagodljive Folio stile v `src/styles.css:61`.
+- Specifikacija R01–R12 je v `docs/agent/specification.md:1`, s kratko zgodovino popravkov.
+- Lastni testi pokrivajo zgodovine, mejo 20, tablo, podrobnosti, preklop projekta, osvežitev, robne primere in širino 390 px: `tests/agent/P10-agent.spec.ts:58`.
+- Dejanski rezultati so zapisani v `docs/agent/verification.md:3`.
+- Končni 
+{"status":"completed","elapsedSeconds":482.642,"allowedChanges":true,"usage":{"input_tokens":1312968,"cached_input_tokens":1157952,"cache_write_input_tokens":0,"output_tokens":22457,"reasoning_output_tokens":21870}}

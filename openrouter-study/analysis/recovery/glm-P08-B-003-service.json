@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-13T02:03:04.916748+00:00",
+  "researcherOnly": true,
+  "slug": "glm",
+  "id": "P08-B-003",
+  "position": 91,
+  "request101": {
+    "number": 101,
+    "status": "http_error",
+    "httpStatus": 404,
+    "providerError": "{\"error\":{\"message\":\"No endpoints found that support image input\",\"code\":404,\"metadata\":{\"routing_funnel\":[{\"step\":\"Initial Endpoints\",\"endpoint_count\":42},{\"step\":\"Filter by Regional Surcharge\",\"endpoint_count\":41}],\"failed_routing_step\":\"Filter by Image Support\"}}}",
+    "responseStatus": null
+  },
+  "classificationVerifiedBySupervisorV4": "glm-image-input-unsupported",
+  "originalAccountingForRequest101": {
+    "costUSD": 0,
+    "source": "Frozen 404 without responseId rule; not a generation invoice or returned usage"
+  },
+  "continuation": {
+    "at": "2026-10-13T01:57:10.817Z",
+    "action": "continue_unused_ids",
+    "archived": 91,
+    "previousRun": "glm/P08-B-003",
+    "errorRequests": [
+      101
+    ],
+    "classifications": [
+      "glm-image-input-unsupported"
+    ],
+    "nextRun": "deepseek/P08-B-003",
+    "diagnosis": "analysis/recovery/glm-P06-B-001-image-tool.json",
+    "diagnostic": "/Users/zan/Documents/mag/experiments/openrouter-study/glm/qualification/service-2026-10-13T01-57-07-665Z",
+    "unchangedFrozenProtocol": true,
+    "archivedHashesVerified": true,
+    "measuredRetry": false,
+    "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
+  },
+  "diagnosticCostUSD": 0.00084182,
+  "archiveSha256": "851b22f9611264156f2d1afe56e12504ca71e9c29d9ba0601ac230402aa78ced",
+  "independentFunctionalOutcome": {
+    "passed": 68,
+    "total": 70,
+    "demonstrated": 11,
+    "totalRequirements": 12,
+    "failedRequirement": "R11",
+    "failedOnBothScreens": true,
+    "symptom": "Empty selected-group message absent in board view",
+    "source": "glm/runtime/runs/P08-B-003/submission/src/App.tsx:71"
+  },
+  "newRunnerPID": 26307,
+  "newRunnerOutputPTY": 28327,
+  "measuredRetry": false
+}

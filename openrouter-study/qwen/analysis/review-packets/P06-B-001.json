@@ -1,0 +1,145 @@
+{
+  "at": "2026-10-09T03:21:28.808Z",
+  "slug": "qwen",
+  "id": "P06-B-001",
+  "researcherOnly": true,
+  "limitations": [
+    "This is a source index, not a qualitative grade or a substitute for reading authored files.",
+    "Later API inputs can preserve failed tool calls omitted from native events. A final call without a subsequent input may be absent.",
+    "Attempted writes do not constitute delivered documents. The final immutable submission is authoritative.",
+    "Do not feed researcher evaluations or this packet to measured model sessions."
+  ],
+  "execution": {
+    "status": "execution_failed",
+    "elapsedSeconds": 79.455,
+    "phases": [
+      {
+        "name": "specification",
+        "status": "execution_failed",
+        "elapsedSeconds": 78.945
+      }
+    ],
+    "fileChanges": []
+  },
+  "evaluation": {
+    "executionStatus": "execution_failed",
+    "groups": {
+      "regression": {
+        "passed": 38,
+        "total": 38
+      },
+      "development": {
+        "passed": 0,
+        "total": 8
+      },
+      "holdout": {
+        "passed": 0,
+        "total": 24
+      }
+    },
+    "checks": [
+      {
+        "name": "lint",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.536,
+        "passed": true
+      },
+      {
+        "name": "types",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.599,
+        "passed": true
+      },
+      {
+        "name": "build",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.179,
+        "passed": true
+      },
+      {
+        "name": "tests",
+        "exitCode": 1,
+        "signal": null,
+        "elapsedSeconds": 189.978,
+        "passed": false
+      }
+    ]
+  },
+  "phaseResults": [
+    {
+      "source": "runtime/runs/P06-B-001/phases/01-specification/result.json",
+      "name": "specification",
+      "status": "execution_failed",
+      "elapsedSeconds": 78.945,
+      "signal": null
+    }
+  ],
+  "authoredFiles": [],
+  "nativeCommands": [
+    {
+      "source": "runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_2",
+      "command": "/bin/zsh -lc 'cat task/instructions.md'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "# P06: Nastavljiv izvoz CSV\n\nRazličica 1.0, glavna naloga. Vsi postopki prejmejo iste zahteve, izhodišče in razvojne teste. Začetni Folio ne vsebuje rešitve pilotov ali drugih glavnih nalog.\n\n## Zahteve\n\n| ID | Pričakovano delovanje |\n| --- | --- |\n| R01 | Izvoz zajame opravila trenutnega projekta v izvornem vrstnem redu. Privzeti filter je all, izbrane so vse dovoljene kolone, ločilo je podpičje. |\n| R02 | Izbrati je mogoče kolone id, projectId, title, status, assignee, dueDate, description. Glava in vrednosti sledijo temu nespremenljivemu vrstnemu redu ne glede na vrstni red klikov. |\n| R03 | Če nobena kolona ni izbrana, je izvoz onemogočen in ne ustvari prenosa. Ponovni izbor kolone izvoz omogoči, če obstajajo ustrezne vrstice. |\n| R04 | Filter all/todo/in_progress/done omeji samo izvožene vrstice. Vmesnik še prikazuje celoten projekt. Prazen projekt ali prazen filtrirani rezultat onemogoči izvoz. |\n| R05 | Izvoz prenese datoteko folio-<projectId>.csv z UTF-8 BOM U+FEFF na začetku. Ne odpre nove strani in ne pošlje vsebine na strežnik. |\n| R06 | Ločilo je nastavljivo na ; ali ,. Vsaka glava in vsaka vrednost sta vedno obdani z dvojnimi narekovaji. Vsak notranji dvojni narekovaj je podvojen. |\n| R07 | Vrstice CSV so ločene s CRLF; tudi zadnja vrstica se konča s CRLF. Ločila in prelomi vrstic v vrednostih ostanejo znotraj pravilno navedene vrednosti in se ne izgubijo. |\n| R08 | Pred navedbo vrednosti nevtraliziraj formulo: če se izvirni niz po poljubnih začetnih znakih presledek, tabulator, CR ali LF začne z =, +, - ali @, dodaj apostrof na sam začetek izvirnega niza. Drugih nizov ne spreminjaj. Pravilo velja za vse podatkovne kolone, ne za glavo. |\n| R09 | Šumniki, drugi Unicode znaki, presledki in vsebina opisov ostanejo ohranjeni, razen izrecne nevtralizacije formul. status se izvozi kot interna vrednost, datum kot izvirni YYYY-MM-DD. |\n| R10 | Preklop Preglednica/Tabla ohrani izbor kolon, ločilo in filter; isti nastavitvi v obeh pogledih ustvarita iste bajte datoteke. |\n| R11 | Menjava projekta ter osvežitev ponastavita izbrane kolone, ločilo in filter na privzete vrednosti. Zaporedna izvoza po spremembi nastavitev vedno odražata trenutne nastavitve. |\n| R12 | Izvoz in njegove kontrole ne spreminjajo nobenega opravila, izvornega polja ali obstoječih bralnih funkcij. Ne pošiljajo zapisov na API. Videz Folio ostane prilagodljiv. |\n\n## Dogovor o vmesniku\n\n- Checkbox za vsako kolono ima dostopno ime Stolpec <ime>, npr. Stolpec title.\n- HTML select Ločilo CSV z vrednostma ; in ,; HTML select Filter izvoza z vrednostmi all/todo/in_progress/done.\n- Gumb Izvozi CSV. Imena projektov oziroma ID-ji v obsegu imajo črke, številke in vezaje.\n\nOhrani `data-task-id` na vrsticah in karticah, dostopna imena obstoječih pogledov in stolpcev ter `aria-label=\"Pregled stanj opravil\"`. Nova dejanja ob opravilu morajo biti zunaj njegove povezave. Na širini 390 pik se cela stran ne razširi; notranje drsenje preglednice in table je dovoljeno. Besedilo, ki ni izrecno določeno zgoraj, in razporeditev novih kontrol nista predpisana.\n\n## Podatki, obseg in preverjanje\n\nPodatke preberi iz obstoječega javnega API-ja. Testi lahko vrnejo poljubno število opravil (tudi nič, eno in več kot deset), drugačne enkratne ID-je, enake naslove, različno zaporedje in veljavne koledarske datume. Tipi in polja so enaki izhodišču. Projekta sta lahko prazna. Naslovi, opisi in imena so navadno besedilo, tudi z Unicode znaki in ločili. V nalogah z izbiro odgovorne osebe so imena neprazna in različna od rezervirane vrednosti `all`. Vsako opravilo pripada svojemu projektu.\n\nJavni pripomoček razvojnih testov podaja dodatne podatke z nadzorovanimi GET odgovori. To je testni mehanizem, ki ga uporabniški vmesnik ne sme uvažati ali uporabljati. Aplikacija bere samo `/api/`; ne bere testnih kontrol `/__test/`. Strežnika, infrastrukture, odvisnosti in skupnih tipov ne spreminjaj. Razvojni primeri niso celoten obseg zahtev; končni primeri lahko uporabijo drugačne podatke iz opisane domene.\n\nNavigacije med nezaključenim nalaganjem in novih sočasnih sprememb podatkov brez osvežitve ne širimo prek obstoječih regresijskih zahtev. Če posamezna zahteva ne določa trajne shrambe ali URL-ja, je stanje nove funkcionalnosti lokalno trenutnemu projektu. Ne dodajaj novih zapisovalnih API-jev.\n\n## Oddaja\n\nSpreminjaj samo `src/`, lastne teste v `tests/agent/` in dokumente v `docs/agent/`. Veljajo projektna pravila; omembe pilotov v dokumentih izhodišča so zgodovinske. Pripravi specifikacijo po skupni predlogi in poveži vseh R01–R12 s pogoji, kodo in dejansko izvedenimi testi. Izbrane pogoje opredeli tudi s predikati. Zapiši nepreverjene dele in omejitve; nedostopnih končnih testov ne navajaj kot opravljenih.\n"
+    },
+    {
+      "source": "runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_3",
+      "command": "/bin/zsh -lc 'cat task/specification-template.md'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "# Predloga razvojne specifikacije\n\nPredloga je enaka za vse postopke. Izpolnjena vsebina je izdelek postopka,\nne vnaprej dana referenčna rešitev. Če postopek ustvari več dokumentov,\nlahko navede povezave na ustrezne dele namesto podvajanja vsebine.\n\n## Problem in kontekst\n\nOpiši uporabnikov namen, začetno delovanje aplikacije in predvideno spremembo.\n\n## Vhodi, dejanja in izidi\n\nDoloči relevantna podatkovna polja, dovoljena dejanja, pogoje uporabe in\npričakovano stanje po uspehu, preklicu ter napaki.\n\n## Zahteve in pravila\n\nZa vsako zahtevo iz navodil navedi, kako bo zajeta. Izbrane zahteve izrazi\ns predikati ali pravili spremembe stanja. Pojasni simbole in predpostavke.\nLoči splošno pravilo od posameznega testnega primera.\n\n| Zahteva | Pravilo oziroma sprejemni pogoj | Način preverjanja |\n| --- | --- | --- |\n| R… | … | … |\n\n## Izvedba in sledljivost\n\n| Zahteva | Pogoj | Test ali scenarij | Datoteka in del kode | Izid ter dokaz |\n| --- | --- | --- | --- | --- |\n| R… | … | … | … | … |\n\nIzida ne označi kot uspešnega brez dejanskega preverjanja. Navedi, če test\nni izveden. Izvor rezultata naj bo določljiv, npr. ime testa in dnevnik zagona.\nPo popravkih posodobi povezave in ohrani zgodovino sprememb specifikacije.\n\n## Odprta vprašanja in omejitve\n\nZapiši nejasnosti, uporabljena pojasnila, nepreverjene scenarije ter odstopanja.\n"
+    },
+    {
+      "source": "runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_4",
+      "command": "/bin/zsh -lc 'cat docs/agent/specification.md'",
+      "status": "failed",
+      "exitCode": 1,
+      "output": "cat: docs/agent/specification.md: No such file or directory\n"
+    },
+    {
+      "source": "runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz",
+      "itemId": "item_5",
+      "command": "/bin/zsh -lc 'cat task/time-budget.mjs'",
+      "status": "completed",
+      "exitCode": 0,
+      "output": "const phase = Number(process.env.MAG_PHASE_DEADLINE_MS)\nconst run = Number(process.env.MAG_RUN_DEADLINE_MS)\nif (!Number.isFinite(phase) || !Number.isFinite(run)) throw new Error('No active phase clock')\nconst seconds = (end) => Math.max(0, Math.floor((end - Date.now()) / 1000))\nconsole.log(JSON.stringify({ phaseSecondsRemaining: seconds(phase), totalSecondsRemaining: seconds(run), phaseDeadlineUTC: new Date(phase).toISOString() }))\n"
+    }
+  ],
+  "preservedToolCalls": [
+    {
+      "source": "api/P06-B-001/model/request-00002.json.gz",
+      "callId": "01a11ea9db28265b36fd0b47163803d7",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat task/instructions.md\"}",
+      "output": "Chunk ID: 89f949\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 1199\nOutput:\n# P06: Nastavljiv izvoz CSV\n\nRazličica 1.0, glavna naloga. Vsi postopki prejmejo iste zahteve, izhodišče in razvojne teste. Začetni Folio ne vsebuje rešitve pilotov ali drugih glavnih nalog.\n\n## Zahteve\n\n| ID | Pričakovano delovanje |\n| --- | --- |\n| R01 | Izvoz zajame opravila trenutnega projekta v izvornem vrstnem redu. Privzeti filter je all, izbrane so vse dovoljene kolone, ločilo je podpičje. |\n| R02 | Izbrati je mogoče kolone id, projectId, title, status, assignee, dueDate, description. Glava in vrednosti sledijo temu nespremenljivemu vrstnemu redu ne glede na vrstni red klikov. |\n| R03 | Če nobena kolona ni izbrana, je izvoz onemogočen in ne ustvari prenosa. Ponovni izbor kolone izvoz omogoči, če obstajajo ustrezne vrstice. |\n| R04 | Filter all/todo/in_progress/done omeji samo izvožene vrstice. Vmesnik še prikazuje celoten projekt. Prazen projekt ali prazen filtrirani rezultat onemogoči izvoz. |\n| R05 | Izvoz prenese datoteko folio-<projectId>.csv z UTF-8 BOM U+FEFF na začetku. Ne odpre nove strani in ne pošlje vsebine na strežnik. |\n| R06 | Ločilo je nastavljivo na ; ali ,. Vsaka glava in vsaka vrednost sta vedno obdani z dvojnimi narekovaji. Vsak notranji dvojni narekovaj je podvojen. |\n| R07 | Vrstice CSV so ločene s CRLF; tudi zadnja vrstica se konča s CRLF. Ločila in prelomi vrstic v vrednostih ostanejo znotraj pravilno navedene vrednosti in se ne izgubijo. |\n| R08 | Pred navedbo vrednosti nevtraliziraj formulo: če se izvirni niz po poljubnih začetnih znakih presledek, tabulator, CR ali LF začne z =, +, - ali @, dodaj apostrof na sam začetek izvirnega niza. Drugih nizov ne spreminjaj. Pravilo velja za vse podatkovne kolone, ne za glavo. |\n| R09 | Šumniki, drugi Unicode znaki, presledki in vsebina opisov ostanejo ohranjeni, razen izrecne nevtralizacije formul. status se izvozi kot interna vrednost, datum kot izvirni YYYY-MM-DD. |\n| R10 | Preklop Preglednica/Tabla ohrani izbor kolon, ločilo in filter; isti nastavitvi v obeh pogledih ustvarita iste bajte datoteke. |\n| R11 | Menjava projekta ter osvežitev ponastavita izbrane kolone, ločilo in filter na privzete vrednosti. Zaporedna izvoza po spremembi nastavitev vedno odražata trenutne nastavitve. |\n| R12 | Izvoz in njegove kontrole ne spreminjajo nobenega opravila, izvornega polja ali obstoječih bralnih funkcij. Ne pošiljajo zapisov na API. Videz Folio ostane prilagodljiv. |\n\n## Dogovor o vmesniku\n\n- Checkbox za vsako kolono ima dostopno ime Stolpec <ime>, npr. Stolpec title.\n- HTML select Ločilo CSV z vrednostma ; in ,; HTML select Filter izvoza z vrednostmi all/todo/in_progress/done.\n- Gumb Izvozi CSV. Imena projektov oziroma ID-ji v obsegu imajo črke, številke in vezaje.\n\nOhrani `data-task-id` na vrsticah in karticah, dostopna imena obstoječih pogledov in stolpcev ter `aria-label=\"Pregled stanj opravil\"`. Nova dejanja ob opravilu morajo biti zunaj njegove povezave. Na širini 390 pik se cela stran ne razširi; notranje drsenje preglednice in table je dovoljeno. Besedilo, ki ni izrecno določeno zgoraj, in razporeditev novih kontrol nista predpisana.\n\n## Podatki, obseg in preverjanje\n\nPodatke preberi iz obstoječega javnega API-ja. Testi lahko vrnejo poljubno število opravil (tudi nič, eno in več kot deset), drugačne enkratne ID-je, enake naslove, različno zaporedje in veljavne koledarske datume. Tipi in polja so enaki izhodišču. Projekta sta lahko prazna. Naslovi, opisi in imena so navadno besedilo, tudi z Unicode znaki in ločili. V nalogah z izbiro odgovorne osebe so imena neprazna in različna od rezervirane vrednosti `all`. Vsako opravilo pripada svojemu projektu.\n\nJavni pripomoček razvojnih testov podaja dodatne podatke z nadzorovanimi GET odgovori. To je testni mehanizem, ki ga uporabniški vmesnik ne sme uvažati ali uporabljati. Aplikacija bere samo `/api/`; ne bere testnih kontrol `/__test/`. Strežnika, infrastrukture, odvisnosti in skupnih tipov ne spreminjaj. Razvojni primeri niso celoten obseg zahtev; končni primeri lahko uporabijo drugačne podatke iz opisane domene.\n\nNavigacije med nezaključenim nalaganjem in novih sočasnih sprememb podatkov brez osvežitve ne širimo prek obstoječih regresijskih zahtev. Če posamezna zahteva ne določa trajne shrambe ali URL-ja, je stanje nove funkcionalnosti lokalno trenutnemu projektu. Ne dodajaj novih zapisovalnih API-jev.\n\n## Oddaja\n\nSpreminjaj samo `src/`, lastne teste v `tests/agent/` in dokumente v `docs/agent/`. Veljajo projektna pravila; omembe pilotov v dokumentih izhodišča so zgodovinske. Pripravi specifikacijo po skupni predlogi in poveži vseh R01–R12 s pogoji, kodo in dejansko izvedenimi testi. Izbrane pogoje opredeli tudi s predikati. Zapiši nepreverjene dele in omejitve; nedostopnih končnih testov ne navajaj kot opravljenih.\n"
+    },
+    {
+      "source": "api/P06-B-001/model/request-00002.json.gz",
+      "callId": "01a11ea9dd2c2b76922dba38efc23a78",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat task/specification-template.md\"}",
+      "output": "Chunk ID: cf14b7\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 345\nOutput:\n# Predloga razvojne specifikacije\n\nPredloga je enaka za vse postopke. Izpolnjena vsebina je izdelek postopka,\nne vnaprej dana referenčna rešitev. Če postopek ustvari več dokumentov,\nlahko navede povezave na ustrezne dele namesto podvajanja vsebine.\n\n## Problem in kontekst\n\nOpiši uporabnikov namen, začetno delovanje aplikacije in predvideno spremembo.\n\n## Vhodi, dejanja in izidi\n\nDoloči relevantna podatkovna polja, dovoljena dejanja, pogoje uporabe in\npričakovano stanje po uspehu, preklicu ter napaki.\n\n## Zahteve in pravila\n\nZa vsako zahtevo iz navodil navedi, kako bo zajeta. Izbrane zahteve izrazi\ns predikati ali pravili spremembe stanja. Pojasni simbole in predpostavke.\nLoči splošno pravilo od posameznega testnega primera.\n\n| Zahteva | Pravilo oziroma sprejemni pogoj | Način preverjanja |\n| --- | --- | --- |\n| R… | … | … |\n\n## Izvedba in sledljivost\n\n| Zahteva | Pogoj | Test ali scenarij | Datoteka in del kode | Izid ter dokaz |\n| --- | --- | --- | --- | --- |\n| R… | … | … | … | … |\n\nIzida ne označi kot uspešnega brez dejanskega preverjanja. Navedi, če test\nni izveden. Izvor rezultata naj bo določljiv, npr. ime testa in dnevnik zagona.\nPo popravkih posodobi povezave in ohrani zgodovino sprememb specifikacije.\n\n## Odprta vprašanja in omejitve\n\nZapiši nejasnosti, uporabljena pojasnila, nepreverjene scenarije ter odstopanja.\n"
+    },
+    {
+      "source": "api/P06-B-001/model/request-00002.json.gz",
+      "callId": "01a11ea9df4023abca804db8c163b23a",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat docs/agent/specification.md\"}",
+      "output": "Chunk ID: 730f55\nWall time: 0.0000 seconds\nProcess exited with code 1\nOriginal token count: 15\nOutput:\ncat: docs/agent/specification.md: No such file or directory\n"
+    },
+    {
+      "source": "api/P06-B-001/model/request-00002.json.gz",
+      "callId": "01a11ea9e1663ca411269be8a3c13694",
+      "name": "exec_command",
+      "arguments": "{\"cmd\": \"cat task/time-budget.mjs\"}",
+      "output": "Chunk ID: 2bfdb2\nWall time: 0.0000 seconds\nProcess exited with code 0\nOriginal token count: 109\nOutput:\nconst phase = Number(process.env.MAG_PHASE_DEADLINE_MS)\nconst run = Number(process.env.MAG_RUN_DEADLINE_MS)\nif (!Number.isFinite(phase) || !Number.isFinite(run)) throw new Error('No active phase clock')\nconst seconds = (end) => Math.max(0, Math.floor((end - Date.now()) / 1000))\nconsole.log(JSON.stringify({ phaseSecondsRemaining: seconds(phase), totalSecondsRemaining: seconds(run), phaseDeadlineUTC: new Date(phase).toISOString() }))\n"
+    }
+  ]
+}

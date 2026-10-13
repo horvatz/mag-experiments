@@ -1,0 +1,117 @@
+{
+  "id": "P05-B-002",
+  "procedure": "B",
+  "startedAt": "2026-10-11T13:09:30.841Z",
+  "model": "qwen/qwen3.5-9b",
+  "reasoningEffort": "xhigh",
+  "limitSeconds": 1200,
+  "status": "invalid_review_handoff",
+  "cli": "/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS/codex",
+  "cliVersion": "codex-cli 0.158.0-alpha.2.1",
+  "phases": [
+    {
+      "name": "specification",
+      "role": "specification",
+      "resumed": false,
+      "startedAt": "2026-10-11T13:09:31.065Z",
+      "limitSeconds": 360,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a12b15-2f50-7a41-871b-87abad635567",
+      "finishedAt": "2026-10-11T13:15:31.100Z",
+      "elapsedSeconds": 360.034,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [
+        {
+          "path": "docs/agent/specification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "implementation",
+      "role": "implementation",
+      "resumed": false,
+      "startedAt": "2026-10-11T13:15:32.220Z",
+      "limitSeconds": 478.848,
+      "status": "completed",
+      "usage": {
+        "input_tokens": 195941,
+        "cached_input_tokens": 68352,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2134,
+        "reasoning_output_tokens": 562
+      },
+      "threadId": "01a12b1a-b214-7363-8cc7-e4e88df9de58",
+      "finishedAt": "2026-10-11T13:17:25.724Z",
+      "elapsedSeconds": 113.504,
+      "exitCode": 0,
+      "signal": null,
+      "fileChanges": [],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "review",
+      "role": "review",
+      "resumed": false,
+      "startedAt": "2026-10-11T13:17:26.255Z",
+      "limitSeconds": 604.807,
+      "status": "completed",
+      "usage": {
+        "input_tokens": 778341,
+        "cached_input_tokens": 222464,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9383,
+        "reasoning_output_tokens": 1279
+      },
+      "threadId": "01a12b1c-6f88-70e0-9b22-b017a96875e1",
+      "finishedAt": "2026-10-11T13:25:47.714Z",
+      "elapsedSeconds": 501.458,
+      "exitCode": 0,
+      "signal": null,
+      "handoffError": "Unexpected token 'C', \"Complete.\n\"... is not valid JSON",
+      "fileChanges": [
+        {
+          "path": "docs/agent/review.json",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    }
+  ],
+  "sessions": {
+    "specification": "01a12b15-2f50-7a41-871b-87abad635567",
+    "implementation": "01a12b1a-b214-7363-8cc7-e4e88df9de58",
+    "review": "01a12b1c-6f88-70e0-9b22-b017a96875e1"
+  },
+  "intervention": "No operator hints, code edits or hidden-test feedback during execution; deterministic handoffs only.",
+  "usage": null,
+  "monetaryCost": null,
+  "costNote": "OpenRouter API; provider usage and invoiced cost are recorded separately by the researcher relay.",
+  "finishedAt": "2026-10-11T13:25:48.011Z",
+  "elapsedSeconds": 977.169,
+  "usageNote": "Raw CLI usage is recorded per phase. Aggregate is withheld if a resumed session requires reconciliation or any phase lacks a final usage event.",
+  "fileChanges": [
+    {
+      "path": "docs/agent/review.json",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "docs/agent/specification.md",
+      "allowed": true,
+      "kind": "added"
+    }
+  ],
+  "rejectedSymlinks": [],
+  "allowedChanges": true
+}

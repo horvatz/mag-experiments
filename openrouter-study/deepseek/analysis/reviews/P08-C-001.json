@@ -1,0 +1,109 @@
+{
+  "id": "P08-C-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Oddaja po štirih dokončanih pripravljalnih fazah in prekinjeni implementaciji zaradi HTTP520 ponudnika. Konvergenca ni začeta. Dokumente in kode ocenjujemo po dostavljeni vsebini; neodvisne končne napake ločeno od neznanega vzroka napake ponudnika. Brez popravka/ponovitve.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija in načrt podrobno pokrijeta vseh 12 zahtev, fiksni datum/all, done prednost, disjunktne meje, koledarski izračun, celoprojektne števce, stabilni red, osnutek/reference, preklop pogledov, reset, prazna stanja, exact UI imena/alert, bralnost in 390 px. Ostane konkretno neskladje prehodov: opis izidov pravi, da tudi preklop skupine ohrani izbrano skupino, formalni setFilter pa jo spremeni. init določi view=table, switchProject/refresh pa ponovni init, kar predpiše reset obstoječega navigacijskega pogleda, čeprav naj se ta ohrani; načrt novo stanje omeji na datum/filter. Končna specifikacija predaje teh nasprotij ne uskladi. Ocena ni znižana zgolj zaradi poznejšega neuspeha testov.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:46",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:65",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:70",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:76",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:80",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:100",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/plan.md:42"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "group(t) po done in diff pravilno določi vseh pet razredov in count kardinalnost celotnega projekta, vidna opravila pa stabilni filter. SetRef veljaven/prazen, setFilter in setView imajo uporabne ohranjene lastnosti. Toda S vključuje tudi view, init ga postavi na table, switchProject/refresh pa ponovni init: to je napačna formalna ponastavitev obstoječega pogleda ob navigaciji/reloadu. Nova funkcionalnost sme ponastaviti datum/filter, ne obstoječe navigacijske table. Drug opis celo ohranja skupino pri njeni spremembi; to je v konfliktu s formalnim setFilter. Večina predikatov je koristna, celota ključnih prehodov pa ni skladna. Dejanska koda view še vedno prejema iz zunanje poti; dobra implementacija ne popravi specifikacije.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:54",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:65",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:70",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:72",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:76",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:80",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:85"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Zahteve so povezane z načrtovanimi scenariji in moduli, tasks navede funkcije ter datoteke. Matrika specifikacije pa ostane ena skupinska vrstica R01–R12 in načrtovani src/formatDate.ts, čeprav načrt pravilno preusmeri koledarsko logiko v dueDates.ts. Vsi tasks ostanejo unchecked, verification pa odkrito ni še izvedeno za vse statične/skupne/lastne teste. To je po prekinjeni implementaciji pošten nedokončan zapis, ne izmišljeni zeleni rezultati. Končne povezave zahteva–dejanska funkcija–izveden test ni.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:131",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:139",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/plan.md:36",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/tasks.md:13",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/tasks.md:27",
+        "runtime/runs/P08-C-001/submission/docs/agent/verification.md:10",
+        "runtime/runs/P08-C-001/submission/docs/agent/verification.md:16"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "dueDates.ts loči tipe/oznake, validacijo, razliko dni, razvrščanje, štetje in stabilni filter. ProjectView hrani samo refDate/refInput/dueFilter, veljavnost, counts in visible pa izpelje; neveljaven osnutek ne spremeni veljavne reference. Enotne kontrole/števci služijo obema pogledoma, lokalni ključ projekta zagotovi reset datumskih nastavitev, obstoječi view ostane iz zunanje poti. Napaka praznih prikazov je jasno lokalizirana v prednostni veji tasks.length/visible.length pred view in ne pomeni znatnega podvajanja ali prepletenosti odgovornosti. Organizacija je sledljiva tudi v delni oddaji; njena funkcionalna pravilnost je merjena ločeno.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/src/dueDates.ts:18",
+        "runtime/runs/P08-C-001/submission/src/dueDates.ts:25",
+        "runtime/runs/P08-C-001/submission/src/dueDates.ts:31",
+        "runtime/runs/P08-C-001/submission/src/dueDates.ts:40",
+        "runtime/runs/P08-C-001/submission/src/dueDates.ts:46",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:14",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:21",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:62",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:85",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:107"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Dostavljena datoteka vsebuje štiri smiselne U01–U04 z neodvisnimi ročnimi pričakovanji: neveljaven/prestopni datum, koledarske prehode, meje -1/0/+1/+7/+8, prednost done, ročne števce in stabilni filter. Toda model jih pred HTTP520 ne zažene; 27 native ukazov in 39 preserviranih klicev ne potrdi nobenega lastnega testnega rezultata. Verification/tasks odkrito ostaneta ni še izvedeno/unchecked. Ocena 1 vrednoti uporabno, nepopolno zasnovo dodatnih preverjanj, skladno s primerljivo L/1.0 P04-C-001, in ne pomeni izvedenega uspeha. Manjkajo lastni UI scenariji praznega vnosa med pogledoma, prazne skupine/projekta, reseta, bralnosti in 390 px ter večji/nesortirani podatki ali sprememba ure/pasu. Raziskovalčevo končno 66/70 ni modelno lastno preverjanje.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:16",
+        "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:27",
+        "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:37",
+        "runtime/runs/P08-C-001/submission/tests/agent/dueDates.spec.ts:54",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/tasks.md:15",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/tasks.md:28",
+        "runtime/runs/P08-C-001/submission/docs/agent/verification.md:10"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Regresija an empty board keeps all columns in E11 na obeh širinah odpoveta pri manjkajoči regiji Tabla opravil. App:62 za povsem prazen projekt vrne le sporočilo, App:63 za prazen filtriran seznam prav tako; šele naslednja veja upošteva board. Tako izgine tabla tudi pri izhodiščnem praznem projektu. Neodvisno 36/38 regresija,8/8 razvoj,22/24 skriti =66/70 in11/12. Druge datumske zahteve v tem zamrznjenem sklopu uspejo; provider520 ni razlog teh vsebinskih napak.",
+    "evidence": [
+      "runtime/runs/P08-C-001/submission/src/App.tsx:62",
+      "runtime/runs/P08-C-001/submission/src/App.tsx:63",
+      "runtime/runs/P08-C-001/submission/src/App.tsx:64",
+      "runtime/runs/P08-C-001/evaluation-summary.json",
+      "runtime/runs/P08-C-001/evaluation-tests.log"
+    ]
+  },
+  "finalFailureNote": "Execution_failed927,944 s; priprava135,780+153,659+216,498+91,471=597,408 s, implementation327,846 s, brez converge. Lint/types/build/allowed true, strict false. Zadnja request36 vrne HTTP520 Provider returned error, brez responseId/usage. Arhivirani račun nepopoln: znano0,0457492778 USD/36, neznana36 ostane null in ima konzervativno proračunsko rezervo. Brez ponovitve.",
+  "developmentFailureExample": {
+    "description": "Ustavna faza item_9 vrne exit0, toda besedilo potrdi sandbox zavrnitev dveh heredocov in še nespremenjeno predlogo. Item_12/13 vrneta127 zaradi apply_patch command not found, preservirani tool odgovor pa potrdi zavrnjen patch z več operacijami na isti constitution.md. Poznejši veljavni patch dejansko odda ustavo. Specify item_3 ima zsh == not found. V implementaciji po treh uspešnih patchih naslednja zahteva36 v0,430s prejme ponudnikov HTTP520 in se konča; lastni testi še niso zagnani. Ločujemo potrjene lokalne težave, neznan vzrok520 in poznejše funkcionalne napake.",
+    "evidence": [
+      "runtime/runs/P08-C-001/phases/01-constitution/events.jsonl.gz",
+      "runtime/runs/P08-C-001/phases/02-specify/events.jsonl.gz",
+      "runtime/runs/P08-C-001/phases/05-implement/events.jsonl.gz",
+      "analysis/review-packets/P08-C-001.json",
+      "api/P08-C-001/model/api-ledger.jsonl"
+    ]
+  },
+  "calibrationNote": "Pri primerjavi z L/1.0 P04-C-001 je bila ocena ownChecks popravljena z0 na1: rubrika omogoča delno oceno za smiselne dostavljene, a nezagnane dodatne teste; dejanska izvedba ostane izrecno nepotrjena. Ostale dimenzije in neodvisni izid so nespremenjeni."
+}

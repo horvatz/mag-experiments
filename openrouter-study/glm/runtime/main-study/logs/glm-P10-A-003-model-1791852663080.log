@@ -1,0 +1,29 @@
+Prebral bom pravila in specifikacijo, nato pripravim implementacijski načrt.
+Zahteve so jasne. Zdaj pregledam obstoječi vmesnik in razvojne teste.
+Osnova je kompaktna; natančno preverim povezave med pogledi, tabelo in tablo.
+Razvojni testi pokrivajo jedro, ne pa zgodovine 20 korakov, projekta z nič/eno ali preklopov. Zato dodam lastne teste za te robne pogoje.
+Zdaj zapišem specifikacijo s sledljivostjo R01–R12, nato vnesem stanje zgodovine in kontrole.
+Specifikacija je pripravljena. Vmesniku dodam globalno zgodovino, premike po ID in prilagodljive kontrole.
+Orodje `apply_patch` je postalo nedosegljivo v tej lupini; preverim razpoložljiv način za popravek.
+Implementacija je vnesena. Najprej preverim tipove in sintakso, nato dodam lastne teste.
+Tipi so urejeni. Dodam teste za večstopenjsko zgodovino, mejo 20, prazne/ene projektne primere, preklope in mobilno širino.
+Lastni testi so dodani. Zženem jih ločeno, da hitro odkrijem morebitne napake.
+Tri napake so v pričakovanjih lastnih testov, ne v jedru. Popravim zaporedja in potrdim preklop z usklajenim števcem.
+Ostala nejasnost je preklop projekta. Dodam začasna diagnostična sporočila in zženem samo ta primer.
+Diagnostika kaže, da se stanje po vrnitvi ohrani. Preverim še URL in API odgovor, da ločim testni problém od implementacije.
+Ugotovil sem testno past: na tabli DOM sledi stolpcem stanj, ne globalnemu redu. Preverjanje preklopim na preglednico in počistim diagnostiko.
+Lastna testna zbirka sedaj zelena. Še dopolnim preverjanje osvežitve, ki ga skupni testi ne pokrivajo.
+Zdaj zženem skupne razvojne teste P10 na namizni in mobilni konfiguraciji.
+Razvojni testi so zeleni. Zženem celotno preverjanje: lint, build, izhodiščne/razvojne in lastne teste.
+Celotno preverjanje je zeleno. Dodam še robni primer, da onemogočen premik ne počisti zgodovine ponovitev.
+Dopolnim sledljivost v specifikaciji in zapišem dejansko izvedena preverjanja ter omejitve.
+Dokumentacija je dopolnjena. Pred zaključkom ponovim celotni `npm run check` zaradi dodatnega lastnega testa.
+Vseh 53 preverjanj je uspešnih. Nazadnje preverim končne datoteke in sledljivost dokumentacije.
+Zadnji popravek je samo preslepka v zamiku. Za končno stanje ponovim celotno preverjanje.
+**Rezultat**
+- Implementiran je globalni lokalni vrstni red z razveljavitvami, ponovitvami, mejo 20 korakov in povratkom na izhodišče: `src/App.tsx:19`, `src/App.tsx:35`, `src/App.tsx:95`.
+- Preglednica prikazuje globalna mesta, tabla pa globalne premike zunaj povezave kartice: `src/TaskBoard.tsx:13`, `src/TaskBoard.tsx:26`.
+- Dodan je prilagodjeni Folio slog: `src/styles.css:65`.
+- Lastni testi pokrivajo zgodovino, robne primere, prazen/enoopravilen projekt, preklope, osvežitev, odsotnost zapisov in širino 390 px: `tests/agent/P10.spec.ts:1`.
+- Specifikacija s sledljivostjo R01–R12: `docs/age
+{"status":"completed","elapsedSeconds":425.629,"allowedChanges":true,"usage":{"input_tokens":4141492,"cached_input_tokens":3982656,"cache_write_input_tokens":0,"output_tokens":37393,"reasoning_output_tokens":36313}}

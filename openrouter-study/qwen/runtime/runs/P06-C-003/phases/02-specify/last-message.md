@@ -1,0 +1,3 @@
+Poskusim z printf:
+
+

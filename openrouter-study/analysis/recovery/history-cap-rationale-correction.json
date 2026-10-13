@@ -1,0 +1,89 @@
+{
+  "at": "2026-10-09T01:49:04.882Z",
+  "reason": "Researcher rationale correction after checking the actual post-undo assertions. A two-state sequence with a boundary-order oracle distinguishes discard-newest from discard-oldest. It does not establish every internal transition.",
+  "proof": {
+    "beforeEachMove": [
+      "initial",
+      "swapped",
+      "initial",
+      "swapped",
+      "initial",
+      "swapped",
+      "initial",
+      "swapped",
+      "initial",
+      "swapped",
+      "initial",
+      "swapped",
+      "initial",
+      "swapped",
+      "initial",
+      "swapped",
+      "initial",
+      "swapped",
+      "initial",
+      "swapped",
+      "initial"
+    ],
+    "currentAfter21Moves": "swapped",
+    "correctLast20FinalUndo": "swapped",
+    "incorrectFirst20FinalUndo": "initial",
+    "different": true
+  },
+  "corrections": [
+    {
+      "slug": "deepseek",
+      "id": "P10-A-001",
+      "dimension": "ownChecks",
+      "scoreBefore": 1,
+      "scoreAfter": 1,
+      "rationaleBefore": "Devet potrjenih testov zajame 12 opravil z enakimi naslovi/Unicode, vsa začetna mesta, relativni red več kartic v istem stolpcu, globalnega soseda na tabli, polja/števce, več undo/redo s preverjanjem celotnih permutacij, vejo po undo, reset/undo/redo, pogled/podrobnosti/projekt/reload,0/1 opravilo, read-only API in dejansko geometrijo 390 v obeh pogledih. T05 pri 21 potezah vsakokrat premakne zadnje opravilo gor, zato se zadnja dva ID-ja le izmenjujeta med dvema permutacijama. Preveri končna polja po 20 undo/redo, ne vsakega vmesnega stanja; vzorec ne razloči napačnega zavrženja najnovejših od pravilnega zavrženja najstarejših pri ponavljajočem se redu. T04 preveri onemogočen robni gumb, dejanja ne sproži. Manjkajo tudi reset pri polnem skladu, dejanski no-op reset z nepraznim redo ter zahtevni ID-ji. To so konkretne vrzeli dokazov, ne potrjena napaka končne funkcionalnosti.",
+      "rationaleAfter": "Devet potrjenih testov zajame 12 opravil z enakimi naslovi/Unicode, vsa začetna mesta, relativni red več kartic v istem stolpcu, globalnega soseda na tabli, polja/števce, več undo/redo s preverjanjem celotnih permutacij, vejo po undo, reset/undo/redo, pogled/podrobnosti/projekt/reload,0/1 opravilo, read-only API in dejansko geometrijo 390 v obeh pogledih. T05 pri 21 potezah vsakokrat premakne zadnje opravilo gor, zato se zadnja dva ID-ja le izmenjujeta med dvema permutacijama. Po 20 undo pravilno pričakuje prvo premaknjeno permutacijo states[0], zato razloči preprosto napačno ohranitev prvih 20 namesto zadnjih 20 posnetkov. Po 20 redo preveri končno permutacijo. Dvostanjski vzorec brez vmesnih orakljev pa ne dokazuje pravilnega zaporedja vseh notranjih posnetkov ali zgodovine več različnih permutacij. T04 preveri onemogočen robni gumb, dejanja ne sproži. Manjkajo tudi reset pri polnem skladu, dejanski no-op reset z nepraznim redo ter zahtevni ID-ji. To so konkretne vrzeli dokazov, ne potrjena napaka končne funkcionalnosti."
+    },
+    {
+      "slug": "deepseek",
+      "id": "P10-C-001",
+      "dimension": "ownChecks",
+      "scoreBefore": 1,
+      "scoreAfter": 1,
+      "rationaleBefore": "Dvanajst potrjenih lastnih testov zajame 8 opravil z enakimi naslovi/Unicode, celotne permutacije po premikih in več undo, vejo, reset/undo, statusne podsezname z več karticami, globalnega soseda na tabli, projekt/reload, podrobnosti, 0/1 opravilo, brez zapisov in dejansko širino 390 v obeh pogledih. A07 pa pri 21 potezah izmenjuje web-02 gor/dol, torej le dve permutaciji. Preveri končni red po 20 undo/redo, ne vmesnih stanj; vzorec ne razloči napačnega zavrženja najnovejšega od pravilnega zavrženja najstarejšega. A05 ne sproži robnega dejanja in preveri redo šele po veljavnem premiku, ko je že 0. A09 ne preveri nepraznega redo, A02 primerja le status namesto vseh polj. Manjkajo reset ob polnem skladu, no-op reset z nepraznim redo, večje domene in zahtevni ID-ji. To so vrzeli lastnih dokazov, ne potrjene končne funkcionalne napake.",
+      "rationaleAfter": "Dvanajst potrjenih lastnih testov zajame 8 opravil z enakimi naslovi/Unicode, celotne permutacije po premikih in več undo, vejo, reset/undo, statusne podsezname z več karticami, globalnega soseda na tabli, projekt/reload, podrobnosti, 0/1 opravilo, brez zapisov in dejansko širino 390 v obeh pogledih. A07 pa pri 21 potezah izmenjuje web-02 gor/dol, torej le dve permutaciji. Po 20 undo pravilno preveri prvo premaknjeno permutacijo, zato razloči preprosto napačno ohranitev prvih 20 namesto zadnjih 20 posnetkov. Po 20 redo preveri končno stanje. Dvostanjski vzorec brez vmesnih orakljev ne dokazuje pravilnega zaporedja vseh notranjih posnetkov ali zgodovine več različnih permutacij. A05 ne sproži robnega dejanja in preveri redo šele po veljavnem premiku, ko je že 0. A09 ne preveri nepraznega redo, A02 primerja le status namesto vseh polj. Manjkajo reset ob polnem skladu, no-op reset z nepraznim redo, večje domene in zahtevni ID-ji. To so vrzeli lastnih dokazov, ne potrjene končne funkcionalne napake."
+    },
+    {
+      "slug": "glm",
+      "id": "P10-C-001",
+      "dimension": "ownChecks",
+      "scoreBefore": 1,
+      "scoreAfter": 1,
+      "rationaleBefore": "Deset potrjenih testov zajame 8 opravil z enakimi naslovi, vsa začetna mesta, sosednje premike, celotne permutacije skozi več undo/redo, vejo, reset/undo, relativne stolpce in globalnega soseda, status/števce, pogled/podrobnosti/projekt, 0/1, brez API zapisov/localStorage ter geometrijo. Test R07 pa pri 21 premikih le izmenjuje web-04 gor/dol med dvema permutacijama; end-to-end orakelj po 20 undo/redo ne razloči zavrženja najnovejšega od najstarejšega, vmesna stanja niso preverjena. R06 ne sproži robnega klika. Reload v R10 sledi že ponastavljenemu izvoru, ne spremenjenemu redu; redo ni neprazen ob prehodu pogledov/podrobnosti. Širina 390 se nastavi šele po vrnitvi na preglednico, zato tabla pri 390 ni preverjena. Manjkajo reset pri polnem skladu/no-op z redo, večje domene in zahtevni ID-ji. To so vrzeli dokazov, ne potrjene končne funkcionalne napake.",
+      "rationaleAfter": "Deset potrjenih testov zajame 8 opravil z enakimi naslovi, vsa začetna mesta, sosednje premike, celotne permutacije skozi več undo/redo, vejo, reset/undo, relativne stolpce in globalnega soseda, status/števce, pogled/podrobnosti/projekt, 0/1, brez API zapisov/localStorage ter geometrijo. Test R07 pa pri 21 premikih le izmenjuje web-04 gor/dol med dvema permutacijama; orakelj po 20 undo pravilno preveri prvo premaknjeno permutacijo in zato razloči preprosto napačno ohranitev prvih 20 namesto zadnjih 20 posnetkov. Po 20 redo preveri končno stanje; vmesna stanja in zgodovina več različnih permutacij niso preverjeni. R06 ne sproži robnega klika. Reload v R10 sledi že ponastavljenemu izvoru, ne spremenjenemu redu; redo ni neprazen ob prehodu pogledov/podrobnosti. Širina 390 se nastavi šele po vrnitvi na preglednico, zato tabla pri 390 ni preverjena. Manjkajo reset pri polnem skladu/no-op z redo, večje domene in zahtevni ID-ji. To so vrzeli dokazov, ne potrjene končne funkcionalne napake."
+    }
+  ],
+  "otherClarification": {
+    "slug": "glm",
+    "id": "P10-A-001",
+    "scoreUnchanged": 1
+  },
+  "archivesChanged": false,
+  "measurementsRepeated": false,
+  "evenLengthComparison": {
+    "moves": 22,
+    "current": "initial",
+    "correctLast20FinalUndo": "initial",
+    "incorrectFirst20FinalUndo": "initial",
+    "different": false,
+    "note": "Historical Luna A uses 22 alternating moves, so its boundary oracle does not distinguish these windows. The corrected new cases use 21 moves, whose boundary oracle does. Parity and actual assertions matter; two-state alternation alone is not a sufficient critique."
+  },
+  "calibration": {
+    "rubric": "M/1.0 unchanged",
+    "scoresUnchanged": true,
+    "note": "A score of 2 does not require 600 actions or the same test count as Astra. The new score-1 reviews identify concrete remaining core edges (invalid action/reset with redo, capacity/reset interaction, lifecycle or mobile board) in addition to limits of history oracles. Historical archives and scores are unchanged.",
+    "historicalSources": [
+      "main-study/analysis/reviews/P10-A-001.json",
+      "main-study/analysis/reviews/P10-B-001.json",
+      "main-study/analysis/reviews/P10-C-001.json",
+      "luna-study/analysis/reviews/P10-A-001.json",
+      "luna-study/runtime/runs/P10-A-001/submission/tests/agent/P10.spec.ts:50"
+    ]
+  }
+}

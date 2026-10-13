@@ -1,0 +1,89 @@
+Starting constitution (1199 seconds available)
+[constitution] Context is clear. Writing the short project constitution now.
+
+
+[constitution] The heredoc hit the sandbox temp-file restriction. I’ll apply the patch via `apply_patch` with piped input instead.
+
+
+[constitution] Konstitucija je zapisana v `.specify/memory/constitution.md` (različica 1.0.0, ratificirana 2026-10-11).
+
+**Vsebina**
+- Pet kratkih načel: zvestoba izvirnim zahtevam R01–R12, stroge meje dovoljenih sprememb, podatki izključno prek `/api/` (brez `/__test/` in `localStorage`), ohranjen potrjeni dizajn Folio s slovenskim poimenovanjem ter dokazljivo preverjanje s sledljivostjo.
+- Pravila sodelovanja povzemajo skupno predlogo specifikacije (preglednici zahtev in sledljivosti) in minimalne spremembe; upravljanje določa, da ustava nadreja praksam in da razširitve obsega ali infrastrukture v njej nis
+constitution: completed, 131.681s
+Starting specify (1067 seconds available)
+[specify] The path is already fixed (`docs/agent/P04`), so I’ll write `feature.json` and then the full spec.
+
+
+[specify] A quoting typo at the redirect. Re-running the append with the fix.
+
+
+[specify] Specifikacija je izdelana v `docs/agent/P04/spec.md`, pot pa je zapisana v `.specify/feature.json` (`{"feature_directory": "docs/agent/P04"}`).
+
+**Vsebina specifikacije**
+- Problem in kontekst, vhodi (polja izhodišča, branje prek `/api/`, izbira po `id`), dejanja in pričakovani izidi po uspehu, preklicu in napaki.
+- Simboli in predpostavke (`S`, `Kp/Dp`, `Ks/Ds`, `norm`, `rang`) ter pravila sprememb stanja za vseh dvanajst zahtev R01–R12, vključno z: stabilnostjo, neodvisnima smerema, dobesedno razlago R06 (`original` vedno vrne `S`), stolpci table in ponastavitvami ob menjavi projekta/osvežit
+specify: completed, 172.527s
+Starting plan (894 seconds available)
+[plan] `ProjectView` already remounts on project change (`key={project.id}`), which settles R09 cleanly. Writing the plan now.
+
+
+[plan] Found it — a stray quote on the `secondaryDirection` line. Rewriting the plan with the fix.
+
+
+[plan] Načrt je zapisan v `docs/agent/P04/plan.md` (59 vrstic, skladen s specifikacijo in ustavo).
+
+**Ključne odločitve**
+- Čisto razvrščanje v novi `src/sorting.ts` (`norm`, `compareByKey`, `sortTasks`, tipi, `DEFAULT_SORT`); primerjava po enotah UTF-16 brez `localeCompare`, stabilnost zagotavlja standardni `sort`.
+- Stanje štirih nastavitev v `ProjectView`; obstoječi `key={project.id}` poskrbi za ponastavitev ob menjavi projekta (R09), preklop pogleda in podrobnosti pa stanje ohranita (R08). Brez URL-ja in trajne shrambe.
+- Ena razvrščena projekcija za preglednico in tablo; tabla filtrira po status
+plan: completed, 112.831s
+Starting tasks (780 seconds available)
+[tasks] Writing the dependency-ordered task list now.
+
+
+[tasks] Seznam nalog je zapisan v `docs/agent/P04/tasks.md` (10 nalog, T001–T010).
+
+**Struktura**
+- **Faza 1 (temelj):** T001 tipi, `DEFAULT_SORT` in `norm` v `src/sorting.ts`; T002 `compareByKey` in `sortTasks` z ohranitvijo izvornega vrstnega reda.
+- **Faza 2 (vmesnik):** T003 `SortControls.tsx`; T004 stanje in projekcija v `App.tsx`; T005 tabla prejme razvrščeno polje; T006 slogi v Folio okviru.
+- **Faza 3 (preverjanje):** T007–T008 lastni Playwright testi v `tests/agent/p04-sort.spec.ts` po zahtevah R01–R12; T009 `npm run check` in `npx playwright test --project=agent`; T010 vnos dejanskih izidov 
+tasks: completed, 31.479s
+Starting implement (628 seconds available)
+[implement] I’ll implement the plan now: first study the test helpers and remaining source files, then write the code and tests.
+
+
+[implement] Checking whether a writable `TMPDIR` restores heredoc support for easier file writes.
+
+
+[implement] Now writing the sorting module, controls component, and updated App.
+
+
+[implement] Now the agent test suite covering R01–R12.
+
+
+[implement] One test expectation was wrong (Slovenian collation: `dva` < `ena`). Fixing R05 and re-running.
+
+
+[implement] R05 passes. Running the full required check now.
+
+
+[implement] All 60 checks pass. Writing final evidence into verification.md, tasks.md, and the spec traceability table.
+
+
+
+
+[implement] Izvedba je končana in preverjena.
+
+**Rezultat**
+- `npm run check` uspešno: slog, tipi, gradnja in **60/60 preverjanj** (api 14, osnovni desktop 12, mobile 12, razvojna P04 8, lastni agent testi 14).
+- Vseh 10 nalog v `docs/agent/P04/tasks.md` je označenih `[x]`; med izvedbo je bil en neuspeh lastnega testa R05 (napačno pričakovano zaporedje `dva`/`ena`), pričakovanje je bilo popravljeno in ponovni zagon je uspel.
+
+**Spremembe**
+- `src/sorting.ts` (novo): `norm`, `compareKey`, `sortTasks`, tipi in `DEFAULT_SORT`; stabilnost, `original` vrne izvorni vrstni red, smer obrne le izbrani ključ.
+- `sr
+implement: completed, 514.319s
+Starting converge (233 seconds available)
+[converge] {"outcome":"converged","summary":"Pregled skladnosti opravljen brez novih nalog; tasks.md ostaja nespremenjen (md5 0af4db5df4bc2f0ccb54366100ec6a4d). Preverjeno: spec.md, plan.md in tasks.md so prisotni v docs/agent/P04; vseh 12 zahtev R01–R12 ima v spec.md izpolnjeno preglednico sledljivosti z izidi Uspešno; tasks.md ima 10/10 nalog [x]; koda ustreza načrtu (src/sorting.ts z norm/compareKey/sortTasks/DEFAULT_SORT, src/SortControls.tsx s štirimi označenimi selecti in gumbom Izvorni vrstni red, App.tsx s stanjem in projekcijo sortedTasks, TaskBoard prejme razvrščeno polje, slogi v Folio okviru)
+converge: completed, 40.969s
+{"status":"completed","elapsedSeconds":1008.053,"allowedChanges":true,"usage":null}

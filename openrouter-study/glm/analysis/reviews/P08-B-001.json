@@ -1,0 +1,100 @@
+{
+  "id": "P08-B-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Presoja devetih dejansko dostavljenih avtorskih datotek, 66 native ukazov in 84 preserviranih klicev. Uspešni lastni in javni razvojni testi ne nadomestijo neodvisnega končnega vrednotenja; pregledna vloga modela je del merjenega postopka, ne raziskovalčeva ocena.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Dopolnjena predana specifikacija pokrije R01–R12: fiksni začetni datum/all, ločen osnutek in zadnjo veljavno referenco, prednost done, disjunktne skupine, meje 1/7/8 ter koledarske prehode. Določi celoprojektne števce, stabilne ID-je, vseh šest izborov, opozorilo s piko, veljaven/prazen/ponovno veljaven vnos, besedilo in filter pri preklopu ter projekt/reload reset brez shrambe ali novih URL parametrov. Vidna/dostopna imena števcev, prazna skupina/projekt, ohranjeni pogled/stolpci, bralnost in Folio pri 390 px so navedeni. Končna izguba board regije pri prazni skupini je ločen neuspeh izvedbe predpisanih pravil; ne spreminja kakovosti skladno opredeljenega obsega.",
+      "evidence": [
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md:11",
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md:15",
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md:39",
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md:54",
+        "runtime/runs/P08-B-001/submission/docs/agent/specification-history.md:5"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Urejeni group najprej izloči done, nato strogo preteklost, enak datum, koledarske dni 1–7 in šele sicer later; R04 izrecno omeji later na datum po sedmem dnevu. Particija je disjunktna in popolna. Opis loči referenceDateInput od zadnjega veljavnega referenceDate, določi takojšnji veljavni preračun, ohranjen izračun/opozorilo ob praznem vnosu in ohranjanje treh stanj pri preklopu. Števci so invarianta pred filtrom, izvorni vrstni red in bralnost se ohranita; reset zadeva le novo lokalno stanje. Koledarski premik ne uporablja lokalne ure ali DST.",
+      "evidence": [
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md:15",
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md:27",
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md:37",
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md:44",
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md:48"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Verification poveže vseh dvanajst R z dejanskimi datotekami/funkcijami in enotskimi ali UI preverjanji. Navedeni 5/5, 8/8 ter 51/51 so res potrjeni; reviewer jih tudi neodvisno znotraj merjene seje ponovi (item_21/item_23). Specifikacijska matrika ostane skupinska in načrtovana, povezave na teste pa večinoma ne poimenujejo dejanskih naslovov. Omejitve izpustijo ključne nepreverjene kombinacije: prazni osnutek med pogledoma, prazno skupino na tabli in resnično menjavo projekta; reviewer unverified navede le internet in druge naprave. Zapis ne izmisli testnega uspeha, vendar preverjene posamezne scenarije preširoko poveže s celotnim obsegom in zato ostane delno sledljiv.",
+      "evidence": [
+        "runtime/runs/P08-B-001/submission/docs/agent/specification.md:60",
+        "runtime/runs/P08-B-001/submission/docs/agent/verification.md:30",
+        "runtime/runs/P08-B-001/submission/docs/agent/verification.md:39",
+        "runtime/runs/P08-B-001/submission/docs/agent/verification.md:54",
+        "runtime/runs/P08-B-001/submission/docs/agent/review.json:17",
+        "runtime/runs/P08-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "dueDates.ts loči veljavnost koledarskega zapisa, primerjavo, koledarski premik in klasifikacijo brez Date ali sistemske ure. ProjectView loči osnutek, veljavno referenco in filter; opozorilo je izpeljano iz osnutka, števci ter filteredTasks pa iz nespremenjenih opravil in iste klasifikacije. Pet ločenih filter klicev ponovi štetje, ne pa domenskih pravil. Obstoječi projektni ključ upravlja reset, view ostane ločen in oba prikaza dobita isti seznam. Napačna prednost praznega sporočila je posebej zabeležena funkcionalna napaka, organizacija odgovornosti in stanja pa je dosledna.",
+      "evidence": [
+        "runtime/runs/P08-B-001/submission/src/dueDates.ts:17",
+        "runtime/runs/P08-B-001/submission/src/dueDates.ts:28",
+        "runtime/runs/P08-B-001/submission/src/dueDates.ts:48",
+        "runtime/runs/P08-B-001/submission/src/dueDates.ts:80",
+        "runtime/runs/P08-B-001/submission/src/App.tsx:12",
+        "runtime/runs/P08-B-001/submission/src/App.tsx:25",
+        "runtime/runs/P08-B-001/submission/src/App.tsx:74",
+        "runtime/runs/P08-B-001/submission/src/App.tsx:124"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Pet dejansko uspešnih scenarijev vsebuje dva čista testa z ročnimi pričakovanji: navadni/prestopni februar, leto, negativni neveljavni februar, done pred/na/po referenci ter -1/0/+1/+7/+8. Tri UI preverjanja pokrijejo vse izbore in nespremenjene števce, bralnost, prazen vnos/nov datum, oba neprazna prikaza, res spremenjen reload, prazno skupino in projekt ter 390 px. Toda UI uporablja le osem izhodiščnih urejenih ID-jev; ni večjega/premešanega nabora ali različnih ur/pasov. Prazni osnutek je že nadomeščen z veljavnim pred preklopom, prazna skupina je samo v preglednici, dejanske menjave projekta ni in 390 px je samo preglednica. Naslov enotskega testa independent of wall time ne pomeni izvedenega spreminjanja ure. Pomembne vrzeli zato ostanejo, čeprav vsi ti konkretni testi uspejo.",
+      "evidence": [
+        "runtime/runs/P08-B-001/submission/tests/agent/dueDates.spec.ts:15",
+        "runtime/runs/P08-B-001/submission/tests/agent/dueDates.spec.ts:23",
+        "runtime/runs/P08-B-001/submission/tests/agent/P08.spec.ts:9",
+        "runtime/runs/P08-B-001/submission/tests/agent/P08.spec.ts:33",
+        "runtime/runs/P08-B-001/submission/tests/agent/P08.spec.ts:57",
+        "runtime/runs/P08-B-001/submission/tests/agent/P08.spec.ts:71",
+        "runtime/runs/P08-B-001/phases/02-implementation/events.jsonl.gz",
+        "runtime/runs/P08-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E11 odpove na obeh širinah: App:74 ob nepraznem projektu in nič filteredTasks najprej izriše prazno sporočilo, še preden preveri view. Po kliku Tabla je zato območje Tabla opravil odstranjeno in helper board odpove. To je izguba ohranjenega prikaza, medtem ko res prazen projekt še vedno izriše prazno tablo. Končni izid completed 545,331 s, 68/70, 11/12; lint/types/build/allowed true, strict false. Oddaja ni popravljena ali ponovljena po vrednotenju.",
+    "evidence": [
+      "runtime/runs/P08-B-001/evaluation-tests.log",
+      "runtime/runs/P08-B-001/evaluation-summary.json",
+      "runtime/runs/P08-B-001/submission/src/App.tsx:74"
+    ]
+  },
+  "finalFailureNote": "Vse tri faze completed: specification162,362 s, implementation279,943 s, review101,066 s; popravek ni zahtevan po modelovem review brez findings. Popolni račun 0,500780061 USD za 87 zahtev. Lastni 5/5 ter full51/51 potrjeni tudi v reviewer item_21/item_23, končni holdout22/24 pa razkrije E11 vrzel.",
+  "developmentFailureExample": {
+    "description": "Preservirani klici dodatno ohranijo invalid patch, sandbox zavrnitve heredocov in apply_patch ter neuspele poskuse najti orodje izven aplikacije; ti poskusi ne pomenijo dostavljenih sprememb ali doseženega dostopa. Implementer item_45 odpove zaradi napačnega Task importa iz dueDates.ts, item_46 popravi import in build uspe. Item_48 ima dva napačna lastna oraklja: overdue števec 1 namesto2 in ponovno nameščen prazen mock brez ponovnega nalaganja. Item_50 popravi teste in doseže5/5, item_51 razvojne8/8, item_53 full51/51. Review ponovi iste uspehe; potrjenega razvojnega funkcionalnega neuspeha aplikacije ni, E11 se razkrije v končnem vrednotenju.",
+    "evidence": [
+      "analysis/review-packets/P08-B-001.json",
+      "runtime/runs/P08-B-001/phases/02-implementation/events.jsonl.gz",
+      "runtime/runs/P08-B-001/phases/03-review/events.jsonl.gz",
+      "runtime/runs/P08-B-001/submission/tests/agent/P08.spec.ts:14",
+      "runtime/runs/P08-B-001/submission/tests/agent/P08.spec.ts:78"
+    ]
+  }
+}

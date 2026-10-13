@@ -1,0 +1,28 @@
+Prebral bom projektna pravila in nalog, nato pripravim specifikacijo.
+Zajemam izhodiščni vmesnik, razvojne teste in oblikovalne smernice.
+Specifikacijo bom zdaj zapisal, preden spremenim kodo.
+`apply_patch` v tem okolju ni dostopen, zato nadaljujem z lokalnim zapisom dovoljenih datotek in to omejitev dokumentiram.
+Specifikacija je pripravljena. Sedaj dodam koledarsko logiko, controls in filtriranje.
+Osnovna implementacija je dodana; zdaj preverim tipizacijo in slog.
+Tipizacija in lint sta uspešna. Pišem lastne teste za celoten obseg R01–R12.
+Lastni testi so zapisani; zdaj jih poženem in odpravim morebitne napake.
+ tri Ugotavljam napako v koledarski pretvorbi; preverim izračun in testne predvidevanja.
+Lastni testi so zdaj zeleni. Preverim še skupne razvojne teste na obeh velikostih.
+Skupni razvojni testi so uspešni. Zadnje celotno preverjanje je `npm run check`.
+Celotno preverjanje je razkrilo regresijo izhodišča za prazen projekt; odpravljam jo brez spremembe skupnih testov.
+Popravek je tipiziran in urejen; ponovno zaganjam celoten `npm run check`.
+Regresija izhodišča je odpravljena; usklajujem še lastni test z zahtevo R11.
+Vse zahteve so pokrite in preverjene. Zdaj dopolnjujem sledljivost in zgodovino specifikacije.
+Dokumentacija je dopolnjena. Še pregledam končne datoteke in počistim gradcijske izdelke.
+Gradcijski izdelki so počiščeni. Opravim še končni pregled dovoljenih sprememb.
+Zadnji pregled je razkril neobratno oblikovanje v CSS; popravim novih vrstic in ponovno preverim.
+**Rezultat**
+- Implementiral koledarski pregled rokov R01–R12: čista koledarska aritmetika je v `src/dateGroups.ts:3`, stanje, števci, filtri in opozorila pa v `src/App.tsx:29`.
+- Folio postavitev je prilagojena v `src/styles.css:51`.
+- Specifikacija: `docs/agent/specification.md:1`; dejansko preverjanje: `docs/agent/verification.md:1`.
+- Lastni testi: `tests/agent/p08.spec.ts:19`.
+
+**Preverjanje**
+- Končni `npm run check`: **53/53 uspešno** (38 izhodiščnih, 8 razvojnih P08, 7 lastnih).
+- Ni neizpolnjenih zahtev. Neveljavni API datumi zunaj dane domene niso preverjeni in so dokumentirani kot o
+{"status":"completed","elapsedSeconds":608.51,"allowedChanges":true,"usage":{"input_tokens":3485065,"cached_input_tokens":3315136,"cache_write_input_tokens":0,"output_tokens":39508,"reasoning_output_tokens":38950}}

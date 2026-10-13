@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-13T22:12:20.508248+00:00",
+  "request": "stop and save progress, we will continue tomorrow",
+  "activeBeforeStop": {
+    "at": "2026-10-13T22:05:52.436Z",
+    "pid": 93632,
+    "slug": "deepseek",
+    "id": "P04-C-002",
+    "position": 110,
+    "stage": "evaluating",
+    "planned": 216
+  },
+  "stops": [
+    {
+      "pid": 94327,
+      "command": "node openrouter-study/analysis/artifacts/continue-known-service-error.mjs 93632",
+      "signal": "SIGINT",
+      "verifiedAbsent": true
+    },
+    {
+      "pid": 93632,
+      "command": "node openrouter-study/run.mjs",
+      "signal": "SIGINT",
+      "verifiedAbsent": true
+    },
+    {
+      "pid": 94577,
+      "command": "node openrouter-study/analysis/artifacts/cleanup-archived-servers.mjs",
+      "signal": "SIGINT",
+      "verifiedAbsent": true
+    }
+  ],
+  "stoppedAtVerified": "2026-10-13T22:13:50.213364+00:00",
+  "archivedNewRuns": 110,
+  "qualitativeReviewsNew": 45,
+  "measurementInterrupted": false,
+  "nextUnused": {
+    "position": 111,
+    "slug": "qwen",
+    "id": "P04-C-002"
+  },
+  "preservedStaleLocks": [
+    "openrouter-study/analysis/recovery/runner.lock.paused-2026-10-14",
+    "openrouter-study/analysis/recovery/known-service-resumer.lock.paused-2026-10-14"
+  ],
+  "allQueueProcessesVerifiedStopped": true,
+  "latestVerifiedPreview": "analysis/artifacts/qa/checkpoint108.pdf",
+  "latestPreviewQA": "analysis/artifacts/qa/checkpoint108-qa.json",
+  "archiveAudit": {
+    "archives": 254,
+    "reviews": 93,
+    "passed": true,
+    "missingSelectedReviews": 0
+  },
+  "frozenInputsVerified": true,
+  "noMeasuredRetry": true,
+  "resumeOnlyAfterNewUserRequest": true,
+  "spend": {
+    "knownUSD": 23.965986389000083,
+    "unknownRequests": 24,
+    "unknownReservedUSD": 5.459539489999996
+  }
+}

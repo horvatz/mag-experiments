@@ -1,0 +1,96 @@
+{
+  "id": "P05-C-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "R01–R12 in bistveni robovi so skladno opisani: lokalno stanje all/all/1, filter pred globalnim odsekom, poljubna dolžina in identiteta po ID, izvorni vrstni red, reset/ohranitve, robni gumbi, natančen status, prazen filter/projekt in odstranitev filtra, nefiltrirani povzetek in trenutni števci table ter read-only API in 390 px. Dogovor o vmesniku navede točne dostopne oznake. Enočlenski in več kot deset elementov sta vključena v domeno in načrt preverjanja.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "N/Y/s/p/A/B in prehodi imajo uporabne enačbe: število strani ima veji all/nič, premiki veljavni interval, reset in ohranitve so preverljivi, particija prepoveduje izgubo in podvajanje ID-jev. Formula A za numerično velikost pa ni omejena na N>0 in ne poda veje A=B=0; stanje p se resetira na 1, pri praznem rezultatu pa je prikazana stran 0. R10 s primerom pravilnega statusa razjasni želeni izid, formalni simboli in ničelna veja indeksov ostanejo nedorečeni. Filtriranje je zapisano kot množica, ohranitev zaporedja je opisna; odsek S(i) nima eksplicitnih meja slice. Končna koda te veje pravilno obravnava, kar ne dopolni same specifikacijske formalizacije.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#zahteve-in-pravila",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#vhodi-dejanja-in-izidi"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Obe matriki povežeta vse R s konkretnimi vrsticami lastnih testov, kodnimi datotekami in dejanskim verification zapisom. Modelni dogodki potrdijo 13/13 ter npm run check 59/59; prejšnje neuspehe in nedostopne končne/ročne teste zabeleži odkrito. Specifikacijska vrstica R08 pa trdi tudi osvežitev, navedeni test 117 preveri le prehod med projektoma ter shrambo/URL; refresh ni izveden in ni označen kot nepreverjen. R02 načrtuje 0/1/7/12, zaključna matrika uspeha ne loči dejanskega particijskega vzorca 7 od načrtovanega večjega/singleton primera. Verification je natančnejši, toda ne odpravi teh konkretnih vrzeli v označitvi dokazov po zahtevah.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P05-C-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:16",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:117",
+        "runtime/runs/P05-C-001/phases/05-implement/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "ProjectView hrani tri lokalna stanja in izpelje filter, število strani, veljavno stran, isti vidni odsek za oba pogleda ter oba indeksa statusa. Projektni števci izhajajo iz prvotnega polja; ničelni rezultat in prazni filter sta jasno ločena. Pagination je čista predstavitvena komponenta s tipiziranimi kontrolami in povratnimi klici, brez podvajanja domenske logike ali lastnega redundantnega stanja. Key projekta zagotovi reset, podrobnosti ostanejo v istem ProjectView. Skupni tipi, podatkovna plast in navigacijske poti so ohranjeni.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/src/App.tsx:12",
+        "runtime/runs/P05-C-001/submission/src/App.tsx:23",
+        "runtime/runs/P05-C-001/submission/src/App.tsx:56",
+        "runtime/runs/P05-C-001/submission/src/App.tsx:104",
+        "runtime/runs/P05-C-001/submission/src/Pagination.tsx",
+        "runtime/runs/P05-C-001/submission/src/styles.css"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Trinajst dejansko uspešnih testov zajame celotne razdelitve velikosti 2/5/10 nad sedmimi opravili z natančno unijo ID-jev, lastno zadnjo kratko stran, robne gumbe, reset velikosti/filtra, oba pogleda in podrobnosti s preverjanjem vseh treh stanj, projektni reset z višje strani ter URL/shrambo, prazen filter→all in prazen projekt, nefiltrirane projektne števce ter trenutno tablo, read-only API in dejansko geometrijo 390 prek skupnega readonly helperja. Privzeti vzorec zajame enake naslove in Unicode. Velikost 10 nad sedmimi elementi ne preveri druge strani; več kot deset opravil, singleton, refresh, zahtevni ID-ji in dejansko sproženo onemogočeno dejanje manjkajo. R06 uporabi filtertodo, zato enakost odseka med več statusnimi stolpci ni dodatno razločujoče preverjena. Pomembni robovi za najvišjo oceno niso pokriti.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:3",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:16",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:36",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:90",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:103",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:117",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:141",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:166",
+        "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:184",
+        "runtime/tasks/P05/helpers.ts:68",
+        "runtime/runs/P05-C-001/phases/05-implement/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Po petih uspešnih fazah je varovalo izolacije v 0,012 s prekinilo začetek konvergence; dogodki te faze so prazni. Status je isolation_interrupted, strogi uspeh false, neodvisno pa 70/70 in 12/12 ter dovoljenost/lint/types/build true. Varovalo preverja zaščitena vrata in tudi 500-ms povezovalno prekoračitev obravnava kot poslušanje. Konkretna vrata/vzrok niso zabeleženi; poznejši pregled ne najde poslušalca. Iz tega ne sklepamo na slabo implementacijo modela ali potrjen dostop do končnih testov. Oddaja se ne popravlja ali ponavlja.",
+    "evidence": [
+      "runtime/runs/P05-C-001/execution.json",
+      "runtime/runs/P05-C-001/phases/06-converge/result.json",
+      "runtime/runs/P05-C-001/phases/06-converge/events.jsonl.gz",
+      "runtime/runs/P05-C-001/protocol-at-launch/run-pilot-c.mjs:43",
+      "runtime/runs/P05-C-001/protocol-at-launch/run-pilot-c.mjs:135",
+      "runtime/runs/P05-C-001/evaluation-summary.json"
+    ]
+  },
+  "finalFailureNote": "Čas 1049,163 s, popolni račun 0,0680112774 USD za 56 zahtev; merjeni native zapis porabe nepopoln zaradi prekinjene konvergence. Vzrok varovala ostaja nepotrjen in se poroča kot omejitev; funkcionalnost, zaključek postopka in obračun so ločeni kazalniki.",
+  "researcherIncidentRecord": "openrouter-study/analysis/recovery/deepseek-P05-C-001-isolation.json (glede na experiments/)",
+  "developmentFailureExample": {
+    "description": "Prvi agentni zagon item_16 doseže 9/11: razrezni test klikne onemogočeno Prva stran, prazni scenarij pa drugič uporabi mount na istem hash brez ponovnega nalaganja, zato ostanejo prvotni podatki. Model odstrani nepotreben robni klik ter razdeli prazni-filter/prazni-projekt scenarij v ločena testa. Item_21 potrdi 13/13, item_23 nato npm run check 59/59. Popravki testov ne spreminjajo aplikacijske kode; prvotni izidi so ohranjeni. Piped tail v prvem ukazu vrne shell exit 0 kljub 2 neuspelima testoma, zato dejanski testni izid beremo iz ohranjenega izpisa.",
+    "evidence": [
+      "runtime/runs/P05-C-001/phases/05-implement/events.jsonl.gz",
+      "runtime/runs/P05-C-001/submission/docs/agent/verification.md#ukazi-in-izidi",
+      "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:16",
+      "runtime/runs/P05-C-001/submission/tests/agent/p05-pagination.spec.ts:141"
+    ]
+  }
+}

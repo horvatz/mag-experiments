@@ -1,0 +1,94 @@
+{
+  "at": "2026-10-09T02:25:22.118Z",
+  "researcherOnly": true,
+  "id": "qwen/P06-A-001",
+  "confirmed": "HTTP200 with final responseStatus failed; native stream disconnected before completion. No authored changes. Last request6 lasted495.669s and returned10812 output tokens, all reasoning, without a delivered function call or final response.",
+  "rootCause": "Unknown. Frozen relay records status and usage but not final response error object. Generation lookup remains404 at02:23:03 UTC. No particular provider outage, timeout mechanism, or model tool-format error is established.",
+  "lastRequest": {
+    "number": 6,
+    "label": "qwen/P06-A-001/measured",
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "startedAt": "2026-10-09T02:12:30.473Z",
+    "status": "finished",
+    "requestedParallelToolCalls": true,
+    "mergedDeveloperMessages": 1,
+    "requestedReasoning": {
+      "effort": "xhigh",
+      "summary": "auto"
+    },
+    "sentReasoning": {
+      "enabled": true,
+      "summary": "auto"
+    },
+    "balanceBefore": {
+      "at": "2026-10-09T02:12:30.490Z",
+      "totalCreditsUSD": 40,
+      "totalUsageUSD": 3.123746966,
+      "remainingUSD": 36.876253034
+    },
+    "budgetBefore": {
+      "knownUSD": 3.1303060788000026,
+      "unknownRequests": 8,
+      "unknownReservedUSD": 0.6809188600000001,
+      "maximumRequestCost": 0.06160375
+    },
+    "sentUpstream": true,
+    "httpStatus": 200,
+    "retryAfter": null,
+    "finishedAt": "2026-10-09T02:20:46.142Z",
+    "bytes": 1716684,
+    "responseId": "gen-1791511950-dvxipLvotBBg0GD8wQ9W",
+    "usage": {
+      "input_tokens": 17290,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 10812,
+      "output_tokens_details": {
+        "reasoning_tokens": 10812
+      },
+      "total_tokens": 28102,
+      "cost": 0,
+      "is_byok": false,
+      "cost_details": {
+        "upstream_inference_cost": 0.0033508,
+        "upstream_inference_input_cost": 0.001729,
+        "upstream_inference_output_cost": 0.0016218
+      }
+    },
+    "openrouterMetadata": null,
+    "responseStatus": "failed"
+  },
+  "diagnostic": {
+    "at": "2026-10-09T02:22:23.719Z",
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "httpStatus": 200,
+    "responseStatus": "completed",
+    "text": "CONNECTION_OK",
+    "error": null,
+    "passed": true,
+    "excludedFromMeasurements": true,
+    "costComplete": true,
+    "costUSD": 0.0000774
+  },
+  "diagnosticLimitation": "Short connectivity reply passed; this does not establish reliability of long tool responses.",
+  "outcome": "execution_failed528.042s; unchanged baseline38/70 and0/12 requirements; lint/types/build/allowed true; strict false. All five content dimensions null because the entire authored submission is absent.",
+  "cost": {
+    "complete": true,
+    "costUSD": 0.0058937,
+    "source": "qwen/api/P06-A-001/model/api-cost.json",
+    "note": "Failed request explicitly returned usage.cost=0; upstream_inference_cost0.0033508 is separate provider accounting and is not substituted for user cost. Generation receipt404; cost uses frozen fallback rule. Unknown prices are not zero-imputed."
+  },
+  "evidence": [
+    "qwen/runtime/runs/P06-A-001/archive-complete.json",
+    "qwen/runtime/runs/P06-A-001/execution.json",
+    "qwen/runtime/runs/P06-A-001/events.jsonl.gz",
+    "qwen/analysis/review-packets/P06-A-001.json",
+    "qwen/api/P06-A-001/model/api-ledger.jsonl",
+    "qwen/analysis/P06-A-001-failed-generation.json",
+    "qwen/qualification/service-2026-10-09T02-22-03-694Z/result.json"
+  ],
+  "continuation": "Resume unchanged frozen queue at unused DeepSeek/P06-C-001 position22 after archive/hash verification; preserve this failed run without replacement. Known-image continuation watcher correctly stopped for this different failure type."
+}

@@ -1,0 +1,105 @@
+{
+  "id": "P06-A-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Vseh R01–R12 ima jasne sprejemne pogoje: kanonične kolone in izvorni red, vse filtre in obe ločili, prazni izbor/rezultat, lokalni prenos z imenom/BOM, citiranje/podvojitev narekovajev in končni CRLF, natančne dovoljene vodilne beline/predpone, Unicode ter raw status/datum, ohranitev med pogledoma in reset spremenjenih nastavitev, nepisanje ter širina 390 brez širjenja strani. Vhodi in dejanja določijo imena checkbox/select kontrol. Opomba, da besedila kontrol niso predpisana, je preširoka glede na izrecna imena v prejšnjem odseku, vendar so konkretna imena in vrednosti v tem dokumentu določena. Pravila veljajo za vsak nabor podatkov, ne le razvojne primere.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T, urejeni K, izbor S, filter F in ločilo imajo domene; rows ohrani red, n opredeli nevtralizacijo natanko po štirih belinah in štirih predznakih, q določi citiranje, csv pa BOM in CRLF vsake vrstice. Omogočenje je ekvivalenca nepraznega izbora in rezultata. Kanonični red dopolni zapis S kot množice, glava se ne nevtralizira, izvirna polja se ohranijo. R10/R11 določita ohranitev nastavitev in reset projekta/reloada. To so preverljiva splošna pravila ključnih prehodov in serializacije.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Per-R matrika poveže dejanske A01–A12/D01–D04 z datotekami in več imenovanimi funkcijami. Izidi kažejo na docs/agent/verification.md, ki ni oddan; matrika ostane načrt brez dejanskih rezultatov ali označenih nepreverjenih delov. Zunaj dokumenta sta lastnih 12/12 in full 58/58 res potrjena v item_38/40, zato ne gre za izmišljene uspehe. Model posnetke pripravi in kliče view_image, vendar slika do modela ne pride zaradi HTTP422; vizualnega pregleda ne štejemo kot zaključenega. Manjkajoča predaja je ohranjena ob prekinitvi.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "analysis/review-packets/P06-A-001.json",
+        "runtime/runs/P06-A-001/execution.json",
+        "api/P06-A-001/model/request-00024.json.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "csv.ts loči čiste funkcije neutralizeFormula, quote, selectRows in buildCsv. CsvExport hrani tri lokalne nastavitve in iz skupnega CSV_COLUMNS izpelje kanonični izbor, število vrstic in canExport; stanje izbora se kopira. Download uporablja Blob in začasno povezavo ter sprosti objektni URL. ProjectView ostaja ista instanca med pogledoma in ključ projekta upravlja reset. Izvoz prejme celotne podatke, zato filter ne spreminja prikaza ali števcov. Domenska logika, kontrole in vključitev v aplikacijo imajo jasne odgovornosti.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/src/csv.ts:3",
+        "runtime/runs/P06-A-001/submission/src/csv.ts:13",
+        "runtime/runs/P06-A-001/submission/src/csv.ts:30",
+        "runtime/runs/P06-A-001/submission/src/CsvExport.tsx:6",
+        "runtime/runs/P06-A-001/submission/src/CsvExport.tsx:20",
+        "runtime/runs/P06-A-001/submission/src/App.tsx:44",
+        "runtime/runs/P06-A-001/submission/src/App.tsx:89"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Dvanajst dejansko uspešnih lastnih primerov zajame privzete kontrole, red vrstic, prazni izbor z dejanskim disabled klikom in brez prenosa, ponovni izbor, prazen filter/projekt, BOM/ime/CRLF, nevarne predpone z dovoljenimi belinami v naslovu/opisu, Unicode/raw datum/status, byte-pariteto obeh pogledov in reset spremenjenih nastavitev ob reloadu/projektu. Širina 390 ima prenos v preglednici in neširjenje table. Ostanejo pomembne vrzeli: test vejice izvozi samo eno kolono, zato dejanske izbire ločila med polji ne preveri; citiranje notranjih narekovajev nima točnega oraklja; ni varnih začetkov NBSP/VT/FF/apostrofa, vseh veljavnih podatkovnih kolon s predponami ali več kot deset nesortiranih vrstic z enakimi naslovi. Mobilna preglednica nima lastne trditve o širini. Testi so uporabni, ne dokaz celotne domene.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:7",
+        "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:39",
+        "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:55",
+        "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:87",
+        "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:95",
+        "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:104",
+        "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:125",
+        "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:136",
+        "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:151",
+        "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:176",
+        "analysis/review-packets/P06-A-001.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Po dejanskih 12/12 lastnih in 58/58 full testih ter izdelavi dveh posnetkov je request-00024 vrnil HTTP422: DeepInfra zahteva string na messages.60.tool.content.str. CLI je poslal dve function_call_output polji kot array z input_image. Meritev je execution_failed, 623,43 s, čeprav neodvisni testi uspejo 70/70 in zahteve 12/12. Strogi uspeh ostane false. Ločena sintetična diagnostika potrdi uspeh besedilnega tool rezultata in slike v user sporočilu ter zavrnitev slike v tool rezultatu. To je omejitev prenosa na zamrznjeni poti, ne dokaz slabe implementacije; brez popravka ali ponovitve.",
+    "evidence": [
+      "runtime/runs/P06-A-001/execution.json",
+      "runtime/runs/P06-A-001/evaluation-summary.json",
+      "api/P06-A-001/model/api-ledger.jsonl",
+      "api/P06-A-001/model/request-00024.json.gz",
+      "qualification/image-tool-2026-10-09T02-08-47-766Z/result.json",
+      "analysis/review-packets/P06-A-001.json"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Prvi razvojni/lastni zagon item_33 ima 2 failed/18 passed, samo lastni item_35 še 2 failed/10 passed: ponovni mount istega URL-ja ni osvežil podatkov in pričakovanih kampanjskih vrstic je bilo tri namesto dveh. Končni oddani test doda reload ter popravi pričakovanje; item_38 potrdi 12/12 in item_40 full 58/58. Piped tail exit0 ob prejšnjih neuspehih ni dokaz uspeha. Začetni heredoc zapis specifikacije je zavrnjen in datoteka prazna, poznejša druga pot zapisa jo dejansko dostavi.",
+    "evidence": [
+      "analysis/review-packets/P06-A-001.json",
+      "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:64",
+      "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:72",
+      "runtime/runs/P06-A-001/submission/tests/agent/P06-agent.spec.ts:173",
+      "runtime/runs/P06-A-001/events.jsonl.gz"
+    ]
+  },
+  "costReconciliation": {
+    "at": "2026-10-09T02:11:08.742Z",
+    "complete": false,
+    "knownCostUSD": 0.021596345,
+    "unknownRequests": [
+      24
+    ],
+    "evidence": "api/P06-A-001/model/api-cost.json",
+    "note": "Poznejši zunanji obračun; HTTP422 brez responseId ostane neznan, arhivirani delni račun nespremenjen."
+  }
+}

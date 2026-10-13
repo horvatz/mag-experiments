@@ -1,0 +1,97 @@
+{
+  "at": "2026-10-08T20:49:32.111Z",
+  "model": "qwen/qwen3.5-9b",
+  "provider": "siliconflow/fp8",
+  "transportQualified": true,
+  "startedMeasurements": 0,
+  "unresolvedInfrastructureFaults": [],
+  "workflows": [
+    {
+      "id": "Q-B-011",
+      "status": "failed",
+      "successful": false,
+      "phases": [
+        {
+          "name": "specification",
+          "status": "completed",
+          "elapsedSeconds": 51.542,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "implementation",
+          "status": "execution_failed",
+          "elapsedSeconds": 92.226,
+          "allowedChanges": true,
+          "contextRetained": true
+        }
+      ]
+    },
+    {
+      "id": "Q-C-011",
+      "status": "failed",
+      "successful": false,
+      "phases": [
+        {
+          "name": "constitution",
+          "status": "time_limit",
+          "elapsedSeconds": 120.026,
+          "allowedChanges": true,
+          "contextRetained": true
+        }
+      ]
+    },
+    {
+      "id": "Q-I-011",
+      "status": "passed",
+      "successful": true,
+      "phases": [
+        {
+          "name": "interrupted",
+          "status": "controlled_interruption",
+          "elapsedSeconds": 23.115,
+          "allowedChanges": true,
+          "contextRetained": true
+        }
+      ]
+    },
+    {
+      "id": "Q-B-018",
+      "status": "failed",
+      "successful": false,
+      "phases": [
+        {
+          "name": "specification",
+          "status": "completed",
+          "elapsedSeconds": 61.812,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "implementation",
+          "status": "completed",
+          "elapsedSeconds": 59.754,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "review",
+          "status": "time_limit",
+          "elapsedSeconds": 120.053,
+          "allowedChanges": true,
+          "contextRetained": true
+        }
+      ]
+    }
+  ],
+  "evidence": {
+    "runtime/qualification/Q-B-011/execution.json": "a978cd93450b2417368e252907ae59c8cc70c575682788a464baf86088323ac5",
+    "runtime/qualification/Q-C-011/execution.json": "b5eb73daf0cebbe6996c0ed9ed6b86016182572a5dee377b01707286c7f7f062",
+    "runtime/qualification/Q-I-011/execution.json": "3a4cb8f77e3d69ee7764a7270130deb4b9f5ba13de3e78047582485964a55c17",
+    "runtime/qualification/Q-B-018/execution.json": "44111c704f5570767d07a109a3daad07dd371c58dca327b1ef82f30a91471f13",
+    "qualification/transport-918/result.json": "62fb3453875315a8557e6f425b445c34f718493e7c0312bab5888bad2e26d22d",
+    "qualification/technical-916.json": "914aceea93eeb950492433c282114769a8ccaef22f430cb19a28ff4994b86081",
+    "qualification/operator-tests-configured.log": "46ed9065cfd1e9e4db9ad09b029d76d7c1b45b26256938432ff126081a7ca634"
+  },
+  "decision": "Proceed with all three preselected models. Actual native tools, final schema and retained sessions pass. Model diagnostic timeouts and semantic failures are retained; they do not exclude a model or change task prompts, workflow, time limits or reasoning settings. Original Q/1 recording bug is isolated from measured B handling."
+}

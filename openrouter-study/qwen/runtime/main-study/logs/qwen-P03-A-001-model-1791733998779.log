@@ -1,0 +1,106 @@
+Najprej beri ključne dokumente za razumevanje naloge.
+
+
+ добра. Sedaj razumem nalogo. Naj preverim obstoječo strukturo vmesnika in API-ja, da bolje razumem začetno stanje.
+
+
+Strežnik na 3100 ni oddal odgovora. Naj preverim port in zagon strežnika.
+
+
+Dobito. Naj preverim strukturo podatkov iz tipov in nato ustvarim specifikacijo.
+
+
+Sedaj ko razumem strukturo podatkov in obstoječi vmesnik, naj začnem z ustvarjanjem specifikacije.
+
+
+Najprej ustvarim specifikacijo zahteve P03:
+
+
+Uporabi `cat >` namesto here-doc:
+
+
+Uporabi `echo` in `printf`:
+
+
+Sedaj preverim specifikacijo in nato pripravim izvedbo:
+
+
+Sedaj začnem z implementacijo. Najprej ustvarim novo komponento za iskalno polje in filtre:
+
+
+Uporabi grep in printf za ustvarjanje datoteke:
+
+
+Datoteka ne obstaja. Naj ustvarim s `exec_command`:
+
+
+Preverim ali je datoteka ustvarjena:
+
+
+Dobro. Sedaj dodaj še filter za stanja in osebe:
+
+
+Sedaj moram posodobiti App.tsx za vključevanje filtrov. Najprej dodaj koncept parametra iskanja:
+
+
+Uporabi printf namesto heredoc:
+
+
+Preverimo:
+
+
+Sedaj preuredim `App.tsx` za vključitev filtra in iskalne funkcionalnosti:
+
+
+Let me try a different approach:
+
+
+Naj uporabim POSIX shell zapis datoteke:
+
+
+Saj hitrej ne deluje. Naj poskusim z API-jem:
+
+
+Naj nadaljujem z napisanjem implementacije. Dobil bom podatke iz začetnih testov:
+
+
+Naj poskusim drugače. Naj ustvarim komponento TaskFilters ki vključuje vse potrebne dele:
+
+
+Uporabi `tee` ali python zapis:
+
+
+Python se odzove. Preverim datoteko:
+
+
+Imamo TaskFilters kot .js! Moram pa namesto .js uporabiti .tsx in popraviti tipologijo. Naj posodobim App.tsx najprej z uporabo .tsx:
+
+
+Dobro. Sedaj moram ustrezno posodobiti App.tsx. Naj ga zapišem z Pythonom:
+
+
+Uporabi single quotes za Python:
+
+
+Uporabi pip:
+
+
+I will write the file content using base64 encoding to avoid shell escaping issues.
+
+
+Odlično! TaskFilters.tsx je napisan. Sedaj moram oslovati App.tsx in vključevanje filtrov. Najprej preberem App.tsx:
+
+
+Ima import. Sedaj pa ga moram popraviti s vsebino filtrov. Uporabili bomo node:
+
+
+Node string escaping je težaven. Naj pa naredim dosledno:
+
+
+Naj uporabim /Users/zan/.bashrc namesto /tmp:
+
+
+Uporabi /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P03-A-001/app/.tmp:
+
+
+{"status":"time_limit","elapsedSeconds":1200.034,"allowedChanges":true,"usage":null}

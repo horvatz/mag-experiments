@@ -1,0 +1,3 @@
+To je majhna tehnična kvalifikacija izvajalnika Q, ne polna naloga Folio. Preberi task/instructions.md. Dokumente ohrani zelo kratke. Uporabi samo src/qualification.ts, docs/agent/ in dovoljene procesne datoteke; spoštuj meje dodeljene vloge. Izvedba testa je node task/qualification-check.mjs. Ne uporabljaj brskalnika, javnega interneta ali drugih agentov. Končaj takoj, ko opraviš korak.
+Preberi .agents/skills/speckit-constitution/SKILL.md in zapiši kratka načela za obe zahtevi v .specify/memory/constitution.md. Brez kode.
+Zapomni si neobčutljivo kontrolno besedo copper-birch-63. Ne zapiši je v datoteke in je zdaj ne ponavljaj. Poznejše nadaljevanje te bo vprašalo po njej.

@@ -1,0 +1,132 @@
+{
+  "at": "2026-10-11T14:29:06.250182+00:00",
+  "researcherOnly": true,
+  "position": 69,
+  "slug": "glm",
+  "id": "P05-C-002",
+  "execution": {
+    "status": "invalid_stage_handoff",
+    "elapsedSeconds": 618.486,
+    "startedAt": "2026-10-11T14:16:53.524Z",
+    "finishedAt": "2026-10-11T14:27:12.013Z"
+  },
+  "phases": [
+    {
+      "name": "constitution",
+      "status": "completed",
+      "elapsedSeconds": 74.37,
+      "signal": null
+    },
+    {
+      "name": "specify",
+      "status": "completed",
+      "elapsedSeconds": 85.894,
+      "signal": null
+    },
+    {
+      "name": "plan",
+      "status": "completed",
+      "elapsedSeconds": 39.066,
+      "signal": null
+    },
+    {
+      "name": "tasks",
+      "status": "completed",
+      "elapsedSeconds": 22.797,
+      "signal": null
+    },
+    {
+      "name": "implement",
+      "status": "completed",
+      "elapsedSeconds": 393.166,
+      "signal": null
+    }
+  ],
+  "handoffError": "Missing artifact: docs/agent/verification.md",
+  "missingArtifactVerifiedInFinalSubmission": true,
+  "evaluation": {
+    "groups": {
+      "regression": {
+        "passed": 38,
+        "total": 38
+      },
+      "development": {
+        "passed": 8,
+        "total": 8
+      },
+      "holdout": {
+        "passed": 24,
+        "total": 24
+      }
+    },
+    "checks": [
+      {
+        "name": "lint",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.695,
+        "passed": true
+      },
+      {
+        "name": "types",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.642,
+        "passed": true
+      },
+      {
+        "name": "build",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 0.227,
+        "passed": true
+      },
+      {
+        "name": "tests",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedSeconds": 27.37,
+        "passed": true
+      }
+    ],
+    "allowedChanges": true,
+    "completeTestRun": true,
+    "allChecksPassed": false
+  },
+  "explicitApiErrors": [],
+  "archiveCost": {
+    "complete": true,
+    "costUSD": 0.51134401,
+    "requests": 77
+  },
+  "interpretation": [
+    "All 70 tests and 12 requirements passed. Native implementation phase completed; mandatory verification.md artifact absent, so original stage validator rejected handoff and did not start converge.",
+    "No observed API error, no measured retry, no researcher document repair or qualitative grade for repetition002."
+  ],
+  "sources": [
+    {
+      "path": "openrouter-study/glm/runtime/runs/P05-C-002/execution.json",
+      "sha256": "9922a31d03f4c3da25908f020dc375d3a791de2bd8b2eebed96779b316b66785"
+    },
+    {
+      "path": "openrouter-study/glm/runtime/runs/P05-C-002/evaluation-summary.json",
+      "sha256": "f3ecd19aeb52832738e64da8f2e631c3461f30086fc5482471766e77a85194ae"
+    },
+    {
+      "path": "openrouter-study/glm/runtime/runs/P05-C-002/api-cost.json",
+      "sha256": "d78554fe138836d4424268bc205e5df70ee3ad907957c87c4a9f91a90307debb"
+    },
+    {
+      "path": "openrouter-study/glm/runtime/runs/P05-C-002/phases/05-implement/result.json",
+      "sha256": "9c658e0ded38c7e63f0de6fe3aa10cd068ef00c3512f1fba7b11b8fd2baccaee"
+    },
+    {
+      "path": "openrouter-study/glm/runtime/runs/P05-C-002/archive-complete.json",
+      "sha256": "338f1e54c51c3e583f3dd512d74e3ceb61b82281e671501ed848cac77aa05443"
+    },
+    {
+      "path": "openrouter-study/glm/api/P05-C-002/model/api-ledger.jsonl",
+      "sha256": "225948a1504be69cdab23ec1c15c065b3753909e3126ca16600d384d8a8b05b1"
+    }
+  ]
+}

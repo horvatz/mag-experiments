@@ -1,0 +1,1 @@
+Našel sem: hunk je zajel naslednjo operacijo. Popravim prekinitev glede na predpono.

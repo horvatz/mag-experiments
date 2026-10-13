@@ -1,0 +1,45 @@
+{
+  "id": "P10-C-003",
+  "observedAt": "2026-10-13T01:02:36.933Z",
+  "complete": false,
+  "roles": [
+    {
+      "role": "agent",
+      "session": "01a132c8-2199-70b1-b9ce-e7aa70b9cc04",
+      "lastTokenEventAt": "2026-10-13T01:02:34.937Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 20323,
+        "cached_input_tokens": 8704,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 704,
+        "reasoning_output_tokens": 84
+      },
+      "phases": [
+        {
+          "name": "constitution",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 20323,
+            "cached_input_tokens": 8704,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 704,
+            "reasoning_output_tokens": 84
+          },
+          "lastTokenEventAt": "2026-10-13T01:02:34.937Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    }
+  ],
+  "usage": null,
+  "observedUsageBeforeInterruption": {
+    "input_tokens": 20323,
+    "cached_input_tokens": 8704,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 704,
+    "reasoning_output_tokens": 84
+  },
+  "method": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+  "note": "Incomplete events are a partial observation, not zero or a complete token total. No monetary cost is inferred."
+}

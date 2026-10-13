@@ -1,0 +1,119 @@
+{
+  "requestedAt": "2026-10-09T07:57:11.194326+00:00",
+  "reason": "Explicit user request to pause and preserve progress",
+  "activeRun": "glm/P03-C-002",
+  "position": 42,
+  "runnerPid": 20466,
+  "supervisorPid": 84327,
+  "measuredWorkflowPid": 2441,
+  "actions": [
+    "SIGSTOP queue to prevent next ID",
+    "SIGTERM continuation supervisor",
+    "SIGTERM measured workflow using its frozen operator_interruption handler"
+  ],
+  "measuredRetry": false,
+  "archivePending": false,
+  "transportEvidenceAddendum": {
+    "originalLedger": "analysis/recovery/glm-P03-C-002-ledger-before-pause-addendum.jsonl",
+    "originalSHA256": "4397c62686ed80d0048c7a70caf429afedae3a530f7a6730d7d9040f7da001e3",
+    "requestNumber": 69,
+    "requestSHA256": "bce31b64e6fc930369679a02bacf7dc0f679812088b9b53f2b3402e5ba08e0c0",
+    "record": {
+      "number": 69,
+      "label": "glm/P03-C-002/measured",
+      "model": "z-ai/glm-5.3",
+      "provider": "wafer/us",
+      "status": "operator_interruption_unknown",
+      "sentUpstream": null,
+      "responseId": null,
+      "usage": null,
+      "responseStatus": null,
+      "researcherOnlyReconstructedRecord": true,
+      "recordedAt": "2026-10-09T08:00:17.115728+00:00",
+      "requestFileModifiedAt": "2026-10-09T07:56:53.305993+00:00",
+      "note": "Request file preserved but relay final record absent after explicit user pause; whether sent upstream, HTTP outcome, usage and cost are unknown. This is not an observed API failure or a zero-cost request. Reserve pinned maximum cost until reconciled."
+    },
+    "rationale": "Preserve uncertainty in cost bookkeeping and budget reserve without claiming actual upstream activity."
+  },
+  "finishedAt": "2026-10-09T08:01:17.903Z",
+  "archive": "glm/runtime/runs/P03-C-002",
+  "executionStatus": "operator_interruption",
+  "elapsedSeconds": 551.03,
+  "groups": {
+    "regression": {
+      "passed": 38,
+      "total": 38
+    },
+    "development": {
+      "passed": 6,
+      "total": 8
+    },
+    "holdout": {
+      "passed": 22,
+      "total": 24
+    }
+  },
+  "allChecksPassed": false,
+  "checks": [
+    {
+      "name": "lint",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.681,
+      "passed": true
+    },
+    {
+      "name": "types",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.65,
+      "passed": true
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.229,
+      "passed": true
+    },
+    {
+      "name": "tests",
+      "exitCode": 1,
+      "signal": null,
+      "elapsedSeconds": 47.987,
+      "passed": false
+    }
+  ],
+  "cost": {
+    "complete": false,
+    "costUSD": null,
+    "knownCostUSD": 0.4911691270000001,
+    "requests": 69
+  },
+  "spend": {
+    "knownUSD": 7.478221003000004,
+    "unknownRequests": 12,
+    "unknownReservedUSD": 4.299553099999998
+  },
+  "nextUnused": "qwen/P03-A-002",
+  "nextPosition": 43,
+  "noMeasuredRetry": true,
+  "note": "User interruption is retained explicitly; do not attribute this shortened run to model ability or rerun it. Final report must disclose it.",
+  "pauseVerification": {
+    "at": "2026-10-09T08:02:25.134471+00:00",
+    "queueSupervisorWorkflowBrowserCleanerStopped": true,
+    "locksAbsent": true,
+    "experimentPortsClosed": [
+      9238,
+      9223,
+      5174,
+      3102
+    ],
+    "evidenceAudit": {
+      "passed": true,
+      "archives": 186,
+      "reviews": 84,
+      "missingSelectedReviews": 0
+    }
+  }
+}

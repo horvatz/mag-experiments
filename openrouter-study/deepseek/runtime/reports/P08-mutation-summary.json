@@ -1,0 +1,93 @@
+{
+  "date": "2026-09-21T21:11:11.600Z",
+  "task": "P08",
+  "baseline": {
+    "repository": "https://github.com/horvatz/mag-app.git",
+    "commit": "6dc1193f32a1fc00722fbc0983907d32b908cb51",
+    "taskVersion": "P08/1.0",
+    "kind": "main"
+  },
+  "sourceHashes": {
+    "baseline.json": "4c7f3cbcc5e9f37b2398c8ec2c47544486939615a37d6c8bd6ae4634bce27e0a",
+    "evaluation/P08/acceptance.spec.ts": "23f6656844c9b7f95ef3ad2f0d401ade63e313f76006253cfd73fe1496d8af1b",
+    "evaluation/P08/mutations.mjs": "70da8cf09fac4a7b88839373d9b0cfdd9e099675bc6d115141fd529cc181d591",
+    "package-lock.json": "5e3cae728c00882f4b8d93bb727b5e3ed26ef97f5ff3947b8e84f541825fd580",
+    "playwright.main.config.ts": "1d1ee9dee7de479b16b167c590e6471227fda20878a60c804a790fbac93c4de3",
+    "reference/P08/overlay/src/App.tsx": "6a84d61109520bbf601d9a316f1ee66fe8de7a8674a9e2cc5922dab88e15468a",
+    "reference/P08/overlay/src/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/P08/overlay/src/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/P08/overlay/src/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P08/overlay/src/TaskBoard.tsx": "efdfe4a6e56552136ec8fe23e143d62a89db15c8be02e274143b28d098a37b5f",
+    "reference/P08/overlay/src/TaskFeature.tsx": "5356ef07f1821a004ab7db3d7dd02514fd30f2280ce1cfc4fca32c0d557ac216",
+    "scripts/main.mjs": "578845f029885da9782e20f152b239f5ea501178959ac9ba5770bf9d87e4102d",
+    "scripts/report-utils.mjs": "9fe7c0e240e53b8f239949157e6534d21a6090e5cbbb72d8110b054dac482617",
+    "scripts/start-app.mjs": "4e8b6bc1f40985384db605e409898fd03632d119614f391924229cd91fc2d90b",
+    "scripts/start-main.mjs": "e9072cbbf9e05ce656695ca06b68c2b03d159d5350558edf6922777720271ac3",
+    "support/types.ts": "27ecd2e574b2fa8c45e6f9bf5d9dec92a87e5d150008f64d9d126eee6474612b",
+    "tasks/P08/baseline.json": "4e7bdb28a976bf93da68c9f2f574f338871ca5f2f3d0ccee0b18fa220086b8ed",
+    "tasks/P08/development.spec.ts": "3412269b5d53fb1f053886ddaf99975842f3f0e5fb9fce81c52310e72a3ed712",
+    "tasks/P08/helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P08/instructions.md": "536cf912e31a7397ba7e63443be242b1bda4d9c164f7f6e93b5becfb85092548",
+    "tasks/P08/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095"
+  },
+  "referenceChecks": 70,
+  "sourceUnchanged": true,
+  "mutations": [
+    {
+      "id": "M01",
+      "name": "Wrong initial date",
+      "scenario": "E01",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toHaveValue",
+      "failure": "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  getByLabel('Referenčni datum', { exact: true })\nExpected: \"2026-09-21\"\nReceived: \"2026-09-22\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveValue\" getByLabel('Referenčni datum', { exact: true }) with timeout 5000ms\n  - waiting for getByLabel('Referenčni datum', { exact: true })\n    14 × locator resolved to <input type=\"date\" value=\"2026-09-22\"/>\n       - unexpected value \"2026-09-22\"\n\n"
+    },
+    {
+      "id": "M02",
+      "name": "Completed tasks treated as open",
+      "scenario": "E02",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 5\n+ Received  + 1\n\n- Array [\n-   \"done-past\",\n-   \"done-now\",\n-   \"done-future\",\n- ]\n+ Array []\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate"
+    },
+    {
+      "id": "M03",
+      "name": "Today treated as overdue",
+      "scenario": "E03",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 0\n+ Received  + 1\n\n  Array [\n    \"past\",\n+   \"now\",\n  ]\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n   at tasks/P08/helpers.ts:43"
+    },
+    {
+      "id": "M04",
+      "name": "Seventh day excluded",
+      "scenario": "E04",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 1\n+ Received  + 0\n\n  Array [\n    \"next\",\n-   \"last\",\n  ]\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n   at tasks/P08/helpers.ts:43"
+    },
+    {
+      "id": "M05",
+      "name": "Week has only six days",
+      "scenario": "E05",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toEqual",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 3\n+ Received  + 1\n\n- Array [\n-   \"yes0\",\n- ]\n+ Array []\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n   at tasks/P08/helpers.ts:43"
+    },
+    {
+      "id": "M06",
+      "name": "Counters count only todo tasks",
+      "scenario": "E06",
+      "typecheck": "passed",
+      "detected": true,
+      "assertion": "toHaveText",
+      "failure": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  getByLabel('Število rokov week', { exact: true })\nExpected: \"2\"\nReceived: \"1\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" getByLabel('Število rokov week', { exact: true }) with timeout 5000ms\n  - waiting for getByLabel('Število rokov week', { exact: true })\n    14 × locator resolved to <strong aria-label=\"Število rokov week\">1</strong>\n       - unexpected value \"1\"\n\n"
+    }
+  ],
+  "detected": 6,
+  "total": 6
+}

@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-08T20:00:59.377Z",
+  "attempt": "qwen/P06-A-904",
+  "modelCalls": 0,
+  "measuredRunsStarted": 0,
+  "result": "failed",
+  "reason": "Pinned CLI initialized bundled plugin-creator skill after the export enumerated disabled host skills. Debug preflight correctly rejected that catalog. Actual isolated transport contained no host skill catalog. Preserve this attempt; new technical ID 905 enumerates the initialized catalog.",
+  "additionalFailedAttempt": "qwen/P06-A-905",
+  "correctedReason": "The bundled plugin-creator path is initialized by the pinned CLI but omitted by the host inventory on preparation. Explicitly disable that known path in all new collection configurations. Measured transport captures contain no host skills."
+}

@@ -1,0 +1,117 @@
+{
+  "id": "P03-C-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-13",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "V celoti je prebranih vseh sedem dejansko oddanih avtorskih dokumentov; njihovi SHA se ujemajo s predhodnimi polnimi bralnimi posnetki. Indeksiranih je68nativeukazov/81preserviranihklicev, preverjene so konkretne napake in poskusi pisanja. Avtorska produkcijska koda ni dostavljena; nespremenjeni baseline ni modelova implementacija. Presoja ni vrnjena merjeni seji.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Spec in feature metapodatki navedeta vseh R01–R12: štiri iskalna polja, NFD in točno območje znamenj, vse besede kot podnize, AND filtrov, celoprojektne osebe, enaka ID-ja obeh pogledov, reset pri projektu/reload/clear, N/M, prazne rezultate in390px. Ostanejo konkretne vrzeli: ni stroge primerjave osebe, enega združenega haystacka, ohranitve polj podatkov, 0/1/>10 ali vseh dostopnih pogodbenih imen. V ustavi/spec/planu je role=status napačno pripisan gumbu clear; načrt ponovno odpira session storage in napačni /api/tasks, čeprav pravila zahtevajo lokalne filtre in obstoječi API. Spec je kolaž citirane ustave, generične matrike in zahtev; osnovna pokritost obstaja, skladna celota pa ne.",
+      "evidence": [
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:24",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:32",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:65",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:68",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:71",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:74",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:77",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:83",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:86",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:89",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:95",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:40",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:83",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:105",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:112",
+        "runtime/runs/P03-C-001/submission/.specify/feature.json:29",
+        "runtime/runs/P03-C-001/submission/.specify/feature.json:69",
+        "runtime/runs/P03-C-001/submission/.specify/feature.json:93"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Normalizacija z NFD/U+0300–U+036F/malimi črkami, zahteva da vse besede ustrezajo, konjunkcija treh filtrov, privzeti prehodi in N=prikazano/M=celotni projekt so delno preverljivi. Ni popolnega predikata vidnosti preko združenih štirih polj in stroge osebe, invariant nespremenjenih polj ali natančnega izračuna vsakega vidnega statusa/stolpca. Izjava empty input returns all ni natančno omejena na iskalni pogoj; načrt ponuja trajno shrambo kot odprto izbiro. Nekatera pravila imajo opazljiv izid, preostala so opisna oziroma neusklajena.",
+      "evidence": [
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:65",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:68",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:71",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:74",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:77",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:80",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:83",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:86",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:92",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:31",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:80",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:105"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Sprejemna tabela našteje generična imena preverjanj, načrt poveže skupine R s prihodnjimi datotekami. Toda nobena od predlaganih funkcij ali testov ni oddana ali izvedena; tasks.md vsebuje le naslov in datum, brez nalog. Matrike zahteva–dejanska koda–izvedeni test, verification in konvergence ni. Package v dokumentaciji kaže na nedostavljeni write-spec.mjs, README pa vsebuje zgolj oznako invalid UTF8, čeprav je običajno berljivo ASCII besedilo. Reference na navodila, feature in datum niso preverljiva sled implementacije. Zelenih testov ne izmišljuje; prihodnjih predlogov pa ne ocenimo kot dejanske povezave.",
+      "evidence": [
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:32",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:47",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:49",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:66",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:92",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:117",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/tasks.md:1",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/package.json:1",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/README.md:1"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Avtorska produkcijska koda ni dostavljena: vseh sedem sprememb je ustava, feature in dokumentacija. Poskusi pisanja v src med specify/tasks so zavrnjeni ali sintaktično neuspešni; ne pomenijo oddane implementacije. Implementacijska faza ni začeta. Organizacije začetne aplikacije zato ne pripišemo modelu; manjkajoča nova implementacija ostane null, skladno s prejšnjimi presojami dokumentacijskih oddaj. Primarni funkcionalni neuspeh ostane v neodvisnem rezultatu.",
+      "evidence": [
+        "runtime/runs/P03-C-001/execution.json",
+        "analysis/review-packets/P03-C-001.json",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:49",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/tasks.md:1"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Lastnih testnih datotek, verifikacijskega zapisa ali smiselnega dodatnega funkcionalnega preverjanja ni. Vseh68nativeukazov/81preserviranihklicev potrdi branje, časovni nadzor, pisanje dokumentacije in zavrnjene poskuse kode, ne zagona lint/types/build/Playwright. Načrtovana testna imena in naloge izpisane samo v stdout niso izvedena preverjanja. Delna avtorska dokumentacijska oddaja zato dobi0za odsotna lastna preverjanja; poznejših38/70 raziskovalčevega izvajalca ne pripišemo modelu.",
+      "evidence": [
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/plan.md:92",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/spec.md:32",
+        "runtime/runs/P03-C-001/submission/docs/agent/P03/tasks.md:1",
+        "analysis/review-packets/P03-C-001.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Prvotna meritev se konča time_limit1201,012s v tasks(SIGKILL190,840s), po constitution89,355/specify830,371/plan85,501s completed. Implementacija in converge nista začeti; tasks ima samo naslov. Novi kontrolniki in filtriranje niso dostavljeni, zato neodvisno38/70(samo38regresij),0/12; vse statične kontrole, dovoljene spremembe in celoten testni zagon true,strictfalse. Začeta meritev se ne ponovi ali dopolni z raziskovalčevo kodo.",
+    "evidence": [
+      "runtime/runs/P03-C-001/execution.json",
+      "runtime/runs/P03-C-001/evaluation-summary.json",
+      "runtime/runs/P03-C-001/evaluation-tests.log",
+      "runtime/runs/P03-C-001/submission/docs/agent/P03/tasks.md:1"
+    ]
+  },
+  "finalFailureNote": "API račun complete0,35289795USD/78zahtev. Zadnja78client_aborted ima responseId in generationreceipt200/cost0,00753405USD, zato ni neznana ali brezplačna. Izrecne napake storitve ni; iztek prvotnega roka in lokalne orodne napake so ohranjeni ločeno.",
+  "developmentFailureExample": {
+    "description": "Specifikacijski nativeitem_12/26/31/35 imajo unmatched quote/backtick; preservirani4/5/14/27/29/32 ohranijo zavrnjene heredoce. Med specify mkdir/touch v src nista dovoljena v tej vlogi; dejanske kode zato ni. Prvi planP63 zaradi neescapiranih backtickov poskuša izvesti imena poti/useMemo in pade; poznejši uspešen zapis dostavi plan. Taskitem_11/12 exit0 zgolj izpišeta T001–T006 v stdout brez zapisa; P72 ima neveljaven JSONorodnihargumentov. P74/78 zavrneta src v tasks vlogi. Finalinventory potrdi samo sedem dokumentov. READMEtrditev invalidUTF8 ni dejanska napaka dekodiranja; novi dokumenti so berljivi. Funkcionalna razvojna napaka aplikacije ni opažena, saj implementacije ni.",
+    "evidence": [
+      "analysis/review-packets/P03-C-001.json",
+      "runtime/runs/P03-C-001/phases/02-specify/events.jsonl.gz",
+      "runtime/runs/P03-C-001/phases/03-plan/events.jsonl.gz",
+      "runtime/runs/P03-C-001/phases/04-tasks/events.jsonl.gz",
+      "runtime/runs/P03-C-001/submission/docs/agent/P03/README.md:1",
+      "runtime/runs/P03-C-001/submission/docs/agent/P03/tasks.md:1"
+    ]
+  }
+}

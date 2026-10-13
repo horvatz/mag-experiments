@@ -1,0 +1,91 @@
+{
+  "id": "P10-C-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Implementacija je completed in funkcionalno uspešna, toda zahtevani docs/agent/verification.md manjka. Model dokument shrani le v mapo značilnosti. Po rubriki enakovreden dokument ocenimo vsebinsko, izvirni invalid_stage_handoff pa ostane v primarnem rezultatu; konvergenca ni začeta.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Vse R01–R12 imajo obsežne pogoje: ID in globalni red, poljubno število/Unicode/0/1, sosednjo zamenjavo, robno identiteto, oba sklada in mejo 20 z zavrženjem najstarejšega, vejo po undo, razveljavljiv reset/no-op, stalne statusne podsezname ter projekt/pogled/podrobnosti/reload. Exact status/ARIA, ločene kontrole in nespremenjena polja/števci so določeni. Konkretna vrzel ostane pri mobilnem sprejemnem pogoju: 390 px se pojavi le kot navedba testa v sledljivosti, ni pa jasno opredeljeno, da oba pogleda pri tej širini ne razširita strani in da je dovoljeno le notranje drsenje. Splošen sklic na Folio tega pogoja ne opredeli dovolj natančno.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#prikaz-in-navigacija",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#sprejemni-pogoji-po-zahtevah",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P10-C-001/input-overrides/task/instructions.md"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "I₀/C/U/R imajo razložene domene in top-of-stack. Premik je sosednja zamenjava z identiteto za neveljaven poskus; enačbe opredelijo U+prejšnji C in prazen R. Undo/redo izrecno odstranita vrh ustreznega sklada in dodata prejšnji C v drugega. Reset je pogojen s C≠I₀ in razveljavljiv, ob izvoru pa ohrani zgodovino. Omejitev U≤20 in zavrženje najstarejšega dopolnita krajšavo omeji; ID-permutacija, nespremenjena polja in relativni statusni red so ohranitve. Formalizacija ključne dinamike je splošna in preverljiva.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#poimenovanja-in-stanje",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#pravila-sprememb-stanja"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Vsaka R ima konkretno imenovan lastni test, kodno datoteko in pri domenskih prehodih funkcije createOrderState/moveTask/canMove/undoMove/redoMove/addToUndo/resetToInitial/historyText. Verification loči vrste preverjanj, dejansko potrjenih 10/10 v item_39 in full 56/56 v item_44 ter neizvedene zasebne teste in odsotnost ločenega dizajnerskega pregleda. Dokazi omogočajo pregled povezav tudi ob vrzelih orakljev meje 20 in mobilnega pogleda; ti ostanejo omejitev lastnih preverjanj. Začetni testni popravki niso posebej opisani, vendar končni izidi in povezave niso izmišljeni. Formalno napačna pot predaje je ločena od vsebinsko preverljivega dokumenta.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/verification.md#izvedena-preverjanja",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/verification.md#omejitve",
+        "runtime/runs/P10-C-001/phases/05-implement/events.jsonl.gz",
+        "runtime/runs/P10-C-001/phases/05-implement/result.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "ordering.ts loči čisto stanje in nemutirajoče prehode od React prikaza, skupno omeji U in določi možnosti premika/zgodovinsko besedilo. ProjectView hrani lokalno stanje in izpelje seznam po ID ter nespremenjene statusne števce. Tabla uporablja isti globalni red in callback, izpelje globalna mesta ter stabilne statusne podsezname; dodatni gumbi so zunaj povezav. Ključ projekta ponastavi lokalnost, pogled in podrobnosti ohranita instanco. Odgovornosti so dosledne brez znatnega podvajanja domenskih prehodov; manj učinkovito iskanje opravila po ID ni potrjena funkcionalna napaka.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/src/ordering.ts:12",
+        "runtime/runs/P10-C-001/submission/src/ordering.ts:16",
+        "runtime/runs/P10-C-001/submission/src/ordering.ts:20",
+        "runtime/runs/P10-C-001/submission/src/ordering.ts:46",
+        "runtime/runs/P10-C-001/submission/src/App.tsx:12",
+        "runtime/runs/P10-C-001/submission/src/App.tsx:23",
+        "runtime/runs/P10-C-001/submission/src/App.tsx:108",
+        "runtime/runs/P10-C-001/submission/src/TaskBoard.tsx:14"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Deset potrjenih testov zajame 8 opravil z enakimi naslovi, vsa začetna mesta, sosednje premike, celotne permutacije skozi več undo/redo, vejo, reset/undo, relativne stolpce in globalnega soseda, status/števce, pogled/podrobnosti/projekt, 0/1, brez API zapisov/localStorage ter geometrijo. Test R07 pa pri 21 premikih le izmenjuje web-04 gor/dol med dvema permutacijama; orakelj po 20 undo pravilno preveri prvo premaknjeno permutacijo in zato razloči preprosto napačno ohranitev prvih 20 namesto zadnjih 20 posnetkov. Po 20 redo preveri končno stanje; vmesna stanja in zgodovina več različnih permutacij niso preverjeni. R06 ne sproži robnega klika. Reload v R10 sledi že ponastavljenemu izvoru, ne spremenjenemu redu; redo ni neprazen ob prehodu pogledov/podrobnosti. Širina 390 se nastavi šele po vrnitvi na preglednico, zato tabla pri 390 ni preverjena. Manjkajo reset pri polnem skladu/no-op z redo, večje domene in zahtevni ID-ji. To so vrzeli dokazov, ne potrjene končne funkcionalne napake.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:5",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:27",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:46",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:57",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:77",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:92",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:111",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:135",
+        "runtime/runs/P10-C-001/submission/tests/agent/helpers.ts:134",
+        "runtime/runs/P10-C-001/phases/05-implement/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Ni potrjene končne funkcionalne napake: 70/70, 12/12, dovoljenost/lint/types/build true. Invalid_stage_handoff po 602,704 s zaradi Missing artifact: docs/agent/verification.md; prvih pet faz completed, konvergenca ni začeta. Popolni račun 0,34317713 USD za 66 zahtev, native poraba nepopolna. Arhiv in rezultat ostaneta nespremenjena; dokumenta ne prestavljamo in meritve ne ponavljamo.",
+  "developmentFailureExample": {
+    "description": "Item_26 ima 3 failed/7 passed: resetno pričakovanje zgodovine 1 namesto 2, iskanje status-badge na tabli in pričakovanje globalnega zaporedja DOM kartic v statusno grupiranem pogledu. Popravljeni testi preidejo na preglednico za globalni red/status; item_29 ima še 1 failed/9 passed zaradi napačnih statusnih števcev. Po dodatnih poskusih pisanja popravkov (printf-pipe apply_patch ni najden) item_39 potrdi 10/10 in item_44 full 56/56. Raziskovalec ne popravlja kode ali pričakovanj.",
+    "evidence": [
+      "runtime/runs/P10-C-001/phases/05-implement/events.jsonl.gz",
+      "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:77",
+      "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:92",
+      "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:111",
+      "analysis/review-packets/P10-C-001.json"
+    ]
+  }
+}

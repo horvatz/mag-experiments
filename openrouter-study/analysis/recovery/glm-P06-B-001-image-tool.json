@@ -1,0 +1,43 @@
+{
+  "at": "2026-10-09T03:34:20.932758+00:00",
+  "researcherOnly": true,
+  "run": "glm/P06-B-001",
+  "executionStatus": "execution_failed",
+  "elapsedSeconds": 403.541,
+  "functionalTests": "70/70",
+  "requirements": "12/12",
+  "strictSuccess": false,
+  "checks": {
+    "lint": true,
+    "types": false,
+    "build": true,
+    "allowed": true
+  },
+  "typeFailure": "tests/agent/P06-implementation.spec.ts:23 dispatchEventEvent does not exist (TS2551).",
+  "failedRequest": 50,
+  "httpStatus": 404,
+  "responseId": null,
+  "errorMessage": "No endpoints found that support image input",
+  "failedRoutingStep": "Filter by Image Support",
+  "requestShape": "One function_call_output array with input_image from view_image; pinned z-ai/glm-5.3 / wafer/us / no fallback.",
+  "diagnosis": "Frozen catalog advertises text input only. Image input is rejected by OpenRouter routing; no model implementation failure is inferred from this rejection.",
+  "syntheticDiagnostic": "glm/qualification/image-tool-2026-10-09T03-31-49-001Z",
+  "syntheticOutcomes": {
+    "text-tool-control": "HTTP200/incomplete with max_output_tokens=256; not a successful health check",
+    "image-tool": "HTTP404 unsupported image",
+    "image-user-control": "HTTP404 unsupported image"
+  },
+  "freshTextHealth": "glm/qualification/service-2026-10-09T03-32-20-257Z/result.json",
+  "freshTextHealthPassed": true,
+  "healthLimitation": "Short text success does not establish long-response reliability.",
+  "cost": {
+    "completeByFrozenRules": true,
+    "costUSD": 0.1763963,
+    "requests": 50,
+    "imageRejectionCostUSD": 0,
+    "imageRejectionCostBasis": "Frozen costs.mjs assigns zero to HTTP404 without responseId (router rejection before an endpoint). No returned usage/invoice exists for this rejection; zero is the accounting rule, not a reported generation receipt."
+  },
+  "decision": "Retain unchanged archive, tests and failed status. Continue only unused IDs after archive hash/input checks and fresh short text probe; do not remove image tools, retry the measurement or switch providers.",
+  "measuredRetry": false,
+  "changedFrozenProtocol": false
+}

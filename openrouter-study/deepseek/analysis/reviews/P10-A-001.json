@@ -1,0 +1,89 @@
+{
+  "id": "P10-A-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Vse R01–R12 in bistveni robovi so skladno opredeljeni: izvorna permutacija in globalna mesta po ID, enaki naslovi/Unicode/poljubna dolžina, globalni sosedje tudi na tabli, oba sklada in meje 20, veljavna veja po undo ter neveljavna identiteta, reset kot razveljavljivo dejanje in no-op pri izvoru, stabilni statusni podseznami, projekt/pogled/podrobnosti/reload,0/1 opravilo, exact status/ARIA, ohranitev polj/števcev in lokalnost brez zapisov ali shrambe ter geometrija 390. Nalaganje in sočasne spremembe izrecno omeji na izhodiščni obseg.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "P/P0/U/R, pos/swap/cap20 imajo razložene simbole in natančne preverljive prehode. Undo/redo izrecno odstranita vrh ustreznega sklada in dodata prejšnji P v drugega, move/reset omejita U in počistita R. Neveljavno dejanje je identiteta nad celotnim stanjem; veljavnost reseta P≠P0 prepreči spremembo zgodovine ob izvoru. Opredeljeni so permutacijska lastnost, globalna mesta, meja 20, stabilni statusni podseznami in življenjska doba. Pravila so splošna in ločena od konkretnih testnih vrednosti.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Vsaka R ima konkreten imenovani T01–T09/D01–D04 scenarij, kodno datoteko in pogosto funkcijo oziroma razpoznavni prikazni del ter povezavo na verification. Modelni item_42 potrdi 9/9 pred full check, item_48 potrdi 55/55; posredne razvojne zagone pošteno označi kot del check. Zapis ohrani napake testnih pričakovanj in popravek eslint, jasno izključi skrite/ročne teste ter navede preverjeno domeno 0/1/2/12 in omejitev zelo velikih seznamov. Testni orakelj meje 20 ni razločujoč, kar je omejitev lastnih preverjanj; navedeni scenarij 21/20/20 in končni izid sta dejansko izvedena. Tipovni popravek testnega helperja ni posebej opisan, a glavni zagon in povezave so preverljivi.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P10-A-001/submission/docs/agent/verification.md#izvedeni-ukazi-in-rezultati",
+        "runtime/runs/P10-A-001/submission/docs/agent/verification.md#povezava-zahtev-z-dejanskimi-preverjanji",
+        "runtime/runs/P10-A-001/submission/docs/agent/verification.md#zaznani-popravki-med-izvedbo",
+        "runtime/runs/P10-A-001/submission/docs/agent/verification.md#omejitve-in-nepreverjeno",
+        "runtime/runs/P10-A-001/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti moveOrder in pushHistory ločita sosednjo zamenjavo in omejitev zgodovine od hooka. Hook hrani samo permutacijo in sklada, uporabi funkcijske nemutirajoče posodobitve in veljaven ključ prejetih ID-jev; izpeljane vrednosti in zmožnosti memoizira. ProjectView upravlja branje, Map ID→Task, nefiltrirane števce in prikaz, tabela/tabla prejmeta isti globalni red. Tabla izpelje globalna mesta in stalne statusne podsezname, domensko premikanje ostane skupno. Key projekta zagotovi reset, podrobnosti ohranijo isti hook; gumba sta ločena od povezave.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/src/useTaskOrder.ts:14",
+        "runtime/runs/P10-A-001/submission/src/useTaskOrder.ts:25",
+        "runtime/runs/P10-A-001/submission/src/useTaskOrder.ts:33",
+        "runtime/runs/P10-A-001/submission/src/App.tsx:11",
+        "runtime/runs/P10-A-001/submission/src/App.tsx:103",
+        "runtime/runs/P10-A-001/submission/src/TaskBoard.tsx:14"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Devet potrjenih testov zajame 12 opravil z enakimi naslovi/Unicode, vsa začetna mesta, relativni red več kartic v istem stolpcu, globalnega soseda na tabli, polja/števce, več undo/redo s preverjanjem celotnih permutacij, vejo po undo, reset/undo/redo, pogled/podrobnosti/projekt/reload,0/1 opravilo, read-only API in dejansko geometrijo 390 v obeh pogledih. T05 pri 21 potezah vsakokrat premakne zadnje opravilo gor, zato se zadnja dva ID-ja le izmenjujeta med dvema permutacijama. Po 20 undo pravilno pričakuje prvo premaknjeno permutacijo states[0], zato razloči preprosto napačno ohranitev prvih 20 namesto zadnjih 20 posnetkov. Po 20 redo preveri končno permutacijo. Dvostanjski vzorec brez vmesnih orakljev pa ne dokazuje pravilnega zaporedja vseh notranjih posnetkov ali zgodovine več različnih permutacij. T04 preveri onemogočen robni gumb, dejanja ne sproži. Manjkajo tudi reset pri polnem skladu, dejanski no-op reset z nepraznim redo ter zahtevni ID-ji. To so konkretne vrzeli dokazov, ne potrjena napaka končne funkcionalnosti.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:7",
+        "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:60",
+        "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:78",
+        "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:99",
+        "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:116",
+        "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:133",
+        "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:155",
+        "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:179",
+        "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:211",
+        "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:223",
+        "runtime/runs/P10-A-001/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Ni potrjene končne funkcionalne napake: completed,70/70,12/12, dovoljenost/lint/types/build true, strogi uspeh true. Čas 1147,158 s; popolni račun 0,0482056044 USD za 32 zahtev. Dokumentacija, funkcionalnost, zaključek postopka in omejitve dodatnih testov se poročajo ločeno.",
+  "developmentFailureExample": {
+    "description": "Prvi lastni zagon item_38 ima 4 failed/5 passed: nepravilna pričakovanja projektnih števcev 4/3/3 namesto 6/3/3, začetnega reda po 20 undo in resetne zgodovine 1 namesto 3. Item_39 potrdi napako prvega testnega števca, popravki pričakovanj nato dosežejo 9/9 v item_42. Full check item_44 odkrije eslint dependencies: izpeljani order/undo/redo dobijo useMemo. Naslednji full check item_46 odkrije nullable DOM ID-je v testnem helperju; popravek njegovega tipa omogoči item_48 full 55/55. Prvotni zagon prek tail vrne shell exit 0 kljub 4 testnim neuspehom; dejanski izid je ohranjen v izpisu. Pred tem je poskus pisanja dokumenta s heredoc blokiran; model uporabi podprt apply_patch. Raziskovalec pri popravkih ne posega v oddajo.",
+    "evidence": [
+      "runtime/runs/P10-A-001/events.jsonl.gz",
+      "runtime/runs/P10-A-001/submission/docs/agent/verification.md#zaznani-popravki-med-izvedbo",
+      "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:64",
+      "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:148",
+      "runtime/runs/P10-A-001/submission/tests/agent/p10.spec.ts:164",
+      "runtime/runs/P10-A-001/submission/src/useTaskOrder.ts:37"
+    ]
+  }
+}

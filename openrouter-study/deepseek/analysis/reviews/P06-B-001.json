@@ -1,0 +1,102 @@
+{
+  "id": "P06-B-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Vseh R01–R12 ima jasna pravila: izvorni red trenutnega projekta, kanonične kolone neodvisno od klikov, prazen izbor/rezultat, lokalni prenos z imenom/BOM, obe ločili, citiranje vseh polj in podvojeni narekovaji, končni CRLF ter ohranitev notranjih prelomov. Natančno določi štiri vodilne beline/predpone formul, Unicode/raw status/datum, ohranitev nastavitev med pogledoma, reset projekta/reloada in odsotnost zapisov/shrambe. Dogovor kontrol in dostopnih imen, ohranjeni data-task-id/ARIA, 390 px ter dovoljeno notranje drsenje obeh pogledov so izrecni. Specifikacija odkrito označi načrtovane izide kot nepreverjene in ne omeji splošnega T na razvojne primere.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:19",
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:39",
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:68",
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:100"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "C/T/S/f/sep imajo opredeljene domene. R(f) je stabilna selekcija izvornega T, q in n določita natančno citiranje/nevtralizacijo, enačba Vsebina pa BOM, kanonične podkolone, obe ločili in CRLF tudi na koncu. Omogočeno je ekvivalenca nepraznih kolon in rezultata. Filter ohrani prikaz T; pogled ohrani nastavitve in bajte, projekt/reload vrneta privzeto stanje, podatki ter bralne funkcije ostanejo nespremenjeni. Ključni prehodi in ohranitve so splošni ter preverljivi.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:41",
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:55"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Začetna matrika pošteno ostane načrt, implementerjev verification pa našteje dejanske funkcije/datoteke ter R01–R12 poveže z D01–D04/A01–A05. Check 51/51 v item_36 in pregledovalčeva lastna 8/8 ter 5/5 v item_14/16 so potrjeni. Dokument odkrito izključi ročni ogled in ohrani prvo napačno pričakovanje R08. Povezave so vseeno delne: matrika nima končnih funkcij po R, trditev A03 o obratnem vrstnem redu klikov je napačna, saj po odklopu obrnjeni keys.reverse ponovno izbira v kanoničnem redu. Verification ne razmeji več vrzeli dodatnih orakljev, review.json pa ostane complete:false brez preverjenih zahtev in končnega sklepa. To ne razveljavi potrjenih zagonskih izidov, ne dokazuje pa popolne sledljivosti.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/docs/agent/specification.md:75",
+        "runtime/runs/P06-B-001/submission/docs/agent/verification.md:24",
+        "runtime/runs/P06-B-001/submission/docs/agent/verification.md:40",
+        "runtime/runs/P06-B-001/submission/docs/agent/verification.md:60",
+        "runtime/runs/P06-B-001/submission/docs/agent/review.json:1",
+        "runtime/runs/P06-B-001/submission/tests/agent/export.spec.ts:24",
+        "runtime/runs/P06-B-001/phases/02-implementation/events.jsonl.gz",
+        "runtime/runs/P06-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "csv.ts loči čiste funkcije filtriranja, citiranja, nevtralizacije in sestavljanja od prenosa z začasno povezavo/URL. CSV_COLUMNS je kanonični vir; glava in podatki ponovno izpeljejo njegov podseznam. ProjectView hrani tri nastavitve, izpelje exportRows/exportEnabled in isti predpogoj uporabi v gumbu/handlerju; prikaz in števci ostanejo vezani na celotna opravila. Set se kopira pred spremembo, vhodna opravila se ne mutirajo. Oba pogleda delita stanje, projektni ključ ponastavi komponento. Pomembne odgovornosti so dosledne brez znatnega podvajanja domenske logike.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/src/csv.ts:3",
+        "runtime/runs/P06-B-001/submission/src/csv.ts:9",
+        "runtime/runs/P06-B-001/submission/src/csv.ts:21",
+        "runtime/runs/P06-B-001/submission/src/csv.ts:31",
+        "runtime/runs/P06-B-001/submission/src/App.tsx:12",
+        "runtime/runs/P06-B-001/submission/src/App.tsx:25",
+        "runtime/runs/P06-B-001/submission/src/App.tsx:34",
+        "runtime/runs/P06-B-001/submission/src/App.tsx:134"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Pet dejansko uspešnih dodatnih scenarijev preveri prazni izbor/ponovno izbiro, prazen filtrirani rezultat, glavo izvoza, vse štiri nevarne predpone na naslovih/opisih ter reset spremenjenih nastavitev ob projektu in filtra/ločila ob reloadu. Oraklji formul so ročno zapisani, ne produkcijska nevtralizacija; check 51/51 in ločen pregledovalčev 5/5 sta potrjena. A03 pa ponovno izbira kolone v kanoničnem redu, zato ne razloči redosleda klikov. A04 kljub naslovu ne napolni vseh podatkovnih kolon in ne preveri varnih NBSP/VT/FF/apostrof začetkov ali vseh vodilnih belin. Lastni testi nimajo celotnega bajtnega oraklja za citate/mešane prelome/obe ločili, več kot deset nesortiranih vrstic ali lastnega preverjanja obeh pogledov pri 390. Reload ne spremeni kolon po predhodnem projektnem resetu, zato ne dokaže njihove ponastavitve ob reloadu. Razvojni testi prispevajo drugo kritje, ne nadomestijo teh manjkajočih dodatnih dokazov.",
+      "evidence": [
+        "runtime/runs/P06-B-001/submission/tests/agent/export.spec.ts:3",
+        "runtime/runs/P06-B-001/submission/tests/agent/export.spec.ts:15",
+        "runtime/runs/P06-B-001/submission/tests/agent/export.spec.ts:24",
+        "runtime/runs/P06-B-001/submission/tests/agent/export.spec.ts:33",
+        "runtime/runs/P06-B-001/submission/tests/agent/export.spec.ts:51",
+        "runtime/runs/P06-B-001/phases/02-implementation/events.jsonl.gz",
+        "runtime/runs/P06-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Ni potrjene končne funkcionalne napake: 70/70 in 12/12, lint/types/build/allowed true. Invalid_review_handoff po 1080,53 s: specification 296,388 s in implementation 510,67 s completed, review doseže fazni rok 271,506 s/SIGKILL. Review.json ostane complete:false, zato strogi uspeh false. Ni izrecne napake odziva API; zadnja zahteva HTTP200/client_aborted ob predpisanem roku. Oddaja in meritev ostaneta brez ponovitve/popravka.",
+  "developmentFailureExample": {
+    "description": "Item_32 ima 1 failed/12 passed: lastni A04 pričakuje nenavtraliziran @at, aplikacija pravilno izvozi apostrof pred @at. Izhod 0 piped tail ne pomeni uspeha testov. Heredoc popravek v item_34 je zavrnjen; končni dostavljeni test pozneje vsebuje pravilen apostrof in item_36 potrdi check 51/51. Pregledovalec neodvisno potrdi razvojni 8/8 v item_14 in lastni 5/5 v item_16, vendar končne predaje ne dokonča. To je napaka začetnega testnega pričakovanja, ne potrjena končna funkcionalna napaka.",
+    "evidence": [
+      "runtime/runs/P06-B-001/phases/02-implementation/events.jsonl.gz",
+      "runtime/runs/P06-B-001/phases/03-review/events.jsonl.gz",
+      "runtime/runs/P06-B-001/submission/tests/agent/export.spec.ts:44",
+      "runtime/runs/P06-B-001/submission/docs/agent/verification.md:72"
+    ]
+  },
+  "costReconciliation": {
+    "archiveComplete": false,
+    "archiveKnownCostUSD": 0.0403186094,
+    "archiveUnknownRequests": [40],
+    "externalAt": "2026-10-09T03:54:46.827Z",
+    "externalComplete": true,
+    "externalCostUSD": 0.046939348,
+    "lastRequest": "HTTP200/client_aborted, 81,165 s ob faznem roku; generation 3564 izhodnih tokenov, finishReason null. To potrdi generiranje, ne vzroka odsotnega zaključnega odziva ali izpada storitve.",
+    "evidence": [
+      "runtime/runs/P06-B-001/api-cost.json",
+      "api/P06-B-001/model/api-cost.json",
+      "api/P06-B-001/model/api-ledger.jsonl"
+    ]
+  }
+}

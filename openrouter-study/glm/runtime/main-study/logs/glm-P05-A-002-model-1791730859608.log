@@ -1,0 +1,19 @@
+I'll read the project rules and task files first, then draft the specification before implementation.
+I have the requirements. Next I’m inspecting the existing UI structure and tests to design the smallest correct change.
+The design is clear: derive filtered and paged tasks locally, reset page on control changes, and keep project-wide counters independent. I’m writing the specification first, then I’ll patch the UI and add focused agent tests.
+The shell blocks heredoc creation in this sandbox, so I’m applying the same patch through piped stdin instead.
+`apply_patch` isn’t on `PATH`; I found the bundled executable and will use its full sandboxed path now.
+Specification is in place. I’m now replacing the project view’s direct `tasks` usage with shared filtered/paged state and adding the control layout.
+Core UI state is implemented. I’m checking TypeScript and lint now, then I’ll add agent tests that cover the uncovered R-cases.
+All four agent scenarios pass, including empty cases, persistence resets, both views, details, and 390 px layout. Next I’m running the shared P05 desktop/mobile tests and then the full check.
+Shared P05 tests pass on desktop and mobile. I’m cleaning documentation wording, then running the complete project check for final traceability.
+The full check exposed one regression: an empty project must retain its original heading. I’m restoring that exact text while keeping the distinct message for an empty filter, then rerunning the affected checks.
+Everything now passes: lint, build, 38 baseline checks, 8 shared P05 checks, API checks, and 4 agent scenarios. I’m recording the actual verification evidence and the one regression fix in the agent documentation.
+**Opravljeno**
+- Implementiral lokalni filter in straničenje z enotnim stanjem, statusom in robnimi gumbi: `src/App.tsx:11`, `src/App.tsx:28`, `src/App.tsx:63`.
+- Dodal odzivno oblikovanje kontrol za 390 px: `src/styles.css:66`, `src/styles.css:177`.
+- Pripravil specifikacijo s sledljivostjo R01–R12: `docs/agent/specification.md:1`.
+- Dodal 4 lastna Playwright preverjanja: `tests/agent/P05.spec.ts:10`.
+- Zapisal dejanska preverjanja, rezultate in omejitve: `docs/agent/verification.md:1`.
+- `npm run check` je uspešen: 50/50 preverjanj; vključuje lint, typecheck, build, izhodiščne, API, razvojne
+{"status":"completed","elapsedSeconds":429.773,"allowedChanges":true,"usage":{"input_tokens":3376060,"cached_input_tokens":3329984,"cache_write_input_tokens":0,"output_tokens":44473,"reasoning_output_tokens":43722}}

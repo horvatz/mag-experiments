@@ -1,0 +1,96 @@
+{
+  "id": "P05-C-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija navede osnovna pravila R01–R12, vrstni red, lokalno stanje, prazne rezultate in prepoved API zapisov. Vendar natančna statusa uporabljata napačno ločilo in ASCII vezaj; manjka jasen dogovor o vseh dostopnih imenih kontrol. Načrt kljub izrecnemu lokalnemu stanju večkrat zahteva page/size/filter v query params. R11 ne določi števca posameznega statusnega stolpca; pravilo 390 px predpiše container/overflow, ne pa preverljive meje širine dokumenta. Med specifikacijo in izvedbenim načrtom ostanejo konkretna protislovja.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#zahteve-in-pravila",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#pogojnosti-in-obkljudki",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/plan.md#stanje-in-navigacija",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/plan.md#zaporedje-del"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Koristni so predikati privzetih vrednosti, reset strani ob kontrolah, ohranitev pri pogledu/podrobnostih ter zahtevi brez podvajanja in izgube ID-jev. Centralne enačbe ne opredelijo številčne pretvorbe all in ničelnih vej. R02 zahteva len(prikazana)=min(size,filtered_count), kar na zadnji kratki strani ni pravilno: pri N=11, size=2, page=6 bi pričakoval 2 namesto 1. R03 uporablja nejasen page(-1); R11 števce izenači s celotnim len(listPage) brez statusnega pogoja. Formalizacija je delna.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#r02-razdelitev-na-strani",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#r03-navigacija-med-stranmi",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#obkljudki",
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/spec.md#r11-pregled-stanj"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Načrt in podnaloge so le predlogi datotek; tasks.md po zapisu izgubi večino poti in parametrov, označen je samo T001. Verification trdi testovano/manualno preverjeno in Napake None, vendar ne navede preverljivega scenarija ali rezultata; hkrati pravi No tests executed manually. Ni povezave R–dejanska koda–izvedeni test. Konvergenca priznava manjkajočo integracijo in teste, toda datoteka ter zadnje sporočilo nista veljaven JSON, kar potrdi originalni validator. Odprtih nalog ne nadomeščam z izmišljenimi dokazi.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/docs/agent/P05/tasks.md",
+        "runtime/runs/P05-C-001/submission/docs/agent/verification.md",
+        "runtime/runs/P05-C-001/submission/docs/agent/convergence.json",
+        "runtime/runs/P05-C-001/last-message.md",
+        "runtime/runs/P05-C-001/phases/06-converge/result.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 0,
+      "rationale": "Ocenljiva avtorska koda je razpršena med pagination.ts, utils/pagination.ts, pagination_helper.ts, utils/index.ts in components/Pagination.tsx. Izračun števila strani je podvojen z neusklajenimi podpisi in obravnavo all/praznega primera. Helper vsebuje neveljaven reexport; genericni callbacki uporabljajo nedoločena all/currentPage ter neomejen T.status. Komponenta bere page.data, čeprav je page številka, in oba gumba sta trajno disabled. Moduli niso povezani z nespremenjenim App/TaskBoard/navigation. Nepovezane odgovornosti in podvajanje utemeljijo 0; to je delna, ocenljiva koda, ne manjkajoča oddaja. Ugotovitve o nepovezanih helperjih so statične in niso runtime napake vidne aplikacije.",
+      "evidence": [
+        "runtime/runs/P05-C-001/submission/src/pagination.ts",
+        "runtime/runs/P05-C-001/submission/src/pagination_helper.ts",
+        "runtime/runs/P05-C-001/submission/src/utils/pagination.ts",
+        "runtime/runs/P05-C-001/submission/src/utils/index.ts",
+        "runtime/runs/P05-C-001/submission/src/components/Pagination.tsx",
+        "runtime/runs/P05-C-001/submission/src/App.tsx",
+        "runtime/runs/P05-C-001/evaluation-lint.log",
+        "runtime/runs/P05-C-001/evaluation-types.log"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Ni lastnih testnih datotek ali izvedenega funkcionalnega preverjanja, tipov, lint/build ali obstoječih testov po implementaciji. Dogodki kažejo zapise in branje datotek ter preverjanje časovnega roka; node v item_26 je neuspel poskus generiranja komponente, ne test. Navedbe testovano/manualno preverjeno nimajo konkretnega scenarija ali izida. Konvergenca odkrito navede manjkajoči tests/agent/pagination.spec.ts. Raziskovalčeva neodvisna ocena ni modelovo lastno preverjanje.",
+      "evidence": [
+        "runtime/runs/P05-C-001/final-inventory.json.gz",
+        "runtime/runs/P05-C-001/submission/docs/agent/verification.md",
+        "runtime/runs/P05-C-001/submission/docs/agent/convergence.json",
+        "runtime/runs/P05-C-001/phases/05-implement/events.jsonl.gz",
+        "runtime/runs/P05-C-001/phases/06-converge/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "D01 na obeh zaslonih ne najde izbirnika Velikost strani. App.tsx, TaskBoard.tsx in navigation.ts imajo isti SHA kot vhodni manifest: nove pomožne datoteke niso vključene v delujočo aplikacijo. Lint/types odpovesta, build ter 38 osnovnih preverjanj pa uspejo; razvojni 0/8, sprejemni 0/24, dokazane zahteve 0/12, strogi uspeh false. R12 se ustavi že pri manjkajoči kontroli; to ni dokaz API zapisov ali prekoračene širine.",
+    "evidence": [
+      "runtime/runs/P05-C-001/evaluation-summary.json",
+      "runtime/runs/P05-C-001/evaluation-tests.log",
+      "runtime/runs/P05-C-001/evaluation-lint.log",
+      "runtime/runs/P05-C-001/evaluation-types.log",
+      "runtime/runs/P05-C-001/manifest.json.gz",
+      "runtime/runs/P05-C-001/submission/src/App.tsx"
+    ]
+  },
+  "finalFailureNote": "invalid_stage_handoff po šestih zaključenih fazah. Končni validator sporočilo zavrne z Unexpected token K (Končni JSON...), datoteka convergence.json pa ima napačno zapisano polje summary in tudi sama ni veljaven JSON. Čas 1197,746 s, dovoljenost sprememb true, popoln obračun 0,3389688 USD za 74 zahtev. Priprava pred implementacijo 605,839 s; implementacija 425,155 s in konvergenca 162,059 s. Modela ni popravljal raziskovalec in meritev ni ponovljena.",
+  "developmentFailureExample": {
+    "description": "Implementer se pri zapisovanju datotek večkrat zatakne pri shell quoting. Item_26 pri generiranju komponente konča exit1; pozneje napiše več nepovezanih pomožnih datotek, med njimi neveljaven export v pagination_helper.ts. Zaključna konvergenca prizna manjkajoče T004–T020, vendar sestavi pokvarjen JSON in končno sporočilo z dodatnim besedilom. Faze so completed, toda zahtevan veljaven zaključek ni dosežen.",
+    "evidence": [
+      "runtime/runs/P05-C-001/phases/05-implement/events.jsonl.gz",
+      "runtime/runs/P05-C-001/phases/06-converge/events.jsonl.gz",
+      "runtime/runs/P05-C-001/phases/06-converge/result.json",
+      "runtime/runs/P05-C-001/submission/docs/agent/convergence.json",
+      "runtime/runs/P05-C-001/submission/src/pagination_helper.ts"
+    ]
+  }
+}
