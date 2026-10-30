@@ -1,0 +1,1245 @@
+[WebServer] (node:47437) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 70 tests using 1 worker
+
+(node:47438) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [regression-api] › .work/P05/baseline/tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (43ms)
+  ✓   2 [regression-api] › .work/P05/baseline/tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (7ms)
+  ✓   3 [regression-api] › .work/P05/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (7ms)
+  ✓   4 [regression-api] › .work/P05/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (5ms)
+  ✓   5 [regression-api] › .work/P05/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [regression-api] › .work/P05/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (4ms)
+  ✓   7 [regression-api] › .work/P05/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (4ms)
+  ✓   8 [regression-api] › .work/P05/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (5ms)
+  ✓   9 [regression-api] › .work/P05/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [regression-api] › .work/P05/baseline/tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (11ms)
+  ✓  11 [regression-api] › .work/P05/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with success (12ms)
+  ✓  12 [regression-api] › .work/P05/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (9ms)
+  ✓  13 [regression-api] › .work/P05/baseline/tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (11ms)
+  ✓  14 [regression-api] › .work/P05/baseline/tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:47440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (562ms)
+  ✓  16 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (516ms)
+  ✓  17 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (502ms)
+  ✓  18 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (586ms)
+  ✓  19 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (468ms)
+  ✓  20 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (351ms)
+  ✓  21 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (333ms)
+  ✓  22 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (332ms)
+  ✓  23 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (315ms)
+  ✓  24 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (854ms)
+  ✓  25 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (553ms)
+  ✓  26 [regression-desktop] › .work/P05/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (403ms)
+(node:47460) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  27 [development-desktop] › tasks/P05/development.spec.ts:2:1 › D01: page size and next page (5.3s)
+(node:47466) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  28 [development-desktop] › tasks/P05/development.spec.ts:3:1 › D02: last page and status (5.3s)
+(node:47472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  29 [development-desktop] › tasks/P05/development.spec.ts:4:1 › D03: filter before global board page (5.3s)
+(node:47478) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  30 [development-desktop] › tasks/P05/development.spec.ts:5:1 › D04: size change resets and no writes (5.3s)
+(node:47487) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  31 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:4:1 › E01: R01 default full original sequence (5.3s)
+(node:47496) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  32 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:5:1 › E02: R02 all fixed capacities partition without loss (5.3s)
+(node:47502) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  33 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:6:1 › E03: R03 four navigation controls and disabled boundaries (5.3s)
+(node:47509) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  34 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:7:1 › E04: R04 every size change resets even valid old page (5.3s)
+(node:47517) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  35 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:8:1 › E05: R05 status filter precedes slicing and resets (5.3s)
+(node:47523) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  36 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:9:1 › E06: R06 board groups only the global page (5.3s)
+(node:47530) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  37 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:10:1 › E07: R07 page, capacity and filter survive view and details (5.3s)
+(node:47536) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  38 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:11:1 › E08: R08 project and reload defaults without storage (5.3s)
+(node:47544) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  39 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:12:1 › E09: R09 range and total arithmetic on short last page (5.3s)
+(node:47550) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  40 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:13:1 › E10: R10 empty filter and project have page zero (5.3s)
+(node:47557) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  41 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:14:1 › E11: R11 project summary and page column counts (5.3s)
+(node:47569) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  42 [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:15:1 › E12: R12 read-only and responsive navigation (5.3s)
+(node:47575) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (383ms)
+  ✓  44 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (476ms)
+  ✓  45 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (508ms)
+  ✓  46 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (668ms)
+  ✓  47 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (441ms)
+  ✓  48 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (389ms)
+  ✓  49 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (404ms)
+  ✓  50 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (353ms)
+  ✓  51 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (333ms)
+  ✓  52 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (901ms)
+  ✓  53 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (599ms)
+  ✓  54 [regression-mobile] › .work/P05/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (436ms)
+(node:47603) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  55 [development-mobile] › tasks/P05/development.spec.ts:2:1 › D01: page size and next page (5.4s)
+(node:47609) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  56 [development-mobile] › tasks/P05/development.spec.ts:3:1 › D02: last page and status (5.3s)
+(node:47835) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  57 [development-mobile] › tasks/P05/development.spec.ts:4:1 › D03: filter before global board page (5.4s)
+(node:47843) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  58 [development-mobile] › tasks/P05/development.spec.ts:5:1 › D04: size change resets and no writes (5.4s)
+(node:47850) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  59 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:4:1 › E01: R01 default full original sequence (5.3s)
+(node:48075) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  60 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:5:1 › E02: R02 all fixed capacities partition without loss (5.4s)
+(node:48081) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  61 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:6:1 › E03: R03 four navigation controls and disabled boundaries (5.3s)
+(node:48087) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  62 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:7:1 › E04: R04 every size change resets even valid old page (5.4s)
+(node:48095) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  63 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:8:1 › E05: R05 status filter precedes slicing and resets (5.3s)
+(node:48104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  64 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:9:1 › E06: R06 board groups only the global page (5.4s)
+(node:48110) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  65 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:10:1 › E07: R07 page, capacity and filter survive view and details (5.4s)
+(node:48117) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  66 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:11:1 › E08: R08 project and reload defaults without storage (5.4s)
+(node:48124) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  67 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:12:1 › E09: R09 range and total arithmetic on short last page (5.3s)
+(node:48195) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  68 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:13:1 › E10: R10 empty filter and project have page zero (5.4s)
+(node:48203) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  69 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:14:1 › E11: R11 project summary and page column counts (5.4s)
+(node:48238) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  70 [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:15:1 › E12: R12 read-only and responsive navigation (5.4s)
+
+
+  1) [development-desktop] › tasks/P05/development.spec.ts:2:1 › D01: page size and next page ──────
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/development.spec.ts:2:85
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D01-page-size-and-next-page-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/development-D01-page-size-and-next-page-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D01-page-size-and-next-page-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/development-D01-page-size-and-next-page-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [development-desktop] › tasks/P05/development.spec.ts:3:1 › D02: last page and status ─────────
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/development.spec.ts:3:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D02-last-page-and-status-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/development-D02-last-page-and-status-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D02-last-page-and-status-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/development-D02-last-page-and-status-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [development-desktop] › tasks/P05/development.spec.ts:4:1 › D03: filter before global board page 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/development.spec.ts:4:93
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D03-filter-before-global-board-page-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/development-D03-filter-before-global-board-page-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D03-filter-before-global-board-page-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/development-D03-filter-before-global-board-page-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [development-desktop] › tasks/P05/development.spec.ts:5:1 › D04: size change resets and no writes 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/development.spec.ts:5:109
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D04-size-change-resets-and-no-writes-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/development-D04-size-change-resets-and-no-writes-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D04-size-change-resets-and-no-writes-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/development-D04-size-change-resets-and-no-writes-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:4:1 › E01: R01 default full original sequence 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByRole('combobox', { name: 'Velikost strani', exact: true })
+    Expected: "all"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByRole('combobox', { name: 'Velikost strani', exact: true }) with timeout 5000ms
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+      2 | const data=Array.from({length:13},(_,i)=>makeTask('t'+i,{status:i%3===0?'done':i%3===1?'todo':'in_progress'}))
+      3 | const status=(page:import('@playwright/test').Page)=>page.getByRole('status',{name:'Stanje straničenja'})
+    > 4 | test('E01: R01 default full original sequence',async({page})=>{await mount(page,data);await expectIds(page,webIds(data));for(const name of ['Velikost strani','Filter strani'])await expect(page.getByRole('combobox',{name,exact:true})).toHaveValue('all')})
+        |                                                                                                                                                                                                                                           ^
+      5 | test('E02: R02 all fixed capacities partition without loss',async({page})=>{await mount(page,data);for(const size of [2,5,10]){await select(page,'Velikost strani',String(size));for(let start=0;start<data.length;start+=size){await expectIds(page,webIds(data).slice(start,start+size));if(start+size<data.length)await click(page,'Naslednja stran')}await expect(page.getByRole('button',{name:'Naslednja stran',exact:true})).toBeDisabled()}})
+      6 | test('E03: R03 four navigation controls and disabled boundaries',async({page})=>{await mount(page,data);await select(page,'Velikost strani','5');for(const name of ['Prva stran','Prejšnja stran'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled();await click(page,'Zadnja stran');await expectIds(page,['t10','t11','t12']);for(const name of ['Naslednja stran','Zadnja stran'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled();await click(page,'Prejšnja stran');await expectIds(page,['t5','t6','t7','t8','t9']);await click(page,'Prva stran');await expectIds(page,['t0','t1','t2','t3','t4'])})
+      7 | test('E04: R04 every size change resets even valid old page',async({page})=>{await mount(page,data);await select(page,'Velikost strani','2');await click(page,'Naslednja stran');await select(page,'Velikost strani','5');await expectIds(page,['t0','t1','t2','t3','t4']);await click(page,'Naslednja stran');await select(page,'Velikost strani','all');await expectIds(page,webIds(data));await expect(status(page)).toHaveText('Stran 1 od 1. Prikazano 1–13 od 13.')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:4:235
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E01-R01-default-full-original-sequence-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E01-R01-default-full-original-sequence-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E01-R01-default-full-original-sequence-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E01-R01-default-full-original-sequence-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:5:1 › E02: R02 all fixed capacities partition without loss 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:5:134
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E02-R02-all-fix-2be1e-ties-partition-without-loss-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E02-R02-all-fix-2be1e-ties-partition-without-loss-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E02-R02-all-fix-2be1e-ties-partition-without-loss-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E02-R02-all-fix-2be1e-ties-partition-without-loss-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:6:1 › E03: R03 four navigation controls and disabled boundaries 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:6:111
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E03-R03-four-na-22402-ols-and-disabled-boundaries-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E03-R03-four-na-22402-ols-and-disabled-boundaries-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E03-R03-four-na-22402-ols-and-disabled-boundaries-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E03-R03-four-na-22402-ols-and-disabled-boundaries-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:7:1 › E04: R04 every size change resets even valid old page 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:7:107
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E04-R04-every-s-2d5c5--resets-even-valid-old-page-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E04-R04-every-s-2d5c5--resets-even-valid-old-page-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E04-R04-every-s-2d5c5--resets-even-valid-old-page-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E04-R04-every-s-2d5c5--resets-even-valid-old-page-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:8:1 › E05: R05 status filter precedes slicing and resets 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:8:104
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E05-R05-status-filter-precedes-slicing-and-resets-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E05-R05-status-filter-precedes-slicing-and-resets-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E05-R05-status-filter-precedes-slicing-and-resets-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E05-R05-status-filter-precedes-slicing-and-resets-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:9:1 › E06: R06 board groups only the global page 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:9:96
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E06-R06-board-groups-only-the-global-page-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E06-R06-board-groups-only-the-global-page-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E06-R06-board-groups-only-the-global-page-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E06-R06-board-groups-only-the-global-page-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:10:1 › E07: R07 page, capacity and filter survive view and details 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:10:113
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E07-R07-page-ca-f3b68-er-survive-view-and-details-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E07-R07-page-ca-f3b68-er-survive-view-and-details-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E07-R07-page-ca-f3b68-er-survive-view-and-details-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E07-R07-page-ca-f3b68-er-survive-view-and-details-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:11:1 › E08: R08 project and reload defaults without storage 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:11:146
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E08-R08-project-fe2b0-ad-defaults-without-storage-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E08-R08-project-fe2b0-ad-defaults-without-storage-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E08-R08-project-fe2b0-ad-defaults-without-storage-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E08-R08-project-fe2b0-ad-defaults-without-storage-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:12:1 › E09: R09 range and total arithmetic on short last page 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:12:108
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E09-R09-range-a-654ee-ithmetic-on-short-last-page-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E09-R09-range-a-654ee-ithmetic-on-short-last-page-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E09-R09-range-a-654ee-ithmetic-on-short-last-page-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E09-R09-range-a-654ee-ithmetic-on-short-last-page-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:13:1 › E10: R10 empty filter and project have page zero 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Filter strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:13:115
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E10-R10-empty-filter-and-project-have-page-zero-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E10-R10-empty-filter-and-project-have-page-zero-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E10-R10-empty-filter-and-project-have-page-zero-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E10-R10-empty-filter-and-project-have-page-zero-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:14:1 › E11: R11 project summary and page column counts 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:14:101
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E11-R11-project-summary-and-page-column-counts-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E11-R11-project-summary-and-page-column-counts-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E11-R11-project-summary-and-page-column-counts-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E11-R11-project-summary-and-page-column-counts-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:15:1 › E12: R12 read-only and responsive navigation 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:15:111
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E12-R12-read-only-and-responsive-navigation-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E12-R12-read-only-and-responsive-navigation-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E12-R12-read-only-and-responsive-navigation-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E12-R12-read-only-and-responsive-navigation-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [development-mobile] › tasks/P05/development.spec.ts:2:1 › D01: page size and next page ──────
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/development.spec.ts:2:85
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D01-page-size-and-next-page-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/development-D01-page-size-and-next-page-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D01-page-size-and-next-page-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/development-D01-page-size-and-next-page-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [development-mobile] › tasks/P05/development.spec.ts:3:1 › D02: last page and status ─────────
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/development.spec.ts:3:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D02-last-page-and-status-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/development-D02-last-page-and-status-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D02-last-page-and-status-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/development-D02-last-page-and-status-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [development-mobile] › tasks/P05/development.spec.ts:4:1 › D03: filter before global board page 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/development.spec.ts:4:93
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D03-filter-before-global-board-page-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/development-D03-filter-before-global-board-page-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D03-filter-before-global-board-page-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/development-D03-filter-before-global-board-page-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [development-mobile] › tasks/P05/development.spec.ts:5:1 › D04: size change resets and no writes 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/development.spec.ts:5:109
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D04-size-change-resets-and-no-writes-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/development-D04-size-change-resets-and-no-writes-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/development-D04-size-change-resets-and-no-writes-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/development-D04-size-change-resets-and-no-writes-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:4:1 › E01: R01 default full original sequence 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByRole('combobox', { name: 'Velikost strani', exact: true })
+    Expected: "all"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByRole('combobox', { name: 'Velikost strani', exact: true }) with timeout 5000ms
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+      2 | const data=Array.from({length:13},(_,i)=>makeTask('t'+i,{status:i%3===0?'done':i%3===1?'todo':'in_progress'}))
+      3 | const status=(page:import('@playwright/test').Page)=>page.getByRole('status',{name:'Stanje straničenja'})
+    > 4 | test('E01: R01 default full original sequence',async({page})=>{await mount(page,data);await expectIds(page,webIds(data));for(const name of ['Velikost strani','Filter strani'])await expect(page.getByRole('combobox',{name,exact:true})).toHaveValue('all')})
+        |                                                                                                                                                                                                                                           ^
+      5 | test('E02: R02 all fixed capacities partition without loss',async({page})=>{await mount(page,data);for(const size of [2,5,10]){await select(page,'Velikost strani',String(size));for(let start=0;start<data.length;start+=size){await expectIds(page,webIds(data).slice(start,start+size));if(start+size<data.length)await click(page,'Naslednja stran')}await expect(page.getByRole('button',{name:'Naslednja stran',exact:true})).toBeDisabled()}})
+      6 | test('E03: R03 four navigation controls and disabled boundaries',async({page})=>{await mount(page,data);await select(page,'Velikost strani','5');for(const name of ['Prva stran','Prejšnja stran'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled();await click(page,'Zadnja stran');await expectIds(page,['t10','t11','t12']);for(const name of ['Naslednja stran','Zadnja stran'])await expect(page.getByRole('button',{name,exact:true})).toBeDisabled();await click(page,'Prejšnja stran');await expectIds(page,['t5','t6','t7','t8','t9']);await click(page,'Prva stran');await expectIds(page,['t0','t1','t2','t3','t4'])})
+      7 | test('E04: R04 every size change resets even valid old page',async({page})=>{await mount(page,data);await select(page,'Velikost strani','2');await click(page,'Naslednja stran');await select(page,'Velikost strani','5');await expectIds(page,['t0','t1','t2','t3','t4']);await click(page,'Naslednja stran');await select(page,'Velikost strani','all');await expectIds(page,webIds(data));await expect(status(page)).toHaveText('Stran 1 od 1. Prikazano 1–13 od 13.')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:4:235
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E01-R01-default-full-original-sequence-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E01-R01-default-full-original-sequence-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E01-R01-default-full-original-sequence-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E01-R01-default-full-original-sequence-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:5:1 › E02: R02 all fixed capacities partition without loss 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:5:134
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E02-R02-all-fix-2be1e-ties-partition-without-loss-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E02-R02-all-fix-2be1e-ties-partition-without-loss-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E02-R02-all-fix-2be1e-ties-partition-without-loss-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E02-R02-all-fix-2be1e-ties-partition-without-loss-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:6:1 › E03: R03 four navigation controls and disabled boundaries 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:6:111
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E03-R03-four-na-22402-ols-and-disabled-boundaries-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E03-R03-four-na-22402-ols-and-disabled-boundaries-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E03-R03-four-na-22402-ols-and-disabled-boundaries-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E03-R03-four-na-22402-ols-and-disabled-boundaries-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:7:1 › E04: R04 every size change resets even valid old page 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:7:107
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E04-R04-every-s-2d5c5--resets-even-valid-old-page-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E04-R04-every-s-2d5c5--resets-even-valid-old-page-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E04-R04-every-s-2d5c5--resets-even-valid-old-page-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E04-R04-every-s-2d5c5--resets-even-valid-old-page-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  25) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:8:1 › E05: R05 status filter precedes slicing and resets 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:8:104
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E05-R05-status-filter-precedes-slicing-and-resets-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E05-R05-status-filter-precedes-slicing-and-resets-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E05-R05-status-filter-precedes-slicing-and-resets-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E05-R05-status-filter-precedes-slicing-and-resets-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  26) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:9:1 › E06: R06 board groups only the global page 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:9:96
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E06-R06-board-groups-only-the-global-page-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E06-R06-board-groups-only-the-global-page-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E06-R06-board-groups-only-the-global-page-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E06-R06-board-groups-only-the-global-page-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  27) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:10:1 › E07: R07 page, capacity and filter survive view and details 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:10:113
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E07-R07-page-ca-f3b68-er-survive-view-and-details-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E07-R07-page-ca-f3b68-er-survive-view-and-details-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E07-R07-page-ca-f3b68-er-survive-view-and-details-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E07-R07-page-ca-f3b68-er-survive-view-and-details-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  28) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:11:1 › E08: R08 project and reload defaults without storage 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:11:146
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E08-R08-project-fe2b0-ad-defaults-without-storage-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E08-R08-project-fe2b0-ad-defaults-without-storage-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E08-R08-project-fe2b0-ad-defaults-without-storage-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E08-R08-project-fe2b0-ad-defaults-without-storage-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  29) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:12:1 › E09: R09 range and total arithmetic on short last page 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:12:108
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E09-R09-range-a-654ee-ithmetic-on-short-last-page-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E09-R09-range-a-654ee-ithmetic-on-short-last-page-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E09-R09-range-a-654ee-ithmetic-on-short-last-page-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E09-R09-range-a-654ee-ithmetic-on-short-last-page-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  30) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:13:1 › E10: R10 empty filter and project have page zero 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Filter strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:13:115
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E10-R10-empty-filter-and-project-have-page-zero-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E10-R10-empty-filter-and-project-have-page-zero-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E10-R10-empty-filter-and-project-have-page-zero-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E10-R10-empty-filter-and-project-have-page-zero-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  31) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:14:1 › E11: R11 project summary and page column counts 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:14:101
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E11-R11-project-summary-and-page-column-counts-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E11-R11-project-summary-and-page-column-counts-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E11-R11-project-summary-and-page-column-counts-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E11-R11-project-summary-and-page-column-counts-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32) [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:15:1 › E12: R12 read-only and responsive navigation 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Velikost strani', exact: true })
+
+
+       at tasks/P05/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P05/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P05/acceptance.spec.ts:15:111
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E12-R12-read-only-and-responsive-navigation-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E12-R12-read-only-and-responsive-navigation-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E12-R12-read-only-and-responsive-navigation-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P05-B-003/evaluation-artifacts/acceptance-E12-R12-read-only-and-responsive-navigation-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32 failed
+    [development-desktop] › tasks/P05/development.spec.ts:2:1 › D01: page size and next page ───────
+    [development-desktop] › tasks/P05/development.spec.ts:3:1 › D02: last page and status ──────────
+    [development-desktop] › tasks/P05/development.spec.ts:4:1 › D03: filter before global board page 
+    [development-desktop] › tasks/P05/development.spec.ts:5:1 › D04: size change resets and no writes 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:4:1 › E01: R01 default full original sequence 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:5:1 › E02: R02 all fixed capacities partition without loss 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:6:1 › E03: R03 four navigation controls and disabled boundaries 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:7:1 › E04: R04 every size change resets even valid old page 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:8:1 › E05: R05 status filter precedes slicing and resets 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:9:1 › E06: R06 board groups only the global page 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:10:1 › E07: R07 page, capacity and filter survive view and details 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:11:1 › E08: R08 project and reload defaults without storage 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:12:1 › E09: R09 range and total arithmetic on short last page 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:13:1 › E10: R10 empty filter and project have page zero 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:14:1 › E11: R11 project summary and page column counts 
+    [evaluation-desktop] › evaluation/P05/acceptance.spec.ts:15:1 › E12: R12 read-only and responsive navigation 
+    [development-mobile] › tasks/P05/development.spec.ts:2:1 › D01: page size and next page ────────
+    [development-mobile] › tasks/P05/development.spec.ts:3:1 › D02: last page and status ───────────
+    [development-mobile] › tasks/P05/development.spec.ts:4:1 › D03: filter before global board page 
+    [development-mobile] › tasks/P05/development.spec.ts:5:1 › D04: size change resets and no writes 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:4:1 › E01: R01 default full original sequence 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:5:1 › E02: R02 all fixed capacities partition without loss 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:6:1 › E03: R03 four navigation controls and disabled boundaries 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:7:1 › E04: R04 every size change resets even valid old page 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:8:1 › E05: R05 status filter precedes slicing and resets 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:9:1 › E06: R06 board groups only the global page 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:10:1 › E07: R07 page, capacity and filter survive view and details 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:11:1 › E08: R08 project and reload defaults without storage 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:12:1 › E09: R09 range and total arithmetic on short last page 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:13:1 › E10: R10 empty filter and project have page zero 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:14:1 › E11: R11 project summary and page column counts 
+    [evaluation-mobile] › evaluation/P05/acceptance.spec.ts:15:1 › E12: R12 read-only and responsive navigation 
+  38 passed (3.2m)

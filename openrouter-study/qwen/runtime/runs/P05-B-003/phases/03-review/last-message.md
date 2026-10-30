@@ -1,0 +1,3 @@
+Preverim čas in nato prečesam kodno bazo:
+
+

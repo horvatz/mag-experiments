@@ -1,0 +1,105 @@
+{
+  "at": "2026-10-30T13:07:53.913Z",
+  "researcherOnly": true,
+  "excludedFromMeasurements": true,
+  "requestsWereMetadataGETOnly": true,
+  "measuredModelsAndProvidersChanged": false,
+  "observations": [
+    {
+      "slug": "glm",
+      "model": "z-ai/glm-5.3",
+      "provider": "wafer/us",
+      "httpStatus": 200,
+      "listed": true,
+      "pricingCurrent": {
+        "prompt": "0.0000000699",
+        "completion": "0.0000014",
+        "input_cache_read": "0.0000000689",
+        "discount": 0
+      },
+      "pricingPinned": {
+        "prompt": "0.00000009",
+        "completion": "0.00000339",
+        "input_cache_read": "0.000000048",
+        "discount": 0
+      },
+      "capacityCurrent": {
+        "context_length": 1048576,
+        "max_completion_tokens": 943718
+      },
+      "capacityPinned": {
+        "context_length": 1048576,
+        "max_completion_tokens": 943718
+      },
+      "promptAndCompletionPricesMatch": false,
+      "contextAndCompletionCapsMatch": true,
+      "currentPublishedPriceMaximumUSD": 1.3945006623999998,
+      "frozenPriceMaximumUSD": 3.2935758600000002,
+      "frozenMaximumStillConservative": true
+    },
+    {
+      "slug": "deepseek",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "provider": "deepinfra/fp8",
+      "httpStatus": 200,
+      "listed": true,
+      "pricingCurrent": {
+        "prompt": "0.00000014",
+        "completion": "0.00000042",
+        "input_cache_read": "0.0000000042",
+        "discount": 0.3
+      },
+      "pricingPinned": {
+        "prompt": "0.00000014",
+        "completion": "0.00000042",
+        "input_cache_read": "0.0000000042",
+        "discount": 0.3
+      },
+      "capacityCurrent": {
+        "context_length": 1048576,
+        "max_completion_tokens": 131072
+      },
+      "capacityPinned": {
+        "context_length": 1048576,
+        "max_completion_tokens": 131072
+      },
+      "promptAndCompletionPricesMatch": true,
+      "contextAndCompletionCapsMatch": true,
+      "currentPublishedPriceMaximumUSD": 0.20185088,
+      "frozenPriceMaximumUSD": 0.20185088,
+      "frozenMaximumStillConservative": true
+    },
+    {
+      "slug": "qwen",
+      "model": "qwen/qwen3.5-9b",
+      "provider": "siliconflow/fp8",
+      "httpStatus": 200,
+      "listed": true,
+      "pricingCurrent": {
+        "prompt": "0.0000001",
+        "completion": "0.00000015",
+        "discount": 0
+      },
+      "pricingPinned": {
+        "prompt": "0.0000001",
+        "completion": "0.00000015",
+        "discount": 0
+      },
+      "capacityCurrent": {
+        "context_length": 262144,
+        "max_completion_tokens": 235929
+      },
+      "capacityPinned": {
+        "context_length": 262144,
+        "max_completion_tokens": 235929
+      },
+      "promptAndCompletionPricesMatch": true,
+      "contextAndCompletionCapsMatch": true,
+      "currentPublishedPriceMaximumUSD": 0.06160375,
+      "frozenPriceMaximumUSD": 0.06160375,
+      "frozenMaximumStillConservative": true
+    }
+  ],
+  "budgetRuleChanged": false,
+  "finding": "GLM prompt/completion prices lower than frozen qualification, cache-read price higher but below prompt price. Published-price maximum remains below frozen maximum; capacities and pinned provider tags match. Time of price change unknown. No model requests or inputs changed."
+}

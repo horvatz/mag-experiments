@@ -6362,6 +6362,252 @@
         "200finishedCompleted": 40,
         "200clientAbortedCompleted": 9
       }
+    },
+    {
+      "at": "2026-10-30T13:05:47.420148+00:00",
+      "position": 142,
+      "slug": "qwen",
+      "id": "P05-B-003",
+      "executionStatus": "invalid_review_handoff",
+      "elapsedSeconds": 373.559,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 38,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 184.571,
+          "status": "completed"
+        },
+        {
+          "name": "implementation",
+          "elapsedSeconds": 165.332,
+          "status": "completed"
+        },
+        {
+          "name": "review",
+          "elapsedSeconds": 20.45,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.06602430000000002,
+      "knownCostUSD": 0.06602430000000002,
+      "apiRequests": 34,
+      "archiveSha256": "70910f70bca6b6c22b54a4d57c009e0bde6774350e6322700c42b93e3f8848f5",
+      "archiveAllHashesVerified": true,
+      "pinnedRouteAllRequestsVerified": true,
+      "authoredFiles": 2,
+      "ownTestFiles": 0,
+      "nativeCompletedCommands": 41,
+      "preservedToolCalls": 43,
+      "noNewOrdinalReview": true,
+      "sourceAudit": "Both authored docs read completely; no authored src or tests. Specification listsR01–R12 and formulas but conflicts about project scope, accessible status and /__test. Verification is only plannedR01 plus a nonexistent src/project-pages.tsx reference and explicitly unexecuted row. Unchanged baseline is not authored implementation. Independent38regressionpass/0dev/0holdout/0requirements;allstaticpass.",
+      "modelChecks": "No actual npm/test/check invocation in native41commands or43preservedtoolcalls. Strings containing npm/test appear only inside attempted verification-document writing, one nodewriter fails SyntaxError. No own check pass is inferred.",
+      "handoffAudit": "03review native completed20.450s with no file changes; no saved review.json. Last agent message is only Preverim čas in nato prečesam kodno bazo:, not JSON. Frozen error Unexpected token P, Preverim č... is not valid JSON. Do not convert a promise into delivered review or retry.",
+      "transportSummary": {
+        "200finishedCompleted": 33,
+        "200clientAbortedCompleted": 1
+      }
+    },
+    {
+      "at": "2026-10-30T13:20:29.892566+00:00",
+      "position": 143,
+      "slug": "glm",
+      "id": "P05-B-003",
+      "executionStatus": "completed",
+      "elapsedSeconds": 694.65,
+      "strictSuccess": true,
+      "demonstrated": 12,
+      "requirementsPassed": 12,
+      "functionalTestsPassed": 70,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 249.908,
+          "status": "completed"
+        },
+        {
+          "name": "implementation",
+          "elapsedSeconds": 342.322,
+          "status": "completed"
+        },
+        {
+          "name": "review",
+          "elapsedSeconds": 98.825,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.24712326299999993,
+      "knownCostUSD": 0.24712326299999993,
+      "apiRequests": 78,
+      "archiveSha256": "cc6a8377d4c3985399f271db8961dde795e163a8c7dde7bcae92e36e6a3357b7",
+      "archiveAllHashesVerified": true,
+      "pinnedRouteAllRequestsVerified": true,
+      "authoredFiles": 7,
+      "ownTestFiles": 1,
+      "ownTests": 3,
+      "noNewOrdinalReview": true,
+      "sourceAudit": "App.tsx separates local pageSize/statusFilter/pageNumber from stable filtered/sliced visibleTasks and wholeprojectcounts, clamps displayedpage, exact zero/nonzero status, sharedboard/tablepage and project key. Independent70/70/12of12; no discovered final failure.",
+      "modelChecks": "Implementation21/22typecheck fails asyncstatus helper returns Promise<Locator>;26lint/typespass after test fix.28own2fail1pass,31own1fail2pass,33own3pass;35dev8pass;36full49pass. Reviewer24own3pass/26dev8pass, explicitly does not rerun fullcheck. Native03review30 shell0 includes failed git/apply_patch and separate successful reviewJSON parse, not blanket command success.",
+      "handoffAudit": "Valid saved review.json and accepted final structured review: complete true, checkedR01–R12, both specification/codeChangesRequiredfalse, findings[]. No repair phase; allthree Bphases completed. Reviewer fullcheck omission explicit, original implement49pass corroborated.",
+      "transportSummary": {
+        "200finishedCompleted": 56,
+        "200clientAbortedCompleted": 22
+      }
+    },
+    {
+      "at": "2026-10-30T13:42:01.518980+00:00",
+      "position": 144,
+      "slug": "deepseek",
+      "id": "P05-B-003",
+      "executionStatus": "completed",
+      "elapsedSeconds": 878.564,
+      "strictSuccess": true,
+      "demonstrated": 12,
+      "requirementsPassed": 12,
+      "functionalTestsPassed": 70,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 299.518,
+          "status": "completed"
+        },
+        {
+          "name": "implementation",
+          "elapsedSeconds": 366.997,
+          "status": "completed"
+        },
+        {
+          "name": "review",
+          "elapsedSeconds": 208.54,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.06756378600000001,
+      "knownCostUSD": 0.06756378600000001,
+      "apiRequests": 69,
+      "archiveSha256": "0d47ec9e9ac9a08de088e6f72dc27849bac0bc51aa1e3989546bf803719fd258",
+      "archiveAllHashesVerified": true,
+      "pinnedRouteAllRequestsVerified": true,
+      "authoredFiles": 9,
+      "ownTestFiles": 1,
+      "ownTests": 11,
+      "noNewOrdinalReview": true,
+      "sourceAudit": "pagination.ts pure filter/pageCount/clamp/slice/bounds/status, App local project-keyed state and shared visible slice, exact labels/status and wholeprojectcounts. Independent70/70/12of12; no discovered final failure.",
+      "modelChecks": "Implementation31dev8pass;33own2fail7pass,39own9pass after test corrections;41full55pass;44expandedown1fail9pass;48own11pass;50full57pass. Reviewer26full57pass corroborates verification; reviewJSON valid completeR01–R12, both changesRequiredfalse/findings[], no repair. Pipeline0 distinguished from actual pass/fail output. Reviewer correctly identifies existing unused updateTask scaffold as not a new API write.",
+      "transportSummary": {
+        "200finishedCompleted": 60,
+        "200clientAbortedCompleted": 9
+      }
     }
   ],
   "pendingObservations": {}
