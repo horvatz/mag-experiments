@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-30T15:06:25.768591+00:00",
+  "researcherOnly": true,
+  "position": 148,
+  "slug": "deepseek",
+  "id": "P07-B-001",
+  "executionStatus": "execution_failed",
+  "archiveSHA256": "777c7dd439431ac58c9d107cc040eda05f5af551896615afd755407c14d31c83",
+  "evaluation": {
+    "functionalPassed": 70,
+    "functionalTotal": 70,
+    "requirementsPassed": 12,
+    "requirementsTotal": 12,
+    "strictSuccess": false
+  },
+  "request": {
+    "number": 47,
+    "provider": "deepinfra/fp8",
+    "httpStatus": 422,
+    "providerError": "{\"error\":{\"message\":\"Provider returned error\",\"code\":422,\"metadata\":{\"raw\":\"{\\\"error\\\":{\\\"message\\\":\\\"Input should be a valid string\\\",\\\"type\\\":\\\"invalid_request_error\\\",\\\"param\\\":\\\"messages.78.tool.content.str\\\",\\\"code\\\":null}}\",\"provider_name\":\"DeepInfra\",\"is_byok\":false}},\"user_id\":\"user_3KIQcE4D6zHX4cA9gK0uFBsjy3f\"}",
+    "responseId": null,
+    "source": "deepseek/api/P07-B-001/model/api-ledger.jsonl",
+    "sourceSHA256": "c185f31af930b452b840fdfef46e8243badf4e26b0e52cd908ca3644cb2d1f2d"
+  },
+  "cost": {
+    "complete": false,
+    "costUSD": null,
+    "knownCostUSD": 0.047600721000000006,
+    "unknownRequests": 1
+  },
+  "previousDiagnosis": "analysis/recovery/deepseek-P06-A-001-image-tool.json",
+  "continuation": {
+    "at": "2026-10-30T14:53:10.715Z",
+    "action": "continue_unused_ids",
+    "archived": 148,
+    "previousRun": "deepseek/P07-B-001",
+    "errorRequests": [
+      47
+    ],
+    "classifications": [
+      "deepinfra-image-tool"
+    ],
+    "nextRun": "qwen/P07-B-001",
+    "diagnosis": "analysis/recovery/deepseek-P06-A-001-image-tool.json",
+    "diagnostic": null,
+    "frozenProtocolVersion": "O/1.0+budget-amendment-1",
+    "taskPromptsDeadlinesEvaluatorsUnchanged": true,
+    "archivedHashesVerified": true,
+    "measuredRetry": false,
+    "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
+  },
+  "originalImageEvidence": "deepseek/analysis/evidence/P07-B-001-tool-image-provenance.json",
+  "limitations": [
+    "Image transport failure is not evidence of an application implementation failure.",
+    "No review phase was started; functional70/70 does not imply completed procedure.",
+    "Researcher recovered and viewed one original desktop-table image; not a successful model visual review.",
+    "Request47 remains unknown cost rather than zero; no measured retry."
+  ]
+}

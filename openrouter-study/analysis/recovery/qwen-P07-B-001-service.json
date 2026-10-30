@@ -1,0 +1,89 @@
+{
+  "at": "2026-10-30T15:22:31.791768+00:00",
+  "researcherOnly": true,
+  "position": 149,
+  "id": "P07-B-001",
+  "slug": "qwen",
+  "nativeError": "stream disconnected before completion: JSON error injected into SSE stream",
+  "underlyingCause": "unknown",
+  "request": {
+    "number": 43,
+    "httpStatus": 200,
+    "status": "finished",
+    "responseStatus": "failed",
+    "provider": "siliconflow/fp8",
+    "model": "qwen/qwen3.5-9b",
+    "sentUpstream": true,
+    "usage": {
+      "input_tokens": 8221,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1,
+      "output_tokens_details": {
+        "reasoning_tokens": 1
+      },
+      "total_tokens": 8222,
+      "cost": 0,
+      "is_byok": false,
+      "cost_details": {
+        "upstream_inference_cost": 0.00082225,
+        "upstream_inference_input_cost": 0.0008221,
+        "upstream_inference_output_cost": 1.5e-07
+      }
+    }
+  },
+  "executionStatus": "execution_failed",
+  "archiveSHA256": "4df9a2ca60b202e9ee9d06b73690f7014105a1d1caead948a6feb8dfcd76176d",
+  "cost": {
+    "complete": true,
+    "costUSD": 0.09539065,
+    "knownCostUSD": 0.09539065
+  },
+  "lastRequestCostMeaning": "usage.cost explicitly returned0; not an imputed zero for unknown billing. Final receipt reconciliation remains separate.",
+  "supervisorVersion": 8,
+  "classifierProof": "analysis/recovery/known-service-classifier-checks.json",
+  "originalV7": "analysis/recovery/supervisor-v7-before-sse-json-error-2026-10-30",
+  "freshServiceCheck": {
+    "result": {
+      "at": "2026-10-30T15:22:51.269Z",
+      "model": "qwen/qwen3.5-9b",
+      "provider": "siliconflow/fp8",
+      "httpStatus": 200,
+      "responseStatus": "completed",
+      "text": "CONNECTION_OK",
+      "error": null,
+      "passed": true,
+      "excludedFromMeasurements": true,
+      "costComplete": true,
+      "costUSD": 6.6e-05
+    },
+    "evidence": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/qualification/service-2026-10-30T15-22-41-535Z"
+  },
+  "nextUnused": "150 glm/P07-B-001",
+  "measuredRetry": false,
+  "taskPromptsDeadlinesEvaluatorsUnchanged": true,
+  "continuation": {
+    "at": "2026-10-30T15:22:53.131Z",
+    "action": "continue_unused_ids",
+    "archived": 149,
+    "previousRun": "qwen/P07-B-001",
+    "errorRequests": [
+      43
+    ],
+    "classifications": [
+      "qwen-sse-json-error-cause-unknown"
+    ],
+    "nextRun": "glm/P07-B-001",
+    "diagnosis": "analysis/recovery/qwen-P07-B-001-service.json",
+    "diagnostic": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/qualification/service-2026-10-30T15-22-41-535Z",
+    "frozenProtocolVersion": "O/1.0+budget-amendment-1",
+    "taskPromptsDeadlinesEvaluatorsUnchanged": true,
+    "archivedHashesVerified": true,
+    "measuredRetry": false,
+    "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
+  },
+  "currentRunnerPID": 15318,
+  "currentSupervisorPID": 14865,
+  "qualitativeReview": "qwen/analysis/reviews/P07-B-001.json"
+}

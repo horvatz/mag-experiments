@@ -16,6 +16,8 @@ const unavailable = fixture('deepseek', 36, 'P08-C-001')
 const overloaded = fixture('glm', 7, 'P07-A-003')
 const requestFailed = fixture('qwen', 11, 'P07-B-002')
 const networkLost = fixture('qwen', 12, 'P07-C-002')
+const sseJson = fixture('qwen', 43, 'P07-B-001')
+const sseJsonNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P07-B-001/phases/03-review/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const networkLostNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P07-C-002/phases/01-constitution/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const requestFailedNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P07-B-002/phases/01-specification/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const overloadedNative = gunzipSync(fs.readFileSync(resolve(study, 'glm/runtime/runs/P07-A-003/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
@@ -25,6 +27,20 @@ const changed520 = patch => ({ ...unavailable.row, providerError: JSON.stringify
 const native = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-A-001/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const emptyNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const checks = [
+  ['observed Qwen SSE JSON error',knownFailure(sseJson.row,sseJson.body,sseJsonNative),'qwen-sse-json-error-cause-unknown'],
+  ['SSE JSON without native evidence',knownFailure(sseJson.row,sseJson.body),null],
+  ['SSE JSON unobserved message',knownFailure(sseJson.row,sseJson.body,['stream disconnected before completion: JSON syntax error']),null],
+  ['SSE JSON completed response',knownFailure({...sseJson.row,responseStatus:'completed'},sseJson.body,sseJsonNative),null],
+  ['SSE JSON incomplete response',knownFailure({...sseJson.row,responseStatus:'incomplete'},sseJson.body,sseJsonNative),null],
+  ['SSE JSON wrong provider',knownFailure({...sseJson.row,provider:'other'},sseJson.body,sseJsonNative),null],
+  ['SSE JSON wrong row model',knownFailure({...sseJson.row,model:'other'},sseJson.body,sseJsonNative),null],
+  ['SSE JSON wrong request model',knownFailure(sseJson.row,{...sseJson.body,model:'other'},sseJsonNative),null],
+  ['SSE JSON fallback enabled',knownFailure(sseJson.row,{...sseJson.body,provider:{...sseJson.body.provider,allow_fallbacks:true}},sseJsonNative),null],
+  ['SSE JSON multiple providers',knownFailure(sseJson.row,{...sseJson.body,provider:{...sseJson.body.provider,only:['siliconflow/fp8','other']}},sseJsonNative),null],
+  ['SSE JSON changed HTTP status',knownFailure({...sseJson.row,httpStatus:500},sseJson.body,sseJsonNative),null],
+  ['SSE JSON client-aborted request',knownFailure({...sseJson.row,status:'client_aborted'},sseJson.body,sseJsonNative),null],
+  ['SSE JSON never sent upstream',knownFailure({...sseJson.row,sentUpstream:false},sseJson.body,sseJsonNative),null],
+
   ['observed Qwen Network connection lost',knownFailure(networkLost.row,networkLost.body,networkLostNative),'qwen-network-lost-cause-unknown'],
   ['Qwen network loss without native evidence',knownFailure(networkLost.row,networkLost.body),null],
   ['Qwen network loss unobserved message',knownFailure(networkLost.row,networkLost.body,['stream disconnected before completion: other network error']),null],

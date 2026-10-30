@@ -1,0 +1,106 @@
+{
+  "id": "P07-B-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-30T15:26:24.894858+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "4df9a2ca60b202e9ee9d06b73690f7014105a1d1caead948a6feb8dfcd76176d",
+  "limitation": "Dejanske tri avtorske datoteke: berljiva2172B specifikacija,70B PNG1×1 z imenom verification.md (dejansko ogledan) ter prazen0B useFavorites.ts. Native popis in ohranjeni API izidi so pregledani; vsi arhivski SHA256 preverjeni. To ni povsem manjkajoča oddaja: dokument ocenimo, neoddana avtorska produkcijska logika jeNULL. Brez popravkov ali ponovitve meritve.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija opiše osnovni namen, identiteto gumba/aria-pressed, zapis različice in nize/UTF-16, privzeti filter, projektni števec/brisanje, obnovo, praznino, izjeme in lokalnost. Ostanejo pomembna neskladja in vrzeli: podvojene ID-je razglasi za neveljavne in nato za sprejemljive; manjka prepoved začetnega prepisa in povratnega zapisa storage, globalno skupno stanje obeh pogledov, projektni/reload reset filtra ter disabled/tuji projektni ID-ji. Točna oznaka checkboxa je napačno zapisana, role/status/alert dogovor ni celoten. Ni matrikeR01–R12 ali domene0/1/>10. Osnovna pravila so prisotna, niso v celoti skladno razdelana.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:8",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:14",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:25",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:34",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:41",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:47"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Nekateri pogoji so preverljivi: version1 in ids:string[], enoličen UTF-16 zapis, preklop samo izbranega ID-ja brez dialoga, X/M celoten projekt, odstranitev trenutnega projekta in prazna množica ob neveljavnem zapisu/null. Toda validacija podvojenih ID-jev si nasprotuje, projektna razlika ni formalno povezana z ohranitvijo tujih/neznanih ID-jev, lifecycle filtra in storage/no-echo pa nimata popolnih prehodov. Preverljivo jedro obstaja, celovitih invariant ni.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:14",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:21",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:34",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:41",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:47"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Ni povezav posameznih zahtev s kodo, testi ali dejanskimi izidi. Datoteka verification.md ni poročilo: vsebuje70B veljavnega PNG1×1, kar potrdi izvirni base64 writer in neposreden ogled. Specifikacija nima matrike sledljivosti; noben lasten test ali zagon ni dostavljen. Pregledovalčeva edina ohranjena ukaza sta zavrnjena že zaradi nepravilnega argumenta justification, nato tok odpove. Ni veljavnega review.json ali potrjenega pregleda. Read-only regresijski rezultat38/38 iz končnega ocenjevanja ne predstavlja modelovih dokazov nove funkcionalnosti.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:1",
+        "runtime/runs/P07-B-001/submission/docs/agent/verification.md",
+        "analysis/evidence/P07-B-001-checks.md#02-implementation-item_40",
+        "analysis/evidence/P07-B-001-checks.md#preserved-69",
+        "analysis/evidence/P07-B-001-checks.md#preserved-70",
+        "runtime/runs/P07-B-001/execution.json",
+        "analysis/review-packets/P07-B-001.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Avtorska produkcijska logika ni oddana: edini spremenjeni src/useFavorites.ts je0B, App/TaskBoard in ostala aplikacija pa ostanejo izhodiščni. Neuspešni heredoci/node/npm osnutki niso dostavljena implementacija in se jih ne ocenjuje kot kodo. Zato organizacije nove kode ni mogoče presoditi (NULL), namesto da bi organizacijo nespremenjenega izhodišča pripisali modelu. Berljiva specifikacija ostane samostojno ocenjena.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/src/useFavorites.ts",
+        "runtime/runs/P07-B-001/execution.json",
+        "analysis/review-packets/P07-B-001.json",
+        "analysis/evidence/P07-B-001-checks.md#preserved-60",
+        "analysis/evidence/P07-B-001-checks.md#preserved-64",
+        "analysis/evidence/P07-B-001-checks.md#preserved-67"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Ni dostavljene lastne testne datoteke in ni izvedbe testov, lint, tipov ali gradnje v merjenih fazah. Branje baseline/API testov in načrt v neuspelem verification heredocu nista novo preverjanje. Poskus npm pkg set skuša zapisati pomožni script v zaščiten package.json in je zavrnjen; to ni testni zagon. Neodvisna končna preverjanja zato niso modelovo lastno delo. Ne gre zgolj za neizvedene smiselne napisane teste: tudi takšni dodatni testi niso oddani.",
+      "evidence": [
+        "runtime/runs/P07-B-001/execution.json",
+        "analysis/review-packets/P07-B-001.json",
+        "analysis/evidence/P07-B-001-checks.md#preserved-56",
+        "analysis/evidence/P07-B-001-checks.md#preserved-68"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Nova funkcionalnost ni implementirana: App in TaskBoard sta izhodiščna, useFavorites.ts je prazen. Končni paket potrdi38/38 regresijskih,0/8 razvojnih in0/24 holdout preverjanj,0/12 novih zahtev. Lint/tipi/gradnja in obseg uspejo, ker prazna neuporabljena datoteka ne spremeni aplikacije. To ni splošna odpoved zagona ali38 uspešnih novih modelovih rešitev. Izvedba poleg tega doseže fazno mejo specifikacije in prekinitev toka pri pregledu.",
+    "evidence": [
+      "runtime/runs/P07-B-001/evaluation-summary.json",
+      "runtime/runs/P07-B-001/evaluation-tests.log",
+      "runtime/runs/P07-B-001/submission/src/useFavorites.ts",
+      "runtime/runs/P07-B-001/execution.json"
+    ]
+  },
+  "finalFailureNote": "Execution_failed986,159s; faze spec phase_time_limit360,039s, impl completed422,843s, review execution_failed199,527s. Zadnji request43 HTTP200/finished/response.failed pri siliconflow/fp8, native JSON error injected into SSE stream; osnovni vzrok neznan. Celoten račun0,09539065USD. Zadnja usage.cost je izrecno0, ne imputiran neznani račun. Kratek isti-provider preizkus15:22:51Z uspe CONNECTION_OK; V8 po vseh kontrolah nadaljuje le nezačeti150. Meritev149 ostane ohranjena.",
+  "developmentFailureExample": {
+    "description": "Specifikacija je sprva kopija dizajna; node writer ima unmatched quote, heredoc in /tmp zapis sta zavrnjena, nato printf dejansko dostavi končni dokument pred fazno mejo. Implementerjev verification heredoc odpove, echo{} uspe, nato base64 ukaz dokument zamenja s PNG1×1. Heredoci za hook ustvarijo prazen useFavorites.ts, node ima shell parse error, npm pkg set ne sme pisati package.json. Python hello se izvede kljub opozorilu xcrun, ne izvede pa preverjanj. V review sta oba ukaza zavrnjena zaradi tool argumentov, nato nastane dejanska response.failed prekinitev toka. Iz teh dokazov ne izmišljamo uspešnega razvojnega testnega zagona ali delujočega osnutka.",
+    "evidence": [
+      "analysis/evidence/P07-B-001-checks.md#01-specification-item_51",
+      "analysis/evidence/P07-B-001-checks.md#01-specification-item_53",
+      "analysis/evidence/P07-B-001-checks.md#01-specification-item_65",
+      "analysis/evidence/P07-B-001-checks.md#preserved-56",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_34",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_40",
+      "analysis/evidence/P07-B-001-checks.md#preserved-60",
+      "analysis/evidence/P07-B-001-checks.md#preserved-64",
+      "analysis/evidence/P07-B-001-checks.md#preserved-67",
+      "analysis/evidence/P07-B-001-checks.md#preserved-68",
+      "analysis/evidence/P07-B-001-checks.md#preserved-69",
+      "analysis/evidence/P07-B-001-checks.md#preserved-70",
+      "runtime/runs/P07-B-001/phases/03-review/events.jsonl.gz"
+    ]
+  }
+}

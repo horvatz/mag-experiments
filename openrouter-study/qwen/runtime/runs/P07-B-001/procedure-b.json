@@ -1,0 +1,650 @@
+{
+  "workflow": {
+    "version": "B/0.3",
+    "totalSeconds": 1200,
+    "implementationMinimumSeconds": 480,
+    "reviewReserveSeconds": 240,
+    "repairReserveSeconds": 120,
+    "specificationRepairSeconds": 90,
+    "maxReviewCycles": 1
+  },
+  "prompts": {
+    "specification": "Pilot P07, postopek B: trije ločeni agenti si zaporedno predajo specifikacijo, implementacijo in pregled. Vsak ima svojo zgodovino; popravke opravi prvotni avtor v nadaljevani seji. Skupaj je na voljo največ 20 minut, vključno s predajami. Ne zaganjaj drugih agentov.\n\nPreberi PROJECT_RULES.md, task/instructions.md in task/specification-template.md. Izvirne zahteve ostajajo obvezne tudi, če jih predana specifikacija izpusti. Ohrani obstoječi dizajn. Dovoljeni so samo izvoz in lokalne storitve te naloge. Infrastruktura, odvisnosti, skupni testi in navodila so samo berljivi.\n\nV svoji vlogi najprej shrani uporaben začetni zapis, nato ga dopolnjuj. Ko opraviš obveznosti vloge, zaključi z jedrnatim končnim odgovorom. Rok faze je naveden spodaj. Čas lahko preveriš z node task/time-budget.mjs; preveri ga pred daljšim preverjanjem in vsaj 60 sekund pred rokom zaključi zapis predaje.\n\nTvoja vloga: pripravi kratko, preverljivo specifikacijo po skupni predlogi. Ciljaj na približno 2–3 minute. Najprej preberi navodila in predlogo ter zapiši osnutek docs/agent/specification.md, nato preveri relevantne podatkovne tipe in izvorno kodo ter dopolni pogoje R01–R12. Po potrebi vodi docs/agent/specification-history.md. To sta tvoji edini datoteki za pisanje. Predaj jasne pogoje, ki jih implementer lahko uporabi in preveri. V tej vlogi so naloge branje navodil/kode ter pisanje specifikacije; zagon aplikacije, testi in pregled videza pripadajo implementerju. Ko dokument zajame vse zahteve in predpostavke, ga shrani ter takoj zaključi.\n",
+    "implementation": "Pilot P07, postopek B: trije ločeni agenti si zaporedno predajo specifikacijo, implementacijo in pregled. Vsak ima svojo zgodovino; popravke opravi prvotni avtor v nadaljevani seji. Skupaj je na voljo največ 20 minut, vključno s predajami. Ne zaganjaj drugih agentov.\n\nPreberi PROJECT_RULES.md, task/instructions.md in task/specification-template.md. Izvirne zahteve ostajajo obvezne tudi, če jih predana specifikacija izpusti. Ohrani obstoječi dizajn. Dovoljeni so samo izvoz in lokalne storitve te naloge. Infrastruktura, odvisnosti, skupni testi in navodila so samo berljivi.\n\nV svoji vlogi najprej shrani uporaben začetni zapis, nato ga dopolnjuj. Ko opraviš obveznosti vloge, zaključi z jedrnatim končnim odgovorom. Rok faze je naveden spodaj. Čas lahko preveriš z node task/time-budget.mjs; preveri ga pred daljšim preverjanjem in vsaj 60 sekund pred rokom zaključi zapis predaje.\nOdvisnosti in Chromium so že nameščeni. npm run check preveri slog, tipe, gradnjo in vse dostopne teste: 38 osnovnih, 8 razvojnih P07 in lastne teste. Lastne teste dodajaj v tests/agent/. Samo razvojne teste zaženeš z npx playwright test --project=development-desktop --project=development-mobile. Testni strežnik uporablja 5174/3102. Za ročni ogled uporabi WEB_PORT=5193 API_PORT=3123 npm run dev. V lastnih skriptah preberi wsEndpoint iz task/browser.json in uporabi chromium.connect(wsEndpoint); chromium.launch() v tem okolju ne deluje. Javni internet je blokiran. Omejitve okolja zabeleži.\n\nTvoja vloga: preberi predano docs/agent/specification.md, implementiraj zahteve in preveri rešitev. Spreminjaš lahko src/, tests/agent/ in svoje zapise v docs/agent/. Specifikacije, njene zgodovine in review.md/review.json ne spreminjaj. Že na začetku ustvari docs/agent/verification.md z načrtovanimi in še neizvedenimi preverjanji. Sproti zapisuj spremembe, povezave z zahtevami, dejanske rezultate ter omejitve. Morebitno napako specifikacije opiši v svojem poročilu. Po končanem preverjanju shrani rezultate in zaključi, da čas prevzame pregledovalec. Zadnjih šest minut skupnega časa je rezerviranih za pregled in popravke.\n",
+    "review": "Pilot P07, postopek B: trije ločeni agenti si zaporedno predajo specifikacijo, implementacijo in pregled. Vsak ima svojo zgodovino; popravke opravi prvotni avtor v nadaljevani seji. Skupaj je na voljo največ 20 minut, vključno s predajami. Ne zaganjaj drugih agentov.\n\nPreberi PROJECT_RULES.md, task/instructions.md in task/specification-template.md. Izvirne zahteve ostajajo obvezne tudi, če jih predana specifikacija izpusti. Ohrani obstoječi dizajn. Dovoljeni so samo izvoz in lokalne storitve te naloge. Infrastruktura, odvisnosti, skupni testi in navodila so samo berljivi.\n\nV svoji vlogi najprej shrani uporaben začetni zapis, nato ga dopolnjuj. Ko opraviš obveznosti vloge, zaključi z jedrnatim končnim odgovorom. Rok faze je naveden spodaj. Čas lahko preveriš z node task/time-budget.mjs; preveri ga pred daljšim preverjanjem in vsaj 60 sekund pred rokom zaključi zapis predaje.\nOdvisnosti in Chromium so že nameščeni. npm run check preveri slog, tipe, gradnjo in vse dostopne teste: 38 osnovnih, 8 razvojnih P07 in lastne teste. Lastne teste dodajaj v tests/agent/. Samo razvojne teste zaženeš z npx playwright test --project=development-desktop --project=development-mobile. Testni strežnik uporablja 5174/3102. Za ročni ogled uporabi WEB_PORT=5193 API_PORT=3123 npm run dev. V lastnih skriptah preberi wsEndpoint iz task/browser.json in uporabi chromium.connect(wsEndpoint); chromium.launch() v tem okolju ne deluje. Javni internet je blokiran. Omejitve okolja zabeleži.\n\nTvoja vloga: neodvisno primerjaj specifikacijo, kodo, teste in verification.md z R01–R12. Pišeš samo docs/agent/review.json ter po želji review.md. Po branju navodil najprej zapiši osnutek review.json: {\"complete\":false,\"checkedRequirements\":[],\"unverified\":[],\"specificationChangesRequired\":false,\"codeChangesRequired\":false,\"summary\":\"Pregled poteka.\",\"findings\":[]}. Nato ga sproti dopolnjuj ob vsaki pregledani zahtevi. Osredotoči se na konkretne napake glede zahtev. Ugotovitve imajo target (specification ali implementation), requirement (oznaka zahteve), problem in requestedChange (besedila). Zastavici sta true natanko takrat, ko obstaja ugotovitev za ustrezni target.\n\nNajprej preglej in zapiši ugotovitve nad vsemi dvanajstimi zahtevami, nato po potrebi ponovi ustrezne dostopne teste. Že izvedenih preverjanj ni treba ponavljati brez konkretnega razloga. Rezultate, ki jih nisi sam preveril, jasno označi. Pred dodatnim raziskovanjem shrani trenutno predajo in preveri preostali čas. Ko je pregled končan, nastavi complete:true, v checkedRequirements navedi R01–R12, v unverified pa omejitve preverjanja. Brez konkretnih ugotovitev ostaneta obe zastavici false in findings prazen. Končni odgovor mora biti isti končni objekt JSON po dani shemi. Izvajalnik ga shrani kot tvojo predajo; ne dopisuje ugotovitev. Ne popravljaj kode ali specifikacije. Po končni predaji takoj zaključi.\n",
+    "specification-repair": "Pilot P07, postopek B: trije ločeni agenti si zaporedno predajo specifikacijo, implementacijo in pregled. Vsak ima svojo zgodovino; popravke opravi prvotni avtor v nadaljevani seji. Skupaj je na voljo največ 20 minut, vključno s predajami. Ne zaganjaj drugih agentov.\n\nPreberi PROJECT_RULES.md, task/instructions.md in task/specification-template.md. Izvirne zahteve ostajajo obvezne tudi, če jih predana specifikacija izpusti. Ohrani obstoječi dizajn. Dovoljeni so samo izvoz in lokalne storitve te naloge. Infrastruktura, odvisnosti, skupni testi in navodila so samo berljivi.\n\nV svoji vlogi najprej shrani uporaben začetni zapis, nato ga dopolnjuj. Ko opraviš obveznosti vloge, zaključi z jedrnatim končnim odgovorom. Rok faze je naveden spodaj. Čas lahko preveriš z node task/time-budget.mjs; preveri ga pred daljšim preverjanjem in vsaj 60 sekund pred rokom zaključi zapis predaje.\n\nNadaljuj kot isti avtor specifikacije. Preberi review.json in obravnavaj ugotovitve o specifikaciji glede na izvirne zahteve. Utemeljene napake popravi v specification.md, spremembe oziroma obrazložene zavrnitve pa zapiši v specification-history.md. Kode in testov ne spreminjaj. Shrani predajo in zaključi čim prej.\n",
+    "implementation-repair": "Pilot P07, postopek B: trije ločeni agenti si zaporedno predajo specifikacijo, implementacijo in pregled. Vsak ima svojo zgodovino; popravke opravi prvotni avtor v nadaljevani seji. Skupaj je na voljo največ 20 minut, vključno s predajami. Ne zaganjaj drugih agentov.\n\nPreberi PROJECT_RULES.md, task/instructions.md in task/specification-template.md. Izvirne zahteve ostajajo obvezne tudi, če jih predana specifikacija izpusti. Ohrani obstoječi dizajn. Dovoljeni so samo izvoz in lokalne storitve te naloge. Infrastruktura, odvisnosti, skupni testi in navodila so samo berljivi.\n\nV svoji vlogi najprej shrani uporaben začetni zapis, nato ga dopolnjuj. Ko opraviš obveznosti vloge, zaključi z jedrnatim končnim odgovorom. Rok faze je naveden spodaj. Čas lahko preveriš z node task/time-budget.mjs; preveri ga pred daljšim preverjanjem in vsaj 60 sekund pred rokom zaključi zapis predaje.\nOdvisnosti in Chromium so že nameščeni. npm run check preveri slog, tipe, gradnjo in vse dostopne teste: 38 osnovnih, 8 razvojnih P07 in lastne teste. Lastne teste dodajaj v tests/agent/. Samo razvojne teste zaženeš z npx playwright test --project=development-desktop --project=development-mobile. Testni strežnik uporablja 5174/3102. Za ročni ogled uporabi WEB_PORT=5193 API_PORT=3123 npm run dev. V lastnih skriptah preberi wsEndpoint iz task/browser.json in uporabi chromium.connect(wsEndpoint); chromium.launch() v tem okolju ne deluje. Javni internet je blokiran. Omejitve okolja zabeleži.\n\nNadaljuj kot isti avtor implementacije. Preberi review.json, trenutno specifikacijo in njeno zgodovino. Obravnavaj vsako ugotovitev: utemeljeno napako odpravi, neutemeljeno obrazloženo zavrni. Ne spreminjaj specifikacije ali pregleda. Izvedi ustrezna preverjanja ter v verification.md sproti zapisuj obravnavo ugotovitev in rezultate. Zaključi v preostalem skupnem času.\n"
+  },
+  "reviewSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "complete",
+      "checkedRequirements",
+      "unverified",
+      "specificationChangesRequired",
+      "codeChangesRequired",
+      "summary",
+      "findings"
+    ],
+    "properties": {
+      "complete": {
+        "type": "boolean"
+      },
+      "checkedRequirements": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08",
+            "R09",
+            "R10",
+            "R11",
+            "R12"
+          ]
+        }
+      },
+      "unverified": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "specificationChangesRequired": {
+        "type": "boolean"
+      },
+      "codeChangesRequired": {
+        "type": "boolean"
+      },
+      "summary": {
+        "type": "string"
+      },
+      "findings": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "target",
+            "requirement",
+            "problem",
+            "requestedChange"
+          ],
+          "properties": {
+            "target": {
+              "type": "string",
+              "enum": [
+                "specification",
+                "implementation"
+              ]
+            },
+            "requirement": {
+              "type": "string"
+            },
+            "problem": {
+              "type": "string"
+            },
+            "requestedChange": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "configs": {
+    "specification": {
+      "model": "qwen/qwen3.5-9b",
+      "model_reasoning_effort": "xhigh",
+      "model_provider": "openrouter_study",
+      "model_providers.openrouter_study": {
+        "name": "OpenRouter study relay",
+        "base_url": "http://127.0.0.1:9238/v1",
+        "wire_api": "responses",
+        "env_key": "MAG_RELAY_TOKEN",
+        "request_max_retries": 0,
+        "stream_max_retries": 0
+      },
+      "approval_policy": "never",
+      "default_permissions": "pilot",
+      "permissions.pilot": {
+        "description": "Pilot: exported app and required runtimes only",
+        "filesystem": {
+          ":root": "deny",
+          ":minimal": "read",
+          ":tmpdir": "write",
+          ":slash_tmp": "deny",
+          "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P07-B-001/app": {
+            ".": "read",
+            "src": "read",
+            "tests/agent": "read",
+            "docs/agent": "read",
+            ".tmp": "write",
+            ".vite": "write",
+            "dist": "write",
+            "test-results": "write",
+            "playwright-report": "write",
+            "node_modules/.vite": "write",
+            "node_modules/.vite-temp": "write",
+            "docs/agent/specification.md": "write",
+            "docs/agent/specification-history.md": "write",
+            "docs/agent/review.md": "read",
+            "docs/agent/review.json": "read"
+          },
+          "/Users/zan/.local/bin/codex": "read",
+          "/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS": "read",
+          "/Users/zan/.nvm/versions/node/v24.11.1": "read",
+          "/Users/zan/Library/Caches/ms-playwright": "read",
+          "/System": "read",
+          "/Library/Fonts": "read"
+        },
+        "network": {
+          "enabled": true,
+          "allow_local_binding": true,
+          "domains": {
+            "127.0.0.1": "allow",
+            "localhost": "allow"
+          }
+        }
+      },
+      "web_search": "disabled",
+      "features.network_proxy": true,
+      "features.skip_host_skill_discovery": true,
+      "features.apps": false,
+      "features.plugins": false,
+      "features.browser_use": false,
+      "features.browser_use_external": false,
+      "features.computer_use": false,
+      "features.in_app_browser": false,
+      "features.image_generation": false,
+      "features.memories": false,
+      "features.multi_agent": false,
+      "features.multi_agent_v2": false,
+      "features.hooks": false,
+      "features.shell_snapshot": false,
+      "features.skill_search": false,
+      "features.workspace_dependencies": false,
+      "features.goals": false,
+      "shell_environment_policy.inherit": "none",
+      "shell_environment_policy.set": {
+        "PATH": "/Users/zan/.nvm/versions/node/v24.11.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+        "TMPDIR": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P07-B-001/app/.tmp",
+        "PLAYWRIGHT_BROWSERS_PATH": "/Users/zan/Library/Caches/ms-playwright",
+        "npm_config_cache": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P07-B-001/app/.tmp/npm",
+        "CI": "1",
+        "LANG": "en_US.UTF-8"
+      },
+      "shell_environment_policy.experimental_use_profile": false,
+      "skills.config": [
+        {
+          "path": "/Users/zan/.codex/skills/.system/imagegen/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/openai-docs/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-automate/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/plugin-creator/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/react-doctor/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/review-agent/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/skill-creator/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-page/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-feedback/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-doctor/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-panes/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/skill-installer/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-standup/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-computer/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-contribute/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-setup/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-plugins/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-10x/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-orchestrate/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-browser/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/find-skills/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-integrations/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/next-cache-components-adoption/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/plugin-creator/SKILL.md",
+          "enabled": false
+        }
+      ],
+      "project_doc_max_bytes": 32768
+    },
+    "implementation": {
+      "model": "qwen/qwen3.5-9b",
+      "model_reasoning_effort": "xhigh",
+      "model_provider": "openrouter_study",
+      "model_providers.openrouter_study": {
+        "name": "OpenRouter study relay",
+        "base_url": "http://127.0.0.1:9238/v1",
+        "wire_api": "responses",
+        "env_key": "MAG_RELAY_TOKEN",
+        "request_max_retries": 0,
+        "stream_max_retries": 0
+      },
+      "approval_policy": "never",
+      "default_permissions": "pilot",
+      "permissions.pilot": {
+        "description": "Pilot: exported app and required runtimes only",
+        "filesystem": {
+          ":root": "deny",
+          ":minimal": "read",
+          ":tmpdir": "write",
+          ":slash_tmp": "deny",
+          "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P07-B-001/app": {
+            ".": "read",
+            "src": "write",
+            "tests/agent": "write",
+            "docs/agent": "write",
+            ".tmp": "write",
+            ".vite": "write",
+            "dist": "write",
+            "test-results": "write",
+            "playwright-report": "write",
+            "node_modules/.vite": "write",
+            "node_modules/.vite-temp": "write",
+            "docs/agent/specification.md": "read",
+            "docs/agent/specification-history.md": "read",
+            "docs/agent/review.md": "read",
+            "docs/agent/review.json": "read"
+          },
+          "/Users/zan/.local/bin/codex": "read",
+          "/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS": "read",
+          "/Users/zan/.nvm/versions/node/v24.11.1": "read",
+          "/Users/zan/Library/Caches/ms-playwright": "read",
+          "/System": "read",
+          "/Library/Fonts": "read"
+        },
+        "network": {
+          "enabled": true,
+          "allow_local_binding": true,
+          "domains": {
+            "127.0.0.1": "allow",
+            "localhost": "allow"
+          }
+        }
+      },
+      "web_search": "disabled",
+      "features.network_proxy": true,
+      "features.skip_host_skill_discovery": true,
+      "features.apps": false,
+      "features.plugins": false,
+      "features.browser_use": false,
+      "features.browser_use_external": false,
+      "features.computer_use": false,
+      "features.in_app_browser": false,
+      "features.image_generation": false,
+      "features.memories": false,
+      "features.multi_agent": false,
+      "features.multi_agent_v2": false,
+      "features.hooks": false,
+      "features.shell_snapshot": false,
+      "features.skill_search": false,
+      "features.workspace_dependencies": false,
+      "features.goals": false,
+      "shell_environment_policy.inherit": "none",
+      "shell_environment_policy.set": {
+        "PATH": "/Users/zan/.nvm/versions/node/v24.11.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+        "TMPDIR": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P07-B-001/app/.tmp",
+        "PLAYWRIGHT_BROWSERS_PATH": "/Users/zan/Library/Caches/ms-playwright",
+        "npm_config_cache": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P07-B-001/app/.tmp/npm",
+        "CI": "1",
+        "LANG": "en_US.UTF-8"
+      },
+      "shell_environment_policy.experimental_use_profile": false,
+      "skills.config": [
+        {
+          "path": "/Users/zan/.codex/skills/.system/imagegen/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/openai-docs/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-automate/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/plugin-creator/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/react-doctor/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/review-agent/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/skill-creator/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-page/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-feedback/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-doctor/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-panes/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/skill-installer/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-standup/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-computer/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-contribute/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-setup/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-plugins/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-10x/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-orchestrate/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-browser/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/find-skills/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-integrations/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/next-cache-components-adoption/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/plugin-creator/SKILL.md",
+          "enabled": false
+        }
+      ],
+      "project_doc_max_bytes": 32768
+    },
+    "review": {
+      "model": "qwen/qwen3.5-9b",
+      "model_reasoning_effort": "xhigh",
+      "model_provider": "openrouter_study",
+      "model_providers.openrouter_study": {
+        "name": "OpenRouter study relay",
+        "base_url": "http://127.0.0.1:9238/v1",
+        "wire_api": "responses",
+        "env_key": "MAG_RELAY_TOKEN",
+        "request_max_retries": 0,
+        "stream_max_retries": 0
+      },
+      "approval_policy": "never",
+      "default_permissions": "pilot",
+      "permissions.pilot": {
+        "description": "Pilot: exported app and required runtimes only",
+        "filesystem": {
+          ":root": "deny",
+          ":minimal": "read",
+          ":tmpdir": "write",
+          ":slash_tmp": "deny",
+          "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P07-B-001/app": {
+            ".": "read",
+            "src": "read",
+            "tests/agent": "read",
+            "docs/agent": "read",
+            ".tmp": "write",
+            ".vite": "write",
+            "dist": "write",
+            "test-results": "write",
+            "playwright-report": "write",
+            "node_modules/.vite": "write",
+            "node_modules/.vite-temp": "write",
+            "docs/agent/specification.md": "read",
+            "docs/agent/specification-history.md": "read",
+            "docs/agent/review.md": "write",
+            "docs/agent/review.json": "write"
+          },
+          "/Users/zan/.local/bin/codex": "read",
+          "/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS": "read",
+          "/Users/zan/.nvm/versions/node/v24.11.1": "read",
+          "/Users/zan/Library/Caches/ms-playwright": "read",
+          "/System": "read",
+          "/Library/Fonts": "read"
+        },
+        "network": {
+          "enabled": true,
+          "allow_local_binding": true,
+          "domains": {
+            "127.0.0.1": "allow",
+            "localhost": "allow"
+          }
+        }
+      },
+      "web_search": "disabled",
+      "features.network_proxy": true,
+      "features.skip_host_skill_discovery": true,
+      "features.apps": false,
+      "features.plugins": false,
+      "features.browser_use": false,
+      "features.browser_use_external": false,
+      "features.computer_use": false,
+      "features.in_app_browser": false,
+      "features.image_generation": false,
+      "features.memories": false,
+      "features.multi_agent": false,
+      "features.multi_agent_v2": false,
+      "features.hooks": false,
+      "features.shell_snapshot": false,
+      "features.skill_search": false,
+      "features.workspace_dependencies": false,
+      "features.goals": false,
+      "shell_environment_policy.inherit": "none",
+      "shell_environment_policy.set": {
+        "PATH": "/Users/zan/.nvm/versions/node/v24.11.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+        "TMPDIR": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P07-B-001/app/.tmp",
+        "PLAYWRIGHT_BROWSERS_PATH": "/Users/zan/Library/Caches/ms-playwright",
+        "npm_config_cache": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P07-B-001/app/.tmp/npm",
+        "CI": "1",
+        "LANG": "en_US.UTF-8"
+      },
+      "shell_environment_policy.experimental_use_profile": false,
+      "skills.config": [
+        {
+          "path": "/Users/zan/.codex/skills/.system/imagegen/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/openai-docs/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-automate/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/plugin-creator/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/react-doctor/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/review-agent/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/skill-creator/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-page/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-feedback/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-doctor/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-panes/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/skill-installer/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-standup/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-computer/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-contribute/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-setup/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-plugins/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-10x/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-orchestrate/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-browser/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/find-skills/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/superset-integrations/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.agents/skills/next-cache-components-adoption/SKILL.md",
+          "enabled": false
+        },
+        {
+          "path": "/Users/zan/.codex/skills/.system/plugin-creator/SKILL.md",
+          "enabled": false
+        }
+      ],
+      "project_doc_max_bytes": 32768
+    }
+  }
+}

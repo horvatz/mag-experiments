@@ -1,0 +1,1201 @@
+[WebServer] (node:12133) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 70 tests using 1 worker
+
+(node:12134) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [regression-api] › .work/P07/baseline/tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (42ms)
+  ✓   2 [regression-api] › .work/P07/baseline/tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (7ms)
+  ✓   3 [regression-api] › .work/P07/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (7ms)
+  ✓   4 [regression-api] › .work/P07/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (5ms)
+  ✓   5 [regression-api] › .work/P07/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [regression-api] › .work/P07/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (4ms)
+  ✓   7 [regression-api] › .work/P07/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (4ms)
+  ✓   8 [regression-api] › .work/P07/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (4ms)
+  ✓   9 [regression-api] › .work/P07/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (4ms)
+  ✓  10 [regression-api] › .work/P07/baseline/tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (9ms)
+  ✓  11 [regression-api] › .work/P07/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with success (12ms)
+  ✓  12 [regression-api] › .work/P07/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [regression-api] › .work/P07/baseline/tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (10ms)
+  ✓  14 [regression-api] › .work/P07/baseline/tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:12136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (583ms)
+  ✓  16 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (452ms)
+  ✓  17 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (495ms)
+  ✓  18 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (592ms)
+  ✓  19 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (433ms)
+  ✓  20 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (367ms)
+  ✓  21 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (332ms)
+  ✓  22 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (333ms)
+  ✓  23 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (332ms)
+  ✓  24 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (864ms)
+  ✓  25 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (559ms)
+  ✓  26 [regression-desktop] › .work/P07/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (383ms)
+(node:12152) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  27 [development-desktop] › tasks/P07/development.spec.ts:2:1 › D01: independent favorites by ID (5.3s)
+(node:12379) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  28 [development-desktop] › tasks/P07/development.spec.ts:3:1 › D02: filter and remove visible favorite (5.3s)
+(node:12384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  29 [development-desktop] › tasks/P07/development.spec.ts:4:1 › D03: storage and refresh (5.3s)
+(node:12390) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  30 [development-desktop] › tasks/P07/development.spec.ts:5:1 › D04: view parity and no writes (5.3s)
+(node:12397) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  31 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:6:1 › E01: R01 independent toggles never open details (5.3s)
+(node:12620) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  32 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:7:1 › E02: R02 versioned sorted unique IDs only (5.3s)
+(node:12626) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  33 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:8:1 › E03: R03 duplicate and unknown IDs survive refresh and writes (5.5s)
+(node:12851) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  34 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:9:1 › E04: R04 invalid envelopes are empty and never rewritten on load (5.5s)
+(node:12857) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  35 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:10:1 › E05: R05 only favorites preserves original order (5.3s)
+(node:13082) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  36 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:11:1 › E06: R06 removal under filter and empty recovery (5.3s)
+(node:13087) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  37 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:12:1 › E07: R07 same state across views and details (5.3s)
+(node:13092) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  38 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:13:1 › E08: R08 global set persists while filters reset (5.3s)
+(node:13099) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  39 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:14:1 › E09: R09 clear current project retains foreign and unknown IDs (5.4s)
+(node:13106) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  40 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:15:1 › E10: R10 counts cover whole current project with filter active (5.3s)
+(node:13332) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  41 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:16:1 › E11: R11 storage events validation no echo and failure fallback (5.3s)
+(node:13337) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  42 [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:17:1 › E12: R12 local changes preserve fields and responsive reads (5.3s)
+(node:13342) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (410ms)
+  ✓  44 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (480ms)
+  ✓  45 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (503ms)
+  ✓  46 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (758ms)
+  ✓  47 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (458ms)
+  ✓  48 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (407ms)
+  ✓  49 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (399ms)
+  ✓  50 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (333ms)
+  ✓  51 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (333ms)
+  ✓  52 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (862ms)
+  ✓  53 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (650ms)
+  ✓  54 [regression-mobile] › .work/P07/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (415ms)
+(node:13362) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  55 [development-mobile] › tasks/P07/development.spec.ts:2:1 › D01: independent favorites by ID (5.3s)
+(node:13369) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  56 [development-mobile] › tasks/P07/development.spec.ts:3:1 › D02: filter and remove visible favorite (5.3s)
+(node:13374) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  57 [development-mobile] › tasks/P07/development.spec.ts:4:1 › D03: storage and refresh (5.4s)
+(node:13383) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  58 [development-mobile] › tasks/P07/development.spec.ts:5:1 › D04: view parity and no writes (5.4s)
+(node:13389) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  59 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:6:1 › E01: R01 independent toggles never open details (5.4s)
+(node:13622) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  60 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:7:1 › E02: R02 versioned sorted unique IDs only (5.4s)
+(node:13628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  61 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:8:1 › E03: R03 duplicate and unknown IDs survive refresh and writes (5.6s)
+(node:13633) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  62 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:9:1 › E04: R04 invalid envelopes are empty and never rewritten on load (5.5s)
+(node:13641) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  63 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:10:1 › E05: R05 only favorites preserves original order (5.3s)
+(node:13646) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  64 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:11:1 › E06: R06 removal under filter and empty recovery (5.3s)
+(node:13651) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  65 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:12:1 › E07: R07 same state across views and details (5.3s)
+(node:13876) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  66 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:13:1 › E08: R08 global set persists while filters reset (5.3s)
+(node:13883) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  67 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:14:1 › E09: R09 clear current project retains foreign and unknown IDs (5.5s)
+(node:13889) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  68 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:15:1 › E10: R10 counts cover whole current project with filter active (5.4s)
+(node:13894) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  69 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:16:1 › E11: R11 storage events validation no echo and failure fallback (5.3s)
+(node:13901) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  70 [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:17:1 › E12: R12 local changes preserve fields and responsive reads (5.4s)
+
+
+  1) [development-desktop] › tasks/P07/development.spec.ts:2:1 › D01: independent favorites by ID ──
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+       at tasks/P07/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/development.spec.ts:2:89
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D01-independent-favorites-by-ID-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/development-D01-independent-favorites-by-ID-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D01-independent-favorites-by-ID-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/development-D01-independent-favorites-by-ID-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [development-desktop] › tasks/P07/development.spec.ts:3:1 › D02: filter and remove visible favorite 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+       at tasks/P07/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/development.spec.ts:3:96
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D02-filter-and-remove-visible-favorite-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/development-D02-filter-and-remove-visible-favorite-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D02-filter-and-remove-visible-favorite-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/development-D02-filter-and-remove-visible-favorite-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [development-desktop] › tasks/P07/development.spec.ts:4:1 › D03: storage and refresh ──────────
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-03', exact: true })
+
+
+       at tasks/P07/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/development.spec.ts:4:81
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D03-storage-and-refresh-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/development-D03-storage-and-refresh-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D03-storage-and-refresh-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/development-D03-storage-and-refresh-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [development-desktop] › tasks/P07/development.spec.ts:5:1 › D04: view parity and no writes ────
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+       at tasks/P07/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/development.spec.ts:5:102
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:6:1 › E01: R01 independent toggles never open details 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+      4 | const saved=(page:Page)=>page.evaluate(k=>JSON.parse(localStorage.getItem(k)!),key)
+      5 | async function seed(page:Page,text:string|null) { await page.goto('/');await page.evaluate(({key,text})=>{localStorage.clear();if(text!==null)localStorage.setItem(key,text)},{key,text});await page.goto('about:blank') }
+    > 6 | test('E01: R01 independent toggles never open details',async({page})=>{await mount(page);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','false');await expect(page.getByRole('dialog')).toHaveCount(0);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','false')})
+        |                                                                                                                      ^
+      7 | test('E02: R02 versioned sorted unique IDs only',async({page})=>{await mount(page,[makeTask('ž'),makeTask('Z'),makeTask('a')]);await toggle(page,'ž').click();await toggle(page,'Z').click();await toggle(page,'a').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']});await toggle(page,'Z').click();await toggle(page,'Z').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']})})
+      8 | test('E03: R03 duplicate and unknown IDs survive refresh and writes',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['unknown','web-02','web-02','launch-01']}));await mount(page);await filter(page).check();await expectIds(page,['web-02']);await toggle(page,'web-02').click();expect(await saved(page)).toEqual({version:1,ids:['launch-01','unknown']});await page.reload();await filter(page).check();await expectIds(page,[]);await project(page,'launch');await expect(toggle(page,'launch-01')).toHaveAttribute('aria-pressed','true')})
+      9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:6:118
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E01-R01-independent-toggles-never-open-details-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E01-R01-independent-toggles-never-open-details-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E01-R01-independent-toggles-never-open-details-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E01-R01-independent-toggles-never-open-details-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:7:1 › E02: R02 versioned sorted unique IDs only 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo ž', exact: true })
+
+
+       5 | async function seed(page:Page,text:string|null) { await page.goto('/');await page.evaluate(({key,text})=>{localStorage.clear();if(text!==null)localStorage.setItem(key,text)},{key,text});await page.goto('about:blank') }
+       6 | test('E01: R01 independent toggles never open details',async({page})=>{await mount(page);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','false');await expect(page.getByRole('dialog')).toHaveCount(0);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','false')})
+    >  7 | test('E02: R02 versioned sorted unique IDs only',async({page})=>{await mount(page,[makeTask('ž'),makeTask('Z'),makeTask('a')]);await toggle(page,'ž').click();await toggle(page,'Z').click();await toggle(page,'a').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']});await toggle(page,'Z').click();await toggle(page,'Z').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']})})
+         |                                                                                                                                                       ^
+       8 | test('E03: R03 duplicate and unknown IDs survive refresh and writes',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['unknown','web-02','web-02','launch-01']}));await mount(page);await filter(page).check();await expectIds(page,['web-02']);await toggle(page,'web-02').click();expect(await saved(page)).toEqual({version:1,ids:['launch-01','unknown']});await page.reload();await filter(page).check();await expectIds(page,[]);await project(page,'launch');await expect(toggle(page,'launch-01')).toHaveAttribute('aria-pressed','true')})
+       9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+      10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:7:151
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E02-R02-versioned-sorted-unique-IDs-only-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E02-R02-versioned-sorted-unique-IDs-only-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E02-R02-versioned-sorted-unique-IDs-only-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E02-R02-versioned-sorted-unique-IDs-only-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:8:1 › E03: R03 duplicate and unknown IDs survive refresh and writes 
+
+    TimeoutError: locator.check: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Prikaži le priljubljena', exact: true })
+
+
+       6 | test('E01: R01 independent toggles never open details',async({page})=>{await mount(page);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','false');await expect(page.getByRole('dialog')).toHaveCount(0);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','false')})
+       7 | test('E02: R02 versioned sorted unique IDs only',async({page})=>{await mount(page,[makeTask('ž'),makeTask('Z'),makeTask('a')]);await toggle(page,'ž').click();await toggle(page,'Z').click();await toggle(page,'a').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']});await toggle(page,'Z').click();await toggle(page,'Z').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']})})
+    >  8 | test('E03: R03 duplicate and unknown IDs survive refresh and writes',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['unknown','web-02','web-02','launch-01']}));await mount(page);await filter(page).check();await expectIds(page,['web-02']);await toggle(page,'web-02').click();expect(await saved(page)).toEqual({version:1,ids:['launch-01','unknown']});await page.reload();await filter(page).check();await expectIds(page,[]);await project(page,'launch');await expect(toggle(page,'launch-01')).toHaveAttribute('aria-pressed','true')})
+         |                                                                                                                                                                                                                      ^
+       9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+      10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+      11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:8:214
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E03-R03-duplica-64ba8--survive-refresh-and-writes-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E03-R03-duplica-64ba8--survive-refresh-and-writes-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E03-R03-duplica-64ba8--survive-refresh-and-writes-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E03-R03-duplica-64ba8--survive-refresh-and-writes-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:9:1 › E04: R04 invalid envelopes are empty and never rewritten on load 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: getByRole('button', { name: 'Priljubljeno opravilo web-01', exact: true })
+    Expected: "false"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" getByRole('button', { name: 'Priljubljeno opravilo web-01', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-01', exact: true })
+
+
+       7 | test('E02: R02 versioned sorted unique IDs only',async({page})=>{await mount(page,[makeTask('ž'),makeTask('Z'),makeTask('a')]);await toggle(page,'ž').click();await toggle(page,'Z').click();await toggle(page,'a').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']});await toggle(page,'Z').click();await toggle(page,'Z').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']})})
+       8 | test('E03: R03 duplicate and unknown IDs survive refresh and writes',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['unknown','web-02','web-02','launch-01']}));await mount(page);await filter(page).check();await expectIds(page,['web-02']);await toggle(page,'web-02').click();expect(await saved(page)).toEqual({version:1,ids:['launch-01','unknown']});await page.reload();await filter(page).check();await expectIds(page,[]);await project(page,'launch');await expect(toggle(page,'launch-01')).toHaveAttribute('aria-pressed','true')})
+    >  9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+      11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+      12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:9:416
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E04-R04-invalid-b295f-and-never-rewritten-on-load-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E04-R04-invalid-b295f-and-never-rewritten-on-load-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E04-R04-invalid-b295f-and-never-rewritten-on-load-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E04-R04-invalid-b295f-and-never-rewritten-on-load-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:10:1 › E05: R05 only favorites preserves original order 
+
+    Error: expect(locator).not.toBeChecked() failed
+
+    Locator: getByRole('checkbox', { name: 'Prikaži le priljubljena', exact: true })
+    Expected: not checked
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toBeChecked" getByRole('checkbox', { name: 'Prikaži le priljubljena', exact: true }) with timeout 5000ms
+      - waiting for getByRole('checkbox', { name: 'Prikaži le priljubljena', exact: true })
+
+
+       8 | test('E03: R03 duplicate and unknown IDs survive refresh and writes',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['unknown','web-02','web-02','launch-01']}));await mount(page);await filter(page).check();await expectIds(page,['web-02']);await toggle(page,'web-02').click();expect(await saved(page)).toEqual({version:1,ids:['launch-01','unknown']});await page.reload();await filter(page).check();await expectIds(page,[]);await project(page,'launch');await expect(toggle(page,'launch-01')).toHaveAttribute('aria-pressed','true')})
+       9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+    > 10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+         |                                                                                                                          ^
+      11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+      12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+      13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:10:122
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E05-R05-only-favorites-preserves-original-order-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E05-R05-only-favorites-preserves-original-order-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E05-R05-only-favorites-preserves-original-order-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E05-R05-only-favorites-preserves-original-order-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:11:1 › E06: R06 removal under filter and empty recovery 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+       9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+      10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+    > 11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+         |                                                                                                                       ^
+      12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+      13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+      14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:11:119
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E06-R06-removal-under-filter-and-empty-recovery-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E06-R06-removal-under-filter-and-empty-recovery-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E06-R06-removal-under-filter-and-empty-recovery-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E06-R06-removal-under-filter-and-empty-recovery-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:12:1 › E07: R07 same state across views and details 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-03', exact: true })
+
+
+      10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+      11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+    > 12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+         |                                                                                                                   ^
+      13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+      14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+      15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:12:115
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E07-R07-same-state-across-views-and-details-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E07-R07-same-state-across-views-and-details-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E07-R07-same-state-across-views-and-details-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E07-R07-same-state-across-views-and-details-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:13:1 › E08: R08 global set persists while filters reset 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+      11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+      12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+    > 13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+         |                                                                                                                       ^
+      14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+      15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+      16 | test('E11: R11 storage events validation no echo and failure fallback',async({page})=>{await mount(page);const initial=await page.evaluate(k=>localStorage.getItem(k),key);for(const [eventKey,value,pressed] of [[key,'{"version":1,"ids":["web-02"]}','true'],['other',null,'true'],[key,'{"version":1,"ids":[5]}','false'],[key,'{"version":1,"ids":["web-02"]}','true'],[key,null,'false']] as const){await page.evaluate(({eventKey,value})=>window.dispatchEvent(new StorageEvent('storage',{key:eventKey,newValue:value})),{eventKey,value});await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed',pressed);expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(initial)}await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(page.getByRole('alert')).toContainText(/shramb/i);await project(page,'launch');await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await page.addInitScript(()=>{Storage.prototype.getItem=()=>{throw new DOMException('blocked','SecurityError')};Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await page.reload();await expect(page.getByRole('alert')).toContainText(/shramb/i);await toggle(page,'web-03').click();await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:13:119
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E08-R08-global-set-persists-while-filters-reset-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E08-R08-global-set-persists-while-filters-reset-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E08-R08-global-set-persists-while-filters-reset-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E08-R08-global-set-persists-while-filters-reset-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:14:1 › E09: R09 clear current project retains foreign and unknown IDs 
+
+    TimeoutError: locator.check: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Prikaži le priljubljena', exact: true })
+
+
+      12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+      13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+    > 14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+         |                                                                                                                                                                                                                       ^
+      15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+      16 | test('E11: R11 storage events validation no echo and failure fallback',async({page})=>{await mount(page);const initial=await page.evaluate(k=>localStorage.getItem(k),key);for(const [eventKey,value,pressed] of [[key,'{"version":1,"ids":["web-02"]}','true'],['other',null,'true'],[key,'{"version":1,"ids":[5]}','false'],[key,'{"version":1,"ids":["web-02"]}','true'],[key,null,'false']] as const){await page.evaluate(({eventKey,value})=>window.dispatchEvent(new StorageEvent('storage',{key:eventKey,newValue:value})),{eventKey,value});await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed',pressed);expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(initial)}await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(page.getByRole('alert')).toContainText(/shramb/i);await project(page,'launch');await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await page.addInitScript(()=>{Storage.prototype.getItem=()=>{throw new DOMException('blocked','SecurityError')};Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await page.reload();await expect(page.getByRole('alert')).toContainText(/shramb/i);await toggle(page,'web-03').click();await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true')})
+      17 | test('E12: R12 local changes preserve fields and responsive reads',async({page})=>{const writes=await mount(page);await toggle(page,'web-02').click();await details(page,'web-02');await board(page);await toggle(page,'web-03').click();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,webIds(),false);await readonly(page,writes)})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:14:215
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E09-R09-clear-c-a2c66-ins-foreign-and-unknown-IDs-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E09-R09-clear-c-a2c66-ins-foreign-and-unknown-IDs-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E09-R09-clear-c-a2c66-ins-foreign-and-unknown-IDs-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E09-R09-clear-c-a2c66-ins-foreign-and-unknown-IDs-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:15:1 › E10: R10 counts cover whole current project with filter active 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-01', exact: true })
+
+
+      13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+      14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+    > 15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+         |                                                                                                                                     ^
+      16 | test('E11: R11 storage events validation no echo and failure fallback',async({page})=>{await mount(page);const initial=await page.evaluate(k=>localStorage.getItem(k),key);for(const [eventKey,value,pressed] of [[key,'{"version":1,"ids":["web-02"]}','true'],['other',null,'true'],[key,'{"version":1,"ids":[5]}','false'],[key,'{"version":1,"ids":["web-02"]}','true'],[key,null,'false']] as const){await page.evaluate(({eventKey,value})=>window.dispatchEvent(new StorageEvent('storage',{key:eventKey,newValue:value})),{eventKey,value});await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed',pressed);expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(initial)}await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(page.getByRole('alert')).toContainText(/shramb/i);await project(page,'launch');await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await page.addInitScript(()=>{Storage.prototype.getItem=()=>{throw new DOMException('blocked','SecurityError')};Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await page.reload();await expect(page.getByRole('alert')).toContainText(/shramb/i);await toggle(page,'web-03').click();await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true')})
+      17 | test('E12: R12 local changes preserve fields and responsive reads',async({page})=>{const writes=await mount(page);await toggle(page,'web-02').click();await details(page,'web-02');await board(page);await toggle(page,'web-03').click();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,webIds(),false);await readonly(page,writes)})
+      18 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:15:133
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E10-R10-counts--adee6--project-with-filter-active-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E10-R10-counts--adee6--project-with-filter-active-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E10-R10-counts--adee6--project-with-filter-active-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E10-R10-counts--adee6--project-with-filter-active-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:16:1 › E11: R11 storage events validation no echo and failure fallback 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+    Expected: "true"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+      14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+      15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+    > 16 | test('E11: R11 storage events validation no echo and failure fallback',async({page})=>{await mount(page);const initial=await page.evaluate(k=>localStorage.getItem(k),key);for(const [eventKey,value,pressed] of [[key,'{"version":1,"ids":["web-02"]}','true'],['other',null,'true'],[key,'{"version":1,"ids":[5]}','false'],[key,'{"version":1,"ids":["web-02"]}','true'],[key,null,'false']] as const){await page.evaluate(({eventKey,value})=>window.dispatchEvent(new StorageEvent('storage',{key:eventKey,newValue:value})),{eventKey,value});await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed',pressed);expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(initial)}await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(page.getByRole('alert')).toContainText(/shramb/i);await project(page,'launch');await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await page.addInitScript(()=>{Storage.prototype.getItem=()=>{throw new DOMException('blocked','SecurityError')};Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await page.reload();await expect(page.getByRole('alert')).toContainText(/shramb/i);await toggle(page,'web-03').click();await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true')})
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+      17 | test('E12: R12 local changes preserve fields and responsive reads',async({page})=>{const writes=await mount(page);await toggle(page,'web-02').click();await details(page,'web-02');await board(page);await toggle(page,'web-03').click();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,webIds(),false);await readonly(page,writes)})
+      18 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:16:569
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E11-R11-storage-e3343-o-echo-and-failure-fallback-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E11-R11-storage-e3343-o-echo-and-failure-fallback-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E11-R11-storage-e3343-o-echo-and-failure-fallback-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E11-R11-storage-e3343-o-echo-and-failure-fallback-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:17:1 › E12: R12 local changes preserve fields and responsive reads 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+      15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+      16 | test('E11: R11 storage events validation no echo and failure fallback',async({page})=>{await mount(page);const initial=await page.evaluate(k=>localStorage.getItem(k),key);for(const [eventKey,value,pressed] of [[key,'{"version":1,"ids":["web-02"]}','true'],['other',null,'true'],[key,'{"version":1,"ids":[5]}','false'],[key,'{"version":1,"ids":["web-02"]}','true'],[key,null,'false']] as const){await page.evaluate(({eventKey,value})=>window.dispatchEvent(new StorageEvent('storage',{key:eventKey,newValue:value})),{eventKey,value});await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed',pressed);expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(initial)}await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(page.getByRole('alert')).toContainText(/shramb/i);await project(page,'launch');await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await page.addInitScript(()=>{Storage.prototype.getItem=()=>{throw new DOMException('blocked','SecurityError')};Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await page.reload();await expect(page.getByRole('alert')).toContainText(/shramb/i);await toggle(page,'web-03').click();await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true')})
+    > 17 | test('E12: R12 local changes preserve fields and responsive reads',async({page})=>{const writes=await mount(page);await toggle(page,'web-02').click();await details(page,'web-02');await board(page);await toggle(page,'web-03').click();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,webIds(),false);await readonly(page,writes)})
+         |                                                                                                                                               ^
+      18 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:17:143
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E12-R12-local-c-e0fef-fields-and-responsive-reads-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E12-R12-local-c-e0fef-fields-and-responsive-reads-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E12-R12-local-c-e0fef-fields-and-responsive-reads-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E12-R12-local-c-e0fef-fields-and-responsive-reads-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [development-mobile] › tasks/P07/development.spec.ts:2:1 › D01: independent favorites by ID ──
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+       at tasks/P07/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/development.spec.ts:2:89
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D01-independent-favorites-by-ID-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/development-D01-independent-favorites-by-ID-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D01-independent-favorites-by-ID-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/development-D01-independent-favorites-by-ID-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [development-mobile] › tasks/P07/development.spec.ts:3:1 › D02: filter and remove visible favorite 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+       at tasks/P07/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/development.spec.ts:3:96
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D02-filter-and-remove-visible-favorite-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/development-D02-filter-and-remove-visible-favorite-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D02-filter-and-remove-visible-favorite-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/development-D02-filter-and-remove-visible-favorite-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [development-mobile] › tasks/P07/development.spec.ts:4:1 › D03: storage and refresh ──────────
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-03', exact: true })
+
+
+       at tasks/P07/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/development.spec.ts:4:81
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D03-storage-and-refresh-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/development-D03-storage-and-refresh-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D03-storage-and-refresh-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/development-D03-storage-and-refresh-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [development-mobile] › tasks/P07/development.spec.ts:5:1 › D04: view parity and no writes ────
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+       at tasks/P07/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P07/development.spec.ts:5:102
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:6:1 › E01: R01 independent toggles never open details 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+      4 | const saved=(page:Page)=>page.evaluate(k=>JSON.parse(localStorage.getItem(k)!),key)
+      5 | async function seed(page:Page,text:string|null) { await page.goto('/');await page.evaluate(({key,text})=>{localStorage.clear();if(text!==null)localStorage.setItem(key,text)},{key,text});await page.goto('about:blank') }
+    > 6 | test('E01: R01 independent toggles never open details',async({page})=>{await mount(page);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','false');await expect(page.getByRole('dialog')).toHaveCount(0);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','false')})
+        |                                                                                                                      ^
+      7 | test('E02: R02 versioned sorted unique IDs only',async({page})=>{await mount(page,[makeTask('ž'),makeTask('Z'),makeTask('a')]);await toggle(page,'ž').click();await toggle(page,'Z').click();await toggle(page,'a').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']});await toggle(page,'Z').click();await toggle(page,'Z').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']})})
+      8 | test('E03: R03 duplicate and unknown IDs survive refresh and writes',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['unknown','web-02','web-02','launch-01']}));await mount(page);await filter(page).check();await expectIds(page,['web-02']);await toggle(page,'web-02').click();expect(await saved(page)).toEqual({version:1,ids:['launch-01','unknown']});await page.reload();await filter(page).check();await expectIds(page,[]);await project(page,'launch');await expect(toggle(page,'launch-01')).toHaveAttribute('aria-pressed','true')})
+      9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:6:118
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E01-R01-independent-toggles-never-open-details-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E01-R01-independent-toggles-never-open-details-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E01-R01-independent-toggles-never-open-details-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E01-R01-independent-toggles-never-open-details-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:7:1 › E02: R02 versioned sorted unique IDs only 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo ž', exact: true })
+
+
+       5 | async function seed(page:Page,text:string|null) { await page.goto('/');await page.evaluate(({key,text})=>{localStorage.clear();if(text!==null)localStorage.setItem(key,text)},{key,text});await page.goto('about:blank') }
+       6 | test('E01: R01 independent toggles never open details',async({page})=>{await mount(page);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','false');await expect(page.getByRole('dialog')).toHaveCount(0);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','false')})
+    >  7 | test('E02: R02 versioned sorted unique IDs only',async({page})=>{await mount(page,[makeTask('ž'),makeTask('Z'),makeTask('a')]);await toggle(page,'ž').click();await toggle(page,'Z').click();await toggle(page,'a').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']});await toggle(page,'Z').click();await toggle(page,'Z').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']})})
+         |                                                                                                                                                       ^
+       8 | test('E03: R03 duplicate and unknown IDs survive refresh and writes',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['unknown','web-02','web-02','launch-01']}));await mount(page);await filter(page).check();await expectIds(page,['web-02']);await toggle(page,'web-02').click();expect(await saved(page)).toEqual({version:1,ids:['launch-01','unknown']});await page.reload();await filter(page).check();await expectIds(page,[]);await project(page,'launch');await expect(toggle(page,'launch-01')).toHaveAttribute('aria-pressed','true')})
+       9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+      10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:7:151
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E02-R02-versioned-sorted-unique-IDs-only-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E02-R02-versioned-sorted-unique-IDs-only-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E02-R02-versioned-sorted-unique-IDs-only-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E02-R02-versioned-sorted-unique-IDs-only-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:8:1 › E03: R03 duplicate and unknown IDs survive refresh and writes 
+
+    TimeoutError: locator.check: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Prikaži le priljubljena', exact: true })
+
+
+       6 | test('E01: R01 independent toggles never open details',async({page})=>{await mount(page);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','false');await expect(page.getByRole('dialog')).toHaveCount(0);await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','false')})
+       7 | test('E02: R02 versioned sorted unique IDs only',async({page})=>{await mount(page,[makeTask('ž'),makeTask('Z'),makeTask('a')]);await toggle(page,'ž').click();await toggle(page,'Z').click();await toggle(page,'a').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']});await toggle(page,'Z').click();await toggle(page,'Z').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']})})
+    >  8 | test('E03: R03 duplicate and unknown IDs survive refresh and writes',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['unknown','web-02','web-02','launch-01']}));await mount(page);await filter(page).check();await expectIds(page,['web-02']);await toggle(page,'web-02').click();expect(await saved(page)).toEqual({version:1,ids:['launch-01','unknown']});await page.reload();await filter(page).check();await expectIds(page,[]);await project(page,'launch');await expect(toggle(page,'launch-01')).toHaveAttribute('aria-pressed','true')})
+         |                                                                                                                                                                                                                      ^
+       9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+      10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+      11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:8:214
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E03-R03-duplica-64ba8--survive-refresh-and-writes-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E03-R03-duplica-64ba8--survive-refresh-and-writes-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E03-R03-duplica-64ba8--survive-refresh-and-writes-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E03-R03-duplica-64ba8--survive-refresh-and-writes-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:9:1 › E04: R04 invalid envelopes are empty and never rewritten on load 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: getByRole('button', { name: 'Priljubljeno opravilo web-01', exact: true })
+    Expected: "false"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" getByRole('button', { name: 'Priljubljeno opravilo web-01', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-01', exact: true })
+
+
+       7 | test('E02: R02 versioned sorted unique IDs only',async({page})=>{await mount(page,[makeTask('ž'),makeTask('Z'),makeTask('a')]);await toggle(page,'ž').click();await toggle(page,'Z').click();await toggle(page,'a').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']});await toggle(page,'Z').click();await toggle(page,'Z').click();expect(await saved(page)).toEqual({version:1,ids:['Z','a','ž']})})
+       8 | test('E03: R03 duplicate and unknown IDs survive refresh and writes',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['unknown','web-02','web-02','launch-01']}));await mount(page);await filter(page).check();await expectIds(page,['web-02']);await toggle(page,'web-02').click();expect(await saved(page)).toEqual({version:1,ids:['launch-01','unknown']});await page.reload();await filter(page).check();await expectIds(page,[]);await project(page,'launch');await expect(toggle(page,'launch-01')).toHaveAttribute('aria-pressed','true')})
+    >  9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+      10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+      11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+      12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:9:416
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E04-R04-invalid-b295f-and-never-rewritten-on-load-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E04-R04-invalid-b295f-and-never-rewritten-on-load-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E04-R04-invalid-b295f-and-never-rewritten-on-load-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E04-R04-invalid-b295f-and-never-rewritten-on-load-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  25) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:10:1 › E05: R05 only favorites preserves original order 
+
+    Error: expect(locator).not.toBeChecked() failed
+
+    Locator: getByRole('checkbox', { name: 'Prikaži le priljubljena', exact: true })
+    Expected: not checked
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toBeChecked" getByRole('checkbox', { name: 'Prikaži le priljubljena', exact: true }) with timeout 5000ms
+      - waiting for getByRole('checkbox', { name: 'Prikaži le priljubljena', exact: true })
+
+
+       8 | test('E03: R03 duplicate and unknown IDs survive refresh and writes',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['unknown','web-02','web-02','launch-01']}));await mount(page);await filter(page).check();await expectIds(page,['web-02']);await toggle(page,'web-02').click();expect(await saved(page)).toEqual({version:1,ids:['launch-01','unknown']});await page.reload();await filter(page).check();await expectIds(page,[]);await project(page,'launch');await expect(toggle(page,'launch-01')).toHaveAttribute('aria-pressed','true')})
+       9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+    > 10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+         |                                                                                                                          ^
+      11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+      12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+      13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:10:122
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E05-R05-only-favorites-preserves-original-order-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E05-R05-only-favorites-preserves-original-order-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E05-R05-only-favorites-preserves-original-order-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E05-R05-only-favorites-preserves-original-order-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  26) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:11:1 › E06: R06 removal under filter and empty recovery 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+       9 | test('E04: R04 invalid envelopes are empty and never rewritten on load',async({page})=>{await mount(page);for(const text of [null,'{broken','[]','{"version":2,"ids":["web-01"]}','{"version":1}','{"version":1,"ids":["web-01",3]}']){await page.evaluate(({key,text})=>{if(text===null)localStorage.removeItem(key);else localStorage.setItem(key,text)},{key,text});await page.reload();await expect(toggle(page,'web-01')).toHaveAttribute('aria-pressed','false');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(text);await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 8.')}})
+      10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+    > 11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+         |                                                                                                                       ^
+      12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+      13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+      14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:11:119
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E06-R06-removal-under-filter-and-empty-recovery-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E06-R06-removal-under-filter-and-empty-recovery-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E06-R06-removal-under-filter-and-empty-recovery-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E06-R06-removal-under-filter-and-empty-recovery-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  27) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:12:1 › E07: R07 same state across views and details 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-03', exact: true })
+
+
+      10 | test('E05: R05 only favorites preserves original order',async({page})=>{await mount(page);await expect(filter(page)).not.toBeChecked();await toggle(page,'web-06').click();await toggle(page,'web-02').click();await filter(page).check();await expectIds(page,['web-02','web-06']);await filter(page).uncheck();await expectIds(page,webIds())})
+      11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+    > 12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+         |                                                                                                                   ^
+      13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+      14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+      15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:12:115
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E07-R07-same-state-across-views-and-details-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E07-R07-same-state-across-views-and-details-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E07-R07-same-state-across-views-and-details-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E07-R07-same-state-across-views-and-details-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  28) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:13:1 › E08: R08 global set persists while filters reset 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+      11 | test('E06: R06 removal under filter and empty recovery',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await toggle(page,'web-02').click();await expectIds(page,[]);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni priljubljenih opravil.',{exact:true})).toBeVisible();await filter(page).uncheck();await expectIds(page,webIds(),false)})
+      12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+    > 13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+         |                                                                                                                       ^
+      14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+      15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+      16 | test('E11: R11 storage events validation no echo and failure fallback',async({page})=>{await mount(page);const initial=await page.evaluate(k=>localStorage.getItem(k),key);for(const [eventKey,value,pressed] of [[key,'{"version":1,"ids":["web-02"]}','true'],['other',null,'true'],[key,'{"version":1,"ids":[5]}','false'],[key,'{"version":1,"ids":["web-02"]}','true'],[key,null,'false']] as const){await page.evaluate(({eventKey,value})=>window.dispatchEvent(new StorageEvent('storage',{key:eventKey,newValue:value})),{eventKey,value});await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed',pressed);expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(initial)}await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(page.getByRole('alert')).toContainText(/shramb/i);await project(page,'launch');await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await page.addInitScript(()=>{Storage.prototype.getItem=()=>{throw new DOMException('blocked','SecurityError')};Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await page.reload();await expect(page.getByRole('alert')).toContainText(/shramb/i);await toggle(page,'web-03').click();await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:13:119
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E08-R08-global-set-persists-while-filters-reset-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E08-R08-global-set-persists-while-filters-reset-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E08-R08-global-set-persists-while-filters-reset-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E08-R08-global-set-persists-while-filters-reset-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  29) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:14:1 › E09: R09 clear current project retains foreign and unknown IDs 
+
+    TimeoutError: locator.check: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Prikaži le priljubljena', exact: true })
+
+
+      12 | test('E07: R07 same state across views and details',async({page})=>{await mount(page);await toggle(page,'web-03').click();await filter(page).check();await board(page);await expectIds(page,['web-03']);await details(page,'web-03');await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true');await table(page);await expect(filter(page)).toBeChecked()})
+      13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+    > 14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+         |                                                                                                                                                                                                                       ^
+      15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+      16 | test('E11: R11 storage events validation no echo and failure fallback',async({page})=>{await mount(page);const initial=await page.evaluate(k=>localStorage.getItem(k),key);for(const [eventKey,value,pressed] of [[key,'{"version":1,"ids":["web-02"]}','true'],['other',null,'true'],[key,'{"version":1,"ids":[5]}','false'],[key,'{"version":1,"ids":["web-02"]}','true'],[key,null,'false']] as const){await page.evaluate(({eventKey,value})=>window.dispatchEvent(new StorageEvent('storage',{key:eventKey,newValue:value})),{eventKey,value});await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed',pressed);expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(initial)}await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(page.getByRole('alert')).toContainText(/shramb/i);await project(page,'launch');await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await page.addInitScript(()=>{Storage.prototype.getItem=()=>{throw new DOMException('blocked','SecurityError')};Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await page.reload();await expect(page.getByRole('alert')).toContainText(/shramb/i);await toggle(page,'web-03').click();await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true')})
+      17 | test('E12: R12 local changes preserve fields and responsive reads',async({page})=>{const writes=await mount(page);await toggle(page,'web-02').click();await details(page,'web-02');await board(page);await toggle(page,'web-03').click();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,webIds(),false);await readonly(page,writes)})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:14:215
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E09-R09-clear-c-a2c66-ins-foreign-and-unknown-IDs-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E09-R09-clear-c-a2c66-ins-foreign-and-unknown-IDs-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E09-R09-clear-c-a2c66-ins-foreign-and-unknown-IDs-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E09-R09-clear-c-a2c66-ins-foreign-and-unknown-IDs-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  30) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:15:1 › E10: R10 counts cover whole current project with filter active 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-01', exact: true })
+
+
+      13 | test('E08: R08 global set persists while filters reset',async({page})=>{await mount(page);await toggle(page,'web-02').click();await filter(page).check();await project(page,'launch');await expect(filter(page)).not.toBeChecked();await toggle(page,'launch-01').click();await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await filter(page).check();await page.reload();await expect(filter(page)).not.toBeChecked();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true')})
+      14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+    > 15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+         |                                                                                                                                     ^
+      16 | test('E11: R11 storage events validation no echo and failure fallback',async({page})=>{await mount(page);const initial=await page.evaluate(k=>localStorage.getItem(k),key);for(const [eventKey,value,pressed] of [[key,'{"version":1,"ids":["web-02"]}','true'],['other',null,'true'],[key,'{"version":1,"ids":[5]}','false'],[key,'{"version":1,"ids":["web-02"]}','true'],[key,null,'false']] as const){await page.evaluate(({eventKey,value})=>window.dispatchEvent(new StorageEvent('storage',{key:eventKey,newValue:value})),{eventKey,value});await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed',pressed);expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(initial)}await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(page.getByRole('alert')).toContainText(/shramb/i);await project(page,'launch');await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await page.addInitScript(()=>{Storage.prototype.getItem=()=>{throw new DOMException('blocked','SecurityError')};Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await page.reload();await expect(page.getByRole('alert')).toContainText(/shramb/i);await toggle(page,'web-03').click();await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true')})
+      17 | test('E12: R12 local changes preserve fields and responsive reads',async({page})=>{const writes=await mount(page);await toggle(page,'web-02').click();await details(page,'web-02');await board(page);await toggle(page,'web-03').click();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,webIds(),false);await readonly(page,writes)})
+      18 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:15:133
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E10-R10-counts--adee6--project-with-filter-active-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E10-R10-counts--adee6--project-with-filter-active-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E10-R10-counts--adee6--project-with-filter-active-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E10-R10-counts--adee6--project-with-filter-active-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  31) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:16:1 › E11: R11 storage events validation no echo and failure fallback 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+    Expected: "true"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+      14 | test('E09: R09 clear current project retains foreign and unknown IDs',async({page})=>{await seed(page,JSON.stringify({version:1,ids:['web-01','web-03','launch-02','unknown']}));await mount(page);await filter(page).check();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,[]);expect(await saved(page)).toEqual({version:1,ids:['launch-02','unknown']});await expect(page.getByRole('button',{name:'Odstrani priljubljene tega projekta'})).toBeDisabled();await project(page,'launch');await expect(toggle(page,'launch-02')).toHaveAttribute('aria-pressed','true')})
+      15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+    > 16 | test('E11: R11 storage events validation no echo and failure fallback',async({page})=>{await mount(page);const initial=await page.evaluate(k=>localStorage.getItem(k),key);for(const [eventKey,value,pressed] of [[key,'{"version":1,"ids":["web-02"]}','true'],['other',null,'true'],[key,'{"version":1,"ids":[5]}','false'],[key,'{"version":1,"ids":["web-02"]}','true'],[key,null,'false']] as const){await page.evaluate(({eventKey,value})=>window.dispatchEvent(new StorageEvent('storage',{key:eventKey,newValue:value})),{eventKey,value});await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed',pressed);expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(initial)}await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(page.getByRole('alert')).toContainText(/shramb/i);await project(page,'launch');await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await page.addInitScript(()=>{Storage.prototype.getItem=()=>{throw new DOMException('blocked','SecurityError')};Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await page.reload();await expect(page.getByRole('alert')).toContainText(/shramb/i);await toggle(page,'web-03').click();await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true')})
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+      17 | test('E12: R12 local changes preserve fields and responsive reads',async({page})=>{const writes=await mount(page);await toggle(page,'web-02').click();await details(page,'web-02');await board(page);await toggle(page,'web-03').click();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,webIds(),false);await readonly(page,writes)})
+      18 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:16:569
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E11-R11-storage-e3343-o-echo-and-failure-fallback-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E11-R11-storage-e3343-o-echo-and-failure-fallback-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E11-R11-storage-e3343-o-echo-and-failure-fallback-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E11-R11-storage-e3343-o-echo-and-failure-fallback-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32) [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:17:1 › E12: R12 local changes preserve fields and responsive reads 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Priljubljeno opravilo web-02', exact: true })
+
+
+      15 | test('E10: R10 counts cover whole current project with filter active',async({page})=>{await mount(page);await toggle(page,'web-01').click();await toggle(page,'web-02').click();await filter(page).check();await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 2 od 8.');await board(page);await expect(page.getByRole('region',{name:'Končano',exact:true}).getByText('0',{exact:true})).toBeVisible();await project(page,'launch');await expect(page.getByRole('status',{name:'Število priljubljenih'})).toHaveText('Priljubljeno: 0 od 2.')})
+      16 | test('E11: R11 storage events validation no echo and failure fallback',async({page})=>{await mount(page);const initial=await page.evaluate(k=>localStorage.getItem(k),key);for(const [eventKey,value,pressed] of [[key,'{"version":1,"ids":["web-02"]}','true'],['other',null,'true'],[key,'{"version":1,"ids":[5]}','false'],[key,'{"version":1,"ids":["web-02"]}','true'],[key,null,'false']] as const){await page.evaluate(({eventKey,value})=>window.dispatchEvent(new StorageEvent('storage',{key:eventKey,newValue:value})),{eventKey,value});await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed',pressed);expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(initial)}await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await toggle(page,'web-02').click();await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await expect(page.getByRole('alert')).toContainText(/shramb/i);await project(page,'launch');await project(page,'web');await expect(toggle(page,'web-02')).toHaveAttribute('aria-pressed','true');await page.addInitScript(()=>{Storage.prototype.getItem=()=>{throw new DOMException('blocked','SecurityError')};Storage.prototype.setItem=()=>{throw new DOMException('blocked','SecurityError')}});await page.reload();await expect(page.getByRole('alert')).toContainText(/shramb/i);await toggle(page,'web-03').click();await expect(toggle(page,'web-03')).toHaveAttribute('aria-pressed','true')})
+    > 17 | test('E12: R12 local changes preserve fields and responsive reads',async({page})=>{const writes=await mount(page);await toggle(page,'web-02').click();await details(page,'web-02');await board(page);await toggle(page,'web-03').click();await click(page,'Odstrani priljubljene tega projekta');await expectIds(page,webIds(),false);await readonly(page,writes)})
+         |                                                                                                                                               ^
+      18 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P07/acceptance.spec.ts:17:143
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E12-R12-local-c-e0fef-fields-and-responsive-reads-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E12-R12-local-c-e0fef-fields-and-responsive-reads-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E12-R12-local-c-e0fef-fields-and-responsive-reads-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P07-B-001/evaluation-artifacts/acceptance-E12-R12-local-c-e0fef-fields-and-responsive-reads-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32 failed
+    [development-desktop] › tasks/P07/development.spec.ts:2:1 › D01: independent favorites by ID ───
+    [development-desktop] › tasks/P07/development.spec.ts:3:1 › D02: filter and remove visible favorite 
+    [development-desktop] › tasks/P07/development.spec.ts:4:1 › D03: storage and refresh ───────────
+    [development-desktop] › tasks/P07/development.spec.ts:5:1 › D04: view parity and no writes ─────
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:6:1 › E01: R01 independent toggles never open details 
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:7:1 › E02: R02 versioned sorted unique IDs only 
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:8:1 › E03: R03 duplicate and unknown IDs survive refresh and writes 
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:9:1 › E04: R04 invalid envelopes are empty and never rewritten on load 
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:10:1 › E05: R05 only favorites preserves original order 
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:11:1 › E06: R06 removal under filter and empty recovery 
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:12:1 › E07: R07 same state across views and details 
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:13:1 › E08: R08 global set persists while filters reset 
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:14:1 › E09: R09 clear current project retains foreign and unknown IDs 
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:15:1 › E10: R10 counts cover whole current project with filter active 
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:16:1 › E11: R11 storage events validation no echo and failure fallback 
+    [evaluation-desktop] › evaluation/P07/acceptance.spec.ts:17:1 › E12: R12 local changes preserve fields and responsive reads 
+    [development-mobile] › tasks/P07/development.spec.ts:2:1 › D01: independent favorites by ID ────
+    [development-mobile] › tasks/P07/development.spec.ts:3:1 › D02: filter and remove visible favorite 
+    [development-mobile] › tasks/P07/development.spec.ts:4:1 › D03: storage and refresh ────────────
+    [development-mobile] › tasks/P07/development.spec.ts:5:1 › D04: view parity and no writes ──────
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:6:1 › E01: R01 independent toggles never open details 
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:7:1 › E02: R02 versioned sorted unique IDs only 
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:8:1 › E03: R03 duplicate and unknown IDs survive refresh and writes 
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:9:1 › E04: R04 invalid envelopes are empty and never rewritten on load 
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:10:1 › E05: R05 only favorites preserves original order 
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:11:1 › E06: R06 removal under filter and empty recovery 
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:12:1 › E07: R07 same state across views and details 
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:13:1 › E08: R08 global set persists while filters reset 
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:14:1 › E09: R09 clear current project retains foreign and unknown IDs 
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:15:1 › E10: R10 counts cover whole current project with filter active 
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:16:1 › E11: R11 storage events validation no echo and failure fallback 
+    [evaluation-mobile] › evaluation/P07/acceptance.spec.ts:17:1 › E12: R12 local changes preserve fields and responsive reads 
+  38 passed (3.2m)

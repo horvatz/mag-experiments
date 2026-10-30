@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-30T15:20:17.867196+00:00",
+  "researcherOnly": true,
+  "version": 8,
+  "status": "active",
+  "sourceSHA256": "c7f088aede807c501fccf2bcf61d55310d3ddd5f3d48f45c34b4ad0c691412e8",
+  "originalV7Directory": "analysis/recovery/supervisor-v7-before-sse-json-error-2026-10-30",
+  "change": "Adds only exact observed Qwen HTTP200/finished/response.failed/siliconflow-fp8 with native JSON error injected into SSE stream, sentUpstreamtrue and unchanged single-provider/no-fallback route. Underlying cause remains unknown. Fresh same-provider CONNECTION_OK still required.",
+  "fixtureChecks": 76,
+  "currentRunningSupervisorVersion": 8,
+  "currentSupervisorPID": 14865,
+  "runnerPID": 15318,
+  "measuredRetry": false,
+  "measuredInputsChanged": false,
+  "stoppedV7Confirmed": true,
+  "unusedNextIDConfirmed": true,
+  "activatedAt": "2026-10-30T15:22:41.492Z",
+  "supervisorSession": 69908,
+  "freshServiceCheck": {
+    "at": "2026-10-30T15:22:51.269Z",
+    "model": "qwen/qwen3.5-9b",
+    "provider": "siliconflow/fp8",
+    "httpStatus": 200,
+    "responseStatus": "completed",
+    "text": "CONNECTION_OK",
+    "error": null,
+    "passed": true,
+    "excludedFromMeasurements": true,
+    "costComplete": true,
+    "costUSD": 6.6e-05
+  },
+  "continuation": {
+    "at": "2026-10-30T15:22:53.131Z",
+    "action": "continue_unused_ids",
+    "archived": 149,
+    "previousRun": "qwen/P07-B-001",
+    "errorRequests": [
+      43
+    ],
+    "classifications": [
+      "qwen-sse-json-error-cause-unknown"
+    ],
+    "nextRun": "glm/P07-B-001",
+    "diagnosis": "analysis/recovery/qwen-P07-B-001-service.json",
+    "diagnostic": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/qualification/service-2026-10-30T15-22-41-535Z",
+    "frozenProtocolVersion": "O/1.0+budget-amendment-1",
+    "taskPromptsDeadlinesEvaluatorsUnchanged": true,
+    "archivedHashesVerified": true,
+    "measuredRetry": false,
+    "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
+  }
+}
