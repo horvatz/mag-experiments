@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-30T17:43:33.308577+00:00",
+  "researcherOnly": true,
+  "measurement": "157 deepseek/P06-B-002",
+  "status": "execution_failed",
+  "request": 44,
+  "httpStatus": 422,
+  "provider": "deepinfra/fp8",
+  "providerError": {
+    "message": "Input should be a valid string",
+    "type": "invalid_request_error",
+    "param": "messages.49.tool.content.str",
+    "code": null
+  },
+  "requestFile": "deepseek/api/P06-B-002/model/request-00044.json.gz",
+  "requestSHA256": "6b0e219de49b98162ff143a2475b08b49fa44183732b2bc9ce535d6c2275a44e",
+  "images": [
+    {
+      "jsonPointer": "/input/83/output/0/image_url",
+      "mime": "data:image/png",
+      "researcherViewed": false
+    },
+    {
+      "jsonPointer": "/input/84/output/0/image_url",
+      "mime": "data:image/png",
+      "researcherViewed": false
+    }
+  ],
+  "fullCostUSD": null,
+  "knownCostUSD": 0.036556193,
+  "unknownBills": 1,
+  "measuredRetry": false,
+  "continuation": {
+    "at": "2026-10-30T17:41:41.244Z",
+    "action": "continue_unused_ids",
+    "archived": 157,
+    "previousRun": "deepseek/P06-B-002",
+    "errorRequests": [
+      44
+    ],
+    "classifications": [
+      "deepinfra-image-tool"
+    ],
+    "nextRun": "qwen/P06-B-002",
+    "diagnosis": "analysis/recovery/deepseek-P06-A-001-image-tool.json",
+    "diagnostic": null,
+    "frozenProtocolVersion": "O/1.0+budget-amendment-1",
+    "taskPromptsDeadlinesEvaluatorsUnchanged": true,
+    "archivedHashesVerified": true,
+    "measuredRetry": false,
+    "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
+  },
+  "newRunnerPID": 99177,
+  "limitation": "Same diagnosed DeepInfra tool-image schema rejection. Two PNG tool outputs are preserved in original request; no researcher visual review is claimed. Model functional result70/70 and12/12 is distinct from service failure."
+}

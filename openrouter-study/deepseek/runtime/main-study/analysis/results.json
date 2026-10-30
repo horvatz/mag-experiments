@@ -1,10 +1,9 @@
 {
-  "generatedAt": "2026-10-30T17:17:25.910Z",
+  "generatedAt": "2026-10-30T17:41:39.160Z",
   "complete": false,
-  "archived": 52,
+  "archived": 53,
   "planned": 72,
   "missing": [
-    "P06-B-002",
     "P06-A-002",
     "P09-A-001",
     "P09-B-001",
@@ -39,11 +38,11 @@
     },
     {
       "procedure": "B",
-      "archived": 17,
+      "archived": 18,
       "planned": 24,
       "strictSuccesses": 2,
-      "meanDemonstratedFraction": 0.8088235294117646,
-      "meanElapsedSeconds": 885.1127647058823,
+      "meanDemonstratedFraction": 0.8194444444444443,
+      "meanElapsedSeconds": 864.223111111111,
       "completeUsageCount": 4,
       "meanInputTokensCompleteOnly": 3119376,
       "meanOutputTokensCompleteOnly": 97912.25
@@ -134,9 +133,9 @@
     {
       "task": "P06",
       "procedure": "B",
-      "count": 2,
+      "count": 3,
       "meanDemonstratedFraction": 1,
-      "meanElapsedSeconds": 1080.5375
+      "meanElapsedSeconds": 890.058
     },
     {
       "task": "P06",
@@ -7580,6 +7579,144 @@
       "ownTestFiles": 1,
       "contentReviewSample": false,
       "evidence": "runs/P06-C-002/evaluation-summary.json"
+    },
+    {
+      "id": "P06-B-002",
+      "task": "P06",
+      "procedure": "B",
+      "repetition": 2,
+      "block": 18,
+      "position": 2,
+      "executionStatus": "execution_failed",
+      "elapsedSeconds": 509.099,
+      "strictSuccess": false,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": true,
+            "observed": true
+          }
+        ],
+        "passed": 12,
+        "observed": 12,
+        "total": 12,
+        "fraction": 1
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "usage": null,
+      "usageComplete": false,
+      "observedUsageBeforeInterruption": {
+        "input_tokens": 1570051,
+        "cached_input_tokens": 1509760,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 51844,
+        "reasoning_output_tokens": 26509
+      },
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 261.434,
+          "status": "completed"
+        },
+        {
+          "name": "implementation",
+          "elapsedSeconds": 245.384,
+          "status": "execution_failed"
+        }
+      ],
+      "changedFiles": 8,
+      "ownTestFiles": 1,
+      "contentReviewSample": false,
+      "evidence": "runs/P06-B-002/evaluation-summary.json"
     }
   ]
 }

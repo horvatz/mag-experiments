@@ -6894,6 +6894,130 @@
         }
       },
       "newOrdinalReviewWritten": false
+    },
+    {
+      "at": "2026-10-30T17:42:31.997202+00:00",
+      "position": 157,
+      "slug": "deepseek",
+      "id": "P06-B-002",
+      "executionStatus": "execution_failed",
+      "elapsedSeconds": 509.099,
+      "strictSuccess": false,
+      "demonstrated": 12,
+      "requirementsPassed": 12,
+      "functionalTestsPassed": 70,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 261.434,
+          "status": "completed"
+        },
+        {
+          "name": "implementation",
+          "elapsedSeconds": 245.384,
+          "status": "execution_failed"
+        }
+      ],
+      "costComplete": false,
+      "costUSD": null,
+      "knownCostUSD": 0.036556192999999994,
+      "apiRequests": 44,
+      "archiveSha256": "1351789cbe5464d3e4e5e86b4b568c9e67b1c3599ae941f896366c69eedbe941",
+      "authoredFiles": 8,
+      "ownTestFiles": 1,
+      "ownTestCases": 11,
+      "lastFullCheck": "57/57 actual Playwright passes (38baseline,8development,11authored), separate11/11 authored and8/8 development; types/lint/build successful.",
+      "functionalFailure": "None:70/70 and12/12; strictfalse because implementation interrupted by provider422. Review phase not started.",
+      "service": {
+        "provider": "deepinfra/fp8",
+        "requests": 44,
+        "http200": 43,
+        "http422": 1,
+        "completedResponses": 43,
+        "unknownBills": 1,
+        "providerError": {
+          "message": "Input should be a valid string",
+          "type": "invalid_request_error",
+          "param": "messages.49.tool.content.str",
+          "code": null
+        },
+        "requestSHA256": "6b0e219de49b98162ff143a2475b08b49fa44183732b2bc9ce535d6c2275a44e",
+        "imagePointers": [
+          {
+            "jsonPointer": "/input/83/output/0/image_url",
+            "mime": "data:image/png",
+            "researcherViewed": false
+          },
+          {
+            "jsonPointer": "/input/84/output/0/image_url",
+            "mime": "data:image/png",
+            "researcherViewed": false
+          }
+        ]
+      },
+      "developmentEvidence": [
+        "runtime/runs/P06-B-002/phases/02-implementation/events.jsonl.gz#item_26",
+        "runtime/runs/P06-B-002/phases/02-implementation/events.jsonl.gz#item_28",
+        "runtime/runs/P06-B-002/phases/02-implementation/events.jsonl.gz#item_30",
+        "runtime/runs/P06-B-002/phases/02-implementation/events.jsonl.gz#item_32",
+        "api/P06-B-002/model/request-00044.json.gz"
+      ],
+      "continuation": {
+        "at": "2026-10-30T17:41:41.244Z",
+        "action": "continue_unused_ids",
+        "archived": 157,
+        "previousRun": "deepseek/P06-B-002",
+        "errorRequests": [
+          44
+        ],
+        "classifications": [
+          "deepinfra-image-tool"
+        ],
+        "nextRun": "qwen/P06-B-002",
+        "diagnosis": "analysis/recovery/deepseek-P06-A-001-image-tool.json",
+        "diagnostic": null,
+        "frozenProtocolVersion": "O/1.0+budget-amendment-1",
+        "taskPromptsDeadlinesEvaluatorsUnchanged": true,
+        "archivedHashesVerified": true,
+        "measuredRetry": false,
+        "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
+      },
+      "newOrdinalReviewWritten": false
     }
   ],
   "pendingObservations": {}
