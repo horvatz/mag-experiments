@@ -8,7 +8,7 @@ if runner_pid!='absent' and str(a.get('pid'))!=runner_pid:print('active record b
 if a.get('id'):
  archived_current=(root/a['slug']/'runtime/runs'/a['id']/'archive-complete.json').exists()
  if archived_current:
-  print('active ID is already archived; runner may be reconciling costs before the next ID')
+  print('active ID is already archived; runner may be reconciling costs before the next ID' if runner_pid!='absent' else 'queue inactive with archived last ID; inspect stop stage and recovery before any continuation')
   models=json.loads((root/'models.json').read_text())['models'];schedule=json.loads((root/models[0]['slug']/'runtime/main-study/schedule.json').read_text())['runs']
   jobs=[(models[(i+o)%len(models)]['slug'],entry['id']) for i,entry in enumerate(schedule) for o in range(len(models))]
   n=s['archived']
