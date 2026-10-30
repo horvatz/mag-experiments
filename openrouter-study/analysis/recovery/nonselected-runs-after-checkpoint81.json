@@ -4971,6 +4971,352 @@
         "cause": "Empty favorites message REPLACES board region: App56 noFavoriteResults branch precedes TaskBoard. Same structural empty-board sensitivity as earlier DeepSeek P07 cases, distinct from GLM125 missing required message."
       },
       "observation": "All three B phases completed with valid final review/no repair. Fourteen own checks/full60confirmed twice; E06 fails at helper board-region locator on both widths. Other22holdout pass. Original68/70,11/12 retained. No new ordinal review for003."
+    },
+    {
+      "at": "2026-10-30T07:54:20.452919+00:00",
+      "position": 127,
+      "slug": "glm",
+      "id": "P07-B-002",
+      "executionStatus": "completed",
+      "elapsedSeconds": 681.447,
+      "strictSuccess": false,
+      "demonstrated": 10,
+      "requirementsPassed": 10,
+      "functionalTestsPassed": 66,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 20,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 172.979,
+          "status": "completed"
+        },
+        {
+          "name": "implementation",
+          "elapsedSeconds": 378.813,
+          "status": "completed"
+        },
+        {
+          "name": "review",
+          "elapsedSeconds": 126.186,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.30288177699999996,
+      "knownCostUSD": 0.30288177699999996,
+      "apiRequests": 85,
+      "archiveSha256": "f69e8f798ae0eaf6c4b2ef35b3e0bcb6acd5e9dc0133fe204fa3f7a8780ebb1e",
+      "archiveAllHashesVerified": true,
+      "budgetAmendment": "O/1.0-budget-amendment-1",
+      "authoredFiles": 9,
+      "ownTestFiles": 1,
+      "ownTests": 7,
+      "nativeCompletedCommandsByPhase": {
+        "specification": 12,
+        "implementation": 27,
+        "review": 13
+      },
+      "confirmedNativeChecks": [
+        {
+          "phase": "02-implementation",
+          "item": "item_34",
+          "result": "8 development passed"
+        },
+        {
+          "phase": "02-implementation",
+          "item": "item_39",
+          "result": "5 own failed,1 passed"
+        },
+        {
+          "phase": "02-implementation",
+          "item": "item_43",
+          "result": "3 own failed,3 passed"
+        },
+        {
+          "phase": "02-implementation",
+          "item": "item_50",
+          "result": "3 own failed,3 passed"
+        },
+        {
+          "phase": "02-implementation",
+          "item": "item_54",
+          "result": "1 own failed,5 passed"
+        },
+        {
+          "phase": "02-implementation",
+          "item": "item_57",
+          "result": "6 own passed"
+        },
+        {
+          "phase": "02-implementation",
+          "item": "item_63",
+          "result": "full52passed"
+        },
+        {
+          "phase": "02-implementation",
+          "item": "item_67",
+          "result": "7 own passed"
+        },
+        {
+          "phase": "02-implementation",
+          "item": "item_69",
+          "result": "full53passed"
+        },
+        {
+          "phase": "03-review",
+          "item": "item_17",
+          "result": "7 own passed"
+        },
+        {
+          "phase": "03-review",
+          "item": "item_19",
+          "result": "full53passed"
+        }
+      ],
+      "reviewJSONValid": true,
+      "specificationChangesRequired": false,
+      "codeChangesRequired": false,
+      "repairStarted": false,
+      "apiResponseSummary": {
+        "HTTP200_finished_completed": 69,
+        "HTTP200_client_aborted_completed": 16
+      },
+      "failedIndependentTests": {
+        "E06": [
+          "evaluation-desktop",
+          "evaluation-mobile"
+        ],
+        "E06Cause": "App62 empty-filter message replaces TaskBoard: missing board region.",
+        "E11": [
+          "evaluation-desktop",
+          "evaluation-mobile"
+        ],
+        "E11Cause": "useFavorites.handleStorage ignores event.newValue and re-reads localStorage. Fails first synthetic event assigning web-02 without a storage write; distinct from earlier project-remount loss after write failure."
+      },
+      "observation": "Completed all three B phases, valid review claims no issues. Seven own checks/full53confirmed both implementation/reviewer. Two separate causes repeated on both widths: empty-board-region structure and storage event newValue semantics. No repeat, no new ordinal review for002."
+    },
+    {
+      "at": "2026-10-30T08:15:15.994409+00:00",
+      "position": 128,
+      "slug": "deepseek",
+      "id": "P07-B-002",
+      "executionStatus": "completed",
+      "elapsedSeconds": 917.871,
+      "strictSuccess": false,
+      "demonstrated": 11,
+      "requirementsPassed": 11,
+      "functionalTestsPassed": 68,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 22,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 210.43,
+          "status": "completed"
+        },
+        {
+          "name": "implementation",
+          "elapsedSeconds": 434.559,
+          "status": "completed"
+        },
+        {
+          "name": "review",
+          "elapsedSeconds": 268.795,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.08076532499999999,
+      "knownCostUSD": 0.08076532499999999,
+      "apiRequests": 76,
+      "archiveSha256": "905b791bac73452c6f886cc9a182b49b89758d7e4b4e1be303fd05c02b6c27e9",
+      "archiveAllHashesVerified": true,
+      "budgetAmendment": "O/1.0-budget-amendment-1",
+      "authoredFiles": 10,
+      "ownTestFiles": 1,
+      "ownTests": 15,
+      "nativeCompletedCommandsByPhase": {
+        "specification": 25,
+        "implementation": 23,
+        "review": 33
+      },
+      "confirmedNativeChecks": [
+        {
+          "phase": "02-implementation",
+          "item": "item_35",
+          "result": "combined development/own:1 failed,18 passed despite pipeline exit0"
+        },
+        {
+          "phase": "02-implementation",
+          "item": "item_41",
+          "result": "full61passed, actual output verified"
+        },
+        {
+          "phase": "03-review",
+          "item": "item_29",
+          "result": "23 development/own passed"
+        },
+        {
+          "phase": "03-review",
+          "item": "item_32",
+          "result": "full61passed, actual output verified"
+        }
+      ],
+      "reviewJSONValid": true,
+      "specificationChangesRequired": false,
+      "codeChangesRequired": false,
+      "repairStarted": false,
+      "apiResponseSummary": {
+        "HTTP200_finished_completed": 72,
+        "HTTP200_client_aborted_completed": 4
+      },
+      "failedIndependentTests": {
+        "E06": [
+          "evaluation-desktop",
+          "evaluation-mobile"
+        ],
+        "cause": "App66 replaces TaskBoard with FavoritesEmpty when favoritesEmpty and tasks.length>0. Required empty message exists; board region absent. Other22holdout pass."
+      },
+      "observation": "All three B phases completed; valid review/no repair. Fifteen own tests/full61confirmed both roles. Same structural empty-board sensitivity, no new ordinal review for002. Reviewer discloses separate untested empty-project/board message edge; do not equate it with observed helper-region failure."
+    },
+    {
+      "at": "2026-10-30T08:36:32.155057+00:00",
+      "position": 129,
+      "slug": "qwen",
+      "id": "P07-B-002",
+      "executionStatus": "execution_failed",
+      "elapsedSeconds": 299.445,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 38,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 298.313,
+          "status": "execution_failed"
+        }
+      ],
+      "costComplete": false,
+      "costUSD": null,
+      "knownCostUSD": 0.013420550000000002,
+      "apiRequests": 11,
+      "archiveSha256": "fb987d9d51a137dc3cbf4d60dc8984e8f97c3507330729d9acd37744932f297c",
+      "archiveAllHashesVerified": true,
+      "budgetAmendment": "O/1.0-budget-amendment-1",
+      "authoredFiles": 0,
+      "ownTestFiles": 0,
+      "apiResponseSummary": {
+        "HTTP200_finished_completed": 10,
+        "HTTP200_finished_failed": 1
+      },
+      "nativeError": "stream disconnected before completion: Request failed: Unknown error.",
+      "errorRequest": 11,
+      "failureCause": "unknown",
+      "measuredRetry": false,
+      "observation": "Service stream failed during specification. No file changes or implementation/review/own checks. Native error and failed API response preserved, last request bill unknown. Earlier premeasurement probe failed separately and was recovered before this first measured execution. No new ordinal review for002."
     }
   ],
   "pendingObservations": {}

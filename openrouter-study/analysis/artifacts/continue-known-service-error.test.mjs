@@ -14,6 +14,8 @@ const fixture = (slug, number, id = 'P06-A-001') => {
 const ds = fixture('deepseek', 24), q = fixture('qwen', 6), empty = fixture('qwen', 2, 'P06-B-001'), glm = fixture('glm', 50, 'P06-B-001')
 const unavailable = fixture('deepseek', 36, 'P08-C-001')
 const overloaded = fixture('glm', 7, 'P07-A-003')
+const requestFailed = fixture('qwen', 11, 'P07-B-002')
+const requestFailedNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P07-B-002/phases/01-specification/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const overloadedNative = gunzipSync(fs.readFileSync(resolve(study, 'glm/runtime/runs/P07-A-003/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const overloadPatch = patch => ({...overloaded.row,providerError:JSON.stringify({error:{...JSON.parse(overloaded.row.providerError).error,metadata:{...JSON.parse(overloaded.row.providerError).error.metadata,...patch}}})})
 const unavailableNative = gunzipSync(fs.readFileSync(resolve(study, 'deepseek/runtime/runs/P08-C-001/phases/05-implement/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
@@ -21,6 +23,14 @@ const changed520 = patch => ({ ...unavailable.row, providerError: JSON.stringify
 const native = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-A-001/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const emptyNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const checks = [
+  ['observed Qwen Request failed Unknown error',knownFailure(requestFailed.row,requestFailed.body,requestFailedNative),'qwen-request-failed-cause-unknown'],
+  ['Qwen request failure without native evidence',knownFailure(requestFailed.row,requestFailed.body),null],
+  ['Qwen request failure unobserved message',knownFailure(requestFailed.row,requestFailed.body,['stream disconnected before completion: other unknown error']),null],
+  ['Qwen request failure completed response',knownFailure({...requestFailed.row,responseStatus:'completed'},requestFailed.body,requestFailedNative),null],
+  ['Qwen request failure changed provider',knownFailure({...requestFailed.row,provider:'other'},requestFailed.body,requestFailedNative),null],
+  ['Qwen request failure changed request model',knownFailure(requestFailed.row,{...requestFailed.body,model:'other'},requestFailedNative),null],
+  ['Qwen request failure fallback enabled',knownFailure(requestFailed.row,{...requestFailed.body,provider:{...requestFailed.body.provider,allow_fallbacks:true}},requestFailedNative),null],
+  ['Qwen request failure client aborted',knownFailure({...requestFailed.row,status:'client_aborted'},requestFailed.body,requestFailedNative),null],
   ['observed exact Wafer shared-pool429',knownFailure(overloaded.row,overloaded.body,overloadedNative),'glm-wafer-shared-pool-overload'],
   ['Wafer429 without native evidence',knownFailure(overloaded.row,overloaded.body),null],
   ['Wafer429 account limit differs',knownFailure(overloadPatch({limit_source:'account'}),overloaded.body,overloadedNative),null],

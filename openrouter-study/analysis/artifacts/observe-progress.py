@@ -1,8 +1,10 @@
 import json,datetime
 from pathlib import Path
 root=Path(__file__).resolve().parents[2]
-print('runnerlock', (root/'runner.lock').read_text().strip() if (root/'runner.lock').exists() else 'absent')
+runner_pid=(root/'runner.lock').read_text().strip() if (root/'runner.lock').exists() else 'absent'
+print('runnerlock',runner_pid)
 a=json.loads((root/'active.json').read_text());s=json.loads((root/'status.json').read_text());print('archived',s['archived'],'active',a.get('position'),a.get('slug'),a.get('id'),a.get('stage'),a.get('at'))
+if runner_pid!='absent' and str(a.get('pid'))!=runner_pid:print('active record belongs to previous runner',a.get('pid'),'; current runner is still verifying archived inputs or reconciling costs')
 if a.get('id'):
  archived_current=(root/a['slug']/'runtime/runs'/a['id']/'archive-complete.json').exists()
  if archived_current:print('active ID is already archived; runner may be reconciling costs before the next ID')

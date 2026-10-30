@@ -1,7 +1,7 @@
 [
   {
     "slug": "glm",
-    "archived": 42,
+    "archived": 43,
     "explicitResponseOrTransportErrors": 3,
     "affected": [
       {
@@ -36,7 +36,7 @@
   },
   {
     "slug": "deepseek",
-    "archived": 42,
+    "archived": 43,
     "explicitResponseOrTransportErrors": 4,
     "affected": [
       {
@@ -92,8 +92,8 @@
   },
   {
     "slug": "qwen",
-    "archived": 42,
-    "explicitResponseOrTransportErrors": 13,
+    "archived": 43,
+    "explicitResponseOrTransportErrors": 14,
     "affected": [
       {
         "id": "P05-A-001",
@@ -326,6 +326,24 @@
           {
             "message": "stream disconnected before completion: Provider returned an empty response",
             "evidence": "openrouter-study/qwen/runtime/runs/P08-C-003/phases/01-constitution/events.jsonl.gz"
+          }
+        ]
+      },
+      {
+        "id": "P07-B-002",
+        "requests": [
+          11
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/qwen/api/P07-B-002/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: Request failed: Unknown error.",
+            "evidence": "openrouter-study/qwen/runtime/runs/P07-B-002/phases/01-specification/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: Request failed: Unknown error.",
+            "evidence": "openrouter-study/qwen/runtime/runs/P07-B-002/phases/01-specification/events.jsonl.gz"
           }
         ]
       }

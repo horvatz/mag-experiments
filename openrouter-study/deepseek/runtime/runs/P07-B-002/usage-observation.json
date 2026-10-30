@@ -1,0 +1,101 @@
+{
+  "id": "P07-B-002",
+  "observedAt": "2026-10-30T08:14:04.870Z",
+  "complete": true,
+  "roles": [
+    {
+      "role": "specification",
+      "session": "01a18bd1-381e-73f0-b4b9-0e17a4fc7aed",
+      "lastTokenEventAt": "2026-10-30T08:01:56.598Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 792299,
+        "cached_input_tokens": 768896,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 23728,
+        "reasoning_output_tokens": 13244
+      },
+      "phases": [
+        {
+          "name": "specification",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 792299,
+            "cached_input_tokens": 768896,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 23728,
+            "reasoning_output_tokens": 13244
+          },
+          "lastTokenEventAt": "2026-10-30T08:01:56.598Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    },
+    {
+      "role": "implementation",
+      "session": "01a18bd4-74f0-7903-ac48-c07c5f32a9ee",
+      "lastTokenEventAt": "2026-10-30T08:09:12.940Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 1629639,
+        "cached_input_tokens": 1573120,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 60302,
+        "reasoning_output_tokens": 39185
+      },
+      "phases": [
+        {
+          "name": "implementation",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 1629639,
+            "cached_input_tokens": 1573120,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 60302,
+            "reasoning_output_tokens": 39185
+          },
+          "lastTokenEventAt": "2026-10-30T08:09:12.940Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    },
+    {
+      "role": "review",
+      "session": "01a18bdb-1b07-78b3-b7a3-bcab9268d944",
+      "lastTokenEventAt": "2026-10-30T08:13:43.038Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 1132787,
+        "cached_input_tokens": 1086464,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 31902,
+        "reasoning_output_tokens": 25500
+      },
+      "phases": [
+        {
+          "name": "review",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 1132787,
+            "cached_input_tokens": 1086464,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 31902,
+            "reasoning_output_tokens": 25500
+          },
+          "lastTokenEventAt": "2026-10-30T08:13:43.038Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    }
+  ],
+  "usage": {
+    "input_tokens": 3554725,
+    "cached_input_tokens": 3428480,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 115932,
+    "reasoning_output_tokens": 77929
+  },
+  "observedUsageBeforeInterruption": null,
+  "method": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+  "note": "Cached input is included in input; reasoning output is included in output."
+}
