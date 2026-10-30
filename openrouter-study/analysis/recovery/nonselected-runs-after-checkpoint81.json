@@ -6711,6 +6711,112 @@
       },
       "newOrdinalReviewWritten": false,
       "developmentNote": "Native commands preserve multiple malformed patch/string attempts and test parsing failures. First runnable targeted suite6passed/3failed; later item_50 shows9passed and item_52 full55passed. No attribution of initial three failures without their full scenario evidence."
+    },
+    {
+      "at": "2026-10-30T17:17:40.792691+00:00",
+      "position": 155,
+      "slug": "deepseek",
+      "id": "P06-C-002",
+      "executionStatus": "completed",
+      "elapsedSeconds": 814.346,
+      "strictSuccess": true,
+      "demonstrated": 12,
+      "requirementsPassed": 12,
+      "functionalTestsPassed": 70,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 66.228,
+          "status": "completed"
+        },
+        {
+          "name": "specify",
+          "elapsedSeconds": 137.564,
+          "status": "completed"
+        },
+        {
+          "name": "plan",
+          "elapsedSeconds": 72.92,
+          "status": "completed"
+        },
+        {
+          "name": "tasks",
+          "elapsedSeconds": 26.351,
+          "status": "completed"
+        },
+        {
+          "name": "implement",
+          "elapsedSeconds": 454.19,
+          "status": "completed"
+        },
+        {
+          "name": "converge",
+          "elapsedSeconds": 50.659,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.08596832539999999,
+      "knownCostUSD": 0.08596832539999999,
+      "apiRequests": 49,
+      "archiveSha256": "8076f5f3e8a5adeb149cae27ba940ce9f5aa24c14f13fc010c06d6fc82c1c299",
+      "authoredFiles": 11,
+      "ownTestFiles": 1,
+      "ownTestCases": 10,
+      "lastFullCheck": "56/56 actual Playwright passes (38 baseline,8 development,10 authored); types/lint/build successful",
+      "developmentNote": "First runnable authored suite6passed/3failed across9 cases; pipeline exit0 is not success. After test edits/splitting cases, actual full56passed; development8passed independently. Initial failures are not assigned to production code without their complete scenario evidence.",
+      "handoffLimitation": "Six completed stages; whole final message is valid bare JSON, outcome converged. No appended convergence tasks; no measured replay.",
+      "functionalFailure": "None:70/70,12/12,stricttrue.",
+      "developmentEvidence": [
+        "runtime/runs/P06-C-002/phases/05-implement/events.jsonl.gz#item_16",
+        "runtime/runs/P06-C-002/phases/05-implement/events.jsonl.gz#item_22",
+        "runtime/runs/P06-C-002/phases/05-implement/events.jsonl.gz#item_24",
+        "runtime/runs/P06-C-002/last-message.md"
+      ],
+      "service": {
+        "provider": "deepinfra/fp8",
+        "requests": 49,
+        "http200": 49,
+        "responseCompleted": 49,
+        "finished": 44,
+        "clientAborted": 5
+      },
+      "newOrdinalReviewWritten": false
     }
   ],
   "pendingObservations": {}

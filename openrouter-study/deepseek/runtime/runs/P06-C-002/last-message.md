@@ -1,0 +1,9 @@
+{
+  "outcome": "converged",
+  "summary": "Pregledani so spec (R01–R12 in dogovor o vmesniku), načrt (vse odločitve), ustava (5 načel) in naloge (T001–T015 vse [x]). Koda ustreza: src/csvExport.ts (kanonične kolone, filterRows, neutralizeFormula z mejo [ \\t\\r\\n]*, serializeCsv z BOM U+FEFF in CRLF tudi na koncu), src/App.tsx (stanje v ProjectView, kontrole Stolpec <ime>/Ločilo CSV/Filter izvoza/Izvozi CSV, exportEnabled, prenos folio-<projectId>.csv prek Blob brez window.open in brez zapisov na API), src/styles.css (Folio gradniki, brez prelivanja pri 390 pik), tests/agent/p06-export.spec.ts (10 lastnih testov). Dokazi iz te seje: npm run check = 56 passed (38 skupnih, 8 razvojnih D01–D04 na dveh širinah, 10 lastnih); typecheck in lint uspešna; docs/agent/verification.md in sledljivost v spec.md izpolnjena. Najdb ni (missing/partial/contradicts/unrequested = 0/0/0/0), zato tasks.md ostaja nespremenjen (brez faze Convergence; md5 acb399a0c2b7dc94c52d7e2770f2f0f6). .specify/extensions.yml ne obstaja, zato hooki pred/po converge niso bili registrirani. Priporočilo: nadaljuj na pregled predaje; dodatni implement za ta obseg ni potreben.",
+  "unverified": [
+    "Končni skriti testi niso dostopni; niso bili izvedeni in niso navedeni kot uspešni.",
+    "Ročni pregled v brskalniku (WEB_PORT=5193 API_PORT=3123 npm run dev) ni bil izveden; uporabljeni so bili testni projekti Playwright.",
+    "R08 je v testih neposredno pokrit za začetna presledek in tabulator; začetna CR/LF sta pokrita z isto mejo [ \\t\\r\\n]* in pregledom kode, ne z ločenim testnim primerom."
+  ]
+}

@@ -1,0 +1,131 @@
+import { board, downloadCSV, expect, makeTask, mount, readonly, select, test } from "../development/helpers.ts"
+
+test("P06 R01/R05/R07: privzeti izvoz ima BOM, kanonično glavo, vsa opravila in CRLF", async ({ page }) => {
+  await mount(page)
+  const file = await downloadCSV(page)
+  expect(file.name).toBe("folio-web.csv")
+  expect(file.text.startsWith("\uFEFF\"id\";\"projectId\";\"title\";\"status\";\"assignee\";\"dueDate\";\"description\"\r\n")).toBe(true)
+  expect(file.text.endsWith("\r\n")).toBe(true)
+  const lines = file.text.slice(1).split("\r\n")
+  const ids = lines.slice(1, -1).map((line) => line.slice(1, line.indexOf(";") - 1))
+  expect(ids).toEqual(["web-01", "web-02", "web-03", "web-04", "web-05", "web-06", "web-07", "web-08"])
+})
+
+test("P06 R06/R08/R09: narekovaji, nevtralizacija formul in Unicode ostanejo", async ({ page }) => {
+  await mount(page, [
+    makeTask("web-01", { title: " =SUM(A1)", description: "\t+plus", assignee: "@Ana" }),
+    makeTask("web-02", { title: "-minus", description: "Prva vrstica\nDruga vrstica; čšž", assignee: "Črt", status: "in_progress", dueDate: "2026-09-21" }),
+    makeTask("web-03", { title: "Zapis, \"citat\"" }),
+  ])
+  const file = await downloadCSV(page)
+  expect(file.text).toContain("\"\u0027 =SUM(A1)\"")
+  expect(file.text).toContain("\"\u0027\t+plus\"")
+  expect(file.text).toContain("\"\u0027@Ana\"")
+  expect(file.text).toContain("\"\u0027-minus\"")
+  expect(file.text).toContain("\"Zapis, \"\"citat\"\"\"")
+  expect(file.text).toContain("\"Prva vrstica\nDruga vrstica; čšž\"")
+  expect(file.text).toContain("\"in_progress\"")
+  expect(file.text).toContain("\"2026-09-21\"")
+  expect(file.text).toContain("\"Črt\"")
+})
+
+test("P06 R02/R06: izbor kolon je neodvisen od vrstnega reda klikov, ločilo je nastavljivo", async ({ page }) => {
+  await mount(page)
+  for (const name of ["id", "projectId", "title", "status", "assignee", "dueDate", "description"]) await page.getByRole("checkbox", { name: "Stolpec " + name, exact: true }).uncheck()
+  await page.getByRole("checkbox", { name: "Stolpec description", exact: true }).check()
+  await page.getByRole("checkbox", { name: "Stolpec title", exact: true }).check()
+  await select(page, "Filter izvoza", "done")
+  await select(page, "Ločilo CSV", ",")
+  const file = await downloadCSV(page)
+  expect(file.text).toBe("\uFEFF\"title\",\"description\"\r\n\"Pregled vsebine\",\"Opis opravila web-03\"\r\n\"Zapis, \"\"citat\"\"\",\"Prva vrstica\nDruga vrstica; čšž\"\r\n")
+})
+
+test("P06 R03/R04: filter omeji samo izvoz; prazen izbor in prazen rezultat onemogočita prenos", async ({ page }) => {
+  await mount(page)
+  const button = page.getByRole("button", { name: "Izvozi CSV", exact: true })
+  await expect(button).toBeEnabled()
+  await select(page, "Filter izvoza", "done")
+  await expect(page.locator("[data-task-id]")).toHaveCount(8)
+  const done = await downloadCSV(page)
+  expect(done.text).not.toContain("web-01")
+  expect(done.text).toContain("web-03")
+  expect(done.text).toContain("web-06")
+  for (const name of ["id", "projectId", "title", "status", "assignee", "dueDate", "description"]) await page.getByRole("checkbox", { name: "Stolpec " + name, exact: true }).uncheck()
+  await expect(button).toBeDisabled()
+  await page.getByRole("checkbox", { name: "Stolpec id", exact: true }).check()
+  await expect(button).toBeEnabled()
+})
+
+test("P06 R04: prazen projekt onemogoči izvoz", async ({ page }) => {
+  await mount(page, [])
+  await expect(page.getByRole("button", { name: "Izvozi CSV", exact: true })).toBeDisabled()
+  await expect(page.getByRole("heading", { name: "V tem projektu še ni opravil" })).toBeVisible()
+})
+
+test("P06 R04: filter brez zadetkov onemogoči izvoz, ob zadetkih se spet omogoči", async ({ page }) => {
+  await mount(page, [makeTask("web-01", { status: "todo" })])
+  const button = page.getByRole("button", { name: "Izvozi CSV", exact: true })
+  await select(page, "Filter izvoza", "done")
+  await expect(button).toBeDisabled()
+  await select(page, "Filter izvoza", "todo")
+  await expect(button).toBeEnabled()
+})
+
+test("P06 R10: preklop pogleda ohrani nastavitve in iste bajte", async ({ page }) => {
+  await mount(page)
+  await select(page, "Filter izvoza", "in_progress")
+  await select(page, "Ločilo CSV", ",")
+  await page.getByRole("checkbox", { name: "Stolpec description", exact: true }).uncheck()
+  const first = await downloadCSV(page)
+  await board(page)
+  const second = await downloadCSV(page)
+  expect(second).toEqual(first)
+  await expect(page.getByRole("combobox", { name: "Filter izvoza", exact: true })).toHaveValue("in_progress")
+  await expect(page.getByRole("combobox", { name: "Ločilo CSV", exact: true })).toHaveValue(",")
+  await expect(page.getByRole("checkbox", { name: "Stolpec description", exact: true })).not.toBeChecked()
+})
+
+test("P06 R11: menjava projekta in osvežitev ponastavita nastavitve", async ({ page }) => {
+  await mount(page)
+  await select(page, "Filter izvoza", "done")
+  await select(page, "Ločilo CSV", ",")
+  await page.getByRole("checkbox", { name: "Stolpec title", exact: true }).uncheck()
+  await page.getByRole("navigation", { name: "Projekti" }).getByRole("link", { name: "Jesenska kampanja", exact: true }).click()
+  await expect(page.getByRole("heading", { name: "Jesenska kampanja", exact: true })).toBeVisible()
+  await expect(page.getByRole("combobox", { name: "Filter izvoza", exact: true })).toHaveValue("all")
+  await expect(page.getByRole("combobox", { name: "Ločilo CSV", exact: true })).toHaveValue(";")
+  await expect(page.getByRole("checkbox", { name: "Stolpec title", exact: true })).toBeChecked()
+  const launch = await downloadCSV(page)
+  expect(launch.name).toBe("folio-launch.csv")
+  expect(launch.text).toContain("launch-01")
+  expect(launch.text).not.toContain("web-01")
+  await page.getByRole("navigation", { name: "Projekti" }).getByRole("link", { name: "Spletna prenova", exact: true }).click()
+  await expect(page.getByRole("heading", { name: "Spletna prenova", exact: true })).toBeVisible()
+  await select(page, "Ločilo CSV", ",")
+  const comma = await downloadCSV(page)
+  await select(page, "Ločilo CSV", ";")
+  const semicolon = await downloadCSV(page)
+  expect(comma.text).not.toBe(semicolon.text)
+  await page.reload()
+  await expect(page.getByRole("heading", { name: "Spletna prenova", exact: true })).toBeVisible()
+  await expect(page.getByRole("combobox", { name: "Ločilo CSV", exact: true })).toHaveValue(";")
+  await expect(page.getByRole("combobox", { name: "Filter izvoza", exact: true })).toHaveValue("all")
+})
+
+test("P06 R12: izvoz ne spreminja podatkov in ne piše na API", async ({ page }) => {
+  const writes = await mount(page)
+  const before = await page.locator("[data-task-id]").evaluateAll((nodes) => nodes.map((node) => node.getAttribute("data-task-id")))
+  await downloadCSV(page)
+  await select(page, "Filter izvoza", "done")
+  await downloadCSV(page)
+  const after = await page.locator("[data-task-id]").evaluateAll((nodes) => nodes.map((node) => node.getAttribute("data-task-id")))
+  expect(after).toEqual(before)
+  await readonly(page, writes)
+})
+
+test("P06 R12: pri 390 piks se stran ne razširi", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await mount(page)
+  await downloadCSV(page)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true)
+})
