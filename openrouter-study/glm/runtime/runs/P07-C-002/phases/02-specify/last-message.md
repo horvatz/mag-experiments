@@ -1,0 +1,5 @@
+- Ustvaril jsem specifikacijo za vse zahteve R01–R12 v `docs/agent/P07/spec.md:1`.
+- Vključuje pravila stanja, normalizacijo shrambe, sprejemne pogoje, sledljivost, uspešne kriterije in omejitve.
+- Nastavil sem pot funkcije v `.specify/feature.json:1`.
+- Preveril: veljaven JSON, pokritje R01–R12, brez zaključnih presledkov. Preskusov nisem zaganjal, ker je to faza specifikacije.
+- Preostanek: `1035 s`.

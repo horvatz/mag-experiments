@@ -204,6 +204,8 @@ def main():
             return label.replace('−', '-')
         rows = [[readable_label(c['label']),number(c['meanDifference']*scale,1),f"[{number(c['lower']*scale,1)}; {number(c['upper']*scale,1)}]"] for c in selected]
         table(['Kontrast','Povprečna razlika','95 % interval'],rows,[247,110,130])
+        if metric == 'strictSuccessFraction':
+            p('Če vsi postopki pri nekem modelu dosežejo 0 strogih uspehov, to merilo doseže spodnjo mejo. Enak opaženi izid in interval [0; 0] ne dokazujeta splošne enakovrednosti postopkov: ponovno vzorčenje tega vzorca ne more ustvariti neopaženih uspehov. Funkcionalnost in vsebinske ocene zato poročamo ločeno.')
     p('Kontrasti med modeli in časovne razlike so zapisani v primerjalnih podatkih. Če manjka katera od potrebnih treh ponovitev ali točen podatek, kontrasta ne izračunamo.')
     story.append(PageBreak())
     method_page = True

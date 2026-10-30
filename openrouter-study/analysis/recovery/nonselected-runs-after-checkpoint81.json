@@ -5317,6 +5317,347 @@
       "failureCause": "unknown",
       "measuredRetry": false,
       "observation": "Service stream failed during specification. No file changes or implementation/review/own checks. Native error and failed API response preserved, last request bill unknown. Earlier premeasurement probe failed separately and was recovered before this first measured execution. No new ordinal review for002."
+    },
+    {
+      "at": "2026-10-30T08:55:19.205994+00:00",
+      "position": 130,
+      "slug": "deepseek",
+      "id": "P07-C-002",
+      "executionStatus": "invalid_stage_handoff",
+      "elapsedSeconds": 522.245,
+      "strictSuccess": false,
+      "demonstrated": 11,
+      "requirementsPassed": 11,
+      "functionalTestsPassed": 68,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 22,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 61.376,
+          "status": "completed"
+        },
+        {
+          "name": "specify",
+          "elapsedSeconds": 64.665,
+          "status": "completed"
+        },
+        {
+          "name": "plan",
+          "elapsedSeconds": 41.279,
+          "status": "completed"
+        },
+        {
+          "name": "tasks",
+          "elapsedSeconds": 21.594,
+          "status": "completed"
+        },
+        {
+          "name": "implement",
+          "elapsedSeconds": 293.085,
+          "status": "completed"
+        },
+        {
+          "name": "converge",
+          "elapsedSeconds": 34.651,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.083621221,
+      "knownCostUSD": 0.083621221,
+      "apiRequests": 47,
+      "archiveSha256": "e87b676ad9e0486994110d2dc82b9a7d3062626348fdcc07ccfabaa2a42f0b26",
+      "archiveAllHashesVerified": true,
+      "budgetAmendment": "O/1.0-budget-amendment-1",
+      "authoredFiles": 14,
+      "ownTestFiles": 1,
+      "ownTests": 13,
+      "nativeCompletedCommandsByPhase": {
+        "constitution": 15,
+        "specify": 4,
+        "plan": 8,
+        "tasks": 2,
+        "implement": 18,
+        "converge": 3
+      },
+      "confirmedNativeChecks": [
+        {
+          "phase": "05-implement",
+          "item": "item_21",
+          "result": "1 own failed,12 passed despite pipeline exit0"
+        },
+        {
+          "phase": "05-implement",
+          "item": "item_23",
+          "result": "13 own passed after own-test adjustment"
+        },
+        {
+          "phase": "05-implement",
+          "item": "item_25",
+          "result": "full59passed, actual output verified"
+        }
+      ],
+      "convergeFinalJSONValid": true,
+      "handoffError": "Convergence cannot approve unfinished tasks",
+      "unfinishedTask": "T001: initial baseline snapshot before changes was not captured; agent explicitly leaves it unchecked and discloses it in unverified.",
+      "convergeOutcome": "converged",
+      "samePersistentCSession": true,
+      "apiResponseSummary": {
+        "HTTP200_finished_completed": 39,
+        "HTTP200_client_aborted_completed": 8
+      },
+      "failedIndependentTests": {
+        "E06": [
+          "evaluation-desktop",
+          "evaluation-mobile"
+        ],
+        "cause": "App54 renders filterEmpty instead of TaskBoard for empty favorites; board region absent; other22holdout passed."
+      },
+      "observation": "All six C phases completed; valid finalJSON is semantically inconsistent with uncheckedT001. This is NOT JSON syntax/Markdown rejection. Immutable68/70,11/12 retained.13own/full59confirmed; no converge test rerun. No ordinal review for002."
+    },
+    {
+      "at": "2026-10-30T09:14:21.110423+00:00",
+      "position": 131,
+      "slug": "qwen",
+      "id": "P07-C-002",
+      "executionStatus": "execution_failed",
+      "elapsedSeconds": 680.067,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 38,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 678.804,
+          "status": "execution_failed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.01473335,
+      "knownCostUSD": 0.01473335,
+      "apiRequests": 12,
+      "archiveSha256": "8ec34168b1944b2ca93b4eaffda21ce5f709b2d3e770b113f252389d09228d6c",
+      "archiveAllHashesVerified": true,
+      "budgetAmendment": "O/1.0-budget-amendment-1",
+      "authoredFiles": 1,
+      "authoredImplementationFiles": 0,
+      "ownTestFiles": 0,
+      "nativeError": "stream disconnected before completion: Network connection lost.",
+      "errorRequest": 12,
+      "transportCause": "unknown",
+      "lastRequestCostUSD": 0,
+      "lastRequestCostEvidence": "Explicit returned usage.cost=0; not an assumed zero unknown bill.",
+      "apiResponseSummary": {
+        "HTTP200_finished_completed": 10,
+        "HTTP200_client_aborted_completed": 1,
+        "HTTP200_finished_failed": 1
+      },
+      "observation": "Only constitution file modified; service stream failed during first C phase. No specify/plan/tasks/implement/converge or own checks. Original whole-run costcomplete0.01473335 and baseline38/70,0/12 retained. No measured repeat or new ordinal review for002."
+    },
+    {
+      "at": "2026-10-30T09:38:57.920601+00:00",
+      "position": 132,
+      "slug": "glm",
+      "id": "P07-C-002",
+      "executionStatus": "invalid_stage_handoff",
+      "elapsedSeconds": 770.337,
+      "strictSuccess": false,
+      "demonstrated": 11,
+      "requirementsPassed": 11,
+      "functionalTestsPassed": 68,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 22,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 64.495,
+          "status": "completed"
+        },
+        {
+          "name": "specify",
+          "elapsedSeconds": 103.906,
+          "status": "completed"
+        },
+        {
+          "name": "plan",
+          "elapsedSeconds": 42.445,
+          "status": "completed"
+        },
+        {
+          "name": "tasks",
+          "elapsedSeconds": 75.83,
+          "status": "completed"
+        },
+        {
+          "name": "implement",
+          "elapsedSeconds": 477.872,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.5658140110000001,
+      "knownCostUSD": 0.5658140110000001,
+      "apiRequests": 94,
+      "archiveSha256": "475798a7f78d15fba5a2b0a93695e40e2c794ca5ded479f016d2413fa2205bd5",
+      "archiveAllHashesVerified": true,
+      "budgetAmendment": "O/1.0-budget-amendment-1",
+      "authoredFiles": 14,
+      "ownTestFiles": 3,
+      "ownTests": 12,
+      "nativeCompletedCommandsByPhase": {
+        "constitution": 4,
+        "specify": 5,
+        "plan": 3,
+        "tasks": 12,
+        "implement": 39
+      },
+      "confirmedNativeChecks": [
+        {
+          "phase": "05-implement",
+          "item": "item_55",
+          "result": "1 own failed,11 passed"
+        },
+        {
+          "phase": "05-implement",
+          "item": "item_58",
+          "result": "12 own passed"
+        },
+        {
+          "phase": "05-implement",
+          "item": "item_60",
+          "result": "2 regressionUI failed,22 passed; && build not reached"
+        },
+        {
+          "phase": "05-implement",
+          "item": "item_68",
+          "result": "24 regressionUI passed, build command exit0"
+        },
+        {
+          "phase": "05-implement",
+          "item": "item_70",
+          "result": "full58passed, actual output verified"
+        }
+      ],
+      "handoffError": "Missing artifact: docs/agent/verification.md",
+      "requiredVerificationPresent": false,
+      "deliveredVerification": "docs/agent/P07/verification.md",
+      "deliveredVerificationBytes": 1730,
+      "convergeStarted": false,
+      "apiResponseSummary": {
+        "HTTP200_finished_completed": 72,
+        "HTTP200_client_aborted_completed": 22
+      },
+      "failedIndependentTests": {
+        "E06": [
+          "evaluation-desktop",
+          "evaluation-mobile"
+        ],
+        "cause": "App101 empty-favorites message replaces TaskBoard; board region absent. Other22holdout pass."
+      },
+      "observation": "All five started C phases completed; wrapper stops after implementation because required root verification file is absent despite real delivered feature-folder verification. NOT absence of verification content; no repair/relocation or measured repeat.12own/full58confirmed. No new ordinal review for002."
     }
   ],
   "pendingObservations": {}

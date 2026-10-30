@@ -15,6 +15,8 @@ const ds = fixture('deepseek', 24), q = fixture('qwen', 6), empty = fixture('qwe
 const unavailable = fixture('deepseek', 36, 'P08-C-001')
 const overloaded = fixture('glm', 7, 'P07-A-003')
 const requestFailed = fixture('qwen', 11, 'P07-B-002')
+const networkLost = fixture('qwen', 12, 'P07-C-002')
+const networkLostNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P07-C-002/phases/01-constitution/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const requestFailedNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P07-B-002/phases/01-specification/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const overloadedNative = gunzipSync(fs.readFileSync(resolve(study, 'glm/runtime/runs/P07-A-003/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const overloadPatch = patch => ({...overloaded.row,providerError:JSON.stringify({error:{...JSON.parse(overloaded.row.providerError).error,metadata:{...JSON.parse(overloaded.row.providerError).error.metadata,...patch}}})})
@@ -23,6 +25,14 @@ const changed520 = patch => ({ ...unavailable.row, providerError: JSON.stringify
 const native = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-A-001/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const emptyNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const checks = [
+  ['observed Qwen Network connection lost',knownFailure(networkLost.row,networkLost.body,networkLostNative),'qwen-network-lost-cause-unknown'],
+  ['Qwen network loss without native evidence',knownFailure(networkLost.row,networkLost.body),null],
+  ['Qwen network loss unobserved message',knownFailure(networkLost.row,networkLost.body,['stream disconnected before completion: other network error']),null],
+  ['Qwen network loss completed response',knownFailure({...networkLost.row,responseStatus:'completed'},networkLost.body,networkLostNative),null],
+  ['Qwen network loss changed provider',knownFailure({...networkLost.row,provider:'other'},networkLost.body,networkLostNative),null],
+  ['Qwen network loss changed request model',knownFailure(networkLost.row,{...networkLost.body,model:'other'},networkLostNative),null],
+  ['Qwen network loss fallback enabled',knownFailure(networkLost.row,{...networkLost.body,provider:{...networkLost.body.provider,allow_fallbacks:true}},networkLostNative),null],
+  ['Qwen network loss client aborted',knownFailure({...networkLost.row,status:'client_aborted'},networkLost.body,networkLostNative),null],
   ['observed Qwen Request failed Unknown error',knownFailure(requestFailed.row,requestFailed.body,requestFailedNative),'qwen-request-failed-cause-unknown'],
   ['Qwen request failure without native evidence',knownFailure(requestFailed.row,requestFailed.body),null],
   ['Qwen request failure unobserved message',knownFailure(requestFailed.row,requestFailed.body,['stream disconnected before completion: other unknown error']),null],
