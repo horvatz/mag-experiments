@@ -1,7 +1,7 @@
 [
   {
     "slug": "glm",
-    "archived": 48,
+    "archived": 51,
     "explicitResponseOrTransportErrors": 3,
     "affected": [
       {
@@ -36,8 +36,8 @@
   },
   {
     "slug": "deepseek",
-    "archived": 48,
-    "explicitResponseOrTransportErrors": 4,
+    "archived": 51,
+    "explicitResponseOrTransportErrors": 5,
     "affected": [
       {
         "id": "P06-A-001",
@@ -81,6 +81,15 @@
             "evidence": "openrouter-study/deepseek/runtime/runs/P07-A-003/events.jsonl.gz"
           }
         ]
+      },
+      {
+        "id": "P07-B-001",
+        "requests": [
+          47
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/deepseek/api/P07-B-001/model/api-ledger.jsonl",
+        "nativeErrors": []
       }
     ],
     "isolationInterruptions": [
@@ -92,8 +101,8 @@
   },
   {
     "slug": "qwen",
-    "archived": 48,
-    "explicitResponseOrTransportErrors": 15,
+    "archived": 51,
+    "explicitResponseOrTransportErrors": 17,
     "affected": [
       {
         "id": "P05-A-001",
@@ -362,6 +371,42 @@
           {
             "message": "stream disconnected before completion: Network connection lost.",
             "evidence": "openrouter-study/qwen/runtime/runs/P07-C-002/phases/01-constitution/events.jsonl.gz"
+          }
+        ]
+      },
+      {
+        "id": "P07-B-001",
+        "requests": [
+          43
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/qwen/api/P07-B-001/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: JSON error injected into SSE stream",
+            "evidence": "openrouter-study/qwen/runtime/runs/P07-B-001/phases/03-review/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: JSON error injected into SSE stream",
+            "evidence": "openrouter-study/qwen/runtime/runs/P07-B-001/phases/03-review/events.jsonl.gz"
+          }
+        ]
+      },
+      {
+        "id": "P07-C-001",
+        "requests": [
+          40
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/qwen/api/P07-C-001/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: Network connection lost.",
+            "evidence": "openrouter-study/qwen/runtime/runs/P07-C-001/phases/02-specify/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: Network connection lost.",
+            "evidence": "openrouter-study/qwen/runtime/runs/P07-C-001/phases/02-specify/events.jsonl.gz"
           }
         ]
       }

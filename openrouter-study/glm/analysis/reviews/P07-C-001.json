@@ -13,13 +13,14 @@
     {
       "dimension": "specificationCoverage",
       "score": 1,
-      "rationale": "Spec in načrt skladno navedeta R01–R12, obliko in strogo validacijo shrambe, UTF-16, neznane/podvojene ID-je, stabilni filter, oba pogleda, globalnost, projektno čiščenje, oba tipa števcev, dogodke brez povratnega zapisa in izjeme. Načrt dopolni točna imena kontrol, status ter390px. Ostanejo konkretne dokumentacijske vrzeli: opozorilo nikjer ne določi zahtevanega role=alert, ni izrecne ohranitve data-task-id/Pregled stanj opravil in ni celovito opisana poljubna domena0/1/>10/Unicode. To so vrzeli dokumentacije, ne trditev, da ta pravilna vedenja v kodi manjkajo.",
+      "rationale": "Spec in načrt skladno navedeta R01–R12, obliko in strogo validacijo shrambe, UTF-16, neznane/podvojene ID-je, stabilni filter, oba pogleda, globalnost, projektno čiščenje, oba tipa števcev, dogodke brez povratnega zapisa in izjeme. Načrt dopolni točna imena kontrol, status ter390px. Ostanejo konkretne dokumentacijske vrzeli: opozorilo nikjer ne določi zahtevanega role=alert, ni izrecne ohranitve oznake Pregled stanj opravil in ni celovito opisana poljubna domena0/1/>10/Unicode. To so vrzeli dokumentacije, ne trditev, da ta pravilna vedenja v kodi manjkajo. Načrt27 izrecno ohrani data-task-id; to ne šteje za vrzel.",
       "evidence": [
         "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:31",
         "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:41",
         "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:64",
         "runtime/runs/P07-C-001/submission/docs/agent/P07/plan.md:22",
-        "runtime/runs/P07-C-001/submission/docs/agent/P07/plan.md:49"
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/plan.md:49",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/plan.md:27"
       ]
     },
     {
@@ -35,8 +36,8 @@
     },
     {
       "dimension": "traceability",
-      "score": 1,
-      "rationale": "Matrika vsehR poveže konkretne module in poimenovane teste;64/64 pri npm run check ter18/18 lastnih so resnični, končni testi jasno niso pripisani modelu. Vendar so uspehi širši od dokazov: R06 je preverjen samo v preglednici, R10 šteje kartice in ne stolpčnih števcev, R08 osveži že neaktiven filter, R11 nima bralne izjeme. Trditev konvergence no actionable gaps/all R implemented zato ni popolnoma podprta. To ni izmišljen zagon testov; povezave so delno preverljive.",
+      "score": 2,
+      "rationale": "Matrika vsehR poveže konkretne module in poimenovane teste;64/64 pri npm run check ter18/18 lastnih potrdi native dnevnik, končni testi so jasno označeni kot neizvedeni. Povezave omogočajo preverjanje omejenega dosega: R06 teče samo v preglednici, R10 šteje kartice namesto besedila stolpčnih števcev, R08 osveži že neaktiven filter, R11 nima bralne izjeme. Oznaka uspešno in konvergenčni no actionable gaps ne dokazujeta izčrpnosti. Po isti kalibraciji kot Luna/P07-C-001 so neposredno preverljive povezave in resnično zapisani izidi2; omejena testna pokritost je ločeno1 pri lastnih preverjanjih.",
       "evidence": [
         "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:48",
         "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:53",

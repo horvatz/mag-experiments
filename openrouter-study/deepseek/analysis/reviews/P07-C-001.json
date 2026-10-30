@@ -1,0 +1,105 @@
+{
+  "id": "P07-C-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-30",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "V celoti je prebranih vseh13 dejansko oddanih avtorskih datotek, preverjene arhivske vsote,45native ukazov in47 ohranjenih orodnih klicev. Izvirni končni odgovor z uvodom/ograjenim JSON ostane neveljavna predaja; raziskovalec ga ne popravlja in meritve ne ponavlja. Vsebinska presoja ni vrnjena merjeni seji.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija izrecno zajame vsehR01–R12, točna dostopna imena/vloge,390px, domeno0/1/>10/Unicode, strogo validacijo vključno z mešanimi ids, UTF-16, globalno množico, oba prikaza, stabilen filter, ponastavitve, čiščenje, števce ter storage/null/izjeme. Ostane konkretno nerazrešeno protislovje: spec91 ob nedostopni shrambi omeji stanje na trenutni projekt v pomnilniku, čeprav R08/globalniF veljata tudi ob izjemi; podobno opozorilo v kodi pravi le v tem pogledu. To je dokumentacijska vrzel izjemnega načina, ne ugotovljen runtime izbris: dejanski module store je globalen.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:35",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:47",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:53",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:91",
+        "runtime/runs/P07-C-001/submission/src/App.tsx:55",
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:7"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "F,f,T_p,V_p in norm so opredeljeni; vidnost je stabilna projekcija, preklop simetrična razlika, čiščenje razlika s točnimi ID-ji projekta, X/M pa kardinalnosti celotnega projekta. JSON veljavnost zahteva vsak element niz in natančno različico; zapis je enkraten/sortiranUTF-16, nalaganje ne piše, storage(null) prazni brez odmeva. Globalnost, ponastavitev filtra in ohranitev pri pogledu ter podatkov/API so preverljivi. Lokalizirana nejasnost zaključne omejitve izjeme je posebej ocenjena pri pokritosti.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:31",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:40",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:48",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:50"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Končna matrika poveže vseh12 zahtev z dejanskimi moduli in poimenovanimi lastnimi testi, verification pa ohrani15/16 prvi zagon, popravek zaporedja testa in62/62 končni zagon. Native dnevnik rezultate potrdi; neizvedeni predhodni T002, ročni ogled in nedostopni skriti testi so odkrito navedeni. Doseg je preverljiv, ne izčrpen: R06 ima le preglednico, R02 samo preproste ASCII ID-je, R11 kombinacija aktivnega filtra ni posebej testirana. Izjava0vrzeli ne dokazuje polne pokritosti. Neveljaven celoten zaključni JSON je ločen procesni izid, ne izmišljena testna evidenca.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:67",
+        "runtime/runs/P07-C-001/submission/docs/agent/verification.md:8",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/tasks.md:9",
+        "analysis/evidence/P07-C-001-checks.md#05-implement-item_8",
+        "analysis/evidence/P07-C-001-checks.md#05-implement-item_13",
+        "runtime/runs/P07-C-001/last-message.md",
+        "runtime/runs/P07-C-001/phases/06-converge/result.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisto jedro loči parse/normalizacijo/serializacijo. Globalni zunanji store prek useSyncExternalStore ohrani eno množico med projekti, lokalni filter živi v ProjectView s projektnim key; vidna opravila in števci so izpeljani. En FavoriteButton deli dostopno akcijo med vrstico/kartico, modul shrambe loči persist in handleStorage brez odmeva. Module listener živi s stranjo, naročniki se odjavijo. Lokalna izbira praznega prikaza izključi območje table, vendar odgovornosti niso razpršene ali nepotrebno podvojene.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/src/favorites.ts:3",
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:6",
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:24",
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:36",
+        "runtime/runs/P07-C-001/submission/src/FavoriteButton.tsx:3",
+        "runtime/runs/P07-C-001/submission/src/App.tsx:13",
+        "runtime/runs/P07-C-001/submission/src/TaskBoard.tsx:14"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Šestnajst uporabnih lastnih testov dejansko uspe v full62/62. Močni primeri vključujejo enaka naslova, mešani ids brez prepisovanja, ohranitev neznanih/tuji ID-jev, aktiven filter pred projektom in reloadom, natančne stolpčne števce, storage iz ne-praznega stanja brez odmeva/drug ključ/null, neodvisni bralno in pisalno izjemo, brez API zapisov in390px. Manjkajo0/1/>10/prazni projekti, ločilni UTF-16 podatki, storage neveljavna vrednost pod aktivnim filtrom in prazni filter na tabli. Zato1; število testov ali samo deklariran UTF-16 naslov ne nadomesti robnih podatkov.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:24",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:87",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:104",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:157",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:185",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:198",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:211",
+        "runtime/runs/P07-C-001/submission/tests/agent/favorites.spec.ts:221",
+        "analysis/evidence/P07-C-001-checks.md#05-implement-item_13"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E06 na obeh širinah pri praznem filtru ne najde območja Tabla opravil. App57 izbere sporočilo Ni priljubljenih opravil. pred TaskBoard58. Zahtevano sporočilo obstaja, kontrole ostanejo, vendar test zahteva tudi vidno območje table; ne gre za manjkajoče sporočilo kot pri GLM/P07-C-001.68/70,11/12; statične/allowed true,strictfalse tudi zaradi neveljavne predaje.",
+    "evidence": [
+      "runtime/runs/P07-C-001/evaluation-summary.json",
+      "runtime/runs/P07-C-001/evaluation-tests.log",
+      "runtime/runs/P07-C-001/submission/src/App.tsx:57",
+      "runtime/runs/P07-C-001/phases/06-converge/result.json"
+    ]
+  },
+  "finalFailureNote": "Invalid_stage_handoff733,262s po šestih completed fazah. Celoten final se začne z ✅ Converged in vsebuje ograjen JSON; validator Unexpected token ✅. Veljavnega objekta iz ograje raziskovalec ne izvleče za nadomestno predajo.52zahtevHTTP200/response.completed priDeepInfra/fp8 (43finished,9client_aborted), popolni račun0,0938511668USD.16lastnih+46dostopnih=62uspešnih, neodvisno68/70,11/12. Brez merjene ponovitve.",
+  "developmentFailureExample": {
+    "description": "Zgodnji apply_patch/heredoc poskusi odpovedujejo; model najde dejansko lokalno orodje in TMPPREFIX ter dostavi dokumente. Prvi lastni zagon15pass/1fail se ustavi pri kliku web-02, ki ga je isti test že skril s filtrom. Popravek premakne klik pred filter, brez spremembe produkcijske kode; naslednji full62pass. Pipeline tail vrne0, toda uspeh podpira dejanski izpis62passed. Konvergenca samo bere/prerequisite preverja in ne spreminja tasks; dodatni uvod/ograja v končnem odgovoru nato porušita predajo.",
+    "evidence": [
+      "analysis/evidence/P07-C-001-checks.md#01-constitution-item_12",
+      "analysis/evidence/P07-C-001-checks.md#01-constitution-item_21",
+      "analysis/evidence/P07-C-001-checks.md#02-specify-item_5",
+      "analysis/evidence/P07-C-001-checks.md#05-implement-item_8",
+      "analysis/evidence/P07-C-001-checks.md#05-implement-item_10",
+      "analysis/evidence/P07-C-001-checks.md#05-implement-item_13",
+      "analysis/evidence/P07-C-001-checks.md#06-converge-item_3",
+      "runtime/runs/P07-C-001/last-message.md"
+    ]
+  }
+}
