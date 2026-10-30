@@ -7018,6 +7018,90 @@
         "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
       },
       "newOrdinalReviewWritten": false
+    },
+    {
+      "at": "2026-10-30T17:55:49.783987+00:00",
+      "position": 158,
+      "slug": "qwen",
+      "id": "P06-B-002",
+      "executionStatus": "missing_specification",
+      "elapsedSeconds": 4.958,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 38,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 4.409,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.00074875,
+      "knownCostUSD": 0.00074875,
+      "apiRequests": 1,
+      "archiveSha256": "90002f8451f13f2533873635aedb642093e9e7c0213dfd326cf9d4bd34103034",
+      "authoredFiles": 0,
+      "ownTestFiles": 0,
+      "ownTestCases": 0,
+      "lastFullCheck": "No model checks. Researcher evaluator38regression/70,0/12newrequirements.",
+      "handoffError": "missing_specification",
+      "handoffLimitation": "One measured request HTTP200/response.completed,101output tokens all reasoning, no native agent_message/tool call or authored artifact. Cause unknown; not counted as explicit API response/transport error. Raw upstream stream was not retained by original relay, so no claim about an identified parser or provider defect.",
+      "functionalFailure": "CSV feature not submitted; baseline-only38/70 and0/12. Static/allowed pass applies to unchanged app, strictfalse.",
+      "service": {
+        "provider": "siliconflow/fp8",
+        "requests": 1,
+        "httpStatus": 200,
+        "responseStatus": "completed",
+        "transportStatus": "client_aborted",
+        "inputTokens": 7336,
+        "outputTokens": 101,
+        "reasoningTokens": 101,
+        "returnedCostUSD": 0.00074875,
+        "cause": "unknown"
+      },
+      "developmentEvidence": [
+        "runtime/runs/P06-B-002/phases/01-specification/events.jsonl.gz",
+        "runtime/runs/P06-B-002/execution.json",
+        "api/P06-B-002/model/api-ledger.jsonl"
+      ],
+      "newOrdinalReviewWritten": false
     }
   ],
   "pendingObservations": {}

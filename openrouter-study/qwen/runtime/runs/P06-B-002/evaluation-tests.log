@@ -1,0 +1,1419 @@
+[WebServer] (node:7526) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 70 tests using 1 worker
+
+(node:7527) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [regression-api] › .work/P06/baseline/tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (38ms)
+  ✓   2 [regression-api] › .work/P06/baseline/tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (8ms)
+  ✓   3 [regression-api] › .work/P06/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (7ms)
+  ✓   4 [regression-api] › .work/P06/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (5ms)
+  ✓   5 [regression-api] › .work/P06/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [regression-api] › .work/P06/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (4ms)
+  ✓   7 [regression-api] › .work/P06/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (5ms)
+  ✓   8 [regression-api] › .work/P06/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (5ms)
+  ✓   9 [regression-api] › .work/P06/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [regression-api] › .work/P06/baseline/tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (10ms)
+  ✓  11 [regression-api] › .work/P06/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with success (11ms)
+  ✓  12 [regression-api] › .work/P06/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [regression-api] › .work/P06/baseline/tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (10ms)
+  ✓  14 [regression-api] › .work/P06/baseline/tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:7529) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (479ms)
+  ✓  16 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (471ms)
+  ✓  17 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (567ms)
+  ✓  18 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (607ms)
+  ✓  19 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (452ms)
+  ✓  20 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (366ms)
+  ✓  21 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (366ms)
+  ✓  22 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (302ms)
+  ✓  23 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (333ms)
+  ✓  24 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (865ms)
+  ✓  25 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (520ms)
+  ✓  26 [regression-desktop] › .work/P06/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (400ms)
+(node:7545) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  27 [development-desktop] › tasks/P06/development.spec.ts:2:1 › D01: default file framing (5.3s)
+(node:7550) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  28 [development-desktop] › tasks/P06/development.spec.ts:3:1 › D02: selected fields and separator (5.3s)
+(node:7557) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  29 [development-desktop] › tasks/P06/development.spec.ts:4:1 › D03: escaped quotes and neutralized formula (5.3s)
+(node:7562) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  30 [development-desktop] › tasks/P06/development.spec.ts:5:1 › D04: view parity and no writes (5.3s)
+(node:7568) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  31 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:18:1 › E01: R01 default order, project and columns (5.3s)
+(node:7573) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  32 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:19:1 › E02: R02 fixed column order regardless of selection order (5.3s)
+(node:7579) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  33 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:20:1 › E03: R03 zero columns disables download and can recover (5.3s)
+(node:7584) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  34 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:21:1 › E04: R04 filter only exported rows and empty result disables (5.3s)
+(node:7589) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  35 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:22:1 › E05: R05 BOM filename and no navigation (5.4s)
+(node:7596) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  36 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:23:1 › E06: R06 both separators and mandatory double quoting (5.3s)
+(node:7601) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  37 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:24:1 › E07: R07 embedded CR LF and final CRLF retained (5.3s)
+(node:7608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  38 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:25:1 › E08: R08 formula neutralization applies to all data fields (5.3s)
+(node:7613) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  39 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:26:1 › E09: R09 Unicode whitespace and raw date status (5.3s)
+(node:7618) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  40 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:27:1 › E10: R10 views preserve settings and byte-identical files (5.3s)
+(node:7624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  41 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:28:1 › E11: R11 current settings and resets (5.3s)
+(node:8069) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  42 [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:29:1 › E12: R12 data and details unchanged, no writes (5.3s)
+(node:8076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (394ms)
+  ✓  44 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (620ms)
+  ✓  45 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (637ms)
+  ✓  46 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (713ms)
+  ✓  47 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (460ms)
+  ✓  48 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (399ms)
+  ✓  49 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (388ms)
+  ✓  50 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (369ms)
+  ✓  51 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (336ms)
+  ✓  52 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (927ms)
+  ✓  53 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (659ms)
+  ✓  54 [regression-mobile] › .work/P06/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (419ms)
+(node:8094) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  55 [development-mobile] › tasks/P06/development.spec.ts:2:1 › D01: default file framing (5.3s)
+(node:8101) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  56 [development-mobile] › tasks/P06/development.spec.ts:3:1 › D02: selected fields and separator (5.4s)
+(node:8106) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  57 [development-mobile] › tasks/P06/development.spec.ts:4:1 › D03: escaped quotes and neutralized formula (5.3s)
+(node:8113) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  58 [development-mobile] › tasks/P06/development.spec.ts:5:1 › D04: view parity and no writes (5.3s)
+(node:8120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  59 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:18:1 › E01: R01 default order, project and columns (5.3s)
+(node:8344) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  60 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:19:1 › E02: R02 fixed column order regardless of selection order (5.4s)
+(node:8349) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  61 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:20:1 › E03: R03 zero columns disables download and can recover (5.3s)
+(node:8354) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  62 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:21:1 › E04: R04 filter only exported rows and empty result disables (5.3s)
+(node:8361) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  63 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:22:1 › E05: R05 BOM filename and no navigation (5.4s)
+(node:8368) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  64 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:23:1 › E06: R06 both separators and mandatory double quoting (5.3s)
+(node:8374) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  65 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:24:1 › E07: R07 embedded CR LF and final CRLF retained (5.3s)
+(node:8381) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  66 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:25:1 › E08: R08 formula neutralization applies to all data fields (5.3s)
+(node:8386) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  67 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:26:1 › E09: R09 Unicode whitespace and raw date status (5.3s)
+(node:8617) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  68 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:27:1 › E10: R10 views preserve settings and byte-identical files (5.3s)
+(node:8622) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  69 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:28:1 › E11: R11 current settings and resets (5.4s)
+(node:8627) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  70 [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:29:1 › E12: R12 data and details unchanged, no writes (5.3s)
+
+
+  1) [development-desktop] › tasks/P06/development.spec.ts:2:1 › D01: default file framing ─────────
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:2:95
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:2:95
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D01-default-file-framing-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/development-D01-default-file-framing-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D01-default-file-framing-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/development-D01-default-file-framing-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [development-desktop] › tasks/P06/development.spec.ts:3:1 › D02: selected fields and separator 
+
+    TimeoutError: locator.uncheck: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec projectId', exact: true })
+
+
+      1 | import { test, expect, mount, select, downloadCSV, board, readonly } from './helpers.ts'
+      2 | test('D01: default file framing', async ({ page }) => { await mount(page); const file = await downloadCSV(page); expect(file.name).toBe('folio-web.csv'); expect(file.text.startsWith('\uFEFF"id";"projectId";"title";"status";"assignee";"dueDate";"description"\r\n')).toBe(true); expect(file.text.endsWith('\r\n')).toBe(true) })
+    > 3 | test('D02: selected fields and separator', async ({ page }) => { await mount(page); for (const key of ['projectId','title','status','assignee','dueDate','description']) await page.getByRole('checkbox', { name: 'Stolpec '+key, exact: true }).uncheck(); await select(page, 'Filter izvoza', 'done'); await select(page, 'Ločilo CSV', ','); expect((await downloadCSV(page)).text).toBe('\uFEFF"id"\r\n"web-03"\r\n"web-06"\r\n') })
+        |                                                                                                                                                                                                                                                  ^
+      4 | test('D03: escaped quotes and neutralized formula', async ({ page }) => { await mount(page); const file = await downloadCSV(page); expect(file.text).toContain('"Zapis, ""citat"""'); expect(file.text).toContain('"\'=SUM(A1)"'); expect(file.text).toContain('Prva vrstica\nDruga vrstica; čšž') })
+      5 | test('D04: view parity and no writes', async ({ page }) => { const writes = await mount(page); await select(page, 'Filter izvoza', 'in_progress'); const first = await downloadCSV(page); await board(page); expect(await downloadCSV(page)).toEqual(first); await readonly(page, writes) })
+      6 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:3:242
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D02-selected-fields-and-separator-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/development-D02-selected-fields-and-separator-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D02-selected-fields-and-separator-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/development-D02-selected-fields-and-separator-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [development-desktop] › tasks/P06/development.spec.ts:4:1 › D03: escaped quotes and neutralized formula 
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:4:113
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:4:113
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D03-escaped-quotes-and-neutralized-formula-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/development-D03-escaped-quotes-and-neutralized-formula-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D03-escaped-quotes-and-neutralized-formula-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/development-D03-escaped-quotes-and-neutralized-formula-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [development-desktop] › tasks/P06/development.spec.ts:5:1 › D04: view parity and no writes ────
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Filter izvoza', exact: true })
+
+
+       at tasks/P06/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:5:102
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:18:1 › E01: R01 default order, project and columns 
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:18:110
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:18:110
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E01-R01-default-order-project-and-columns-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E01-R01-default-order-project-and-columns-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E01-R01-default-order-project-and-columns-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E01-R01-default-order-project-and-columns-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:19:1 › E02: R02 fixed column order regardless of selection order 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:19:106
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E02-R02-fixed-c-33e66-gardless-of-selection-order-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E02-R02-fixed-c-33e66-gardless-of-selection-order-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E02-R02-fixed-c-33e66-gardless-of-selection-order-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E02-R02-fixed-c-33e66-gardless-of-selection-order-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:20:1 › E03: R03 zero columns disables download and can recover 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:20:104
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E03-R03-zero-co-ecf22-es-download-and-can-recover-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E03-R03-zero-co-ecf22-es-download-and-can-recover-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E03-R03-zero-co-ecf22-es-download-and-can-recover-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E03-R03-zero-co-ecf22-es-download-and-can-recover-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:21:1 › E04: R04 filter only exported rows and empty result disables 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Filter izvoza', exact: true })
+
+
+       at tasks/P06/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:21:155
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E04-R04-filter--f5f74-s-and-empty-result-disables-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E04-R04-filter--f5f74-s-and-empty-result-disables-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E04-R04-filter--f5f74-s-and-empty-result-disables-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E04-R04-filter--f5f74-s-and-empty-result-disables-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:22:1 › E05: R05 BOM filename and no navigation 
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:22:152
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:22:152
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E05-R05-BOM-filename-and-no-navigation-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E05-R05-BOM-filename-and-no-navigation-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E05-R05-BOM-filename-and-no-navigation-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E05-R05-BOM-filename-and-no-navigation-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:23:1 › E06: R06 both separators and mandatory double quoting 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:23:160
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E06-R06-both-se-b0737-nd-mandatory-double-quoting-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E06-R06-both-se-b0737-nd-mandatory-double-quoting-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E06-R06-both-se-b0737-nd-mandatory-double-quoting-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E06-R06-both-se-b0737-nd-mandatory-double-quoting-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:24:1 › E07: R07 embedded CR LF and final CRLF retained 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:24:165
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E07-R07-embedded-CR-LF-and-final-CRLF-retained-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E07-R07-embedded-CR-LF-and-final-CRLF-retained-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E07-R07-embedded-CR-LF-and-final-CRLF-retained-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E07-R07-embedded-CR-LF-and-final-CRLF-retained-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:25:1 › E08: R08 formula neutralization applies to all data fields 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:25:372
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E08-R08-formula-aca5e--applies-to-all-data-fields-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E08-R08-formula-aca5e--applies-to-all-data-fields-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E08-R08-formula-aca5e--applies-to-all-data-fields-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E08-R08-formula-aca5e--applies-to-all-data-fields-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:26:1 › E09: R09 Unicode whitespace and raw date status 
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:26:267
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:26:267
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E09-R09-Unicode-whitespace-and-raw-date-status-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E09-R09-Unicode-whitespace-and-raw-date-status-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E09-R09-Unicode-whitespace-and-raw-date-status-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E09-R09-Unicode-whitespace-and-raw-date-status-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:27:1 › E10: R10 views preserve settings and byte-identical files 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:27:106
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E10-R10-views-p-9c78d-gs-and-byte-identical-files-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E10-R10-views-p-9c78d-gs-and-byte-identical-files-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E10-R10-views-p-9c78d-gs-and-byte-identical-files-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E10-R10-views-p-9c78d-gs-and-byte-identical-files-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:28:1 › E11: R11 current settings and resets 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:28:85
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E11-R11-current-settings-and-resets-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E11-R11-current-settings-and-resets-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E11-R11-current-settings-and-resets-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E11-R11-current-settings-and-resets-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:29:1 › E12: R12 data and details unchanged, no writes 
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:29:117
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:29:117
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E12-R12-data-and-details-unchanged-no-writes-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E12-R12-data-and-details-unchanged-no-writes-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E12-R12-data-and-details-unchanged-no-writes-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E12-R12-data-and-details-unchanged-no-writes-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [development-mobile] › tasks/P06/development.spec.ts:2:1 › D01: default file framing ─────────
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:2:95
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:2:95
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D01-default-file-framing-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/development-D01-default-file-framing-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D01-default-file-framing-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/development-D01-default-file-framing-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [development-mobile] › tasks/P06/development.spec.ts:3:1 › D02: selected fields and separator 
+
+    TimeoutError: locator.uncheck: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec projectId', exact: true })
+
+
+      1 | import { test, expect, mount, select, downloadCSV, board, readonly } from './helpers.ts'
+      2 | test('D01: default file framing', async ({ page }) => { await mount(page); const file = await downloadCSV(page); expect(file.name).toBe('folio-web.csv'); expect(file.text.startsWith('\uFEFF"id";"projectId";"title";"status";"assignee";"dueDate";"description"\r\n')).toBe(true); expect(file.text.endsWith('\r\n')).toBe(true) })
+    > 3 | test('D02: selected fields and separator', async ({ page }) => { await mount(page); for (const key of ['projectId','title','status','assignee','dueDate','description']) await page.getByRole('checkbox', { name: 'Stolpec '+key, exact: true }).uncheck(); await select(page, 'Filter izvoza', 'done'); await select(page, 'Ločilo CSV', ','); expect((await downloadCSV(page)).text).toBe('\uFEFF"id"\r\n"web-03"\r\n"web-06"\r\n') })
+        |                                                                                                                                                                                                                                                  ^
+      4 | test('D03: escaped quotes and neutralized formula', async ({ page }) => { await mount(page); const file = await downloadCSV(page); expect(file.text).toContain('"Zapis, ""citat"""'); expect(file.text).toContain('"\'=SUM(A1)"'); expect(file.text).toContain('Prva vrstica\nDruga vrstica; čšž') })
+      5 | test('D04: view parity and no writes', async ({ page }) => { const writes = await mount(page); await select(page, 'Filter izvoza', 'in_progress'); const first = await downloadCSV(page); await board(page); expect(await downloadCSV(page)).toEqual(first); await readonly(page, writes) })
+      6 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:3:242
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D02-selected-fields-and-separator-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/development-D02-selected-fields-and-separator-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D02-selected-fields-and-separator-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/development-D02-selected-fields-and-separator-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [development-mobile] › tasks/P06/development.spec.ts:4:1 › D03: escaped quotes and neutralized formula 
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:4:113
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:4:113
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D03-escaped-quotes-and-neutralized-formula-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/development-D03-escaped-quotes-and-neutralized-formula-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D03-escaped-quotes-and-neutralized-formula-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/development-D03-escaped-quotes-and-neutralized-formula-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [development-mobile] › tasks/P06/development.spec.ts:5:1 › D04: view parity and no writes ────
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Filter izvoza', exact: true })
+
+
+       at tasks/P06/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/development.spec.ts:5:102
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/development-D04-view-parity-and-no-writes-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:18:1 › E01: R01 default order, project and columns 
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:18:110
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:18:110
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E01-R01-default-order-project-and-columns-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E01-R01-default-order-project-and-columns-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E01-R01-default-order-project-and-columns-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E01-R01-default-order-project-and-columns-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:19:1 › E02: R02 fixed column order regardless of selection order 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:19:106
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E02-R02-fixed-c-33e66-gardless-of-selection-order-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E02-R02-fixed-c-33e66-gardless-of-selection-order-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E02-R02-fixed-c-33e66-gardless-of-selection-order-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E02-R02-fixed-c-33e66-gardless-of-selection-order-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:20:1 › E03: R03 zero columns disables download and can recover 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:20:104
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E03-R03-zero-co-ecf22-es-download-and-can-recover-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E03-R03-zero-co-ecf22-es-download-and-can-recover-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E03-R03-zero-co-ecf22-es-download-and-can-recover-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E03-R03-zero-co-ecf22-es-download-and-can-recover-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:21:1 › E04: R04 filter only exported rows and empty result disables 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Filter izvoza', exact: true })
+
+
+       at tasks/P06/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:21:155
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E04-R04-filter--f5f74-s-and-empty-result-disables-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E04-R04-filter--f5f74-s-and-empty-result-disables-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E04-R04-filter--f5f74-s-and-empty-result-disables-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E04-R04-filter--f5f74-s-and-empty-result-disables-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  25) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:22:1 › E05: R05 BOM filename and no navigation 
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:22:152
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:22:152
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E05-R05-BOM-filename-and-no-navigation-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E05-R05-BOM-filename-and-no-navigation-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E05-R05-BOM-filename-and-no-navigation-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E05-R05-BOM-filename-and-no-navigation-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  26) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:23:1 › E06: R06 both separators and mandatory double quoting 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:23:160
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E06-R06-both-se-b0737-nd-mandatory-double-quoting-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E06-R06-both-se-b0737-nd-mandatory-double-quoting-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E06-R06-both-se-b0737-nd-mandatory-double-quoting-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E06-R06-both-se-b0737-nd-mandatory-double-quoting-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  27) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:24:1 › E07: R07 embedded CR LF and final CRLF retained 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:24:165
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E07-R07-embedded-CR-LF-and-final-CRLF-retained-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E07-R07-embedded-CR-LF-and-final-CRLF-retained-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E07-R07-embedded-CR-LF-and-final-CRLF-retained-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E07-R07-embedded-CR-LF-and-final-CRLF-retained-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  28) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:25:1 › E08: R08 formula neutralization applies to all data fields 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:25:372
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E08-R08-formula-aca5e--applies-to-all-data-fields-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E08-R08-formula-aca5e--applies-to-all-data-fields-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E08-R08-formula-aca5e--applies-to-all-data-fields-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E08-R08-formula-aca5e--applies-to-all-data-fields-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  29) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:26:1 › E09: R09 Unicode whitespace and raw date status 
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:26:267
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:26:267
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E09-R09-Unicode-whitespace-and-raw-date-status-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E09-R09-Unicode-whitespace-and-raw-date-status-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E09-R09-Unicode-whitespace-and-raw-date-status-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E09-R09-Unicode-whitespace-and-raw-date-status-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  30) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:27:1 › E10: R10 views preserve settings and byte-identical files 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:27:106
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E10-R10-views-p-9c78d-gs-and-byte-identical-files-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E10-R10-views-p-9c78d-gs-and-byte-identical-files-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E10-R10-views-p-9c78d-gs-and-byte-identical-files-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E10-R10-views-p-9c78d-gs-and-byte-identical-files-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  31) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:28:1 › E11: R11 current settings and resets 
+
+    TimeoutError: locator.setChecked: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('checkbox', { name: 'Stolpec id', exact: true })
+
+
+      14 |   expect(quoted).toBe(false);expect(closed).toBe(false);expect(row).toEqual([]);expect(cell).toBe('');return rows
+      15 | }
+    > 16 | async function fields(page:import('@playwright/test').Page, keep:string[]) { for(const key of columns)await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).setChecked(keep.includes(key)) }
+         |                                                                                                                                                                         ^
+      17 | const exportButton=(page:import('@playwright/test').Page)=>page.getByRole('button',{name:'Izvozi CSV',exact:true})
+      18 | test('E01: R01 default order, project and columns',async({page})=>{await mount(page);const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(columns);expect(rows.slice(1).map(r=>r[0])).toEqual(webIds());expect(rows.slice(1).every(r=>r[1]==='web')).toBe(true);await expect(page.getByRole('combobox',{name:'Filter izvoza',exact:true})).toHaveValue('all')})
+      19 | test('E02: R02 fixed column order regardless of selection order',async({page})=>{await mount(page);await fields(page,[]);for(const key of ['description','title','id'])await page.getByRole('checkbox',{name:'Stolpec '+key,exact:true}).check();const rows=parse((await downloadCSV(page)).text);expect(rows[0]).toEqual(['id','title','description']);expect(rows[1]).toEqual(['web-01','Čas za pregled','Končni zapis vsebine'])})
+        at fields (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:16:169)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:28:85
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E11-R11-current-settings-and-resets-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E11-R11-current-settings-and-resets-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E11-R11-current-settings-and-resets-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E11-R11-current-settings-and-resets-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32) [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:29:1 › E12: R12 data and details unchanged, no writes 
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+       at tasks/P06/helpers.ts:75
+
+      73 | }
+      74 | export async function downloadCSV(page: Page) {
+    > 75 |   const event = page.waitForEvent('download'); await click(page, 'Izvozi CSV'); const download = await event
+         |                      ^
+      76 |   const stream = await download.createReadStream(); if (!stream) throw Error('Download has no stream')
+      77 |   const buffers: Buffer[] = []; for await (const part of stream) buffers.push(Buffer.from(part))
+      78 |   return { name: download.suggestedFilename(), text: Buffer.concat(buffers).toString('utf8') }
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:22)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:29:117
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Izvozi CSV', exact: true })
+
+
+       at tasks/P06/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:49:100)
+        at downloadCSV (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P06/helpers.ts:75:54)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P06/acceptance.spec.ts:29:117
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E12-R12-data-and-details-unchanged-no-writes-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E12-R12-data-and-details-unchanged-no-writes-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E12-R12-data-and-details-unchanged-no-writes-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P06-B-002/evaluation-artifacts/acceptance-E12-R12-data-and-details-unchanged-no-writes-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32 failed
+    [development-desktop] › tasks/P06/development.spec.ts:2:1 › D01: default file framing ──────────
+    [development-desktop] › tasks/P06/development.spec.ts:3:1 › D02: selected fields and separator ─
+    [development-desktop] › tasks/P06/development.spec.ts:4:1 › D03: escaped quotes and neutralized formula 
+    [development-desktop] › tasks/P06/development.spec.ts:5:1 › D04: view parity and no writes ─────
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:18:1 › E01: R01 default order, project and columns 
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:19:1 › E02: R02 fixed column order regardless of selection order 
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:20:1 › E03: R03 zero columns disables download and can recover 
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:21:1 › E04: R04 filter only exported rows and empty result disables 
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:22:1 › E05: R05 BOM filename and no navigation 
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:23:1 › E06: R06 both separators and mandatory double quoting 
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:24:1 › E07: R07 embedded CR LF and final CRLF retained 
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:25:1 › E08: R08 formula neutralization applies to all data fields 
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:26:1 › E09: R09 Unicode whitespace and raw date status 
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:27:1 › E10: R10 views preserve settings and byte-identical files 
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:28:1 › E11: R11 current settings and resets 
+    [evaluation-desktop] › evaluation/P06/acceptance.spec.ts:29:1 › E12: R12 data and details unchanged, no writes 
+    [development-mobile] › tasks/P06/development.spec.ts:2:1 › D01: default file framing ───────────
+    [development-mobile] › tasks/P06/development.spec.ts:3:1 › D02: selected fields and separator ──
+    [development-mobile] › tasks/P06/development.spec.ts:4:1 › D03: escaped quotes and neutralized formula 
+    [development-mobile] › tasks/P06/development.spec.ts:5:1 › D04: view parity and no writes ──────
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:18:1 › E01: R01 default order, project and columns 
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:19:1 › E02: R02 fixed column order regardless of selection order 
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:20:1 › E03: R03 zero columns disables download and can recover 
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:21:1 › E04: R04 filter only exported rows and empty result disables 
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:22:1 › E05: R05 BOM filename and no navigation 
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:23:1 › E06: R06 both separators and mandatory double quoting 
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:24:1 › E07: R07 embedded CR LF and final CRLF retained 
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:25:1 › E08: R08 formula neutralization applies to all data fields 
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:26:1 › E09: R09 Unicode whitespace and raw date status 
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:27:1 › E10: R10 views preserve settings and byte-identical files 
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:28:1 › E11: R11 current settings and resets 
+    [evaluation-mobile] › evaluation/P06/acceptance.spec.ts:29:1 › E12: R12 data and details unchanged, no writes 
+  38 passed (3.2m)
