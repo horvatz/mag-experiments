@@ -22,6 +22,16 @@ export function diagnosedImageError(row, body) {
 
 export function knownFailure(row, body, nativeFailures = []) {
   if (diagnosedImageError(row, body)) return 'deepinfra-image-tool'
+  if (row.model === 'z-ai/glm-5.3' && row.provider === 'wafer/us' && row.httpStatus === 429 && row.status === 'http_error') {
+    let error
+    try { error = JSON.parse(row.providerError).error } catch { return null }
+    const meta = error?.metadata
+    if (error?.code !== 429 || error.message !== 'Provider returned error' || meta?.provider_name !== 'Wafer' || meta?.is_byok !== false || meta?.provider_error_code !== 'server_overloaded' || meta?.limit_source !== 'upstream_provider_shared_pool') return null
+    if (row.sentUpstream !== true || row.retryAfter !== '2' || meta.retry_after_seconds !== 2 || meta.headers?.['Retry-After'] !== '2') return null
+    if (body.model !== row.model || body.provider?.only?.length !== 1 || body.provider.only[0] !== row.provider || body.provider.allow_fallbacks !== false) return null
+    if (!nativeFailures.includes('exceeded retry limit, last status: 429 Too Many Requests')) return null
+    return 'glm-wafer-shared-pool-overload'
+  }
   if (row.model === 'deepseek/deepseek-v4.1-flash' && row.provider === 'deepinfra/fp8' && row.httpStatus === 520 && row.status === 'http_error') {
     let error
     try { error = JSON.parse(row.providerError).error } catch { return null }
@@ -122,7 +132,7 @@ async function main() {
         classifications.push(classification)
       }
       let diagnostic = null
-      if (classifications.some(value => value.startsWith('qwen-') || value === 'glm-image-input-unsupported' || value === 'deepinfra-http520-cause-unknown')) {
+      if (classifications.some(value => value.startsWith('qwen-') || value === 'glm-image-input-unsupported' || value === 'glm-wafer-shared-pool-overload' || value === 'deepinfra-http520-cause-unknown')) {
         save({ action: 'checking_service', previousRun: active.slug + '/' + active.id, errorRequests: errors.map(r => r.number), classifications })
         diagnostic = await serviceCheck(study, active.slug)
         save({ action: 'service_check_passed', diagnostic, limitation: 'Short reply success does not establish reliability of long tool responses.' })
@@ -136,7 +146,7 @@ async function main() {
       assert.ok(next, 'Expected unused next ID')
       for (const path of [resolve(study, next.slug, 'runtime/.work/pilots', next.id, 'execution.json'), resolve(study, next.slug, 'api', next.id, 'model/api-ledger.jsonl'), resolve(study, next.slug, 'runtime/runs', next.id)]) assert.ok(!fs.existsSync(path), 'Next ID has already started; never repeat it')
       verify()
-      const incident = { action: 'continue_unused_ids', archived: status.archived, previousRun: active.slug + '/' + active.id, errorRequests: errors.map(r => r.number), classifications, nextRun: next.slug + '/' + next.id, diagnosis: active.slug === 'deepseek' ? classifications.includes('deepinfra-http520-cause-unknown') ? 'analysis/recovery/deepseek-P08-C-001-service.json' : 'analysis/recovery/deepseek-P06-A-001-image-tool.json' : active.slug === 'glm' ? 'analysis/recovery/glm-P06-B-001-image-tool.json' : classifications.includes('qwen-empty-response-cause-unknown') ? 'analysis/recovery/qwen-P06-B-001-service.json' : 'analysis/recovery/qwen-P06-A-001-service.json', diagnostic: diagnostic?.evidence || null, unchangedFrozenProtocol: true, archivedHashesVerified: true, measuredRetry: false, serviceCheck: 'Unchanged runner also performs connectivity check before the next measured start.' }
+      const incident = { action: 'continue_unused_ids', archived: status.archived, previousRun: active.slug + '/' + active.id, errorRequests: errors.map(r => r.number), classifications, nextRun: next.slug + '/' + next.id, diagnosis: active.slug === 'deepseek' ? classifications.includes('deepinfra-http520-cause-unknown') ? 'analysis/recovery/deepseek-P08-C-001-service.json' : 'analysis/recovery/deepseek-P06-A-001-image-tool.json' : active.slug === 'glm' ? classifications.includes('glm-wafer-shared-pool-overload') ? 'analysis/recovery/glm-P07-A-003-service.json' : 'analysis/recovery/glm-P06-B-001-image-tool.json' : classifications.includes('qwen-empty-response-cause-unknown') ? 'analysis/recovery/qwen-P06-B-001-service.json' : 'analysis/recovery/qwen-P06-A-001-service.json', diagnostic: diagnostic?.evidence || null, frozenProtocolVersion: json(resolve(study, 'frozen-inputs.json')).version, taskPromptsDeadlinesEvaluatorsUnchanged: true, archivedHashesVerified: true, measuredRetry: false, serviceCheck: 'Unchanged runner also performs connectivity check before the next measured start.' }
       save(incident)
       previousCount = status.archived
       const child = spawn('/usr/bin/caffeinate', ['-i', process.execPath, 'openrouter-study/run.mjs'], { cwd: resolve(study, '..'), env: process.env, stdio: 'inherit' })

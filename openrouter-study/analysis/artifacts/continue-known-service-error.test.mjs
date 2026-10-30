@@ -13,11 +13,23 @@ const fixture = (slug, number, id = 'P06-A-001') => {
 }
 const ds = fixture('deepseek', 24), q = fixture('qwen', 6), empty = fixture('qwen', 2, 'P06-B-001'), glm = fixture('glm', 50, 'P06-B-001')
 const unavailable = fixture('deepseek', 36, 'P08-C-001')
+const overloaded = fixture('glm', 7, 'P07-A-003')
+const overloadedNative = gunzipSync(fs.readFileSync(resolve(study, 'glm/runtime/runs/P07-A-003/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
+const overloadPatch = patch => ({...overloaded.row,providerError:JSON.stringify({error:{...JSON.parse(overloaded.row.providerError).error,metadata:{...JSON.parse(overloaded.row.providerError).error.metadata,...patch}}})})
 const unavailableNative = gunzipSync(fs.readFileSync(resolve(study, 'deepseek/runtime/runs/P08-C-001/phases/05-implement/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const changed520 = patch => ({ ...unavailable.row, providerError: JSON.stringify({error:{...JSON.parse(unavailable.row.providerError).error, ...patch}}) })
 const native = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-A-001/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const emptyNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const checks = [
+  ['observed exact Wafer shared-pool429',knownFailure(overloaded.row,overloaded.body,overloadedNative),'glm-wafer-shared-pool-overload'],
+  ['Wafer429 without native evidence',knownFailure(overloaded.row,overloaded.body),null],
+  ['Wafer429 account limit differs',knownFailure(overloadPatch({limit_source:'account'}),overloaded.body,overloadedNative),null],
+  ['Wafer429 other error code',knownFailure(overloadPatch({provider_error_code:'quota_exhausted'}),overloaded.body,overloadedNative),null],
+  ['Wafer429 changed provider name',knownFailure(overloadPatch({provider_name:'Other'}),overloaded.body,overloadedNative),null],
+  ['Wafer429 unobserved retry interval',knownFailure({...overloaded.row,retryAfter:'60'},overloaded.body,overloadedNative),null],
+  ['Wafer429 fallback enabled',knownFailure(overloaded.row,{...overloaded.body,provider:{...overloaded.body.provider,allow_fallbacks:true}},overloadedNative),null],
+  ['Wafer429 changed model',knownFailure(overloaded.row,{...overloaded.body,model:'other'},overloadedNative),null],
+  ['Wafer429 never sent upstream',knownFailure({...overloaded.row,sentUpstream:false},overloaded.body,overloadedNative),null],
   ['observed exact DeepInfra 520', knownFailure(unavailable.row, unavailable.body, unavailableNative), 'deepinfra-http520-cause-unknown'],
   ['520 without native evidence', knownFailure(unavailable.row, unavailable.body), null],
   ['520 changed message', knownFailure(changed520({message:'Different error'}), unavailable.body, unavailableNative), null],

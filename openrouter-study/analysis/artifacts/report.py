@@ -169,10 +169,12 @@ def main():
     p('Pri GLM/P03-C-001 je 22 skritih testov obstalo pri natančnem imenu iskalnika: navodilo konča stavek z »Išči opravila.«, test pa zahteva ime brez pike. Oddaja vsebuje piko; javni in lastni testi uporabljajo nenatančno ime. Izvirna rezultata 48/70 preverjanj in 1/12 dokazanih zahtev ostaneta nespremenjena. Ti neuspehi niso dokaz 22 različnih napak filtriranja; dvoumnost dogovora imena je omejitev merila.')
     if comparison['newArchived'] >= 102:
         p('Qwen/P08-C-002 je oddal 14 nalog z oznakami v krepkem tisku (**T001**). Zamrznjeni preverjevalnik sprejme oznake brez krepkega tiska in zavrne predajo pred implementacijo. Rezultat ostane izviren (38/70, 0/12); zavrnitev je posledica formata, ne odsotnosti nalog.')
-    if comparison['newArchived'] >= 108:
-        p('Pri več oddajah P08 sta testa R11 obstala ob preklopu na tablo prazne skupine: pripomoček zahteva območje z imenom Tabla opravil, oddaja pa ga zamenja s sporočilom o prazni skupini. Izvirni izidi 68/70 in 11/12 ostanejo. To je občutljivost preverjanja na strukturo praznega pogleda; dve napaki nista dokaz dveh različnih napak datumske logike.')
+    if comparison['newArchived'] >= 121:
+        p('Pri več oddajah P08 in P07 ostaneta dve preverjanji prazne table neuspešni: pripomoček zahteva območje z imenom Tabla opravil, oddaja pa ga zamenja s sporočilom o praznem rezultatu. Tako imajo npr. DeepSeekove P07-C-003 in P07-A-003 izvirna izida 68/70 in 11/12. Izidi ostanejo nespremenjeni. Gre za občutljivost preverjanja na strukturo praznega pogleda; dve neuspešni preverjanji istega vzroka nista dokaz dveh različnih napak logike.')
     if comparison['newArchived'] >= 112:
         p('DeepSeek/P04-B-002 doseže 70/70 in 12/12, vendar zaključni odgovor pregleda ovije JSON v oznake Markdown. Validator zavrne ta odgovor, čeprav je shranjena datoteka review.json veljavna. Strogi neuspeh zato ne pomeni neuspešne funkcionalnosti.')
+    if comparison['newArchived'] >= 125:
+        p('GLM/P07-B-003 doseže 68/70 in 11/12 zaradi manjkajočega zahtevanega sporočila Ni priljubljenih opravil. na prazni filtrirani tabli. Območje table ostane prisotno. Obe neuspešni preverjanji potrjujeta isto funkcionalno vrzel R06; uspešnih 14 lastnih testov tega primera ne pokrije.')
     story.append(PageBreak())
     p('Vsebinska kakovost oddaj', 'Heading1')
     p(qualitative['method'])
@@ -222,6 +224,18 @@ def main():
     p('Viri modelnih licenc in uteži', 'Heading2')
     for m in models:
         p(f"{escape(LABELS[m['slug']])}: <link href=\"{escape(m['publicWeights'])}\" color=\"#334B75\">uradna objava uteži</link>; <link href=\"{escape(m['license']['url'])}\" color=\"#334B75\">licenca</link>.")
+    amendment_path = STUDY / 'budget-amendment-1.json'
+    if amendment_path.exists():
+        amendment = load(amendment_path)
+        assert amendment['status'] == 'approved' and amendment['effectiveAfterArchivedPosition'] == 123
+        story.append(PageBreak())
+        method_page = False
+        p('Dokumentirana proračunska dopolnitev', 'Heading1')
+        p('Po 123. novi arhivirani meritvi je prvotno proračunsko pravilo ustavilo vrsto. Znani stroški in rezerve za nepotrjene račune so skupaj z največjim možnim stroškom naslednje zahteve presegli odobrenih 40 USD, čeprav je na predplačniškem računu ob prekinitvi ostalo 13,82 USD. Nepotrjeni računi zato niso postali ničelni.')
+        p('Uporabnik je 30. oktobra 2026 izrecno odobril porabo preostalega obstoječega dobroimetja brez doplačil. Dopolnitev O/1.0-budget-amendment-1 velja za poznejše diagnostike in nove meritve od položaja 124: Qwen/P07-B-003. Pred vsako zahtevo se sveže preveri dejansko kritje največjega stroška pri izvirno izbranem ponudniku. Tudi morebitno poznejše dopolnjeno dobroimetje ne poveča dovoljenja nad prvotnih 40 USD skupne porabe računa; hkratne zahteve imajo lastne rezerve.')
+        p('Spremenjeno je samo proračunsko varovalo prenosa. Modeli, ponudniki, pozivi, naloge, roki, razvojni postopki in ocenjevalci ostanejo isti. Prvih 123 meritev in njihovi izidi ostanejo ohranjeni brez ponovitev. Po dopolnitvi je sveža diagnostika istega GLM/Wafer vrnila CONNECTION_OK; kratek uspeh ne zagotavlja zanesljivosti dolgih merjenih odzivov.')
+        p('Izvirni proračun, izvorna koda prenosa in zamrznitev so ohranjeni z zgoščenimi vrednostmi. Aktivni operator je označen O/1.0+budget-amendment-1. Novi dnevniki zahtev navajajo uporabljeno pravilo in dejansko stanje računa. Neznani stroški in prvotne konzervativne rezerve ostanejo ločeno v revizijski evidenci; povprečja nepopolnih računov ostanejo manjkajoča.')
+        p('Revizijska sled: budget-amendment-1.json; analysis/recovery/budget-amendment-2026-10-30/implementation.json in original/; analysis/recovery/user-approved-budget-resume-2026-10-30.json. Sprememba je odobrena med zbiranjem podatkov in je del omejitev primerjave.')
     filename = QA / 'preview.pdf' if args.preview else OUTPUT / 'primerjava-modelov.pdf'
     def footer(canvas, doc):
         canvas.setFont('DejaVu',7); canvas.setFillColor(colors.HexColor('#536279'))

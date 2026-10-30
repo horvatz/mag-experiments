@@ -1,0 +1,14 @@
+Pregled končan.
+
+- [`docs/agent/review.json`](docs/agent/review.json) je bil posodobljen z ugotovitvami za vse 12 zahtev.
+- **Čas:** ostane še ~560 s za implementacijo.
+- **Načrt:** naslednji korak je napisati komponento (npr. v `src/`) za:
+  - gumbi `Priljubljeno opravilo <id>` z `aria-pressed`
+  - checkbox `Prikaži le priljubljena` (privzeto `false`)
+  - status badge `Priljubljeno: X od M.`
+  - gumb `Odstrani priljubljene tega projekta`
+  - logiko v `localStorage` pod ključem `folio:favorites:v1` z validacijo (unikat, razvrščen UTF-16, obravnava neveljavnih zapisov)
+  - spremljanje dogodka `storage` s sinhronizacijo ter `role="alert"` pri napakah
+- **Omejitev okolja:** brez `chromium.launch()`, samo `chromium.connect(wsEndpoint)`; internet blokiran.
+
+Želite, naj takoj začnem z implementacijo?

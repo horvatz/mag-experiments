@@ -4,10 +4,12 @@ root=Path(__file__).resolve().parents[2]
 print('runnerlock', (root/'runner.lock').read_text().strip() if (root/'runner.lock').exists() else 'absent')
 a=json.loads((root/'active.json').read_text());s=json.loads((root/'status.json').read_text());print('archived',s['archived'],'active',a.get('position'),a.get('slug'),a.get('id'),a.get('stage'),a.get('at'))
 if a.get('id'):
+ archived_current=(root/a['slug']/'runtime/runs'/a['id']/'archive-complete.json').exists()
+ if archived_current:print('active ID is already archived; runner may be reconciling costs before the next ID')
  p=root/a['slug']/'runtime/.work/pilots'/a['id']
  f=p/'execution.json'
  if f.exists():
-  d=json.loads(f.read_text());print('execution',d.get('status'),d.get('elapsedSeconds'),'wallSeconds',round((datetime.datetime.now(datetime.timezone.utc)-datetime.datetime.fromisoformat(d['startedAt'].replace('Z','+00:00'))).total_seconds()),'phases',[(x['name'],x['status'],x.get('elapsedSeconds')) for x in d.get('phases',[])])
+  d=json.loads(f.read_text());print('execution',d.get('status'),d.get('elapsedSeconds'),'runningWallSeconds',round((datetime.datetime.now(datetime.timezone.utc)-datetime.datetime.fromisoformat(d['startedAt'].replace('Z','+00:00'))).total_seconds()) if d.get('status')=='running' else None,'phases',[(x['name'],x['status'],x.get('elapsedSeconds')) for x in d.get('phases',[])])
   events=sorted(p.glob('phases/*/events.jsonl'))
   if not events and (p/'events.jsonl').exists():events=[p/'events.jsonl']
   if events:

@@ -86,7 +86,7 @@ for (const [i, group] of comparison.summaries.entries()) {
 }
 summary.getRange('E7:E21').setNumberFormat('0.0%'); summary.getRange('F7:F21').setNumberFormat('0.00'); summary.getRange('I7:I21').setNumberFormat('0.0000')
 summary.getRange('A23').values = [['Manjkajoč čas, poraba ali račun niso nič. Povprečni strošek je prikazan samo, če so znani vsi računi skupine.']]
-if (comparison.newArchived >= 108) summary.getRange('A23').values = [['Manjkajoč čas, poraba ali račun niso nič. Povprečni strošek zahteva vse račune skupine. P08: testa R11 zahtevata območje Tabla opravil tudi ob prazni skupini.']]
+if (comparison.newArchived >= 108) summary.getRange('A23').values = [['Manjkajoč čas, poraba ali račun niso nič. Povprečni strošek zahteva vse račune skupine. P08/P07: preverjanji prazne table zahtevata območje Tabla opravil.']]
 summary.getRange('A22').values = [['GLM P03-C-001: 22 testov ustavi pika v imenu iskalnika. Navodilo je dvoumno; izid ostane izviren (48/70, 1/12).']]
 summary.getRange('A22:J22').format.font = { name: 'Arial', size: 10, color: muted }
 summary.getRange('A23:J23').format.font = { name: 'Arial', size: 10, color: muted }
@@ -200,6 +200,28 @@ paired.getRange(`J1:J${contrastRows.length + 4}`).format.columnWidth = 77
 paired.getRange(`D5:F${contrastRows.length + 4}`).setNumberFormat('0.000')
 paired.tables.add(`A4:I${contrastRows.length + 4}`, true, 'ParjeniKontrasti')
 paired.freezePanes.freezeRows(4); paired.freezePanes.freezeColumns(1)
+const amendment = await load(resolve(study, 'budget-amendment-1.json'))
+assert.equal(amendment.status, 'approved')
+const budgetSheet = wb.worksheets.add('Proračunska dopolnitev')
+base(budgetSheet, 'A1:B10')
+budgetSheet.getRange('A1:B1').values = [['Proračunska dopolnitev', 'O/1.0-budget-amendment-1']]
+heading(budgetSheet, 'A1:B1')
+budgetSheet.getRange('A2:B10').values = [
+  ['Odobritev', '30. oktober 2026: uporaba preostalega obstoječega dobroimetja brez doplačil.'],
+  ['Veljavnost', 'Diagnostike po meritvi 123; nove meritve od 124 (Qwen/P07-B-003).'],
+  ['Varovalo', 'Sveže stanje računa mora kriti največji strošek zahteve in hkratne rezerve.'],
+  ['Omejitev', 'Prvotnih 40 USD skupne porabe računa; poznejša doplačila je ne zvišajo.'],
+  ['Nepotrjeni računi', 'Ostanejo neznani; prvotne konzervativne rezerve ostanejo v revizijski evidenci.'],
+  ['Ohranjeno', 'Isti modeli, ponudniki, pozivi, naloge, roki in ocenjevalci. Prvih 123 meritev se ne ponovi.'],
+  ['Različica operatorja', 'O/1.0+budget-amendment-1; izvirni proračun in izvorna koda sta ohranjena.'],
+  ['Vir', 'openrouter-study/budget-amendment-1.json'],
+  ['Dokaz izvedbe', 'analysis/recovery/budget-amendment-2026-10-30/implementation.json'],
+]
+budgetSheet.getRange('A1:A10').format.columnWidth = 26
+budgetSheet.getRange('B1:B10').format.columnWidth = 105
+budgetSheet.getRange('A2:B10').format.wrapText = true
+budgetSheet.getRange('A2:B10').format.rowHeight = 44
+budgetSheet.freezePanes.freezeRows(1)
 const errors = await wb.inspect({ kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!', options: { useRegex: true, maxResults: 30 }, maxChars: 3000 })
 await fs.writeFile(resolve(qa, 'formula-errors.ndjson'), errors.ndjson)
 for (const [name, range, file] of [['Primerjava', 'A1:J41', 'comparison'], ['Primerjava', 'A42:H62', 'rubric-summary'], ['Primerjava','A64:H81','known-counts'], ['Izvedbe', 'A1:Q13', 'runs'], ['Izvedbe', `A${Math.max(2, data.length - 8)}:Q${data.length + 1}`, 'runs-tail'], ['Vsebinska presoja', 'A1:J13', 'reviews'], ['Parjene razlike', 'A1:I14', 'paired']]) {
@@ -207,4 +229,6 @@ for (const [name, range, file] of [['Primerjava', 'A1:J41', 'comparison'], ['Pri
   await fs.writeFile(resolve(qa, file + '.png'), new Uint8Array(await image.arrayBuffer()))
 }
 if (!draft) { const file = await SpreadsheetFile.exportXlsx(wb); await file.save(resolve(out, 'primerjava-modelov.xlsx')) }
+const budgetImage = await wb.render({ sheetName: 'Proračunska dopolnitev', range: 'A1:B10', scale: 1, format: 'png' })
+await fs.writeFile(resolve(qa, 'budget-amendment.png'), new Uint8Array(await budgetImage.arrayBuffer()))
 console.log(JSON.stringify({ previewOnly: draft, measurements: data.length, contentRecords: reviews.length, out }))
