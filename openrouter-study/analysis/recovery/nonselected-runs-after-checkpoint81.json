@@ -5658,6 +5658,216 @@
         "cause": "App101 empty-favorites message replaces TaskBoard; board region absent. Other22holdout pass."
       },
       "observation": "All five started C phases completed; wrapper stops after implementation because required root verification file is absent despite real delivered feature-folder verification. NOT absence of verification content; no repair/relocation or measured repeat.12own/full58confirmed. No new ordinal review for002."
+    },
+    {
+      "at": "2026-10-30T10:28:42.840975+00:00",
+      "position": 133,
+      "slug": "qwen",
+      "id": "P07-A-002",
+      "executionStatus": "time_limit",
+      "elapsedSeconds": 1200.04,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 14,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 14,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": false
+        },
+        {
+          "name": "types",
+          "passed": false
+        },
+        {
+          "name": "build",
+          "passed": false
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": false,
+      "costUSD": null,
+      "knownCostUSD": 0.2716777,
+      "apiRequests": 65,
+      "archiveSha256": "50912fc8997281b74941e7005f79b760b1377d3082965ca5e0a6fcd85148a280",
+      "archiveAllHashesVerified": true,
+      "pinnedRouteAllRequestsVerified": true,
+      "authoredFiles": 5,
+      "ownTestFiles": 0,
+      "nativeCompletedCommands": 68,
+      "nativeNonzeroCommandIDs": [
+        "item_59",
+        "item_73",
+        "item_78",
+        "item_87",
+        "item_93",
+        "item_105",
+        "item_113"
+      ],
+      "preservedToolCalls": 78,
+      "modelTestInvocations": 0,
+      "sourceAudit": "All five authored files read. App imports TaskBoard twice (6/286), exports default App but main expects named App; module initializes Set from unvalidated JSON object; global nonreactive favorites, composed rather than exact IDs, missing view navigation/details, wrong counter wording, absent storage listener. No authored tests. docs/agent/test.txt is only test content, not a test.",
+      "verificationClaimAudit": "Starts All requirements implemented but discloses absent storage event listener and testing as next step; several other claimed implementations contradicted by source and failed lint/types/build. No model-run checks found in 68 native commands or 78 preserved tool calls.",
+      "independentResultInterpretation": "Complete 70-test report:14pass/56fail; all14passes are regression/server-side. Build fails duplicate TaskBoard declaration, named App export missing/type errors. UI startup failure, not56 independent feature algorithm faults.",
+      "transportSummary": {
+        "200finishedCompleted": 63,
+        "200clientAbortedCompleted": 1,
+        "200clientAbortedUnknownAtDeadline": 1
+      },
+      "noNewOrdinalReview": true
+    },
+    {
+      "at": "2026-10-30T10:42:37.695340+00:00",
+      "position": 134,
+      "slug": "glm",
+      "id": "P07-A-002",
+      "executionStatus": "completed",
+      "elapsedSeconds": 483.43,
+      "strictSuccess": false,
+      "demonstrated": 11,
+      "requirementsPassed": 11,
+      "functionalTestsPassed": 68,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 22,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": true,
+      "costUSD": 0.27914500999999997,
+      "knownCostUSD": 0.27914500999999997,
+      "apiRequests": 55,
+      "archiveSha256": "6047c5fc7edc8a9f9221622654a16fc49f3baf0c5509cf7845d26774fd0752c9",
+      "archiveAllHashesVerified": true,
+      "pinnedRouteAllRequestsVerified": true,
+      "authoredFiles": 7,
+      "ownTestFiles": 1,
+      "ownTests": 12,
+      "noNewOrdinalReview": true,
+      "sourceAudit": "App.tsx:70 selects empty favorites message before TaskBoard, so E06 both widths cannot find Tabla opravil. TaskBoard.tsx:39 defines region but it is not mounted in that branch. This is the already documented empty-board-region sensitivity, unlike GLM125 where region exists but required message is genuinely absent.",
+      "modelChecks": "Native38/42 typecheck successful;44lint failed temporary helper;48own8fail4pass,57own1fail11pass,60own12pass after test fixes;62development8pass;69fullcheck blocked by unused test constant/temp transformcache;72fullcheck58pass,74clean temp + lint passes. Own checks are distinct from hidden evaluation.",
+      "independentFailure": "E06 desktop/mobile only; App.tsx:70 replaces empty board with message.",
+      "transportSummary": {
+        "finished": 42,
+        "client_aborted": 13
+      }
+    },
+    {
+      "at": "2026-10-30T10:53:40.850183+00:00",
+      "position": 135,
+      "slug": "deepseek",
+      "id": "P07-A-002",
+      "executionStatus": "completed",
+      "elapsedSeconds": 374.125,
+      "strictSuccess": false,
+      "demonstrated": 11,
+      "requirementsPassed": 11,
+      "functionalTestsPassed": 68,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 22,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": true,
+      "costUSD": 0.0327549152,
+      "knownCostUSD": 0.0327549152,
+      "apiRequests": 31,
+      "archiveSha256": "037452e32a1028e148ff2105814ede754d7f0e34df8d68c7130588131612e684",
+      "archiveAllHashesVerified": true,
+      "pinnedRouteAllRequestsVerified": true,
+      "authoredFiles": 7,
+      "ownTestFiles": 1,
+      "ownTests": 18,
+      "noNewOrdinalReview": true,
+      "sourceAudit": "App.tsx:63 noFavoriteResults branch replaces TaskBoard, causing only E06 both widths to fail (missing board region); no change to frozen evaluation. favorites.ts separates validated parsing, UTF16 normalization, hook and ref-based current state with no echo storage handler.",
+      "modelChecks": "Native33 combined dev+own 2fail24pass (pipeline exit0 not test success);39 combined26pass after own board-order expectation fix and storage double-write implementation repair;41 fullcheck64pass. 18own plus8dev plus38baseline. Verification discloses both repairs and synthetic storage limitations. Native32 pipes lint/types through tail, so its shell0 alone is not evidence of each subprocess success.",
+      "independentFailure": "E06 desktop/mobile only; noFavoriteResults branch replaces board with message.",
+      "transportSummary": {
+        "finished": 29,
+        "client_aborted": 2
+      }
     }
   ],
   "pendingObservations": {}

@@ -1,12 +1,11 @@
 {
   "collection": "O-DS/1.0",
   "model": "deepseek/deepseek-v4.1-flash",
-  "generatedAt": "2026-10-30T08:54:17.316Z",
+  "generatedAt": "2026-10-30T10:53:33.570Z",
   "complete": false,
-  "archived": 44,
+  "archived": 45,
   "planned": 72,
   "missing": [
-    "P07-A-002",
     "P05-C-003",
     "P05-A-003",
     "P05-B-003",
@@ -38,15 +37,15 @@
   "groups": [
     {
       "procedure": "A",
-      "archived": 14,
+      "archived": 15,
       "planned": 24,
       "strictSuccesses": 8,
-      "meanDemonstratedFraction": 0.976190476190476,
-      "meanElapsedSeconds": 759.5029999999999,
-      "completeUsageCount": 10,
-      "meanInputTokensCompleteOnly": 1824509.4,
-      "meanOutputTokensCompleteOnly": 43042.6,
-      "knownDurationCount": 14
+      "meanDemonstratedFraction": 0.972222222222222,
+      "meanElapsedSeconds": 733.8111333333333,
+      "completeUsageCount": 11,
+      "meanInputTokensCompleteOnly": 1811720,
+      "meanOutputTokensCompleteOnly": 43500.181818181816,
+      "knownDurationCount": 15
     },
     {
       "procedure": "B",
@@ -173,10 +172,10 @@
     {
       "task": "P07",
       "procedure": "A",
-      "count": 1,
+      "count": 2,
       "meanDemonstratedFraction": 0.9166666666666666,
-      "meanElapsedSeconds": 497.635,
-      "knownDurationCount": 1
+      "meanElapsedSeconds": 435.88,
+      "knownDurationCount": 2
     },
     {
       "task": "P07",
@@ -6657,6 +6656,137 @@
       "knownCostUSD": 0.083621221,
       "costComplete": true,
       "costEvidence": "/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/api/P07-C-002/model/api-cost.json"
+    },
+    {
+      "id": "P07-A-002",
+      "task": "P07",
+      "procedure": "A",
+      "repetition": 2,
+      "block": 15,
+      "position": 3,
+      "executionStatus": "completed",
+      "elapsedSeconds": 374.125,
+      "strictSuccess": false,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": true,
+            "observed": true
+          }
+        ],
+        "passed": 11,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0.9166666666666666
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 22,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "usage": {
+        "input_tokens": 1683826,
+        "cached_input_tokens": 1643392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 48076,
+        "reasoning_output_tokens": 27917
+      },
+      "usageComplete": true,
+      "observedUsageBeforeInterruption": null,
+      "phases": [],
+      "changedFiles": 7,
+      "ownTestFiles": 1,
+      "contentReviewSample": false,
+      "evidence": "runs/P07-A-002/evaluation-summary.json",
+      "costUSD": 0.0327549152,
+      "knownCostUSD": 0.0327549152,
+      "costComplete": true,
+      "costEvidence": "/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/api/P07-A-002/model/api-cost.json"
     }
   ],
   "withheldComparisons": [],

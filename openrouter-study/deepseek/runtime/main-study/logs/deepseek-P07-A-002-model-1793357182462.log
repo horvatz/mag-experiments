@@ -1,0 +1,40 @@
+Now I have the picture. Let me check styles and the remaining baseline tests quickly.
+
+
+Now I'll write the specification, then implement. First, a quick look at the full stylesheet.
+
+
+Now writing the specification document first, as required.
+
+
+Shell heredocs are blocked; I'll use `apply_patch` for all file creation.
+
+
+Spec written. Now implementing the favorites module and wiring the UI.
+
+
+Now the agent test suite covering the requirement gaps.
+
+
+Two of my own tests failed. Let me check A07's failure detail.
+
+
+Fixing the double-write (StrictMode updater double-invocation) and my test ordering bug.
+
+
+All 26 targeted checks pass. Now the full `npm run check` (baseline + API + development + agent).
+
+
+Everything passes. Now recording the verification results and the spec change note.
+
+
+**Rezultat**
+- Specifikacija: `docs/agent/specification.md` (v1.2, z zgodovino popravkov), poročilo: `docs/agent/verification.md`.
+- Implementacija: `src/favorites.ts` (validacija, dedupe/sort, shramba, sinhronizacija dogodka `storage`, izjeme), `src/App.tsx` (gumbi, filter, števec, čiščenje, opozorilo), `src/TaskBoard.tsx`, `src/styles.css`.
+- Lastni testi: `tests/agent/favorites.spec.ts` (A01–A13, 18 preverjanj).
+
+**Preverjanja**
+- `npm run typecheck` in `npm run lint`: uspešno.
+- `npx playwright test --project=development-desktop --project=development-mobile --project=agent`: 26/26.
+- `npm 
+{"status":"completed","elapsedSeconds":374.125,"allowedChanges":true,"usage":{"input_tokens":1683826,"cached_input_tokens":1643392,"cache_write_input_tokens":0,"output_tokens":48076,"reasoning_output_tokens":27917}}

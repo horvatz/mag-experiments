@@ -1,4 +1,4 @@
-import json,datetime
+import json,datetime,sys
 from pathlib import Path
 root=Path(__file__).resolve().parents[2]
 runner_pid=(root/'runner.lock').read_text().strip() if (root/'runner.lock').exists() else 'absent'
@@ -7,7 +7,14 @@ a=json.loads((root/'active.json').read_text());s=json.loads((root/'status.json')
 if runner_pid!='absent' and str(a.get('pid'))!=runner_pid:print('active record belongs to previous runner',a.get('pid'),'; current runner is still verifying archived inputs or reconciling costs')
 if a.get('id'):
  archived_current=(root/a['slug']/'runtime/runs'/a['id']/'archive-complete.json').exists()
- if archived_current:print('active ID is already archived; runner may be reconciling costs before the next ID')
+ if archived_current:
+  print('active ID is already archived; runner may be reconciling costs before the next ID')
+  models=json.loads((root/'models.json').read_text())['models'];schedule=json.loads((root/models[0]['slug']/'runtime/main-study/schedule.json').read_text())['runs']
+  jobs=[(models[(i+o)%len(models)]['slug'],entry['id']) for i,entry in enumerate(schedule) for o in range(len(models))]
+  n=s['archived']
+  if n<len(jobs):
+   slug,id=jobs[n];print('next scheduled',n+1,slug,id,'executionExists',(root/slug/'runtime/.work/pilots'/id/'execution.json').exists())
+  sys.exit(0)
  p=root/a['slug']/'runtime/.work/pilots'/a['id']
  f=p/'execution.json'
  if f.exists():

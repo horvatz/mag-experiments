@@ -1,0 +1,39 @@
+{
+  "id": "P07-A-002",
+  "observedAt": "2026-10-30T10:23:19.037Z",
+  "complete": false,
+  "roles": [
+    {
+      "role": "agent",
+      "session": "01a18c43-4572-7e91-954b-11923a3ab0a7",
+      "lastTokenEventAt": "2026-10-30T10:20:30.402Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 2678944,
+        "cached_input_tokens": 658688,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 25222,
+        "reasoning_output_tokens": 2062
+      },
+      "phases": [
+        {
+          "name": "agent",
+          "status": "time_limit",
+          "cliUsage": null,
+          "lastTokenEventAt": "2026-10-30T10:20:30.402Z",
+          "cumulativeMatchesCLI": false
+        }
+      ],
+      "complete": false
+    }
+  ],
+  "usage": null,
+  "observedUsageBeforeInterruption": {
+    "input_tokens": 2678944,
+    "cached_input_tokens": 658688,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 25222,
+    "reasoning_output_tokens": 2062
+  },
+  "method": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+  "note": "Incomplete events are a partial observation, not zero or a complete token total. No monetary cost is inferred."
+}
