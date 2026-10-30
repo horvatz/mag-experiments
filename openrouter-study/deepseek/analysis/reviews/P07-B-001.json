@@ -1,0 +1,115 @@
+{
+  "id": "P07-B-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-30T14:58:41.592243+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "777c7dd439431ac58c9d107cc040eda05f5af551896615afd755407c14d31c83",
+  "limitation": "Prebranih vseh devet avtorskih datotek, native zagoni in poznejši API izidi; celotni arhivski SHA256 so preverjeni. Iz zavrnjenega request47 je brez spremembe pikslov obnovljena in raziskovalčevo pregledana ena izvirna PNG slika. To ni modelov uspešen vizualni pregled ali naknadno oddana datoteka. Merjena izvedba se ne ponavlja. Obnovljen je dejanski zahtevani shot-desktop-table.png, ki kaže preglednico; drugih dveh zajemov ta ena slika ne dokazuje.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Celotna dokumentacija opredeli R01–R12, točne kontrole/aria stanja, identiteto ID, globalno množico proti lokalnemu filtru, domeno0/1/>10, UTF-16 zapis, neznane/dvojne/neveljavne zapise, prazne prikaze, vse prehode in projektno čiščenje. Določi celotna X/M, vidne stolpce, dogodke brez odmeva, obe izjemi z opozorilom in pomnilnikom, bralnost in390px. Formalni osnutek pri parse neveljavno vrne null, tabela R04 pa∅; izvajalec to konkretno neskladje v končnem verification izrecno razkrije in določi upoštevanje R04/∅. Ocena upošteva to pojasnilo celotne oddaje, ne prikriva nasprotujoče vrstice.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:22",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:35",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:49",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:60",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:108",
+        "runtime/runs/P07-B-001/submission/docs/agent/verification.md:55"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Množica fav, projektni P, filter in storageError so ločeni. Simetrična razlika in fav brez P določita preklop/čiščenje; valid zahteva vsak element niz, norm enkratnost/UTF-16, visible stabilno projekcijo in X/M celotni projekt. Dogodek nadomesti stanje brez zapisa, null izprazni, projekt/reload ponastavita samo filter; izjema ohrani pomnilniško dejanje. Neskladje null/∅ iz ene vrstice formalnega osnutka se ne šteje za skladno samo po sebi: končno pojasnilo verification izrecno določi∅ in tako dopolni preverljivo pravilo.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:28",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:35",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:48",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:63",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:70",
+        "runtime/runs/P07-B-001/submission/docs/agent/verification.md:55"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Snovalčev dokument pošteno označi načrtovane in neizvedene scenarije; izvajalec doda celotno matriko R–koda–imenovani test–izid. Dejanski item_47,56,58 potrdijo razvojne8/8, lastne13/13 in full59/59. Omejitve navedejo razvojne podatke, skrite teste kot neizvedene ter neizveden ročni ogled. Poznejši avtomatizirani zajem slik in meritev390/390 ni uspešen modelov vizualni pregled: naslednji view_image sproži HTTP422. Končni raziskovalčev obnovljeni PNG je posebej označen. Pregledovalčeva faza ni začeta in ni pripisane presoje tretjemu agentu. Povezave omogočajo preverjanje; ne pomenijo izčrpnosti vseh vhodov.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:79",
+        "runtime/runs/P07-B-001/submission/docs/agent/verification.md:32",
+        "runtime/runs/P07-B-001/submission/docs/agent/verification.md:48",
+        "runtime/runs/P07-B-001/submission/docs/agent/verification.md:63",
+        "analysis/evidence/P07-B-001-checks.md#02-implementation-item_47",
+        "analysis/evidence/P07-B-001-checks.md#02-implementation-item_56",
+        "analysis/evidence/P07-B-001-checks.md#02-implementation-item_58",
+        "analysis/evidence/P07-B-001-checks.md#02-implementation-item_67",
+        "analysis/evidence/P07-B-001-tool-image-provenance.json",
+        "runtime/runs/P07-B-001/execution.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti parser/serializer in varno branje/pisanje so v favorites.ts; skupni FavoriteButton in opozorilo sta v components. App hrani eno globalno množico, poslušalca s čiščenjem in uporabniški persist zunaj React updaterja. ProjectView hrani le lokalni filter, izpelje eno projekcijo za oba pogleda in celoprojektne števce/brisanje; projektni key resetira filter. Tabla in prazno sporočilo se po razvojnem popravku izrišeta hkrati, gumbi ostanejo zunaj povezav. Podatki se ne mutirajo in nov API ni uveden. Odgovornosti so razumljive in dosledno ločene.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/src/favorites.ts:8",
+        "runtime/runs/P07-B-001/submission/src/favorites.ts:26",
+        "runtime/runs/P07-B-001/submission/src/favorites.ts:31",
+        "runtime/runs/P07-B-001/submission/src/components.tsx:30",
+        "runtime/runs/P07-B-001/submission/src/App.tsx:31",
+        "runtime/runs/P07-B-001/submission/src/App.tsx:74",
+        "runtime/runs/P07-B-001/submission/src/App.tsx:109",
+        "runtime/runs/P07-B-001/submission/src/App.tsx:120",
+        "runtime/runs/P07-B-001/submission/src/App.tsx:157",
+        "runtime/runs/P07-B-001/submission/src/TaskBoard.tsx:25"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Trinajst dejansko uspešnih scenarijev preveri oba pogleda/podrobnosti, mešane neveljavne ids brez prepisa, neznane/dvojne ID-je, več izbranih v izvornem vrstnem redu, prazno tablo, projektno čiščenje in števce. Ločeni izjemi branja/pisanja sta razlikujoči; zapis začne brez alerta. Veljaven storage dogodek neposredno meri setItem, null čisti neprazno stanje. Nabor odkrije in popravi pravo napako prazne table. Ostanejo vrzeli: ni lastnih0/1/>10 ali adversarialnega Unicode/UTF-16, reload začne pri že false filtru, čiščenje ne začne z več skritimi priljubljenimi pod filtrom. Neveljaven dogodek in tuji ključ sledita že praznemu stanju, zato ne razlikujeta napačnega praznjenja; no-echo števec se asertira le po prvem veljavnem dogodku. Gre za koristna, ne izčrpna mejna preverjanja.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/tests/agent/p07-favorites.spec.ts:10",
+        "runtime/runs/P07-B-001/submission/tests/agent/p07-favorites.spec.ts:50",
+        "runtime/runs/P07-B-001/submission/tests/agent/p07-favorites.spec.ts:61",
+        "runtime/runs/P07-B-001/submission/tests/agent/p07-favorites.spec.ts:79",
+        "runtime/runs/P07-B-001/submission/tests/agent/p07-favorites.spec.ts:87",
+        "runtime/runs/P07-B-001/submission/tests/agent/p07-favorites.spec.ts:103",
+        "runtime/runs/P07-B-001/submission/tests/agent/p07-favorites.spec.ts:136",
+        "runtime/runs/P07-B-001/submission/tests/agent/p07-favorites.spec.ts:163",
+        "runtime/runs/P07-B-001/submission/tests/agent/p07-favorites.spec.ts:174",
+        "analysis/evidence/P07-B-001-checks.md#02-implementation-item_56",
+        "analysis/evidence/P07-B-001-checks.md#02-implementation-item_58"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Končno funkcionalno70/70 in12/12; lint/tipi/gradnja, obseg in completeTestRuntrue. Execution_failed581,705s (spec98,882; impl480,501), pregled ni začet. Zahteva47 HTTP422 DeepInfra zavrne slikovni function_call_output z Input should be a valid string/messages.78.tool.content.str. To je že diagnosticirana omejitev prenosa; ni ugotovljena končna funkcionalna napaka. Strogi uspehfalse zaradi prekinitve. Račun delni: celotaNULL, znano0,047600721USD; zadnji422 ni samodejno ničeln račun.",
+  "developmentFailureExample": {
+    "description": "Zgodnje zavrnitve heredoc/apply_patch pustijo verification prazno; poznejši dovoljeni TMPPREFIX omogoči dejansko pisanje. Item_41 imaexit0 z dvema tipskima napakama pred naslednjimi popravki; echo ni dokaz uspeha. Razvojni item_47 uspe8/8. Lastni item_51 ima3fail/10pass kljub pipeline0: prazna tabla nima območja, test R08 napačno pričakuje3 namesto2 opravili in R09 napačno pripravi tuje priljubljene. Item_53 potrdi prva dva vzroka; item_55 popravi pravo vejo table ter testna pričakovanja/pripravo. Item_56 uspe13/13, item_58 full59/59. Prvi vizualni script ne more spawnati strežnika; naslednji obstoječi brskalnik posname PNG in izmeri390/390, vendar model view_image ne prejme zaradi422. Neodvisni final70/70 ne nadomesti manjkajoče pregledovalčeve faze.",
+    "evidence": [
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_25",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_27",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_29",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_33",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_41",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_47",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_51",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_53",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_55",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_56",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_58",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_64",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_67",
+      "api/P07-B-001/model/api-ledger.jsonl",
+      "analysis/evidence/P07-B-001-tool-image-provenance.json"
+    ]
+  }
+}

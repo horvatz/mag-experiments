@@ -27,7 +27,9 @@ lines = [f'# Dokazi {args.slug} {args.id}', '',
          'Raziskovalčev prepis nespremenjenega arhiva, ne nov zagon testov ali modelova oddaja. '
          'Izpis ni nadomestilo za branje dejanskih avtorskih datotek. Native in poznejši API vhodi se lahko podvajajo.', '']
 for command in packet['nativeCommands']:
-    lines += ['## ' + command['itemId'], '',
+    phase = re.search(r'/phases/([^/]+)/', command['source'])
+    heading = (phase[1] + '-' if phase else '') + command['itemId']
+    lines += ['## ' + heading, '',
               f"Vir: `{command['source']}`, exit {command['exitCode']}.", '', '```text',
               command['command'], command.get('output') or '', '```', '']
 for i, call in enumerate(packet['preservedToolCalls']):
