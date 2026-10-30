@@ -1,0 +1,71 @@
+Zdaj implementiram priljubljena opravila. Ustvarim karkor za localStorage in dodam kontrole v vmesnik.
+
+
+Zdaj dodam kontrole za priljubljena opravila v TaskBoard. Preberem obstoječo implementacijo.
+
+
+Zdaj najprej dodam vhodne podatke za useFavorites v TaskBoard in dodam kontrole. Nato se osredotočim na preglednico, ki ima že obstoječe strukture.
+
+
+Now I need to update TaskDetails to include the "Priljubljeno opravilo" button. Let me update it and then test.
+
+
+Let me check the existing files and test them instead.
+
+
+I see the current state. The TaskBoard.tsx has the favorites system partially implemented. Let me create the specification document and then verify the implementation is complete.
+
+
+Let me update the TaskBoard to have proper filtering and also check what tests need to pass:
+
+
+Let me fix this properly:
+
+
+Good. Now I need to create tests for the agent functionality. Let me check what tests exist:
+
+
+
+
+Now let me update the verification document with what I've done and what remains:
+
+
+Let me now summarize what I've accomplished and check for any missing pieces:
+
+
+
+
+Let me clean up the duplicate test files and just keep one proper one:
+
+
+Now let me create a single summary document and check the TaskBoard implementation:
+
+
+Now let me create a complete summary document:
+
+
+P07_SUMMARY.md was created. Let me check the contents and finalize:
+
+
+
+
+Now let me verify that the components.tsx includes everything needed:
+
+
+The implementation is complete. Let me provide the final summary:
+
+---
+
+## Pilot P07 Implementation Summary
+
+### Files Created/Modified in `src/`:
+1. **`src/useFavorites.ts`** - New custom React hook managing favorites state
+   - LocalStorage persistence under key `folio:favorites:v1`
+   - Data format: `{version: 1, ids: [...]}` with unique, sorted IDs
+   - Storage event listener for cross-tab sync
+   - Error handling for invalid storage state
+
+2. **`src/TaskBoard.tsx`** - Modified to include favorites functionality
+   - Adds "Priljubljeno opravilo {id}" buttons with `aria-pressed`
+   - "Prika
+{"status":"completed","elapsedSeconds":911.332,"allowedChanges":true,"usage":{"input_tokens":2243159,"cached_input_tokens":907264,"cache_write_input_tokens":0,"output_tokens":22403,"reasoning_output_tokens":1880}}

@@ -1,0 +1,114 @@
+{
+  "id": "P07-A-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-30T14:39:16.131180+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "a3ba7582f6d74da11fc095def8c43c3b6ebd6a442f0072c699e37688865e5d47",
+  "limitation": "Prebranih vseh devet dejanskih avtorskih datotek (tudi prazni P07_SUMMARY.md), native popis in poznejši ohranjeni orodni izidi. review-evidence.py je preveril vse arhivske SHA256. Raziskovalec oddaje ne popravlja in presoje ne vrne merjeni seji.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Dokumenti navedejo osnovne gumbe, filter, števec, globalno množico, različico in UTF-16 zapis ter seznam R01–R12. Toda glavna specifikacija ni popolna skupna predloga: manjkajo razdelani vhodni robovi, stroga zavrnitev mešanih ids, brez začetnega prepisa, neznani ID-ji, natančen projektni presek in izjeme z delovanjem v pomnilniku. R11 v statusu izpusti izjeme in no-echo. Specifikacija omeji gumb na tablo, a drugje trdi oba pogleda; verification pravi R09–R12 še nepreverjeni, status vseh dvanajst označi izpolnjene. Osnovna pravila so razvidna, pomembne vrzeli in neskladja ostanejo.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:13",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:35",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:49",
+        "runtime/runs/P07-A-001/submission/docs/agent/P07_STATUS.md:12",
+        "runtime/runs/P07-A-001/submission/docs/agent/verification.md:8"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Nekaj pogojev je preverljivih: članstvo isFavorite(id), preklop posameznega ID-ja, podmnožica prikaza in sporočilo/disabled pri praznih priljubljenih. Status doda enoličen sortiran zapis in ponastavitev filtra. Ne določi pa polne validacijske ovojnice, projektne množične razlike, ohranjenih neznanih ID-jev, prehodov storage/null/no-echo z izjemami ali jasne razlike globalnega stanja in lokalnega filtra. Naštete funkcije same ne tvorijo dosledne formalizacije vseh ključnih prehodov.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:35",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:49",
+        "runtime/runs/P07-A-001/submission/docs/agent/P07_STATUS.md:13",
+        "runtime/runs/P07-A-001/submission/docs/agent/P07_STATUS.md:19"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Specifikacija označi D01 in D04 kot uspešna s PR4, brez ukaza ali dejanskega izida. Med71 native ukazi in82 ohranjenimi klici ni izvedbe testov, lint, tipov ali gradnje. Poskus npm run dev se ustavi že na nedovoljenem mkdir; write_stdin nima veljavne seje. Referenca test/agent/P07.spec.ts ne obstaja; v shrambi je tudi prazen SUMMARY. Status trdi skupno stanje obeh pogledov, čeprav App ne uvozi hooka, kar model sam prebere v item_88. Nekaj dejanskih modulov je navedenih in verification odkrito navaja nedokončano preverjanje, vendar to ne upraviči izmišljenih uspehov in napačnih sklicev.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:58",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:66",
+        "runtime/runs/P07-A-001/submission/docs/agent/P07_STATUS.md:18",
+        "runtime/runs/P07-A-001/submission/docs/agent/verification.md:8",
+        "analysis/evidence/P07-A-001-checks.md#preserved-42",
+        "analysis/evidence/P07-A-001-checks.md#preserved-47",
+        "analysis/evidence/P07-A-001-checks.md#item_88",
+        "analysis/review-packets/P07-A-001.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 0,
+      "rationale": "Nova logika je nominalno v hooku, integracija pa je znatno nedosledna. TaskBoard ustvari svojo instanco, App/preglednica ostaneta brez hooka; filteredTasks=tasks in readonly checkbox nimata delujoče projekcije, gumb ima no-op in je ugnezden v povezavo. Hook ne validira vsakega ID-ja, ignorira storage null, ob neuspelem zapisu ne posodobi pomnilnika in projekt odstranjuje po predponi namesto po dejanskih opravilih. TaskDetails zamenja obstoječi vmesnik s task/onBack/onViewChange, medtem ko App poda project/taskId/view; doda celo neposredna PATCH dejanja izven bralne naloge. Neveljavna JSX oznaka prepreči nalaganje; slabosti niso zgolj ena lokalna funkcionalna napaka.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/src/TaskBoard.tsx:14",
+        "runtime/runs/P07-A-001/submission/src/TaskBoard.tsx:27",
+        "runtime/runs/P07-A-001/submission/src/TaskBoard.tsx:49",
+        "runtime/runs/P07-A-001/submission/src/TaskBoard.tsx:56",
+        "runtime/runs/P07-A-001/submission/src/useFavorites.ts:18",
+        "runtime/runs/P07-A-001/submission/src/useFavorites.ts:28",
+        "runtime/runs/P07-A-001/submission/src/useFavorites.ts:44",
+        "runtime/runs/P07-A-001/submission/src/useFavorites.ts:59",
+        "runtime/runs/P07-A-001/submission/src/TaskDetails.tsx:7",
+        "runtime/runs/P07-A-001/submission/src/TaskDetails.tsx:62",
+        "runtime/runs/P07-A-001/evaluation-types.log",
+        "analysis/evidence/P07-A-001-checks.md#item_88"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Oddani sta dve kratki testni datoteki s tremi primeri. Simple T01 ponovi že dani D01 (dva ID-ja in odsotnost dialoga); Basic preveri le obstoj gumba/checkboxa, brez dejanskega oracle preklopa. Ne dodata smiselnega razlikujočega roba glede na že prejete razvojne teste. Uvozi vsebujejo neobstoječe getRoleByText/getByText, napačno pot ../src/useFavorites in Regex za helper, ki zahteva string. Noben zagon ni izveden, D01/D04 pa sta kljub temu označena uspešna. Daljši testni osnutek v neuspelem writerju ni oddana datoteka. Ocena0 ne sledi zgolj neizvedenosti: smiselni napisani, a neizvedeni dodatni robovi bi po isti kalibraciji lahko dobili1; teh tukaj ni.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/tests/agent/favoritesBasic.spec.ts:1",
+        "runtime/runs/P07-A-001/submission/tests/agent/favorites_simple.spec.ts:1",
+        "runtime/tasks/P07/development.spec.ts:2",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:68",
+        "analysis/evidence/P07-A-001-checks.md#preserved-59",
+        "analysis/evidence/P07-A-001-checks.md#preserved-68",
+        "analysis/evidence/P07-A-001-checks.md#preserved-69"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "TaskBoard:61 uporabi aria-label=\"Priljubljeno opravilo \" + t.id brez JSX oklepajev, zato types javita TS1003/TS1382 in Vite ne prevede aplikacije. Končni paket doseže14/70:14 API preverjanj uspe, vsa56 preverjanj z uporabniškim vmesnikom odpovejo pred delujočo aplikacijo. To ni56 neodvisnih napak algoritmov. Nove zahteve0/12. Dodatne statično vidne vrzeli so navedene pri kodi, brez raziskovalčevega popravljanja ali izmišljenih izvedb na popravljeni različici.",
+    "evidence": [
+      "runtime/runs/P07-A-001/submission/src/TaskBoard.tsx:61",
+      "runtime/runs/P07-A-001/evaluation-types.log",
+      "runtime/runs/P07-A-001/evaluation-build.log",
+      "runtime/runs/P07-A-001/evaluation-summary.json",
+      "runtime/runs/P07-A-001/evaluation-tests.log"
+    ]
+  },
+  "finalFailureNote": "Completed911,332s, brez strogega uspeha; lint/tipi/gradnja false, dovoljene spremembe true, completeTestRuntrue. Celoten račun0,22767635USD;59 zahtev siliconflow/fp8, vseHTTP200/completed (56finished,3client_aborted).",
+  "developmentFailureExample": {
+    "description": "Native item_25 in40 imata exit0 kljub zavrnjenemu heredocu in zavajajočemu success echo; poznejši node/echo dejansko dostavijo datoteke. Neuspejo tudi shell narekovaji, poskusi /tmp pisanja in .vite-temp. Preserved-47 vrne Unknown process id373; ni izvedenega dev strežnika ali testov. Item_52,61,63 imajo SyntaxError v writerjih; daljši testni osnutek ni dostavljen. Preserved-68/69 sta zavrnjena poskusa odstranjevanja testov, zato obe datoteki ostaneta v oddaji. Item_88 sam ugotovi App.tsx imports favorites? false. Razvojnega neuspeha lastnega testnega zagona ni; prve dejanske tehnične napake zabeleži končni neodvisni ocenjevalec.",
+    "evidence": [
+      "analysis/evidence/P07-A-001-checks.md#item_25",
+      "analysis/evidence/P07-A-001-checks.md#item_40",
+      "analysis/evidence/P07-A-001-checks.md#preserved-34",
+      "analysis/evidence/P07-A-001-checks.md#preserved-42",
+      "analysis/evidence/P07-A-001-checks.md#preserved-43",
+      "analysis/evidence/P07-A-001-checks.md#preserved-47",
+      "analysis/evidence/P07-A-001-checks.md#item_52",
+      "analysis/evidence/P07-A-001-checks.md#item_61",
+      "analysis/evidence/P07-A-001-checks.md#preserved-59",
+      "analysis/evidence/P07-A-001-checks.md#preserved-68",
+      "analysis/evidence/P07-A-001-checks.md#preserved-69",
+      "analysis/evidence/P07-A-001-checks.md#item_88"
+    ]
+  }
+}
