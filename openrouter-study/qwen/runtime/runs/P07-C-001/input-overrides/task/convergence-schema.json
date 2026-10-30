@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "outcome",
+    "summary",
+    "unverified"
+  ],
+  "properties": {
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "converged",
+        "tasks_appended",
+        "blocked"
+      ]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "unverified": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

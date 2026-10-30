@@ -1,0 +1,89 @@
+{
+  "id": "P07-C-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-30",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "reviewStatus": "partial-authored-submission",
+  "limitation": "Prebrane so vse tri dejansko oddane avtorske datoteke: 1250-bajtna ustava, 39-bajtni feature metapodatki in prazna specifikacija. Preverjene so arhivske vsote ter 28 native ukazov in 38 ohranjenih orodnih klicev. Osnutki v argumentih neuspešnih zapisov niso oddaja; produkcijska koda in lastni testi niso dostavljeni. Presoja ni vrnjena merjeni seji.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 0,
+      "rationale": "Specifikacija je prazna, feature.json vsebuje samo imenik. Kratka ustava navede lokalnost priljubljenih in filtrov, nespremenjene podatke ter splošna oblikovna in infrastrukturna načela. Manjkajo skoraj vsa konkretna pravila R01–R12: oblika/validacija/shranjevanje množice, prehodi, sinhronizacija, ponastavitve, števci, izjeme in pogodbeno poimenovane kontrole. Dolgi osnutek v zadnjem neuspešnem heredoc ukazu ni zapisana specifikacija.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md",
+        "runtime/runs/P07-C-001/submission/.specify/memory/constitution.md:13",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/feature.json:1",
+        "analysis/evidence/P07-C-001-checks.md#preserved-37"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Ustava izrecno določa lokalnost sprememb priljubljenih in filtrov, nespremenjene podatke ter prepoved novih zapisovalnih API-jev. Ti omejeni ohranitveni pogoji so preverljivi, zato dimenzija ni povsem brez predikatov. Ni pa opredeljene množice, pravil validacije ali prehodov toggle/filter/reset/storage, zveze števcev in obravnave izjem. Splošna trditev o preklopih po ID ne nadomesti ključne formalizacije.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/.specify/memory/constitution.md:23",
+        "runtime/runs/P07-C-001/submission/.specify/memory/constitution.md:25",
+        "runtime/runs/P07-C-001/submission/.specify/memory/constitution.md:29",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Ni matrike zahteva–dejanska koda–test, verifikacijskega zapisa, nalog ali poimenovanih izvedenih scenarijev. Feature metapodatki kažejo samo imenik, specifikacija je prazna. Nobenega uspeha testov ne izmišljuje; ocena 0 pomeni odsotnost uporabne sledljivosti. Neuspešnega pisanja osnutka in raziskovalčevega neodvisnega preverjanja ne štejem kot modelov dokaz.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/feature.json:1",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md",
+        "runtime/runs/P07-C-001/execution.json",
+        "analysis/evidence/P07-C-001-checks.md#preserved-37"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Avtorska produkcijska koda ni dostavljena. FileChanges vsebuje samo ustavo, metapodatke in prazni spec.md; implementacijska faza se ni začela. Poskusi pisanja v src/shared in začasne datoteke so zavrnjeni ali neuspešni, zato niso ocenljiva implementacija. Organizacije nespremenjenega izhodišča ne pripišem modelu; dimenzija ostane NULL.",
+      "evidence": [
+        "runtime/runs/P07-C-001/execution.json",
+        "runtime/runs/P07-C-001/final-inventory.json.gz",
+        "analysis/evidence/P07-C-001-checks.md#preserved-20",
+        "analysis/evidence/P07-C-001-checks.md#preserved-26"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Ni lastnih testnih datotek ali smiselnih dodatnih funkcionalnih preverjanj. Ukazi berejo vhodne dokumente/kodo, preverjajo čas in poskušajo pisati datoteke; zagon print(hello) v Node se konča z ReferenceError in ni test funkcije. Lint, tipi, gradnja in Playwright v merjeni seji niso izvedeni. Načrt testov v neuspešnem heredoc osnutku ni oddan ali izveden test; neodvisnih 38/70 ne pripišem modelu.",
+      "evidence": [
+        "runtime/runs/P07-C-001/final-inventory.json.gz",
+        "analysis/evidence/P07-C-001-checks.md#preserved-29",
+        "analysis/evidence/P07-C-001-checks.md#preserved-37",
+        "analysis/review-packets/P07-C-001.json"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Nova funkcionalnost ni implementirana: ni gumba Priljubljeno opravilo web-01. Nespremenjena aplikacija opravi 38/38 regresijskih, vseh 8 razvojnih in 24 sprejemnih pa ne; 0/12 zahtev, strict false. Uspešni lint/types/build/allowed niso dokaz oddane nove implementacije.",
+    "evidence": [
+      "runtime/runs/P07-C-001/evaluation-summary.json",
+      "runtime/runs/P07-C-001/evaluation-tests.log",
+      "runtime/runs/P07-C-001/execution.json"
+    ]
+  },
+  "finalFailureNote": "Execution_failed597,660s: constitution371,929s completed, specify223,276s failed. Native napaka stream disconnected before completion: Network connection lost.; zadnja zahteva40 HTTP200/finished/response.failed, SiliconFlow/fp8. Natančen vzrok ni potrjen. Popolni račun0,08670025USD/40; zadnja returned usage.cost izrecno0 (generation404), upstream cost_details ni račun usage.cost. Meritev ostane v imenovalcih in se ne ponovi; sveža kratka diagnostika pred naslednjim nezačetim ID je ločena.",
+  "developmentFailureExample": {
+    "description": "Poleg prekinitve povezave so ohranjene lokalne napake zapisovanja: več heredoc ukazov ne more ustvariti začasne datoteke, pisanje shared/types.ts je zavrnjeno, write_stdin cilja neobstoječi proces7, printf ima unmatched quote. Zadnji heredoc za spec.md se konča exit1; datoteka ostane prazna. Te napake niso izmišljena izvedena aplikacijska funkcionalnost.",
+    "evidence": [
+      "analysis/evidence/P07-C-001-checks.md#preserved-19",
+      "analysis/evidence/P07-C-001-checks.md#preserved-20",
+      "analysis/evidence/P07-C-001-checks.md#preserved-27",
+      "analysis/evidence/P07-C-001-checks.md#preserved-37",
+      "runtime/runs/P07-C-001/phases/02-specify/events.jsonl.gz"
+    ]
+  }
+}

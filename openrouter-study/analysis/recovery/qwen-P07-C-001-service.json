@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-30T16:06:38.046131+00:00",
+  "researcherOnly": true,
+  "measurement": "151 qwen/P07-C-001",
+  "measuredStatus": "execution_failed",
+  "nativeError": "stream disconnected before completion: Network connection lost.",
+  "cause": "unknown",
+  "measuredRetry": false,
+  "continuation": {
+    "at": "2026-10-30T16:01:31.573Z",
+    "action": "continue_unused_ids",
+    "archived": 151,
+    "previousRun": "qwen/P07-C-001",
+    "errorRequests": [
+      40
+    ],
+    "classifications": [
+      "qwen-network-lost-cause-unknown"
+    ],
+    "nextRun": "glm/P07-C-001",
+    "diagnosis": "analysis/recovery/qwen-P07-C-002-service.json",
+    "diagnostic": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/qualification/service-2026-10-30T16-01-22-907Z",
+    "frozenProtocolVersion": "O/1.0+budget-amendment-1",
+    "taskPromptsDeadlinesEvaluatorsUnchanged": true,
+    "archivedHashesVerified": true,
+    "measuredRetry": false,
+    "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
+  },
+  "serviceCheck": {
+    "at": "2026-10-30T16:01:30.278Z",
+    "action": "service_check_passed",
+    "diagnostic": {
+      "at": "2026-10-30T16:01:29.918Z",
+      "model": "qwen/qwen3.5-9b",
+      "provider": "siliconflow/fp8",
+      "httpStatus": 200,
+      "responseStatus": "completed",
+      "text": "CONNECTION_OK",
+      "error": null,
+      "passed": true,
+      "excludedFromMeasurements": true,
+      "costComplete": true,
+      "costUSD": 7.005e-05,
+      "evidence": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/qualification/service-2026-10-30T16-01-22-907Z"
+    },
+    "limitation": "Short reply success does not establish reliability of long tool responses."
+  },
+  "limitation": "Short service diagnostic is excluded from measurements; no proof of long-response reliability. Returned usage.cost=0 for failed request40 is preserved separately from nonzero upstream cost_details."
+}
