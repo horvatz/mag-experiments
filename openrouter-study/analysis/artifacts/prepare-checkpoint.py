@@ -29,6 +29,11 @@ completed = set(jobs[:args.checkpoint])
 for slug, id in completed:
     assert (study / slug / 'runtime/runs' / id / 'archive-complete.json').exists(), (slug, id)
 status = read(study / 'status.json')
+paused = read(study / 'active.json').get('stage') == 'paused_by_user'
+if paused:
+    pause = read(study / 'paused.json')
+    assert pause['stage'] == 'paused_by_user' and pause['archived'] == args.checkpoint
+    assert not (study / 'runner.lock').exists()
 audit = read(study / 'analysis/evidence-audit.json')
 budget = read(study / 'analysis/budget-amendment-audit.json')
 assert status['archived'] == args.checkpoint
@@ -49,7 +54,7 @@ record = dict(at=datetime.datetime.now(datetime.timezone.utc).isoformat(), newAr
               newReviews=audit['reviews'] - 48, allArchives=audit['archives'], allReviews=audit['reviews'],
               archiveAuditPassed=True, budgetAuditAmendedRuns=budget['amendedRuns'],
               budgetAuditAmendedRequests=budget['amendedSentRequests'], latestFullyReviewedArtifactCheckpoint=args.qa,
-              paused=False, nextScheduled=dict(position=args.checkpoint + 1, slug=next_job[0], id=next_job[1]) if next_job else None,
+              paused=paused, nextScheduled=dict(position=args.checkpoint + 1, slug=next_job[0], id=next_job[1]) if next_job else None,
               backupScope='Completed measurements through checkpoint and researcher analyses. Later IDs, live active.json and locks excluded. QA is preserved preview, not final export.')
 (study / f'analysis/recovery/github-checkpoint{args.checkpoint}.json').write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n')
 files = git(experiments, 'ls-files', '--modified', '--others', '--exclude-standard', '-z', '--', 'openrouter-study').decode().split('\0')
