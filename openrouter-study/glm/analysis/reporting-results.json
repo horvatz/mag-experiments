@@ -1,12 +1,11 @@
 {
   "collection": "O-GLM/1.0",
   "model": "z-ai/glm-5.3",
-  "generatedAt": "2026-10-30T16:17:23.389Z",
+  "generatedAt": "2026-10-30T16:56:28.801Z",
   "complete": false,
-  "archived": 51,
+  "archived": 52,
   "planned": 72,
   "missing": [
-    "P06-C-002",
     "P06-B-002",
     "P06-A-002",
     "P09-A-001",
@@ -55,15 +54,15 @@
     },
     {
       "procedure": "C",
-      "archived": 17,
+      "archived": 18,
       "planned": 24,
       "strictSuccesses": 5,
-      "meanDemonstratedFraction": 0.9068627450980391,
-      "meanElapsedSeconds": 678.8451176470586,
+      "meanDemonstratedFraction": 0.9120370370370369,
+      "meanElapsedSeconds": 686.3203888888887,
       "completeUsageCount": 6,
       "meanInputTokensCompleteOnly": 6929851,
       "meanOutputTokensCompleteOnly": 59409.833333333336,
-      "knownDurationCount": 17
+      "knownDurationCount": 18
     }
   ],
   "byTask": [
@@ -158,10 +157,10 @@
     {
       "task": "P06",
       "procedure": "C",
-      "count": 2,
+      "count": 3,
       "meanDemonstratedFraction": 1,
-      "meanElapsedSeconds": 812.732,
-      "knownDurationCount": 2
+      "meanElapsedSeconds": 812.9546666666666,
+      "knownDurationCount": 3
     },
     {
       "task": "P07",
@@ -7756,6 +7755,163 @@
       "knownCostUSD": 0.353045248,
       "costComplete": true,
       "costEvidence": "/Users/zan/Documents/mag/experiments/openrouter-study/glm/api/P07-C-001/model/api-cost.json"
+    },
+    {
+      "id": "P06-C-002",
+      "task": "P06",
+      "procedure": "C",
+      "repetition": 2,
+      "block": 18,
+      "position": 1,
+      "executionStatus": "invalid_stage_handoff",
+      "elapsedSeconds": 813.4,
+      "strictSuccess": false,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": true,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": true,
+            "observed": true
+          }
+        ],
+        "passed": 12,
+        "observed": 12,
+        "total": 12,
+        "fraction": 1
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "usage": null,
+      "usageComplete": false,
+      "observedUsageBeforeInterruption": {
+        "input_tokens": 6274882,
+        "cached_input_tokens": 6059712,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 77917,
+        "reasoning_output_tokens": 76272
+      },
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 68.596,
+          "status": "completed"
+        },
+        {
+          "name": "specify",
+          "elapsedSeconds": 135.525,
+          "status": "completed"
+        },
+        {
+          "name": "plan",
+          "elapsedSeconds": 92.481,
+          "status": "completed"
+        },
+        {
+          "name": "tasks",
+          "elapsedSeconds": 30.976,
+          "status": "completed"
+        },
+        {
+          "name": "implement",
+          "elapsedSeconds": 480.143,
+          "status": "completed"
+        }
+      ],
+      "changedFiles": 10,
+      "ownTestFiles": 1,
+      "contentReviewSample": false,
+      "evidence": "runs/P06-C-002/evaluation-summary.json",
+      "costUSD": 0.541638308,
+      "knownCostUSD": 0.541638308,
+      "costComplete": true,
+      "costEvidence": "/Users/zan/Documents/mag/experiments/openrouter-study/glm/api/P06-C-002/model/api-cost.json"
     }
   ],
   "withheldComparisons": [],
