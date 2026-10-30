@@ -6164,6 +6164,204 @@
       "transportSummary": {
         "200finishedCompleted": 51
       }
+    },
+    {
+      "at": "2026-10-30T12:06:03.204176+00:00",
+      "position": 139,
+      "slug": "deepseek",
+      "id": "P05-A-003",
+      "executionStatus": "completed",
+      "elapsedSeconds": 345.975,
+      "strictSuccess": true,
+      "demonstrated": 12,
+      "requirementsPassed": 12,
+      "functionalTestsPassed": 70,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": true,
+      "costUSD": 0.02958395699999999,
+      "knownCostUSD": 0.02958395699999999,
+      "apiRequests": 29,
+      "archiveSha256": "2d97250580fa7ab0b2be0a446cbb2d551fa03fcf6a80dce6d6f3db5f7408e692",
+      "archiveAllHashesVerified": true,
+      "pinnedRouteAllRequestsVerified": true,
+      "authoredFiles": 5,
+      "ownTestFiles": 1,
+      "ownTests": 11,
+      "noNewOrdinalReview": true,
+      "sourceAudit": "App.tsx:39–49 filters before stable slice/clamps current page, derives whole-project counts and exact zero/nonzero status, control changes reset page, project key resets local state, same visible slice sent to TaskBoard. Independent70/70/12of12; no discovered final failure.",
+      "modelChecks": "Native26dev8pass;29own4fail6pass,30targetA02fails,31additionalownfailures,33own1fail10pass,35own11pass after test rewrites and accumulation loop correction.37full fails lint temporaryfix.cjs,39full fails TS2345nullable test array;40full57pass after test typing fix,44full57pass after docs. Every pipeline0 distinguished from actual output; all57pass confirmed, not inferred.",
+      "transportSummary": {
+        "200finishedCompleted": 26,
+        "200clientAbortedCompleted": 3
+      }
+    },
+    {
+      "at": "2026-10-30T12:36:45.040406+00:00",
+      "position": 140,
+      "slug": "qwen",
+      "id": "P05-A-003",
+      "executionStatus": "time_limit",
+      "elapsedSeconds": 1200.04,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 14,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 14,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": false
+        },
+        {
+          "name": "types",
+          "passed": false
+        },
+        {
+          "name": "build",
+          "passed": false
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": false,
+      "costUSD": null,
+      "knownCostUSD": 0.24978999999999998,
+      "apiRequests": 62,
+      "archiveSha256": "ee3c0732d04d7a5ff8c7c92b973974cdc395e3c1fb58abe15011d0e0b6d9108d",
+      "archiveAllHashesVerified": true,
+      "pinnedRouteAllRequestsVerified": true,
+      "authoredFiles": 4,
+      "ownTestFiles": 0,
+      "nativeCompletedCommands": 62,
+      "preservedToolCalls": 72,
+      "noNewOrdinalReview": true,
+      "sourceAudit": "Read critical App sections and all hook/generator/spec: native124 globally replaces every closingdiv with controls_html + split segment. FinalApp380lines contains17duplicated pagination controls and missing closing JSX tags; also removes task loading and uses unbound tasks/state. Hook all=0 yields empty defaultslice by static dataflow; not evaluated in repaired app. Src/_create.js is a delivered FS generator writing placeholder, not an own test. No verification or authored tests. Independent14API/regressionpass,56UI-basedfail; app cannot compile, not56independent algorithm faults.",
+      "modelChecks": "Native98 cdapp fails before npm starts;101 actual npmruncheck fails lint of temporary .vite/create_pagination.js with missingclosingparenthesis. Later120 writes hook,124 corruptsApp,126 only printsfirst50lines. No successful model check or own functional test. Reading final source is not test execution.",
+      "transportSummary": {
+        "200finishedCompleted": 59,
+        "200clientAbortedCompleted": 2,
+        "noHTTPStatusClientAbortedUnknownAtDeadline": 1
+      },
+      "lastRequestLimitation": "Request62 has no observed HTTP status or final response; upstream receipt and invoice remain unconfirmed. Preserve unknown, do not infer zero from missing headers."
+    },
+    {
+      "at": "2026-10-30T12:49:12.118582+00:00",
+      "position": 141,
+      "slug": "glm",
+      "id": "P05-A-003",
+      "executionStatus": "completed",
+      "elapsedSeconds": 380.662,
+      "strictSuccess": true,
+      "demonstrated": 12,
+      "requirementsPassed": 12,
+      "functionalTestsPassed": 70,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": true,
+      "costUSD": 0.23081987199999998,
+      "knownCostUSD": 0.23081987199999998,
+      "apiRequests": 49,
+      "archiveSha256": "19d2258014ec2ae4a361039f4cef5f940386aa6abd7a35e306727175f5e06edb",
+      "archiveAllHashesVerified": true,
+      "pinnedRouteAllRequestsVerified": true,
+      "authoredFiles": 6,
+      "ownTestFiles": 1,
+      "ownTests": 9,
+      "noNewOrdinalReview": true,
+      "sourceAudit": "App.tsx local currentPage/pageSize/statusFilter, stable filter-before-slice and clamped derivedpage, exact empty/nonempty status and disabled bounds, shared pageTasks for board/table, wholeprojectcounts and project-key reset. Independent70/70/12of12, no discovered final failure.",
+      "modelChecks": "Native28 lint/typecheck pass;29own4fail5pass,35own1fail8pass,40own9pass after test fixes;42dev8pass;44full55pass;57lintpass after docs. Initial shell quoting/apply_patch failures and xcrun cache warnings retained, distinct from final functional result. Verification55/55 confirmed by native output.",
+      "transportSummary": {
+        "200finishedCompleted": 40,
+        "200clientAbortedCompleted": 9
+      }
     }
   ],
   "pendingObservations": {}

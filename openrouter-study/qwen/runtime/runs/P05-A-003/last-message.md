@@ -1,0 +1,3 @@
+Sedaj preverjam App.tsx:
+
+
