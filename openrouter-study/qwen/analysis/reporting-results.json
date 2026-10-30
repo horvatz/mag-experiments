@@ -1,12 +1,11 @@
 {
   "collection": "O-QW/1.0",
   "model": "qwen/qwen3.5-9b",
-  "generatedAt": "2026-10-30T16:01:21.875Z",
+  "generatedAt": "2026-10-30T17:27:05.160Z",
   "complete": false,
-  "archived": 51,
+  "archived": 52,
   "planned": 72,
   "missing": [
-    "P06-C-002",
     "P06-B-002",
     "P06-A-002",
     "P09-A-001",
@@ -55,15 +54,15 @@
     },
     {
       "procedure": "C",
-      "archived": 17,
+      "archived": 18,
       "planned": 24,
       "strictSuccesses": 0,
       "meanDemonstratedFraction": 0,
-      "meanElapsedSeconds": 802.5971176470587,
+      "meanElapsedSeconds": 760.0964444444443,
       "completeUsageCount": 0,
       "meanInputTokensCompleteOnly": null,
       "meanOutputTokensCompleteOnly": null,
-      "knownDurationCount": 17
+      "knownDurationCount": 18
     }
   ],
   "byTask": [
@@ -158,10 +157,10 @@
     {
       "task": "P06",
       "procedure": "C",
-      "count": 2,
+      "count": 3,
       "meanDemonstratedFraction": 0,
-      "meanElapsedSeconds": 813.3555000000001,
-      "knownDurationCount": 2
+      "meanElapsedSeconds": 554.7653333333334,
+      "knownDurationCount": 3
     },
     {
       "task": "P07",
@@ -7420,6 +7419,143 @@
       "knownCostUSD": 0.08670024999999998,
       "costComplete": true,
       "costEvidence": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/api/P07-C-001/model/api-cost.json"
+    },
+    {
+      "id": "P06-C-002",
+      "task": "P06",
+      "procedure": "C",
+      "repetition": 2,
+      "block": 18,
+      "position": 1,
+      "executionStatus": "invalid_stage_handoff",
+      "elapsedSeconds": 37.585,
+      "strictSuccess": false,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "usage": null,
+      "usageComplete": false,
+      "observedUsageBeforeInterruption": {
+        "input_tokens": 64676,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 690,
+        "reasoning_output_tokens": 185
+      },
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 36.362,
+          "status": "completed"
+        }
+      ],
+      "changedFiles": 0,
+      "ownTestFiles": 0,
+      "contentReviewSample": false,
+      "evidence": "runs/P06-C-002/evaluation-summary.json",
+      "costUSD": 0.006571100000000001,
+      "knownCostUSD": 0.006571100000000001,
+      "costComplete": true,
+      "costEvidence": "/Users/zan/Documents/mag/experiments/openrouter-study/qwen/api/P06-C-002/model/api-cost.json"
     }
   ],
   "withheldComparisons": [],

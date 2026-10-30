@@ -6817,6 +6817,83 @@
         "clientAborted": 5
       },
       "newOrdinalReviewWritten": false
+    },
+    {
+      "at": "2026-10-30T17:27:29.056837+00:00",
+      "position": 156,
+      "slug": "qwen",
+      "id": "P06-C-002",
+      "executionStatus": "invalid_stage_handoff",
+      "elapsedSeconds": 37.585,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 38,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 36.362,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.006571100000000001,
+      "knownCostUSD": 0.006571100000000001,
+      "apiRequests": 6,
+      "archiveSha256": "6815a4f06327538720e840edf14eaa04ac0c32ae4e6e0ed48d3b6c686d2beba7",
+      "authoredFiles": 0,
+      "ownTestFiles": 0,
+      "ownTestCases": 0,
+      "lastFullCheck": "No model checks; researcher evaluator38regression passes,0/8 development,0/24 holdout.",
+      "handoffError": "Constitution template was not completed",
+      "handoffLimitation": "First stage returns prose announcing writing but no authored file changes. Original constitution template remains unchanged. No later phase; no correction or measured replay by researcher.",
+      "functionalFailure": "New CSV export is absent;38/70 baseline-only and0/12. Static/allowed checks true do not establish delivered new functionality.",
+      "service": {
+        "provider": "siliconflow/fp8",
+        "requests": 6,
+        "httpStatuses": {
+          "200": 6
+        },
+        "responseStatuses": {
+          "completed": 6
+        }
+      },
+      "newOrdinalReviewWritten": false
     }
   ],
   "pendingObservations": {}
