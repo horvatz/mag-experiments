@@ -1,0 +1,121 @@
+{
+  "id": "P07-B-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-30T15:48:26.604107+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "bcb2743597af355be3e6513ce77ea9f41fd54583b980c27251d39ad94b5eca3d",
+  "limitation": "Prebranih vseh devet avtorskih datotek, native popis, dejanski zagoni in poznejši API izidi. Arhivski SHA256 so preverjeni. Popravki v istem B postopku niso nove meritve; raziskovalec oddaje ne popravlja ali ponavlja.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija jasno pokrije vseh R01–R12, podatkovno domeno0/1/>10, Unicode/enake naslove, natančna dostopna imena in stanja. Loči globalne ID-je in projektni filter, določi UTF-16 zapis, strogo veljavnost celotnega ids, neznane/dvojne ID-je brez začetnega prepisa, oba pogleda, praznino, ponastavitve, projektni presek, celotne in vidne števce, storage/no-echo ter obe izjemi. Ne spreminja sprejemnih pogojev zaradi kasnejših rezultatov; zgodovina pojasni popravek sledljivosti. Napačna končna implementacija se poroča ločeno od pravilnih sprejemnih pogojev.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:16",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:20",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:42",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:45",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:50",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:55",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification-history.md:7"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Globalna enkratna množica, lokalni boolean in stabilna projekcija currentTasks so ločeni. Članstvo, preklop samo enega ID-ja, UTF-16 kanonizacija, celotna veljavnost zapisa in množična razlika pri projektnem čiščenju so preverljivi. X/M je celoprojektni, stolpci štejejo vidne naloge; projekt/reload spremenita filter in ohranita globalne ID-je. Zunanji dogodek zamenja stanje po isti validaciji brez zapisa, izjema ohrani pomnilniško dejanje. Pravila so uporabna tudi izven treh lastnih scenarijev.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:20",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:26",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:36",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:43",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:49",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:52"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Pregledovalec dejansko ponovi49/49 in zahteva popravek zastarele matrike. Specifikacijski popravek doda R–koda–test–izid; nadaljevani implementer ponovno doseže49/49 in spremeni samo verification. Ti uspehi so resnični. Toda nova matrika preširoko enači tri scenarije s celotnimi pogoji: R04 pokaže le neveljaven JSON, brez mešanih ids ali drugih oblik; R03 primer nima dvojnikov; R08 začne menjavo projekta pri že false filtru; R10 navedene vrstice ne preverijo stolpčnih števcev; R11 ne meri povratnih zapisov ali izjeme branja. Omejitve navajajo le okolje, ne teh robov. Popravek izboljša povezave, ne utemelji celotne deklarirane pokritosti.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/docs/agent/review.json:1",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:67",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:70",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:74",
+        "runtime/runs/P07-B-001/submission/docs/agent/specification.md:77",
+        "runtime/runs/P07-B-001/submission/docs/agent/verification.md:35",
+        "analysis/evidence/P07-B-001-checks.md#02-implementation-item_51",
+        "analysis/evidence/P07-B-001-checks.md#03-review-item_20",
+        "analysis/evidence/P07-B-001-checks.md#05-implementation-repair-item_5"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "useFavorites loči normalizator/parser, začetno branje, globalno stanje, poslušalca s čiščenjem in uporabniški zapis zunaj updaterja. App ima eno globalno instanco, ProjectView lokalni filter z življenjsko dobo projektnega ključa; vidni seznam in projektni števec sta izpeljana. Tabla in preglednica dobita isto množico in semantično ločene gumbe izven povezav. Ni API zapisov ali podvojene shranjene projekcije. Delna validacija, izklop filtra pri čiščenju in prazno sporočilo so konkretne funkcionalne napake, odgovornosti pa so še vedno razumljivo ločene.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/src/useFavorites.ts:6",
+        "runtime/runs/P07-B-001/submission/src/useFavorites.ts:19",
+        "runtime/runs/P07-B-001/submission/src/useFavorites.ts:27",
+        "runtime/runs/P07-B-001/submission/src/useFavorites.ts:48",
+        "runtime/runs/P07-B-001/submission/src/App.tsx:12",
+        "runtime/runs/P07-B-001/submission/src/App.tsx:17",
+        "runtime/runs/P07-B-001/submission/src/App.tsx:81",
+        "runtime/runs/P07-B-001/submission/src/App.tsx:102",
+        "runtime/runs/P07-B-001/submission/src/TaskBoard.tsx:26"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Trije dejansko uspešni dodatni scenariji preverijo neveljaven JSON brez prepisa, filtriranje/odstranitev/prazno preglednico, ohranitev tujih/neznanih ID-jev pri čiščenju, celoprojektni števec, razlikujoč tuji ključ, null iz neprazne množice ter izjemo pisanja z uporabo v pomnilniku. Ostanejo pomembne vrzeli: ni mešanih ids, drugih neveljavnih oblik, dvojnikov, adversarialnega UTF-16, lastnih0/1/>10, res aktivnega filtra pred projektom/reloadom, čiščenja pod filtrom, prazne filtrirane table, stolpčnih števcev, no-echo merjenja ali izjeme branja. API writes niso localStorage writes. Novi testi in skupni check pomagajo popraviti regresijo nalagalnega statusa, ne odkrijejo treh končnih vrzeli.",
+      "evidence": [
+        "runtime/runs/P07-B-001/submission/tests/agent/favorites.spec.ts:4",
+        "runtime/runs/P07-B-001/submission/tests/agent/favorites.spec.ts:22",
+        "runtime/runs/P07-B-001/submission/tests/agent/favorites.spec.ts:38",
+        "runtime/runs/P07-B-001/submission/tests/agent/favorites.spec.ts:45",
+        "runtime/runs/P07-B-001/submission/tests/agent/favorites.spec.ts:48",
+        "analysis/evidence/P07-B-001-checks.md#02-implementation-item_37",
+        "analysis/evidence/P07-B-001-checks.md#02-implementation-item_45",
+        "analysis/evidence/P07-B-001-checks.md#02-implementation-item_51"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E04 na obeh širinah: normalizeIds:8 iz mešanega ids odstrani nenize in ohrani web-01, namesto da zavrne celoten zapis. E06: App:54 najprej izriše tablo, v njej ni zahtevanega Ni priljubljenih opravil.; območje table obstaja, to ni prejšnja občutljivost manjkajočega območja. E09: App:34 po čiščenju izklopi filter, zato test namesto[] vidi vseh8web ID-jev. Ustavi se na prikazu pred poznejšo preverbo shrambe; to ni dokaz izgube tujih/neznanih ID-jev. Končno64/70 in9/12, strogi neuspeh; vse statične kontrole in dovoljen obseg uspejo.",
+    "evidence": [
+      "runtime/runs/P07-B-001/submission/src/useFavorites.ts:8",
+      "runtime/runs/P07-B-001/submission/src/App.tsx:34",
+      "runtime/runs/P07-B-001/submission/src/App.tsx:54",
+      "runtime/runs/P07-B-001/submission/src/TaskBoard.tsx:24",
+      "runtime/runs/P07-B-001/evaluation-summary.json",
+      "runtime/runs/P07-B-001/evaluation-tests.log"
+    ]
+  },
+  "finalFailureNote": "Completed627,967s; faze106,944/296,355/136,273/37,920/44,592s. Veljaven review.json zahteva samo popravek specifikacije; specifikacijski popravek spremeni spec/history, implementacijski popravek le verification, ne kode. Celoten račun0,368660576USD;107HTTP200/completed pri wafer/us,87finished/20client_aborted. Brez izrecne napake API in brez merjene ponovitve.",
+  "developmentFailureExample": {
+    "description": "Interaktivni cat prek write_stdin dostavi kodo kljub končnemu Ctrl-C/exit1; manjkajoče zadnje oklepaje odkrijeta lint item_24 in testni item_31, popravka26/33 omogočita tipe. Item_35 ima2fail/1pass zaradi testnega FAVORITES_KEY izven page.evaluate konteksta in Promise namesto rezultata;36 ostane1fail/2pass,37 uspe3/3.39 razvojni8/8.41/43 odkrijeta neuporabljeni konstantni ostanek v lastnem viru in njegovem transform-cache;45 odstrani le ta ostanek iz lastnega cache in izvede full47pass/2fail zaradi dvojnega role=status med nalaganjem.48 ima začasno JSX napako,49 popravi prikaz panela le ob naloženih tasks in potrdi osnovne24/24;51 full49/49. Pregledovalec ponovi49/49 ter zahteva zgolj dokumentacijsko sledljivost. Spec-repair dopolni tabelo, impl-repair še enkrat potrdi49/49 brez spremembe kode. Končnih treh vrzeli ti zagoni ne odkrijejo.",
+    "evidence": [
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_24",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_26",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_31",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_33",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_35",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_37",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_41",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_43",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_45",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_48",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_49",
+      "analysis/evidence/P07-B-001-checks.md#02-implementation-item_51",
+      "analysis/evidence/P07-B-001-checks.md#03-review-item_20",
+      "analysis/evidence/P07-B-001-checks.md#04-specification-repair-item_11",
+      "analysis/evidence/P07-B-001-checks.md#05-implementation-repair-item_5"
+    ]
+  }
+}

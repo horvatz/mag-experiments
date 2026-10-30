@@ -72,6 +72,15 @@ secret_forms = [key, base64.b64encode(key)]
 pattern = re.compile(rb'sk-or-v1-[a-zA-Z0-9]{20,}|-----BEGIN (?:OPENSSH|RSA|EC|DSA)? ?PRIVATE KEY-----|gh[pousr]_[a-zA-Z0-9]{20,}')
 for repo in [experiments, naloga]:
     staged = list(filter(None, git(repo, 'diff', '--cached', '--name-only', '--diff-filter=ACMRT', '-z').decode().split('\0')))
+    if repo == experiments:
+        assert all(path.startswith('openrouter-study/') for path in staged), 'Unrelated staged researcher work needs separate handling'
+        for path in staged:
+            assert path != 'openrouter-study/active.json' and not path.endswith('.lock'), 'Live state must not be staged'
+            model = re.match(r'openrouter-study/(glm|deepseek|qwen)/', path)
+            ids = re.findall(r'P(?:0[3-9]|10)-[ABC]-\d{3}', path)
+            assert not (model and ids) or all((model[1], id) in completed for id in ids), 'Unfinished or later measurement staged'
+    else:
+        assert all(path == 'notes/experiment-handoff.md' for path in staged), 'Unrelated staged thesis work needs separate handling'
     for path in staged:
         data = git(repo, 'show', ':' + path)
         if path.endswith('.gz'):
