@@ -1,0 +1,102 @@
+Razumem. Najprej preberem dokumentacijo in priprem specifikacijo.
+
+
+
+
+
+
+Preberem še obstoječo kodo da bolje razumem kontekst:
+
+
+
+
+
+
+
+
+Preverim strukturo projekta:
+
+
+Preberem tipe in ključne datoteke:
+
+
+
+
+
+
+
+
+Preberem preostale ključne datoteke:
+
+
+
+
+
+
+
+
+
+
+Preberem fixtures in dizajn:
+
+
+
+
+Dobro, imam popoln pregled. Sedaj začnem z Razvojnima specifikacijo.
+
+
+Sedaj začnem pisati specifikacijo P04 v `docs/agent/specification.md`:
+
+
+Uporabim Python za ugotavljanje datotek:
+
+
+Uporabil shell:
+
+
+Sedaj dodam več vsebine z `cat >>`:
+
+
+Ker /tmp ni dovoljen, bom naredil vsebino v uvodni datoteki:
+
+
+Dobro. Sedaj dodam podrobnosti za zahteve:
+
+
+Sedaj bom nadaljeval z implementacijo. Najprej ustvarim React hook za upravljanje razvrščanja:
+
+
+Folder ne obstaja, najprej ga ustvarim:
+
+
+Sedaj ustvarim datoteko z vsemi funkcijami:
+
+
+Let me write the file using a different method:
+
+
+Uporabil Python:
+
+
+Sedaj ustvarim useTaskListConfig.ts:
+
+
+```python
+content = """
+import { useState, useCallback } from 'react'
+import type { SortingState } from './useTaskListConfig'
+import { DEFAULT_STATE } from './useTaskListState'
+
+export function useTaskSortState(): [SortingState, (newState: Partial<SortingState>) => void, () => void] {
+  const [state, setState] = useState<SortingState>(DEFAULT_STATE)
+
+  const setSorting = useCallback((newState: Partial<SortingState>) => {
+    setState(prev => ({ ...prev, ...newState }))
+  }, [])
+
+  const resetSorting = useCallback(() => {
+    setState({ ...DEFAULT_STATE })
+  }, [])
+
+  return [state, setSorting,
+{"status":"completed","elapsedSeconds":437.139,"allowedChanges":true,"usage":{"input_tokens":496702,"cached_input_tokens":69120,"cache_write_input_tokens":0,"output_tokens":14243,"reasoning_output_tokens":955}}

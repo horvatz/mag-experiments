@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-30T02:30:31.749092+00:00",
+  "researcherOnly": true,
+  "position": 123,
+  "slug": "glm",
+  "id": "P07-A-003",
+  "errorRequest": 7,
+  "httpStatus": 429,
+  "retryAfterSeconds": 2,
+  "provider": "wafer/us",
+  "providerErrorCode": "server_overloaded",
+  "limitSource": "upstream_provider_shared_pool",
+  "nativeError": "exceeded retry limit, last status: 429 Too Many Requests",
+  "measuredRetry": false,
+  "firstDiagnostic": "glm/qualification/service-2026-10-30T02-29-54-944Z",
+  "firstDiagnosticHTTP": 429,
+  "nextUnused": {
+    "position": 124,
+    "slug": "qwen",
+    "id": "P07-B-003"
+  },
+  "continuationRequires": "Archived original evidence/hash verification, budget headroom and successful fresh same-provider diagnostic. No route/model/retry changes.",
+  "archiveHashesVerified": true,
+  "archivedStatus": "execution_failed",
+  "testsPassed": 38,
+  "requirementsPassed": 0,
+  "diagnostics": [
+    {
+      "path": "glm/qualification/service-2026-10-30T02-29-54-944Z",
+      "upstreamHTTPStatus": 429,
+      "cost": "unknown"
+    },
+    {
+      "path": "glm/qualification/service-2026-10-30T02-33-13-892Z",
+      "localRelayHTTPStatus": 502,
+      "status": "rejected_before_upstream",
+      "cause": "budget max request cannot fit",
+      "costUSD": 0
+    }
+  ],
+  "blockingBudget": {
+    "knownUSD": 26.1561551327001,
+    "unknownReservedUSD": 12.24854209,
+    "maximumGLMRequestUSD": 3.29357586,
+    "requiredConservativeTotalUSD": 41.6982730827001,
+    "authorizedUSD": 40,
+    "actualAccountRemainingUSD": 13.820754072
+  },
+  "nextUnusedVerified": true
+}

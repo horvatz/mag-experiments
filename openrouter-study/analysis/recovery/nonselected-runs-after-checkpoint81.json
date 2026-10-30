@@ -3138,6 +3138,1477 @@
           "sha256": "0c548e06970c2014dde0a82f520917e5113491fe9a91ddecfc094ed2b6d1726a"
         }
       ]
+    },
+    {
+      "at": "2026-10-29T23:15:27.209599+00:00",
+      "position": 111,
+      "slug": "qwen",
+      "id": "P04-C-002",
+      "executionStatus": "invalid_stage_handoff",
+      "elapsedSeconds": 135.376,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 38,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 134.223,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.0071043,
+      "knownCostUSD": 0.0071043,
+      "apiRequests": 6,
+      "archiveSha256": "954025855e55d010b846381e3d59d44b94e72a96f5d7247e1ab5d51a1c6341aa",
+      "observation": "Constitution process completed134.223s but frozenhandoff rejects unchanged constitution template. FileChangesempty, model provided unrelated proposed constitution only in final chat (OpenRouter metadata app rather than P04task), no otherCstages or implementation/own tests. All6HTTP200completed/finished; costcomplete0.0071043USD. No002qualitativegrade.",
+      "handoffError": "Constitution template was not completed",
+      "finalMessageSource": {
+        "path": "openrouter-study/qwen/runtime/runs/P04-C-002/last-message.md",
+        "sha256": "c9407d8e43284c56e6c0bbf453d74753e31e9e231de35c4d19114514b88d0b03"
+      },
+      "apiObservation": {
+        "http200": 6,
+        "finishedCompleted": 6,
+        "explicitProviderErrorObserved": false
+      }
+    },
+    {
+      "at": "2026-10-29T23:34:04.936682+00:00",
+      "position": 112,
+      "slug": "deepseek",
+      "id": "P04-B-002",
+      "executionStatus": "invalid_review_handoff",
+      "elapsedSeconds": 887.58,
+      "strictSuccess": false,
+      "demonstrated": 12,
+      "requirementsPassed": 12,
+      "functionalTestsPassed": 70,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 163.258,
+          "status": "completed"
+        },
+        {
+          "name": "implementation",
+          "elapsedSeconds": 333.019,
+          "status": "completed"
+        },
+        {
+          "name": "review",
+          "elapsedSeconds": 388.693,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.06752285899999999,
+      "knownCostUSD": 0.06752285899999999,
+      "apiRequests": 74,
+      "archiveSha256": "987bdde2689d9c000e868b01b729a3dff9c443e17af1e37ac3cd7ad4deb2a5f4",
+      "observation": "All3Bphases completed163.258/333.019/388.693s, but review final response starts fenced ```json and frozenvalidator rejects it with Unexpected token `; saved docs/agent/review.json is valid complete/nochanges JSON. Distinguish invalid finalresponse from valid file. No repair. Independent70/70,12/12 and allstatic/allowed/completeTestRuntrue; strictfalse duehandoff. Native implement35 output4failed/17passed despite pipelineexit0, later41own14passed/43full60passed; reviewer48dev+own22passed/50full60/56npmcheck60 actuallyverified.74HTTP200completed,71finished/3clientabortedcompleted, noexplicitAPIerror; costcomplete0.067522859USD. No002qualgrade.",
+      "handoffError": "Unexpected token '`', \"```json\n{\n\"... is not valid JSON",
+      "evidence": [
+        {
+          "path": "openrouter-study/deepseek/runtime/runs/P04-B-002/phases/03-review/last-message.md",
+          "sha256": "6ca260bac627db4d91a6bfc23a885b889e9e71d3f0c7f7b6a23401055ecabc01"
+        },
+        {
+          "path": "openrouter-study/deepseek/runtime/runs/P04-B-002/submission/docs/agent/review.json",
+          "sha256": "21d659c783c8aff2ef7131481e606dc7afa59461fece0742e2e629f5d62ceea4"
+        }
+      ],
+      "nativeChecksVerified": [
+        {
+          "phase": "implementation",
+          "item": "item_43",
+          "testsPassed": 60,
+          "actualOutputVerified": true
+        },
+        {
+          "phase": "review",
+          "item": "item_56",
+          "testsPassed": 60,
+          "actualOutputVerified": true
+        }
+      ]
+    },
+    {
+      "at": "2026-10-29T23:43:29.901426+00:00",
+      "position": 113,
+      "slug": "qwen",
+      "id": "P04-B-002",
+      "executionStatus": "isolation_interrupted",
+      "elapsedSeconds": 130.112,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 38,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 129.112,
+          "status": "completed"
+        },
+        {
+          "name": "implementation",
+          "elapsedSeconds": 0.014,
+          "status": "isolation_interrupted"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.022191600000000002,
+      "knownCostUSD": 0.022191600000000002,
+      "apiRequests": 13,
+      "archiveSha256": "a92fa8466713e1466a4b3215a4c7f03eb3ee94e72b66b62a5a36860a8e6098a1",
+      "observation": "Specificationcompleted129.112s, implementationisolation_interrupted0.014s/SIGKILL before any events/tools/files, no review. Onlyspecification delivered; noimplementation/own. Frozen isolationguard may stop for hiddenport detection or loopbacktimeout; exact triggering cause not independently identified. Do not infer weak implementation ability, repeat113, or modifyguard. Independent38/70,0/12, allstatic/allowed/completeTestRuntrue. No002qualgrade.",
+      "authoredFiles": [
+        {
+          "path": "docs/agent/specification.md",
+          "bytes": 666,
+          "sha256": "2041d77042d2aaa163b710aaf56e67b27ad1b1cd4e61fd80aa3cf0b6ff828a5f"
+        }
+      ],
+      "apiObservation": {
+        "requests": 13,
+        "statuses": [
+          {
+            "http": 200,
+            "response": "completed",
+            "transport": "finished",
+            "count": 13
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-29T23:58:11.419375+00:00",
+      "position": 114,
+      "slug": "glm",
+      "id": "P04-B-002",
+      "executionStatus": "completed",
+      "elapsedSeconds": 566.084,
+      "strictSuccess": true,
+      "demonstrated": 12,
+      "requirementsPassed": 12,
+      "functionalTestsPassed": 70,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "specification",
+          "elapsedSeconds": 209.738,
+          "status": "completed"
+        },
+        {
+          "name": "implementation",
+          "elapsedSeconds": 259.388,
+          "status": "completed"
+        },
+        {
+          "name": "review",
+          "elapsedSeconds": 94.948,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.285886003,
+      "knownCostUSD": 0.285886003,
+      "apiRequests": 86,
+      "archiveSha256": "464d2de55b87da9ea56d88780832dad86778c96347e99aa48c2b8aba4ef82aba",
+      "observation": "All3Bphases completed209.738/259.388/94.948s, validcomplete/norepairreview. Nativeimpl35own1passed3failed then38own3passed1failed;42own4passed,44full50passed,review23full50passed verifiedfromoutput. Independent70/70,12/12,allchecks/allowed/completeTestRuntrue,stricttrue.8authoredfiles.86APIHTTP200completed,82finished/4clientabortedcompleted, noexplicitAPIerror. Completecost0.285886003USD. No002qualgrade.",
+      "authoredFiles": [
+        {
+          "path": "docs/agent/review.json",
+          "bytes": 617,
+          "sha256": "5fb9b21aa53aae61bb09fbeda0aab7589df8a9929b48ec8d1964b30556cb5020"
+        },
+        {
+          "path": "docs/agent/specification-history.md",
+          "bytes": 384,
+          "sha256": "bc70b2ab4c366898c66e11819192013dfbeb28d3e38bf65505a05cf5b8d433a4"
+        },
+        {
+          "path": "docs/agent/specification.md",
+          "bytes": 6531,
+          "sha256": "283013be77e160ad63376a5cb24e9ec338ccf8a641517896146a3ecffbdc05ba"
+        },
+        {
+          "path": "docs/agent/verification.md",
+          "bytes": 2666,
+          "sha256": "dc86778404a763a91ed87332f21feebe9f6601cb456a582be0511fd86c3092d8"
+        },
+        {
+          "path": "src/App.tsx",
+          "bytes": 8572,
+          "sha256": "01654a03a0b0ccaebd30f6abc956c4f95c10458991b7fe6e13a0d8497fdbf447"
+        },
+        {
+          "path": "src/sortTasks.ts",
+          "bytes": 2543,
+          "sha256": "f938713d926d0bcadbc42015cff4a2304d66a087c557818048a28ef955e46313"
+        },
+        {
+          "path": "src/styles.css",
+          "bytes": 15542,
+          "sha256": "1befe7f83bdd45180046d27142896b044b2513f24c882a9bbe4d29b9b2b2df39"
+        },
+        {
+          "path": "tests/agent/P04.spec.ts",
+          "bytes": 4178,
+          "sha256": "6edd1bcd5df9f9f8b3b37e873cb0a44642084e213bc20f7c49ba3dfff76d3486"
+        }
+      ],
+      "nativeChecksVerified": [
+        {
+          "phase": "implementation",
+          "item": "item_44",
+          "testsPassed": 50,
+          "exitCode": 0
+        },
+        {
+          "phase": "review",
+          "item": "item_23",
+          "testsPassed": 50,
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-10-30T00:13:58.308355+00:00",
+      "position": 115,
+      "slug": "qwen",
+      "id": "P04-A-002",
+      "executionStatus": "completed",
+      "elapsedSeconds": 437.139,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 38,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": false
+        },
+        {
+          "name": "types",
+          "passed": false
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": true,
+      "costUSD": 0.051806649999999996,
+      "knownCostUSD": 0.051806649999999996,
+      "apiRequests": 22,
+      "archiveSha256": "25b980dce68b46588ad2e0dede78f9450f7740bd764386cfbc46fb457dc327bd",
+      "observation": "Model normalcompleted437.139s with6files: spec3761B,4hooks(one0B),gitkeep. App unchanged; hooks never integrated into UI. Finalmessage is unexecuted Python snippet suggesting TaskSortState file and does not create it.31nativecompletedcommands,0checks, noown/verification. Independent38/70,0/12; all38regressionspass but nofeature; newunusedmodules produce static errors separately.22APIHTTP200completed,21finished/1clientabortedcompletedresponse, costcomplete0.05180665USD. No002qualgrade.",
+      "authoredFiles": [
+        {
+          "path": "docs/agent/specification.md",
+          "bytes": 3761,
+          "sha256": "3d947f13bc43dcfd518193e6bbbb359ec22316c8e4551587b51d1992d82ab3a7"
+        },
+        {
+          "path": "src/hooks/.gitkeep",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "src/hooks/useTaskListConfig.ts",
+          "bytes": 340,
+          "sha256": "6560785293cef800c0ba78a40de9a60dec03415ad8e83dd52dd7d1b5ad08be41"
+        },
+        {
+          "path": "src/hooks/useTaskListState.ts",
+          "bytes": 3431,
+          "sha256": "e63edf0eb991d50e52c9006db393d2fced84724d93bac7d491ea4d566aed5c8f"
+        },
+        {
+          "path": "src/hooks/useTaskSortState.ts",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "src/hooks/useTasksSorting.ts",
+          "bytes": 3270,
+          "sha256": "49f8cff4c6aed8c42dd6edd0fcfee2ea7daacd6f61863cca250cc8353c1ae4e7"
+        }
+      ],
+      "nativeCompletedCommandCalls": 31,
+      "nativeCheckCalls": 0,
+      "ownTestsDelivered": false,
+      "finalMessageSource": {
+        "path": "openrouter-study/qwen/runtime/runs/P04-A-002/last-message.md",
+        "sha256": "08133bf0406e0e03c820403606727291b3d0f9e83f150a1daa58a869c7d052d0"
+      }
+    },
+    {
+      "at": "2026-10-30T00:23:33.147910+00:00",
+      "position": 116,
+      "slug": "glm",
+      "id": "P04-A-002",
+      "executionStatus": "completed",
+      "elapsedSeconds": 355.525,
+      "strictSuccess": true,
+      "demonstrated": 12,
+      "requirementsPassed": 12,
+      "functionalTestsPassed": 70,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": true,
+      "costUSD": 0.19534416800000004,
+      "knownCostUSD": 0.19534416800000004,
+      "apiRequests": 46,
+      "archiveSha256": "b824773fd3fddd7de6771ba5beb299ac320a0b6f169d45bbef645f9b82e52676",
+      "observation": "Normalcompleted355.525s,7authoredfiles with3own tests in2files. Native36 own1passed2failed,38/39/41/42/45 own2passed1failed during expectation repairs;46own3passed,48development8passed,50full49passed actuallyconfirmed. Independent70/70,12/12 allchecks/allowed/completeTestRuntrue,stricttrue.46APIHTTP200completed,41finished/5clientabortedcompletedresponse,noexplicitAPIerror;costcomplete0.195344168USD. No002qualgrade.",
+      "authoredFiles": [
+        {
+          "path": "docs/agent/specification.md",
+          "bytes": 5094,
+          "sha256": "cc22aaf7d385ed90bf6c1e6ea87e285068e661e654e0d4a3d1bc7139999f4f45"
+        },
+        {
+          "path": "docs/agent/verification.md",
+          "bytes": 2879,
+          "sha256": "b19cc009965e44a37e0f7762bac52758cb256749d5bc6f5b4ba737f44994e5fc"
+        },
+        {
+          "path": "src/App.tsx",
+          "bytes": 9466,
+          "sha256": "67f0f8dcc24473e9a9630599eba3d9d0f42ff96f69db9f3148274a80001bb77a"
+        },
+        {
+          "path": "src/sorting.ts",
+          "bytes": 2114,
+          "sha256": "e03b6f521e290dc0899ea85e82fa82d07a62aeb396168f6896a785453c23f451"
+        },
+        {
+          "path": "src/styles.css",
+          "bytes": 15183,
+          "sha256": "3ccf9d055d35ac017f19b50834bd97be6589ea7f6ecabbdb31f2116e50ec4b0a"
+        },
+        {
+          "path": "tests/agent/P04.spec.ts",
+          "bytes": 9337,
+          "sha256": "8353184c60d8be37630f7d8e44959ee57318758d0e9a53c5f927ffc5090e6120"
+        },
+        {
+          "path": "tests/agent/sorting.spec.ts",
+          "bytes": 2278,
+          "sha256": "370a94c4057df0a75e4b6b1a7f7e51ea1b4781c495a90e9c762d0b9809a1cd08"
+        }
+      ],
+      "nativeChecksVerified": [
+        {
+          "item": "item_46",
+          "testsPassed": 3,
+          "exitCode": 0
+        },
+        {
+          "item": "item_50",
+          "testsPassed": 49,
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "at": "2026-10-30T00:34:22.819732+00:00",
+      "position": 117,
+      "slug": "deepseek",
+      "id": "P04-A-002",
+      "executionStatus": "completed",
+      "elapsedSeconds": 368.168,
+      "strictSuccess": true,
+      "demonstrated": 12,
+      "requirementsPassed": 12,
+      "functionalTestsPassed": 70,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 24,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": true
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": true,
+      "costUSD": 0.03322419099999999,
+      "knownCostUSD": 0.03322419099999999,
+      "apiRequests": 40,
+      "archiveSha256": "d6582aa3d761b7e1499aff0777900c96fcc1ccafd0c9b450dc421c53c95e93e3",
+      "observation": "Normalcompleted368.168s,6authoredfiles/18own tests. Native49pipelineexit0 but24passed1failed actualoutput;52dev+own26passed,55full64passed actuallyverified. Independent70/70,12/12 allchecks/allowed/completeTestRuntrue,stricttrue. No002qualgrade.",
+      "authoredFiles": [
+        {
+          "path": "docs/agent/specification.md",
+          "bytes": 9299,
+          "sha256": "394596c8d6d8bb739a704f82354f768d9a7462b8a806a2f3163f5b23ed19835a"
+        },
+        {
+          "path": "docs/agent/verification.md",
+          "bytes": 5741,
+          "sha256": "65587709cff52b5f09258b63a169ec872cbe9fc1f63f6772bf6c7e6edbe7f40a"
+        },
+        {
+          "path": "src/App.tsx",
+          "bytes": 9477,
+          "sha256": "ef3edd99b6860818138b4463062571f497c0c0a2a4252016373a69bdc2467e1a"
+        },
+        {
+          "path": "src/sortTasks.ts",
+          "bytes": 2389,
+          "sha256": "3d9a9c325aa30e374abbfaa03eef9e516c797ff93e3c8c1ab39c048bbd7d3dfa"
+        },
+        {
+          "path": "src/styles.css",
+          "bytes": 15342,
+          "sha256": "585e6a6a8b3fc7458895ab4b66e2640690708d4295afc84800b7a70e1a84e9d9"
+        },
+        {
+          "path": "tests/agent/P04-agent.spec.ts",
+          "bytes": 10561,
+          "sha256": "1909f1b296cfd24a79436962650ba90c33a92049264662aef362c797f02a2227"
+        }
+      ],
+      "nativeChecksVerified": [
+        {
+          "item": "item_49",
+          "shellExitCode": 0,
+          "testsPassed": 24,
+          "testsFailed": 1
+        },
+        {
+          "item": "item_52",
+          "shellExitCode": 0,
+          "testsPassed": 26,
+          "actualOutputVerified": true
+        },
+        {
+          "item": "item_55",
+          "shellExitCode": 0,
+          "testsPassed": 64,
+          "actualOutputVerified": true
+        }
+      ],
+      "apiObservation": {
+        "requests": 40,
+        "statuses": [
+          {
+            "http": 200,
+            "response": "completed",
+            "transport": "finished",
+            "count": 38
+          },
+          {
+            "http": 200,
+            "response": "completed",
+            "transport": "client_aborted",
+            "count": 2
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-30T00:51:28.539723+00:00",
+      "position": 118,
+      "slug": "glm",
+      "id": "P07-C-003",
+      "executionStatus": "invalid_stage_handoff",
+      "elapsedSeconds": 720.22,
+      "strictSuccess": false,
+      "demonstrated": 10,
+      "requirementsPassed": 10,
+      "functionalTestsPassed": 66,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 20,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 48.457,
+          "status": "completed"
+        },
+        {
+          "name": "specify",
+          "elapsedSeconds": 71.73,
+          "status": "completed"
+        },
+        {
+          "name": "plan",
+          "elapsedSeconds": 38.024,
+          "status": "completed"
+        },
+        {
+          "name": "tasks",
+          "elapsedSeconds": 16.049,
+          "status": "completed"
+        },
+        {
+          "name": "implement",
+          "elapsedSeconds": 355.593,
+          "status": "completed"
+        },
+        {
+          "name": "converge",
+          "elapsedSeconds": 37.684,
+          "status": "completed"
+        },
+        {
+          "name": "implement",
+          "elapsedSeconds": 122.397,
+          "status": "completed"
+        },
+        {
+          "name": "converge",
+          "elapsedSeconds": 25.288,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.694457562,
+      "knownCostUSD": 0.694457562,
+      "apiRequests": 97,
+      "archiveSha256": "81838756ce939a136a4b0331b4319d176e8e3f69b181f645230fa35431c0b5c5",
+      "observation": "8Cphases completed720.220s same session. Firstconvergevalidtasks_appended: R06emptyfavoritesboardmessage missing; appendedT010, noappchange then. In-protocol secondimplement fixes Appemptyboard and own test; native07implement15full51passed, initial05implement67full51passed also verified. Secondconverge final includes Markdown report before JSON, frozenvalidator Unexpectedtoken#; invalid_stage_handoff despite functionality. Originalarchive preserved/no rerun. Independent66/70,10/12,static/allowed/completeTestRuntrue, strictfalse. E06 bothscreens stops at requiredboardregion after empty-state replacesTaskBoard; E11bothscreens loses in-memory favorite after failedstoragewrite followed byprojectnavigation because useFavorites is inside keyedProjectView and rereadsoldstorage onremount. These are separate from finalhandoffsyntax.13authoredfiles/5own.97HTTP200completed,91finished/6clientabortedcompletedresponse,noexplicitAPIerror;costcomplete0.694457562USD. No003qualgrade.",
+      "sameSessionAcrossStages": true,
+      "resumedStages": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "handoffError": "Unexpected token '#', \"## Converg\"... is not valid JSON",
+      "nativeChecksVerified": [
+        {
+          "phase": "05-implement",
+          "item": "item_67",
+          "testsPassed": 51,
+          "exitCode": 0
+        },
+        {
+          "phase": "07-implement",
+          "item": "item_15",
+          "testsPassed": 51,
+          "exitCode": 0
+        }
+      ],
+      "authoredFiles": [
+        {
+          "path": ".specify/feature.json",
+          "bytes": 44,
+          "sha256": "78e8f5812269250d39a3a8d2419b82dad27b7dabc97268088662aff995ad911b"
+        },
+        {
+          "path": ".specify/memory/constitution.md",
+          "bytes": 2272,
+          "sha256": "f761e58107c5e62e83d8716dc86fa807c01c506e7fe9f564d2827153f464ba48"
+        },
+        {
+          "path": "docs/agent/P07/plan.md",
+          "bytes": 4522,
+          "sha256": "be6d5f30822ef6ee05d139ad4b5e34a61546d8a5be475f6bc9983a5d8b68e0c4"
+        },
+        {
+          "path": "docs/agent/P07/spec.md",
+          "bytes": 10099,
+          "sha256": "97ee95405d6d2019e0afb5a44fb3f2c482feb74c436ccf8e3231f97394e9c31e"
+        },
+        {
+          "path": "docs/agent/P07/tasks.md",
+          "bytes": 2533,
+          "sha256": "4a0f9cb5c4787a9562d1feaa8d7b36710cb57028c2b160385883016b44d993e8"
+        },
+        {
+          "path": "docs/agent/convergence.json",
+          "bytes": 556,
+          "sha256": "86c4a7fd79b4b19f669b21b7f26b8c186a9eaec3633b0d5e91553250a8a43b97"
+        },
+        {
+          "path": "docs/agent/verification.md",
+          "bytes": 2674,
+          "sha256": "5e80fb363483138bc9bb55a404e0c17b346d5a4a6e3927f1b7342726f760017c"
+        },
+        {
+          "path": "src/App.tsx",
+          "bytes": 8346,
+          "sha256": "2500b9de0cbffe4423140ac56103499a3a14c4976e09f9e214b939d866e60f20"
+        },
+        {
+          "path": "src/TaskBoard.tsx",
+          "bytes": 2784,
+          "sha256": "3b11793f7732db7f173802298f32777228dc221293939c541cd507e4001c5da6"
+        },
+        {
+          "path": "src/favorites.ts",
+          "bytes": 1050,
+          "sha256": "d5d2fdcae16917c521d8c0d0108c4780d7af4a07f6dfea809ac9a47c0728966b"
+        },
+        {
+          "path": "src/styles.css",
+          "bytes": 15690,
+          "sha256": "2bb8d5ad1441e7ce8e42bea814a38765746c72185cc62bad6a0162118518e184"
+        },
+        {
+          "path": "src/useFavorites.ts",
+          "bytes": 1523,
+          "sha256": "26dfe31e00c548ed6e95ae1bd48d9d06200db7c0edeb3df4039c2c249022ddd3"
+        },
+        {
+          "path": "tests/agent/p07.spec.ts",
+          "bytes": 5875,
+          "sha256": "ee1d9e02cf18a6b5dcbd730eddbb978ba2a07c6b339928abe1308234e4173075"
+        }
+      ],
+      "convergenceEvidence": [
+        {
+          "path": "openrouter-study/glm/runtime/runs/P07-C-003/phases/06-converge/last-message.md",
+          "sha256": "94a0bc1869cad7fa3529f198f3951ae5804538deff96e785e31821c70e203eaa"
+        },
+        {
+          "path": "openrouter-study/glm/runtime/runs/P07-C-003/phases/08-converge/last-message.md",
+          "sha256": "fc73fd10eb612af7f16e5cfaf81af624dc45b0f2dcae21e390851c7cffffad3c"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-30T01:14:06.710999+00:00",
+      "position": 119,
+      "slug": "deepseek",
+      "id": "P07-C-003",
+      "executionStatus": "invalid_stage_handoff",
+      "elapsedSeconds": 1070.932,
+      "strictSuccess": false,
+      "demonstrated": 11,
+      "requirementsPassed": 11,
+      "functionalTestsPassed": 68,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 22,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 79.847,
+          "status": "completed"
+        },
+        {
+          "name": "specify",
+          "elapsedSeconds": 201.862,
+          "status": "completed"
+        },
+        {
+          "name": "plan",
+          "elapsedSeconds": 86.765,
+          "status": "completed"
+        },
+        {
+          "name": "tasks",
+          "elapsedSeconds": 43.267,
+          "status": "completed"
+        },
+        {
+          "name": "implement",
+          "elapsedSeconds": 628.947,
+          "status": "completed"
+        },
+        {
+          "name": "converge",
+          "elapsedSeconds": 26.684,
+          "status": "completed"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.11609902800000003,
+      "knownCostUSD": 0.11609902800000003,
+      "apiRequests": 60,
+      "archiveSha256": "1f694cad898d7bb17a3b792d137148327c54f18ef959a12a73921c34476fefd2",
+      "observation": "All6Cphasescompleted1070.932s, finalconvergence plainSlovenianpreface followedbyJSON rejected byfrozenvalidator UnexpectedtokenP; no measuredretry. Nativeimplement42 npmtest pipeline actual59passed(13own) confirmed; types/lint/build individually pass. Nofullnpmruncheck observed.60HTTP200completed,55finished/5clientabortedcompletedresponse, noexplicitAPIerror. No003qualgrade. IndependentE06bothscreens: empty favorites branch replacesTaskBoard and requiredboardregion missing;22otherholdoutpass. Original68/70,11/12 retained.",
+      "handoffError": "Unexpected token 'P', \"Pregled ko\"... is not valid JSON",
+      "sameSessionAcrossStages": true,
+      "resumedStages": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "nativeChecksVerified": [
+        {
+          "phase": "05-implement",
+          "item": "item_42",
+          "testsPassed": 59,
+          "shellExitCode": 0,
+          "actualOutputVerified": true
+        }
+      ],
+      "authoredFiles": [
+        {
+          "path": ".specify/feature.json",
+          "bytes": 42,
+          "sha256": "846ee037498f0b20fd89597962e5c0f97735a9ebc2faf05191481a6f6e442fc7"
+        },
+        {
+          "path": ".specify/memory/constitution.md",
+          "bytes": 1639,
+          "sha256": "6fe4d17ae7273f48dba11b096715b845bb66573e263341ee894956ac0cf1ae4d"
+        },
+        {
+          "path": "docs/agent/P07/plan.md",
+          "bytes": 3912,
+          "sha256": "3c6989ba5ad7a44cbbbff2db26f1e902a4a71c347fed6f00bf1f568556de8b60"
+        },
+        {
+          "path": "docs/agent/P07/spec.md",
+          "bytes": 9824,
+          "sha256": "0028c453bf4a9e95c9baaeb8bc5c4ac48baa09ce5e49eef8e705830e2b9c5fca"
+        },
+        {
+          "path": "docs/agent/P07/tasks.md",
+          "bytes": 2914,
+          "sha256": "a12c11f6ceeb56415a7d5420c786db3196f952da1235f8800fe2631b46630ec0"
+        },
+        {
+          "path": "docs/agent/verification.md",
+          "bytes": 1390,
+          "sha256": "50eeeee6d516cb2763d4907988686e9fc0c6ade68a5abb488940740313a18faa"
+        },
+        {
+          "path": "src/App.tsx",
+          "bytes": 8105,
+          "sha256": "cbda819f5d980d2a13b5c55cffca55530c8b8c194ddab4c3a85095dd4ecd57d0"
+        },
+        {
+          "path": "src/FavoriteButton.tsx",
+          "bytes": 495,
+          "sha256": "8ab4c357fc36874a110c935688e24754b347a28e0337e6dce591c5897afb9117"
+        },
+        {
+          "path": "src/TaskBoard.tsx",
+          "bytes": 2333,
+          "sha256": "68c4839974eaa3ac6055b39c83f9c763debcc7fca20a7d5d3104f3cd4119b496"
+        },
+        {
+          "path": "src/favorites.ts",
+          "bytes": 2407,
+          "sha256": "712d099f5f033380079c23a41fca26336fb53e977cf2ff6fd4f8c7b2cbf6a8c4"
+        },
+        {
+          "path": "src/styles.css",
+          "bytes": 15877,
+          "sha256": "6a9b4773e6435278c8640ebf4b47d00cb6394305a07766c5bd050cc4ea7e76db"
+        },
+        {
+          "path": "tests/agent/p07.spec.ts",
+          "bytes": 9547,
+          "sha256": "aa41404d5fcfb4a03ac191f9b5cc6f69f235a3d686a458c0e174ab81cf31d40c"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-30T01:41:54.542915+00:00",
+      "position": 120,
+      "slug": "qwen",
+      "id": "P07-C-003",
+      "executionStatus": "phase_time_limit",
+      "elapsedSeconds": 1080.543,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 14,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 14,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": false
+        },
+        {
+          "name": "types",
+          "passed": false
+        },
+        {
+          "name": "build",
+          "passed": false
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [
+        {
+          "name": "constitution",
+          "elapsedSeconds": 60.639,
+          "status": "completed"
+        },
+        {
+          "name": "specify",
+          "elapsedSeconds": 113.832,
+          "status": "completed"
+        },
+        {
+          "name": "plan",
+          "elapsedSeconds": 85.245,
+          "status": "completed"
+        },
+        {
+          "name": "tasks",
+          "elapsedSeconds": 61.395,
+          "status": "completed"
+        },
+        {
+          "name": "implement",
+          "elapsedSeconds": 756.835,
+          "status": "phase_time_limit"
+        }
+      ],
+      "costComplete": true,
+      "costUSD": 0.3295273,
+      "knownCostUSD": 0.3295273,
+      "apiRequests": 60,
+      "archiveSha256": "358cf3c9be5cc6d27969420093c841a5fe1bb71f5187064c25d3eb0e507a36be",
+      "observation": "Constitution/specify/plan/taskscompleted60.639/113.832/85.245/61.395, implementphase_time_limit756.835SIGKILL(limit756.799),120sreserve; noconverge.10authoredfiles: own0,wrongfeatureverificationpathP07/verification,App2260BsyntaxApp15/20andunclosedJSX. Independent14backendregressionpasses,all56UItests failfromunrenderableApp; not56independentfeaturebugs. Noactualnativecheckrun (oneplanwritecontainsnpmruncheckonlyasdocumentation).60APIHTTP200:58finished,1clientabortedcompleted,1clientabortedresponseNULLatdeadline; noexplicitprovidererror. Completecost0.3295273USD. No003qualgrade.",
+      "sameSessionAcrossStages": true,
+      "resumedStages": [
+        false,
+        true,
+        true,
+        true,
+        true
+      ],
+      "authoredFiles": [
+        {
+          "path": ".specify/feature.json",
+          "bytes": 40,
+          "sha256": "091190432deb5d141da3fafbf0f58b004b72e1f455b50562682c223b36f1bbf6"
+        },
+        {
+          "path": ".specify/memory/constitution.md",
+          "bytes": 1287,
+          "sha256": "bcebf66bb1f890fefc44e7864953dc44cf699a76a153d03f992ec78bc0eab7a8"
+        },
+        {
+          "path": "docs/agent/P07/plan.md",
+          "bytes": 5871,
+          "sha256": "11dc470116410151385393e30c26a805cf33f67ca5a5c555b60ba1501f067731"
+        },
+        {
+          "path": "docs/agent/P07/spec.md",
+          "bytes": 8918,
+          "sha256": "0599ca1ebd935e61532e7ed2d31a1159947899e59f756666e1eadc5db5764443"
+        },
+        {
+          "path": "docs/agent/P07/tasks.md",
+          "bytes": 1144,
+          "sha256": "87ce95dd405f77d8eacb6d9a2a508a8d9ce0121cdc55d8313866cbae92cc4a4d"
+        },
+        {
+          "path": "docs/agent/P07/verification.md",
+          "bytes": 1112,
+          "sha256": "4e04d5eb0e0063391636a453467d0b1fc99696b48ddb9c5ca14482e211cf9dc6"
+        },
+        {
+          "path": "src/App.tsx",
+          "bytes": 2260,
+          "sha256": "f23dd0ff29b247e6ecc5a524330d80573aa9dc8d69f84d23e6d889da9c661c70"
+        },
+        {
+          "path": "src/TaskBoard.tsx",
+          "bytes": 1074,
+          "sha256": "1fc8ce3c418ff5d930449a01f05847743f234e11ef71d69235dc217d547266d2"
+        },
+        {
+          "path": "src/components.tsx",
+          "bytes": 2737,
+          "sha256": "55c1908d4fa39c57ea31d7bb68434aff5138dd6e1a9e3c4ff1eeeb5f3a36e0cf"
+        },
+        {
+          "path": "src/hooks/useFavorites.ts",
+          "bytes": 2060,
+          "sha256": "b1c343cede82b07edbfd8f0c32251859fda86685c04f10e4d4fac4c93301cdd2"
+        }
+      ],
+      "nativeCheckCalls": 0,
+      "ownTestsDelivered": false
+    },
+    {
+      "at": "2026-10-30T01:55:17.504325+00:00",
+      "position": 121,
+      "slug": "deepseek",
+      "id": "P07-A-003",
+      "executionStatus": "execution_failed",
+      "elapsedSeconds": 497.635,
+      "strictSuccess": false,
+      "demonstrated": 11,
+      "requirementsPassed": 11,
+      "functionalTestsPassed": 68,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 8,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 22,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": false,
+      "costUSD": null,
+      "knownCostUSD": 0.024133205,
+      "apiRequests": 28,
+      "archiveSha256": "6a08ca547b8d6e7a6ef01bf185854017e57d3cbd6e27406141896aca192c7b0b",
+      "observation": "Originalexecution_failed497.635s, native streamdisconnectedbeforecompletion:streamclosedbefore response.completed. Request28HTTP200/finished butresponseStatusNULL/usageNULL, generationlookup404 originalcostNULL; underlyingcauseunknown, notnormaldeadline. Native49 pipelineactualnpmcheck62passed(16own) confirmedbeforetransportfailure. Independent68/70,11/12: E06bothscreens emptyfilteredboard requiredregionmissing;22otherholdoutpass. TheseareseparatefromAPIstreamerror. OriginalarchivesallSHAverified, no measuredretry. No003qualgrade.",
+      "nativeChecksVerified": [
+        {
+          "item": "item_49",
+          "testsPassed": 62,
+          "shellExitCode": 0,
+          "actualOutputVerified": true
+        }
+      ],
+      "authoredFiles": [
+        {
+          "path": "src/App.tsx",
+          "bytes": 8181,
+          "sha256": "68f461c3ba86975ac3cc384081637e99cca117b54ee11b132375a2b8d0b6e840"
+        },
+        {
+          "path": "src/TaskBoard.tsx",
+          "bytes": 2529,
+          "sha256": "319de23a47531487da3158c929434d3c624b0cb22cdc6212a97d15211f71ce64"
+        },
+        {
+          "path": "src/components.tsx",
+          "bytes": 1909,
+          "sha256": "7466407922f2a078809acf2f254c507d019efe5d18b001730c8cb90fb79f1c4a"
+        },
+        {
+          "path": "src/favorites.ts",
+          "bytes": 2401,
+          "sha256": "8a4848dae3371766e627bdcd7daeadcaa9c2c1baa9bfe84f60a9d398151fa5e2"
+        },
+        {
+          "path": "src/styles.css",
+          "bytes": 16133,
+          "sha256": "8ab89645417d4b32db6534fe0a1d25c43a39a3a61737f905ebb55170bff4d184"
+        },
+        {
+          "path": "tests/agent/P07-agent.spec.ts",
+          "bytes": 11434,
+          "sha256": "543f55c5d987ab630c9a63e8bb8e271be773c06384714aa3503a25ed24e33a21"
+        },
+        {
+          "path": "tests/agent/helpers.ts",
+          "bytes": 5061,
+          "sha256": "40e56619c4c5e44394e21eb0f78c71d9bebef98f183cbc88898e246e8c69238a"
+        }
+      ],
+      "apiObservation": {
+        "requests": 28,
+        "http200": 28,
+        "finishedCompleted": 26,
+        "clientAbortedCompleted": 1,
+        "finishedWithoutResponseCompleted": [
+          28
+        ],
+        "underlyingCause": "unknown",
+        "explicitNativeStreamError": true
+      }
+    },
+    {
+      "at": "2026-10-30T02:24:55.171352+00:00",
+      "position": 122,
+      "slug": "qwen",
+      "id": "P07-A-003",
+      "executionStatus": "time_limit",
+      "elapsedSeconds": 1200.037,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 14,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 14,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": false
+        },
+        {
+          "name": "types",
+          "passed": false
+        },
+        {
+          "name": "build",
+          "passed": false
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": true,
+      "costUSD": 0.34327729999999995,
+      "knownCostUSD": 0.34327729999999995,
+      "apiRequests": 99,
+      "archiveSha256": "a9a49912e1dabc6130db41f4268aa0eeb30d84a38676baf676898c1106132ec1",
+      "observation": "time_limit1200.037s,6authoredfiles. FinalApp137B onlyimports/noAppexport, missingmainexport; favorites.spec.ts.new17B notrecognizedtestfile and notmeaningfulowncheck. Native55 npmcheck pipedhead50 truncatesactualtestoutput and shell0doesnotprovecompletedcheck. Native136buildpipedhead30 shell0 butactualTSerrors missingAppexport/unusedimports;89/141playwright--list onlydiscovery,notexecutedtests.88nativecompletedcommands. Independent14backendpass/all56UItestsblockedunrenderableApp,0/12;not56differentfeaturebugs.99HTTP200:97finished/1clientabortedcompleted/1clientabortedresponseNULLdeadline,noexplicitAPIerror;completecost0.3432773USD. No003qualgrade.",
+      "authoredFiles": [
+        {
+          "path": "docs/agent/specification.md",
+          "bytes": 1845,
+          "sha256": "34aaaf4390d5887ca111e70ac396c3b02b4bbdf1779a798dffaea7f89b322102"
+        },
+        {
+          "path": "src/App.tsx",
+          "bytes": 137,
+          "sha256": "8f1f4adbe164c7897bc29be835e8f36599f11b0c5d0b07da66e45877d5bf9431"
+        },
+        {
+          "path": "src/favorites.ts",
+          "bytes": 551,
+          "sha256": "703dea18c2820ae9722e4150274782ebbf87d5006cd39e2aea6e491ad8d1cfc4"
+        },
+        {
+          "path": "src/favorites.tsx",
+          "bytes": 2153,
+          "sha256": "a067f51fc76aa7b64bc7eb6137b80b743deb25a40f8571bbdfec223415add7de"
+        },
+        {
+          "path": "src/specification.md",
+          "bytes": 63,
+          "sha256": "f7decbc4e51f4f7b1ea240f9bc9c526122cd9dfcf5190d0c64e4a37b77b39102"
+        },
+        {
+          "path": "tests/agent/favorites.spec.ts.new",
+          "bytes": 17,
+          "sha256": "07362c8a8b25a3501605e9d31b672a0afc83c8e63bfdb3ed93a9a44009dffed0"
+        }
+      ],
+      "nativeCompletedCommandCalls": 88,
+      "nativeChecksVerified": [
+        {
+          "item": "item_55",
+          "shellExitCode": 0,
+          "testOutcome": "unknown, head50truncates; notproofpass"
+        },
+        {
+          "item": "item_136",
+          "shellExitCode": 0,
+          "buildPassed": false,
+          "actualOutput": "TS2305Appnoexport/unusedimports"
+        },
+        {
+          "item": "item_89",
+          "testOutcome": "discoveryonly --list"
+        },
+        {
+          "item": "item_141",
+          "testOutcome": "discoveryonly --list"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-30T02:33:14.438795+00:00",
+      "position": 123,
+      "slug": "glm",
+      "id": "P07-A-003",
+      "executionStatus": "execution_failed",
+      "elapsedSeconds": 68.44,
+      "strictSuccess": false,
+      "demonstrated": 0,
+      "requirementsPassed": 0,
+      "functionalTestsPassed": 38,
+      "functionalTestsTotal": 70,
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "phases": [],
+      "costComplete": false,
+      "costUSD": null,
+      "knownCostUSD": 0.011931822199999999,
+      "apiRequests": 7,
+      "archiveSha256": "b87c9812e0bc5392227f8bed0f23165c02bea2ca5708041a5e3eed1d93745d9b",
+      "observation": "Nativeexecutionfailed68.440s HTTP429 Wafer server_overloaded/upstream_provider_shared_pool/retryAfter2. Noauthoredfiles, noimplementation/owntests. Independent38/70,0/12. Native7costunknown(nonzero notinferred), archivedknown0.0119318222USD. Firstfreshsameproviderdiag429; secondlocalrelayrejects beforeupstream due40USD conservativebudget. No measuredretry. Next124verifiedunused; queuedexecutionstopped, requiresbudgetapproval andsuccessfulsameproviderprobe beforecontinuation."
     }
   ],
   "pendingObservations": {}

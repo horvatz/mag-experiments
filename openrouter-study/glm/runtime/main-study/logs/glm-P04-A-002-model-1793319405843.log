@@ -1,0 +1,19 @@
+Preberem pravila in specifikacijo naloge, nato pripravim specifikacijo pred implementacijo.
+Zahteve so jasne. Zdaj pregledam obstoječi vmesnik in razvojne teste, da specifikacija natančno sledi trenutni arhitekturi.
+Pripravim specifikacijo z R01–R12, vključno s sprejemnimi predikati in sledljivostjo; šele nato urejam kodo.
+S preprostim vnosom ni mogoče ustvariti predloge (omejitev `/tmp`); preverim razpoložljiv način za `apply_patch` in nadaljujem nespremenjeno.
+Specifikacija je pripravljena. Zdaj dodam ločeno razvrščanje, kontrole in prevzem razvrščenega polja v obeh pogledih.
+Prejšnji poskus pisanja je zaradi neveljavnega ločila pustil prazno datoteko; obnavljam `App.tsx` in hkrati vnašam kontrole.
+Jedro funkcionalnosti je na mestu. Zdaj preverim konfiguracijo testov in tipno zaznavo, preden dodam lastna preverjanja.
+Tipi so urejni. Dodam unit teste razvrščanja in UI teste za preklope, reset, projekta, prazne/ene vrstice, ID-je in širino 390 px.
+Prvi zagon je odkril le napačna pričakovanja v lastnih testih, ne napako v implementaciji. Popravim pričakovana zaporedja in ponovim preverjanje.
+Lastni testi sedaj mine. Preverim še skupne razvojne teste P04 na namizni in mobilni različici.
+Razvojni testi P04 (8/8) so uspešni. Zdaj izvedem celotno projektno preverjanje `npm run check`.
+Celotno preverjanje je uspešno (49/49). Zdaj dopolnim sledljivost specifikacije in zapišem dejanski potek preverjanj z omejitvami.
+**Rezultat**
+- Implementiral sem stabilno dvoključno razvrščanje z normalizacijo NFD/diakritike, statusnim in datumskim vrstnim redom v `src/sorting.ts:19` in `src/sorting.ts:48`.
+- Dodal sem štiri kontrole, gumb za ponastavitev in projekcijo razvrščenega polja v `src/App.tsx:13` ter `src/App.tsx:49`.
+- Tabla ohranja stalne stolpce in relativni vrstni red v `src/TaskBoard.tsx:13`; prilagodljiv videz je v `src/styles.css:66`.
+- Specifikacija je v `docs/agent/specification.md:1`, dejanski preverjanji pa v `docs/agent/verification.md:1`.
+- Lastna preverjanja: `tests/agent/sorting.spec.ts:16` in `
+{"status":"completed","elapsedSeconds":355.525,"allowedChanges":true,"usage":{"input_tokens":2105978,"cached_input_tokens":2060672,"cache_write_input_tokens":0,"output_tokens":35855,"reasoning_output_tokens":35286}}

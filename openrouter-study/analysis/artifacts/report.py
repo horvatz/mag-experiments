@@ -1,5 +1,6 @@
 """Reporting only; reads archived measurements and separately authored reviews."""
 import argparse
+import gzip
 import json
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
@@ -72,8 +73,18 @@ def availability():
             path = STUDY / slug / 'api' / row['id'] / 'model/api-ledger.jsonl'
             ledger = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
             errors = [r for r in ledger if r.get('responseStatus') in ['failed', 'incomplete'] or r.get('httpStatus') is not None and r['httpStatus'] != 200 or r.get('status') in ['transport_error', 'rejected_before_upstream']]
-            if errors:
-                affected.append(dict(id=row['id'], requests=[r['number'] for r in errors], executionStatus=row['executionStatus'], evidence=str(path.relative_to(ROOT))))
+            archive = STUDY / slug / 'runtime/runs' / row['id']
+            native_errors = []
+            for events_path in [archive / 'events.jsonl.gz', *sorted((archive / 'phases').glob('*/events.jsonl.gz'))]:
+                if not events_path.exists():
+                    continue
+                for line in gzip.decompress(events_path.read_bytes()).decode().splitlines():
+                    event = json.loads(line)
+                    message = event.get('message') or (event.get('error') or {}).get('message', '')
+                    if event.get('type') in ['error', 'turn.failed'] and message.startswith('stream disconnected before completion:'):
+                        native_errors.append(dict(message=message, evidence=str(events_path.relative_to(ROOT))))
+            if errors or native_errors:
+                affected.append(dict(id=row['id'], requests=[r['number'] for r in errors], executionStatus=row['executionStatus'], evidence=str(path.relative_to(ROOT)), nativeErrors=native_errors))
         isolation = [dict(id=row['id'], executionStatus=row['executionStatus']) for row in rows if row['executionStatus'] == 'isolation_interrupted']
         result.append(dict(slug=slug, archived=len(rows), explicitResponseOrTransportErrors=len(affected), affected=affected, isolationInterruptions=isolation))
     return result
@@ -160,6 +171,8 @@ def main():
         p('Qwen/P08-C-002 je oddal 14 nalog z oznakami v krepkem tisku (**T001**). Zamrznjeni preverjevalnik sprejme oznake brez krepkega tiska in zavrne predajo pred implementacijo. Rezultat ostane izviren (38/70, 0/12); zavrnitev je posledica formata, ne odsotnosti nalog.')
     if comparison['newArchived'] >= 108:
         p('Pri več oddajah P08 sta testa R11 obstala ob preklopu na tablo prazne skupine: pripomoček zahteva območje z imenom Tabla opravil, oddaja pa ga zamenja s sporočilom o prazni skupini. Izvirni izidi 68/70 in 11/12 ostanejo. To je občutljivost preverjanja na strukturo praznega pogleda; dve napaki nista dokaz dveh različnih napak datumske logike.')
+    if comparison['newArchived'] >= 112:
+        p('DeepSeek/P04-B-002 doseže 70/70 in 12/12, vendar zaključni odgovor pregleda ovije JSON v oznake Markdown. Validator zavrne ta odgovor, čeprav je shranjena datoteka review.json veljavna. Strogi neuspeh zato ne pomeni neuspešne funkcionalnosti.')
     story.append(PageBreak())
     p('Vsebinska kakovost oddaj', 'Heading1')
     p(qualitative['method'])
@@ -203,7 +216,7 @@ def main():
     p('Qwenova prvotna pot DeepInfra/bf16 je dvakrat odpovedala zaradi preobremenitve. SiliconFlow/fp8 je bil določen pred prvo meritvijo in ostaja zamrznjen. Diagnostika in časovne prekoračitve kvalifikacije so ohranjene; model ni izločen.')
     p('Astra je bila izmerjena z odjemalcem 0.154, Luna in novi modeli z 0.158.0-alpha.2.1. Nova zbirka uporablja drug račun, storitve in čas meritev. Ugotovitve veljajo za osem uporabljenih nalog in te konfiguracije; ne pomenijo splošne lestvice vseh sposobnosti modelov.')
     p('Astro je pred implementacijo prizadelo 12 zaporednih napak prijave 401 in ena omejitev uporabe. Ostanejo v primarni analizi brez ponovitve; ne dokazujejo slabe implementacijske sposobnosti. Uravnoteženost zavrnitev po postopkih ne odpravi izgube oddaj ali pristranskosti primerjave.')
-    p('Nove arhivirane izvedbe z izrecno napako odziva ali transporta API: ' + '; '.join(f"{LABELS[g['slug']]} {g['explicitResponseOrTransportErrors']}/{g['archived']}" for g in service) + '. Tudi te oddaje ostanejo v primarni analizi. Vzroki Qwenovih response.failed in DeepSeekovega HTTP520 na P08-C-001 ostanejo neznani; sveža kratka povezovalna preizkusa uspeta. HTTP520 nima responseId ali usage, zato njegov strošek ostane neznan. Običajna prekinitev ob modelnem časovnem roku brez napake odziva ni vključena v to štetje.')
+    p('Nove arhivirane izvedbe z izrecno napako odziva ali transporta API: ' + '; '.join(f"{LABELS[g['slug']]} {g['explicitResponseOrTransportErrors']}/{g['archived']}" for g in service) + '. Tudi te ostanejo v primarni analizi. Qwenovi response.failed, DeepSeekov HTTP520 na P08-C-001 in prekinjen tok na P07-A-003 imajo neznan vzrok. GLM/P07-A-003 prejme HTTP429 zaradi preobremenitve skupne kvote Wafer. Kratke diagnostike ne dokazujejo zanesljivosti dolgih odzivov. Neznani računi ostanejo neznani. Običajne prekinitve ob roku brez napake odziva niso vključene.')
     p('Prekinitve varovala izolacije: ' + '; '.join(f"{LABELS[g['slug']]} {len(g['isolationInterruptions'])}/{g['archived']}" for g in service) + '. Tudi te ostanejo v imenovalcu strogega uspeha. Varovalo lahko sprožita zaznana vrata ali časovna prekoračitev povezave; brez dodatnih dokazov takšna prekinitev ni dokaz slabe implementacije modela.')
     p('Uporabnik je ob premorih prekinil GLM P03-C-002 po 551,030 s (66/70 preverjanj) in DeepSeek P03-B-001 po 727,047 s (70/70). Status operator_interruption ostane v primarni analizi brez ponovitve. Skrajšanega časa in nedokončanega postopka ne pripisujemo sposobnosti modela. Zadnji zahtevi GLM69 in DeepSeek55 imata shranjena vhoda brez zaključnega relay zapisa: prenos, odziv in strošek so neznani. Izvirna dnevnika in transparentna raziskovalčeva dodatka sta ohranjena; dodatka nista opaženi napaki API ali ničelna računa.')
     p('Viri modelnih licenc in uteži', 'Heading2')

@@ -1,0 +1,17 @@
+{
+  "status": "proposed_not_authorized_not_active",
+  "researcherOnly": true,
+  "reason": "Unknown-cost reservations block requests despite a positive verified OpenRouter credit balance.",
+  "currentRule": "40 USD minus known study spend minus maximum reservations for unknown bills must cover the pinned endpoint maximum request cost.",
+  "proposedRule": "Continue using only the existing prepaid OpenRouter credit. Immediately before each upstream request, verify that actual remaining account credit covers the pinned endpoint maximum request cost. Stop if that credit cannot cover the request or cannot be verified. Retain the original 40 USD study authorization and all unknown costs and conservative reservations in the audit; do not replace unknown costs with zero.",
+  "accountSnapshotUTC": "2026-10-30T02:34:18.631Z",
+  "accountTotalCreditsUSD": 40,
+  "accountUsageUSD": 26.179245928,
+  "accountRemainingUSD": 13.820754072,
+  "automaticTopUp": false,
+  "additionalFundingAuthorized": false,
+  "requiresExplicitUserApproval": true,
+  "implementationIfApproved": "Preserve the original frozen budget and operator source evidence, add a dated protocol amendment and separately version the changed budget guard before any new paid request. Record the exact first affected request/run and original/new source hashes. Reverify all remaining frozen inputs. Do not rerun or change completed measurements, provider routing, models, tasks, deadlines, or evaluators.",
+  "serviceRecoveryStillRequired": "Successful fresh diagnostic on the same GLM/Wafer provider before continuing with unused position 124 Qwen/P07-B-003.",
+  "completionWithinExistingCreditGuaranteed": false
+}

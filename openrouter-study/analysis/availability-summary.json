@@ -1,8 +1,8 @@
 [
   {
     "slug": "glm",
-    "archived": 36,
-    "explicitResponseOrTransportErrors": 2,
+    "archived": 41,
+    "explicitResponseOrTransportErrors": 3,
     "affected": [
       {
         "id": "P06-B-001",
@@ -10,7 +10,8 @@
           50
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/glm/api/P06-B-001/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/glm/api/P06-B-001/model/api-ledger.jsonl",
+        "nativeErrors": []
       },
       {
         "id": "P08-B-003",
@@ -18,15 +19,25 @@
           101
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/glm/api/P08-B-003/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/glm/api/P08-B-003/model/api-ledger.jsonl",
+        "nativeErrors": []
+      },
+      {
+        "id": "P07-A-003",
+        "requests": [
+          7
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/glm/api/P07-A-003/model/api-ledger.jsonl",
+        "nativeErrors": []
       }
     ],
     "isolationInterruptions": []
   },
   {
     "slug": "deepseek",
-    "archived": 36,
-    "explicitResponseOrTransportErrors": 3,
+    "archived": 41,
+    "explicitResponseOrTransportErrors": 4,
     "affected": [
       {
         "id": "P06-A-001",
@@ -34,7 +45,8 @@
           24
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/deepseek/api/P06-A-001/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/deepseek/api/P06-A-001/model/api-ledger.jsonl",
+        "nativeErrors": []
       },
       {
         "id": "P08-C-001",
@@ -42,7 +54,8 @@
           36
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/deepseek/api/P08-C-001/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/deepseek/api/P08-C-001/model/api-ledger.jsonl",
+        "nativeErrors": []
       },
       {
         "id": "P05-C-002",
@@ -50,7 +63,24 @@
           44
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/deepseek/api/P05-C-002/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/deepseek/api/P05-C-002/model/api-ledger.jsonl",
+        "nativeErrors": []
+      },
+      {
+        "id": "P07-A-003",
+        "requests": [],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/deepseek/api/P07-A-003/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed before response.completed",
+            "evidence": "openrouter-study/deepseek/runtime/runs/P07-A-003/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed before response.completed",
+            "evidence": "openrouter-study/deepseek/runtime/runs/P07-A-003/events.jsonl.gz"
+          }
+        ]
       }
     ],
     "isolationInterruptions": [
@@ -62,7 +92,7 @@
   },
   {
     "slug": "qwen",
-    "archived": 36,
+    "archived": 41,
     "explicitResponseOrTransportErrors": 13,
     "affected": [
       {
@@ -71,7 +101,17 @@
           28
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P05-A-001/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P05-A-001/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P05-A-001/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P05-A-001/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P06-A-001",
@@ -79,7 +119,17 @@
           6
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P06-A-001/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P06-A-001/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P06-A-001/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P06-A-001/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P06-C-001",
@@ -87,7 +137,17 @@
           1
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P06-C-001/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P06-C-001/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P06-C-001/phases/01-constitution/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P06-C-001/phases/01-constitution/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P06-B-001",
@@ -95,7 +155,17 @@
           2
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P06-B-001/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P06-B-001/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: Provider returned an empty response",
+            "evidence": "openrouter-study/qwen/runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: Provider returned an empty response",
+            "evidence": "openrouter-study/qwen/runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P08-A-001",
@@ -103,7 +173,17 @@
           31
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P08-A-001/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P08-A-001/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P08-A-001/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P08-A-001/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P08-C-001",
@@ -111,7 +191,17 @@
           17
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P08-C-001/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P08-C-001/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P08-C-001/phases/02-specify/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P08-C-001/phases/02-specify/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P08-B-001",
@@ -119,7 +209,17 @@
           9
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P08-B-001/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P08-B-001/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P08-B-001/phases/01-specification/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P03-B-002",
@@ -127,7 +227,17 @@
           60
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P03-B-002/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P03-B-002/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P03-B-002/phases/03-review/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P03-B-002/phases/03-review/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P06-C-003",
@@ -135,7 +245,17 @@
           53
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P06-C-003/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P06-C-003/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P06-C-003/phases/02-specify/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P06-C-003/phases/02-specify/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P04-A-003",
@@ -143,7 +263,17 @@
           24
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P04-A-003/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P04-A-003/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P04-A-003/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P04-A-003/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P04-C-003",
@@ -151,7 +281,17 @@
           54
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P04-C-003/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P04-C-003/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P04-C-003/phases/04-tasks/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P04-C-003/phases/04-tasks/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P08-B-003",
@@ -159,7 +299,17 @@
           31
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P08-B-003/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P08-B-003/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P08-B-003/phases/02-implementation/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed with reason: error",
+            "evidence": "openrouter-study/qwen/runtime/runs/P08-B-003/phases/02-implementation/events.jsonl.gz"
+          }
+        ]
       },
       {
         "id": "P08-C-003",
@@ -167,9 +317,24 @@
           39
         ],
         "executionStatus": "execution_failed",
-        "evidence": "openrouter-study/qwen/api/P08-C-003/model/api-ledger.jsonl"
+        "evidence": "openrouter-study/qwen/api/P08-C-003/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: Provider returned an empty response",
+            "evidence": "openrouter-study/qwen/runtime/runs/P08-C-003/phases/01-constitution/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: Provider returned an empty response",
+            "evidence": "openrouter-study/qwen/runtime/runs/P08-C-003/phases/01-constitution/events.jsonl.gz"
+          }
+        ]
       }
     ],
-    "isolationInterruptions": []
+    "isolationInterruptions": [
+      {
+        "id": "P04-B-002",
+        "executionStatus": "isolation_interrupted"
+      }
+    ]
   }
 ]

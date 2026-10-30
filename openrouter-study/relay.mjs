@@ -7,6 +7,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { credits, openrouter } from './credentials.mjs'
 import { recordedSpend } from './costs.mjs'
+import { prepaidHeadroom } from './prepaid-budget.mjs'
 const study = dirname(fileURLToPath(import.meta.url))
 export async function startRelay({ selected, destination, label, port = 9238 }) {
   const token = randomBytes(32).toString('hex'); mkdirSync(destination, { recursive: true })
@@ -14,6 +15,7 @@ export async function startRelay({ selected, destination, label, port = 9238 }) 
   let sequence = existsSync(ledger) ? readFileSync(ledger, 'utf8').split('\n').filter(Boolean).length : 0
   const append = value => appendFileSync(ledger, JSON.stringify(value) + '\n')
   const active = new Set()
+  const budgetReservations = new Map()
   const server = createServer(async (request, response) => {
     const sendError = (status, message) => { if (!response.headersSent) response.writeHead(status, { 'content-type': 'application/json' }); response.end(JSON.stringify({ error: { message } })) }
     if (request.headers.authorization !== 'Bearer ' + token) return sendError(401, 'Invalid study relay session')
@@ -66,7 +68,9 @@ export async function startRelay({ selected, destination, label, port = 9238 }) 
       const endpoint = JSON.parse(readFileSync(resolve(study, 'qualification/' + selected.slug + '-endpoints.json'))).data.endpoints.find(e => e.tag === selected.provider)
       const maximumRequestCost = endpoint.context_length * Number(endpoint.pricing.prompt) + endpoint.max_completion_tokens * Number(endpoint.pricing.completion)
       record.budgetBefore = { ...spend, maximumRequestCost }
-      assert.ok(Number.isFinite(maximumRequestCost) && authorization.initialAvailableUSD - spend.knownUSD - spend.unknownReservedUSD >= maximumRequestCost, 'Authorized study budget cannot cover another request at the pinned endpoint maximum')
+      const amendment = JSON.parse(readFileSync(resolve(study, 'budget-amendment-1.json')))
+      record.budgetRule = prepaidHeadroom({ balance, authorization, amendment, maximumRequestCost, inFlightUSD: [...budgetReservations.values()].reduce((a, b) => a + b, 0) })
+      budgetReservations.set(number, maximumRequestCost)
       record.sentUpstream = true
       const upstream = await openrouter('/responses', { method: 'POST', body: JSON.stringify(body), signal: controller.signal })
       record.httpStatus = upstream.status
@@ -98,7 +102,7 @@ export async function startRelay({ selected, destination, label, port = 9238 }) 
     } finally {
       record.finishedAt = new Date().toISOString(); record.bytes = bytes; record.responseId = responseId
       record.usage = finalResponse?.usage || null; record.openrouterMetadata = finalResponse?.openrouter_metadata || null
-      record.responseStatus = finalResponse?.status || null; append(record); active.delete(controller)
+      record.responseStatus = finalResponse?.status || null; append(record); active.delete(controller); budgetReservations.delete(number)
     }
   })
   await new Promise((done, reject) => { server.once('error', reject); server.listen(port, '127.0.0.1', done) })
