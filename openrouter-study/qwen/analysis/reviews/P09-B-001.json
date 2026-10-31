@@ -1,0 +1,98 @@
+{
+  "id": "P09-B-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-31T21:32:58.679418+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "c29969058ad5232254eaa58a1f1ac1bd120b2b3acb0aa795bcb4cfa35c15df8b",
+  "limitation": "Prebranih vseh11 dejansko avtorskih datotek, preverjene arhivske vsote ter pregledani native ukazi in ohranjeni poznejši API vhodi. Delna oddaja je berljiva in ocenjena; ni nadomeščena z izhodiščem ali drugo ponovitvijo. Raziskovalec funkcionalnih testov ni ponavljal; sodba je AI-podprta in neslepa.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija navede R01–R12, privzete vrednosti, polja iskanja, status IN, UTF-16/stabilnost, prvo pojavitev parametra, osnutek in potrditev, zgodovino, navigacijo, podrobnosti ter reset. Ostanejo konkretne vrzeli: natančna tri dostopna imena, role=status/Rezultati povezave, pika v Ni zadetkov., domena0/1/>10,390px, ohranitev view=board posebej pri potrditvi in ista množica ID pri preklopu. Normalizacija je v specifikaciji/zgodovini zapisana NDF, v verification NFD, brez razjasnitve normalizacije posameznih iskalnih polj. Pregledovalčeva zahteva za ohranitev filtrov med različnima projektoma dodatno nasprotuje R10.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:36",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:46",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification-history.md:19",
+        "runtime/runs/P09-B-001/submission/docs/agent/review.json:53"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Nekateri pogoji so preverljivi: status skupaj z q po IN, prvi parameter, privzete vrednosti, odsotnost spremembe prikaza pred potrditvijo, ena sprememba zgodovine ob spremenjenem stanju in stabilen UTF-16 vrstni red. Formalizacija pretežno ostane opisna; normalizacija vseh štirih polj in dobesedna nedeljena fraza nista natančno določeni. Edina delna koda parserja vrne poljuben status/order prek type assertion namesto preverjanja domene; ni izvedenega filtriranja, stabilnega primerjalnika ali modela potrjenega/osnutega stanja. To je uporabna delna opredelitev, ne sklenjena formalizacija ključnih prehodov.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:37",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:40",
+        "runtime/runs/P09-B-001/submission/src/viewConnection.tsx:10",
+        "runtime/runs/P09-B-001/submission/src/viewConnection.tsx:18"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Končni verification označi vseh12 zahtev z zelenimi kljukicami in opisom želenega vedenja, brez konkretnih lokacij kode, testov ali dejanskih rezultatov. To ne omogoča preverjanja trditev. review.json koristno prizna vseh12 kot unverified in nekatere resnične vrzeli, vendar ne ustvari verige zahteva–koda–test in pri R10 zahteva napačno vedenje. Edini npm run check je pred avtorsko implementacijo in odrezan s head; pet vidnih API uspehov ni dokaz46/46 niti novih zahtev. Zgodovina poleg tega navaja neobstoječo specifikacijo.md. Odkrite pregledovalčeve omejitve so upoštevane, vendar končne nepotrjene kljukice ostanejo.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/verification.md:9",
+        "runtime/runs/P09-B-001/submission/docs/agent/review.json:17",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification-history.md:7",
+        "analysis/evidence/P09-B-001-checks.md#02-implementation-item_25",
+        "analysis/evidence/P09-B-001-checks.md#04-implementation-repair-item_12"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 0,
+      "rationale": "Avtorska koda je oddana, a ni sledljivo delujoča rešitev. App.tsx je prepisan z18 vrsticami neveljavnih uvozov/JSX, brez izvoza App in z neobstoječim useLocalStorage; components.tsx je izpraznjen. Neintegrirani ConnectionView združi filtre, prikaz in števec v eno dolgo vrstico, potrditev vedno poda prazen q, števec uporablja isti N za skupni M. viewConnection vsebuje neizvožen delni parser, createComponent.js je neveljaven ostanek ustvarjalnega ukaza. Število datotek samo po sebi ni kriterij; izgubljene odgovornosti in nedokončana integracija so konkretna slabost.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/src/App.tsx:1",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:13",
+        "runtime/runs/P09-B-001/submission/src/components.tsx",
+        "runtime/runs/P09-B-001/submission/src/ConnectionView.tsx:4",
+        "runtime/runs/P09-B-001/submission/src/viewConnection.tsx:10",
+        "runtime/runs/P09-B-001/submission/src/createComponent.js:2"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Oddana verification-connection.ts je en sam osnutek za privzete kontrole: uvaža neobstoječi ./helpers, uporablja nedefinirana all/original in nima await za Playwright pričakovanja. Ime datoteke se ne ujema z dejansko odkritimi *.spec.ts; pregledovalčev find je ne odkrije. Ni uporabnega izvedljivega dodatnega preverjanja zahtev in ni zabeleženega zagona lastnega primera. Neuspešen poskus zapisa drugega testa v neobstoječi tests/agent/tests ni oddan test. Koristnih pravilno napisanih, a neizvedenih testov tu ni mogoče kreditirati zgolj iz kljukic v verification.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/tests/agent/verification-connection.ts:1",
+        "analysis/evidence/P09-B-001-checks.md#03-review-item_53",
+        "analysis/evidence/P09-B-001-checks.md#03-review-item_58",
+        "analysis/evidence/P09-B-001-checks.md#02-implementation-item_83",
+        "runtime/runs/P09-B-001/submission/docs/agent/verification.md:9"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Po1200,317s time_limit; implementacija in pregled prej dosežeta fazni omejitvi, popravilo skupno omejitev. Neodvisno14/70(14API;0/24UI,0/8razvojnih,0/24skritih),0/12;lint/types/build false,allowed true,strictfalse. Prva vrstica App.tsx ima trojne/četverne narekovaje in aplikacija se ne prevede; prvi UI že ne najde naslova projekta. To je končna izvirna oddaja, ne napaka API ali ponovljena meritev.",
+    "evidence": [
+      "runtime/runs/P09-B-001/execution.json",
+      "runtime/runs/P09-B-001/evaluation-summary.json",
+      "runtime/runs/P09-B-001/submission/src/App.tsx:1",
+      "analysis/evidence/P09-B-001-checks.md#04-implementation-repair-item_16",
+      "analysis/evidence/P09-B-001-checks.md#04-implementation-repair-item_17"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Implementacijski item_25 pred spremembami sproži npm run check skozi head-50: vidi se le5 uspešnih API testov od napovedanih46, ne končni uspeh. Več here-doc poskusov vrne operation not permitted; poznejši printf/node poskusi imajo dejanske napake narekovajev. Preserved42 neuspešen here-doc izprazni components.tsx,52 ustvari neveljaven createComponent.js;69 ne more zapisati testa v neobstoječi imenik. Review item_75 odkrije neveljaven JSON in78 ga popravi, ne pa kode. Končni popravljalni item_16 vrne0 kljub bad substitution in zapiše neveljaven App, kar17 pokaže. Omejitve okolja in neuspešni ukazi so ohranjeni, ne pripisani storitvi ali prikazani kot funkcionalni testi.",
+    "evidence": [
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_25",
+      "analysis/evidence/P09-B-001-checks.md#preserved-42",
+      "analysis/evidence/P09-B-001-checks.md#preserved-52",
+      "analysis/evidence/P09-B-001-checks.md#preserved-69",
+      "analysis/evidence/P09-B-001-checks.md#03-review-item_75",
+      "analysis/evidence/P09-B-001-checks.md#03-review-item_78",
+      "analysis/evidence/P09-B-001-checks.md#04-implementation-repair-item_16",
+      "analysis/evidence/P09-B-001-checks.md#04-implementation-repair-item_17"
+    ]
+  },
+  "finalFailureNote": "Time_limit1200,317s,14/70,0/12,strictfalse.11avtorskih datotek,1neizvedljiva lastna testna datoteka.90 modelskih zahtev:89 zHTTP200 in1 brez prejete HTTPkode ob prekinitvi;87finished,3client_aborted. Celotni računNULL,znano0,2510099USD,request81 brez potrjenega računa. To ni potrjena izrecna napaka API. Dimenzije[1,1,0,0,0]; nobena nova merjena izvedba ali raziskovalčev funkcionalni ponovni zagon."
+}

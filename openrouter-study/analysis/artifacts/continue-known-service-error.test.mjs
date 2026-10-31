@@ -26,7 +26,38 @@ const unavailableNative = gunzipSync(fs.readFileSync(resolve(study, 'deepseek/ru
 const changed520 = patch => ({ ...unavailable.row, providerError: JSON.stringify({error:{...JSON.parse(unavailable.row.providerError).error, ...patch}}) })
 const native = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-A-001/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const emptyNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
+const truncated = fixture('qwen', 7, 'P09-C-001')
+const truncatedNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P09-C-001/phases/01-constitution/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
+const localFixtures = [fixture('glm', 10, 'P09-C-001'), fixture('deepseek', 27, 'P04-A-001')]
+const localNative = ['unexpected status 502 Bad Gateway: Study transport failed; researcher evidence preserved, url: http://127.0.0.1:9238/v1/responses']
 const checks = [
+  ...localFixtures.flatMap(({row,body}, fixtureIndex) => [
+    ['observed local credit-read failure ' + fixtureIndex, knownFailure(row,body,localNative), 'local-credit-read-transport-before-upstream'],
+    ['local credit-read without native ' + fixtureIndex, knownFailure(row,body), null],
+    ['local credit-read other native ' + fixtureIndex, knownFailure(row,body,['unexpected status 502 Bad Gateway: other']), null],
+    ...[{model:'other'},{provider:'other'},{status:'client_aborted'},{status:'transport_error'},
+        {errorType:'AssertionError'},{bytes:1},{bytes:undefined},{usage:undefined},{openrouterMetadata:undefined},
+        {responseStatus:'completed'}].map((patch,i) => ['local credit-read row mutation ' + fixtureIndex + '/' + i,knownFailure({...row,...patch},body,localNative),null]),
+    ...['sentUpstream','httpStatus','responseId','balanceBefore','budgetBefore','budgetRule','retryAfter','providerError'].map(key => ['local credit-read present forbidden field '+ fixtureIndex + '/' + key,knownFailure({...row,[key]:null},body,localNative),null]),
+    ['local credit-read budget rejection '+fixtureIndex,knownFailure({...row,errorType:'AssertionError',balanceBefore:{remainingUSD:0}},body,localNative),null],
+    ['local credit-read upstream started '+fixtureIndex,knownFailure({...row,sentUpstream:true},body,localNative),null],
+    ['local credit-read request model '+fixtureIndex,knownFailure(row,{...body,model:'other'},localNative),null],
+    ['local credit-read fallback '+fixtureIndex,knownFailure(row,{...body,provider:{...body.provider,allow_fallbacks:true}},localNative),null],
+    ['local credit-read providers '+fixtureIndex,knownFailure(row,{...body,provider:{...body.provider,only:[row.provider,'other']}},localNative),null],
+  ]),
+  ['observed Qwen truncated transport', knownFailure(truncated.row, truncated.body, truncatedNative), 'qwen-truncated-stream-cause-unknown'],
+  ['truncated transport without native evidence', knownFailure(truncated.row, truncated.body), null],
+  ['truncated transport different native text', knownFailure(truncated.row, truncated.body, ['stream disconnected before completion: different truncation']), null],
+  ...[
+    {model:'other'}, {provider:'other'}, {httpStatus:500}, {status:'client_aborted'}, {status:'finished'},
+    {responseStatus:'completed'}, {responseStatus:'failed'}, {responseStatus:undefined},
+    {sentUpstream:false}, {errorType:'OtherError'}, {retryAfter:'2'}, {bytes:0}, {bytes:undefined},
+    {responseId:null}, {responseId:'other-id'},
+  ].map((patch, index) => ['truncated transport rejected row mutation ' + index, knownFailure({...truncated.row,...patch}, truncated.body, truncatedNative), null]),
+  ['truncated transport changed request model', knownFailure(truncated.row,{...truncated.body,model:'other'},truncatedNative), null],
+  ['truncated transport fallback enabled', knownFailure(truncated.row,{...truncated.body,provider:{...truncated.body.provider,allow_fallbacks:true}},truncatedNative), null],
+  ['truncated transport multiple providers', knownFailure(truncated.row,{...truncated.body,provider:{...truncated.body.provider,only:['siliconflow/fp8','other']}},truncatedNative), null],
+
   ['observed Qwen SSE JSON error',knownFailure(sseJson.row,sseJson.body,sseJsonNative),'qwen-sse-json-error-cause-unknown'],
   ['SSE JSON without native evidence',knownFailure(sseJson.row,sseJson.body),null],
   ['SSE JSON unobserved message',knownFailure(sseJson.row,sseJson.body,['stream disconnected before completion: JSON syntax error']),null],

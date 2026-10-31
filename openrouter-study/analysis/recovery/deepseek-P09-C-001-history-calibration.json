@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-31T23:05:09.713725+00:00",
+  "researcherOnly": true,
+  "existingGradesChanged": false,
+  "measuredRetry": false,
+  "sources": [
+    {
+      "path": "luna-study/runtime/runs/P09-C-001/submission/docs/agent/P09/plan.md",
+      "sha256": "34c06ebea17ae61188d06cb336275a7b695e815f96679d09de5489f3ebc3fb9f"
+    },
+    {
+      "path": "luna-study/analysis/reviews/P09-C-001.json",
+      "sha256": "e3cbe366df9aa4abda3fa07edb527ed6bfb0c48613e41725079d3020004ec167"
+    },
+    {
+      "path": "openrouter-study/deepseek/runtime/runs/P09-C-001/submission/docs/agent/P09/plan.md",
+      "sha256": "2d22a894d825f4eda9e939e3b13f20bb6840fa2ff2f91f680da438a7cb29a324"
+    },
+    {
+      "path": "openrouter-study/deepseek/runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md",
+      "sha256": "42d91bc3fe9ed1cb80db6cf8a9876d5864b051bccef017982e9acd1521c6b84d"
+    }
+  ],
+  "observation": "LunaC plan15 explicitly permits a new history entry only if the effective filter triple changes, and canonicalizes an unchanged triple in place. New DeepSeekC spec21 has the correct semantic condition, but plan18 explicitly uses target hash inequality as the history guard, matching App20–22 and contradicting canonicalization of an unchanged effective state. This is a conflicting documented predicate, not merely bad code under a consistently correct predicate (GLM163). No threshold or historical grade is changed."
+}

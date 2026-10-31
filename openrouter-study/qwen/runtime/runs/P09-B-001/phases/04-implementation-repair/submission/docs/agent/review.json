@@ -1,0 +1,72 @@
+{
+  "complete": true,
+  "checkedRequirements": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "R12"
+  ],
+  "unverified": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "R12"
+  ],
+  "specificationChangesRequired": false,
+  "codeChangesRequired": true,
+  "summary": "Implementacija ni skladna z zahtevami - manjka UI za filtriranje parametov v URL-u in ohranjanje stanja med navigacijo.",
+  "findings": [
+    {
+      "target": "implementation",
+      "requirement": "R01",
+      "problem": "Navigacija ne podpira q, status, order parametre v URL-ju.",
+      "requestedChange": "Dodati UI kontrol in navigacijo za q, status, order parametre"
+    },
+    {
+      "target": "implementation",
+      "requirement": "R04",
+      "problem": "Neznani parametri v URL razčlenjujem, a jih ne pretvorim v privzeto vrednost.",
+      "requestedChange": "Uporabi try-catch dojer URLSearchParams.get za status in order."
+    },
+    {
+      "target": "implementation",
+      "requirement": "R09",
+      "problem": "TaskDetails ne obnovi filtrov po zapečenju.",
+      "requestedChange": "V TaskDetails shrani in obnovi parametre iz URL ob zaprtju dialoga"
+    },
+    {
+      "target": "implementation",
+      "requirement": "R10",
+      "problem": "Prelaz med projekti resetira filtre.",
+      "requestedChange": "Update projectUrl() in navigacijo za ohranjanje filtrov med projekti"
+    },
+    {
+      "target": "implementation",
+      "requirement": "R11",
+      "problem": "Gumb Reset View nima implementirane UI.",
+      "requestedChange": "Dodata gumb Reset View ki ponastavi q, status, order"
+    },
+    {
+      "target": "implementation",
+      "requirement": "R12",
+      "problem": "Noben dejanje ne spremeni podatkov - API je read-only, stanje v URL-ju, ne localStorage.",
+      "requestedChange": "Ni potrebnih sprememb"
+    }
+  ]
+}

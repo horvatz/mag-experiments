@@ -1,0 +1,86 @@
+{
+  "id": "P09-C-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-31T22:33:26.555875+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "5799f8c6325c08c7c7f7f3f00eafa228c57341c8f2473abde4439d65b821e9b1",
+  "limitation": "Celotna avtorska oddaja manjka: nobene spremenjene datoteke. Prebranih vseh9native ukazov in9ohranjenih API dokazov, ki ne dodajo poznejših klicev; arhivske vsote preverjene. Osnutek ustave v dveh neuspešnih ukazih ni oddan dokument. Izvirni execution/ledger sta pri raziskovalčevem dokončanju samo postmodelskih korakov preverjeno byte-identical, meritev se ni ponovila.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": null,
+      "rationale": "Ni oddanega avtorskega dokumenta; ustava ostane izhodiščna predloga in specifikacijska faza ni začeta. Osnutek v neuspešnem ukazu ni oddaja; dimenzija je manjkajoča.",
+      "evidence": [
+        "runtime/runs/P09-C-001/execution.json",
+        "analysis/review-packets/P09-C-001.json",
+        "runtime/runs/P09-C-001/last-message.md"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": null,
+      "rationale": "Ni modelove oddane formalizacije v dokumentih ali kodi. Vhodne zahteve in predloga niso njegova nova avtorska vsebina; dimenzija je manjkajoča.",
+      "evidence": [
+        "runtime/runs/P09-C-001/execution.json",
+        "analysis/review-packets/P09-C-001.json",
+        "runtime/runs/P09-C-001/last-message.md"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": null,
+      "rationale": "Ni oddanih povezav zahteva–koda–test ali verifikacijskega zapisa. Povsem manjkajoče oddaje ne ocenimo z ničlo; dimenzija je manjkajoča.",
+      "evidence": [
+        "runtime/runs/P09-C-001/execution.json",
+        "analysis/review-packets/P09-C-001.json",
+        "runtime/runs/P09-C-001/last-message.md"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Model ni spremenil produkcijske kode. Organizacije ohranjenega izhodišča mu ne pripišemo; dimenzija je manjkajoča.",
+      "evidence": [
+        "runtime/runs/P09-C-001/execution.json",
+        "analysis/review-packets/P09-C-001.json",
+        "runtime/runs/P09-C-001/last-message.md"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": null,
+      "rationale": "Ni lastnih testnih datotek ali njihovih zagonov. Zaradi celotne manjkajoče oddaje ostane tudi ta dimenzijaNULL, ne0.",
+      "evidence": [
+        "runtime/runs/P09-C-001/execution.json",
+        "analysis/review-packets/P09-C-001.json",
+        "runtime/runs/P09-C-001/last-message.md"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Execution_failed48,127s v prvi constitution fazi47,601s, brez avtorskih sprememb. Neodvisno38/70(samo38regresijskih),0/12,statične/allowedtrue,strictfalse. Zadnja10 je lokalno rejected_before_upstream/TypeError,0B,brezHTTPkode ali poslanega upstreama; CLI prejme raziskovalčev relay502 Study transport failed. To je povezovalna napaka pred zadnjo modelsko zahtevo, ne modelov HTTP502 odziv. Nato originalni operator odpove pri generation lookup s fetchfailed/ETIMEDOUT/EHOSTUNREACH. Po obnovljeni povezavi so izvedeni samo nespremenjeniusage/evaluate/archive/analyze/status koraki, izvirne execution/ledger SHA ostanejo iste; model ni ponovljen. Račun je popoln0,014194157USD.",
+    "evidence": [
+      "runtime/runs/P09-C-001/execution.json",
+      "runtime/runs/P09-C-001/evaluation-summary.json",
+      "runtime/runs/P09-C-001/api-cost.json",
+      "api/P09-C-001/model/api-ledger.jsonl"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Native item_7 here-doc ne more ustvariti začasne datoteke; za njim node task/time-budget vrne0, kar ne pomeni zapisa ustave. Item_9 pipe v apply_patch vrne command not found, nato časovni ukaz spet povzroči0. Nobena datoteka se ne spremeni. Item_11 najde nepopoln ločen codex izPATH(ENOENT),12 druga pot zavrne dostop;14/15 prebereta help dejanskega pripetegaCLI. To so orodni poskusi in branje pomoči, ne funkcionalni testi ali nova modelova seja. Funkcionalnega modelovega testnega zagona ni.",
+    "evidence": [
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_7",
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_9",
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_11",
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_12",
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_14",
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_15"
+    ]
+  },
+  "finalFailureNote": "Execution_failed48,127s,38/70,0/12,strictfalse.0avtorskih datotek,5NULL.10zahtev:9HTTP200(7finished,2client_aborted),zadnja10lokalno zavrnjena pred upstreamom. Popoln račun0,014194157USD po dejanski ponovni bralni uskladitvi; brez impute iz dobroimetja. Lokalno postprocesiranje je ločeno dokumentirano in ne ponovi modela. Po svežemGLMCONNECTION_OK se nadaljuje samo171."
+}

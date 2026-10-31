@@ -1,0 +1,84 @@
+{
+  "id": "P09-A-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-10-31T20:37:41.775662+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "301f9e08aa752024a1563b6035dd424cb21d00bf848b27c518850ed25a5afbf8",
+  "limitation": "Avtorska oddaja v celoti manjka: fileChanges je prazen, docs/agent in tests/agent nimata oddanih datotek. Arhivske vsote so preverjene; pregledani so native ukazi, sporočila in poznejši API dokaz manjkajočega orodnega klica. Izhodiščna koda se ne šteje kot modelova nova rešitev; manjkajoče vsebinske dimenzije se ne pretvorijo v ničle.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": null,
+      "rationale": "Ni oddane specifikacije ali drugega avtorskega dokumenta. Napoved priprave specifikacije v zadnjem smiselnem sporočilu ni oddaja; dimenzija je manjkajoča.",
+      "evidence": [
+        "runtime/runs/P09-A-001/execution.json",
+        "analysis/review-packets/P09-A-001.json",
+        "runtime/runs/P09-A-001/last-message.md"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": null,
+      "rationale": "Ni oddanega avtorskega besedila ali kode s predikati oziroma invariantami. Obstoječe zahteve in izhodišče niso modelova formalizacija; dimenzija je manjkajoča.",
+      "evidence": [
+        "runtime/runs/P09-A-001/execution.json",
+        "analysis/review-packets/P09-A-001.json",
+        "runtime/runs/P09-A-001/last-message.md"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": null,
+      "rationale": "Ni oddanih povezav zahteva–koda–test ali verifikacijskega zapisa. V celoti manjkajoče oddaje ne ocenimo z ničlo in je ne nadomestimo z drugo ponovitvijo.",
+      "evidence": [
+        "runtime/runs/P09-A-001/execution.json",
+        "analysis/review-packets/P09-A-001.json",
+        "runtime/runs/P09-A-001/last-message.md"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Ni nobene modelove spremembe produkcijske kode. Organizacije ohranjenega izhodišča ne pripišemo merjenemu modelu; dimenzija je manjkajoča.",
+      "evidence": [
+        "runtime/runs/P09-A-001/execution.json",
+        "analysis/review-packets/P09-A-001.json",
+        "runtime/runs/P09-A-001/last-message.md"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": null,
+      "rationale": "Celotna avtorska oddaja manjka in ni lastnih testnih datotek ali testnih zagonov. Skladno s pravilom za povsem manjkajočo oddajo tudi ta dimenzija ostane NULL, ne0.",
+      "evidence": [
+        "runtime/runs/P09-A-001/execution.json",
+        "analysis/review-packets/P09-A-001.json",
+        "runtime/runs/P09-A-001/last-message.md"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "CLI se normalno zaključi po48,764s brez avtorskih sprememb; zadnji odgovor vsebuje le </parameter>, </function> in </tool_call>. Neodvisno38/70: vseh38 izhodiščnih,0/8razvojnih in0/24skritih;0/12 novih zahtev,strictfalse. Statične kontrole/obseg ohranjenega izhodišča uspejo. ŠestHTTP200/finished/response.completed zahtev ni izrecna napaka API; vzrok zaključka brez oddaje ni potrjen, surovi upstream tok se ne hrani. Meritve ne ponavljamo.",
+    "evidence": [
+      "runtime/runs/P09-A-001/execution.json",
+      "runtime/runs/P09-A-001/evaluation-summary.json",
+      "runtime/runs/P09-A-001/last-message.md",
+      "api/P09-A-001/model/api-ledger.jsonl"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Ni modelovega funkcionalnega testnega zagona. Native18 ukazov samo bere oziroma pregleduje datoteke; item_14/item_16 iščeta neobstoječi komponenti. Item_32 izpiše manjkajoči styles.css, čeprav pipeline s head vrne0. Poznejši request6 ohrani write_stdin(session_id=0), ki odpove z Unknown process id0 in ga native dnevnik ne vsebuje. Teh orodnih napak ne navajamo kot neuspešne funkcionalne teste ali potrjen vzrok končnega zaključka.",
+    "evidence": [
+      "analysis/evidence/P09-A-001-checks.md#item_14",
+      "analysis/evidence/P09-A-001-checks.md#item_16",
+      "analysis/evidence/P09-A-001-checks.md#item_32",
+      "analysis/evidence/P09-A-001-checks.md#preserved-18"
+    ]
+  },
+  "finalFailureNote": "Completed48,764s,38/70,0/12,strictfalse. Nobene avtorske datoteke in nobene testne izvedbe.6HTTP200/finished/response.completedSiliconFlow zahtev; popolni račun0,0083191USD. PetNULL je vnaprej določena obravnava manjkajoče oddaje, ne nova ocena sposobnosti."
+}

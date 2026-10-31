@@ -21,6 +21,16 @@ export function diagnosedImageError(row, body) {
 }
 
 export function knownFailure(row, body, nativeFailures = []) {
+  // Observed at GLM170 and DeepSeek173: credits() fails before the relay marks
+  // the request sent. This is a local pre-send transport failure, not HTTP502
+  // from a model provider or a budget rejection. Never replay the measured ID.
+  if ((row.model === 'z-ai/glm-5.3' && row.provider === 'wafer/us' || row.model === 'deepseek/deepseek-v4.1-flash' && row.provider === 'deepinfra/fp8') && row.status === 'rejected_before_upstream') {
+    if (row.errorType !== 'TypeError' || row.bytes !== 0 || row.usage !== null || row.openrouterMetadata !== null || row.responseStatus !== null) return null
+    if (['sentUpstream', 'httpStatus', 'responseId', 'balanceBefore', 'budgetBefore', 'budgetRule', 'retryAfter', 'providerError'].some(key => Object.hasOwn(row, key))) return null
+    if (body.model !== row.model || body.provider?.only?.length !== 1 || body.provider.only[0] !== row.provider || body.provider.allow_fallbacks !== false) return null
+    if (!nativeFailures.includes('unexpected status 502 Bad Gateway: Study transport failed; researcher evidence preserved, url: http://127.0.0.1:9238/v1/responses')) return null
+    return 'local-credit-read-transport-before-upstream'
+  }
   if (diagnosedImageError(row, body)) return 'deepinfra-image-tool'
   if (row.model === 'z-ai/glm-5.3' && row.provider === 'wafer/us' && row.httpStatus === 429 && row.status === 'http_error') {
     let error
@@ -48,6 +58,13 @@ export function knownFailure(row, body, nativeFailures = []) {
     if (body.model !== row.model || body.provider?.only?.length !== 1 || body.provider.only[0] !== row.provider || body.provider.allow_fallbacks !== false) return null
     const images = (body.input || []).filter(x => x.type === 'function_call_output' && Array.isArray(x.output) && x.output.some(c => c.type === 'input_image'))
     if (images.length > 0 && images.every(x => body.input.some(c => c.type === 'function_call' && c.call_id === x.call_id && c.name === 'view_image'))) return 'glm-image-input-unsupported'
+    return null
+  }
+  if (row.model === 'qwen/qwen3.5-9b' && row.provider === 'siliconflow/fp8' && row.httpStatus === 200 && row.status === 'transport_error') {
+    if (row.sentUpstream !== true || row.errorType !== 'TypeError' || row.responseStatus !== null || row.retryAfter !== null) return null
+    if (!Number.isInteger(row.bytes) || row.bytes <= 0 || typeof row.responseId !== 'string' || !row.responseId.startsWith('gen-')) return null
+    if (body.model !== row.model || body.provider?.only?.length !== 1 || body.provider.only[0] !== row.provider || body.provider.allow_fallbacks !== false) return null
+    if (nativeFailures.includes('stream disconnected before completion: stream closed before response.completed')) return 'qwen-truncated-stream-cause-unknown'
     return null
   }
   if (row.model !== 'qwen/qwen3.5-9b' || row.provider !== 'siliconflow/fp8' || row.httpStatus !== 200 || row.status !== 'finished' || row.responseStatus !== 'failed') return null
@@ -103,7 +120,7 @@ async function main() {
       assert.equal(stopped.pid, pid); assert.equal(stopped.stage, 'service_failure_archived')
     } else assert.equal(processCommand(pid), expectedCommand, 'Attach only to verified current runner')
     assert.ok(!fs.existsSync(resolve(recovery, 'known-image-resumer.lock')), 'Previous continuation controller must be stopped first')
-    save({ action: 'attached', runnerPid: pid, sourceSHA256: createHash('sha256').update(fs.readFileSync(fileURLToPath(import.meta.url))).digest('hex'), rationale: 'Diagnosed DeepInfra image-tool HTTP422, observed exact DeepInfra HTTP520, GLM image-support HTTP404, or observed Qwen response.failed may continue only with archive/input/unused-ID checks. HTTP520, Qwen and GLM additionally require a fresh successful text service check. Other failures stop.' })
+    save({ action: 'attached', runnerPid: pid, sourceSHA256: createHash('sha256').update(fs.readFileSync(fileURLToPath(import.meta.url))).digest('hex'), rationale: 'Diagnosed DeepInfra image-tool HTTP422, observed exact DeepInfra HTTP520, GLM image-support HTTP404, observed Qwen response.failed / exactly evidenced truncated transport, or exactly observed GLM/DeepSeek local credit-read TypeError before upstream may continue only with archive/input/unused-ID checks. Except DeepInfra image422, all classes require a fresh successful same-provider text service check. Other failures stop.' })
     while (true) {
       while (processCommand(pid) === expectedCommand) await new Promise(done => setTimeout(done, 5000))
       const status = json(resolve(study, 'status.json'))
@@ -135,7 +152,7 @@ async function main() {
         classifications.push(classification)
       }
       let diagnostic = null
-      if (classifications.some(value => value.startsWith('qwen-') || value === 'glm-image-input-unsupported' || value === 'glm-wafer-shared-pool-overload' || value === 'deepinfra-http520-cause-unknown')) {
+      if (classifications.some(value => value.startsWith('qwen-') || value === 'glm-image-input-unsupported' || value === 'glm-wafer-shared-pool-overload' || value === 'deepinfra-http520-cause-unknown' || value === 'local-credit-read-transport-before-upstream')) {
         save({ action: 'checking_service', previousRun: active.slug + '/' + active.id, errorRequests: errors.map(r => r.number), classifications })
         diagnostic = await serviceCheck(study, active.slug)
         save({ action: 'service_check_passed', diagnostic, limitation: 'Short reply success does not establish reliability of long tool responses.' })
@@ -149,7 +166,7 @@ async function main() {
       assert.ok(next, 'Expected unused next ID')
       for (const path of [resolve(study, next.slug, 'runtime/.work/pilots', next.id, 'execution.json'), resolve(study, next.slug, 'api', next.id, 'model/api-ledger.jsonl'), resolve(study, next.slug, 'runtime/runs', next.id)]) assert.ok(!fs.existsSync(path), 'Next ID has already started; never repeat it')
       verify()
-      const incident = { action: 'continue_unused_ids', archived: status.archived, previousRun: active.slug + '/' + active.id, errorRequests: errors.map(r => r.number), classifications, nextRun: next.slug + '/' + next.id, diagnosis: active.slug === 'deepseek' ? classifications.includes('deepinfra-http520-cause-unknown') ? 'analysis/recovery/deepseek-P08-C-001-service.json' : 'analysis/recovery/deepseek-P06-A-001-image-tool.json' : active.slug === 'glm' ? classifications.includes('glm-wafer-shared-pool-overload') ? 'analysis/recovery/glm-P07-A-003-service.json' : 'analysis/recovery/glm-P06-B-001-image-tool.json' : classifications.includes('qwen-sse-json-error-cause-unknown') ? 'analysis/recovery/qwen-P07-B-001-service.json' : classifications.includes('qwen-network-lost-cause-unknown') ? 'analysis/recovery/qwen-P07-C-002-service.json' : classifications.includes('qwen-request-failed-cause-unknown') ? 'analysis/recovery/qwen-P07-B-002-service.json' : classifications.includes('qwen-empty-response-cause-unknown') ? 'analysis/recovery/qwen-P06-B-001-service.json' : 'analysis/recovery/qwen-P06-A-001-service.json', diagnostic: diagnostic?.evidence || null, frozenProtocolVersion: json(resolve(study, 'frozen-inputs.json')).version, taskPromptsDeadlinesEvaluatorsUnchanged: true, archivedHashesVerified: true, measuredRetry: false, serviceCheck: 'Unchanged runner also performs connectivity check before the next measured start.' }
+      const incident = { action: 'continue_unused_ids', archived: status.archived, previousRun: active.slug + '/' + active.id, errorRequests: errors.map(r => r.number), classifications, nextRun: next.slug + '/' + next.id, diagnosis: classifications.includes('local-credit-read-transport-before-upstream') ? 'analysis/recovery/deepseek-P04-A-001-local-network.json' : active.slug === 'deepseek' ? classifications.includes('deepinfra-http520-cause-unknown') ? 'analysis/recovery/deepseek-P08-C-001-service.json' : 'analysis/recovery/deepseek-P06-A-001-image-tool.json' : active.slug === 'glm' ? classifications.includes('glm-wafer-shared-pool-overload') ? 'analysis/recovery/glm-P07-A-003-service.json' : 'analysis/recovery/glm-P06-B-001-image-tool.json' : classifications.includes('qwen-truncated-stream-cause-unknown') ? 'analysis/recovery/qwen-P09-C-001-service.json' : classifications.includes('qwen-sse-json-error-cause-unknown') ? 'analysis/recovery/qwen-P07-B-001-service.json' : classifications.includes('qwen-network-lost-cause-unknown') ? 'analysis/recovery/qwen-P07-C-002-service.json' : classifications.includes('qwen-request-failed-cause-unknown') ? 'analysis/recovery/qwen-P07-B-002-service.json' : classifications.includes('qwen-empty-response-cause-unknown') ? 'analysis/recovery/qwen-P06-B-001-service.json' : 'analysis/recovery/qwen-P06-A-001-service.json', diagnostic: diagnostic?.evidence || null, frozenProtocolVersion: json(resolve(study, 'frozen-inputs.json')).version, taskPromptsDeadlinesEvaluatorsUnchanged: true, archivedHashesVerified: true, measuredRetry: false, serviceCheck: 'Unchanged runner also performs connectivity check before the next measured start.' }
       save(incident)
       previousCount = status.archived
       const child = spawn('/usr/bin/caffeinate', ['-i', process.execPath, 'openrouter-study/run.mjs'], { cwd: resolve(study, '..'), env: process.env, stdio: 'inherit' })

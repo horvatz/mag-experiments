@@ -1,0 +1,1550 @@
+[WebServer] (node:31504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 70 tests using 1 worker
+
+(node:31505) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [regression-api] › .work/P09/baseline/tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (34ms)
+  ✓   2 [regression-api] › .work/P09/baseline/tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (7ms)
+  ✓   3 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (6ms)
+  ✓   4 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (5ms)
+  ✓   5 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (4ms)
+  ✓   7 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (4ms)
+  ✓   8 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (4ms)
+  ✓   9 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [regression-api] › .work/P09/baseline/tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (10ms)
+  ✓  11 [regression-api] › .work/P09/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with success (12ms)
+  ✓  12 [regression-api] › .work/P09/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [regression-api] › .work/P09/baseline/tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (10ms)
+  ✓  14 [regression-api] › .work/P09/baseline/tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:31507) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (452ms)
+  ✓  16 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (486ms)
+  ✓  17 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (489ms)
+  ✓  18 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (621ms)
+  ✓  19 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (417ms)
+  ✓  20 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (321ms)
+  ✓  21 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (320ms)
+  ✓  22 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (334ms)
+  ✓  23 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (317ms)
+  ✓  24 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (889ms)
+  ✓  25 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (545ms)
+  ✓  26 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (418ms)
+(node:31741) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  27 [development-desktop] › tasks/P09/development.spec.ts:2:1 › D01: direct filtered URL (266ms)
+  ✓  28 [development-desktop] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation (418ms)
+  ✓  29 [development-desktop] › tasks/P09/development.spec.ts:4:1 › D03: board and reload preserve committed state (459ms)
+  ✓  30 [development-desktop] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes (390ms)
+(node:31749) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  31 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state (361ms)
+  ✓  32 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field (687ms)
+  ✘  33 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting (5.3s)
+(node:31974) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  34 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:7:1 › E04: R04 first parameter wins, invalid values default, no passive rewrite (5.3s)
+(node:31979) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  35 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit (5.3s)
+(node:31984) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  36 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit (300ms)
+(node:31989) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  37 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh (673ms)
+  ✓  38 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:11:1 › E08: R08 view changes preserve committed state and discard draft (382ms)
+  ✓  39 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID (485ms)
+  ✓  40 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:13:1 › E10: R10 project navigation resets while direct URL honors params (332ms)
+  ✘  41 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count (5.3s)
+(node:31999) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  42 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout (517ms)
+(node:32004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  43 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (400ms)
+(node:32009) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  44 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (5.3s)
+(node:32014) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  45 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (5.5s)
+(node:32019) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  46 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (5.5s)
+(node:32024) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  47 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (5.4s)
+(node:32029) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  48 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (382ms)
+  ✓  49 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (370ms)
+  ✓  50 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (351ms)
+  ✓  51 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (332ms)
+  ✘  52 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (5.8s)
+(node:32258) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  53 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (5.6s)
+(node:32264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  54 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (468ms)
+(node:32269) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  55 [development-mobile] › tasks/P09/development.spec.ts:2:1 › D01: direct filtered URL (313ms)
+  ✘  56 [development-mobile] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation (5.3s)
+(node:32275) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  57 [development-mobile] › tasks/P09/development.spec.ts:4:1 › D03: board and reload preserve committed state (506ms)
+  ✘  58 [development-mobile] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes (5.3s)
+(node:32502) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  59 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state (5.3s)
+(node:32727) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  60 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field (5.3s)
+(node:32732) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  61 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting (5.3s)
+(node:32737) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  62 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:7:1 › E04: R04 first parameter wins, invalid values default, no passive rewrite (5.4s)
+(node:32743) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  63 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit (5.4s)
+(node:32748) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  64 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit (5.3s)
+(node:32753) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  65 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh (5.3s)
+(node:32759) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  66 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:11:1 › E08: R08 view changes preserve committed state and discard draft (450ms)
+  ✘  67 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID (5.5s)
+(node:32765) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  68 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:13:1 › E10: R10 project navigation resets while direct URL honors params (397ms)
+  ✘  69 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count (5.3s)
+(node:32771) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  70 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout (5.3s)
+
+
+  1) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Vrstni red v povezavi', exact: true })
+
+
+       at tasks/P09/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:6:357
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:7:1 › E04: R04 first parameter wins, invalid values default, no passive rewrite 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByRole('combobox', { name: 'Vrstni red v povezavi', exact: true })
+    Expected: "original"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByRole('combobox', { name: 'Vrstni red v povezavi', exact: true }) with timeout 5000ms
+      - waiting for getByRole('combobox', { name: 'Vrstni red v povezavi', exact: true })
+
+
+       5 | test('E02: R02 one normalized literal phrase within a single field',async({page})=>{await mount(page,[makeTask('a',{title:'Čaj konec',description:'rdeč začetek',assignee:'Živa'}),makeTask('b',{title:'Čaj drugje konec',description:'[a+b].'})],'#/projects/web?q=CAJ+konec');await expectIds(page,['a']);await search(page).fill('konec rdec');await click(page,'Uporabi pogled');await expectIds(page,[]);await search(page).fill('[a+b].');await click(page,'Uporabi pogled');await expectIds(page,['b']);await search(page).fill('ziva');await click(page,'Uporabi pogled');await expectIds(page,['a'])})
+       6 | test('E03: R03 status conjunction and stable title sorting',async({page})=>{await mount(page,[makeTask('z',{title:'Žoga'}),makeTask('x',{title:'alfa 2',status:'done'}),makeTask('y',{title:'Álfa 2',status:'done'}),makeTask('n',{title:'Alfa 10',status:'done'})],'#/projects/web?q=alfa&status=done&order=title-desc');await expectIds(page,['x','y','n']);await select(page,'Vrstni red v povezavi','title-asc');await click(page,'Uporabi pogled');await expectIds(page,['n','x','y'])})
+    >  7 | test('E04: R04 first parameter wins, invalid values default, no passive rewrite',async({page})=>{const hash='#/projects/web?status=invalid&status=done&order=bad&order=title-desc&q=pregled&q=other&extra=%23';await mount(page,undefined,hash);await expectIds(page,['web-01','web-02','web-03']);expect(new URL(page.url()).hash).toBe(hash);await expect(page.getByRole('combobox',{name:'Stanje v povezavi',exact:true})).toHaveValue('all');await expect(page.getByRole('combobox',{name:'Vrstni red v povezavi',exact:true})).toHaveValue('original')})
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+       8 | test('E05: R05 draft changes nothing until one atomic history commit',async({page})=>{await mount(page);const before=page.url(),length=await page.evaluate(()=>history.length);await search(page).fill('pregled');await select(page,'Stanje v povezavi','done');await select(page,'Vrstni red v povezavi','title-desc');await expectIds(page,webIds());expect(page.url()).toBe(before);expect(await page.evaluate(()=>history.length)).toBe(length);await click(page,'Uporabi pogled');await expectIds(page,['web-03']);expect(await page.evaluate(()=>history.length)).toBe(length+1);await page.goBack();await expectIds(page,webIds());await expect(search(page)).toHaveValue('')})
+       9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page.evaluate(()=>history.length)).toBe(length);await search(page).fill('  Čaj + & ? #  ');await click(page,'Uporabi pogled');await expect(search(page)).toHaveValue('Čaj + & ? #');expect(params(page).get('q')).toBe('Čaj + & ? #');expect(params(page).get('view')).toBe('board');const committed=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(await page.evaluate(()=>history.length)).toBe(committed)})
+      10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:7:517
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E04-R04-first-p-a6416--default-no-passive-rewrite-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E04-R04-first-p-a6416--default-no-passive-rewrite-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E04-R04-first-p-a6416--default-no-passive-rewrite-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E04-R04-first-p-a6416--default-no-passive-rewrite-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Vrstni red v povezavi', exact: true })
+
+
+       at tasks/P09/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:8:263
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+       7 | test('E04: R04 first parameter wins, invalid values default, no passive rewrite',async({page})=>{const hash='#/projects/web?status=invalid&status=done&order=bad&order=title-desc&q=pregled&q=other&extra=%23';await mount(page,undefined,hash);await expectIds(page,['web-01','web-02','web-03']);expect(new URL(page.url()).hash).toBe(hash);await expect(page.getByRole('combobox',{name:'Stanje v povezavi',exact:true})).toHaveValue('all');await expect(page.getByRole('combobox',{name:'Vrstni red v povezavi',exact:true})).toHaveValue('original')})
+       8 | test('E05: R05 draft changes nothing until one atomic history commit',async({page})=>{await mount(page);const before=page.url(),length=await page.evaluate(()=>history.length);await search(page).fill('pregled');await select(page,'Stanje v povezavi','done');await select(page,'Vrstni red v povezavi','title-desc');await expectIds(page,webIds());expect(page.url()).toBe(before);expect(await page.evaluate(()=>history.length)).toBe(length);await click(page,'Uporabi pogled');await expectIds(page,['web-03']);expect(await page.evaluate(()=>history.length)).toBe(length+1);await page.goBack();await expectIds(page,webIds());await expect(search(page)).toHaveValue('')})
+    >  9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page.evaluate(()=>history.length)).toBe(length);await search(page).fill('  Čaj + & ? #  ');await click(page,'Uporabi pogled');await expect(search(page)).toHaveValue('Čaj + & ? #');expect(params(page).get('q')).toBe('Čaj + & ? #');expect(params(page).get('view')).toBe('board');const committed=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(await page.evaluate(()=>history.length)).toBe(committed)})
+         |                                                                                                                                                                                                                                                                                                                                                                                ^
+      10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+      11 | test('E08: R08 view changes preserve committed state and discard draft',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&order=title-desc');await search(page).fill('uncommitted');await board(page);await expectIds(page,['web-03']);await expect(search(page)).toHaveValue('pregled');expect(params(page).get('order')).toBe('title-desc');await select(page,'Stanje v povezavi','todo');await table(page);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done');await expectIds(page,['web-03'])})
+      12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id="web-03"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:9:368
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Ni zadetkov.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Ni zadetkov.', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Ni zadetkov.', { exact: true })
+
+
+      12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id="web-03"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})
+      13 | test('E10: R10 project navigation resets while direct URL honors params',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&view=board');await project(page,'launch');await expectIds(page,['launch-01','launch-02'],false);expect(params(page).toString()).toBe('view=board');await page.goto('/#/projects/launch?status=done&view=board');await expectIds(page,['launch-02']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+    > 14 | test('E11: R11 reset history, empty message and whole-project count',async({page})=>{await mount(page,undefined,'#/projects/web?q=missing&view=board');await expectIds(page,[]);await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible();await expect(page.getByRole('status',{name:'Rezultati povezave'})).toHaveText('Prikazano: 0 od 8.');await search(page).fill('draft');await click(page,'Ponastavi pogled');await expectIds(page,webIds(),false);expect(params(page).toString()).toBe('view=board');const length=await page.evaluate(()=>history.length);await click(page,'Ponastavi pogled');expect(await page.evaluate(()=>history.length)).toBe(length);await page.goBack();await expect(search(page)).toHaveValue('missing');await expectIds(page,[])})
+         |                                                                                                                                                                                                                                           ^
+      15 | test('E12: R12 local read-only behavior and responsive layout',async({page})=>{const writes=await mount(page);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await board(page);await details(page,'web-03');expect(await page.evaluate(()=>localStorage.length)).toBe(0);await readonly(page,writes)})
+      16 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:14:235
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states 
+
+    Error: expect(received).toBeTruthy()
+
+    Received: false
+
+      19 |   await page.goBack()
+      20 |   await expect(table.getByText('Priprava oblikovnih smernic')).toBeVisible()
+    > 21 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBeTruthy()
+         |                                                                                                                   ^
+      22 | })
+      23 |
+      24 | test('duplicate titles open by ID, with complete details and keyboard dismissal', async ({ page, request }) => {
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/.work/P09/baseline/tests/baseline.spec.ts:21:115
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-projects-show-their-own-tasks-and-all-three-states-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/baseline-projects-show-their-own-tasks-and-all-three-states-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-projects-show-their-own-tasks-and-all-three-states-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/baseline-projects-show-their-own-tasks-and-all-three-states-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('[data-task-id="web-02"]').getByRole('link')
+        - locator resolved to <a class="task-link" href="#/projects/web/tasks/web-02">…</a>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <td>…</td> from <tr data-task-id="web-01">…</tr> subtree intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      2 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <td>…</td> from <tr data-task-id="web-01">…</tr> subtree intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <form class="view-filters">…</form> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <td>…</td> from <tr data-task-id="web-01">…</tr> subtree intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+
+
+      25 |   await page.goto('/')
+      26 |   const second = page.locator('[data-task-id="web-02"]').getByRole('link')
+    > 27 |   await second.click()
+         |                ^
+      28 |   const dialog = page.getByRole('dialog')
+      29 |   await expect(dialog).toBeVisible()
+      30 |   await expect(dialog.getByRole('heading', { name: 'Pregled vsebine' })).toBeVisible()
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/.work/P09/baseline/tests/baseline.spec.ts:27:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-duplicate-titles--9ba0f-ails-and-keyboard-dismissal-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/baseline-duplicate-titles--9ba0f-ails-and-keyboard-dismissal-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-duplicate-titles--9ba0f-ails-and-keyboard-dismissal-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/baseline-duplicate-titles--9ba0f-ails-and-keyboard-dismissal-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Zapri podrobnosti' })
+        - locator resolved to <button class="icon-button" aria-label="Zapri podrobnosti">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        10 × waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+
+
+      53 |   await page.reload()
+      54 |   await expect(page.getByRole('dialog').getByText('Maja Zupan', { exact: true })).toBeVisible()
+    > 55 |   await page.getByRole('button', { name: 'Zapri podrobnosti' }).click()
+         |                                                                 ^
+      56 |   await page.locator('[data-task-id="launch-03"]').getByRole('link').click()
+      57 |   await expect(page.getByRole('dialog').getByRole('heading', { name: 'Uskladitev časovnice' })).toBeVisible()
+      58 |   await page.goBack()
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/.work/P09/baseline/tests/baseline.spec.ts:55:65
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-direct-task-links-26823-browser-back-closes-details-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/baseline-direct-task-links-26823-browser-back-closes-details-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-direct-task-links-26823-browser-back-closes-details-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/baseline-direct-task-links-26823-browser-back-closes-details-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('[data-task-id="web-02"]').getByRole('link')
+        - locator resolved to <a class="task-link" href="#/projects/web/tasks/web-02">…</a>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <td>…</td> from <tr data-task-id="web-01">…</tr> subtree intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      2 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <td>…</td> from <tr data-task-id="web-01">…</tr> subtree intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <form class="view-filters">…</form> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+
+
+      72 |   await expect(page.getByRole('table').getByText('Uskladitev časovnice')).toBeVisible()
+      73 |   await page.getByRole('navigation').getByRole('link', { name: 'Spletna prenova' }).click()
+    > 74 |   await updatedRow.getByRole('link').click()
+         |                                      ^
+      75 |   await expect(page.getByRole('dialog').getByRole('heading', { name: 'Posodobljen pregled' })).toBeVisible()
+      76 |   await expect(page.getByRole('dialog').getByText('Luka Kovač', { exact: true })).toBeVisible()
+      77 | })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/.work/P09/baseline/tests/baseline.spec.ts:74:38
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-a-saved-API-chang-0eb5e-resh-and-project-navigation-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/baseline-a-saved-API-chang-0eb5e-resh-and-project-navigation-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-a-saved-API-chang-0eb5e-resh-and-project-navigation-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/baseline-a-saved-API-chang-0eb5e-resh-and-project-navigation-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Zapri podrobnosti' })
+        - locator resolved to <button class="icon-button" aria-label="Zapri podrobnosti">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        9 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      86 |   await page.goto('/#/projects/web/tasks/launch-01')
+      87 |   await expect(page.getByRole('dialog').getByText('Opravilo ni v tem projektu')).toBeVisible()
+    > 88 |   await page.getByRole('button', { name: 'Zapri podrobnosti' }).click()
+         |                                                                 ^
+      89 |   await page.goto('/#/projects/web/tasks/missing')
+      90 |   await expect(page.getByRole('dialog').getByText('Opravilo ne obstaja.')).toBeVisible()
+      91 |   await page.getByRole('button', { name: 'Zapri podrobnosti' }).click()
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/.work/P09/baseline/tests/baseline.spec.ts:88:65
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Zapri podrobnosti' })
+        - locator resolved to <button class="icon-button" aria-label="Zapri podrobnosti">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        9 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      162 |   await page.reload()
+      163 |   await expect(page.getByRole('dialog').getByText('Ana Novak', { exact: true })).toBeVisible()
+    > 164 |   await page.getByRole('button', { name: 'Zapri podrobnosti' }).click()
+          |                                                                 ^
+      165 |   await expect(board).toBeVisible()
+      166 |   await page.getByRole('button', { name: 'Preglednica', exact: true }).click()
+      167 |   await expect(page.getByRole('table').getByRole('row')).toHaveCount(4)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/.work/P09/baseline/tests/baseline.spec.ts:164:65
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Zapri podrobnosti' })
+        - locator resolved to <button class="icon-button" aria-label="Zapri podrobnosti">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        10 × waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+
+
+      186 |   await done.getByRole('link', { name: 'Pregled vsebine web-02' }).click()
+      187 |   await expect(page.getByRole('dialog').getByText('Končano', { exact: true })).toBeVisible()
+    > 188 |   await page.getByRole('button', { name: 'Zapri podrobnosti' }).click()
+          |                                                                 ^
+      189 |   await page.getByRole('button', { name: 'Preglednica', exact: true }).click()
+      190 |   await expect(page.locator('[data-task-id="web-02"]').getByText('Končano', { exact: true })).toBeVisible()
+      191 | })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/.work/P09/baseline/tests/baseline.spec.ts:188:65
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [development-mobile] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+        - locator resolved to <button type="submit">Uporabi pogled</button>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      - retrying click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+      - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      2 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <form class="view-filters">…</form> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/development.spec.ts:3:178
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [development-mobile] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes ──────────
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Ponastavi pogled', exact: true })
+        - locator resolved to <button type="button">Ponastavi pogled</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      2 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <form class="view-filters">…</form> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/development.spec.ts:5:166
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/development-D04-reset-and-no-writes-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/development-D04-reset-and-no-writes-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/development-D04-reset-and-no-writes-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/development-D04-reset-and-no-writes-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Zapri podrobnosti', exact: true })
+        - locator resolved to <button class="icon-button" aria-label="Zapri podrobnosti">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        9 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:4:234
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+        - locator resolved to <button type="submit">Uporabi pogled</button>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      - retrying click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+      - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      2 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <form class="view-filters">…</form> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:5:345
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Vrstni red v povezavi', exact: true })
+
+
+       at tasks/P09/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:6:357
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:7:1 › E04: R04 first parameter wins, invalid values default, no passive rewrite 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByRole('combobox', { name: 'Vrstni red v povezavi', exact: true })
+    Expected: "original"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByRole('combobox', { name: 'Vrstni red v povezavi', exact: true }) with timeout 5000ms
+      - waiting for getByRole('combobox', { name: 'Vrstni red v povezavi', exact: true })
+
+
+       5 | test('E02: R02 one normalized literal phrase within a single field',async({page})=>{await mount(page,[makeTask('a',{title:'Čaj konec',description:'rdeč začetek',assignee:'Živa'}),makeTask('b',{title:'Čaj drugje konec',description:'[a+b].'})],'#/projects/web?q=CAJ+konec');await expectIds(page,['a']);await search(page).fill('konec rdec');await click(page,'Uporabi pogled');await expectIds(page,[]);await search(page).fill('[a+b].');await click(page,'Uporabi pogled');await expectIds(page,['b']);await search(page).fill('ziva');await click(page,'Uporabi pogled');await expectIds(page,['a'])})
+       6 | test('E03: R03 status conjunction and stable title sorting',async({page})=>{await mount(page,[makeTask('z',{title:'Žoga'}),makeTask('x',{title:'alfa 2',status:'done'}),makeTask('y',{title:'Álfa 2',status:'done'}),makeTask('n',{title:'Alfa 10',status:'done'})],'#/projects/web?q=alfa&status=done&order=title-desc');await expectIds(page,['x','y','n']);await select(page,'Vrstni red v povezavi','title-asc');await click(page,'Uporabi pogled');await expectIds(page,['n','x','y'])})
+    >  7 | test('E04: R04 first parameter wins, invalid values default, no passive rewrite',async({page})=>{const hash='#/projects/web?status=invalid&status=done&order=bad&order=title-desc&q=pregled&q=other&extra=%23';await mount(page,undefined,hash);await expectIds(page,['web-01','web-02','web-03']);expect(new URL(page.url()).hash).toBe(hash);await expect(page.getByRole('combobox',{name:'Stanje v povezavi',exact:true})).toHaveValue('all');await expect(page.getByRole('combobox',{name:'Vrstni red v povezavi',exact:true})).toHaveValue('original')})
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+       8 | test('E05: R05 draft changes nothing until one atomic history commit',async({page})=>{await mount(page);const before=page.url(),length=await page.evaluate(()=>history.length);await search(page).fill('pregled');await select(page,'Stanje v povezavi','done');await select(page,'Vrstni red v povezavi','title-desc');await expectIds(page,webIds());expect(page.url()).toBe(before);expect(await page.evaluate(()=>history.length)).toBe(length);await click(page,'Uporabi pogled');await expectIds(page,['web-03']);expect(await page.evaluate(()=>history.length)).toBe(length+1);await page.goBack();await expectIds(page,webIds());await expect(search(page)).toHaveValue('')})
+       9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page.evaluate(()=>history.length)).toBe(length);await search(page).fill('  Čaj + & ? #  ');await click(page,'Uporabi pogled');await expect(search(page)).toHaveValue('Čaj + & ? #');expect(params(page).get('q')).toBe('Čaj + & ? #');expect(params(page).get('view')).toBe('board');const committed=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(await page.evaluate(()=>history.length)).toBe(committed)})
+      10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:7:517
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E04-R04-first-p-a6416--default-no-passive-rewrite-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E04-R04-first-p-a6416--default-no-passive-rewrite-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E04-R04-first-p-a6416--default-no-passive-rewrite-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E04-R04-first-p-a6416--default-no-passive-rewrite-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Vrstni red v povezavi', exact: true })
+
+
+       at tasks/P09/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:8:263
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+        - locator resolved to <button type="submit">Uporabi pogled</button>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      - retrying click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+      - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      2 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <form class="view-filters">…</form> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:9:240
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+        - locator resolved to <button type="submit">Uporabi pogled</button>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      - retrying click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+      - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      2 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <form class="view-filters">…</form> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:10:153
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Zapri podrobnosti', exact: true })
+        - locator resolved to <button class="icon-button" aria-label="Zapri podrobnosti">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        9 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <dialog open="" class="task-dialog" aria-labelledby="detail-title">…</dialog> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:12:549
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Ni zadetkov.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Ni zadetkov.', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Ni zadetkov.', { exact: true })
+
+
+      12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id="web-03"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})
+      13 | test('E10: R10 project navigation resets while direct URL honors params',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&view=board');await project(page,'launch');await expectIds(page,['launch-01','launch-02'],false);expect(params(page).toString()).toBe('view=board');await page.goto('/#/projects/launch?status=done&view=board');await expectIds(page,['launch-02']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+    > 14 | test('E11: R11 reset history, empty message and whole-project count',async({page})=>{await mount(page,undefined,'#/projects/web?q=missing&view=board');await expectIds(page,[]);await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible();await expect(page.getByRole('status',{name:'Rezultati povezave'})).toHaveText('Prikazano: 0 od 8.');await search(page).fill('draft');await click(page,'Ponastavi pogled');await expectIds(page,webIds(),false);expect(params(page).toString()).toBe('view=board');const length=await page.evaluate(()=>history.length);await click(page,'Ponastavi pogled');expect(await page.evaluate(()=>history.length)).toBe(length);await page.goBack();await expect(search(page)).toHaveValue('missing');await expectIds(page,[])})
+         |                                                                                                                                                                                                                                           ^
+      15 | test('E12: R12 local read-only behavior and responsive layout',async({page})=>{const writes=await mount(page);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await board(page);await details(page,'web-03');expect(await page.evaluate(()=>localStorage.length)).toBe(0);await readonly(page,writes)})
+      16 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:14:235
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+        - locator resolved to <button type="submit">Uporabi pogled</button>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      - retrying click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+      - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <form class="view-filters">…</form> intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      2 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <form class="view-filters">…</form> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <aside class="app-sidebar" aria-label="Delovni prostor">…</aside> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <select id="view-status">…</select> from <div class="filter-field">…</div> subtree intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P09/acceptance.spec.ts:15:163
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-001/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24 failed
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:7:1 › E04: R04 first parameter wins, invalid values default, no passive rewrite 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles 
+    [development-mobile] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation 
+    [development-mobile] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes ────────────
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:7:1 › E04: R04 first parameter wins, invalid values default, no passive rewrite 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout 
+  46 passed (2.3m)

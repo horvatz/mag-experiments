@@ -1,8 +1,8 @@
 [
   {
     "slug": "glm",
-    "archived": 52,
-    "explicitResponseOrTransportErrors": 3,
+    "archived": 58,
+    "explicitResponseOrTransportErrors": 5,
     "affected": [
       {
         "id": "P06-B-001",
@@ -30,14 +30,32 @@
         "executionStatus": "execution_failed",
         "evidence": "openrouter-study/glm/api/P07-A-003/model/api-ledger.jsonl",
         "nativeErrors": []
+      },
+      {
+        "id": "P09-B-001",
+        "requests": [
+          40
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/glm/api/P09-B-001/model/api-ledger.jsonl",
+        "nativeErrors": []
+      },
+      {
+        "id": "P09-C-001",
+        "requests": [
+          10
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/glm/api/P09-C-001/model/api-ledger.jsonl",
+        "nativeErrors": []
       }
     ],
     "isolationInterruptions": []
   },
   {
     "slug": "deepseek",
-    "archived": 53,
-    "explicitResponseOrTransportErrors": 6,
+    "archived": 58,
+    "explicitResponseOrTransportErrors": 8,
     "affected": [
       {
         "id": "P06-A-001",
@@ -99,6 +117,24 @@
         "executionStatus": "execution_failed",
         "evidence": "openrouter-study/deepseek/api/P06-B-002/model/api-ledger.jsonl",
         "nativeErrors": []
+      },
+      {
+        "id": "P09-B-001",
+        "requests": [
+          50
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/deepseek/api/P09-B-001/model/api-ledger.jsonl",
+        "nativeErrors": []
+      },
+      {
+        "id": "P04-A-001",
+        "requests": [
+          27
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/deepseek/api/P04-A-001/model/api-ledger.jsonl",
+        "nativeErrors": []
       }
     ],
     "isolationInterruptions": [
@@ -110,8 +146,8 @@
   },
   {
     "slug": "qwen",
-    "archived": 53,
-    "explicitResponseOrTransportErrors": 17,
+    "archived": 57,
+    "explicitResponseOrTransportErrors": 18,
     "affected": [
       {
         "id": "P05-A-001",
@@ -416,6 +452,24 @@
           {
             "message": "stream disconnected before completion: Network connection lost.",
             "evidence": "openrouter-study/qwen/runtime/runs/P07-C-001/phases/02-specify/events.jsonl.gz"
+          }
+        ]
+      },
+      {
+        "id": "P09-C-001",
+        "requests": [
+          7
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/qwen/api/P09-C-001/model/api-ledger.jsonl",
+        "nativeErrors": [
+          {
+            "message": "stream disconnected before completion: stream closed before response.completed",
+            "evidence": "openrouter-study/qwen/runtime/runs/P09-C-001/phases/01-constitution/events.jsonl.gz"
+          },
+          {
+            "message": "stream disconnected before completion: stream closed before response.completed",
+            "evidence": "openrouter-study/qwen/runtime/runs/P09-C-001/phases/01-constitution/events.jsonl.gz"
           }
         ]
       }

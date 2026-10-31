@@ -1,0 +1,112 @@
+{
+  "id": "P09-C-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-31T23:06:30.355054+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "c12291e851ee8c9561fe595a12d0404e2af3564dbb35ed82cf77d4e861517e59",
+  "limitation": "Prebranih vseh15 avtorskih datotek, pregledani57native ukazi in59ohranjenih API klicev, posebej dejanski neuspešni/uspešni testi in popravek njihovih pričakovanj; arhivske vsote preverjene. Presoja uporablja isto rubriko in neposredno ponovno preverjeno Luna/P09-C-001 kalibracijo kanonizacije brez nove zgodovine. Raziskovalec ni ponavljal funkcionalnih testov ali vizualnega ogleda merjene aplikacije; dodatne statične ugotovitve ne spreminjajo neodvisnega izida68/70.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija zajame vsehR01–R12, natančna tri imena kontrol/števca/sporočila, neomejeno domeno z0/1/več opravili, Unicode in enakimi naslovi,390px, API in shrambo. Ostane konkretno neskladje: spec21 pravilno omeji novo zgodovino na spremembo učinkovitega stanjaS, plan18 pa kot guard izrecno uporabi razliko ciljnega in trenutnega hash, kar pri kanonizaciji enakega stanja dovoli dodatni vnos. Naloge/convergence tega neskladja ne razrešijo. Ne gre za manjkajoče zahteve ali kaznovanje zgolj izvedbene napake, temveč za nasprotujoči si dokumentirani pravili istega bistvenega roba.",
+      "evidence": [
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md:21",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md:38",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md:53",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/plan.md:18",
+        "runtime/runs/P09-C-001/submission/docs/agent/convergence.json"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "P(x), podniz posameznega normaliziranega polja, konjunkcija statusa, domena parametrov, prva pojavitev in stabilniUTF-16 red so preverljivi; osnutek je ločen od potrjenega stanja. Zapisani prehodi pa niso povsem skladni: plan18 zamenja semantično enakost stanja z enakostjo rawhash, čeprav spec21 določa pravilno pravilo. To je napačen dokumentirani guard, ki se nato pojavi v App20–22 in neodvisnemE06; ni samo napačna koda ob sicer dosledno pravilnem predikatu kot priGLM163. Neposredno preverjena LunaC plan15 pravilno loči spremembo učinkovitega trojčka in kanonizacijo v mestu; kalibracijska meja ostane ista.",
+      "evidence": [
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md:21",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md:25",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/plan.md:16",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/plan.md:18",
+        "runtime/runs/P09-C-001/submission/src/App.tsx:20",
+        "runtime/runs/P09-C-001/submission/src/viewState.ts:39"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Končni verification poveže vseh12 zahtev s konkretnimi dejanskimi funkcijami/datotekami in scenarijiA01–A14/D01–D04, specifikacija pa se sklicuje na to tabelo. Nativeimplement23 potrdi prvi12/14,27dejanski popravek le testnih pričakovanj in14/14,29polni60/60; navedeni rezultati so resnični. Convergence posebej razkrije nepreverjeno iskanje poID, kodiranje posebnih znakov, odsotnost končnih testov in ročnega ogleda. Povezave omogočajo preverjanje obsega, ne dokazujejo vseh možnih primerov. Načrtovana imena matches/compareTasks/sameState niso vsa ohranjena, a končna tabela navaja dejanske matchesQuery/visibleTasks/commit. NeodkritiE06 se ne predstavlja kot zagnan skriti test.",
+      "evidence": [
+        "runtime/runs/P09-C-001/submission/docs/agent/verification.md:7",
+        "runtime/runs/P09-C-001/submission/docs/agent/verification.md:18",
+        "runtime/runs/P09-C-001/submission/docs/agent/P09/spec.md:42",
+        "runtime/runs/P09-C-001/submission/docs/agent/convergence.json",
+        "analysis/evidence/P09-C-001-checks.md#05-implement-item_23",
+        "analysis/evidence/P09-C-001-checks.md#05-implement-item_27",
+        "analysis/evidence/P09-C-001-checks.md#05-implement-item_29"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čiste funkcije normalizacije, parserja, gradnje fragmenta in projekcije/stabilnega urejanja so vviewState.ts, usmerjanje in povezave vnavigation.ts. App hrani le lokalni osnutek, potrjeno stanje je izURL, rezultat pa se izpelje izAPIpodatkov; učinek obhash obnovi osnutek brez podvajanja poslovnih pravil v obeh pogledih. Tabla in podrobnosti prejmeta isto potrjeno stanje. Funkcionalno napačen guard vcommit ter statična vrzel praznega projekta ne porušita razumljive delitve odgovornosti. Ni novega zapisaAPI ali shrambe; slog kontrol je omejen na svoje selektorje.",
+      "evidence": [
+        "runtime/runs/P09-C-001/submission/src/viewState.ts:12",
+        "runtime/runs/P09-C-001/submission/src/viewState.ts:27",
+        "runtime/runs/P09-C-001/submission/src/viewState.ts:45",
+        "runtime/runs/P09-C-001/submission/src/navigation.ts:19",
+        "runtime/runs/P09-C-001/submission/src/App.tsx:12",
+        "runtime/runs/P09-C-001/submission/src/App.tsx:20",
+        "runtime/runs/P09-C-001/submission/src/TaskBoard.tsx:14",
+        "runtime/runs/P09-C-001/submission/src/TaskDetails.tsx:10",
+        "runtime/runs/P09-C-001/submission/src/styles.css:181"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Štirinajst dejansko uspešnih lastnih primerov pokrije neposredne parametre, neveljavne in podvojene status/order, naslov/osebo/dobesedno frazo in regexmetaznake, oba reda/stabilne enake naslove, osnutek/status inhistory.length, trim/čiščenjeURL, back/forward/reload, preklop z osnutkom, praviID podrobnosti/Escape, drug projekt/direktniURL, reset/števec, omrežne zapise/shrambo in390px. Pomembni robovi manjkajo:0/1/>10(zbirka ima8web+2launch), prazni projekt/tabla, description inID kot ločeni iskalni polji, podvojeniq in neveljavna-prva/veljavna-druga vrednost, normalizirano različne izenačitve/adverzarniUTF-16, nedeljena fraza čez mejo dveh polj, atomska sprememba vseh treh kontrol, neuporabljen osnutek tik predback/forward in posebniURLznaki. A07 očisti enako učinkovito stanje, vendar ne preveri history.length, zato zgrešiE06. A06 meri ponovitev že kanoničnegaURL. PriM=0 koda ne pokažeNi zadetkov.; to je statična ugotovitev, ne nov izmerjeni test. Koristni in dejansko izvedeni primeri zato1, ne izčrpen negativni/mejni nabor2.",
+      "evidence": [
+        "runtime/runs/P09-C-001/submission/tests/agent/helpers.ts:7",
+        "runtime/runs/P09-C-001/submission/tests/agent/p09.spec.ts:21",
+        "runtime/runs/P09-C-001/submission/tests/agent/p09.spec.ts:28",
+        "runtime/runs/P09-C-001/submission/tests/agent/p09.spec.ts:47",
+        "runtime/runs/P09-C-001/submission/tests/agent/p09.spec.ts:62",
+        "runtime/runs/P09-C-001/submission/tests/agent/p09.spec.ts:76",
+        "runtime/runs/P09-C-001/submission/tests/agent/p09.spec.ts:137",
+        "runtime/runs/P09-C-001/submission/tests/agent/p09.spec.ts:152",
+        "runtime/runs/P09-C-001/submission/src/App.tsx:76",
+        "analysis/evidence/P09-C-001-checks.md#05-implement-item_29"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Completed708,828s, vseh6faz completed in veljaven neograjen končni convergenceJSON. Neodvisno68/70(38/38regresija,8/8razvojni,22/24skriti),11/12;statične/allowedtrue,strictfalse. E06 na obeh širinah dobi history.length3 namesto2 pri kanonizaciji semantično enakega stanja. App20–22 uporablja razliko hash kot guard, kakor izrecno načrt18. Originalni rezultat ostane brez popravka/ponovitve. Dodatno statični pregledM=0 vidi staro prazno sporočilo/tablecols brezNi zadetkov.; to ni dodan neuspeh neodvisnemu68/70.",
+    "evidence": [
+      "runtime/runs/P09-C-001/execution.json",
+      "runtime/runs/P09-C-001/evaluation-summary.json",
+      "runtime/runs/P09-C-001/submission/src/App.tsx:20",
+      "runtime/runs/P09-C-001/submission/src/App.tsx:76",
+      "runtime/runs/P09-C-001/submission/docs/agent/P09/plan.md:18"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Prvi dejanski lastni zagon implementitem23 ima12/14 kljubpipeline0: A03/A08 napačno pričakujeta t-03 medtodo, dejanski fixturejein_progress. Item25 samoizpišeskip; šele27 odstrani dve napačni pričakovanji, brez spremembe produkcijske kode, in potrdi14/14(5,7s). Item29 nato potrdi polni60/60(22,2s):38osnovnih+8razvojnih+14lastnih. Zgodnejši here-doc in manjkajočiapply_patch odpovesta; model najde dejanski pripomoček in prekprintf uspe zapiše ustavo. Nativeitem7implement izpiše zsh == not found zaradiecho===; to ni funkcionalna napaka. Convergence preveri dokumente/17opravil, ne ponovi funkcionalnega nabora.",
+    "evidence": [
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_11",
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_14",
+      "analysis/evidence/P09-C-001-checks.md#01-constitution-item_23",
+      "analysis/evidence/P09-C-001-checks.md#05-implement-item_7",
+      "analysis/evidence/P09-C-001-checks.md#05-implement-item_23",
+      "analysis/evidence/P09-C-001-checks.md#05-implement-item_25",
+      "analysis/evidence/P09-C-001-checks.md#05-implement-item_27",
+      "analysis/evidence/P09-C-001-checks.md#05-implement-item_29",
+      "runtime/runs/P09-C-001/submission/docs/agent/convergence.json"
+    ]
+  },
+  "finalFailureNote": "Completed708,828s,68/70,11/12,strictfalse; vse6faze veljavno zaključene,17/17nalog,konvergenca brez dodatne implementacije.15avtorskih datotek(2lastni:helper+14testni primeri v1spec).56HTTP200,52finished/4client_aborted,popolnračun0,11541931USD. Presoja[1,1,2,2,1]; arhiv/merjeni vhodi nespremenjeni,brez raziskovalčevega funkcionalnega ponovnega zagona."
+}
