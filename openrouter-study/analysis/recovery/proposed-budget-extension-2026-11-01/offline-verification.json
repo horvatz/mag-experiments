@@ -1,0 +1,31 @@
+{
+  "at": "2026-11-01T03:25:15.603125+00:00",
+  "status": "nonactive-candidate-tested-awaiting-user-approval",
+  "researcherOnly": true,
+  "offlineSyntheticTests": 15,
+  "passed": 15,
+  "failed": 0,
+  "liveModelCalls": 0,
+  "activeBudgetChanged": false,
+  "originalApprovalStill40USD": true,
+  "activeSourceSHA256": {
+    "prepaid-budget.mjs": "a534fa9492332572b8fce6cae55578a4b12449b076f39651a4a5ccc1270b4811",
+    "relay.mjs": "a53d383cf02f465c7bf827b3dea0d6a33da369f87cafd1dfe67b54ab85e624a8",
+    "budget.json": "d957ed5adf11773b7a9505079e235c19dba1fc9361bc906049b5176683e6d403",
+    "budget-amendment-1.json": "740dff4914d8b95ec0e2b62626ff8b843100c6671a4f90a385954002db6d8852",
+    "frozen-inputs.json": "5ce9d4798db662b149b0759242f9a2d3bb500831d33174c9db4cb14945b433af"
+  },
+  "candidateSHA256": {
+    "prepaid-budget-candidate.test.mjs": "3bcc651ae157e80006f32041cbd17405fb8d792ea329688e527f298be32f2f29",
+    "prepaid-budget-candidate.mjs": "f6ef3b5535cee5c18a4f92aeb2789b9710fee494cd869ff8ff64dc9ff5dd2e69"
+  },
+  "testDevelopmentNote": "Initial14case run had13pass and1incorrect exact-decimal-boundary expectation. Existing/candidate conservative floating-point comparison preserved; fixture changed to exactly representable3.25 and explicit old/candidate decimal-rejection parity test added. Final15/15passed. No measured run or live operator changed.",
+  "activationStillRequires": [
+    "Explicit user approval of50USD ceiling and10USDmanual funding",
+    "Actual new credit visible on same account",
+    "Safe unused-ID boundary after begun archive",
+    "Original source preservation, versioned live amendment2, freeze/audit/report updates, new validated runner"
+  ],
+  "notYetPrepared": "Live amendment2/relay/audit/report activation and restart; no automatic activation.",
+  "activeSourcesMatchLastSignedRemoteVerifiedCommit": "31e8446cbff775941b5f2c3d1383b3f4fa3a24cd"
+}

@@ -2,6 +2,7 @@
 import argparse
 import gzip
 import json
+import math
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -64,15 +65,35 @@ def reviews(partial):
             groups.append(dict(slug=slug, procedure=procedure, records=len(selected), dimensions={d: dict(n=sum(s[d] is not None for s in selected), mean=float(np.mean([s[d] for s in selected if s[d] is not None])) if any(s[d] is not None for s in selected) else None) for d in DIMENSIONS}))
     return dict(method='AI-podprta, neslepa vsebinska presoja. Ista rubrika M/1.0, vnaprej izbrana ponovitev 001. Brez človeških ocen ali izmerjenega soglasja.', records=records, groups=groups)
 
+def credit_coverage_refusal(row):
+    """A recorded actual-credit shortfall is not a provider/transport failure."""
+    if row.get('status') != 'rejected_before_upstream' or row.get('errorType') != 'AssertionError':
+        return False
+    if any(row.get(k) is not None for k in ['sentUpstream', 'httpStatus', 'responseId', 'budgetRule', 'usage', 'openrouterMetadata', 'responseStatus']):
+        return False
+    if row.get('bytes') != 0:
+        return False
+    balance = row.get('balanceBefore') or {}
+    maximum = (row.get('budgetBefore') or {}).get('maximumRequestCost')
+    values = [balance.get(k) for k in ['totalCreditsUSD', 'totalUsageUSD', 'remainingUSD']] + [maximum]
+    if not all(isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v) and v >= 0 for v in values):
+        return False
+    return (maximum > 0 and balance['remainingUSD'] < maximum
+            and abs(balance['remainingUSD'] - (balance['totalCreditsUSD'] - balance['totalUsageUSD'])) < 1e-7)
+
 def availability():
     result = []
     for slug in ['glm', 'deepseek', 'qwen']:
         rows = load(STUDY / slug / 'analysis/reporting-results.json')['data']
-        affected = []
+        affected, budget_affected = [], []
         for row in rows:
             path = STUDY / slug / 'api' / row['id'] / 'model/api-ledger.jsonl'
             ledger = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
-            errors = [r for r in ledger if r.get('responseStatus') in ['failed', 'incomplete'] or r.get('httpStatus') is not None and r['httpStatus'] != 200 or r.get('status') in ['transport_error', 'rejected_before_upstream']]
+            refusals = [r for r in ledger if credit_coverage_refusal(r)]
+            if refusals:
+                budget_affected.append(dict(id=row['id'], executionStatus=row['executionStatus'], evidence=str(path.relative_to(ROOT)),
+                    rejections=[dict(request=r['number'], remainingUSD=r['balanceBefore']['remainingUSD'], maximumRequestCostUSD=r['budgetBefore']['maximumRequestCost']) for r in refusals]))
+            errors = [r for r in ledger if not credit_coverage_refusal(r) and (r.get('responseStatus') in ['failed', 'incomplete'] or r.get('httpStatus') is not None and r['httpStatus'] != 200 or r.get('status') in ['transport_error', 'rejected_before_upstream'])]
             archive = STUDY / slug / 'runtime/runs' / row['id']
             native_errors = []
             for events_path in [archive / 'events.jsonl.gz', *sorted((archive / 'phases').glob('*/events.jsonl.gz'))]:
@@ -86,7 +107,8 @@ def availability():
             if errors or native_errors:
                 affected.append(dict(id=row['id'], requests=[r['number'] for r in errors], executionStatus=row['executionStatus'], evidence=str(path.relative_to(ROOT)), nativeErrors=native_errors))
         isolation = [dict(id=row['id'], executionStatus=row['executionStatus']) for row in rows if row['executionStatus'] == 'isolation_interrupted']
-        result.append(dict(slug=slug, archived=len(rows), explicitResponseOrTransportErrors=len(affected), affected=affected, isolationInterruptions=isolation))
+        result.append(dict(slug=slug, archived=len(rows), explicitResponseOrTransportErrors=len(affected), affected=affected,
+                           creditCoverageRefusals=len(budget_affected), budgetAffected=budget_affected, isolationInterruptions=isolation))
     return result
 
 def chart(comparison, metric, filename, title):
@@ -172,11 +194,16 @@ def main():
     if comparison['newArchived'] >= 176:
         p('Qwen/P04-C-001 podobno odda 17 opisov nalog kot naslove T001–T017, brez zahtevane checkbox oblike. Preverjevalnik zavrne predajo pred implementacijo (38/70, 0/12); opisi nalog obstajajo, vendar ne ustrezajo zamrznjenemu formatu.')
     if comparison['newArchived'] >= 121:
-        p('Pri več oddajah P08 in P07 ostaneta dve preverjanji prazne table neuspešni: pripomoček zahteva območje z imenom Tabla opravil, oddaja pa ga zamenja s sporočilom o praznem rezultatu. Tako imajo npr. DeepSeekove P07-C-003 in P07-A-003 izvirna izida 68/70 in 11/12. Izidi ostanejo nespremenjeni. Gre za občutljivost preverjanja na strukturo praznega pogleda; dve neuspešni preverjanji istega vzroka nista dokaz dveh različnih napak logike.')
+        if comparison['newArchived'] >= 188:
+            p('Pri več oddajah P08, P07 in P03 pripomoček prazne table zahteva območje Tabla opravil, ki ga oddaja zamenja s sporočilom o praznem rezultatu. DeepSeekovi P07-C-003 in P07-A-003 ter GLM/P03-B-003 zato ostanejo pri 68/70 in 11/12. Pri zadnjem je Ni zadetkov. prisotno, manjka pa območje table. To je občutljivost preverjanja strukture pogleda; dve preverjanji istega vzroka nista dokaz dveh različnih napak logike. Izidov ne popravljamo.')
+        else:
+            p('Pri več oddajah P08 in P07 ostaneta dve preverjanji prazne table neuspešni: pripomoček zahteva območje z imenom Tabla opravil, oddaja pa ga zamenja s sporočilom o praznem rezultatu. Tako imajo npr. DeepSeekove P07-C-003 in P07-A-003 izvirna izida 68/70 in 11/12. Izidi ostanejo nespremenjeni. Gre za občutljivost preverjanja na strukturo praznega pogleda; dve neuspešni preverjanji istega vzroka nista dokaz dveh različnih napak logike.')
     if comparison['newArchived'] >= 112:
         p('DeepSeek/P04-B-002 doseže 70/70 in 12/12, vendar zaključni odgovor pregleda ovije JSON v oznake Markdown. Validator zavrne ta odgovor, čeprav je shranjena datoteka review.json veljavna. Strogi neuspeh zato ne pomeni neuspešne funkcionalnosti.')
     if comparison['newArchived'] >= 125:
         p('GLM/P07-B-003 doseže 68/70 in 11/12 zaradi manjkajočega zahtevanega sporočila Ni priljubljenih opravil. na prazni filtrirani tabli. Območje table ostane prisotno. Obe neuspešni preverjanji potrjujeta isto funkcionalno vrzel R06; uspešnih 14 lastnih testov tega primera ne pokrije.')
+    if comparison['newArchived'] >= 181:
+        p('GLM/P03-C-003 podobno doseže 68/70 in 11/12: na prazni filtrirani tabli manjka Ni zadetkov., v preglednici pa je sporočilo prisotno. To je funkcionalna vrzel R10, ločena od prekinitve povezave in napak tipov v lastnih testih.')
     story.append(PageBreak())
     p('Vsebinska kakovost oddaj', 'Heading1')
     p(qualitative['method'])
@@ -222,8 +249,10 @@ def main():
     p('Qwenova prvotna pot DeepInfra/bf16 je dvakrat odpovedala zaradi preobremenitve. SiliconFlow/fp8 je bil določen pred prvo meritvijo in ostaja zamrznjen. Diagnostika in časovne prekoračitve kvalifikacije so ohranjene; model ni izločen.')
     p('Astra je bila izmerjena z odjemalcem 0.154, Luna in novi modeli z 0.158.0-alpha.2.1. Nova zbirka uporablja drug račun, storitve in čas meritev. Ugotovitve veljajo za osem uporabljenih nalog in te konfiguracije; ne pomenijo splošne lestvice vseh sposobnosti modelov.')
     p('Astro je pred implementacijo prizadelo 12 zaporednih napak prijave 401 in ena omejitev uporabe. Ostanejo v primarni analizi brez ponovitve; ne dokazujejo slabe implementacijske sposobnosti. Uravnoteženost zavrnitev po postopkih ne odpravi izgube oddaj ali pristranskosti primerjave.')
-    p('Nove arhivirane izvedbe z izrecno napako odziva ali povezave, vključno z lokalnim posrednikom: ' + '; '.join(f"{LABELS[g['slug']]} {g['explicitResponseOrTransportErrors']}/{g['archived']}" for g in service) + '. Vzrok Qwenovih response.failed, DeepSeekovega HTTP520 (P08-C-001) in prekinjenega toka (P07-A-003) ni potrjen. GLM/P07-A-003 prejme HTTP429 zaradi preobremenitve skupne kvote Wafer. Qwen/P06-B-002: HTTP200/completed, 101 token razmišljanja in nobenega besedila ali orodnega klica v dnevniku. Qwen/P09-A-001: šest HTTP200/completed zahtev, brez avtorske oddaje in le zaključne orodne oznake v zadnjem odgovoru. Vzroka nista potrjena; primera nista v števcu izrecnih napak API. Običajne prekinitve ob roku brez napake odziva niso vključene.')
-    if comparison['newArchived'] >= 174:
+    p('Nove arhivirane izvedbe z izrecno napako odziva ali povezave, vključno z lokalnim posrednikom: ' + '; '.join(f"{LABELS[g['slug']]} {g['explicitResponseOrTransportErrors']}/{g['archived']}" for g in service) + '. Vzrok Qwenovih response.failed, DeepSeekovega HTTP520 (P08-C-001) in prekinjenega toka (P07-A-003) ni potrjen. GLM/P07-A-003 prejme HTTP429 zaradi preobremenitve skupne kvote Wafer. Qwen/P06-B-002: HTTP200/completed, 101 token razmišljanja in nobenega besedila ali orodnega klica v dnevniku. Qwen/P09-A-001: šest HTTP200/completed zahtev, brez avtorske oddaje in le zaključne orodne oznake v zadnjem odgovoru. Vzroka nista potrjena; primera nista v števcu izrecnih napak API. Običajne prekinitve ob roku in zavrnitve kreditnega kritja niso vključene.')
+    if comparison['newArchived'] >= 181:
+        p('GLM/P09-C-001, GLM/P03-C-003, DeepSeek/P04-A-001 in Qwen/P04-A-001 prekine lokalna povezava pri preverjanju dobroimetja pred pošiljanjem zadnje zahteve ponudniku. Vključeni so v zgornji števec; to niso ponudnikovi HTTP502 ali izčrpano dobroimetje. Pri GLM/P09-C-001 in Qwen/P04-A-001 so pozneje dokončani le zaključni koraki. Nobena meritev ni ponovljena.')
+    elif comparison['newArchived'] >= 174:
         p('GLM/P09-C-001, DeepSeek/P04-A-001 in Qwen/P04-A-001 prekine lokalna napaka pri preverjanju dobroimetja pred pošiljanjem zadnje zahteve ponudniku. Vključeni so v zgornji števec, vendar to niso ponudnikovi HTTP502 ali izčrpano dobroimetje. Pri GLM in Qwenu so pozneje dokončani samo zaključni koraki; nobena meritev ni ponovljena.')
     elif comparison['newArchived'] >= 173:
         p('GLM/P09-C-001 in DeepSeek/P04-A-001 prekine lokalna napaka pri preverjanju dobroimetja pred pošiljanjem zadnje zahteve ponudniku. Primera sta vključena v zgornji števec, vendar nista ponudnikov HTTP502 ali izčrpano dobroimetje. Pri GLM so zaključni koraki pozneje dokončani brez ponovitve meritve; nobena meritev ni ponovljena.')
@@ -243,6 +272,9 @@ def main():
         p('Spremenjeno je samo proračunsko varovalo prenosa. Modeli, ponudniki, pozivi, naloge, roki, razvojni postopki in ocenjevalci ostanejo isti. Prvih 123 meritev in njihovi izidi ostanejo ohranjeni brez ponovitev. Po dopolnitvi je sveža diagnostika istega GLM/Wafer vrnila CONNECTION_OK; kratek uspeh ne zagotavlja zanesljivosti dolgih merjenih odzivov.')
         p('Izvirni proračun, izvorna koda prenosa in zamrznitev so ohranjeni z zgoščenimi vrednostmi. Aktivni operator je označen O/1.0+budget-amendment-1. Novi dnevniki zahtev navajajo uporabljeno pravilo in dejansko stanje računa. Neznani stroški in prvotne konzervativne rezerve ostanejo ločeno v revizijski evidenci; povprečja nepopolnih računov ostanejo manjkajoča.')
         p('Revizijska sled: budget-amendment-1.json; analysis/recovery/budget-amendment-2026-10-30/implementation.json in original/; analysis/recovery/user-approved-budget-resume-2026-10-30.json. Sprememba je odobrena med zbiranjem podatkov in je del omejitev primerjave.')
+        credit_cases = [f"{LABELS[g['slug']]}/{run['id']}, zahteva {r['request']}: {number(r['remainingUSD'],4)} USD < {number(r['maximumRequestCostUSD'],4)} USD" for g in service for run in g['budgetAffected'] for r in run['rejections']]
+        if credit_cases:
+            p('Lokalno varovalo je pozneje zavrnilo nezadostno kreditno kritje: ' + '; '.join(credit_cases) + '. Zavrnjenih zahtev ni poslalo ponudniku in jih ne štejemo med napake odziva ali povezave. Prizadete izvedbe ostanejo v imenovalcu, brez ponovitve. Skrajšan pregled zaradi tega proračuna ni dokaz slabše sposobnosti modela; funkcionalni izid je poročan ločeno.')
     p('Viri modelnih licenc in uteži', 'Heading2')
     for m in models:
         p(f"{escape(LABELS[m['slug']])}: <link href=\"{escape(m['publicWeights'])}\" color=\"#334B75\">uradna objava uteži</link>; <link href=\"{escape(m['license']['url'])}\" color=\"#334B75\">licenca</link>.")

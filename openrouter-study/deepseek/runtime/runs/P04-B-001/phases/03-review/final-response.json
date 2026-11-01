@@ -1,0 +1,28 @@
+{
+  "complete": true,
+  "checkedRequirements": ["R01","R02","R03","R04","R05","R06","R07","R08","R09","R10","R11","R12"],
+  "unverified": [
+    "Končni (skriti) testi niso dostopni; preverjanje temelji na skupnih testih izhodišča, razvojnih D01-D04 in lastnih testih.",
+    "Preverjeno samo v Chromiumu (Playwright projekta desktop/mobile); drugi brskalniki niso bili preverjeni.",
+    "Spremembe zunaj src/ in tests/agent/ sem preveril posredno prek časovnih žigov datotek; git diff ni bil dosegljiv, ker peskovnik ne dovoli branja ~/.gitconfig.",
+    "Shramba piškotkov pri R09 je preverjena samo statično (v src/ ni uporabe document.cookie); lastni test preverja localStorage, sessionStorage in URL.",
+    "Okoljskih opomb iz verification.md (npr. nedosegljivost apply_patch v seji implementerja) nisem mogel neodvisno ponoviti."
+  ],
+  "specificationChangesRequired": true,
+  "codeChangesRequired": true,
+  "summary": "Neodvisno sem pregledal specifikacijo, kodo, lastne teste in verification.md ter sam zagnal vse dostopne teste: 38 osnovnih/API, 8 razvojnih D01-D04 (desktop in mobile) in 11 lastnih testov v tests/agent/ – vseh 57 uspešnih; typecheck, lint in build prav tako uspešni. Vsebinsko so R01-R12 v kodi večinoma pravilno pokrite, našel pa sem eno odstopanje implementacije (sekundarni select ponuja original) in eno notranje neskladje predikatov v specifikaciji pri R06.",
+  "findings": [
+    {
+      "target": "implementation",
+      "requirement": "R05",
+      "problem": "Sekundarni select ponuja tudi vrednost original. V src/App.tsx:19 je SECONDARY_OPTIONS sestavljen kot none + vsi KEY_OPTIONS, ti pa vsebujejo original. Dogovor o vmesniku in R05 določata sekundarne ključe none/title/assignee/status/dueDate; original med njimi ni. Izbira te vrednosti je funkcionalno enaka none (compareKey za original vrne 0), zato obstoječi testi ne padejo, a kontrolnik ponuja vrednost zunaj dogovorjenega vmesnika in strožji končni test (npr. preverjanje možnosti selecta) bi jo lahko zavrnil.",
+      "requestedChange": "V src/App.tsx sestavi možnosti sekundarnega ključa iz eksplicitnega seznama none, title, assignee, status, dueDate brez original; primarni select naj ostane nespremenjen."
+    },
+    {
+      "target": "specification",
+      "requirement": "R06",
+      "problem": "Splošni predikat v razdelku Pojmi in predikati je za primarni ključ original neskladen z lastnim pravilom: ker je P(t,u) = 0 za vse pare, bi po E(t,u) = dS * S(t,u) ob izbranem sekundarnem ključu in cmp(t,u) = dP * E(t,u) razvrščanje original uredilo po sekundarnem ključu, kar nasprotuje pravilu, da pri primarnem ključu original velja S = T ne glede na sekundarni ključ in obe smeri, ter zahtevi R06. Izjema je v besedilu sicer navedena, vendar je v splošni formuli ne zajame, zato sta definiciji med seboj protislovni.",
+      "requestedChange": "V predikatih za primarni ključ original eksplicitno določi E(t,u) = 0 oziroma cmp(t,u) = idx(t) - idx(u) ne glede na sekundarni ključ in smeri (izjemo vključi v formulo), tako da bo definicija skladna z R06 in navedenim pravilom S = T."
+    }
+  ]
+}

@@ -18,6 +18,7 @@ function run(binary,args,env=process.env) {
   assert.equal(result.status,0,`Reporting failed: ${args.join(' ')}`)
 }
 run(process.execPath,[resolve(study,'analyze.mjs')])
+run(resolve(deps,'python/bin/python3'),[resolve(here,'verify-selected-review-cohort.py')])
 const comparison = json(resolve(study,'analysis/comparison.json'))
 assert.equal(comparison.complete,true)
 run(process.execPath,[resolve(here,'audit-evidence.mjs')])

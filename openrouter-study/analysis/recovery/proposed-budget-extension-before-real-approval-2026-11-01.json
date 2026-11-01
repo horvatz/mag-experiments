@@ -1,0 +1,83 @@
+{
+  "at": "2026-11-01T02:54:31.840991+00:00",
+  "status": "proposed-awaiting-explicit-user-approval",
+  "researcherOnly": true,
+  "currentAuthorization": {
+    "totalAccountUsageCeilingUSD": 40,
+    "additionalFundingAllowed": false,
+    "source": "budget-amendment-1.json",
+    "userApproval": "Da, uporabi preostalo dobroimetje brez doplačil."
+  },
+  "currentAccountObservation": {
+    "at": "2026-11-01T02:49:05.184Z",
+    "researcherOnly": true,
+    "checkpoint": 182,
+    "balance": {
+      "at": "2026-11-01T02:49:05.296Z",
+      "totalCreditsUSD": 40,
+      "totalUsageUSD": 36.22367579,
+      "remainingUSD": 3.7763242099999985
+    },
+    "spend": {
+      "knownUSD": 36.20058605450027,
+      "unknownRequests": 36,
+      "unknownReservedUSD": 13.22371723
+    },
+    "limitation": "Account observation after archived182,not a per-run invoice.Original40USDcap/no topups unchanged;unknown bills remainNULL.",
+    "activePositionAtObservation": 182,
+    "activeModelAtObservation": "deepseek/P03-C-003"
+  },
+  "bound": {
+    "model": "z-ai/glm-5.3",
+    "provider": "wafer/us",
+    "pinnedMaximumRequestCostUSD": 3.29357586,
+    "remainingHeadroomBeforeGLMMaximumReserveUSD": 0.4827483499999987
+  },
+  "proposal": {
+    "totalAccountUsageCeilingUSD": 50,
+    "maximumAdditionalAuthorizedFundingUSD": 10,
+    "automaticTopUp": false,
+    "fundingMethod": "User manually adds prepaid credit; no payment or top-up by the researcher.",
+    "coverageRule": "Actual fresh credit and authorized ceiling minus total usage must cover unchanged pinned request maximum plus in-flight reservations.",
+    "unknownBills": "Remain null and separately audited; not converted to zero.",
+    "activationConditions": [
+      "Explicit user approval of increased ceiling and funding",
+      "New credit actually visible on same account before dependent spending",
+      "Current begun measurement archived; exact safe continuation boundary documented",
+      "Original budget/operator snapshot preserved; only budget authorization adaptation applied",
+      "All frozen M/1.0,L/1.0 task inputs,model/provider/prompt/deadline/evaluator choices and archives unchanged"
+    ],
+    "effectiveBoundary": "To be recorded at activation; no begun measurement rerun or replaced."
+  },
+  "alternative": "If not approved, retain40USDceiling and no additional funding. Queue continues only while current guard permits.",
+  "activeBudgetChanged": false,
+  "modelCallsSentForProposal": 0,
+  "sourceSHA256": {
+    "budget": "d957ed5adf11773b7a9505079e235c19dba1fc9361bc906049b5176683e6d403",
+    "amendment1": "740dff4914d8b95ec0e2b62626ff8b843100c6671a4f90a385954002db6d8852",
+    "relay": "a53d383cf02f465c7bf827b3dea0d6a33da369f87cafd1dfe67b54ab85e624a8"
+  },
+  "offlineCandidate": {
+    "path": "analysis/recovery/proposed-budget-extension-2026-11-01",
+    "status": "not-active-not-authorized",
+    "testsPassed": 15,
+    "verification": "analysis/recovery/proposed-budget-extension-2026-11-01/offline-verification.json"
+  },
+  "latestProgressObservation": {
+    "at": "2026-11-01T05:17:56.442017+00:00",
+    "newArchived": 189,
+    "remainingMeasurements": 27,
+    "newContentReviews": 72,
+    "lastAccountObservation": "analysis/recovery/account-after-190-preflight-refusal.json",
+    "remainingAccountUSD": 3.230987136000003,
+    "nextFrozenModelMaximumUSD": 3.2935758600000002,
+    "blockedBeforeMeasuredPosition": 190,
+    "nextUnmeasured": "glm/P09-B-002",
+    "unmeasuredDiagnosticUpstreamCalls": 0,
+    "unmeasuredDiagnosticCostUSD": 0,
+    "evidence": "analysis/recovery/budget-block190-current-state.json",
+    "currentRuleStill40USD": true,
+    "proposedBoundaryAfterArchivedPosition": 189,
+    "limitation": "No cap2approval or activation;no manualfunding observed. Recheckfreshstate beforeactivation."
+  }
+}

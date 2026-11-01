@@ -156,6 +156,19 @@ def main():
             expected += ['primerjalni podatki / ' + record['label'] + ' / ' + record['metric']]
             for col, value in zip('ABCDEFGHIJ', expected):
                 equal(paired.get(col + str(index)), value, ('contrast', index, col))
+        budget, _ = sheets['Proračunska dopolnitev']
+        amendment = read(STUDY / 'budget-amendment-1.json')
+        equal(budget.get('B1'), amendment['id'], 'budget amendment version')
+        stop = read(STUDY / 'analysis/recovery/glm-P03-B-003-budget-refusal.json')
+        assert stop['sentUpstream'] is False and stop['balance']['remainingUSD'] < stop['requiredPinnedMaximumUSD']
+        usd = lambda value: f'{value:.4f}'.replace('.', ',')
+        disclosure = (f"GLM/P03-B-003, zahteva {stop['request']}: {usd(stop['balance']['remainingUSD'])} USD < "
+                      f"{usd(stop['requiredPinnedMaximumUSD'])} USD. Lokalno varovalo; zahteva ni poslana ponudniku. "
+                      'Izvedba ostane brez ponovitve.')
+        equal(budget.get('A11'), 'Poznejša zavrnitev kritja', 'budget refusal label')
+        equal(budget.get('B11'), disclosure, 'budget refusal against original evidence')
+        equal(budget.get('A12'), 'Vir zavrnitve', 'budget refusal source label')
+        equal(budget.get('B12'), 'analysis/recovery/glm-P03-B-003-budget-refusal.json', 'budget refusal source')
         for path in z.namelist():
             if path.startswith('xl/charts/chart') and path.endswith('.xml'):
                 chart_count += 1

@@ -1,0 +1,92 @@
+{
+  "id": "P04-B-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-11-01T01:52:49.599994+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "e897f80a5250320d849e697a9a280472ba7a25121c50070be9cf4851db77e5d1",
+  "limitation": "All 8 authored files fully read (1/10/122/55/102/74/186/298 lines). 56 native commands and 78 preserved API calls indexed; relevant patches, failures, final overwrites and actual test outputs read. Preserved API calls retain successful apply_patch operations absent from native command indexes. Archive hashes verified. Review actually reran 13 own / 8 development / 59 full tests, distinct from the researcher evaluator 70/70. No researcher model or functional-test replay.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija jasno opredeli Task domeno, dovoljene kontrole, privzeti tuple, NFD/U+0300-036F/male crke/UTF-16, rang stanj, veljavne datume, smer primerjave, neodvisno sekundarno primerjanje, stabilnost, enaka kljuca in original izjemo. Vseh 12 R in bistveni robovi so skladno navedeni: stalni stolpci/skupna projekcija, pogled/podrobnosti, projekt/reload/reset, 0/1, URL/shramba, polja/clanstva/stevci/ID/no-write in 390px. Interni SecondaryKey vkljucuje original, vendar ga izrecni seznam dovoljenih vrednosti in UI ne dopuscata; to ni manjkajoca uporabniska domena.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md:9",
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md:49",
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md:61",
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md:73"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Tuple, normalizeText, rang in sedemkorakni comparator dolocijo preverljive pogoje. Original izjema je izrecna; koda vrne izvorni indeks pred sekundarnim comparatorjem. Smer obrne le rezultat kljuca, popolne vezi razresi izvorni indeks. ProjectView key project.id doloci reset; lokalno stanje, ista sortedTasks za oba pogleda in counts na izvornih tasks dolocijo prehodne ter projekcijske invariante. Izvedba je skladna z opisanimi kljucnimi lastnostmi.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md:31",
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md:61",
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:58",
+        "runtime/runs/P04-B-001/submission/src/App.tsx:14",
+        "runtime/runs/P04-B-001/submission/src/App.tsx:97"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Specifikacijska matrika poveze vse R s konkretnimi datotekami/scenariji in posteno pove, da v specifikacijski fazi niso bili izvedeni. Verification21-42 doda dejanska imena 13 lastnih ter potrjene izide 13/13, 8/8, 59/59. Review jih res ponovi: native03-review27 potrdi 13/13 in 8/8, 30 potrdi 59/59. Nespremenjeni TaskBoard je utemeljen. Verification44 netocno govori o treh prvotno rdecih testih, dejansko jih je sedem; nekateri opisi pokritja so presiroki. To ne iznici preverljivih povezav in pravilnih koncnih izidov; own ostane1.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md:98",
+        "runtime/runs/P04-B-001/submission/docs/agent/verification.md:21",
+        "runtime/runs/P04-B-001/submission/docs/agent/verification.md:38",
+        "runtime/runs/P04-B-001/submission/docs/agent/review.json:1",
+        "analysis/evidence/P04-B-001-checks.md#03-review-item_27",
+        "analysis/evidence/P04-B-001-checks.md#03-review-item_30"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "sortTasks.ts locuje tipe, privzete vrednosti, normalizacijo, statusni/datumski comparator in stabilno projekcijo od Reacta. ProjectView lokalno hrani settings, useMemo izdela eno sortedTasks za oba prikaza, counts berejo izvorne tasks, key project.id ponastavi stanje. Kontrole ostanejo v obstojecem App in nova CSS plast je omejena na sort-controls ter odzivnost. TaskBoard ni nepotrebno podvojen ali predelan. Tip SecondaryKey je malo sirsi od UI domene, vendar so odgovornosti, stanje in izpeljani podatki dosledno loceni.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:3",
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:20",
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:38",
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:58",
+        "runtime/runs/P04-B-001/submission/src/App.tsx:12",
+        "runtime/runs/P04-B-001/submission/src/App.tsx:46",
+        "runtime/runs/P04-B-001/submission/src/styles.css:62"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Trinajst uporabnih lastnih scenarijev testira 10/9 in normalizirano E-z-akcentom/E, obe tekstovni polji, status/date obe smeri, stabilne skupine, neodvisni sekundarni datum/naslov, tri stolpce, vse4 kontrole pri projectreset in empty/singletonreset, no-write/povzetke, duplikateID ter390px. Dejanski 13/13,8/8,59/59 so potrjeni tudi s ponovitvijo reviewa. Manjkajo >10 opravil, razlozeni NFD/outside-range/UTF-16 adversarni primeri, same-key nasprotni smeri in polna0/1 matrika. Pri original testu so sekundarne osebe vse enake, zato sibko loci obvoz; empty ima le eno kombinacijo, singleton sprehaja posamezne osi. Pred reload spremeni le primarni kljuc; R08 preklopi na Board in ne nazaj. R11 preveri counts/no-write, ne zamrznjenega vhodnega polja/vseh polj. Zato lastna zbirka ne doseze vseh zahtevnih negativnih in mejnih lastnosti.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:93",
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:142",
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:159",
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:212",
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:229",
+        "runtime/runs/P04-B-001/submission/tests/agent/P04.spec.ts:267",
+        "analysis/evidence/P04-B-001-checks.md#03-review-item_30"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "developmentFailureExample": {
+    "description": "Native implement22:5pass/7fail of12(31.4s), not3red as verification44 states: wrong expected IDs, Promise without await R09, stale singleton remount and strict duplicate locator. Preserved45 fixes expectations/await/locator;30 still10pass/2fail(15.3s). Preserved47 splits empty/singleton tests and corrects final R11 expectation;34 own13/13(5.3s),36dev8/8(3.6s),38full59/59(21.0s). Review27 really repeats13/13 and8/8;30full59/59(22.7s). Failed shell apply_patch attempts are followed by preserved successful operations; final submission is authoritative.",
+    "evidence": [
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_22",
+      "analysis/evidence/P04-B-001-checks.md#preserved-45",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_30",
+      "analysis/evidence/P04-B-001-checks.md#preserved-47",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_34",
+      "analysis/evidence/P04-B-001-checks.md#03-review-item_30"
+    ]
+  },
+  "finalFailureNote": "Completed726.21s;70/70,12/12,static/allowed true,strict true. No final functional failure. Complete invoice0.265325844USD,75requests(70finished/5client_aborted). Review[2,2,2,2,1]."
+}

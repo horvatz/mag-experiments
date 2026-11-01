@@ -203,7 +203,8 @@ paired.freezePanes.freezeRows(4); paired.freezePanes.freezeColumns(1)
 const amendment = await load(resolve(study, 'budget-amendment-1.json'))
 assert.equal(amendment.status, 'approved')
 const budgetSheet = wb.worksheets.add('Proračunska dopolnitev')
-base(budgetSheet, 'A1:B10')
+const budgetLastRow = comparison.newArchived >= 188 ? 12 : 10
+base(budgetSheet, `A1:B${budgetLastRow}`)
 budgetSheet.getRange('A1:B1').values = [['Proračunska dopolnitev', 'O/1.0-budget-amendment-1']]
 heading(budgetSheet, 'A1:B1')
 budgetSheet.getRange('A2:B10').values = [
@@ -217,10 +218,22 @@ budgetSheet.getRange('A2:B10').values = [
   ['Vir', 'openrouter-study/budget-amendment-1.json'],
   ['Dokaz izvedbe', 'analysis/recovery/budget-amendment-2026-10-30/implementation.json'],
 ]
-budgetSheet.getRange('A1:A10').format.columnWidth = 26
-budgetSheet.getRange('B1:B10').format.columnWidth = 105
-budgetSheet.getRange('A2:B10').format.wrapText = true
-budgetSheet.getRange('A2:B10').format.rowHeight = 44
+if (comparison.newArchived >= 188) {
+  const stop = await load(resolve(study, 'analysis/recovery/glm-P03-B-003-budget-refusal.json'))
+  assert.equal(stop.classification, 'local-prepaid-credit-coverage-refusal-not-provider-transport')
+  assert.equal(stop.sentUpstream, false)
+  assert.ok(stop.balance.remainingUSD < stop.requiredPinnedMaximumUSD)
+  const usd = value => value.toFixed(4).replace('.', ',')
+  budgetSheet.getRange('A11:B12').values = [
+    ['Poznejša zavrnitev kritja', `GLM/P03-B-003, zahteva ${stop.request}: ${usd(stop.balance.remainingUSD)} USD < ${usd(stop.requiredPinnedMaximumUSD)} USD. Lokalno varovalo; zahteva ni poslana ponudniku. Izvedba ostane brez ponovitve.`],
+    ['Vir zavrnitve', 'analysis/recovery/glm-P03-B-003-budget-refusal.json'],
+  ]
+}
+budgetSheet.getRange(`A1:A${budgetLastRow}`).format.columnWidth = 26
+budgetSheet.getRange(`B1:B${budgetLastRow}`).format.columnWidth = 105
+budgetSheet.getRange(`A2:B${budgetLastRow}`).format.wrapText = true
+budgetSheet.getRange(`A2:B${budgetLastRow}`).format.rowHeight = 44
+if (budgetLastRow === 12) budgetSheet.getRange('A11:B11').format.rowHeight = 58
 budgetSheet.freezePanes.freezeRows(1)
 const errors = await wb.inspect({ kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!', options: { useRegex: true, maxResults: 30 }, maxChars: 3000 })
 await fs.writeFile(resolve(qa, 'formula-errors.ndjson'), errors.ndjson)
@@ -229,6 +242,6 @@ for (const [name, range, file] of [['Primerjava', 'A1:J41', 'comparison'], ['Pri
   await fs.writeFile(resolve(qa, file + '.png'), new Uint8Array(await image.arrayBuffer()))
 }
 if (!draft) { const file = await SpreadsheetFile.exportXlsx(wb); await file.save(resolve(out, 'primerjava-modelov.xlsx')) }
-const budgetImage = await wb.render({ sheetName: 'Proračunska dopolnitev', range: 'A1:B10', scale: 1, format: 'png' })
+const budgetImage = await wb.render({ sheetName: 'Proračunska dopolnitev', range: `A1:B${budgetLastRow}`, scale: 1, format: 'png' })
 await fs.writeFile(resolve(qa, 'budget-amendment.png'), new Uint8Array(await budgetImage.arrayBuffer()))
 console.log(JSON.stringify({ previewOnly: draft, measurements: data.length, contentRecords: reviews.length, out }))

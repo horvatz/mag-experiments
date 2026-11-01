@@ -1,8 +1,8 @@
 [
   {
     "slug": "glm",
-    "archived": 58,
-    "explicitResponseOrTransportErrors": 5,
+    "archived": 63,
+    "explicitResponseOrTransportErrors": 6,
     "affected": [
       {
         "id": "P06-B-001",
@@ -48,14 +48,38 @@
         "executionStatus": "execution_failed",
         "evidence": "openrouter-study/glm/api/P09-C-001/model/api-ledger.jsonl",
         "nativeErrors": []
+      },
+      {
+        "id": "P03-C-003",
+        "requests": [
+          57
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/glm/api/P03-C-003/model/api-ledger.jsonl",
+        "nativeErrors": []
+      }
+    ],
+    "creditCoverageRefusals": 1,
+    "budgetAffected": [
+      {
+        "id": "P03-B-003",
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/glm/api/P03-B-003/model/api-ledger.jsonl",
+        "rejections": [
+          {
+            "request": 46,
+            "remainingUSD": 3.2868997899999997,
+            "maximumRequestCostUSD": 3.2935758600000002
+          }
+        ]
       }
     ],
     "isolationInterruptions": []
   },
   {
     "slug": "deepseek",
-    "archived": 59,
-    "explicitResponseOrTransportErrors": 8,
+    "archived": 63,
+    "explicitResponseOrTransportErrors": 10,
     "affected": [
       {
         "id": "P06-A-001",
@@ -135,8 +159,28 @@
         "executionStatus": "execution_failed",
         "evidence": "openrouter-study/deepseek/api/P04-A-001/model/api-ledger.jsonl",
         "nativeErrors": []
+      },
+      {
+        "id": "P03-A-003",
+        "requests": [
+          47
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/deepseek/api/P03-A-003/model/api-ledger.jsonl",
+        "nativeErrors": []
+      },
+      {
+        "id": "P03-B-003",
+        "requests": [
+          50
+        ],
+        "executionStatus": "execution_failed",
+        "evidence": "openrouter-study/deepseek/api/P03-B-003/model/api-ledger.jsonl",
+        "nativeErrors": []
       }
     ],
+    "creditCoverageRefusals": 0,
+    "budgetAffected": [],
     "isolationInterruptions": [
       {
         "id": "P05-C-001",
@@ -146,7 +190,7 @@
   },
   {
     "slug": "qwen",
-    "archived": 59,
+    "archived": 63,
     "explicitResponseOrTransportErrors": 19,
     "affected": [
       {
@@ -483,6 +527,8 @@
         "nativeErrors": []
       }
     ],
+    "creditCoverageRefusals": 0,
+    "budgetAffected": [],
     "isolationInterruptions": [
       {
         "id": "P04-B-002",

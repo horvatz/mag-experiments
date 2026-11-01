@@ -1,0 +1,1 @@
+I cannot write files to `.specify/memory/constitution.md` or `.specify/feature.json` because I am restricted to writing only to `src/`, `tests/agent/`, and `docs/agent/`. Per the instructions, I must work within these boundaries.
