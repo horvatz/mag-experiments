@@ -1,0 +1,114 @@
+{
+  "id": "P04-C-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-11-01T00:31:49.187530+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "47cc4ea68b5371bea683ed5c346ebdc5e3e2c8c7630b2461a74201a7e960de83",
+  "limitation": "Vseh15avtorskih datotek v celoti prebranih.45native ukazov/46poznejših API ohranjenih klicev indeksiranih; relevantni izpisi testov, tipi, pozni popravki in konvergenca prebrani. ArhivskeSHA preverjene; brez raziskovalčevega ponavljanja modela ali funkcionalnih testov. IstaM/1.0rubrika in pragoviLunaP04: preverljive resnične povezave lahko2kljub manjšim preširokim opisom testov; pomembni robovi lastnih preverjanj ostanejo1. KončnegafencedJSON ne nadomestimo z njegovim izvlečenim objektom.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija in načrt skladno opredelitaR01–R12, točne4kontrole/domene inσ0, NFD/U+0300–036F/malečrke/UTF-16, statusni rang, veljavneISOdatume, neodvisni smeri, sekundarni kriterij le ob primarni enakosti in izvorno stabilnost. Original je izrecna izjema, enak ključ dovoljen brez dodatnega obrata. Opredeljeni so skupna projekcija obeh pogledov/stalni stolpci, ohranitve pri pogledih/podrobnostih, projekt/reload/reset, nič/eno pri vseh izbirah, nespremenjenost podatkov/povzetkov/API, identiteta poIDin390px. Načrt18jasno določi original-obvoz tudi glede na splošni opis primerjalnika v spec49. Meje nedostopnih končnih testov in sočasnih sprememb so navedene.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:15",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:24",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:34",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:43",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:58",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/plan.md:16"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "σ/σ0in pravila prehodov so preverljivi. Normaliziraj, statusni rang, primerjaj, smerni predznak, stabilna projekcija in izvorni indeks definirajo primerjanje; sekundarni kriterij se uporabi le pri primarni ničli. Spec51inplan18določita original kot eksplicitni obvoz drugih kontrol, plan20razloži enak primarni/sekundarni ključ. Ohranjeni so podatki/povzetki/pripadnost in lokalnost brezURL/shrambe; koda uresniči obvoz ter dekoriranje z izvornim indeksom in dve neodvisni smeri. Bistvene lastnosti so formalizirane, ne le prepisane oznakeR.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:24",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:43",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/plan.md:18",
+        "runtime/runs/P04-C-001/submission/src/sorting.ts:18",
+        "runtime/runs/P04-C-001/submission/src/sorting.ts:36",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:13"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Končna spec1.1poveže vseh12Rz imenovanimi funkcijami in konkretnimi datotekami/vrsticami22lastnih primerov, verification navede dejanske zagone in68/68. Vseh14tasks je označenih, verif8pošteno pojasni, daTaskBoardni potreboval spremembe. Nativeimplement23potrdi22/22,28potrdi68/68po odpravljenemTS2345vlastnemhelperju. Konvergenca izrecno pove, da testov ni ponovila in ročnega ogleda/končnih testov ni bilo. Načrtovani opisi NFD/outside-range in vsi ključi/smeri niso dodatni izvedeni scenariji; te vrzeli ostanejo pri ownChecks. Isti prag2kotLunaBza preverljive povezave/resnične zagone kljub delno preširoki pokritosti.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:73",
+        "runtime/runs/P04-C-001/submission/docs/agent/verification.md:8",
+        "runtime/runs/P04-C-001/submission/docs/agent/verification.md:14",
+        "runtime/runs/P04-C-001/submission/docs/agent/verification.md:19",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/tasks.md:8",
+        "runtime/runs/P04-C-001/last-message.md",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_23",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_28",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_31"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čista sorting.tsloči tipe, privzeti tuple, normalizacijo in primerjalnike od Reacta; kopira/dekorira polje, sortira po dveh usmerjenih kriterijih in izvornem indeksu ter vrne projekcijo. SortControlsje ločena tipizirana predstavitev s patchcallbackom/resetom. ProjectViewhrani samoσ, memoizira isto projekcijo za oba pogleda in povzetke računa iz izvornih nalog; projektni keydoloči reset brez shrambe/učinkov. Sekundarni tip sicer dopušča tudi neizpostavljen original, UIpa ponuja le predpisane možnosti; to ne podvoji ali zaplete odgovornosti. Odgovornosti, stanje in izpeljani podatki so dosledno ločeni.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/src/sorting.ts:3",
+        "runtime/runs/P04-C-001/submission/src/sorting.ts:18",
+        "runtime/runs/P04-C-001/submission/src/sorting.ts:36",
+        "runtime/runs/P04-C-001/submission/src/SortControls.tsx:24",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:13",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:47",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:92",
+        "runtime/runs/P04-C-001/submission/src/styles.css:181"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "22dejansko uspešnih dodatnih primerov preveri privzeti tuple, Unicode/ločila/številčne naslove poUTF-16, ključe in stabilne skupine, sekundarni kriterij, original ob drugih kontrolah, stalne stolpce/relativni red, reset vseh4, IDpodrobnosti, povzetke/brezpisanj in širino390pxvobeh pogledih. Vendar >10opravil ni (8web+2drugprojekt), enak ključ je asertiran le pri enakih smereh, ni adversarnihNFD/znakovzunajU+0300–036F. Projektni test spremeni le primarni ključ/sekundarno smer, reload le primarni ključ/smer, podrobnosti le primarni ključ; ostale kontrole so že privzete. Prazno polje le ločeno preleti posamezne ključe/smeri, singleton le eno kombinacijo; ni polne0/1matrike. Projekcijski test preveri eno vrstico/povzetke/zahtevke, ne zamrznjenega vhodnega polja ali vseh polj. Koristen širši nabor, vendar isti prag1kotLunaP04zaradi teh konkretnih robov.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/tests/agent/helpers.ts:9",
+        "runtime/runs/P04-C-001/submission/tests/agent/sort-table.spec.ts:18",
+        "runtime/runs/P04-C-001/submission/tests/agent/sort-table.spec.ts:53",
+        "runtime/runs/P04-C-001/submission/tests/agent/sort-table.spec.ts:71",
+        "runtime/runs/P04-C-001/submission/tests/agent/sort-board.spec.ts:29",
+        "runtime/runs/P04-C-001/submission/tests/agent/sort-state.spec.ts:3",
+        "runtime/runs/P04-C-001/submission/tests/agent/sort-state.spec.ts:16",
+        "runtime/runs/P04-C-001/submission/tests/agent/sort-state.spec.ts:40",
+        "runtime/runs/P04-C-001/submission/tests/agent/sort-projection.spec.ts:3",
+        "runtime/runs/P04-C-001/submission/tests/agent/sort-projection.spec.ts:44",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_23",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_28"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Vseh6faz se zaključi, vendar converge vrne objekt v ```json...```; izvirni JSON.parse vrneUnexpectedtokenbacktick in executionstatusinvalid_stage_handoff. Neodvisno70/70in12/12,statične/allowedtrue;strictfalseizhaja iz oblikepredaje,ne nedelujočega razvrščanja. Izvlečenega notranjegaJSONne uporabimo za popravilo statusa. Konvergenca ne doda nalog ali kode in eksplicitno ne ponovi testov.",
+    "evidence": [
+      "runtime/runs/P04-C-001/execution.json",
+      "runtime/runs/P04-C-001/last-message.md",
+      "runtime/runs/P04-C-001/evaluation-summary.json",
+      "runtime/runs/P04-C-001/submission/docs/agent/P04/tasks.md"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Constitution6heredocne more ustvarititmp;poznejšiOK/clockvrneta0inwc0B,8apply_patchmanjka,10printfdejansko napišeustavo. Implement23lastni22/22(8,5s),vendar25fullcheck skozi tailizh0dejansko odpove priTS2345:string|null[] iz helperja ni string[].27filtrira/natančneje tipiziraIDje v lastnemhelperju; njegov pipelineizh0samzase ni dokaz.28definitivno68/68(25,2s), brez nadaljnjih produkcijskih popravkov. KonvergencaAPI44rm-fcleanupzavrnjen,45ponovi le bralnipregled in izpraznitevtmp; to ni nov funkcionalni zagon ali napakaAPI.",
+    "evidence": [
+      "analysis/evidence/P04-C-001-checks.md#01-constitution-item_6",
+      "analysis/evidence/P04-C-001-checks.md#01-constitution-item_8",
+      "analysis/evidence/P04-C-001-checks.md#01-constitution-item_10",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_23",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_25",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_27",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_28",
+      "analysis/review-packets/P04-C-001.json"
+    ]
+  },
+  "finalFailureNote": "Invalid_stage_handoff576,509s po vseh6completedfazah(33,796/72,515/54,733/17,254/345,867/45,858).70/70,12/12,statične/allowedtrue,strictfalsezaradifencedJSON.15avtorskih datotek,22lastnih/68full dejansko uspešnih po popravku tipovtestnegahelperja.49HTTP200/finished,polnračun0,089881572USD. Presoja[2,2,2,2,1],brez ponovitve meritve."
+}
