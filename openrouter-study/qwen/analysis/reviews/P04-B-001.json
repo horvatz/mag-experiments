@@ -1,0 +1,95 @@
+{
+  "id": "P04-B-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-11-01T01:33:33.321511+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "5c78dbcf6176e6880f4a7d36213de603576b2c68ba17a2b7e3e91845dd24eb47",
+  "limitation": "Vse4avtorske datoteke vceloti prebrane(35/7/65/71vrstic),95native/105APIohranjenih klicev indeksiranih, relevantne failedwrites/pozneprepise in dejanske check izpise prebrani. Končni sortTasks.ts se razlikuje od prej prikazanih začasnih verzij: ocenjujemo končnih2225B. ArhivskeSHA preverjene. Ponovno prebrana rubrika M/1.0 in konkretni QwenP08Ahelper/P05BownChecks ločita berljivo delno organizacijo od manjkajoče kode ter neuspešen standardni lint od dodatnih funkcionalnih preverjanj. Brez ponovitev ali popravkov modelove oddaje.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija je le sedemvrstični uvod brez domene ali pravil po R. Verification dokument kljub naslovu vsebuje dodatne berljive opise osnovnih12R: tuple, status/datum, stabilnost, originalprevlado, ohranitev pogleda/podrobnosti, projekt/reload in projekcijo/ID. Zato pokritje ni povsem odsotno. Ostanejo velike vrzeli in protislovja: UTF-8/localeLowerCase/NDF namesto natančne normalizacije, R07zmoten opis primarnega/sekundarnega/tretjega stolpca, nepopolna sekundarna domena in enaka ključa, singleton/števci/vhodnomutacijo/URL/390px. Opisi ne določijo skladne celotne rešitve.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/docs/agent/specification.md:1",
+        "runtime/runs/P04-B-001/submission/docs/agent/verification.md:4",
+        "runtime/runs/P04-B-001/submission/docs/agent/verification.md:9",
+        "runtime/runs/P04-B-001/submission/docs/agent/verification.md:33"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Berljivi comparatorji določijo statusni rang, kronološke veljavne datume, predznak smeri in sekundarni ključ obcmp0; toSorted nakazuje nemutirajočo projekcijo. Verification izreče originalobvoz, tuple in resetne/ohranitvene pogoje. Formalizacija ni skladna: koda pri original vrne primarnicmp0in nato uporabi sekundarni ključ, nima definicijeSortKey/privzetih vrednosti; UIstanje sploh ni povezano. Prva vrstica je pokvarjen literal zapisa kode in prepreči razčlenitev. Nekaj pogojev je preverljivih, celotnih invariantov izvedba ne zagotovi.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:1",
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:16",
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:34",
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:52",
+        "runtime/runs/P04-B-001/submission/docs/agent/verification.md:28"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Review pravilno opazi manjkajoče privzete parametre R01 in resetniUI R10; zaključni odgovor zaR01navede sortTasks.ts. Ni matrike do dejanskih testov ali preverjenih rezultatov, verification vsebuje zgolj trditve/pravilain ne dokazov. Review complete=true,unverified=[]ter zaključno zatrjevanje,da so vse druge zahteve zadovoljene, niso podprti: App/TaskBoardnista spremenjena,helperni uvožen in se ne prevede. Dve delni ugotovitvi ne ustvarita sledljive verige zahteva–koda–test; neodvisnih38/70ne štejejo kot modelovdokaz.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/docs/agent/review.json:17",
+        "runtime/runs/P04-B-001/submission/docs/agent/review.json:20",
+        "runtime/runs/P04-B-001/submission/docs/agent/verification.md:1",
+        "runtime/runs/P04-B-001/phases/03-review/last-message.md"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 1,
+      "rationale": "Končna71vrstična delna avtorska koda ima razumljivo razdelitev: normalizeText/compareText, statusni in datumski comparator ter sortTasks s primarno/sekundarno smerjo. Comparatorji vračajo predznak in isti primarni/sekundarni poljski helperji so koherentno uporabljeni; ni množice podvojenih neusklajenih modulov. Zato po rubriki razumljiva rešitev z navedenimi slabostmi dobi1, čeprav funkcionalno ni uspešna. Pomembne slabosti: pokvarjen $code/importliteral, nedoločenSortKey, manjkajoči privzeti tuple in ločitev originalobvoza ter popolnoma manjkajoča povezava z App/obema pogledoma in lokalnim stanjem. Organizacija je ocenljiva, niNULL; ne pripišemo ji nespremenjene izhodiščne aplikacije.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:1",
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:3",
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:16",
+        "runtime/runs/P04-B-001/submission/src/sortTasks.ts:34",
+        "runtime/runs/P04-B-001/execution.json"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Ni avtorskih testov ali dodatnih funkcionalnih primerov. Model trikrat sproži standardni npm run check: native66obstane prilintParsingerror,78in84pri no-useless-assignment. Pipelinehead/grep izhod0ni uspeh preverjanj; npmtest se zaradi lintprekinitve ne začne. Končni $codeliteral je zapisan šele po teh neuspelih checkih in ponovno ne preverjen. Verification ni zapis izvedenih testov. To je ista0kalibracija kot QwenP05B001(neuspešen standardni lint brez smiselnih dodatnih testov), ne odsotnost vseh modelovih ukazov.",
+      "evidence": [
+        "runtime/runs/P04-B-001/submission/docs/agent/verification.md:1",
+        "analysis/evidence/P04-B-001-checks.md#02-implementation-item_66",
+        "analysis/evidence/P04-B-001-checks.md#02-implementation-item_78",
+        "analysis/evidence/P04-B-001-checks.md#02-implementation-item_84",
+        "analysis/evidence/P04-B-001-checks.md#02-implementation-item_92"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Invalid_review_handoff968,625s: implementation phase_time_limit532,376s,reviewcompleted127,042s. Review.jsonje veljavenJSON,vendar zadnji odgovor začne Markdownnaslov##审查完成inJSON.parsevrneUnexpectedtoken#. Oddaje ne popravljamo ali izberemo notranje datoteke namesto zahtevanegaodgovora. Neodvisno38/70(samo regresija),0/12,lintin typesfail zaradi končnega pokvarjenegaimporta,buildpass kerhelperni vključen;allowedtrue,strictfalse. UIrazvrščanja sploh ni.",
+    "evidence": [
+      "runtime/runs/P04-B-001/execution.json",
+      "runtime/runs/P04-B-001/phases/03-review/result.json",
+      "runtime/runs/P04-B-001/phases/03-review/last-message.md",
+      "runtime/runs/P04-B-001/submission/src/sortTasks.ts:1",
+      "runtime/runs/P04-B-001/evaluation-summary.json"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Več heredoc zapisov je zavrnjenih; končna specifikacija ostane sedemvrstična. Standardnicheck66vrneParsingerror,78/84no-useless-assignment. Native92nato prepiše helper z literalnim$codeline in odstrani prejprisotenSortKey;94inreview11pokažeta prav to končno vsebino. ReviewerjevAPIpreserved76poskus spreminjanja specifikacije se zavrneEPERM; arhivspecostaneisti. Veljaven review.jsonne popravi napačnega zaključnegaMarkdownodgovora.",
+    "evidence": [
+      "analysis/evidence/P04-B-001-checks.md#preserved-13",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_66",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_78",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_92",
+      "analysis/evidence/P04-B-001-checks.md#02-implementation-item_94",
+      "analysis/evidence/P04-B-001-checks.md#preserved-76"
+    ]
+  },
+  "finalFailureNote": "Invalid_review_handoff968,625s;38/70,0/12,lint/typesfail,build/allowedtrue,strictfalse.4avtorske datoteke,presoja[1,1,0,1,0]. Popolnračun0,1666888USD za65zahtev(62finished/3aborted). Berljiva delna organizacija helperja je1,ne funkcionalni uspeh;končni helper ni vključen vUIin se ne prevede."
+}
