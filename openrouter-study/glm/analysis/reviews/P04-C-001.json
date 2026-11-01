@@ -1,0 +1,90 @@
+{
+  "id": "P04-C-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-11-01T01:07:35.028975+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "3aed3d3bf565d24541615a1c6778fb62109fca1e8b0350a3ffd1e38213a5b0d5",
+  "limitation": "Vseh11avtorskih datotek je v celoti prebranih,47native/47API klicev indeksiranih, relevantni neuspehi in dejanski testni izpisi prebrani. Prebrana je tudi dejanska nespremenjena TaskBoard implementacija in readonly helper. Vse arhivskeSHA preverjene. Modelov53/53je pravi modelov zagon, ne raziskovalčev70/70; konvergenca testov ne ponavlja, ampak pregleda že shranjene dokaze. Nobenega raziskovalčevega ponovnega zagona meritev ali testov.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija skladno razdela vse R01–R12: točne domene in štiripolni tuple, normalizacijo NFD/U+0300–036F/UTF-16, rang stanj in veljavne datume, smer primerjave, neodvisno sekundarno smer, stabilnost, enaka ključa ter prevlado original. Prehodi projekta/reload/reset in ohranitev pogleda/podrobnosti so izrecni; vključeni so prepoved shrambe/URL, čista projekcija, števci, ID ter oba pogleda in390px. Plan utemelji uporabo dejanskega izhodišča in nespremenjeni TaskBoard.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:15",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:39",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:50",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/plan.md:13"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Stanje kontrol in izpeljani sourceTasks/visibleTasks sta eksplicitna, tabela dejanj določi prehode in invariance. R02–R06 formalizirajo normalizacijo, predznak, pogojevano sekundarno primerjavo, stabilnost in original izjemo; R07–R12 določijo skupno projekcijo, nespremenjena polja/članstva/števce, enkratnostID in ohranitev identitete. sorting.ts kopira izvorno polje, preskoči enak sekundarni ključ in ob primarnem original vrne kopijo brez nadaljnjega primerjanja. Če sekundarnega ni, stabilnost izenačitev ohrani stabilni Array.sort; ko je uporabljen, končno izenačitev razreši izvorni indeks.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:25",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:50",
+        "runtime/runs/P04-C-001/submission/src/sorting.ts:42",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:14"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Končna tabela poveže vsako R01–R12 s konkretnimi mesti kode in testnimi scenariji; devet opravljenih nalog in verification povežeta dejanske zagone. Native implementitem_32potrdi7/7lastnih,34potrdi38regresijskih,40potrdi8razvojnih,46potrdi53/53fullcheck; konvergenca te dokaze pregleda. Nekateri line anchors so nenatančni (rang je sorting20namesto9,TaskBoard20jeikona), vendar datoteke in logika povezav obstajajo. Opisi lastnega pokritjaR06/R09/R10so širši od dejanskih assertov; to omejuje lastna preverjanja, ne izniči resničnih povezav.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:70",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/tasks.md:5",
+        "runtime/runs/P04-C-001/submission/docs/agent/verification.md:7",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_46",
+        "analysis/evidence/P04-C-001-checks.md#06-converge-item_3"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čista60vrstična sorting.ts loči domene, privzete vrednosti, normalizacijo in comparator od React prikaza. ProjectView lokalno hrani sortSettings, useMemo izdela eno projekcijo za oba pogleda; keyproject.id čisto ponastavi stanje, števci ostanejo na izvornih podatkih. Štiri preproste kontrole so skladno v obstoječem App, CSSdopolnitev omejena na sort-controls in odzivnost. Nespremenjeni TaskBoard ohrani stolpce/relativni red. Razdelitev je jasna in sorazmerna obsegu; ni nujen dodaten modul samo zaradi števila datotek.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/src/sorting.ts:3",
+        "runtime/runs/P04-C-001/submission/src/sorting.ts:22",
+        "runtime/runs/P04-C-001/submission/src/sorting.ts:42",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:12",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:83",
+        "runtime/runs/P04-C-001/submission/src/App.tsx:127",
+        "runtime/runs/P04-C-001/submission/src/styles.css:139"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Sedem dejanskih lastnih Playwright scenarijev preveri osnovne ključe, smeri/sekundarni datum, stabilne vezi, originalobvoz, tri stolpce, prehode in reset,0/1,identiteto/števce/no-writein390px. Native7/7infull53/53sta potrjena, začetne napačne pričakovaneID ter ponovno mountano stanje so popravljeni; popravljena je tudi napačna sekundarna typesdomena. Lastna zbirka še nima >10opravil ali adversarnih NFD/outside-range/UTF-16 razlik. Enaka ključa preizkusi le desc/desc, ne nasprotnih smeri. Projektno predpogojno spremeni vse4, asertira pa le primarni ključ/ID; reload/reset ne preverita vseh4. 0/1sprehod po posameznih ključih/smereh ni polna kombinacijska matrika, assert je na koncu. Projekcija nima aserta nespremenjenega vhodnega polja ali vseh polj; vseh12zahtev ne smemo šteti kot popolnoma neodvisno lastno pokritih.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/tests/agent/P04.spec.ts:17",
+        "runtime/runs/P04-C-001/submission/tests/agent/P04.spec.ts:29",
+        "runtime/runs/P04-C-001/submission/tests/agent/P04.spec.ts:73",
+        "runtime/runs/P04-C-001/submission/tests/agent/P04.spec.ts:112",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_32",
+        "analysis/evidence/P04-C-001-checks.md#05-implement-item_46"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "developmentFailureExample": {
+    "description": "Nativeimplement22:3/7lastnihpass, napačne pričakovaneID pri vezih/stolpcih in zastalo stanje ponovnega mountanja.26:4/7,30:6/7,32:7/7po popravilu pričakovanj ter novih straneh za0/1.36buildvrneTS2322/TS2367zaradi manjkajočegasekundarneganonevtipu;38dodaSortSecondaryKeyinbuilduspe.40razvoj8/8,46resničnifullcheck53/53. Končni modelov uspeh in njegove vrzeli pokritja so ločeni od neodvisnega70/70.",
+    "evidence": [
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_22",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_26",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_30",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_32",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_36",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_38",
+      "analysis/evidence/P04-C-001-checks.md#05-implement-item_46"
+    ]
+  },
+  "finalFailureNote": "Completed542,317s;70/70in12/12,statične/allowedtrue,stricttrue. Ni končnega funkcionalnega neuspeha. Popoln račun0,293081775USD,53zahtev(49finished/4client_aborted). Presoja[2,2,2,2,1]."
+}
