@@ -1,0 +1,87 @@
+{
+  "id": "P04-C-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-11-01T00:57:37.900522+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "a20479f53dad3e677de08eb5f63886622ce920eac34f32c903a343f1adf5d378",
+  "limitation": "Vseh šest dejansko oddanih avtorskih datotek je v celoti prebranih (23/76/42/5/49/148 vrstic). Indeksiranih je 56 native ukazov in 68 ohranjenih API klicev; relevantne napake zapisovanja in končne prepise smo prebrali. Arhivske SHA so preverjene. Zamrznjeni parser je nespremenjen; 17 opisnih naslovov nalog ne ustreza zahtevani obliki checkbox seznama. Implementacija in konvergenca nista bili začeti. Ocene sledijo kalibraciji delne dokumentacijske oddaje, ne izidu neodvisnih testov.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija določi domene štirih kontrol, resetni tuple, stabilnost, enkratnost ID in ohranitev podrobnosti. Plan navede osnovne R01–R12; berljivi opisi v sicer neveljavnem feature.json dopolnijo nekaj pravil. Manjkajo original-prevlada, enaka ključa, natančna meja kombinirajočih znakov, enotna projekcija stalnih stolpcev, reload in prepoved shrambe/URL ter celotna robna domena. R07 v planu zmotno opisuje tristoplčno preglednico. Spec predpostavlja neobstoječe začetne filtre in originalIndex kot vhodno polje; naloge izhajajo iz neobstoječih FolioView/TaskList komponent. Pokritje je uporabno, vendar delno.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:15",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/plan.md:6",
+        "runtime/runs/P04-C-001/submission/.specify/feature.json:1",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/tasks.md:55"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Reset [original,asc,none,asc], sekundarni ključ samo ob primarni enakosti, obračanje primerjave namesto celotnega polja, stabilnost in projekcija brez mutacije so preverljive trditve. Niso povezane v popoln comparator ali prehodni sistem; original-prevlada in enaka ključa nista razdelana, metapodatki pa niso veljaven JSON. Formalizacija ostane delna; načrtovanih funkcij in prihodnjih testov ne štejemo kot izvedene invariantne aserte.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:27",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/plan.md:7",
+        "runtime/runs/P04-C-001/submission/.specify/feature.json:15"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "T003 in nadaljnje naloge povezujejo nekaj zahtev s prihodnjimi potmi kode/testov. Nobena implementacija ali testna datoteka ni oddana, ni izvedbenih rezultatov in plan ima prazna imena modulov po neuspelih shell razširitvah. Predlog prihodnjih povezav ne zagotovi dejanske sledljivosti zahteva–koda–test, enako kot kalibrirana Qwen/P03-C-001 dokumentacijska oddaja.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/tasks.md:23",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/plan.md:25",
+        "runtime/runs/P04-C-001/execution.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Oddaja vsebuje samo ustavo, neveljavne metapodatke in načrtovalne dokumente. Izvedljiva produkcijska koda ni oddana, fazi implement/converge se po zavrnjeni tasks predaji ne začneta. Organizacije izhodiščne aplikacije in načrtovane razdelitve modulov ne pripišemo neobstoječi implementaciji.",
+      "evidence": [
+        "runtime/runs/P04-C-001/execution.json",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/plan.md:25",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/tasks.md:9"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Testne datoteke niso oddane in noben funkcionalni ali statični test ni zagnan. tasks.md zgolj predlaga prihodnje ukaze npm test/check/build, spec izrecno pove, da implementacija še ni preverjena. cat/ls in odčitavanje časa niso lastna preverjanja zahtev. Med neuspelim zapisovanjem plana je shell sprožil blokiran dostop do npm registra, kar prav tako ni izveden test.",
+      "evidence": [
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/spec.md:45",
+        "runtime/runs/P04-C-001/submission/docs/agent/P04/tasks.md:136",
+        "analysis/evidence/P04-C-001-checks.md#03-plan-item_7",
+        "analysis/evidence/P04-C-001-checks.md#04-tasks-item_11"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Invalid_stage_handoff po 923,971 s: vse štiri načrtovalne faze vrnejo completed, tasks validator pa vrne Missing actionable tasks. Dokument dejansko vsebuje 17 naslovov T001–T017, vendar nobene zahtevane checkbox vrstice. Implementacija ni začeta. Neodvisno 38/70 (samo regresijski testi), 0/12, statične/allowed true, strict false; formatne zavrnitve ne opisujemo kot odsotnost načrtovanih nalog.",
+    "evidence": [
+      "runtime/runs/P04-C-001/execution.json",
+      "runtime/runs/P04-C-001/phases/04-tasks/result.json",
+      "runtime/runs/P04-C-001/submission/docs/agent/P04/tasks.md:9",
+      "runtime/runs/P04-C-001/evaluation-summary.json"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Ohranjeni heredoc zapisi so večkrat zavrnjeni, native plan item_16 pa zaradi shell interpretacije backtick imen pusti prazne poti v končnem planu. Native item_13 poskusi POST localhost:3000; curl dejansko vrne connection refused (7), brez zapisa na drug servis. feature.json je na koncu neveljaven JSON. Tasks skill izrecno zahteva checkbox obliko, končni dokument pa uporabi zgolj naslove. Nobenega izida nismo popravljali ali ponovno merili.",
+    "evidence": [
+      "analysis/evidence/P04-C-001-checks.md#preserved-35",
+      "analysis/evidence/P04-C-001-checks.md#03-plan-item_13",
+      "analysis/evidence/P04-C-001-checks.md#03-plan-item_16",
+      "analysis/evidence/P04-C-001-checks.md#04-tasks-item_6",
+      "runtime/runs/P04-C-001/submission/.specify/feature.json:15"
+    ]
+  },
+  "finalFailureNote": "Invalid_stage_handoff923,971s;38/70,0/12,statične/allowedtrue,strictfalse. Šest avtorskih dokumentov, presoja[1,1,0,NULL,0]. Popoln račun0,2264253USD za72zahtev(69finished/3client_aborted). Naloge obstajajo kot17naslovov, zahtevani checkbox format pa manjka. Brez ponovitve."
+}

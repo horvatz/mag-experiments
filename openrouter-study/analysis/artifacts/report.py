@@ -169,6 +169,8 @@ def main():
     p('Pri GLM/P03-C-001 je 22 skritih testov obstalo pri natančnem imenu iskalnika: navodilo konča stavek z »Išči opravila.«, test pa zahteva ime brez pike. Oddaja vsebuje piko; javni in lastni testi uporabljajo nenatančno ime. Izvirna rezultata 48/70 preverjanj in 1/12 dokazanih zahtev ostaneta nespremenjena. Ti neuspehi niso dokaz 22 različnih napak filtriranja; dvoumnost dogovora imena je omejitev merila.')
     if comparison['newArchived'] >= 102:
         p('Qwen/P08-C-002 je oddal 14 nalog z oznakami v krepkem tisku (**T001**). Zamrznjeni preverjevalnik sprejme oznake brez krepkega tiska in zavrne predajo pred implementacijo. Rezultat ostane izviren (38/70, 0/12); zavrnitev je posledica formata, ne odsotnosti nalog.')
+    if comparison['newArchived'] >= 176:
+        p('Qwen/P04-C-001 podobno odda 17 opisov nalog kot naslove T001–T017, brez zahtevane checkbox oblike. Preverjevalnik zavrne predajo pred implementacijo (38/70, 0/12); opisi nalog obstajajo, vendar ne ustrezajo zamrznjenemu formatu.')
     if comparison['newArchived'] >= 121:
         p('Pri več oddajah P08 in P07 ostaneta dve preverjanji prazne table neuspešni: pripomoček zahteva območje z imenom Tabla opravil, oddaja pa ga zamenja s sporočilom o praznem rezultatu. Tako imajo npr. DeepSeekove P07-C-003 in P07-A-003 izvirna izida 68/70 in 11/12. Izidi ostanejo nespremenjeni. Gre za občutljivost preverjanja na strukturo praznega pogleda; dve neuspešni preverjanji istega vzroka nista dokaz dveh različnih napak logike.')
     if comparison['newArchived'] >= 112:

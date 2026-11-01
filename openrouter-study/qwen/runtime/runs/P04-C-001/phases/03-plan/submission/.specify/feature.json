@@ -1,0 +1,22 @@
+{
+  "name": "P04 Stable Sort with Dual Keys",
+  "date": "2026-01-01",
+  "features": [
+    {"id": "R01", "name": "Default Sort", "desc": "Primary key original (asc), secondary key none (asc)"},
+    {"id": "R02", "name": "Title/Assignee Sort", "desc": "NFD normalize, strip accents, lowercase, UTF-16 lex compare"},
+    {"id": "R03", "name": "Status/Date Sort", "desc": "Predefined order: todo, in_progress, done; YYYY-MM-DD chronological"},
+    {"id": "R04", "name": "Direction Toggle", "desc": "asc/desc only inverts selected key order"},
+    {"id": "R05", "name": "Secondary Key", "desc": "Sorts when primary key matches, independent direction"},
+    {"id": "R06", "name": "Stability Rule", "desc": "Maintains insertion order for equal keys (R06)"},
+    {"id": "R07", "name": "Three Column View", "desc": "Maintains relative column order consistently"},
+    {"id": "R08", "name": "Persistence", "desc": "Sort settings persist across view switches"},
+    {"id": "R09", "name": "Project Reset", "desc": "Switching projects resets all sort settings"},
+    {"id": "R10", "name": "Reset Button", "desc": "Resets all four settings instantly"},
+    {"id": " I, "name": "Projection", "desc": "Sort is projection; does not modify tasks/assignment or send API calls"},
+    {"id": "R12", "name": "Visibility", "desc": "All IDs visible once; open details works with duplicate titles"}
+  ],
+  "constraints": [
+    "src/ and docs/agent/P04/ only",
+    "No new dependencies - add to src/components/sorting.ts and src/hooks/useTaskSort.ts"
+  ]
+}
