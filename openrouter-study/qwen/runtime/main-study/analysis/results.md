@@ -1,10 +1,10 @@
 # Glavna zbirka P03–P10
 
-Arhiviranih je 57 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
+Arhiviranih je 58 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
 
 | Postopek | Arhivirano | Strogi uspehi | Dokazane zahteve, povprečni delež | Čas, povprečje s | Popolna poraba |
 | --- | --- | --- | --- | --- | --- |
-| A | 19/24 | 0 | 0.00 | 807.77 | 6/19 |
+| A | 20/24 | 0 | 0.00 | 797.69 | 6/20 |
 | B | 19/24 | 0 | 0.00 | 634.71 | 0/19 |
 | C | 19/24 | 0 | 0.00 | 727.28 | 0/19 |
 
@@ -71,5 +71,6 @@ Vhodni tokeni vključujejo predpomnjene, izhodni vključujejo reasoning. Nepopol
 | [P09-A-001](../../runs/P09-A-001/report.md) | completed | 0/12 | 12/12 | 48.764 | ne |
 | [P09-B-001](../../runs/P09-B-001/report.md) | time_limit | 0/12 | 12/12 | 1200.317 | ne |
 | [P09-C-001](../../runs/P09-C-001/report.md) | execution_failed | 0/12 | 12/12 | 136.6 | ne |
+| [P04-A-001](../../runs/P04-A-001/report.md) | execution_failed | 0/12 | 12/12 | 606.204 | ne |
 
 Vsebinska rubrika, človeška presoja in pisanje interpretacije so ločeni koraki; prisotnost testov ali dokumentov ni samodejna ocena njihove kakovosti.

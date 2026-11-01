@@ -28,7 +28,7 @@ const native = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-
 const emptyNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P06-B-001/phases/01-specification/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
 const truncated = fixture('qwen', 7, 'P09-C-001')
 const truncatedNative = gunzipSync(fs.readFileSync(resolve(study, 'qwen/runtime/runs/P09-C-001/phases/01-constitution/events.jsonl.gz'))).toString('utf8').trim().split('\n').map(JSON.parse).filter(e => ['error', 'turn.failed'].includes(e.type)).map(e => e.message || e.error?.message)
-const localFixtures = [fixture('glm', 10, 'P09-C-001'), fixture('deepseek', 27, 'P04-A-001')]
+const localFixtures = [fixture('glm', 10, 'P09-C-001'), fixture('deepseek', 27, 'P04-A-001'), fixture('qwen', 33, 'P04-A-001')]
 const localNative = ['unexpected status 502 Bad Gateway: Study transport failed; researcher evidence preserved, url: http://127.0.0.1:9238/v1/responses']
 const checks = [
   ...localFixtures.flatMap(({row,body}, fixtureIndex) => [

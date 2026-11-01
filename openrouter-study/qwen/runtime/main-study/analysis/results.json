@@ -1,10 +1,9 @@
 {
-  "generatedAt": "2026-10-31T22:04:48.105Z",
+  "generatedAt": "2026-11-01T00:03:06.772Z",
   "complete": false,
-  "archived": 57,
+  "archived": 58,
   "planned": 72,
   "missing": [
-    "P04-A-001",
     "P04-C-001",
     "P04-B-001",
     "P03-C-003",
@@ -23,11 +22,11 @@
   "groups": [
     {
       "procedure": "A",
-      "archived": 19,
+      "archived": 20,
       "planned": 24,
       "strictSuccesses": 0,
       "meanDemonstratedFraction": 0,
-      "meanElapsedSeconds": 807.770842105263,
+      "meanElapsedSeconds": 797.6924999999999,
       "completeUsageCount": 6,
       "meanInputTokensCompleteOnly": 874492,
       "meanOutputTokensCompleteOnly": 10982.833333333334
@@ -80,9 +79,9 @@
     {
       "task": "P04",
       "procedure": "A",
-      "count": 2,
+      "count": 3,
       "meanDemonstratedFraction": 0,
-      "meanElapsedSeconds": 489.796
+      "meanElapsedSeconds": 528.5986666666666
     },
     {
       "task": "P04",
@@ -7982,6 +7981,133 @@
       "ownTestFiles": 0,
       "contentReviewSample": true,
       "evidence": "runs/P09-C-001/evaluation-summary.json"
+    },
+    {
+      "id": "P04-A-001",
+      "task": "P04",
+      "procedure": "A",
+      "repetition": 1,
+      "block": 20,
+      "position": 1,
+      "executionStatus": "execution_failed",
+      "elapsedSeconds": 606.204,
+      "strictSuccess": false,
+      "allowedChanges": true,
+      "completeTestRun": true,
+      "score": {
+        "requirements": [
+          {
+            "id": "R01",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R02",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R03",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R04",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R05",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R06",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R07",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R08",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R09",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R10",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R11",
+            "demonstrated": false,
+            "observed": true
+          },
+          {
+            "id": "R12",
+            "demonstrated": false,
+            "observed": true
+          }
+        ],
+        "passed": 0,
+        "observed": 12,
+        "total": 12,
+        "fraction": 0
+      },
+      "groups": {
+        "regression": {
+          "passed": 38,
+          "total": 38
+        },
+        "development": {
+          "passed": 0,
+          "total": 8
+        },
+        "holdout": {
+          "passed": 0,
+          "total": 24
+        }
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "passed": true
+        },
+        {
+          "name": "types",
+          "passed": true
+        },
+        {
+          "name": "build",
+          "passed": true
+        },
+        {
+          "name": "tests",
+          "passed": false
+        }
+      ],
+      "usage": null,
+      "usageComplete": false,
+      "observedUsageBeforeInterruption": {
+        "input_tokens": 762887,
+        "cached_input_tokens": 241152,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 11945,
+        "reasoning_output_tokens": 1033
+      },
+      "phases": [],
+      "changedFiles": 3,
+      "ownTestFiles": 0,
+      "contentReviewSample": true,
+      "evidence": "runs/P04-A-001/evaluation-summary.json"
     }
   ]
 }

@@ -1,0 +1,94 @@
+{
+  "id": "P04-A-001",
+  "model": "qwen/qwen3.5-9b",
+  "reviewedAt": "2026-11-01T00:06:44.516863+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "f0defe89678e3354fa8f1b4629e16211c0663c0be942700de7a4d28e05316ec0",
+  "limitation": "Vse3dejansko oddane avtorske datoteke v celoti prebrane:27vrstic specifikacije,20vrstic tipov in0Bsort.ts.41native ukazov/47poznejših API ohranjenih klicev indeksiranih; relevantne napake pisanja/pozni prepisi in prej napisani nato izpraznjeni sort prebrani. ArhivskeSHA preverjene; postmodel174je dokončan brez modelove ponovitve, execution/ledgerSHA ohranjeni. Ne ocenjujemo prej prikazane, nato izgubljene kode kot končne oddaje. Neposredno ponovno prebrana presoja in obe tipski datoteki QwenP05-A-001 potrdita istoNULLkalibracijo organizacije neoddane izvedljive logike.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Kratek dokument navede12osnovnih pravil: privzeti tuple, status/datum, smer kot predznak, sekundarni kriterij ob primarnem izenačenju, stabilnost, pogled/projekt in projekcijo. Ostanejo bistvene vrzeli:R02ne določi normalizacije oseb/U+0300–036F/UTF-16, R06ne izreče original-prevlade ali enakihključev, R07ne določi stalnih stolpcev/skupne projekcije, R08izpusti podrobnosti, R09reload/prepoved shrambeURL, R10resetin vse smeri, R11polja/pripadnost/števce/vhodnomutacijo, R12pravepodrobnostiduplikatov in390px. Podatkom doda originalIndex, ki ni polje obstoječega API; njegova izpeljava ni pojasnjena. Osnovni pogoji so berljivi, celotna zahtevana domena pa ni skladno razdelana.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:7",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:14",
+        "runtime/runs/P04-A-001/submission/src/context.ts:3"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Privzeti tuple, točen statusni rang, sekundarno primerjanje ob primarni enakosti in ohranitev izvornega reda ob obeh izenačitvah so preverljive trditve. Tudi tipske domene vseh4izbir so eksplicitne. Vendar ni celotnega comparatorja, zadnjega izvornega indeksa, formaliziranih reset/ohranitev prehodov ali invariantu enotne table/povzetkov; src/sort.ts je na koncu prazen. Formalizacija ostane delna, neNULL, saj dokument vsebuje uporabne pogoje.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:16",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:21",
+        "runtime/runs/P04-A-001/submission/src/context.ts:3",
+        "runtime/runs/P04-A-001/submission/src/sort.ts"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 0,
+      "rationale": "Dokument ima le tabeloR01–R12in enovrstična pravila, brez povezav do implementiranih funkcij/scenarijev ali rezultatov. Verification in lastni testi niso oddani; native npm/testnega zagona ni. Berljivi tipi ne ustvarijo zahtevane povezave zahteva–koda–test. Neodvisnih38/70ne pripišemo modelovi sledljivosti.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:12",
+        "runtime/runs/P04-A-001/submission/src/context.ts:14",
+        "runtime/runs/P04-A-001/execution.json",
+        "analysis/evidence/P04-A-001-checks.md"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Končna avtorska produkcijska vsebina je samo tipovni vmesnik context.ts; sort.tsje0B,AppinTaskBoardostaneta nespremenjena. Nobena nova izvedljiva logika ali komponenta ni implementirana oziroma vključena v aplikacijo. Organizacije izhodišča ne pripišemo Qwenu; organizacija neoddane implementacije jeNULL, enako kot neposredno ponovno prebrana QwenP05-A-001(tipCoordinate+neuporabljeniuvozi). Prej nativeitem_75prikazana funkcijska koda ni končna oddaja: poznejši zavrnjeni heredoc jo izprazni.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/src/context.ts:1",
+        "runtime/runs/P04-A-001/submission/src/sort.ts",
+        "runtime/runs/P04-A-001/execution.json",
+        "analysis/evidence/P04-A-001-checks.md#item_75",
+        "analysis/review-packets/P04-A-001.json"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Ni avtorskih testov ali modelovega zagona funkcionalnih/statičnih preverjanj. Branje razvojnih testov, ls/cat in nodeconsolehello niso lastna preverjanja zahtev. Pri delni berljivi dokumentacijski oddaji odsotne lastne preveritve ocenimo0; to ni povsem manjkajoča oddaja, zato vseh5dimenzij ne postaneNULL.",
+      "evidence": [
+        "runtime/runs/P04-A-001/execution.json",
+        "analysis/evidence/P04-A-001-checks.md#item_31",
+        "analysis/evidence/P04-A-001-checks.md#item_43",
+        "analysis/evidence/P04-A-001-checks.md#item_65",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Execution_failed606,204s. Zadnja33lokalnaTypeError zavrnitev pred upstreamom/0B/brezHTTP/balance/sentUpstream;CLIvidilokalnirelay502,ne ponudnikovega502. Nato originalni operator odpove pri postmodel generationfetchfailed(ETIMEDOUT/EHOSTUNREACH). Raziskovalec dokonča le iste postmodelkorake z nespremenjenima execution/ledgerSHA. Neodvisno38/70(samo38regresijskih),0/12,statične/allowedtrue,strictfalse: končni src/sort.ts prazen,UIkontrole/razvrščanje neimplementirani.",
+    "evidence": [
+      "runtime/runs/P04-A-001/execution.json",
+      "runtime/runs/P04-A-001/evaluation-summary.json",
+      "api/P04-A-001/model/api-ledger.jsonl",
+      "runtime/runs/P04-A-001/submission/src/sort.ts"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "APIohranjeni17/27/34 zavrnjeni heredoci,35rm-fzavrnjen,37apply_patchoperationnotpermitted, brez delujočeoddajetestev. Native52izpišeprintfnameravanizapisnamesto preusmeritve,56/57unmatchedquote.66node dejansko napiše specifikacijo,68/69napišeta sort.ts;75ga vceloti pokaže z dvojnim normalizeTitle in problematičnim status comparatorjem. Poznejši API45cat>sort.ts heredoc odpove in končna datoteka je0B;46/native78napiše le context.ts tipe. Teh prejšnjih funkcij ne ocenjujemo kot oddanoimplementacijo in nobenega modelovega testa ni.",
+    "evidence": [
+      "analysis/evidence/P04-A-001-checks.md#item_52",
+      "analysis/evidence/P04-A-001-checks.md#item_56",
+      "analysis/evidence/P04-A-001-checks.md#item_66",
+      "analysis/evidence/P04-A-001-checks.md#item_68",
+      "analysis/evidence/P04-A-001-checks.md#item_69",
+      "analysis/evidence/P04-A-001-checks.md#item_75",
+      "analysis/evidence/P04-A-001-checks.md#item_78",
+      "analysis/review-packets/P04-A-001.json"
+    ]
+  },
+  "finalFailureNote": "Execution_failed606,204s,38/70,0/12,statične/allowedtrue,strictfalse.3avtorske datoteke(spec27vrstic,tipi20vrstic,sort0B);presoja[1,1,0,NULL,0].33zahtev,32HTTP200in zadnja lokalnozavrnjena, popolnračun0,07808045USD. Postmodel174complete=true,originalneSHA ohranjene. Meritev se ni ponovila; naslednji175je preverjeno nezačet."
+}
