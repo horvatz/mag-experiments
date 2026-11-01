@@ -48,7 +48,9 @@ for record in qa['files']:
     path = qa_dir / record['file']
     assert hashlib.sha256(path.read_bytes()).hexdigest() == record['sha256']
     bundle.append(path)
-assert len(bundle) == 22
+pdf_pages = len(qa['pdfPagesViewed'])
+assert pdf_pages > 0 and qa['pdfPagesViewed'] == list(range(1, pdf_pages + 1))
+assert len(bundle) == pdf_pages + 13, 'One PDF, three source snapshots, every PDF page, eight workbook views and QA proof required'
 next_job = jobs[args.checkpoint] if args.checkpoint < len(jobs) else None
 record = dict(at=datetime.datetime.now(datetime.timezone.utc).isoformat(), newArchived=args.checkpoint,
               newReviews=audit['reviews'] - 48, allArchives=audit['archives'], allReviews=audit['reviews'],

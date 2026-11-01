@@ -169,6 +169,15 @@ def main():
         equal(budget.get('B11'), disclosure, 'budget refusal against original evidence')
         equal(budget.get('A12'), 'Vir zavrnitve', 'budget refusal source label')
         equal(budget.get('B12'), 'analysis/recovery/glm-P03-B-003-budget-refusal.json', 'budget refusal source')
+        extension = read(STUDY / 'budget-amendment-2.json')
+        assert extension['status'] == 'approved' and extension['fundingObserved']
+        equal(budget.get('B13'), extension['id'], 'second budget approval version')
+        equal(budget.get('B14'), '50 USD; uporabnik ročno doda 10 USD. Brez raziskovalčevih plačil ali samodejnega doplačevanja.', 'second budget ceiling')
+        observed = extension['fundingObservation']['balance']
+        funding_text = (f"Skupni krediti {observed['totalCreditsUSD']:g} USD; preverjeno {observed['at']}. "
+                        'Posnetek računa, ne posamezna faktura.')
+        equal(budget.get('B17'), funding_text, 'actual prepaid funding source')
+        equal(budget.get('B18'), 'openrouter-study/budget-amendment-2.json', 'second approval source')
         for path in z.namelist():
             if path.startswith('xl/charts/chart') and path.endswith('.xml'):
                 chart_count += 1

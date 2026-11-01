@@ -202,8 +202,11 @@ paired.tables.add(`A4:I${contrastRows.length + 4}`, true, 'ParjeniKontrasti')
 paired.freezePanes.freezeRows(4); paired.freezePanes.freezeColumns(1)
 const amendment = await load(resolve(study, 'budget-amendment-1.json'))
 assert.equal(amendment.status, 'approved')
+let extension = null
+try { extension = await load(resolve(study, 'budget-amendment-2.json')) } catch (error) { if (error.code !== 'ENOENT') throw error }
+if (extension) { assert.equal(extension.status, 'approved'); assert.equal(extension.fundingObserved, true); assert.equal(extension.authorizedTotalCreditsUSD, 50) }
 const budgetSheet = wb.worksheets.add('Proračunska dopolnitev')
-const budgetLastRow = comparison.newArchived >= 188 ? 12 : 10
+const budgetLastRow = extension ? 18 : comparison.newArchived >= 188 ? 12 : 10
 base(budgetSheet, `A1:B${budgetLastRow}`)
 budgetSheet.getRange('A1:B1').values = [['Proračunska dopolnitev', 'O/1.0-budget-amendment-1']]
 heading(budgetSheet, 'A1:B1')
@@ -211,7 +214,7 @@ budgetSheet.getRange('A2:B10').values = [
   ['Odobritev', '30. oktober 2026: uporaba preostalega obstoječega dobroimetja brez doplačil.'],
   ['Veljavnost', 'Diagnostike po meritvi 123; nove meritve od 124 (Qwen/P07-B-003).'],
   ['Varovalo', 'Sveže stanje računa mora kriti največji strošek zahteve in hkratne rezerve.'],
-  ['Omejitev', 'Prvotnih 40 USD skupne porabe računa; poznejša doplačila je ne zvišajo.'],
+  ['Omejitev', extension ? 'Prva odobritev: 40 USD; druga ločena odobritev spodaj zviša skupno mejo na 50 USD.' : 'Prvotnih 40 USD skupne porabe računa; poznejša doplačila je ne zvišajo.'],
   ['Nepotrjeni računi', 'Ostanejo neznani; prvotne konzervativne rezerve ostanejo v revizijski evidenci.'],
   ['Ohranjeno', 'Isti modeli, ponudniki, pozivi, naloge, roki in ocenjevalci. Prvih 123 meritev se ne ponovi.'],
   ['Različica operatorja', 'O/1.0+budget-amendment-1; izvirni proračun in izvorna koda sta ohranjena.'],
@@ -229,11 +232,23 @@ if (comparison.newArchived >= 188) {
     ['Vir zavrnitve', 'analysis/recovery/glm-P03-B-003-budget-refusal.json'],
   ]
 }
+if (extension) {
+  budgetSheet.getRange('A13:B18').values = [
+    ['Druga odobritev', extension.id],
+    ['Odobrena skupna meja', '50 USD; uporabnik ročno doda 10 USD. Brez raziskovalčevih plačil ali samodejnega doplačevanja.'],
+    ['Veljavnost druge dopolnitve', 'Po arhivirani 189; od prve še nezačete 190 GLM/P09-B-002. Prejšnji nemerjeni preizkus 190 ostane ohranjen; 188/189 se ne ponovita.'],
+    ['Nespremenjeno', 'Isti modeli, ponudniki, pozivi, roki, ocenjevalci in zamrznjeni največji stroški. Neznani računi ostanejo NULL.'],
+    ['Dejansko novo dobroimetje', `Skupni krediti ${extension.fundingObservation.balance.totalCreditsUSD} USD; preverjeno ${extension.fundingObservation.balance.at}. Posnetek računa, ne posamezna faktura.`],
+    ['Vir druge dopolnitve', 'openrouter-study/budget-amendment-2.json'],
+  ]
+  heading(budgetSheet, 'A13:B13')
+}
 budgetSheet.getRange(`A1:A${budgetLastRow}`).format.columnWidth = 26
 budgetSheet.getRange(`B1:B${budgetLastRow}`).format.columnWidth = 105
 budgetSheet.getRange(`A2:B${budgetLastRow}`).format.wrapText = true
 budgetSheet.getRange(`A2:B${budgetLastRow}`).format.rowHeight = 44
-if (budgetLastRow === 12) budgetSheet.getRange('A11:B11').format.rowHeight = 58
+if (budgetLastRow >= 12) budgetSheet.getRange('A11:B11').format.rowHeight = 58
+if (extension) budgetSheet.getRange('A15:B15').format.rowHeight = 58
 budgetSheet.freezePanes.freezeRows(1)
 const errors = await wb.inspect({ kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!', options: { useRegex: true, maxResults: 30 }, maxChars: 3000 })
 await fs.writeFile(resolve(qa, 'formula-errors.ndjson'), errors.ndjson)

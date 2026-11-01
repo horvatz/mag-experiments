@@ -68,7 +68,7 @@ export async function startRelay({ selected, destination, label, port = 9238 }) 
       const endpoint = JSON.parse(readFileSync(resolve(study, 'qualification/' + selected.slug + '-endpoints.json'))).data.endpoints.find(e => e.tag === selected.provider)
       const maximumRequestCost = endpoint.context_length * Number(endpoint.pricing.prompt) + endpoint.max_completion_tokens * Number(endpoint.pricing.completion)
       record.budgetBefore = { ...spend, maximumRequestCost }
-      const amendment = JSON.parse(readFileSync(resolve(study, 'budget-amendment-1.json')))
+      const amendment = JSON.parse(readFileSync(resolve(study, 'budget-amendment-2.json')))
       record.budgetRule = prepaidHeadroom({ balance, authorization, amendment, maximumRequestCost, inFlightUSD: [...budgetReservations.values()].reduce((a, b) => a + b, 0) })
       budgetReservations.set(number, maximumRequestCost)
       record.sentUpstream = true
