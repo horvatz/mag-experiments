@@ -73,7 +73,7 @@ def main():
                                 *[next(d['score'] for d in record['dimensions'] if d['dimension'] == dim) for dim in DIMS],
                                 record['method'], None, collection + ' / ' + rel(path)])
     assert len(runs) == 360 and len(reviews) == 120
-    sheets, formula_count, chart_count = {}, 0, 0
+    sheets, sheet_parts, formula_count, chart_count = {}, {}, 0, 0
     with zipfile.ZipFile(FILE) as z:
         shared = []
         if 'xl/sharedStrings.xml' in z.namelist():
@@ -103,6 +103,7 @@ def main():
                     formulas[address] = f.text
                     formula_count += 1
             sheets[sheet.attrib['name']] = (values, formulas)
+            sheet_parts[sheet.attrib['name']] = path
         assert list(sheets) == ['Primerjava', 'Izvedbe', 'Vsebinska presoja', 'Parjene razlike', 'Proračunska dopolnitev']
         for name, source in [('Izvedbe', runs), ('Vsebinska presoja', reviews)]:
             values, formulas = sheets[name]
@@ -178,8 +179,35 @@ def main():
                         'Posnetek računa, ne posamezna faktura.')
         equal(budget.get('B17'), funding_text, 'actual prepaid funding source')
         equal(budget.get('B18'), 'openrouter-study/budget-amendment-2.json', 'second approval source')
-        for path in z.namelist():
-            if path.startswith('xl/charts/chart') and path.endswith('.xml'):
+        def relationships(part):
+            rel_path = posixpath.join(posixpath.dirname(part), '_rels', posixpath.basename(part) + '.rels')
+            if rel_path not in z.namelist():
+                return {}
+            return {node.attrib['Id']: node.attrib
+                    for node in ET.fromstring(z.read(rel_path))}
+
+        def target_part(part, relation):
+            assert relation.get('TargetMode') != 'External'
+            target = relation['Target']
+            resolved = target.lstrip('/') if target.startswith('/') else posixpath.normpath(posixpath.join(posixpath.dirname(part), target))
+            assert resolved in z.namelist(), ('missing related part', resolved)
+            return resolved
+
+        chart_parts = []
+        for name, part in sheet_parts.items():
+            sheet_relations = relationships(part)
+            for drawing_ref in ET.fromstring(z.read(part)).findall('s:drawing', NS):
+                relation = sheet_relations[drawing_ref.attrib['{' + NS['r'] + '}id']]
+                assert relation['Type'].endswith('/drawing')
+                drawing = target_part(part, relation)
+                drawing_relations = relationships(drawing)
+                for chart_ref in ET.fromstring(z.read(drawing)).findall('.//c:chart', NS):
+                    relation = drawing_relations[chart_ref.attrib['{' + NS['r'] + '}id']]
+                    assert relation['Type'].endswith('/chart') and name == 'Primerjava'
+                    chart_parts.append(target_part(drawing, relation))
+        assert len(chart_parts) == len(set(chart_parts)) == 2
+        chart_metrics = set()
+        for path in chart_parts:
                 chart_count += 1
                 chart = ET.fromstring(z.read(path))
                 series = chart.findall('.//c:barChart/c:ser', NS)
@@ -190,13 +218,26 @@ def main():
                     address = ref.text.split('!')[-1].replace('$', '')
                     start, end = address.split(':')
                     assert start[0] == end[0] and int(end[1:]) - int(start[1:]) == 4
+                    assert start[0] == 'NOP'[series_index]
+                    row_start = int(start[1:])
+                    assert row_start in (7, 16)
+                    metric = 'strict' if row_start == 7 else 'requirements'
+                    chart_metrics.add(metric)
                     cache = series_node.find('c:val/c:numRef/c:numCache', NS)
                     assert cache is not None
                     points = {int(pt.attrib['idx']): float(pt.find('c:v', NS).text) for pt in cache.findall('c:pt', NS)}
                     assert set(points) == set(range(5))
                     for i in range(5):
-                        equal(points[i], summary.get(start[0] + str(int(start[1:]) + i)), ('chart cache', path, series_index, i))
-        assert chart_count == 2 and formula_count >= 300
+                        cell = start[0] + str(row_start + i)
+                        assert cell in sheets['Primerjava'][1], ('chart source must remain a formula', cell)
+                        equal(points[i], summary.get(cell), ('chart cache', path, series_index, i))
+                        label = list(LABELS.values())[i]
+                        selected = [row for row in runs if row[0] == label and row[3] == 'ABC'[series_index]]
+                        assert len(selected) == 24
+                        expected = (sum(row[8] for row in selected) / len(selected) if metric == 'strict'
+                                    else sum(row[6] for row in selected) / len(selected) / 12)
+                        equal(points[i], expected, ('chart against source records', metric, label, series_index))
+        assert chart_count == 2 and chart_metrics == {'strict', 'requirements'}
     assert hashlib.sha256(FILE.read_bytes()).hexdigest() == before
     proof = {'at': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'researcherOnly': True,
              'passed': True, 'sourceFile': str(FILE), 'sourceSHA256': before, 'sourceUnchanged': True,

@@ -1,12 +1,12 @@
 # Glavna zbirka P03–P10
 
-Arhiviranih je 69 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
+Arhiviranih je 72 od 72 vnaprej določenih izvedb. Zbirka je popolna.
 
 | Postopek | Arhivirano | Strogi uspehi | Dokazane zahteve, povprečni delež | Čas, povprečje s | Popolna poraba |
 | --- | --- | --- | --- | --- | --- |
-| A | 23/24 | 0 | 0.00 | 735.02 | 9/23 |
-| B | 23/24 | 0 | 0.00 | 700.51 | 0/23 |
-| C | 23/24 | 0 | 0.00 | 723.78 | 0/23 |
+| A | 24/24 | 0 | 0.00 | 729.66 | 10/24 |
+| B | 24/24 | 0 | 0.00 | 709.87 | 0/24 |
+| C | 24/24 | 0 | 0.00 | 738.68 | 0/24 |
 
 Vsaka zahteva potrebuje uspeh na obeh velikostih zaslona. Neopaženo preverjanje pomeni nedokazano zahtevo, ne potrjene funkcionalne napake. Strogi uspeh zahteva še zaključek postopka, dovoljene spremembe, lint, tipe, gradnjo in vseh 70 preverjanj.
 
@@ -83,5 +83,21 @@ Vhodni tokeni vključujejo predpomnjene, izhodni vključujejo reasoning. Nepopol
 | [P10-C-002](../../runs/P10-C-002/report.md) | invalid_stage_handoff | 0/12 | 12/12 | 525.646 | ne |
 | [P10-B-002](../../runs/P10-B-002/report.md) | invalid_review_handoff | 0/12 | 12/12 | 1081.205 | ne |
 | [P10-A-002](../../runs/P10-A-002/report.md) | completed | 0/12 | 12/12 | 191.39 | ne |
+| [P09-C-003](../../runs/P09-C-003/report.md) | phase_time_limit | 0/12 | 12/12 | 1081.212 | ne |
+| [P09-A-003](../../runs/P09-A-003/report.md) | completed | 0/12 | 12/12 | 606.515 | ne |
+| [P09-B-003](../../runs/P09-B-003/report.md) | invalid_review_handoff | 1/12 | 12/12 | 925.184 | ne |
+
+## Parne razlike po nalogah
+
+| Primerjava | Mera | Razlika | 95 % percentilni interval |
+| --- | --- | --- | --- |
+| A − B | meanDemonstratedFraction | -0.00 | -0.01 do 0.00 |
+| A − B | meanElapsedSeconds | 19.79 | -278.95 do 302.20 |
+| A − C | meanDemonstratedFraction | 0.00 | 0.00 do 0.00 |
+| A − C | meanElapsedSeconds | -9.01 | -229.74 do 199.14 |
+| B − C | meanDemonstratedFraction | 0.00 | 0.00 do 0.01 |
+| B − C | meanElapsedSeconds | -28.81 | -134.67 do 77.33 |
+
+Opisni intervali ponovno vzorčijo osem nalog; ne posameznih zahtev ali testov. Seme in 20.000 ponovitev sta določena pred meritvami.
 
 Vsebinska rubrika, človeška presoja in pisanje interpretacije so ločeni koraki; prisotnost testov ali dokumentov ni samodejna ocena njihove kakovosti.

@@ -19,6 +19,7 @@ const reviews = wb.worksheets.getItem('Vsebinska presoja').getRange('A2:L121').v
 assert.equal(runs.filter(r => r[1]).length, 360)
 assert.equal(reviews.filter(r => r[1]).length, 120)
 const views = [
+  ['Primerjava', 'A25:J41', 'exported-charts'],
   ['Proračunska dopolnitev', 'A1:B18', 'budget-disclosure'],
   ['Vsebinska presoja', 'A108:J121', 'reviews-tail'],
   ['Vsebinska presoja', 'J110:L121', 'reviews-sources-tail'],

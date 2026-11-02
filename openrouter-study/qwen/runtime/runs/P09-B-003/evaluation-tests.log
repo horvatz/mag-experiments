@@ -1,0 +1,1757 @@
+[WebServer] (node:3680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 70 tests using 1 worker
+
+(node:3681) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [regression-api] › .work/P09/baseline/tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (40ms)
+  ✓   2 [regression-api] › .work/P09/baseline/tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (7ms)
+  ✓   3 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (7ms)
+  ✓   4 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (5ms)
+  ✓   5 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (4ms)
+  ✓   7 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (5ms)
+  ✓   8 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (5ms)
+  ✓   9 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (4ms)
+  ✓  10 [regression-api] › .work/P09/baseline/tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (11ms)
+  ✓  11 [regression-api] › .work/P09/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with success (12ms)
+  ✓  12 [regression-api] › .work/P09/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [regression-api] › .work/P09/baseline/tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (11ms)
+  ✓  14 [regression-api] › .work/P09/baseline/tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:3683) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (469ms)
+  ✓  16 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (452ms)
+  ✓  17 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (503ms)
+  ✓  18 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (593ms)
+[WebServer] 9:19:48 PM [vite] (client) [Unhandled error] URIError: URI malformed
+[WebServer]  > useRoute src/navigation.ts:42:6
+[WebServer]     40 |    
+[WebServer]     41 |    const projectId = path?.match(/^#\/projects\/([^/]+)(?:\/tasks\/([^/]+))?$/)
+[WebServer]     42 |      ? decodeURIComponent(path.match(/^#\/projects\/([^/]+)(?:\/tasks\/([^/]+))?$/)[1])
+[WebServer]        |        ^
+[WebServer]     43 |      : null
+[WebServer]     44 |    
+[WebServer]  > App src/App.tsx:198:16
+[WebServer]  > Object.react_stack_bottom_frame ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+[WebServer]  > renderWithHooks ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+[WebServer]  > updateFunctionComponent ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+[WebServer]  > beginWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+[WebServer]  > runWithFiberInDEV ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+[WebServer]  > performUnitOfWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+[WebServer]  > workLoopSync ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+[WebServer] 
+[WebServer] 9:19:48 PM [vite] (client) [console.warn] An error occurred in the <App> component.
+[WebServer] 
+[WebServer] Consider adding an error boundary to your tree to customize error handling behavior.
+[WebServer] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[WebServer] 
+  ✘  19 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (5.3s)
+(node:3692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  20 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (366ms)
+  ✓  21 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (354ms)
+  ✘  22 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (5.2s)
+(node:3700) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  23 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (338ms)
+  ✘  24 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (5.3s)
+(node:3924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  25 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (5.3s)
+(node:3929) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  26 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (5.3s)
+(node:3937) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  27 [development-desktop] › tasks/P09/development.spec.ts:2:1 › D01: direct filtered URL (5.2s)
+(node:3942) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  28 [development-desktop] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation (5.3s)
+(node:3947) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  29 [development-desktop] › tasks/P09/development.spec.ts:4:1 › D03: board and reload preserve committed state (5.4s)
+(node:3953) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  30 [development-desktop] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes (5.2s)
+(node:3958) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  31 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state (5.2s)
+(node:3963) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  32 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field (5.2s)
+(node:3968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  33 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting (5.2s)
+(node:3974) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  34 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:7:1 › E04: R04 first parameter wins, invalid values default, no passive rewrite (265ms)
+  ✘  35 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit (5.3s)
+(node:3981) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  36 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit (5.3s)
+(node:4421) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  37 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh (5.3s)
+(node:4428) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  38 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:11:1 › E08: R08 view changes preserve committed state and discard draft (5.4s)
+(node:4649) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  39 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID (401ms)
+(node:4873) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  40 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:13:1 › E10: R10 project navigation resets while direct URL honors params (5.3s)
+(node:4881) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  41 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count (5.3s)
+(node:5105) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  42 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout (5.3s)
+(node:5133) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (364ms)
+  ✓  44 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (482ms)
+  ✓  45 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (519ms)
+  ✓  46 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (648ms)
+[WebServer] 9:21:37 PM [vite] (client) [Unhandled error] URIError: URI malformed
+[WebServer]  > useRoute src/navigation.ts:42:6
+[WebServer]     40 |    
+[WebServer]     41 |    const projectId = path?.match(/^#\/projects\/([^/]+)(?:\/tasks\/([^/]+))?$/)
+[WebServer]     42 |      ? decodeURIComponent(path.match(/^#\/projects\/([^/]+)(?:\/tasks\/([^/]+))?$/)[1])
+[WebServer]        |        ^
+[WebServer]     43 |      : null
+[WebServer]     44 |    
+[WebServer]  > App src/App.tsx:198:16
+[WebServer]  > Object.react_stack_bottom_frame ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+[WebServer]  > renderWithHooks ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+[WebServer]  > updateFunctionComponent ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+[WebServer]  > beginWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+[WebServer]  > runWithFiberInDEV ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+[WebServer]  > performUnitOfWork ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+[WebServer]  > workLoopSync ../../../../node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+[WebServer] 
+[WebServer] 9:21:37 PM [vite] (client) [console.warn] An error occurred in the <App> component.
+[WebServer] 
+[WebServer] Consider adding an error boundary to your tree to customize error handling behavior.
+[WebServer] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[WebServer] 
+  ✘  47 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (5.3s)
+(node:5337) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  48 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (420ms)
+  ✓  49 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (384ms)
+  ✘  50 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (5.3s)
+(node:5353) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  51 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (384ms)
+  ✘  52 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (5.3s)
+(node:5359) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  53 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (5.3s)
+(node:5366) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  54 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (5.3s)
+(node:5373) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  55 [development-mobile] › tasks/P09/development.spec.ts:2:1 › D01: direct filtered URL (5.3s)
+(node:5378) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  56 [development-mobile] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation (5.4s)
+(node:5383) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  57 [development-mobile] › tasks/P09/development.spec.ts:4:1 › D03: board and reload preserve committed state (5.4s)
+(node:5388) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  58 [development-mobile] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes (5.3s)
+(node:5393) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  59 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state (5.3s)
+(node:5398) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  60 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field (5.2s)
+(node:5404) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  61 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting (5.3s)
+(node:5409) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  62 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:7:1 › E04: R04 first parameter wins, invalid values default, no passive rewrite (325ms)
+  ✘  63 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit (5.4s)
+(node:5610) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  64 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit (5.4s)
+(node:5642) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  65 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh (5.4s)
+(node:5647) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  66 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:11:1 › E08: R08 view changes preserve committed state and discard draft (5.4s)
+(node:5652) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  67 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID (418ms)
+(node:5657) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  68 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:13:1 › E10: R10 project navigation resets while direct URL honors params (5.3s)
+(node:5664) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  69 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count (5.4s)
+(node:5673) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  70 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout (5.4s)
+
+
+  1) [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Projekt ne obstaja' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Projekt ne obstaja' }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Projekt ne obstaja' })
+
+
+      83 |   await expect(page.getByRole('table')).toBeVisible()
+      84 |   await page.goto('/#/projects/%E0%A4%A')
+    > 85 |   await expect(page.getByRole('heading', { name: 'Projekt ne obstaja' })).toBeVisible()
+         |                                                                           ^
+      86 |   await page.goto('/#/projects/web/tasks/launch-01')
+      87 |   await expect(page.getByRole('dialog').getByText('Opravilo ni v tem projektu')).toBeVisible()
+      88 |   await page.getByRole('button', { name: 'Zapri podrobnosti' }).click()
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P09/baseline/tests/baseline.spec.ts:85:75
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'V tem projektu še ni opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'V tem projektu še ni opravil' }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'V tem projektu še ni opravil' })
+
+
+      112 |   await page.route('**/api/projects/web/tasks', (route) => route.fulfill({ json: [] }))
+      113 |   await page.goto('/')
+    > 114 |   await expect(page.getByRole('heading', { name: 'V tem projektu še ni opravil' })).toBeVisible()
+          |                                                                                     ^
+      115 |   await expect(page.getByRole('table')).toHaveCount(0)
+      116 |   await page.getByRole('navigation').getByRole('link', { name: 'Jesenska kampanja' }).click()
+      117 |   await expect(page.getByRole('table').getByRole('row')).toHaveCount(4)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P09/baseline/tests/baseline.spec.ts:114:85
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-project--5e743-on-and-shows-an-empty-state-regression-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-project--5e743-on-and-shows-an-empty-state-regression-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-project--5e743-on-and-shows-an-empty-state-regression-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-project--5e743-on-and-shows-an-empty-state-regression-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil', exact: true }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true })
+
+
+      139 |   await page.getByRole('button', { name: 'Tabla', exact: true }).click()
+      140 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 141 |   await expect(board).toBeVisible()
+          |                       ^
+      142 |   await expect(page.getByRole('table')).toHaveCount(0)
+      143 |   await expect(page.getByRole('button', { name: 'Tabla', exact: true })).toHaveAttribute('aria-pressed', 'true')
+      144 |   for (const [status, id] of [['Pripravljeno', 'web-02'], ['V delu', 'web-01'], ['Končano', 'web-03']]) {
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P09/baseline/tests/baseline.spec.ts:141:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link')
+    Expected: 3
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      175 |   await page.goto('/#/projects/web?view=board')
+      176 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 177 |   await expect(board.getByRole('link')).toHaveCount(3)
+          |                                         ^
+      178 |   expect((await request.patch('/api/tasks/web-02', { data: { title: 'Pregled vsebine', status: 'done' } })).status()).toBe(200)
+      179 |   await page.reload()
+      180 |   const ready = board.getByRole('region', { name: 'Pripravljeno', exact: true })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P09/baseline/tests/baseline.spec.ts:177:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region')
+    Expected: 3
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      195 |   await page.goto('/#/projects/web?view=board')
+      196 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 197 |   await expect(board.getByRole('region')).toHaveCount(3)
+          |                                           ^
+      198 |   await expect(board.getByRole('link')).toHaveCount(0)
+      199 |   await expect(board.getByText('Ni opravil v tem stanju.')).toHaveCount(3)
+      200 |   await page.getByRole('button', { name: 'Preglednica', exact: true }).click()
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P09/baseline/tests/baseline.spec.ts:197:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [development-desktop] › tasks/P09/development.spec.ts:2:1 › D01: direct filtered URL ──────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 2
+
+      Array [
+    +   "web-01",
+    +   "web-02",
+        "web-03",
+      ]
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/development.spec.ts:2:132
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D01-direct-filtered-URL-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/development-D01-direct-filtered-URL-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D01-direct-filtered-URL-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/development-D01-direct-filtered-URL-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [development-desktop] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/development.spec.ts:3:178
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [development-desktop] › tasks/P09/development.spec.ts:4:1 › D03: board and reload preserve committed state 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil' })
+
+
+       at tasks/P09/helpers.ts:46
+
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+    > 46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+         |                                                                                                                                                                                     ^
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+        at board (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:46:181)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/development.spec.ts:4:138
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D03-board-and-reload-preserve-committed-state-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/development-D03-board-and-reload-preserve-committed-state-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D03-board-and-reload-preserve-committed-state-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/development-D03-board-and-reload-preserve-committed-state-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [development-desktop] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes ──────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 10
+    + Received  +  1
+
+    - Array [
+    -   "web-01",
+    -   "web-02",
+    -   "web-03",
+    -   "web-04",
+    -   "web-05",
+    -   "web-06",
+    -   "web-07",
+    -   "web-08",
+    - ]
+    + Array []
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/development.spec.ts:5:205
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D04-reset-and-no-writes-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/development-D04-reset-and-no-writes-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D04-reset-and-no-writes-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/development-D04-reset-and-no-writes-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 2
+
+      Array [
+    +   "web-01",
+    +   "web-02",
+        "web-03",
+      ]
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:4:272
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 3
+    + Received  + 1
+
+    - Array [
+    -   "a",
+    - ]
+    + Array []
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:5:279
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 0
+
+      Array [
+        "x",
+    -   "y",
+        "n",
+      ]
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:6:321
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:8:443
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:9:240
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:10:153
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:11:1 › E08: R08 view changes preserve committed state and discard draft 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil' })
+
+
+       at tasks/P09/helpers.ts:46
+
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+    > 46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+         |                                                                                                                                                                                     ^
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+        at board (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:46:181)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:11:212
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E08-R08-view-ch-13330-ted-state-and-discard-draft-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E08-R08-view-ch-13330-ted-state-and-discard-draft-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E08-R08-view-ch-13330-ted-state-and-discard-draft-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E08-R08-view-ch-13330-ted-state-and-discard-draft-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "title-desc"
+    Received: null
+
+      10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+      11 | test('E08: R08 view changes preserve committed state and discard draft',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&order=title-desc');await search(page).fill('uncommitted');await board(page);await expectIds(page,['web-03']);await expect(search(page)).toHaveValue('pregled');expect(params(page).get('order')).toBe('title-desc');await select(page,'Stanje v povezavi','todo');await table(page);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done');await expectIds(page,['web-03'])})
+    > 12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id="web-03"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})
+         |                                                                                                                                                                                                                                                                                                                                                                           ^
+      13 | test('E10: R10 project navigation resets while direct URL honors params',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&view=board');await project(page,'launch');await expectIds(page,['launch-01','launch-02'],false);expect(params(page).toString()).toBe('view=board');await page.goto('/#/projects/launch?status=done&view=board');await expectIds(page,['launch-02']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+      14 | test('E11: R11 reset history, empty message and whole-project count',async({page})=>{await mount(page,undefined,'#/projects/web?q=missing&view=board');await expectIds(page,[]);await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible();await expect(page.getByRole('status',{name:'Rezultati povezave'})).toHaveText('Prikazano: 0 od 8.');await search(page).fill('draft');await click(page,'Ponastavi pogled');await expectIds(page,webIds(),false);expect(params(page).toString()).toBe('view=board');const length=await page.evaluate(()=>history.length);await click(page,'Ponastavi pogled');expect(await page.evaluate(()=>history.length)).toBe(length);await page.goBack();await expect(search(page)).toHaveValue('missing');await expectIds(page,[])})
+      15 | test('E12: R12 local read-only behavior and responsive layout',async({page})=>{const writes=await mount(page);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await board(page);await details(page,'web-03');expect(await page.evaluate(()=>localStorage.length)).toBe(0);await readonly(page,writes)})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:12:363
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:13:1 › E10: R10 project navigation resets while direct URL honors params 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+    +   "launch-01",
+        "launch-02",
+      ]
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:13:369
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E10-R10-project-96508-le-direct-URL-honors-params-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E10-R10-project-96508-le-direct-URL-honors-params-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E10-R10-project-96508-le-direct-URL-honors-params-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E10-R10-project-96508-le-direct-URL-honors-params-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Ni zadetkov.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Ni zadetkov.', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Ni zadetkov.', { exact: true })
+
+
+      12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id="web-03"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})
+      13 | test('E10: R10 project navigation resets while direct URL honors params',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&view=board');await project(page,'launch');await expectIds(page,['launch-01','launch-02'],false);expect(params(page).toString()).toBe('view=board');await page.goto('/#/projects/launch?status=done&view=board');await expectIds(page,['launch-02']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+    > 14 | test('E11: R11 reset history, empty message and whole-project count',async({page})=>{await mount(page,undefined,'#/projects/web?q=missing&view=board');await expectIds(page,[]);await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible();await expect(page.getByRole('status',{name:'Rezultati povezave'})).toHaveText('Prikazano: 0 od 8.');await search(page).fill('draft');await click(page,'Ponastavi pogled');await expectIds(page,webIds(),false);expect(params(page).toString()).toBe('view=board');const length=await page.evaluate(()=>history.length);await click(page,'Ponastavi pogled');expect(await page.evaluate(()=>history.length)).toBe(length);await page.goBack();await expect(search(page)).toHaveValue('missing');await expectIds(page,[])})
+         |                                                                                                                                                                                                                                           ^
+      15 | test('E12: R12 local read-only behavior and responsive layout',async({page})=>{const writes=await mount(page);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await board(page);await details(page,'web-03');expect(await page.evaluate(()=>localStorage.length)).toBe(0);await readonly(page,writes)})
+      16 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:14:235
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:15:163
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Projekt ne obstaja' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Projekt ne obstaja' }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Projekt ne obstaja' })
+
+
+      83 |   await expect(page.getByRole('table')).toBeVisible()
+      84 |   await page.goto('/#/projects/%E0%A4%A')
+    > 85 |   await expect(page.getByRole('heading', { name: 'Projekt ne obstaja' })).toBeVisible()
+         |                                                                           ^
+      86 |   await page.goto('/#/projects/web/tasks/launch-01')
+      87 |   await expect(page.getByRole('dialog').getByText('Opravilo ni v tem projektu')).toBeVisible()
+      88 |   await page.getByRole('button', { name: 'Zapri podrobnosti' }).click()
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P09/baseline/tests/baseline.spec.ts:85:75
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/baseline-unknown-locations-4928e-Ds-show-a-recoverable-state-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'V tem projektu še ni opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'V tem projektu še ni opravil' }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'V tem projektu še ni opravil' })
+
+
+      112 |   await page.route('**/api/projects/web/tasks', (route) => route.fulfill({ json: [] }))
+      113 |   await page.goto('/')
+    > 114 |   await expect(page.getByRole('heading', { name: 'V tem projektu še ni opravil' })).toBeVisible()
+          |                                                                                     ^
+      115 |   await expect(page.getByRole('table')).toHaveCount(0)
+      116 |   await page.getByRole('navigation').getByRole('link', { name: 'Jesenska kampanja' }).click()
+      117 |   await expect(page.getByRole('table').getByRole('row')).toHaveCount(4)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P09/baseline/tests/baseline.spec.ts:114:85
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-project--5e743-on-and-shows-an-empty-state-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-project--5e743-on-and-shows-an-empty-state-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-project--5e743-on-and-shows-an-empty-state-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-project--5e743-on-and-shows-an-empty-state-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil', exact: true }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true })
+
+
+      139 |   await page.getByRole('button', { name: 'Tabla', exact: true }).click()
+      140 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 141 |   await expect(board).toBeVisible()
+          |                       ^
+      142 |   await expect(page.getByRole('table')).toHaveCount(0)
+      143 |   await expect(page.getByRole('button', { name: 'Tabla', exact: true })).toHaveAttribute('aria-pressed', 'true')
+      144 |   for (const [status, id] of [['Pripravljeno', 'web-02'], ['V delu', 'web-01'], ['Končano', 'web-03']]) {
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P09/baseline/tests/baseline.spec.ts:141:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-navigation--5e8a8-titles-by-ID-without-writes-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link')
+    Expected: 3
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('link')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      175 |   await page.goto('/#/projects/web?view=board')
+      176 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 177 |   await expect(board.getByRole('link')).toHaveCount(3)
+          |                                         ^
+      178 |   expect((await request.patch('/api/tasks/web-02', { data: { title: 'Pregled vsebine', status: 'done' } })).status()).toBe(200)
+      179 |   await page.reload()
+      180 |   const ready = board.getByRole('region', { name: 'Pripravljeno', exact: true })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P09/baseline/tests/baseline.spec.ts:177:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/baseline-board-reflects-sa-bb89f-olumns-and-duplicate-titles-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  25) [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region')
+    Expected: 3
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil', exact: true }).getByRole('region')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      195 |   await page.goto('/#/projects/web?view=board')
+      196 |   const board = page.getByRole('region', { name: 'Tabla opravil', exact: true })
+    > 197 |   await expect(board.getByRole('region')).toHaveCount(3)
+          |                                           ^
+      198 |   await expect(board.getByRole('link')).toHaveCount(0)
+      199 |   await expect(board.getByText('Ni opravil v tem stanju.')).toHaveCount(3)
+      200 |   await page.getByRole('button', { name: 'Preglednica', exact: true }).click()
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/P09/baseline/tests/baseline.spec.ts:197:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/baseline-an-empty-board-ke-b73f1-switching-back-to-the-table-regression-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  26) [development-mobile] › tasks/P09/development.spec.ts:2:1 › D01: direct filtered URL ──────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 2
+
+      Array [
+    +   "web-01",
+    +   "web-02",
+        "web-03",
+      ]
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/development.spec.ts:2:132
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D01-direct-filtered-URL-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/development-D01-direct-filtered-URL-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D01-direct-filtered-URL-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/development-D01-direct-filtered-URL-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  27) [development-mobile] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/development.spec.ts:3:178
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/development-D02-draft-only-applies-on-confirmation-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  28) [development-mobile] › tasks/P09/development.spec.ts:4:1 › D03: board and reload preserve committed state 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil' })
+
+
+       at tasks/P09/helpers.ts:46
+
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+    > 46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+         |                                                                                                                                                                                     ^
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+        at board (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:46:181)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/development.spec.ts:4:138
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D03-board-and-reload-preserve-committed-state-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/development-D03-board-and-reload-preserve-committed-state-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D03-board-and-reload-preserve-committed-state-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/development-D03-board-and-reload-preserve-committed-state-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  29) [development-mobile] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes ──────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 10
+    + Received  +  1
+
+    - Array [
+    -   "web-01",
+    -   "web-02",
+    -   "web-03",
+    -   "web-04",
+    -   "web-05",
+    -   "web-06",
+    -   "web-07",
+    -   "web-08",
+    - ]
+    + Array []
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/development.spec.ts:5:205
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D04-reset-and-no-writes-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/development-D04-reset-and-no-writes-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/development-D04-reset-and-no-writes-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/development-D04-reset-and-no-writes-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  30) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 2
+
+      Array [
+    +   "web-01",
+    +   "web-02",
+        "web-03",
+      ]
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:4:272
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E01-R01-direct--c1645-d-detail-routes-apply-state-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  31) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 3
+    + Received  + 1
+
+    - Array [
+    -   "a",
+    - ]
+    + Array []
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:5:279
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E02-R02-one-nor-7aa49-hrase-within-a-single-field-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 0
+
+      Array [
+        "x",
+    -   "y",
+        "n",
+      ]
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:6:321
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E03-R03-status--27ab1-on-and-stable-title-sorting-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  33) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:8:443
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E05-R05-draft-c-576a5-l-one-atomic-history-commit-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  34) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:9:240
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  35) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:10:153
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E07-R07-back-fo-b8dfc-ontrols-results-and-refresh-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  36) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:11:1 › E08: R08 view changes preserve committed state and discard draft 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Tabla opravil' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Tabla opravil' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Tabla opravil' })
+
+
+       at tasks/P09/helpers.ts:46
+
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+    > 46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+         |                                                                                                                                                                                     ^
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+        at board (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:46:181)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:11:212
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E08-R08-view-ch-13330-ted-state-and-discard-draft-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E08-R08-view-ch-13330-ted-state-and-discard-draft-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E08-R08-view-ch-13330-ted-state-and-discard-draft-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E08-R08-view-ch-13330-ted-state-and-discard-draft-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  37) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "title-desc"
+    Received: null
+
+      10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+      11 | test('E08: R08 view changes preserve committed state and discard draft',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&order=title-desc');await search(page).fill('uncommitted');await board(page);await expectIds(page,['web-03']);await expect(search(page)).toHaveValue('pregled');expect(params(page).get('order')).toBe('title-desc');await select(page,'Stanje v povezavi','todo');await table(page);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done');await expectIds(page,['web-03'])})
+    > 12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id="web-03"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})
+         |                                                                                                                                                                                                                                                                                                                                                                           ^
+      13 | test('E10: R10 project navigation resets while direct URL honors params',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&view=board');await project(page,'launch');await expectIds(page,['launch-01','launch-02'],false);expect(params(page).toString()).toBe('view=board');await page.goto('/#/projects/launch?status=done&view=board');await expectIds(page,['launch-02']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+      14 | test('E11: R11 reset history, empty message and whole-project count',async({page})=>{await mount(page,undefined,'#/projects/web?q=missing&view=board');await expectIds(page,[]);await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible();await expect(page.getByRole('status',{name:'Rezultati povezave'})).toHaveText('Prikazano: 0 od 8.');await search(page).fill('draft');await click(page,'Ponastavi pogled');await expectIds(page,webIds(),false);expect(params(page).toString()).toBe('view=board');const length=await page.evaluate(()=>history.length);await click(page,'Ponastavi pogled');expect(await page.evaluate(()=>history.length)).toBe(length);await page.goBack();await expect(search(page)).toHaveValue('missing');await expectIds(page,[])})
+      15 | test('E12: R12 local read-only behavior and responsive layout',async({page})=>{const writes=await mount(page);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await board(page);await details(page,'web-03');expect(await page.evaluate(()=>localStorage.length)).toBe(0);await readonly(page,writes)})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:12:363
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E09-R09-details-ea7b2-ew-and-correct-duplicate-ID-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  38) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:13:1 › E10: R10 project navigation resets while direct URL honors params 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+    +   "launch-01",
+        "launch-02",
+      ]
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at tasks/P09/helpers.ts:43
+
+      41 | export const ids = (page: Page) => page.locator('[data-task-id]').evaluateAll(nodes => nodes.map(n => n.getAttribute('data-task-id')))
+      42 | export async function expectIds(page: Page, values: string[], ordered = true) {
+    > 43 |   await expect.poll(async () => { const result = await ids(page); return ordered ? result : result.sort() }).toEqual(ordered ? values : [...values].sort())
+         |                                                                                                              ^
+      44 | }
+      45 | export const webIds = (records: Task[] = examples) => records.filter(t => t.projectId === 'web').map(t => t.id)
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+        at expectIds (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:43:110)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:13:369
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E10-R10-project-96508-le-direct-URL-honors-params-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E10-R10-project-96508-le-direct-URL-honors-params-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E10-R10-project-96508-le-direct-URL-honors-params-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E10-R10-project-96508-le-direct-URL-honors-params-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  39) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Ni zadetkov.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Ni zadetkov.', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Ni zadetkov.', { exact: true })
+
+
+      12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id="web-03"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})
+      13 | test('E10: R10 project navigation resets while direct URL honors params',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&view=board');await project(page,'launch');await expectIds(page,['launch-01','launch-02'],false);expect(params(page).toString()).toBe('view=board');await page.goto('/#/projects/launch?status=done&view=board');await expectIds(page,['launch-02']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+    > 14 | test('E11: R11 reset history, empty message and whole-project count',async({page})=>{await mount(page,undefined,'#/projects/web?q=missing&view=board');await expectIds(page,[]);await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible();await expect(page.getByRole('status',{name:'Rezultati povezave'})).toHaveText('Prikazano: 0 od 8.');await search(page).fill('draft');await click(page,'Ponastavi pogled');await expectIds(page,webIds(),false);expect(params(page).toString()).toBe('view=board');const length=await page.evaluate(()=>history.length);await click(page,'Ponastavi pogled');expect(await page.evaluate(()=>history.length)).toBe(length);await page.goBack();await expect(search(page)).toHaveValue('missing');await expectIds(page,[])})
+         |                                                                                                                                                                                                                                           ^
+      15 | test('E12: R12 local read-only behavior and responsive layout',async({page})=>{const writes=await mount(page);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await board(page);await details(page,'web-03');expect(await page.evaluate(()=>localStorage.length)).toBe(0);await readonly(page,writes)})
+      16 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:14:235
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E11-R11-reset-h-af043-age-and-whole-project-count-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  40) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout 
+
+    TimeoutError: locator.click: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Uporabi pogled', exact: true })
+
+
+       at tasks/P09/helpers.ts:49
+
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+      48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+    > 49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+         |                                                                                                    ^
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+      52 |   await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name, exact: true }).click()
+        at click (/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/tasks/P09/helpers.ts:49:100)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/evaluation/P09/acceptance.spec.ts:15:163
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-B-003/evaluation-artifacts/acceptance-E12-R12-local-r-8cc57-avior-and-responsive-layout-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  40 failed
+    [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state 
+    [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state 
+    [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes 
+    [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles 
+    [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table 
+    [development-desktop] › tasks/P09/development.spec.ts:2:1 › D01: direct filtered URL ───────────
+    [development-desktop] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation 
+    [development-desktop] › tasks/P09/development.spec.ts:4:1 › D03: board and reload preserve committed state 
+    [development-desktop] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes ───────────
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:11:1 › E08: R08 view changes preserve committed state and discard draft 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:13:1 › E10: R10 project navigation resets while direct URL honors params 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count 
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles 
+    [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table 
+    [development-mobile] › tasks/P09/development.spec.ts:2:1 › D01: direct filtered URL ────────────
+    [development-mobile] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation 
+    [development-mobile] › tasks/P09/development.spec.ts:4:1 › D03: board and reload preserve committed state 
+    [development-mobile] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes ────────────
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:11:1 › E08: R08 view changes preserve committed state and discard draft 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:13:1 › E10: R10 project navigation resets while direct URL honors params 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout 
+  30 passed (3.7m)

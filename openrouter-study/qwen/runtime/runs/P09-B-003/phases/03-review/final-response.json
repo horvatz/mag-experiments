@@ -1,0 +1,34 @@
+Izhodiščni status je bil zapisan. Sedaj začnem s sistematičnim pregledom izzivov.
+
+**Pregled R01:** Stanje pregleda je določeno s parametri q, status in order v query delu URL fragmenta za obstoječo pot projekta ali opravila. Privzeto je q prazen, status all, order original. Ob neposrednem odprtju povezave se stanje uporabi brez dodatnega klika.
+
+**Pregled R02:** q je ena dobesedna fraza: trim zunanjih belin, NFD, odstranitev U+0300–U+36F in male črke za iskanje po title, description, assignee ali id. Fraza mora biti podniz vsaj enega polja; ni regularni izraz in se ne razdeli v besede.
+
+**Pregled R03:** status podpira all/todo/
+in_progress/done in deluje skupaj z q po IN. order je original/title-asc/title-desc; naslov se primerja po isti normalizaciji in UTF-16, ob izenačenju ostane izvorni vrstni red.
+
+**Pregled R04:** Neznana vrednost status/order pomeni privzeto vrednost. Pri ponovljenem parametru velja prva pojavitev. Neznani parametri ne vplivajo na prikaz. Razčlenjevanje ne povzroči samodejnega prepisovanja URL-ja.
+
+**Pregled R05:** Spreminjanje treh kontrol ureja osnutek in še ne spremeni prikaza ali URL-ja. Gumb Uporabi pogled potrdi vse tri vrednosti hkrati in ustvari eno novo zgodovinsko stanje, če se potrjeno stanje spremeni.
+
+**Pregled R06:** Pri potrditvi se q obreže, privzeti parametri izpustijo, preostali pravilno URL-kodirajo.
+Obstoječi view=board se ohrani, neznani parametri se odstranijo. Ponovitev enake potrditve ne doda novega zgodovinskega stanja.
+
+**Pregled R07:** Nazaj in Naprej v brskalniku obnovita potrjene filtre, prikaz in osnutek kontrol.
+Osvežitev ohrani potrjeno stanje iz URL-ja.
+
+**Pregled R08:** Preklop Preglednica/Tabla ohrani potrjene parametre in prikaže iste ID-je.
+Nepotrjen osnutek se ob vsaki navigaciji zavrže.
+
+**Pregled R09:** Odpiranje podrobnosti in zapiranje z gumbom ali Escape ohranita potrjene parametre in način pogleda.
+Povezava do pravilnega ID-ja deluje tudi pri enakih naslovih.
+
+**Pregled R10:** Klik na drugi projekt začne njegov privzeti pregled (q prazen, status all, order original) in ohrani table/board.
+Neposredna povezava do drugega projekta s parametri pa jih upošteva.
+
+**Pregled R11:** Gumb Ponastavi pogled počisti tri filtre in osnutek ter posodobi zgodovino po istem pravilu kot potrditev.
+Obdrži trenutni način pogleda. Prazen rezultat pokaže "Ni zadetkov"; števec kaže "Prikazano: N od M..".
+
+**Pregled R12:** Nobeno dejanje ne spremeni podatkov ali pošlje zapisov na API. Stanje ni v localStorage. Delujejo obstoječa neznana pot, nalaganje, podrobnosti in prilagodljiv videz Folio.
+
+Sedaj ustvarim review.json z ugotovitvami:

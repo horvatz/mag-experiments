@@ -1,11 +1,11 @@
 # Glavna zbirka P03–P10
 
-Arhiviranih je 70 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
+Arhiviranih je 72 od 72 vnaprej določenih izvedb. Zbirka je popolna.
 
 | Postopek | Arhivirano | Strogi uspehi | Dokazane zahteve, povprečni delež | Čas, povprečje s | Popolna poraba |
 | --- | --- | --- | --- | --- | --- |
-| A | 23/24 | 11 | 0.97 | 638.26 | 17/23 |
-| B | 23/24 | 4 | 0.82 | 818.30 | 6/23 |
+| A | 24/24 | 11 | 0.93 | 615.85 | 17/24 |
+| B | 24/24 | 4 | 0.82 | 822.50 | 7/24 |
 | C | 24/24 | 4 | 0.77 | 896.63 | 6/24 |
 
 Vsaka zahteva potrebuje uspeh na obeh velikostih zaslona. Neopaženo preverjanje pomeni nedokazano zahtevo, ne potrjene funkcionalne napake. Strogi uspeh zahteva še zaključek postopka, dovoljene spremembe, lint, tipe, gradnjo in vseh 70 preverjanj.
@@ -84,5 +84,20 @@ Vhodni tokeni vključujejo predpomnjene, izhodni vključujejo reasoning. Nepopol
 | [P10-B-002](../../runs/P10-B-002/report.md) | completed | 12/12 | 12/12 | 1010.359 | da |
 | [P10-A-002](../../runs/P10-A-002/report.md) | completed | 12/12 | 12/12 | 538.432 | da |
 | [P09-C-003](../../runs/P09-C-003/report.md) | completed | 11/12 | 12/12 | 711.908 | ne |
+| [P09-A-003](../../runs/P09-A-003/report.md) | execution_failed | 0/12 | 12/12 | 100.617 | ne |
+| [P09-B-003](../../runs/P09-B-003/report.md) | completed | 11/12 | 12/12 | 918.967 | ne |
+
+## Parne razlike po nalogah
+
+| Primerjava | Mera | Razlika | 95 % percentilni interval |
+| --- | --- | --- | --- |
+| A − B | meanDemonstratedFraction | 0.11 | -0.01 do 0.27 |
+| A − B | meanElapsedSeconds | -206.64 | -355.45 do -65.19 |
+| A − C | meanDemonstratedFraction | 0.16 | -0.04 do 0.40 |
+| A − C | meanElapsedSeconds | -280.77 | -348.47 do -195.52 |
+| B − C | meanDemonstratedFraction | 0.05 | -0.15 do 0.26 |
+| B − C | meanElapsedSeconds | -74.13 | -189.95 do 52.59 |
+
+Opisni intervali ponovno vzorčijo osem nalog; ne posameznih zahtev ali testov. Seme in 20.000 ponovitev sta določena pred meritvami.
 
 Vsebinska rubrika, človeška presoja in pisanje interpretacije so ločeni koraki; prisotnost testov ali dokumentov ni samodejna ocena njihove kakovosti.

@@ -66,7 +66,7 @@ def main():
         payloads = [data]
         if name.endswith('.gz'):
             payloads.append(gzip.decompress(data))
-        if name.endswith('.xlsx'):
+        if name.endswith('.xlsx') or zipfile.is_zipfile(io.BytesIO(data)):
             with zipfile.ZipFile(io.BytesIO(data)) as z:
                 payloads.extend(z.read(entry) for entry in z.namelist())
         if name.endswith('.pdf'):

@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import assert from 'node:assert/strict'
+import { execFileSync } from 'node:child_process'
 import { dirname, resolve, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Workbook, SpreadsheetFile } from '@oai/artifact-tool'
@@ -261,7 +262,12 @@ for (const [name, range, file] of [['Primerjava', 'A1:J41', 'comparison'], ['Pri
   const image = await wb.render({ sheetName: name, range, scale: 1, format: 'png' })
   await fs.writeFile(resolve(qa, file + '.png'), new Uint8Array(await image.arrayBuffer()))
 }
-if (!draft) { const file = await SpreadsheetFile.exportXlsx(wb); await file.save(resolve(out, 'primerjava-modelov.xlsx')) }
+if (!draft) {
+  const file = await SpreadsheetFile.exportXlsx(wb)
+  const path = resolve(out, 'primerjava-modelov.xlsx')
+  await file.save(path)
+  execFileSync('/Users/zan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3', [resolve(here, 'populate-chart-caches.py'), path], { stdio: 'inherit' })
+}
 const budgetImage = await wb.render({ sheetName: 'Proračunska dopolnitev', range: `A1:B${budgetLastRow}`, scale: 1, format: 'png' })
 await fs.writeFile(resolve(qa, 'budget-amendment.png'), new Uint8Array(await budgetImage.arrayBuffer()))
 console.log(JSON.stringify({ previewOnly: draft, measurements: data.length, contentRecords: reviews.length, out }))
