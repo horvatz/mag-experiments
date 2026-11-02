@@ -1,0 +1,68 @@
+Razumem. Najprej preberem navodila in pripravam specifikacijo.
+
+
+Razumem nalogo. Pripravim specifikacijo za pilot P09 temelječ na vseh zahtevah R01–R12.
+
+
+Prav, specifikacija je pripravljena. Zdaj preiskam obstoječo strukturo koda, da razumem arhitekturo in implementiram spremembe.
+
+
+Preverim obstoječe API in strukturo:
+
+
+
+
+
+
+Preverim tudi strukturo projektov in nalog:
+
+
+
+
+
+
+Preberem podatke API-ja in tipe:
+
+
+
+
+Imam dovolj informacij. Zdaj implementiram funkcionalnost. Dodam nov tip za ViewState in ustvarim komponento za nadzor stanja pogleda:
+
+
+Imam pravico brati in pisati v src/. Uporabim `echo` z ustrezno sintakso:
+
+
+
+
+Bom ustvaril datoteke v src/:
+
+
+Potrebujem preveriti, kako deluje trenutna navigacija:
+
+
+Zdaj razširim navigation.ts:
+
+<function=exec_command>
+<parameter=cmd>
+cat > src/navigation.ts << 'ENDOFFILE'
+import { useSyncExternalStore } from 'react'
+
+export type TaskView = 'table' | 'board'
+
+export type ViewOrder = 'original' | 'title-asc' | 'title-desc'
+export type ViewStatus = 'all' | 'todo' | 'in_progress' | 'done'
+
+export interface ViewState {
+  q: string
+  status: ViewStatus
+  order: ViewOrder
+  view: TaskView
+}
+
+// History management for view state
+const viewHistory: ViewState[] = []
+let historyIndex = -1
+
+function subscribe(onChange: () => void) {
+  window.addEventListener('hashch
+{"status":"completed","elapsedSeconds":220.254,"allowedChanges":true,"usage":{"input_tokens":213431,"cached_input_tokens":96768,"cache_write_input_tokens":0,"output_tokens":7611,"reasoning_output_tokens":590}}

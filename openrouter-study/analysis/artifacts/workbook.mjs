@@ -51,7 +51,7 @@ summary.getRange('A2:J2').format.rowHeight = 34
 summary.getRange('A2:J2').format.borders = { bottom: { style: 'thin', color: accent } }
 summary.getRange('A3').values = [[draft ? `Nepopolna zbirka. Arhiviranih ${comparison.newArchived}/216 novih izvedb.` : '216 novih izvedb in 144 zgodovinskih. P03-P10, tri ponovitve, 24 izvedb na postopek in model.']]
 summary.getRange('A4').values = [['Astra in Luna sta zgodovinski zbirki. CLI, ponudnik, kvantizacija in način JSON omejujejo neposredno razlago razlik.']]
-summary.getRange('A5').values = [['Uporabniška premora: GLM P03-C-002 in DeepSeek P03-B-001. Prekinitve ter napake prijave, API in varovala ostanejo v rezultatih.']]
+summary.getRange('A5').values = [[comparison.newArchived >= 194 ? 'Premora: GLM P03-C-002, DeepSeek P03-B-001. Qwen P09-C-002: spanje gostitelja. Prekinitve ter napake API in varovala ostanejo v rezultatih.' : 'Uporabniška premora: GLM P03-C-002 in DeepSeek P03-B-001. Prekinitve ter napake prijave, API in varovala ostanejo v rezultatih.']]
 summary.getRange('A3:J5').format.font = { name: 'Arial', size: 10, color: muted }
 summary.getRange('A6:J6').values = [['Model', 'Postopek', 'Izvedbe', 'Strogi uspehi', 'Dokazane zahteve', 'Čas (min)', 'Popolna poraba, n', 'Stroški, n', 'Povpr. strošek (USD)', 'Znani časi, n']]
 heading(summary, 'A6:J6')
@@ -87,11 +87,14 @@ for (const [i, group] of comparison.summaries.entries()) {
 summary.getRange('E7:E21').setNumberFormat('0.0%'); summary.getRange('F7:F21').setNumberFormat('0.00'); summary.getRange('I7:I21').setNumberFormat('0.0000')
 summary.getRange('A23').values = [['Manjkajoč čas, poraba ali račun niso nič. Povprečni strošek je prikazan samo, če so znani vsi računi skupine.']]
 if (comparison.newArchived >= 108) summary.getRange('A23').values = [['Manjkajoč čas, poraba ali račun niso nič. Povprečni strošek zahteva vse račune skupine. P08/P07: preverjanji prazne table zahtevata območje Tabla opravil.']]
+if (comparison.newArchived >= 203) summary.getRange('A23').values = [['Manjkajoči čas, poraba ali račun niso 0; povprečje stroška zahteva vse račune skupine. P08/P07: testa zahtevata regijo Tabla opravil. Qwen P10-B-002: 14/70 (API), 0/12.']]
 summary.getRange('A22').values = [['GLM P03-C-001: 22 testov ustavi pika v imenu iskalnika. Navodilo je dvoumno; izid ostane izviren (48/70, 1/12).']]
+if (comparison.newArchived >= 197) summary.getRange('A22').values = [['GLM: P03-C-001 pika v imenu iskalnika (48/70, 1/12); P09-A-002 manjka pika za Ni zadetkov (68/70, 11/12). Izida ohranimo.']]
 summary.getRange('A22:J22').format.font = { name: 'Arial', size: 10, color: muted }
 summary.getRange('A23:J23').format.font = { name: 'Arial', size: 10, color: muted }
 if (comparison.newArchived >= 102) {
   summary.getRange('A24').values = [['Qwen P08-C-002: 14 nalog z oznakami **T001** preverjevalnik zavrne zaradi formata pred implementacijo. Izid ostane 38/70, 0/12.']]
+  if (comparison.newArchived >= 200) summary.getRange('A24').values = [['Qwen P08-C-002: 14 nalog **T001**, zavrnitev pred implementacijo (38/70, 0/12). DeepSeek P10-C-002: odprta T001 kljub 70/70, 12/12.']]
   summary.getRange('A24:J24').format.font = { name: 'Arial', size: 10, color: muted }
 }
 for (const [metric, start] of [['strict', 6], ['requirements', 15]]) {
@@ -250,6 +253,8 @@ budgetSheet.getRange(`A2:B${budgetLastRow}`).format.rowHeight = 44
 if (budgetLastRow >= 12) budgetSheet.getRange('A11:B11').format.rowHeight = 58
 if (extension) budgetSheet.getRange('A15:B15').format.rowHeight = 58
 budgetSheet.freezePanes.freezeRows(1)
+// Budget disclosures are the final edits; refresh before the final error scan and export.
+wb.recalculate()
 const errors = await wb.inspect({ kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!', options: { useRegex: true, maxResults: 30 }, maxChars: 3000 })
 await fs.writeFile(resolve(qa, 'formula-errors.ndjson'), errors.ndjson)
 for (const [name, range, file] of [['Primerjava', 'A1:J41', 'comparison'], ['Primerjava', 'A42:H62', 'rubric-summary'], ['Primerjava','A64:H81','known-counts'], ['Izvedbe', 'A1:Q13', 'runs'], ['Izvedbe', `A${Math.max(2, data.length - 8)}:Q${data.length + 1}`, 'runs-tail'], ['Vsebinska presoja', 'A1:J13', 'reviews'], ['Parjene razlike', 'A1:I14', 'paired']]) {

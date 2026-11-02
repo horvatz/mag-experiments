@@ -1,0 +1,88 @@
+{
+  "at": "2026-11-01T21:18:29.530466+00:00",
+  "researcherOnly": true,
+  "position": 199,
+  "slug": "glm",
+  "id": "P10-C-002",
+  "executionStatus": "execution_failed",
+  "elapsedSeconds": 609.36,
+  "functionalPassed": 60,
+  "functionalTotal": 70,
+  "requirementsPassed": 7,
+  "strictSuccess": false,
+  "costComplete": true,
+  "costUSD": 0.6086567110000002,
+  "apiRequests": 102,
+  "failedTests": [
+    {
+      "title": "E04: R04 undo restores full permutation",
+      "project": "evaluation-desktop"
+    },
+    {
+      "title": "E04: R04 undo restores full permutation",
+      "project": "evaluation-mobile"
+    },
+    {
+      "title": "E05: R05 multi-step redo order without lost IDs",
+      "project": "evaluation-desktop"
+    },
+    {
+      "title": "E05: R05 multi-step redo order without lost IDs",
+      "project": "evaluation-mobile"
+    },
+    {
+      "title": "E07: R07 bounded history retains most recent twenty steps",
+      "project": "evaluation-desktop"
+    },
+    {
+      "title": "E07: R07 bounded history retains most recent twenty steps",
+      "project": "evaluation-mobile"
+    },
+    {
+      "title": "E08: R08 reset is undoable and original reset is no-op",
+      "project": "evaluation-desktop"
+    },
+    {
+      "title": "E08: R08 reset is undoable and original reset is no-op",
+      "project": "evaluation-mobile"
+    },
+    {
+      "title": "E10: R10 view details retain stacks; project reload reset",
+      "project": "evaluation-desktop"
+    },
+    {
+      "title": "E10: R10 view details retain stacks; project reload reset",
+      "project": "evaluation-mobile"
+    }
+  ],
+  "serviceClassificationByUnchangedV11": "glm-image-input-unsupported",
+  "resumeRecord": {
+    "at": "2026-11-01T21:17:22.375Z",
+    "action": "continue_unused_ids",
+    "archived": 199,
+    "previousRun": "glm/P10-C-002",
+    "errorRequests": [
+      102
+    ],
+    "classifications": [
+      "glm-image-input-unsupported"
+    ],
+    "nextRun": "deepseek/P10-C-002",
+    "diagnosis": "analysis/recovery/glm-P06-B-001-image-tool.json",
+    "diagnostic": "/Users/zan/Documents/mag/experiments/openrouter-study/glm/qualification/service-2026-11-01T21-17-19-464Z",
+    "frozenProtocolVersion": "O/1.0+budget-amendment-2",
+    "taskPromptsDeadlinesEvaluatorsUnchanged": true,
+    "archivedHashesVerified": true,
+    "measuredRetry": false,
+    "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
+  },
+  "researcherObservation": "Implementation ends on upstream HTTP404 for the already documented GLM image-input limitation. Existing submission is retained; five requirements fail on both desktop/mobile (undo,redo,bounded history,reset,detail/view history). This observation records test outcomes, not an ordinal review or a causal diagnosis of every implementation gap.",
+  "measuredRetry": false,
+  "sourceSHA256": {
+    "glm/runtime/runs/P10-C-002/archive-complete.json": "d52332e0130e3055450376ca07922deb5aee0bb3b224f4aab439c27b2c1da3ea",
+    "glm/runtime/runs/P10-C-002/execution.json": "feeeea8a2d70ab785c0ad72fac6226c58fb9623c54815cae5d598092f5e9c2d4",
+    "glm/runtime/runs/P10-C-002/evaluation-summary.json": "302dadeeaa71bef104a9d8d57d34b1d997e5d02e38eeee9305c293209c7dc6f1",
+    "glm/runtime/runs/P10-C-002/api-cost.json": "a19af2fda36d91292f755995f1d9c52d8c85c1a49519084dd8da818ded72a3ad",
+    "glm/api/P10-C-002/model/api-ledger.jsonl": "3a69a18a28f36b6565dd8b74e4c28a0da85e3e522b6f8208236346dd7ee4aac5"
+  }
+}

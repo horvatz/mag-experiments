@@ -1,0 +1,135 @@
+{
+  "at": "2026-11-01T22:58:56.087973+00:00",
+  "researcherOnly": true,
+  "position": 203,
+  "slug": "qwen",
+  "id": "P10-B-002",
+  "executionStatus": "invalid_review_handoff",
+  "elapsedSeconds": 1081.205,
+  "phases": [
+    {
+      "name": "specification",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 360.041,
+      "limitSeconds": 360
+    },
+    {
+      "name": "implementation",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 478.806,
+      "limitSeconds": 478.767
+    },
+    {
+      "name": "review",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 238.828,
+      "limitSeconds": 238.789
+    }
+  ],
+  "handoffError": "ENOENT: no such file or directory, open '/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P10-B-002/app/docs/agent/review.json'",
+  "reviewArtifactMissing": true,
+  "appFileBytes": 0,
+  "functionalPassed": 14,
+  "functionalTotal": 70,
+  "requirementsPassed": 0,
+  "strictSuccess": false,
+  "completeTestRun": true,
+  "projectStatuses": [
+    {
+      "project": "regression-api",
+      "status": "expected",
+      "count": 14
+    },
+    {
+      "project": "regression-desktop",
+      "status": "unexpected",
+      "count": 12
+    },
+    {
+      "project": "regression-mobile",
+      "status": "unexpected",
+      "count": 12
+    },
+    {
+      "project": "development-desktop",
+      "status": "unexpected",
+      "count": 4
+    },
+    {
+      "project": "development-mobile",
+      "status": "unexpected",
+      "count": 4
+    },
+    {
+      "project": "evaluation-desktop",
+      "status": "unexpected",
+      "count": 12
+    },
+    {
+      "project": "evaluation-mobile",
+      "status": "unexpected",
+      "count": 12
+    }
+  ],
+  "checks": [
+    {
+      "name": "lint",
+      "exitCode": 1,
+      "signal": null,
+      "elapsedSeconds": 0.699,
+      "passed": false
+    },
+    {
+      "name": "types",
+      "exitCode": 2,
+      "signal": null,
+      "elapsedSeconds": 0.586,
+      "passed": false
+    },
+    {
+      "name": "build",
+      "exitCode": 1,
+      "signal": null,
+      "elapsedSeconds": 0.173,
+      "passed": false
+    },
+    {
+      "name": "tests",
+      "exitCode": 1,
+      "signal": null,
+      "elapsedSeconds": 308.815,
+      "passed": false
+    }
+  ],
+  "costComplete": true,
+  "costUSD": 0.26267280000000015,
+  "apiRequests": 117,
+  "requestStatuses": {
+    "finished": 114,
+    "client_aborted": 3
+  },
+  "httpStatuses": {
+    "200": 117
+  },
+  "responseStatuses": {
+    "completed": 115,
+    "None": 2
+  },
+  "researcherObservation": "Unlike unchanged-baseline Qwen submissions, this archive includes two new helper modules and an empty App.tsx (0 bytes). Independent TypeScript/build logs report App is not a module/missing App export and undefined MAX_UNDO_MOVES in TaskUndoHelper. Only14 API regression checks pass; all24 existing browser regression,8 development and24 holdout checks fail. Thus0/12 demonstrated new requirements also occurs with regression damage; it does not represent an identical application state to P10-C-00238/70. All three B phases hit their actual limits and review.json is missing, so predeclared flow ends before repair. No cause is attributed to a provider.",
+  "modelCodeEditedOrRetestedAfterArchive": false,
+  "ordinalReviewAdded": false,
+  "sourceSHA256": {
+    "qwen/runtime/runs/P10-B-002/archive-complete.json": "f6f52eb207a3594be055d0e53c8af7d41eefe1181108d29a8df76d8cb5159206",
+    "qwen/runtime/runs/P10-B-002/execution.json": "03c4e763bd155daef1e2f7cf1715ebf518a0fad0717576b9c7989245d17af994",
+    "qwen/runtime/runs/P10-B-002/evaluation-summary.json": "bc29f639eb6404dbbf15435f6a0dc066fa805079072f6fb8ddf1ca0ddbd4830f",
+    "qwen/runtime/runs/P10-B-002/api-cost.json": "70f04a0986ab2c5d5f3e4c9ab845d643ef15b2c04ab0da404d2b4365480b3bed",
+    "qwen/runtime/runs/P10-B-002/submission/src/App.tsx": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qwen/runtime/runs/P10-B-002/submission/src/TaskUndoHelper.ts": "a90ff7af3ae4dbde2f2fe2142e816c4e93a8e06f77b3652003d38b09db45f25f",
+    "qwen/runtime/runs/P10-B-002/submission/src/TaskMoveHelper.ts": "7d5c36d70c362e940b716eef8f2798984fbf352d3f1f199d62a0addf8137097a",
+    "qwen/runtime/runs/P10-B-002/evaluation-types.log": "9acda1c9d710092e7561c322481f208f6c4a7c8c91f0dd590e3d5263697fbabe",
+    "qwen/runtime/runs/P10-B-002/evaluation-build.log": "0aaf883afb0af42aea50011f77a166c544bcb2a98d149a769d1cc2005f1c661f",
+    "qwen/api/P10-B-002/model/api-ledger.jsonl": "74e7678d6efc38a63515aa1605111eaf90d4fd5ed5d18d06cf7127f11e13787b",
+    "qwen/runtime/runs/P10-B-002/preflight-runtime.log": "53b856894811d7fc78605ec008f2dd8f927aa2255697a561cc1bef50f1852e3f"
+  },
+  "researcherPreflightBeforeModelPassed38": true
+}

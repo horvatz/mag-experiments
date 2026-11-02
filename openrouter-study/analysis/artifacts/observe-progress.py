@@ -14,6 +14,16 @@ if a.get('id'):
   n=s['archived']
   if n<len(jobs):
    slug,id=jobs[n];print('next scheduled',n+1,slug,id,'executionExists',(root/slug/'runtime/.work/pilots'/id/'execution.json').exists())
+  if runner_pid!='absent':
+   pending=[]
+   for cost_path in root.glob('*/api/**/api-cost.json'):
+    cost=json.loads(cost_path.read_text())
+    if not cost.get('complete'):
+     pending.append((cost.get('at',''),str(cost_path.relative_to(root))))
+   if pending:
+    latest_at,latest_path=max(pending)
+    age=(datetime.datetime.now(datetime.timezone.utc)-datetime.datetime.fromisoformat(latest_at.replace('Z','+00:00'))).total_seconds()
+    print('latest incomplete-cost reconciliation',latest_at,'ageSeconds',round(age),'evidence',latest_path)
   sys.exit(0)
  p=root/a['slug']/'runtime/.work/pilots'/a['id']
  f=p/'execution.json'

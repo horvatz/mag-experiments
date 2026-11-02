@@ -186,19 +186,23 @@ def main():
     story.append(PageBreak())
     p('Dokazane funkcionalne zahteve', 'Heading1')
     story.append(Image(str(QA / 'requirements.png'), width=487, height=230))
-    p('Zahteva je dokazana, ko ustrezna preverjanja uspejo na obeh velikostih zaslona. Delno izpolnjeni pogoji niso dokaz celotne zahteve. Delež vseh izpolnjenih zahtev in število popolnih oddaj sta ločeni merili.')
-    p('Vse začete izvedbe ostanejo v imenovalcu. Časovna prekoračitev ali neveljaven zaključek postopka lahko zmanjšata strogo uspešnost, tudi če je v arhivirano oddajo že vključena delujoča funkcionalnost. Zato je treba oba grafa brati skupaj.')
+    p('Dokazana zahteva uspe na obeh velikostih zaslona; delna izpolnitev ne zadostuje. Delež dokazanih zahtev in število popolnih oddaj sta ločeni merili.')
+    p('V imenovalcu ostanejo vse začete izvedbe. Prekoračen rok ali neveljavna predaja lahko zmanjšata strogo uspešnost kljub delujoči funkcionalnosti. Oba grafa je treba brati skupaj.')
     p('Pri GLM/P03-C-001 je 22 skritih testov obstalo pri natančnem imenu iskalnika: navodilo konča stavek z »Išči opravila.«, test pa zahteva ime brez pike. Oddaja vsebuje piko; javni in lastni testi uporabljajo nenatančno ime. Izvirna rezultata 48/70 preverjanj in 1/12 dokazanih zahtev ostaneta nespremenjena. Ti neuspehi niso dokaz 22 različnih napak filtriranja; dvoumnost dogovora imena je omejitev merila.')
-    if comparison['newArchived'] >= 102:
-        p('Qwen/P08-C-002 je oddal 14 nalog z oznakami v krepkem tisku (**T001**). Zamrznjeni preverjevalnik sprejme oznake brez krepkega tiska in zavrne predajo pred implementacijo. Rezultat ostane izviren (38/70, 0/12); zavrnitev je posledica formata, ne odsotnosti nalog.')
+    if comparison['newArchived'] >= 197:
+        p('GLM/P09-A-002: sporočilo Ni zadetkov obstaja, toda preverjanji E11 zahtevata še končno piko. Območje table je prisotno. Izid 68/70 in 11/12 ohranimo; gre za občutljivost na točno besedilo, ne odsotno sporočilo.')
     if comparison['newArchived'] >= 176:
-        p('Qwen/P04-C-001 podobno odda 17 opisov nalog kot naslove T001–T017, brez zahtevane checkbox oblike. Preverjevalnik zavrne predajo pred implementacijo (38/70, 0/12); opisi nalog obstajajo, vendar ne ustrezajo zamrznjenemu formatu.')
+        p('Qwen/P08-C-002 odda 14 nalog z oznakami **T001**, Qwen/P04-C-001 pa 17 opisov kot naslove T001–T017. Prva predaja uporablja krepki tisk namesto navadnih oznak, druga nima zahtevane checkbox oblike. Zamrznjeni preverjevalnik obe zavrne pred implementacijo (38/70, 0/12). Naloge obstajajo; zavrnjen je format.')
+    elif comparison['newArchived'] >= 102:
+        p('Qwen/P08-C-002 je oddal 14 nalog z oznakami v krepkem tisku (**T001**). Zamrznjeni preverjevalnik sprejme oznake brez krepkega tiska in zavrne predajo pred implementacijo. Rezultat ostane izviren (38/70, 0/12); zavrnitev je posledica formata, ne odsotnosti nalog.')
     if comparison['newArchived'] >= 121:
         if comparison['newArchived'] >= 188:
             p('Pri več oddajah P08, P07 in P03 pripomoček prazne table zahteva območje Tabla opravil, ki ga oddaja zamenja s sporočilom o praznem rezultatu. DeepSeekovi P07-C-003 in P07-A-003 ter GLM/P03-B-003 zato ostanejo pri 68/70 in 11/12. Pri zadnjem je Ni zadetkov. prisotno, manjka pa območje table. To je občutljivost preverjanja strukture pogleda; dve preverjanji istega vzroka nista dokaz dveh različnih napak logike. Izidov ne popravljamo.')
         else:
             p('Pri več oddajah P08 in P07 ostaneta dve preverjanji prazne table neuspešni: pripomoček zahteva območje z imenom Tabla opravil, oddaja pa ga zamenja s sporočilom o praznem rezultatu. Tako imajo npr. DeepSeekove P07-C-003 in P07-A-003 izvirna izida 68/70 in 11/12. Izidi ostanejo nespremenjeni. Gre za občutljivost preverjanja na strukturo praznega pogleda; dve neuspešni preverjanji istega vzroka nista dokaz dveh različnih napak logike.')
-    if comparison['newArchived'] >= 112:
+    if comparison['newArchived'] >= 200:
+        p('DeepSeek/P04-B-002: 70/70 in 12/12, a odgovor pregleda je ovit v Markdown; review.json je veljaven, validator pa zavrne odgovor. DeepSeek/P10-C-002 ima enak funkcionalni rezultat, a potrdi zaključek z neopravljeno T001 (avtorjev zagon izhodiščnih testov pred spremembami). Ta predaja je veljaven JSON; zavrne jo pravilo o dokončanih nalogah. Izvirna stroga neuspeha ostaneta.')
+    elif comparison['newArchived'] >= 112:
         p('DeepSeek/P04-B-002 doseže 70/70 in 12/12, vendar zaključni odgovor pregleda ovije JSON v oznake Markdown. Validator zavrne ta odgovor, čeprav je shranjena datoteka review.json veljavna. Strogi neuspeh zato ne pomeni neuspešne funkcionalnosti.')
     if comparison['newArchived'] >= 125:
         p('GLM/P07-B-003 doseže 68/70 in 11/12 zaradi manjkajočega zahtevanega sporočila Ni priljubljenih opravil. na prazni filtrirani tabli. Območje table ostane prisotno. Obe neuspešni preverjanji potrjujeta isto funkcionalno vrzel R06; uspešnih 14 lastnih testov tega primera ne pokrije.')
@@ -235,6 +239,8 @@ def main():
         table(['Kontrast','Povprečna razlika','95 % interval'],rows,[247,110,130])
         if metric == 'strictSuccessFraction':
             p('Če vsi postopki pri nekem modelu dosežejo 0 strogih uspehov, to merilo doseže spodnjo mejo. Enak opaženi izid in interval [0; 0] ne dokazujeta splošne enakovrednosti postopkov: ponovno vzorčenje tega vzorca ne more ustvariti neopaženih uspehov. Funkcionalnost in vsebinske ocene zato poročamo ločeno.')
+            if comparison['newArchived'] >= 203:
+                p('Qwen/P10-B-002 ima prazen App.tsx in doseže 14/70: uspejo le API testi, pade tudi 24 regresijskih preverjanj pogledov. P10-C-002 ima 38/70, obe oddaji pa 0/12 novih zahtev. Isti ničelni delež dokazanih zahtev zato spremlja različno regresijsko stanje aplikacije. Izvirni izidi ostanejo.')
     p('Kontrasti med modeli in časovne razlike so zapisani v primerjalnih podatkih. Če manjka katera od potrebnih treh ponovitev ali točen podatek, kontrasta ne izračunamo.')
     story.append(PageBreak())
     method_page = True
@@ -244,14 +250,14 @@ def main():
     p('Vsi trije novi modeli imajo javno dostopne uteži; njihove licence se razlikujejo. GLM ima licenco GLM-5.3, DeepSeek MIT in Qwen Apache-2.0. Izraz javne uteži je zato natančnejši skupni opis od enotne oznake odprta koda.')
     p('A pomeni enega agenta; B zaporedje specifikacije, implementacije, pregleda in popravkov; C trajno sejo z zaporedjem Spec Kit. Naloge, vloge, testi in izvirne fazne meje ostanejo enaki. Skupni rok je 1.200 s. Priprava C porablja isti rok; fazne meje in rezerve za poznejše korake lahko izvedbo ustavijo pred skupnim rokom. B po faznem roku specifikacije lahko nadaljuje, če je zahtevani dokument že oddan; prekoračitev ostane zabeležena. Ocenjevanje sestavlja 38 regresijskih, 8 razvojnih in 24 skritih preverjanj.')
     p('Diagnostika vseh treh modelov je pokazala, da native json_schema zavre samodejno izbiro orodij. Relay zato posreduje isto shemo kot besedilo navodil; izvirni validator preveri odgovor brez popravljanja.')
-    p('Po zamrznjenem katalogu je GLM besedilen, DeepSeek sprejema slike, Qwen tudi video; orodja so enaka. GLM P06-B-001 prekine slikovni HTTP404; tudi sintetična uporabniška slika je zavrnjena, svež besedilni odgovor uspe. DeepSeek P06-A-001 prekine HTTP422 pri slikovnem rezultatu view_image; diagnostika potrdi delujoč besedilni rezultat in sliko v uporabniškem sporočilu, zavrne pa slikovni function_call_output. Začetna kvalifikacija teh rezultatov ni preverila. Meritvi ostaneta brez ponovitve; omejitvi prenosa ne dokazujeta slabe implementacije. Metapodatki in modalnosti omejujejo zgodovinsko primerljivost.')
+    p('Zamrznjeni katalog navaja GLM kot besedilen, DeepSeek s slikami, Qwen tudi z videom; orodja so enaka. GLM/P06-B-001 vrne slikovni HTTP404 tudi za sintetično uporabniško sliko; sveže besedilo uspe. DeepSeek/P06-A-001 vrne HTTP422 za slikovni view_image/function_call_output, besedilni rezultat in uporabniška slika pa delujeta. Začetna kvalifikacija tega ni preverila. Meritvi ostaneta brez ponovitve; omejitvi prenosa nista dokaz slabe implementacije. Modalnosti in metapodatki omejujejo zgodovinsko primerljivost.')
     p('Izvirni sandbox zavrne npr. heredoc; druge poti pisanja so predhodno preverjene. Modeli se zavrnitvam prilagodijo različno. Neuspešni orodni klici so lahko ohranjeni le v naslednjih API vhodih. Presojamo dejansko oddajo, ne osnutka v neuspešnem ukazu.')
     p('Qwenova prvotna pot DeepInfra/bf16 je dvakrat odpovedala zaradi preobremenitve. SiliconFlow/fp8 je bil določen pred prvo meritvijo in ostaja zamrznjen. Diagnostika in časovne prekoračitve kvalifikacije so ohranjene; model ni izločen.')
     p('Astra je bila izmerjena z odjemalcem 0.154, Luna in novi modeli z 0.158.0-alpha.2.1. Nova zbirka uporablja drug račun, storitve in čas meritev. Ugotovitve veljajo za osem uporabljenih nalog in te konfiguracije; ne pomenijo splošne lestvice vseh sposobnosti modelov.')
     p('Astro je pred implementacijo prizadelo 12 zaporednih napak prijave 401 in ena omejitev uporabe. Ostanejo v primarni analizi brez ponovitve; ne dokazujejo slabe implementacijske sposobnosti. Uravnoteženost zavrnitev po postopkih ne odpravi izgube oddaj ali pristranskosti primerjave.')
     p('Nove arhivirane izvedbe z izrecno napako odziva ali povezave, vključno z lokalnim posrednikom: ' + '; '.join(f"{LABELS[g['slug']]} {g['explicitResponseOrTransportErrors']}/{g['archived']}" for g in service) + '. Vzrok Qwenovih response.failed, DeepSeekovega HTTP520 (P08-C-001) in prekinjenega toka (P07-A-003) ni potrjen. GLM/P07-A-003 prejme HTTP429 zaradi preobremenitve skupne kvote Wafer. Qwen/P06-B-002: HTTP200/completed, 101 token razmišljanja in nobenega besedila ali orodnega klica v dnevniku. Qwen/P09-A-001: šest HTTP200/completed zahtev, brez avtorske oddaje in le zaključne orodne oznake v zadnjem odgovoru. Vzroka nista potrjena; primera nista v števcu izrecnih napak API. Običajne prekinitve ob roku in zavrnitve kreditnega kritja niso vključene.')
     if comparison['newArchived'] >= 181:
-        p('GLM/P09-C-001, GLM/P03-C-003, DeepSeek/P04-A-001 in Qwen/P04-A-001 prekine lokalna povezava pri preverjanju dobroimetja pred pošiljanjem zadnje zahteve ponudniku. Vključeni so v zgornji števec; to niso ponudnikovi HTTP502 ali izčrpano dobroimetje. Pri GLM/P09-C-001 in Qwen/P04-A-001 so pozneje dokončani le zaključni koraki. Nobena meritev ni ponovljena.')
+        p('GLM/P09-C-001, GLM/P03-C-003, DeepSeek/P04-A-001 in Qwen/P04-A-001 prekine lokalno branje dobroimetja pred zadnjo zahtevo ponudniku. Števec jih vključuje; to niso ponudnikovi HTTP502 ali izčrpana sredstva. Pri prvem in zadnjem so dokončani samo zaključni koraki. Nobena meritev ni ponovljena.')
     elif comparison['newArchived'] >= 174:
         p('GLM/P09-C-001, DeepSeek/P04-A-001 in Qwen/P04-A-001 prekine lokalna napaka pri preverjanju dobroimetja pred pošiljanjem zadnje zahteve ponudniku. Vključeni so v zgornji števec, vendar to niso ponudnikovi HTTP502 ali izčrpano dobroimetje. Pri GLM in Qwenu so pozneje dokončani samo zaključni koraki; nobena meritev ni ponovljena.')
     elif comparison['newArchived'] >= 173:
@@ -259,7 +265,12 @@ def main():
     elif comparison['newArchived'] >= 170:
         p('GLM/P09-C-001 prekine lokalna napaka pri preverjanju dobroimetja, preden je zadnja zahteva poslana ponudniku; zaključni koraki so pozneje dokončani brez ponovitve meritve.')
     p('Prekinitve varovala izolacije: ' + '; '.join(f"{LABELS[g['slug']]} {len(g['isolationInterruptions'])}/{g['archived']}" for g in service) + '. Tudi te ostanejo v imenovalcu strogega uspeha. Varovalo lahko sprožita zaznana vrata ali časovna prekoračitev povezave; brez dodatnih dokazov takšna prekinitev ni dokaz slabe implementacije modela.')
-    p('Uporabnik je ob premorih prekinil GLM P03-C-002 po 551,030 s (66/70 preverjanj) in DeepSeek P03-B-001 po 727,047 s (70/70). Status operator_interruption ostane v primarni analizi brez ponovitve. Skrajšanega časa in nedokončanega postopka ne pripisujemo sposobnosti modela. Zadnji zahtevi GLM69 in DeepSeek55 imata shranjena vhoda brez zaključnega relay zapisa: prenos, odziv in strošek so neznani. Izvirna dnevnika in transparentna raziskovalčeva dodatka sta ohranjena; dodatka nista opaženi napaki API ali ničelna računa.')
+    p('Uporabniška premora: GLM/P03-C-002 po 551,030 s (66/70) in DeepSeek/P03-B-001 po 727,047 s (70/70). Status operator_interruption ostane v primarni analizi, brez ponovitve; skrajšani čas ni merilo sposobnosti modela. Zadnji zahtevi GLM69 in DeepSeek55 imata shranjena vhoda brez zaključnih relay zapisov: prenos, odziv in strošek so neznani. Izvirna dnevnika in raziskovalčeva dodatka so ohranjeni; dodatka nista opaženi napaki API ali ničelna računa.')
+    if comparison['newArchived'] >= 194:
+        host_sleep = load(STUDY / 'analysis/recovery/network-postprocessing-194/host-sleep-observation.json')
+        assert host_sleep['sleepDuringMeasuredExecutionObserved']
+        assert host_sleep['configuredLimitSeconds'] == 1200 and host_sleep['recordedElapsedSeconds'] == 1340.288
+        p('Pri Qwen/P09-C-002 je sistemski dnevnik med meritvijo zabeležil spanje ob zaprtju pokrova (Clamshell Sleep). Status ostane time_limit; pri nastavljenem roku 1.200 s je zapisanih 1.340,288 s. Časa ne obrezujemo in meritve ne ponavljamo. Spanje gostitelja omejuje razlago časa in izida kot same sposobnosti modela.')
     amendment_path = STUDY / 'budget-amendment-1.json'
     if amendment_path.exists():
         amendment = load(amendment_path)

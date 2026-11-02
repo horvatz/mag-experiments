@@ -1,0 +1,138 @@
+{
+  "id": "P10-B-002",
+  "procedure": "B",
+  "startedAt": "2026-11-01T22:32:13.491Z",
+  "model": "qwen/qwen3.5-9b",
+  "reasoningEffort": "xhigh",
+  "limitSeconds": 1200,
+  "status": "invalid_review_handoff",
+  "cli": "/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS/codex",
+  "cliVersion": "codex-cli 0.158.0-alpha.2.1",
+  "phases": [
+    {
+      "name": "specification",
+      "role": "specification",
+      "resumed": false,
+      "startedAt": "2026-11-01T22:32:13.734Z",
+      "limitSeconds": 360,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a1993d-e8c0-7cd3-9ac8-f1a531f676a4",
+      "finishedAt": "2026-11-01T22:38:13.777Z",
+      "elapsedSeconds": 360.041,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [
+        {
+          "path": "docs/agent/specification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "implementation",
+      "role": "implementation",
+      "resumed": false,
+      "startedAt": "2026-11-01T22:38:14.954Z",
+      "limitSeconds": 478.767,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a19943-6bd3-7af1-8ad2-f1d4b32b602d",
+      "finishedAt": "2026-11-01T22:46:13.762Z",
+      "elapsedSeconds": 478.806,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [
+        {
+          "path": "docs/agent/verification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/App.tsx",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/TaskMoveHelper.ts",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/TaskUndoHelper.ts",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "review",
+      "role": "review",
+      "resumed": false,
+      "startedAt": "2026-11-01T22:46:14.938Z",
+      "limitSeconds": 238.789,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a1994a-bf21-70e2-87ed-e8eb158c6bfa",
+      "finishedAt": "2026-11-01T22:50:13.767Z",
+      "elapsedSeconds": 238.828,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    }
+  ],
+  "sessions": {
+    "specification": "01a1993d-e8c0-7cd3-9ac8-f1a531f676a4",
+    "implementation": "01a19943-6bd3-7af1-8ad2-f1d4b32b602d",
+    "review": "01a1994a-bf21-70e2-87ed-e8eb158c6bfa"
+  },
+  "intervention": "No operator hints, code edits or hidden-test feedback during execution; deterministic handoffs only.",
+  "usage": null,
+  "monetaryCost": null,
+  "costNote": "OpenRouter API; provider usage and invoiced cost are recorded separately by the researcher relay.",
+  "handoffError": "ENOENT: no such file or directory, open '/Users/zan/Documents/mag/experiments/openrouter-study/qwen/runtime/.work/pilots/P10-B-002/app/docs/agent/review.json'",
+  "finishedAt": "2026-11-01T22:50:14.702Z",
+  "elapsedSeconds": 1081.205,
+  "usageNote": "Raw CLI usage is recorded per phase. Aggregate is withheld if a resumed session requires reconciliation or any phase lacks a final usage event.",
+  "fileChanges": [
+    {
+      "path": "docs/agent/specification.md",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "docs/agent/verification.md",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "src/App.tsx",
+      "allowed": true,
+      "kind": "modified"
+    },
+    {
+      "path": "src/TaskMoveHelper.ts",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "src/TaskUndoHelper.ts",
+      "allowed": true,
+      "kind": "added"
+    }
+  ],
+  "rejectedSymlinks": [],
+  "allowedChanges": true
+}

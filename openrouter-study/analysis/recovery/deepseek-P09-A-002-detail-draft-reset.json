@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-01T20:58:52.537349+00:00",
+  "researcherOnly": true,
+  "position": 198,
+  "slug": "deepseek",
+  "id": "P09-A-002",
+  "executionStatus": "completed",
+  "elapsedSeconds": 347.568,
+  "functionalPassed": 68,
+  "functionalTotal": 70,
+  "requirementsPassed": 11,
+  "strictSuccess": false,
+  "completeCostUSD": 0.030089301,
+  "failedTests": [
+    {
+      "title": "E09: R09 details preserve params view and correct duplicate ID",
+      "project": "evaluation-desktop",
+      "status": "unexpected",
+      "errors": [
+        "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true })\nExpected: \"pregled\"\nReceived: \"draft\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveValue\" getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true }) with timeout 5000ms\n  - waiting for getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true })\n    14 × locator resolved to <input type=\"search\" value=\"draft\"/>\n       - unexpected value \"draft\"\n\n\n  10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})\n  11 | test('E08: R08 view changes preserve committed state and discard draft',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&order=title-desc');await search(page).fill('uncommitted');await board(page);await expectIds(page,['web-03']);await expect(search(page)).toHaveValue('pregled');expect(params(page).get('order')).toBe('title-desc');await select(page,'Stanje v povezavi','todo');await table(page);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done');await expectIds(page,['web-03'])})\n> 12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id=\"web-03\"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText"
+      ]
+    },
+    {
+      "title": "E09: R09 details preserve params view and correct duplicate ID",
+      "project": "evaluation-mobile",
+      "status": "unexpected",
+      "errors": [
+        "Error: expect(locator).toHaveValue(expected) failed\n\nLocator:  getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true })\nExpected: \"pregled\"\nReceived: \"draft\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveValue\" getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true }) with timeout 5000ms\n  - waiting for getByRole('searchbox', { name: 'Iskanje v povezavi', exact: true })\n    14 × locator resolved to <input type=\"search\" value=\"draft\"/>\n       - unexpected value \"draft\"\n\n\n  10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})\n  11 | test('E08: R08 view changes preserve committed state and discard draft',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&order=title-desc');await search(page).fill('uncommitted');await board(page);await expectIds(page,['web-03']);await expect(search(page)).toHaveValue('pregled');expect(params(page).get('order')).toBe('title-desc');await select(page,'Stanje v povezavi','todo');await table(page);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done');await expectIds(page,['web-03'])})\n> 12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id=\"web-03\"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText"
+      ]
+    }
+  ],
+  "researcherObservation": "Both E09 checks observe uncommitted search draft instead of committed pregled after navigating to task details. Actual App.tsx draft-reset effect depends on project.id,view,q,status,order and omits taskId; a detail-only navigation preserves these dependencies. This is one duplicated functional R09 gap, not the punctuation/region sensitivity of other submissions.",
+  "modelCodeEditedOrRetestedAfterArchive": false,
+  "ordinalReviewAdded": false,
+  "sourceSHA256": {
+    "deepseek/runtime/runs/P09-A-002/archive-complete.json": "0a9ffbbce6f626b0c9ef07278a2b065083fa499fb9307800ae6c136f18f1ef60",
+    "deepseek/runtime/runs/P09-A-002/execution.json": "c09755386a5854eb509d93306030f114b0f4277060557a96eaf555732ddac232",
+    "deepseek/runtime/runs/P09-A-002/evaluation-summary.json": "70754676e96f4ca2634965a14d14da042496e1b34d568465fa8bd13215ce88ac",
+    "deepseek/runtime/runs/P09-A-002/api-cost.json": "c121e96e586a2c9c35b4551a4597ec9787ed2f283a289f716ac140d207d72f63",
+    "deepseek/runtime/runs/P09-A-002/submission/src/App.tsx": "bf3a0b49ffb0d832b2f0daac0a87d4f36b759a81bf4b574e204ec705648d7b80",
+    "deepseek/runtime/runs/P09-A-002/submission/src/navigation.ts": "1d1991130aefa67ef4ea78b291238e562577b2f8d246b3c9c1d4e1029046b29e"
+  }
+}

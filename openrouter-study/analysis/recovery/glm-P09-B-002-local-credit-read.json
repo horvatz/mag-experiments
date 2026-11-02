@@ -1,0 +1,111 @@
+{
+  "at": "2026-11-01T15:04:20.228357+00:00",
+  "position": 190,
+  "model": "glm",
+  "id": "P09-B-002",
+  "classification": "local-credit-read-transport-before-upstream",
+  "request": 41,
+  "sentUpstream": false,
+  "requestCostUSD": 0,
+  "measuredRetry": false,
+  "executionStatus": "execution_failed",
+  "elapsedSeconds": 568.005,
+  "functionalPassed": 66,
+  "functionalTotal": 70,
+  "checks": [
+    {
+      "name": "lint",
+      "exitCode": 1,
+      "signal": null,
+      "elapsedSeconds": 0.726,
+      "passed": false
+    },
+    {
+      "name": "types",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.667,
+      "passed": true
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.247,
+      "passed": true
+    },
+    {
+      "name": "tests",
+      "exitCode": 1,
+      "signal": null,
+      "elapsedSeconds": 39.932,
+      "passed": false
+    }
+  ],
+  "completeCostUSD": 0.137806524,
+  "failedUnmeasuredDiagnosticPreserved": true,
+  "freshSameProviderDiagnosticPassed": true,
+  "continuation": {
+    "at": "2026-11-01T15:03:13.592Z",
+    "action": "continue_unused_ids",
+    "archived": 190,
+    "previousRun": "glm/P09-B-002",
+    "errorRequests": [
+      41
+    ],
+    "classifications": [
+      "local-credit-read-transport-before-upstream"
+    ],
+    "nextRun": "deepseek/P09-B-002",
+    "diagnosis": "analysis/recovery/deepseek-P04-A-001-local-network.json",
+    "diagnostic": "/Users/zan/Documents/mag/experiments/openrouter-study/glm/qualification/service-2026-11-01T15-03-09-351Z",
+    "frozenProtocolVersion": "O/1.0+budget-amendment-2",
+    "taskPromptsDeadlinesEvaluatorsUnchanged": true,
+    "archivedHashesVerified": true,
+    "measuredRetry": false,
+    "serviceCheck": "Unchanged runner also performs connectivity check before the next measured start."
+  },
+  "failedTests": [
+    {
+      "title": "E06: R06 trim encoding canonical defaults and repeated commit",
+      "project": "evaluation-desktop",
+      "errors": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"view=board\"\nReceived: \"view=board&extra=remove&status=all&order=original\"\n\n   7 | test('E04: R04 first parameter wins, invalid values default, no passive rewrite',async({page})=>{const hash='#/projects/web?status=invalid&status=done&order=bad&order=title-desc&q=pregled&q=other&extra=%23';await mount(page,undefined,hash);await expectIds(page,['web-01','web-02','web-03']);expect(new URL(page.url()).hash).toBe(hash);await expect(page.getByRole('combobox',{name:'Stanje v povezavi',exact:true})).toHaveValue('all');await expect(page.getByRole('combobox',{name:'Vrstni red v povezavi',exact:true})).toHaveValue('original')})\n   8 | test('E05: R05 draft changes nothing until one atomic history commit',async({page})=>{await mount(page);const before=page.url(),length=await page.evaluate(()=>history.length);await search(page).fill('pregled');await select(page,'Stanje v povezavi','done');await select(page,'Vrstni red v povezavi','title-desc');await expectIds(page,webIds());expect(page.url()).toBe(before);expect(await page.evaluate(()=>history.length)).toBe(length);await click(page,'Uporabi pogled');await expectIds(page,['web-03']);expect(await page.evaluate(()=>history.length)).toBe(length+1);await page.goBack();await expectIds(page,webIds());await expect(search(page)).toHaveValue('')})\n>  9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page.evaluate(()=>history.length)).toBe(length);await search(page).fill('  Čaj + & ? #  ');await click(page,'Uporabi pogled');await expect(search(page)).toHaveValue('Čaj + & ? #');expect(params(page).get('q')).toBe('Čaj + & ? #');expect(params(page).get('view')).toBe('board');const committed=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(await page.evaluate(()=>history.length)).toBe(committed)})\n     |                                                                                                                                                                                                                                                              "
+      ]
+    },
+    {
+      "title": "E06: R06 trim encoding canonical defaults and repeated commit",
+      "project": "evaluation-mobile",
+      "errors": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"view=board\"\nReceived: \"view=board&extra=remove&status=all&order=original\"\n\n   7 | test('E04: R04 first parameter wins, invalid values default, no passive rewrite',async({page})=>{const hash='#/projects/web?status=invalid&status=done&order=bad&order=title-desc&q=pregled&q=other&extra=%23';await mount(page,undefined,hash);await expectIds(page,['web-01','web-02','web-03']);expect(new URL(page.url()).hash).toBe(hash);await expect(page.getByRole('combobox',{name:'Stanje v povezavi',exact:true})).toHaveValue('all');await expect(page.getByRole('combobox',{name:'Vrstni red v povezavi',exact:true})).toHaveValue('original')})\n   8 | test('E05: R05 draft changes nothing until one atomic history commit',async({page})=>{await mount(page);const before=page.url(),length=await page.evaluate(()=>history.length);await search(page).fill('pregled');await select(page,'Stanje v povezavi','done');await select(page,'Vrstni red v povezavi','title-desc');await expectIds(page,webIds());expect(page.url()).toBe(before);expect(await page.evaluate(()=>history.length)).toBe(length);await click(page,'Uporabi pogled');await expectIds(page,['web-03']);expect(await page.evaluate(()=>history.length)).toBe(length+1);await page.goBack();await expectIds(page,webIds());await expect(search(page)).toHaveValue('')})\n>  9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page.evaluate(()=>history.length)).toBe(length);await search(page).fill('  Čaj + & ? #  ');await click(page,'Uporabi pogled');await expect(search(page)).toHaveValue('Čaj + & ? #');expect(params(page).get('q')).toBe('Čaj + & ? #');expect(params(page).get('view')).toBe('board');const committed=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(await page.evaluate(()=>history.length)).toBe(committed)})\n     |                                                                                                                                                                                                                                                              "
+      ]
+    },
+    {
+      "title": "E11: R11 reset history, empty message and whole-project count",
+      "project": "evaluation-desktop",
+      "errors": [
+        "Error: expect(locator).toBeVisible() failed\n\nLocator: getByText('Ni zadetkov.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByText('Ni zadetkov.', { exact: true }) with timeout 5000ms\n  - waiting for getByText('Ni zadetkov.', { exact: true })\n\n\n  12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id=\"web-03\"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})\n  13 | test('E10: R10 project navigation resets while direct URL honors params',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&view=board');await project(page,'launch');await expectIds(page,['launch-01','launch-02'],false);expect(params(page).toString()).toBe('view=board');await page.goto('/#/projects/launch?status=done&view=board');await expectIds(page,['launch-02']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})\n> 14 | test('E11: R11 reset history, empty message and whole-project count',async({page})=>{await mount(page,undefined,'#/projects/web?q=missing&view=board');await expectIds(page,[]);await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible();await expect(page.getByRole('status',{name:'Rezultati povezave'})).toHaveText('Prikazano: 0 od 8.');await search(page).fill('draft');await click(page,'Ponastavi pogled');await expectIds(page,webIds(),false);expect(params(page).toString()).toBe('view=board');const length=await page.evaluate(()=>history.length);await click(page,'Ponastavi pogled');expect(await page.evaluate(()=>history.length)).toBe(length);await page.goBack();await expect(search(page)).toHaveValue('missing');await expectIds(page,[])})\n     |                                                                                                                               "
+      ]
+    },
+    {
+      "title": "E11: R11 reset history, empty message and whole-project count",
+      "project": "evaluation-mobile",
+      "errors": [
+        "Error: expect(locator).toBeVisible() failed\n\nLocator: getByText('Ni zadetkov.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByText('Ni zadetkov.', { exact: true }) with timeout 5000ms\n  - waiting for getByText('Ni zadetkov.', { exact: true })\n\n\n  12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id=\"web-03\"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})\n  13 | test('E10: R10 project navigation resets while direct URL honors params',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&view=board');await project(page,'launch');await expectIds(page,['launch-01','launch-02'],false);expect(params(page).toString()).toBe('view=board');await page.goto('/#/projects/launch?status=done&view=board');await expectIds(page,['launch-02']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})\n> 14 | test('E11: R11 reset history, empty message and whole-project count',async({page})=>{await mount(page,undefined,'#/projects/web?q=missing&view=board');await expectIds(page,[]);await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible();await expect(page.getByRole('status',{name:'Rezultati povezave'})).toHaveText('Prikazano: 0 od 8.');await search(page).fill('draft');await click(page,'Ponastavi pogled');await expectIds(page,webIds(),false);expect(params(page).toString()).toBe('view=board');const length=await page.evaluate(()=>history.length);await click(page,'Ponastavi pogled');expect(await page.evaluate(()=>history.length)).toBe(length);await page.goBack();await expect(search(page)).toHaveValue('missing');await expectIds(page,[])})\n     |                                                                                                                               "
+      ]
+    }
+  ],
+  "sourceSHA256": {
+    "glm/runtime/runs/P09-B-002/archive-complete.json": "5086d09c2aee494cc9d8976a1da6f69381e7611de47d1a494dceb6328a2806c5",
+    "glm/runtime/runs/P09-B-002/execution.json": "efd6d92e127b3e3fb0918847f38448e2998d7caf6bc4ec17bac1115f834f823b",
+    "glm/runtime/runs/P09-B-002/evaluation-summary.json": "16f86b9a59efa8064686442d6e2cb242a7d563aa65dbde76dff2b3a6e025f779",
+    "glm/runtime/runs/P09-B-002/api-cost.json": "39608768cfda47e8cecd68dec2e67251e8e2e2754d9b8a7be9f8ddd9e3a12c12",
+    "glm/api/P09-B-002/model/api-ledger.jsonl": "4e2a039672b09a23f423408556e8238ec4c6b8f5c01d06f784d6648ae773fffb",
+    "glm/api/P09-B-002/model/request-00041.json.gz": "d0240f175797f85608f152f9abc7ffcd63184c1902d018ff2ece0091d2dad497",
+    "glm/qualification/service-2026-11-01T15-00-48-933Z/result.json": "7a4e6f84b5799d685b41f33f93d29fa8bccfff63ccfc8c5f0171d20512202ff8",
+    "glm/qualification/service-2026-11-01T15-03-09-351Z/result.json": "a837d781d8cc52d2f095021de17e328f4f38c993b8af2eb51a9b26c6f85f177f"
+  },
+  "ordinalReviewAdded": false,
+  "budgetRefusal": false,
+  "note": "Request40 retains its recorded client_aborted/completed metadata and returned invoiced cost; no new causal claim. V11 unchanged; original failed diagnostic preserved."
+}

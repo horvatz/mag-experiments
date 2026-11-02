@@ -1,0 +1,37 @@
+{
+  "at": "2026-11-01T21:45:20.844041+00:00",
+  "researcherOnly": true,
+  "position": 200,
+  "slug": "deepseek",
+  "id": "P10-C-002",
+  "executionStatus": "invalid_stage_handoff",
+  "elapsedSeconds": 779.814,
+  "functionalPassed": 70,
+  "functionalTotal": 70,
+  "requirementsPassed": 12,
+  "strictSuccess": false,
+  "costComplete": true,
+  "costUSD": 0.11078769,
+  "apiRequests": 64,
+  "allNativePhasesCompleted": true,
+  "finalResponseIsValidRawJSON": true,
+  "handoffError": "Convergence cannot approve unfinished tasks",
+  "unfinishedTaskLines": [
+    "- [ ] T001 Zagon izhodišča pred spremembami ni bil izveden; skupni testi so bili izvedeni po izvedbi v T014 (glej `docs/agent/verification.md`)."
+  ],
+  "researcherObservation": "Actual tasks.md leaves only T001 (baseline checks before changes) unchecked and explicitly documents that the initial run was not performed. Final valid raw JSON approves convergence. Frozen validator rejects converged outcome while a task remains unchecked. This is a procedural completeness failure, distinct from fenced-JSON syntax failures; independent functional70/70 and12/12 remain intact.",
+  "modelCodeOrChecklistEditedOrRetestedAfterArchive": false,
+  "ordinalReviewAdded": false,
+  "sourceSHA256": {
+    "deepseek/runtime/runs/P10-C-002/archive-complete.json": "0d2f4a4cd2643ae7558a34d321ba7355fb91af0e7c42ce7703634a658bd7df30",
+    "deepseek/runtime/runs/P10-C-002/execution.json": "4d100798da15a5eb26b7220be05513c69632552d0b6e67b3b6e54b3268c87734",
+    "deepseek/runtime/runs/P10-C-002/evaluation-summary.json": "773f4646ab6a204a7b4fe33f169c73f23b24680e623b109e6f490a2f03ce6d3c",
+    "deepseek/runtime/runs/P10-C-002/api-cost.json": "76f7dc12773d846cc90304583c0cb1919a34c39db5d9a66c56213582a307c027",
+    "deepseek/runtime/runs/P10-C-002/phases/06-converge/last-message.md": "6ba118d9d58576a97f9fdf44061f0c08ee0a573bdf0f3605bd3401e63cec9c0f",
+    "deepseek/runtime/runs/P10-C-002/submission/docs/agent/P10/tasks.md": "568f5b283282bbd7d0fdb271a1d271d6b35c527e8c8913a0f4f83ca7740f2a5b",
+    "deepseek/runtime/scripts/procedure-c.mjs": "403d24273bb401558cc459d7810501f15e0f84a17d060f065de147967427f7cc",
+    "deepseek/runtime/runs/P10-C-002/preflight-runtime.log": "14926781babd540e5b56087cd60b7df2382b6802fc270972c66a6ed488462951"
+  },
+  "researcherUnmeasuredPreflightBeforeModelPassed": true,
+  "preflightClarification": "Researcher preflight passed38 baseline checks before the measured model start. The unfinished T001 is the author own planned initial test run, not evidence that researcher baseline verification was omitted."
+}

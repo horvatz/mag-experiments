@@ -1,0 +1,86 @@
+Preberem navodila in začnem z določanjem zahtev naloge.
+
+
+
+
+Preverim obstoječo aplikacijo, da razumem strukturo opravil in vmesnik:
+
+
+
+
+Preverim API začetne zneske in Teste:
+
+
+
+
+Preveri strukturo datoteke za server:
+
+
+
+
+Preberem vse serverskie datoteke:
+
+
+
+
+Preverim začetni razpored opravil:
+
+
+Preverim strukturo:
+
+
+Preberem razvojne teste za P10:
+
+
+Sedaj imam jasno sliko zahteve. Prav tako vidim, da moram preveriti ali obstaja že kakšen deljeni vmesnik ali logika, vendar kot vidim gre za UI za vrstni red opravil. Podatki iz navodil:
+
+**Umetni vrstni red s podprto zgodovino:**
+- Gumbi za premikanje gor/dol
+- Zgodovina razveljavitv
+- Gumbi za razveljavitev in ponovitev premikov
+- Začetni vrstni red gumb
+
+Preverim strukturo kod in poiščem morebitno obstoječo logiko:
+
+
+
+
+Sedaj moram celotno analizirati App.tsx in TaskBoard.tsx ter ugotoviti kako funkcijonira obstoječ sistem:
+
+
+
+
+Preberem style.css in ostale ključne datoteke:
+
+
+
+
+Sedaj moram preveriti dizajn.md in TaskDetails:
+
+
+
+
+Zdaj imam jasno sliko. Ustvarjam specifikacijo:
+
+
+Glejmo, kaj je napačno:
+
+
+```
+apply_patch
+*** Begin Patch
+*** Update File: docs/agent/specification.md
+@@ -0,0 +1,103 @@
++# Specifikacija umetnega vrstnega reda
++
++## Problem in kontekst
++
++Aplikacija Folio omogoča upravljanje opravil v projektih. Podpirata se dva pogleda: preglednica (seznam) in tabla (kanban stil). Sedaj dodajamo funkcionalnost umetnega vrstnega reda z možnostjo premikanja opravil, razveljavljanja in ponavljanja premikov.
++
++## Vhodi, dejanja in izidi
++
++### Podatkovni vnos
++
++- Projekti z enimi ali več opravili (ID-ji so neposredni nizovi npr. `web-01`)
++- Vsako opravilo ima `projectId`, `title`, `s
+{"status":"completed","elapsedSeconds":191.39,"allowedChanges":true,"usage":{"input_tokens":366298,"cached_input_tokens":44288,"cache_write_input_tokens":0,"output_tokens":4368,"reasoning_output_tokens":747}}

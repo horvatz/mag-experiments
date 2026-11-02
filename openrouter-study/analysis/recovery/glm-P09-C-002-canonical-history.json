@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-01T20:28:10.318560+00:00",
+  "researcherOnly": true,
+  "position": 195,
+  "slug": "glm",
+  "id": "P09-C-002",
+  "executionStatus": "completed",
+  "elapsedSeconds": 738.049,
+  "allNativePhasesCompleted": true,
+  "functionalPassed": 68,
+  "functionalTotal": 70,
+  "requirementsPassed": 11,
+  "strictSuccess": false,
+  "completeCostUSD": 0.6070076110000001,
+  "failedTests": [
+    {
+      "title": "E06: R06 trim encoding canonical defaults and repeated commit",
+      "project": "evaluation-desktop",
+      "errors": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 2\nReceived: 3\n\n   7 | test('E04: R04 first parameter wins, invalid values default, no passive rewrite',async({page})=>{const hash='#/projects/web?status=invalid&status=done&order=bad&order=title-desc&q=pregled&q=other&extra=%23';await mount(page,undefined,hash);await expectIds(page,['web-01','web-02','web-03']);expect(new URL(page.url()).hash).toBe(hash);await expect(page.getByRole('combobox',{name:'Stanje v povezavi',exact:true})).toHaveValue('all');await expect(page.getByRole('combobox',{name:'Vrstni red v povezavi',exact:true})).toHaveValue('original')})\n   8 | test('E05: R05 draft changes nothing until one atomic history commit',async({page})=>{await mount(page);const before=page.url(),length=await page.evaluate(()=>history.length);await search(page).fill('pregled');await select(page,'Stanje v povezavi','done');await select(page,'Vrstni red v povezavi','title-desc');await expectIds(page,webIds());expect(page.url()).toBe(before);expect(await page.evaluate(()=>history.length)).toBe(length);await click(page,'Uporabi pogled');await expectIds(page,['web-03']);expect(await page.evaluate(()=>history.length)).toBe(length+1);await page.goBack();await expectIds(page,webIds());await expect(search(page)).toHaveValue('')})\n>  9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page.evaluate(()=>history.length)).toBe(length);await search(page).fill('  Čaj + & ? #  ');await click(page,'Uporabi pogled');await expect(search(page)).toHaveValue('Čaj + & ? #');expect(params(page).get('q')).toBe('Čaj + & ? #');expect(params(page).get('view')).toBe('board');const committed=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(await page.evaluate(()=>history.length)).toBe(committed)})\n     |                                                                                                                                                                                                                                                                                                                           "
+      ]
+    },
+    {
+      "title": "E06: R06 trim encoding canonical defaults and repeated commit",
+      "project": "evaluation-mobile",
+      "errors": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 2\nReceived: 3\n\n   7 | test('E04: R04 first parameter wins, invalid values default, no passive rewrite',async({page})=>{const hash='#/projects/web?status=invalid&status=done&order=bad&order=title-desc&q=pregled&q=other&extra=%23';await mount(page,undefined,hash);await expectIds(page,['web-01','web-02','web-03']);expect(new URL(page.url()).hash).toBe(hash);await expect(page.getByRole('combobox',{name:'Stanje v povezavi',exact:true})).toHaveValue('all');await expect(page.getByRole('combobox',{name:'Vrstni red v povezavi',exact:true})).toHaveValue('original')})\n   8 | test('E05: R05 draft changes nothing until one atomic history commit',async({page})=>{await mount(page);const before=page.url(),length=await page.evaluate(()=>history.length);await search(page).fill('pregled');await select(page,'Stanje v povezavi','done');await select(page,'Vrstni red v povezavi','title-desc');await expectIds(page,webIds());expect(page.url()).toBe(before);expect(await page.evaluate(()=>history.length)).toBe(length);await click(page,'Uporabi pogled');await expectIds(page,['web-03']);expect(await page.evaluate(()=>history.length)).toBe(length+1);await page.goBack();await expectIds(page,webIds());await expect(search(page)).toHaveValue('')})\n>  9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page.evaluate(()=>history.length)).toBe(length);await search(page).fill('  Čaj + & ? #  ');await click(page,'Uporabi pogled');await expect(search(page)).toHaveValue('Čaj + & ? #');expect(params(page).get('q')).toBe('Čaj + & ? #');expect(params(page).get('view')).toBe('board');const committed=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(await page.evaluate(()=>history.length)).toBe(committed)})\n     |                                                                                                                                                                                                                                                                                                                           "
+      ]
+    }
+  ],
+  "researcherObservation": "R06 canonicalization test fails on desktop/mobile: history length grows from2 to3 when applying semantically unchanged noncanonical default parameters. Authored App.tsx line32 assigns window.location.hash whenever raw hash strings differ; it does not distinguish canonicalization from a semantic state change. This is one duplicated cause, not two independent requirement failures.",
+  "observationBasedOnActualAuthoredCode": true,
+  "modelCodeEditedOrRetestedAfterArchive": false,
+  "ordinalReviewAdded": false,
+  "sourceSHA256": {
+    "glm/runtime/runs/P09-C-002/archive-complete.json": "11c0bcc38e4a964077b937fad32735a256fb299f9cea9ebd7dd0ffb04e686db7",
+    "glm/runtime/runs/P09-C-002/execution.json": "e8cf31008dafe5c5a96455e104d270d9aa7413349ec7bee1f56c06f88a0e7887",
+    "glm/runtime/runs/P09-C-002/evaluation-summary.json": "e9393a8b45354e8dac5fcd81155f4a2d424333562d8545fa497ebe6f347eb376",
+    "glm/runtime/runs/P09-C-002/api-cost.json": "3c010c13152d19d24ef5fd4a5427604d35955e4465e542ba0473d6f81613c6c2",
+    "glm/runtime/runs/P09-C-002/submission/src/App.tsx": "731f178fbb9dad7309aa964028d8251ca47d62ff551710fc0af82a731c08c661"
+  }
+}

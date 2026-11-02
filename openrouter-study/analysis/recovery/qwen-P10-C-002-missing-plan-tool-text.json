@@ -1,0 +1,84 @@
+{
+  "at": "2026-11-01T22:02:54.789816+00:00",
+  "researcherOnly": true,
+  "position": 201,
+  "slug": "qwen",
+  "id": "P10-C-002",
+  "executionStatus": "invalid_stage_handoff",
+  "elapsedSeconds": 525.646,
+  "phases": [
+    {
+      "name": "constitution",
+      "status": "completed",
+      "limitSeconds": 1200,
+      "elapsedSeconds": 55.222,
+      "handoffError": null
+    },
+    {
+      "name": "specify",
+      "status": "completed",
+      "limitSeconds": 1143.625,
+      "elapsedSeconds": 442.252,
+      "handoffError": null
+    },
+    {
+      "name": "plan",
+      "status": "completed",
+      "limitSeconds": 700.184,
+      "elapsedSeconds": 24.673,
+      "handoffError": "Missing artifact: docs/agent/P10/plan.md"
+    }
+  ],
+  "functionalPassed": 38,
+  "functionalTotal": 70,
+  "requirementsPassed": 0,
+  "strictSuccess": false,
+  "costComplete": true,
+  "costUSD": 0.05879409999999999,
+  "apiRequests": 24,
+  "requestStatuses": {
+    "finished": 22,
+    "client_aborted": 2
+  },
+  "httpStatuses": {
+    "200": 24
+  },
+  "responseStatuses": {
+    "completed": 24
+  },
+  "productionCodeChanged": false,
+  "authoredChanges": [
+    {
+      "path": ".specify/feature.json",
+      "allowed": true,
+      "kind": "modified"
+    },
+    {
+      "path": ".specify/memory/constitution.md",
+      "allowed": true,
+      "kind": "modified"
+    },
+    {
+      "path": "docs/agent/P10/spec.md",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "docs/agent/P10/spec.txt",
+      "allowed": true,
+      "kind": "added"
+    }
+  ],
+  "researcherObservation": "Plan native phase completes with exit0 but required plan.md is absent. Final native agent_message contains textual invoke/code view_dirs tags; these are text, not executed tool calls. Earlier constitution and specification documents exist; no production code changes. Specify442.252s completed under its actual shared remaining limit1143.625s; do not mislabel it as a360s phase timeout. No causal provider diagnosis is inferred.",
+  "modelCodeOrResponseEditedOrRetestedAfterArchive": false,
+  "ordinalReviewAdded": false,
+  "sourceSHA256": {
+    "qwen/runtime/runs/P10-C-002/archive-complete.json": "cc8d7532e3cc42db9be243752b1dbff84690304e722bf3e541ff519616bfdaad",
+    "qwen/runtime/runs/P10-C-002/execution.json": "df236c6f6743a0351cd545f9b07347f24077e7e45c7a05d8adcdae8a6d35d937",
+    "qwen/runtime/runs/P10-C-002/evaluation-summary.json": "7669c07e1e238812ec5d01c64de7107ace4cec18e0031aa22f7da28c6d5ce57f",
+    "qwen/runtime/runs/P10-C-002/api-cost.json": "2121a318e9800905cb731d65bddc926f06291030bd029be5c0f78575d908a96c",
+    "qwen/runtime/runs/P10-C-002/phases/03-plan/last-message.md": "fba1a50699a959b08e7407615c00d8de8fc801aa28d844c68b7a4f6390b979a0",
+    "qwen/runtime/runs/P10-C-002/phases/03-plan/events.jsonl.gz": "0696d0461f22edab2757bedd0251fefe7f1dd4f91132470dd6fa6fb235702494",
+    "qwen/api/P10-C-002/model/api-ledger.jsonl": "5816fdb287b36a8b0ee3390abbf2e01749291e81475fc90bc695add373c1b675"
+  }
+}

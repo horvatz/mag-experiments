@@ -1,12 +1,12 @@
 # Glavna zbirka P03–P10
 
-Arhiviranih je 63 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
+Arhiviranih je 70 od 72 vnaprej določenih izvedb. Zbirka je nepopolna; skupinski podatki so le sprotni opis in še niso uravnotežena primerjava.
 
 | Postopek | Arhivirano | Strogi uspehi | Dokazane zahteve, povprečni delež | Čas, povprečje s | Popolna poraba |
 | --- | --- | --- | --- | --- | --- |
-| A | 21/24 | 10 | 0.97 | 656.85 | 15/21 |
-| B | 21/24 | 3 | 0.85 | 846.12 | 5/21 |
-| C | 21/24 | 4 | 0.74 | 903.08 | 5/21 |
+| A | 23/24 | 11 | 0.97 | 638.26 | 17/23 |
+| B | 23/24 | 4 | 0.82 | 818.30 | 6/23 |
+| C | 24/24 | 4 | 0.77 | 896.63 | 6/24 |
 
 Vsaka zahteva potrebuje uspeh na obeh velikostih zaslona. Neopaženo preverjanje pomeni nedokazano zahtevo, ne potrjene funkcionalne napake. Strogi uspeh zahteva še zaključek postopka, dovoljene spremembe, lint, tipe, gradnjo in vseh 70 preverjanj.
 
@@ -77,5 +77,12 @@ Vhodni tokeni vključujejo predpomnjene, izhodni vključujejo reasoning. Nepopol
 | [P03-C-003](../../runs/P03-C-003/report.md) | completed | 12/12 | 12/12 | 554.887 | da |
 | [P03-A-003](../../runs/P03-A-003/report.md) | execution_failed | 12/12 | 12/12 | 482.33 | ne |
 | [P03-B-003](../../runs/P03-B-003/report.md) | execution_failed | 12/12 | 12/12 | 514.777 | ne |
+| [P09-B-002](../../runs/P09-B-002/report.md) | execution_failed | 0/12 | 12/12 | 41.984 | ne |
+| [P09-C-002](../../runs/P09-C-002/report.md) | invalid_stage_handoff | 11/12 | 12/12 | 1062.676 | ne |
+| [P09-A-002](../../runs/P09-A-002/report.md) | completed | 11/12 | 12/12 | 347.568 | ne |
+| [P10-C-002](../../runs/P10-C-002/report.md) | invalid_stage_handoff | 12/12 | 12/12 | 779.814 | ne |
+| [P10-B-002](../../runs/P10-B-002/report.md) | completed | 12/12 | 12/12 | 1010.359 | da |
+| [P10-A-002](../../runs/P10-A-002/report.md) | completed | 12/12 | 12/12 | 538.432 | da |
+| [P09-C-003](../../runs/P09-C-003/report.md) | completed | 11/12 | 12/12 | 711.908 | ne |
 
 Vsebinska rubrika, človeška presoja in pisanje interpretacije so ločeni koraki; prisotnost testov ali dokumentov ni samodejna ocena njihove kakovosti.

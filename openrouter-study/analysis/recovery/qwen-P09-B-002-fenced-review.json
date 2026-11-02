@@ -1,0 +1,52 @@
+{
+  "at": "2026-11-01T15:59:27.282208+00:00",
+  "position": 192,
+  "slug": "qwen",
+  "id": "P09-B-002",
+  "executionStatus": "invalid_review_handoff",
+  "elapsedSeconds": 921.911,
+  "phases": [
+    {
+      "name": "specification",
+      "status": "phase_time_limit",
+      "elapsedSeconds": 360.038,
+      "limitSeconds": 360
+    },
+    {
+      "name": "implementation",
+      "status": "completed",
+      "elapsedSeconds": 168.142,
+      "limitSeconds": 479.45
+    },
+    {
+      "name": "review",
+      "status": "completed",
+      "elapsedSeconds": 391.94,
+      "limitSeconds": 550.798
+    }
+  ],
+  "handoffError": "Unexpected token '`', \"```json\n{\n\"... is not valid JSON",
+  "classification": "Authored review file contains Markdown fence instead of raw valid JSON; native review phase exited0 but deterministic handoff failed.",
+  "implementationFileChanges": [
+    {
+      "path": "docs/agent/verification.md",
+      "allowed": true,
+      "kind": "added",
+      "roleAllowed": true
+    }
+  ],
+  "functionalPassed": 38,
+  "functionalTotal": 70,
+  "requirementsPassed": 0,
+  "strictSuccess": false,
+  "completeCostUSD": 0.12223645000000002,
+  "measuredRetry": false,
+  "ordinalReviewAdded": false,
+  "sourceSHA256": {
+    "qwen/runtime/runs/P09-B-002/archive-complete.json": "ed8676439f9d0be0424bb9793d9d6a6eb9643bb156dd9851006b6700d8de2832",
+    "qwen/runtime/runs/P09-B-002/execution.json": "98b6f0daba045996df0fa1c0be9982b8c1446a6d4c72df579b86eef384a51c59",
+    "qwen/runtime/runs/P09-B-002/evaluation-summary.json": "4c88bfd254477d1ed5dc20e0c1441a70b77d8f958288a780ef6bf1a3725d204c",
+    "qwen/runtime/runs/P09-B-002/api-cost.json": "12bf1ca46553325d87dbc42634722f84c8f16d3636f5f4dc7c653cebcf55fada",
+    "qwen/runtime/runs/P09-B-002/submission/docs/agent/review.json": "beeb65db115a26d2e3a020dda3152707e01703b05b831fe76f05b46b4770fc20"
+  }
+}
