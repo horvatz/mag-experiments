@@ -1,0 +1,25 @@
+Preberem pravila, navodila in specifikacijsko predlogo, nato pripravim specifikacijo pred implementacijo.
+Zahteve so jasne. Zdaj pregledam obstoječi vmesnik, API modele in razvojne teste, da specifikacijo povežem z dejansko kodo.
+Specifikacijo bom zdaj zapisal z zaznamkom popravkov, preden spremenim kodo.
+`apply_patch` v tej izvoženi lupini ni na voljo kot ukaz, zato preverim dovoljen lokalni Cyclone path in nadaljujem z odobrenim urejanjem znotraj `src/`, `tests/agent/` ter `docs/agent/`.
+Specifikacija je pripravljena. Zdaj dodam čisto razvrščalno projekcijo in kontrole, ki neizrečeno ohranijo obstoječe povezave, števce in API.
+Razvrščanje je sedaj projekcija v `App` in tabla dobi isto urejeno polje. Dodam še Folio slog za nove kontrole in odpravim droben beli prostor.
+Osnovna implementacija je na mestu. Najprej preverim tipizacijo in lint, nato dodam ciljne teste za robne primere in sledljivost.
+Tipi in lint sta čista. Zdaj dodam agentove teste, ki pokrijejo normalizacijo, stanja/datume, stabilnost, tablo, podrobnosti, ponastavitev, prazen/en projekt in odsotnost zapisov.
+Testi so dodani in statična preverjanja so čista. Zdaj zaženem agentove teste, nato skupne P04 in celoten `npm run check`.
+Dve napaki sta v testnih pričakovanjih, ne v implementaciji: obrat naslova ohranja izvorni vrstni red izenačenih dvojic, drugi klic `mount` pa pušča prejšnjo route. Popravim testa in ponovno zaženem.
+Agentovih 6 testov je uspešno. Zdaj preverim obe razvojni projekti P04, da zajamem skupne primerke in mobilne dimenzije.
+Skupni P04 testi (namizje in mobilno) so uspešni. Zdaj izvedem končni `npm run check` z lintom, buildom in celotnim testnim naborom.
+Vse preveritve so uspešne (52/52). Zdaj posodobim sledljivost v specifikaciji in zapišem dejansko izvedena preverjanja z omejitvami.
+Dokumentacija je posodobljena. Še enkrat preverim obseg sprememb in ključne vrstice za jedrnato predajo.
+**Rezultat**
+- Implementiral stabilno razvrščanje z dvema neodvisnima ključema in smernima kontrolama: `src/sorting.ts:1`, `src/App.tsx:14`.
+- Preglednica in tabla uporabljata isto razvrščeno projekcijo; stanje se ohrani med pogledi in podrobnostmi, ne pa med projekti ali osvežitvami.
+- Dodal odzivne Folio kontrole: `src/styles.css:180`.
+- Pripravil specifikacijo in sledljivost R01–R12: `docs/agent/specification.md:1`.
+- Dodal 6 lastnih testov: `tests/agent/P04-agent.spec.ts:22`.
+- Zapisal dejansna preverjanja in omejitve: `docs/agent/verification.md:1`.
+
+**Preverjanja**
+- `npx playwright test
+{"status":"completed","elapsedSeconds":289.201,"allowedChanges":true,"usage":{"input_tokens":1542521,"cached_input_tokens":1499136,"cache_write_input_tokens":0,"output_tokens":31128,"reasoning_output_tokens":12105}}

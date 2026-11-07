@@ -1,0 +1,41 @@
+I have the full picture now. Let me check the remaining styles quickly, then write the spec and implement.
+Now I'll write the specification first, per the required procedure.
+
+
+The heredoc hit a sandbox temp restriction. I'll use `apply_patch` towrite the spec file instead.
+Spec is in place. Now implementing the filter logic and UI.
+
+
+Heredocs are blocked in this sandbox; I'll pass patches as direct arguments.
+
+
+Now the agent test suite covering the requirements.
+
+
+Now validating: typecheck, lint, then the test suites.
+
+
+Four of my tests have issues — let me see the exact failure lines.
+
+
+My test expectations had wrong assignee assumptions (and one substring case). Fixing them.
+
+
+All 17 agent tests pass. Running the full `npm run check` for the final validation.
+
+
+All 63 checks pass. Writing the verification record now.
+
+
+The patch parser choked on a continuation line. I'll retry with simpler line structure.
+
+
+Final sanity check on the deliverable files and repo state.
+
+
+Pilotna naloga P03 je zaključena. Povzetek:
+
+**Rezultat**
+- Specifikacija: `docs/agent/specification.md` (R01–R12 s predikati, sledljivostjo in omejitvami); med izvedbo ni bila spremenjena, popravki so bili le v testnih pričakovanjih in so zabeleženi v `docs/agent/verification.md`.
+- Implementacija: `src/search.ts` (NFD normalizacija U+0300–U+036F, male črke, vse besede kot dobesedni podnizi), `src/App.tsx` (iskanje, filtra stanja/osebe, »Počisti filtre«, `role=status` »Prikazano: N od M.«, sporočilo »Ni zadetkov.«, ponastavitev ob menjavi projekta), `src/styles.css` (vrstica filtrov, odzivnos
+{"status":"completed","elapsedSeconds":687.932,"allowedChanges":true,"usage":{"input_tokens":1491478,"cached_input_tokens":1419264,"cache_write_input_tokens":0,"output_tokens":40971,"reasoning_output_tokens":18093}}

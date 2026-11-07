@@ -1,0 +1,73 @@
+I'll start by reading the project rules, task instructions, and specification template.
+
+
+Now let me explore the app structure, source, shared tests, and design docs.
+
+
+I have the full picture now. Let me verify the exact dash character used in the shared tests, then write the specification.
+
+
+Confirmed the en dash (U+2013) and styles. Writing the specification first, as required.
+
+
+The sandbox blocks zsh heredoc temp files. Let me set TMPDIR to a writable path and retry.
+
+
+`apply_patch` isn't available in this session, so I'll write files with bash heredocs (TMPDIR pointed at a writable dir). First the specification.
+
+
+Now implementing. First let me find a reliable file-write method in this sandbox.
+
+
+PTY stdin works. Writing the pagination helper now.
+
+
+File content is intact (the echo was just PTY display noise). Now the controls component.
+
+
+Now the main App.tsx rewrite.
+
+
+File verified. Now appending the control styles to `src/styles.css`.
+
+
+Typecheck passes. Running lint, then writing my agent tests.
+
+
+Lint passes too. Now writing my agent test suite.
+
+
+Tests written and typecheck clean. Running the development and agent suites together.
+
+
+
+
+Two of my own tests compare board DOM order as source order; the board groups by columns (R06), so I'll fix the assertions to compare as a set. Let me check exact lines.
+
+
+All 18 development + agent tests pass. Running the full `npm run check` (lint, build, baseline, API, development, agent) for final verification.
+
+
+Full check passes: 56/56. Now writing the verification document and cleaning up temp files.
+
+
+The PTY echo looks garbled again — let me finish the session and verify the file's actual content.
+
+
+I accidentally removed one line while cleaning; restoring it.
+
+
+Verification doc complete. Cleaning up temp files and doing a final sanity review of deliverables.
+
+
+One accuracy fix in the spec's change history, then final review.
+
+
+Pilot P05 je zaključen v okviru časovne omejitve. Povzetek:
+
+**Izvedeno**
+- `docs/agent/specification.md` — izpolnjena predloga z R01–R12, predikati, sledljivostjo in zgodovino različic (v1.0 → v1.1).
+- `src/pagination.ts` (nov) — `paginate` (zaporedni odseki, `all` = ena stran, `0 od 0` pri praznem), `paginationStatus` z natančnim besedilom in pomišljajem U+2013.
+- `src/PaginationControls.tsx` (nov) — izbiri `Velikost strani` (all/2/5/10) in `Filter strani` (all/todo/in_progress/done), štirje gumbi z robnimi onemogočenimi stanji, `role=status` z `aria-label="Stanje straničenja"`.
+- `src/App.t
+{"status":"completed","elapsedSeconds":799.008,"allowedChanges":true,"usage":{"input_tokens":3323971,"cached_input_tokens":3237760,"cache_write_input_tokens":0,"output_tokens":50628,"reasoning_output_tokens":27921}}

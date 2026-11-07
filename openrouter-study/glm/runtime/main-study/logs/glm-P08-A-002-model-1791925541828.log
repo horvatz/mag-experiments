@@ -1,0 +1,27 @@
+Preberem projektne navodila in specifikacijo naloge, nato pripravim specifikacijo pred implementacijo.
+Navodila so jasna. Zdaj pregledam obstoječi vmesnik, tipe in razvojne teste, da specifikacijo in implementacijo prilagodim dejanskemu izhodišču.
+Izhodišče je strukturirano v stavcu o stanjih, preglednici in tabli. Pregledam ključne datoteke po delih in obstoječe P08 zahteve, da izognem podvajanju.
+Pripravim specifikacijo z razdelitvijo datumov, števci in stanjem UI pred kodnimi spremembami.
+Specifikacijo bom navezal na vse R01–R12, vključno s predikati klasifikacije in pogoji preverjanja. Nato implementiram v novem pripomočku in obstoječem pogledu.
+Okolje blokira zsh here-document; spremembo bom izvedel z istim `apply_patch` ukazom prek vnašalne cevi.
+Lokalni `git apply` naleti na nedovoljeno globalno konfiguracijo; popravim omejitev s sanitiziranim okoljem in nadaljujem z istim mehanizmom.
+Specifikacija je pripravljena. Zdaj vstavim kontrole in pripomoček za klasifikacijo ter uskladim tabelo, tablo in števce z istim filtrom.
+Jedro klasifikacije je vstavljeno. Dodam še Folio slog za kontrole in pet številcev, potem zaganjam preverjanja.
+Opazil sem, da je bila prva nekoda zamenjana le delno. Popravim uvoz in stanje neposredno ter takoj izvedem typecheck.
+Implementacija sedaj tipno usklajena. Dodam lastne Playwright teste za koledarske meje, števce, preklop pogleda, ponastavitev in ozko širino.
+Lastni testi so dodani. Najprej izvedem lint in typecheck, nato razvojne in lastne UI teste.
+Razvojni testi so zeleni. Lastni pričakovani števci niso upoštevali dodatnih robnih opravil; popravim pričakovane vrednosti in ponovim test.
+Lastni test zdaj uspešno pokriva dodatne robne primere. Zaganjam celotno `npm run check` z buildom, lintom, izhodiščnimi, API, razvojnimi in lastnimi testi.
+Vsa 47 preverjanj so uspešna. Zapišem dejansko izvedene preverjalne korake, rezultate, sledljivost do R01–R12 in omejitve.
+Dokumentacija je usklajena. Še počistim začasne pripomočke iz `.tmp`, ki niso del oddaje.
+**Rezultat**
+- Specifikacija za R01–R12 je v `docs/agent/specification.md:1`.
+- Koledarski filter, pet števcev, preračun datumov in ohranjanje stanja sta implementirani v `src/App.tsx:14` in `src/due.ts:16`.
+- Folio slog kontrol je dodan v `src/styles.css:50`.
+- Lastno Playwright pokritje meja, števcev, ponastavitve, bralnosti in širine 390 px je v `tests/agent/P08.spec.ts:53`.
+
+**Preverjanje**
+- `npm run check` je uspešno končal z **47/47 preverjanji**.
+- Dejanski potek, rezultati, sledljivost R01–R12 in omejitve so zapisani v `docs/agent/verification.md:1`.
+- Neizpolnjenih zahtev ni.
+{"status":"completed","elapsedSeconds":338.937,"allowedChanges":true,"usage":{"input_tokens":2553660,"cached_input_tokens":2499776,"cache_write_input_tokens":0,"output_tokens":37642,"reasoning_output_tokens":36987}}

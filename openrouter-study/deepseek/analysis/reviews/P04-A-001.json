@@ -1,0 +1,108 @@
+{
+  "id": "P04-A-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-31T23:32:07.182286+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "ab00e4a0471faf7061c1446650e9c69bea5bccf569bdc9699c99c27693671dfb",
+  "limitation": "Vseh6avtorskih datotek v celoti prebranih;33native ukazov/34ohranjenih API klicev indeksiranih, dejanski izpisi typecheck/razvojni/lastni prebrani. Zadnji pipeline tail40 ohrani6/11 in pet neuspelih imen, ne vseh petih celotnih sledov; vzroki v testni kodi so ločeno statični. Brez verifikacijskega dokumenta po prekinitvi. Arhivske vsote preverjene; brez ponovitve modela ali raziskovalčevih funkcionalnih testov. Ista M/1.0 rubrika in kalibracijaLunaP04.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija opredeli vhode/domene vseh štirih kontrol, tuple, NFD/odstranitev U+0300–036F/UTF-16, statusni rang in veljavne datume. R01–R12 skladno pokrijejo smeri, sekundarni kriterij le ob primarni enakosti, stabilnost, enak ključ in prevlado original, fiksne stolpce/skupno projekcijo, ohranitev pogledov/podrobnosti, projekt/reload/reset vseh kontrol, nič/eno, nespremenjene podatke/API/števce in identiteto poID. >10/390px nista izrecno ponovljena, vendar domena ni zožena, ohranjene bralne funkcije/videz pa sta navedena; isti prag za takšno jedrnato pokritost kot LunaA.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:14",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:30",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:46",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:80"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Norm, cmpK, dir in vejni comparator so preverljiva formalizacija. Original takoj vrne enakost/izvorni red; primarni neničelni rezultat odloči, sekundarni sledi le pri primarni enakosti, obe ničli ohranita izvorni red. Splošno pravilo za isti ključ da nič pri primarnem izenačenju tudi ob nasprotni sekundarni smeri. Lokalno stanje in tuple ponastavitve ter čista projekcija določijo bistvene prehode/invariante; sortTasks to izvede z dekoriranim izvornim indeksom.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:30",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:49",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:54",
+        "runtime/runs/P04-A-001/submission/src/sorting.ts:21",
+        "runtime/runs/P04-A-001/submission/src/sorting.ts:45"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Začetna tabela vseh12 pravil poveže s konkretnimi funkcijami in predvidenimi R-poimenovanimi scenariji, ki so nato dejansko napisani. Vendar vsaka vrstica končni izid prenese na neobstoječi verification.md; specifikacija ostane prva različica in ne dopolni dejanskega6/11 niti razvojnega8/8. Vrstica85 opisuje tudi izhodiščne regresijske teste, njihovega modelovega zagona pa ni. Preverljive povezave so delne/zastarele, enak prag1 kot LunaC z manjkajočo končno verifikacijo. Neodvisnih70/70 ne uporabimo kot nadomestilo modelovih dokazov.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:65",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:84",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:88",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04.spec.ts:14",
+        "analysis/evidence/P04-A-001-checks.md#item_37",
+        "analysis/evidence/P04-A-001-checks.md#item_43"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "sorting.ts loči tipe, privzete vrednosti, normalizacijo, primerjalnik in čisto stabilno projekcijo. SortControls je ločena predstavitvena komponenta s tipiziranimi možnostmi in callbacki. ProjectView hrani tuple, memoizira enotno razvrščeno polje za oba pogleda in računa števce iz izvornih nalog. Projektni key ponastavi lokalno stanje brez dodatne shrambe/učinkov. Ni podvajanja algoritma med tablo in preglednico ali mutacije vhodnih nalog; CSS kontrole ostanejo znotraj odzivnega sistema.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/src/sorting.ts:7",
+        "runtime/runs/P04-A-001/submission/src/sorting.ts:29",
+        "runtime/runs/P04-A-001/submission/src/sorting.ts:45",
+        "runtime/runs/P04-A-001/submission/src/SortControls.tsx:24",
+        "runtime/runs/P04-A-001/submission/src/App.tsx:13",
+        "runtime/runs/P04-A-001/submission/src/App.tsx:47",
+        "runtime/runs/P04-A-001/submission/src/App.tsx:92",
+        "runtime/runs/P04-A-001/submission/src/styles.css:181"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "11dejansko izvedenih dodatnih primerov doseže6uspehov in5neuspehov; pipeline izhod0 zaradi tail ni11/11. Koristni so status/datum v obeh smereh, stabilne izenačitve, skupna tabla, podrobnosti/ID, reset vseh4kontrol in prepoved pisanj; drugi primeri vsebujejo napake. Statično:R01mountprivzetiwebfixture, pričakuje pa t-IDje; R02napačno postavi cvetka pred normalizirani Črt; R05izpusti t03iz vseh pričakovanj; R09napačenlabelPrimarni smer; singleton po ponovnemmount brez prisilnega ponovnega branja dobi prazen seznam. Ni >10, adversarnega številčnega/UTF-16reda, preizkusa istega ključa z nasprotnima smerema ali polne0/1matrike; R08ne spremeni vseh4, ni lastnega povzetkov/inputimmutability aserta. Nabor je delno uporaben, brez lažne trditve o11uspehih.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/tests/agent/P04.spec.ts:14",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04.spec.ts:28",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04.spec.ts:56",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04.spec.ts:75",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04.spec.ts:98",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04.spec.ts:118",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04.spec.ts:138",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04.spec.ts:152",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04.spec.ts:182",
+        "analysis/evidence/P04-A-001-checks.md#item_43"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Execution_failed227,729s ob lokalnem preverjanju dobroimetja27: TypeError/0B/rejected_before_upstream, brez poslanega upstreama aliHTTPkode. Nativevidilokalni relay502 Study transport failed, ne modelovega502. Oddaja sicer neodvisno70/70in12/12,statične/allowedtrue, zato strogineuspeh izhaja iz nedokončanega postopka. Zamrznjeni arhiv in začetiID ostaneta, meritev se ne ponovi.",
+    "evidence": [
+      "runtime/runs/P04-A-001/execution.json",
+      "runtime/runs/P04-A-001/evaluation-summary.json",
+      "api/P04-A-001/model/api-ledger.jsonl",
+      "analysis/evidence/P04-A-001-checks.md"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Native17/19 here-doc odpove, poznejši echo done povzroči0;20shzTMPDIR uspe,23napiše specifikacijo.27apply_patchmanjka, echo patchedni uspeh;30dejansko napiše App.33typecheck skozi tailizhod0 ohraniTS2322/TS2677 za sekundarne možnosti inTS2345 za zoženje primary.34/35popravita in typecheck uspe.37dejanski razvojni8/8(3,5s).42popravi napačno pričakovanje sekundarnegadefault v lastnemtestu,ne labeltypa.43lastni6/11(55,1s),5neuspehov,izh0zaraditail; nadaljnjega popravka/zagona po lokalni prekinitvi ni.",
+    "evidence": [
+      "analysis/evidence/P04-A-001-checks.md#item_17",
+      "analysis/evidence/P04-A-001-checks.md#item_20",
+      "analysis/evidence/P04-A-001-checks.md#item_23",
+      "analysis/evidence/P04-A-001-checks.md#item_27",
+      "analysis/evidence/P04-A-001-checks.md#item_30",
+      "analysis/evidence/P04-A-001-checks.md#item_33",
+      "analysis/evidence/P04-A-001-checks.md#item_35",
+      "analysis/evidence/P04-A-001-checks.md#item_37",
+      "analysis/evidence/P04-A-001-checks.md#item_42",
+      "analysis/evidence/P04-A-001-checks.md#item_43"
+    ]
+  },
+  "finalFailureNote": "Execution_failed227,729s;70/70,12/12,statične/allowedtrue,strictfalse.27zahtev:26HTTP200in1lokalna TypeError zavrnitev pred upstreamom;popolnračun0,023195811USD. Lastni6/11,končneverificationni. V10 po preverjenem arhivu/frozeninputs/unused174in svežemDeepSeekCONNECTION_OK nadaljuje samo174;modelni ponovljen."
+}

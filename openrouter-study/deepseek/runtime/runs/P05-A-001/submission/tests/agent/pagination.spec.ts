@@ -1,0 +1,147 @@
+import { test, expect, mount, expectIds, select, click, board, readonly, summary, makeTask } from '../development/helpers.ts'
+import type { Page } from '@playwright/test'
+
+const status = (page: Page) => page.getByRole('status', { name: 'Stanje straničenja' })
+const moveButtons = ['Prva stran', 'Prejšnja stran', 'Naslednja stran', 'Zadnja stran']
+
+test('A01: privzeto all/all prikaže vsa opravila v izvornem vrstnem redu', async ({ page }) => {
+  await mount(page)
+  await expectIds(page, ['web-01', 'web-02', 'web-03', 'web-04', 'web-05', 'web-06', 'web-07', 'web-08'])
+  await expect(status(page)).toHaveText('Stran 1 od 1. Prikazano 1–8 od 8.')
+  for (const name of moveButtons) await expect(page.getByRole('button', { name, exact: true })).toBeDisabled()
+})
+
+test('A02: velikost 2 premika po zaporednih odsekih in na robu onemogoči', async ({ page }) => {
+  await mount(page)
+  await select(page, 'Velikost strani', '2')
+  await expectIds(page, ['web-01', 'web-02'])
+  await expect(status(page)).toHaveText('Stran 1 od 4. Prikazano 1–2 od 8.')
+  await expect(page.getByRole('button', { name: 'Prva stran', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Prejšnja stran', exact: true })).toBeDisabled()
+  await click(page, 'Naslednja stran')
+  await expectIds(page, ['web-03', 'web-04'])
+  await expect(status(page)).toHaveText('Stran 2 od 4. Prikazano 3–4 od 8.')
+  await click(page, 'Zadnja stran')
+  await expectIds(page, ['web-07', 'web-08'])
+  await expect(status(page)).toHaveText('Stran 4 od 4. Prikazano 7–8 od 8.')
+  await expect(page.getByRole('button', { name: 'Naslednja stran', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Zadnja stran', exact: true })).toBeDisabled()
+  await click(page, 'Prejšnja stran')
+  await expectIds(page, ['web-05', 'web-06'])
+  await click(page, 'Prva stran')
+  await expectIds(page, ['web-01', 'web-02'])
+})
+
+test('A03: sprememba velikosti vedno vrne na prvo stran', async ({ page }) => {
+  await mount(page)
+  await select(page, 'Velikost strani', '2')
+  await click(page, 'Zadnja stran')
+  await expectIds(page, ['web-07', 'web-08'])
+  await select(page, 'Velikost strani', '5')
+  await expectIds(page, ['web-01', 'web-02', 'web-03', 'web-04', 'web-05'])
+  await expect(status(page)).toHaveText('Stran 1 od 2. Prikazano 1–5 od 8.')
+  await select(page, 'Velikost strani', '10')
+  await expectIds(page, ['web-01', 'web-02', 'web-03', 'web-04', 'web-05', 'web-06', 'web-07', 'web-08'])
+  await expect(status(page)).toHaveText('Stran 1 od 1. Prikazano 1–8 od 8.')
+  await select(page, 'Velikost strani', 'all')
+  await expect(status(page)).toHaveText('Stran 1 od 1. Prikazano 1–8 od 8.')
+  await expect(page.getByRole('button', { name: 'Naslednja stran', exact: true })).toBeDisabled()
+})
+
+test('A04: filter se uporabi pred straničenjem in vrne na prvo stran', async ({ page }) => {
+  await mount(page)
+  await select(page, 'Velikost strani', '5')
+  await click(page, 'Naslednja stran')
+  await expectIds(page, ['web-06', 'web-07', 'web-08'])
+  await select(page, 'Filter strani', 'todo')
+  await expectIds(page, ['web-02', 'web-04', 'web-07', 'web-08'])
+  await expect(status(page)).toHaveText('Stran 1 od 1. Prikazano 1–4 od 4.')
+  await select(page, 'Filter strani', 'in_progress')
+  await expectIds(page, ['web-01', 'web-05'])
+  await expect(status(page)).toHaveText('Stran 1 od 1. Prikazano 1–2 od 2.')
+  await select(page, 'Filter strani', 'done')
+  await expectIds(page, ['web-03', 'web-06'])
+  await select(page, 'Filter strani', 'all')
+  await expectIds(page, ['web-01', 'web-02', 'web-03', 'web-04', 'web-05'])
+  await expect(status(page)).toHaveText('Stran 1 od 2. Prikazano 1–5 od 8.')
+})
+
+test('A05: prazen projekt prikaže 0 od 0 in onemogočene gumbe', async ({ page }) => {
+  await mount(page, [makeTask('launch-01', { projectId: 'launch' })])
+  await expect(page.getByRole('heading', { name: 'V tem projektu še ni opravil' })).toBeVisible()
+  await expect(status(page)).toHaveText('Stran 0 od 0. Prikazano 0–0 od 0.')
+  for (const name of moveButtons) await expect(page.getByRole('button', { name, exact: true })).toBeDisabled()
+})
+
+test('A06: prazen rezultat filtra in vrnitev na prvo stran', async ({ page }) => {
+  await mount(page, [
+    makeTask('web-01', { status: 'done' }),
+    makeTask('web-02', { status: 'in_progress' }),
+    makeTask('web-03', { status: 'done' }),
+  ])
+  await select(page, 'Velikost strani', '2')
+  await click(page, 'Naslednja stran')
+  await expectIds(page, ['web-03'])
+  await select(page, 'Filter strani', 'todo')
+  await expect(status(page)).toHaveText('Stran 0 od 0. Prikazano 0–0 od 0.')
+  for (const name of moveButtons) await expect(page.getByRole('button', { name, exact: true })).toBeDisabled()
+  await select(page, 'Filter strani', 'all')
+  await expectIds(page, ['web-01', 'web-02'])
+  await expect(status(page)).toHaveText('Stran 1 od 2. Prikazano 1–2 od 3.')
+})
+
+test('A07: tabla prikaže isti odsek in števce stolpcev, pregled stanj ostane celoten', async ({ page }) => {
+  await mount(page)
+  await select(page, 'Velikost strani', '5')
+  await click(page, 'Naslednja stran')
+  await board(page)
+  await expectIds(page, ['web-06', 'web-07', 'web-08'], false)
+  await expect(page.locator('.column-count')).toHaveText(['2', '0', '1'])
+  await summary(page, [4, 2, 2])
+  await expect(page.locator('.count-badge')).toHaveText('8')
+  await expect(page.locator('.table-footer')).toContainText('2 / 8 končanih')
+})
+
+test('A08: pogled in podrobnosti ohranijo stanje, menjava projekta ponastavi', async ({ page }) => {
+  await mount(page)
+  await select(page, 'Velikost strani', '2')
+  await click(page, 'Naslednja stran')
+  await expectIds(page, ['web-03', 'web-04'])
+  await board(page)
+  await expectIds(page, ['web-03', 'web-04'], false)
+  await page.locator('[data-task-id="web-03"]').getByRole('link').click()
+  await expect(page.getByRole('dialog')).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await expectIds(page, ['web-03', 'web-04'], false)
+  await expect(status(page)).toHaveText('Stran 2 od 4. Prikazano 3–4 od 8.')
+  await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name: 'Jesenska kampanja', exact: true }).click()
+  await expect(page.getByRole('heading', { name: 'Jesenska kampanja', exact: true })).toBeVisible()
+  await page.getByRole('navigation', { name: 'Projekti' }).getByRole('link', { name: 'Spletna prenova', exact: true }).click()
+  await expect(page.getByRole('combobox', { name: 'Velikost strani', exact: true })).toHaveValue('all')
+  await expect(page.getByRole('combobox', { name: 'Filter strani', exact: true })).toHaveValue('all')
+  await expect(status(page)).toHaveText('Stran 1 od 1. Prikazano 1–8 od 8.')
+})
+
+test('A09: straničenje ne zapisuje in ne shranjuje stanja v URL ali shrambo', async ({ page }) => {
+  const writes = await mount(page)
+  await select(page, 'Velikost strani', '2')
+  await click(page, 'Naslednja stran')
+  await select(page, 'Filter strani', 'done')
+  await expect(status(page)).toHaveText('Stran 1 od 1. Prikazano 1–2 od 2.')
+  expect(new URL(page.url()).hash).toBe('#/projects/web')
+  expect(await page.evaluate(() => ({ local: Object.keys(localStorage).length, session: Object.keys(sessionStorage).length }))).toEqual({ local: 0, session: 0 })
+  await page.reload()
+  await expect(status(page)).toHaveText('Stran 1 od 1. Prikazano 1–8 od 8.')
+  await readonly(page, writes)
+})
+
+test('A10: pri širini 390 pik se stran ne razširi in kontrole delujejo', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await mount(page)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  await select(page, 'Velikost strani', '2')
+  await click(page, 'Naslednja stran')
+  await expectIds(page, ['web-03', 'web-04'])
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+})

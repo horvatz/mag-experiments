@@ -1,0 +1,67 @@
+{
+  "id": "P09-B-003",
+  "observedAt": "2026-11-02T20:43:08.039Z",
+  "complete": false,
+  "roles": [
+    {
+      "role": "specification",
+      "session": "01a19df5-e435-7b50-ae62-fccac09f63cb",
+      "lastTokenEventAt": "2026-11-02T20:36:44.421Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 626206,
+        "cached_input_tokens": 561280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 16179,
+        "reasoning_output_tokens": 15864
+      },
+      "phases": [
+        {
+          "name": "specification",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 626206,
+            "cached_input_tokens": 561280,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 16179,
+            "reasoning_output_tokens": 15864
+          },
+          "lastTokenEventAt": "2026-11-02T20:36:44.421Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    },
+    {
+      "role": "implementation",
+      "session": "01a19dfa-90c7-7ac2-9cc6-06933ee5fb87",
+      "lastTokenEventAt": "2026-11-02T20:42:52.135Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 516753,
+        "cached_input_tokens": 490432,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 12839,
+        "reasoning_output_tokens": 12593
+      },
+      "phases": [
+        {
+          "name": "implementation",
+          "status": "execution_failed",
+          "cliUsage": null,
+          "lastTokenEventAt": "2026-11-02T20:42:52.135Z",
+          "cumulativeMatchesCLI": false
+        }
+      ],
+      "complete": false
+    }
+  ],
+  "usage": null,
+  "observedUsageBeforeInterruption": {
+    "input_tokens": 1142959,
+    "cached_input_tokens": 1051712,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 29018,
+    "reasoning_output_tokens": 28457
+  },
+  "method": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+  "note": "Incomplete events are a partial observation, not zero or a complete token total. No monetary cost is inferred."
+}

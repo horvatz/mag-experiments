@@ -1,0 +1,4 @@
+- Ustava je zapisana v `.specify/memory/constitution.md:1` in sprejeta `2026-10-30`.
+- Obsega ohranjanje dizajna Folio, meje javnega API-ja, lokalno stanje, dostopnost, minimalen obseg in sledljivost zahtev.
+- Preverjeno: datoteka je neprazna in brez zaključnih presledkov.
+- Preostanek faze: `1142 s`. Naslednji koraki niso bili zagnani.

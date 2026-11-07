@@ -1,0 +1,21 @@
+Prebral bom projektna pravila in specifikacijo naloge, nato pripravim specifikacijo pred implementacijo.
+Zahteve so jasne. Zdaj pregledam obstoječi vmesnik, razvojne teste in slogovne dogovore, da specifikacija natančno sledi trenutni kodi.
+Pripravljam specifikacijo z zaznamavo vseh zahtev R01–R12, predikatami razvrščanja in načrtom preverjanja.
+Specifikacija je pripravljena. Zdaj dodam stabilno razvrščanje, kontrole in slogovno prilagoditev na ozki zasloni.
+Osnovna implementacija je dodana. Najprej preverim tipizacijo in lint, nato dopolnim lastne teste za robustne primere.
+Lastni testi pokrivajo normalizacijo, neodvisni smeri, stabilnost, tablo, ponastavitve in prazni/enopravilni projekt. Zdaj preverim tipizacijo in lint pred zagonom testov.
+Test je odkril React 19 težavo z `currentTarget` v odloženem updaterju. Popravim vse štirikontrole tako, da vrednost preberejo takoj.
+Odpravil sem težavo z dogodkom. Preostanek so napake v pričakovanih vrstnih redih lastnih testov in eno morebitno testno pripravo; pregledam jih in popravim.
+Lastnih 5 preverjanj je uspešnih. Zdaj poženem skupne razvojne teste P04, nato celotni `npm run check`.
+Vseh 51 preverjanj je uspešnih. Zdaj posodobim sledljivost v specifikaciji in zapišem dejansko izvedena preverjanja ter omejitve.
+Dokumentacija je posodobljena. Po zadnjih čiščenjah ponovno poženem celotni `npm run check`, da je končno stanje dejansko potrjeno.
+Končni `npm run check` je再次 uspešen z 51/51. Naredim le še hiter pregled končnih datotek v dovoljenih mapah.
+**Zaključeno**
+- Dodano stabilno dvoključno razvrščanje z normalizacijo UTF-16 primerjav: `src/sorting.ts:14`.
+- Dodane štiri kontrole in gumb za izvorni vrstni red: `src/App.tsx:46`, slogi pa v `src/styles.css:66`.
+- Specifikacija in sledljivost R01–R12: `docs/agent/specification.md:1`.
+- Dejanski zapisi preverjanj, rezultatov in omejitev: `docs/agent/verification.md:1`.
+- Lastni Playwright testi: `tests/agent/P04-agent.spec.ts:11`.
+- `npm run check` je uspešen: **51/51 preverjanj**, vključno z lintom, tipizacijo, gradnjo, API/izhodiščnimi, razvojnnimi in lastnimi testi.
+- Neizpolnjene zahtev
+{"status":"completed","elapsedSeconds":511.19,"allowedChanges":true,"usage":{"input_tokens":4461248,"cached_input_tokens":4397056,"cache_write_input_tokens":0,"output_tokens":40088,"reasoning_output_tokens":39526}}

@@ -1,0 +1,116 @@
+{
+  "id": "P09-A-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-31T20:28:31.483332+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "6c1ce87acc4015b63a7db7f7870d0ce3c4ff0a557a088c80f7cdd740a24b4bbe",
+  "limitation": "V celoti je prebranih vseh9 dejansko oddanih avtorskih datotek. Arhivske vsote so preverjene; pregledani so native ukazi in poznejši ohranjeni API dokazi, zlasti testni izpisi, popravki in besedilni izhodi brskalniškega razhroščevanja. Raziskovalec ne ponavlja meritev/testov, ne spreminja oddaje in ne trdi vizualnega pregleda brskalnika.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Dokument poveže vseh R01–R12, privzete filtre, dobesedno normalizirano iskanje, UTF-16 in stabilnost, prve/neveljavne parametre, osnutek, zgodovino, navigacijo in reset. Konkretna neskladnost je izrecna omejitev99–100: čiščenje neznanih parametrov pri enaki potrditvi po njegovem zahteva novo zgodovinsko stanje. Vhodna zahteva R05–R06 dovoljuje nov vnos le ob spremembi potrjenega stanja; oba pogoja bi bilo mogoče izpolniti brez dodatnega vnosa. Dokument tudi zoži prazno sporočilo na N=0 in M>0, ne prenese natančnih treh imen kontrol ali celotne podatkovne domene. Obvezni pogoji zato niso vsi skladno določeni.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:28",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:47",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:57",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:99",
+        "runtime/tasks/P09/instructions.md#zahteve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "Uporabni predikati določijo normalizacijo, statusno konjunkcijo, stabilnost, N/M in navigacijsko obnovo osnutka. Ključni zgodovinski prehod pa primerja surovi hash: hash′=hash je brez spremembe, vsaka drugačna serializacija dobi nov vnos. Ta pogoj ni enakovreden primerjavi potrjenega stanja V; čiščenje dodatnih/privzetih parametrov spremeni hash, ne filtrov. Specifikacija to napačno pravilo izrecno potrdi v omejitvah, implementacija pa mu sledi. Formalizacija je zato delno uporabna, vendar ključnega predikata ponovitve/kanonizacije ne določi pravilno. To je drugače od pravilno navedenega, a napačno implementiranega pogoja v GLM/P09-A-001; rubrika ostaja ista.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:39",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:49",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:60",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:99",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:90"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Specifikacija in končna predaja povežeta dvanajst zahtev s funkcijami, poimenovanimi A01–A18/D01–D04 in dejanskimi izidi. Native item_85 potrdi18/18, item_87 izrecni exit=0 in64/64; brskalniško razhroščevanje ter popravki osnutka so dokumentirani. Omejitve skritih testov, pravih naprav in odzivnosti so navedene, napačna razlaga kanonizacije pa je odkrito zapisana in preverljiva. Ostanejo manjši zastareli sklici (parseViewState je v viewState.ts, ne v navigation.ts; začetna tabela še našteva17 testov), končna predaja pa usmeri na dejanske module in18 testov. A09 je šibkejši dokaz od pravilnega R06, ne izmišljen uspešni zagon; konkretno vrzel obravnavata specifikacija in lastna preverjanja.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:71",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:93",
+        "runtime/runs/P09-A-001/submission/docs/agent/verification.md:24",
+        "runtime/runs/P09-A-001/submission/docs/agent/verification.md:43",
+        "runtime/runs/P09-A-001/submission/src/navigation.ts:2",
+        "runtime/runs/P09-A-001/submission/src/viewState.ts:21",
+        "analysis/evidence/P09-A-001-checks.md#item_85",
+        "analysis/evidence/P09-A-001-checks.md#item_87"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "viewState.ts loči tipe, parser/serializacijo, normalizacijo in čisto filtriranje/razvrščanje kopije. navigation.ts hrani gradnike povezav in naročnino s čiščenjem; potrjeni filtri so izpeljani iz URL-ja. ViewFilters loči kontrole, ProjectView hrani osnutek z navigacijskim ključem in usklajevalnim refom ter izpelje isti seznam za oba pogleda. TaskBoard/TaskDetails dobita potrjene filtre, povzetki ostanejo na izvornih podatkih. Bookkeeping navSequence/syncedHash je dodatna kompleksnost za dokumentirano življenjsko dobo osnutka; odgovornosti in tok ostanejo razvidni. Opaženi napačni guard kanonizacije je lokalna semantična napaka v commit, ne razpad delitve odgovornosti.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/src/viewState.ts:17",
+        "runtime/runs/P09-A-001/submission/src/viewState.ts:21",
+        "runtime/runs/P09-A-001/submission/src/viewState.ts:42",
+        "runtime/runs/P09-A-001/submission/src/navigation.ts:6",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:34",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:69",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:90",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:126",
+        "runtime/runs/P09-A-001/submission/src/TaskBoard.tsx:14",
+        "runtime/runs/P09-A-001/submission/src/TaskDetails.tsx:10"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Osemnajst dejansko izvedenih scenarijev pokrije vsa iskalna polja, Unicode in literalna ločila, oba vrstna reda in enake naslove, neveljavne in ponovljene vrednosti, atomsko potrditev, back/forward, opustitev osnutka pri pogledu, ID podrobnosti, drugi projekt/direktni URL, reset z vrnitvijo, prazni in singleton vhod, odsotnost zapisov/shrambe ter390px. Toda A09 ob čiščenju semantično enakega stanja izrecno dopušča en dodaten vnos in s tem ne uveljavi R06. Ni >10 opravil, podvojenega q, neveljavne prve vrednosti z veljavno drugo, različnih nizov z enako normalizacijo, zahtevnega UTF-16 proti jezikovni primerjavi, fraze prek meje dveh polj ali nepotrjenega osnutka pred back/forward. Izčrpnega kodiranja q z +/&/?/# ne preveri; A18 so ločila le v neposrednem vhodnem URL-ju. Nabor je koristen in širši, a pomembni negativni in mejni primeri ostajajo.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/tests/agent/p09.spec.ts:33",
+        "runtime/runs/P09-A-001/submission/tests/agent/p09.spec.ts:59",
+        "runtime/runs/P09-A-001/submission/tests/agent/p09.spec.ts:86",
+        "runtime/runs/P09-A-001/submission/tests/agent/p09.spec.ts:108",
+        "runtime/runs/P09-A-001/submission/tests/agent/p09.spec.ts:126",
+        "runtime/runs/P09-A-001/submission/tests/agent/p09.spec.ts:182",
+        "runtime/runs/P09-A-001/submission/tests/agent/p09.spec.ts:213",
+        "runtime/runs/P09-A-001/submission/tests/agent/p09.spec.ts:227",
+        "runtime/runs/P09-A-001/submission/tests/agent/p09.spec.ts:247",
+        "analysis/evidence/P09-A-001-checks.md#item_85",
+        "analysis/evidence/P09-A-001-checks.md#item_87"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E06 na obeh širinah pričakuje history.length2 po potrditvi že privzetega stanja z view=board&extra=remove&status=all&order=original, prejme3. commit primerja ciljni URL z window.location.hash in zapiše location.hash, zato čiščenje parametrov ustvari nov vnos. Ta razlaga je že izrecna v specifikaciji99–100 in testA09 jo dopušča. Rezultat ostane68/70 in11/12; vse statične kontrole/obseg uspejo, strictfalse. Poznejši koraki E06 se po prvem neuspehu ne izvedejo, zato ne trdimo dodatne dokazane napake kodiranja q.",
+    "evidence": [
+      "runtime/runs/P09-A-001/evaluation-summary.json",
+      "runtime/runs/P09-A-001/evaluation-tests.log",
+      "runtime/runs/P09-A-001/submission/src/App.tsx:90",
+      "runtime/runs/P09-A-001/submission/docs/agent/specification.md:99",
+      "runtime/runs/P09-A-001/submission/tests/agent/p09.spec.ts:108"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Prvi item_47 ima13/18 kljub pipeline0; neuspešniA05/A07/A08/A10/A16. Izpisi pokažejo napačna testna pričakovanja vrstnega reda in priprave praznega vhoda, obenem pa resnično izgubo osnutka. Po začetnih testnih in osnutkovih popravkih item_69 ostane15/18 (A08/A10/A15). Brskalniška besedilna diagnostika item_59/76 pokaže izgubljeni novi order, item_80 pa prazen q po vrnitvi iz reseta. preserved-95–97 spremeni navigacijski ključ in syncedHash, preserved-98 popravi še asercijo združenega vrstnega reda table. Native item_85 nato potrdi18/18(6,9s), item_87 pa64/64(23,0s) z izrecnim exit=0. Zato popravkov aplikacije ne enačimo s popravki testnih pričakovanj; slikovnega pregleda ni bilo.",
+    "evidence": [
+      "analysis/evidence/P09-A-001-checks.md#item_47",
+      "analysis/evidence/P09-A-001-checks.md#item_48",
+      "analysis/evidence/P09-A-001-checks.md#item_59",
+      "analysis/evidence/P09-A-001-checks.md#item_69",
+      "analysis/evidence/P09-A-001-checks.md#item_76",
+      "analysis/evidence/P09-A-001-checks.md#item_80",
+      "analysis/evidence/P09-A-001-checks.md#preserved-95",
+      "analysis/evidence/P09-A-001-checks.md#preserved-97",
+      "analysis/evidence/P09-A-001-checks.md#preserved-98",
+      "analysis/evidence/P09-A-001-checks.md#item_85",
+      "analysis/evidence/P09-A-001-checks.md#item_87"
+    ]
+  },
+  "finalFailureNote": "Completed811,349s,68/70,11/12,strictfalse; statične kontrole in dovoljen obseg uspejo.101HTTP200/response.completed DeepInfra zahtev:99finished,2client_aborted, popolni račun0,087978432USD. Lastnih18/18 in full64/64 sta potrjena; ne nadomestita neodvisnega izida. Po arhivu sta dodatni testni vrati5193/3123 preverjeno prosti."
+}

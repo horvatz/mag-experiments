@@ -1,0 +1,40 @@
+Preberem projektna pravila in specifikacijo naloge, nato pripravim spec.
+Zahteve so razumljene. Zdaj pregledam obstoječi vmesnik in testne vzorce.
+Nadaljujem s ciljanim pregledom `App`, table in razvojnih testov.
+Razvojni testi bodo podlaga sledljivosti; preverim pričakovane role in scenarije.
+Specifikacijo zapišem pred spremembo kode, s sledljivostjo do R01–R12.
+Herokomanda je naletela na omejitev `/tmp`; uporabim cevovod brez pomožne datoteke.
+Preverim razpoložljivo pot do `apply_patch` v tem okolju.
+Ker izvajalna datoteka `apply_patch` ni nameščena, pripravim lokalni ekvivalent v `.tmp` za varno pisanje popravkov.
+Python je v tem okolju nedelujoč; preklopim na lokalni Node ekvivalent.
+Specifikacija je pripravljena. Zdaj implementiram skupno stanje, obe pogleda in vmesnik.
+Preizkusim `bash` heredok, ker zsh zahteva pomožno `/tmp` datoteko.
+`bash` omogoča varno podajanje popravkov; zdaj zaključim tablo.
+Osnovna implementacija je na mestu; najprej preverim tipove in sintakso.
+Dodam lastne Playwright teste za kritične veje, vključno s shrambo in dogodki.
+Preverim tipe celotnega projekta z novimi testi.
+Tipi so uspešni; zdaj preverim lint pred zagonom testov.
+`.tmp` pripomoček povzroča edino napako; preverim samo oddane mape.
+Oddana koda je brez lint napak. Zdaj izvedem lastne teste.
+Napake so v testnih inicializacijah (nezagnani zunanji konstanti), ne v implementaciji; popravim teste.
+Testne inicializacije so popravljene; ponovno zaganjam lastne teste.
+Odkrit je test, ki je zahteval prepis ob nalaganju; zahteva R04 prepoveduje to. Prilagodim pričakovanje.
+Lastni testi so zeleni. Zdaj preverim skupne razvojne primere P07.
+Vsi dosedanji testi so zeleni. Pripravim sledljivost v dokumentaciji in nato celotno preverjanje.
+Dokumentacija je pripravljena. Odstranim začasne pripomočke in izvedem končni `npm run check`.
+`npm run check` je razkril neuporabljeno testno konstanto in preskočil zagnane `.tmp` predpomnilnike; oboje odpravim.
+Končni `npm run check` je uspešen (58/58). Počistim preskočene predpomnilnike in še enkrat preverim lint.
+Preverim končno stanje datotek in morebitne nepričakovane spremembe.
+Počistim preskočene Node predpomnilnike, da končno stanje ostane čisto.
+**Rezultat**
+- Implementiral zahteve R01–R12: priljubljene, trajna shramba, filter, števci, dogodki `storage`, obravnava napak in ohranjanje stanja med pogledoma.
+- Specifikacija: `docs/agent/specification.md:1`
+- Implementacija: `src/useFavorites.ts:1`, `src/App.tsx:29`, `src/TaskBoard.tsx:13`, `src/styles.css:181`
+- Lastni testi: `tests/agent/P07-favorites.spec.ts:1`
+- Preverjanja in sledljivost: `docs/agent/verification.md:1`
+
+**Preverjanje**
+- `npm run check`: uspešno, 58/58 testov.
+- `npm run lint`: uspešno.
+- Neizpolnjenih zahtev ni; strežnik, skupni testi, odvisnosti in infrastruktura o
+{"status":"completed","elapsedSeconds":483.43,"allowedChanges":true,"usage":{"input_tokens":3076305,"cached_input_tokens":3029888,"cache_write_input_tokens":0,"output_tokens":47958,"reasoning_output_tokens":47248}}

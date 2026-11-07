@@ -1,0 +1,103 @@
+{
+  "id": "P04-A-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-31T23:22:13.608405+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "691d696e22df8d431cde5815797005b163a7324722214e3c81ae15342e1c7825",
+  "limitation": "Vseh6avtorskih datotek v celoti prebranih,66native ukazov in73poznejših API ohranjenih klicev indeksiranih; relevantni dejanski izpisi preverjanj in popravki prebrani. Arhivske vsote preverjene; brez ponovitve modela ali raziskovalčevega funkcionalnega zagona. Ista M/1.0 rubrika; neposredno ponovno prebrani Luna P04-A/B/C in njihov prag za sledljivost ter neizčrpne lastne teste. Pretirani opisi pokritosti ne štejejo za izvedene dodatne teste.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "R01–R12 skladno določijo privzeti tuple, domene kontrol, NFD/odstranitev U+0300–036F/UTF-16, statusni rang in veljavne datume. Izrecni so neodvisni smeri, sekundarni ključ le ob primarni enakosti, enaka ključa brez dodatnega obrata, izvorni indeks in prevlada original. Pokriti so relativna projekcija v stalnih stolpcih, ohranitev pri pogledih/podrobnostih, vse ponastavitve, nič/eno pri vseh izbirah, nespremenjenost polj/povzetkov/API in identiteta poID. Specifikacija ne našteje posebej >10, vendar ne omeji velikosti in pravila veljajo za splošno polje; enak prag kot LunaA. Omejitvi veljavnih datumov in nedostopnih končnih testov sta navedeni.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:7",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:19",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:23",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:45"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "N(s), C, smerni predznak in izvorni indeks so preverljivi predikati. Primarna neničelna primerjava odloči prva; sekundarna ima neodvisno smer; zadnji indeks je vedno naraščajoč. original izrecno obide druge kontrole, enak ključ se ne uporabi dodatno. Tuple ponastavitev, stabilna podprojekcija po statusu in prepoved mutacije/pisanj določijo prehode in ohranjene lastnosti. Dejanski sortTasks kopira/dekorira podatke ter uporabi prav to zaporedje.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:19",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:24",
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:28",
+        "runtime/runs/P04-A-001/submission/src/sorting.ts:27",
+        "runtime/runs/P04-A-001/submission/src/sorting.ts:52"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Specifikacija in verification povežeta vseh12 pravil s konkretnimi funkcijami/vrsticami in imenovanimi A01–A05/D01–D04. Dejanski končni item_78 potrdi51/51, item_59 razvojni8/8, item_57 lastni5/5; zasebni testi niso prikazani kot izvedeni. Tako kot LunaB je ocena2 za preverljive povezave in resnične zagone, ne za izčrpnost: verification20 pretirano pripiše A01 izbiro istega primarnega/sekundarnega ključa,16 normalizacijo oseb, A05 pa ni celotna matrika ključev/smeri. Spec24–33 načrtuje enotne teste, ki niso oddani. Te opise zavrnemo kot dodaten dokaz in dejansko pokritost omejimo pri ownChecks; manjkajočih scenarijev ne pripisujemo uspešnim51.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/docs/agent/specification.md:38",
+        "runtime/runs/P04-A-001/submission/docs/agent/verification.md:13",
+        "runtime/runs/P04-A-001/submission/docs/agent/verification.md:30",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04-agent.spec.ts:11",
+        "analysis/evidence/P04-A-001-checks.md#item_57",
+        "analysis/evidence/P04-A-001-checks.md#item_59",
+        "analysis/evidence/P04-A-001-checks.md#item_78"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "sorting.ts loči tipe, privzete vrednosti, normalizacijo in primerjalnike od čiste sortTasks. ProjectView hrani samo tuple, izpelje eno novo polje za preglednico in nespremenjeno tablo, povzetke pa iz izvornih podatkov. Projektni key določi življenjsko dobo lokalnega stanja; pogledi in podrobnosti ga ohranijo. Stabilnost je izrecna, ne odvisna od obrata celotnega polja; ni podvojene poslovne logike, dodatne shrambe ali pisanj. CSS doda samo prilagodljive kontrole znotraj obstoječega odzivnega sistema.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/src/sorting.ts:7",
+        "runtime/runs/P04-A-001/submission/src/sorting.ts:27",
+        "runtime/runs/P04-A-001/submission/src/sorting.ts:52",
+        "runtime/runs/P04-A-001/submission/src/App.tsx:12",
+        "runtime/runs/P04-A-001/submission/src/App.tsx:46",
+        "runtime/runs/P04-A-001/submission/src/App.tsx:95",
+        "runtime/runs/P04-A-001/submission/src/App.tsx:139",
+        "runtime/runs/P04-A-001/submission/src/styles.css:66"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Pet dejansko uspešnih scenarijev je koristnih: privzeti tuple, Unicode naslovi, neodvisni smeri, status/datum, original ob drugih spremenjenih kontrolah, relativni vrstni red stolpcev, ID podrobnosti, projektni reset in prazno/enopravilno polje ter brez APIpisanj. Odkrili so tudi pravi React event.currentTarget hrošč, ki ga item_43 popravi. Ostanejo pomembni robovi: ni >10, izbire istega ključa z nasprotnima smerema, normalizacijskih izenačitev oseb, adversarnega UTF-16/številčnih naslovov ali izenačenja obeh ključev. A02 spremeni samo primarni ključ; po nastavitvi390px readonly dejansko preveri, da se cela stran ne razširi, ne pa vseh štirih ohranjenih nastavitev. A03reload začne že pri privzetih vrednostih po menjavi projekta in preveri le primarni ključ. A04reset preveri le primarnega, A05 pa ne sekundarnih ključev ali polne kombinatorike0/1. Lastnih enotnih testov/povzetkov/inputimmutability ni; readonly preveri pisanja/strežniško stanje, ne mutacije prejetega frontendpolja. Isti prag1 kot LunaA/B/C.",
+      "evidence": [
+        "runtime/runs/P04-A-001/submission/tests/agent/P04-agent.spec.ts:3",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04-agent.spec.ts:11",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04-agent.spec.ts:41",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04-agent.spec.ts:55",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04-agent.spec.ts:75",
+        "runtime/runs/P04-A-001/submission/tests/agent/P04-agent.spec.ts:87",
+        "analysis/evidence/P04-A-001-checks.md#item_41",
+        "analysis/evidence/P04-A-001-checks.md#item_43",
+        "analysis/evidence/P04-A-001-checks.md#item_57",
+        "analysis/evidence/P04-A-001-checks.md#item_78",
+        "runtime/runs/P04-A-001/input-overrides/tests/development/helpers.ts:68"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "developmentFailureExample": {
+    "description": "Item_32typecheck odpove zaradi nullable sortedTasks;34 uporabi[]. Lastni item_41 je prekinjen z izhodom130 po dveh30s neuspehih in enem prekinjenem: React event.currentTarget.value je null v odloženem updaterju. Item_43 prebere vrednost pred updaterjem. Nato44doseže1/4; napačni pričakovanji vrstnega reda/launchin ponovni mountsingletona v istemtestu se popravijo49/52/55. Item_56doseže4/5 zaradi napačnega pričakovanja status+datumdesc(sort04 mora predsort01);57 popravi samo pričakovanje in dobi5/5(2,6s).59razvojni8/8,60full51/51, po poznejših dokumentacijskih/testnih dopolnitvah78spet51/51(18,1s). Ne gre za en sam vzrok vseh razvojnih napak.",
+    "evidence": [
+      "analysis/evidence/P04-A-001-checks.md#item_32",
+      "analysis/evidence/P04-A-001-checks.md#item_34",
+      "analysis/evidence/P04-A-001-checks.md#item_41",
+      "analysis/evidence/P04-A-001-checks.md#item_43",
+      "analysis/evidence/P04-A-001-checks.md#item_44",
+      "analysis/evidence/P04-A-001-checks.md#item_49",
+      "analysis/evidence/P04-A-001-checks.md#item_52",
+      "analysis/evidence/P04-A-001-checks.md#item_56",
+      "analysis/evidence/P04-A-001-checks.md#item_57",
+      "analysis/evidence/P04-A-001-checks.md#item_59",
+      "analysis/evidence/P04-A-001-checks.md#item_78"
+    ]
+  },
+  "finalFailureNote": "Completed511,190s,70/70(38regresija+8razvojni+24skriti),12/12,statične/allowedtrue,stricttrue. Popoln račun0,363567345USD/74zahtev. Rezultat je za določen neodvisni nabor, ne dokaz vseh možnih vhodov."
+}

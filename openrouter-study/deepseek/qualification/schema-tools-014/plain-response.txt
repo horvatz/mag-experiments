@@ -1,0 +1,42 @@
+: 
+
+data: {"type":"response.created","response":{"id":"gen-1791491601-T98IQkg4FlmtYNoDcBgg","object":"response","created_at":1791491601,"model":"deepseek/deepseek-v4.1-flash","status":"in_progress","completed_at":null,"output":[],"error":null,"incomplete_details":null,"tools":[{"type":"function","name":"read_value","description":"Retrieve the hidden value.","parameters":{"type":"object","properties":{},"required":[],"additionalProperties":false},"strict":null}],"tool_choice":"auto","parallel_tool_calls":true,"max_output_tokens":null,"temperature":1,"top_p":1,"presence_penalty":0,"frequency_penalty":0,"top_logprobs":0,"max_tool_calls":null,"metadata":{},"background":false,"previous_response_id":null,"service_tier":"auto","truncation":"disabled","store":false,"instructions":"Technical diagnostic only. Call read_value to retrieve the hidden value. Never guess it. Then answer with JSON containing value.","text":{"format":{"type":"text"}},"reasoning":{"effort":"max","summary":"auto"},"safety_identifier":null,"prompt_cache_key":null,"prompt_cache_options":null,"usage":null},"sequence_number":0}
+
+data: {"type":"response.in_progress","response":{"id":"gen-1791491601-T98IQkg4FlmtYNoDcBgg","object":"response","created_at":1791491601,"model":"deepseek/deepseek-v4.1-flash","status":"in_progress","completed_at":null,"output":[],"error":null,"incomplete_details":null,"tools":[{"type":"function","name":"read_value","description":"Retrieve the hidden value.","parameters":{"type":"object","properties":{},"required":[],"additionalProperties":false},"strict":null}],"tool_choice":"auto","parallel_tool_calls":true,"max_output_tokens":null,"temperature":1,"top_p":1,"presence_penalty":0,"frequency_penalty":0,"top_logprobs":0,"max_tool_calls":null,"metadata":{},"background":false,"previous_response_id":null,"service_tier":"auto","truncation":"disabled","store":false,"instructions":"Technical diagnostic only. Call read_value to retrieve the hidden value. Never guess it. Then answer with JSON containing value.","text":{"format":{"type":"text"}},"reasoning":{"effort":"max","summary":"auto"},"safety_identifier":null,"prompt_cache_key":null,"prompt_cache_options":null,"usage":null},"sequence_number":1}
+
+data: {"type":"response.output_item.added","output_index":0,"item":{"id":"rs_tmp_u9ob55ceqbt","type":"reasoning","status":"in_progress","summary":[]},"sequence_number":2}
+
+data: {"type":"response.content_part.added","output_index":0,"item_id":"rs_tmp_u9ob55ceqbt","content_index":0,"part":{"type":"reasoning_text","text":""},"sequence_number":3}
+
+data: {"type":"response.reasoning_text.delta","output_index":0,"item_id":"rs_tmp_u9ob55ceqbt","content_index":0,"delta":"The","sequence_number":4}
+
+data: {"type":"response.reasoning_text.delta","output_index":0,"item_id":"rs_tmp_u9ob55ceqbt","content_index":0,"delta":" user wants me to call","sequence_number":5}
+
+data: {"type":"response.reasoning_text.delta","output_index":0,"item_id":"rs_tmp_u9ob55ceqbt","content_index":0,"delta":" read_value to retrieve","sequence_number":6}
+
+data: {"type":"response.reasoning_text.delta","output_index":0,"item_id":"rs_tmp_u9ob55ceqbt","content_index":0,"delta":" the hidden value, then answer","sequence_number":7}
+
+data: {"type":"response.reasoning_text.delta","output_index":0,"item_id":"rs_tmp_u9ob55ceqbt","content_index":0,"delta":" with JSON containing the value.","sequence_number":8}
+
+data: {"type":"response.reasoning_text.delta","output_index":0,"item_id":"rs_tmp_u9ob55ceqbt","content_index":0,"delta":" Let","sequence_number":9}
+
+data: {"type":"response.reasoning_text.delta","output_index":0,"item_id":"rs_tmp_u9ob55ceqbt","content_index":0,"delta":" me call the tool.","sequence_number":10}
+
+data: {"type":"response.reasoning_text.done","output_index":0,"item_id":"rs_tmp_u9ob55ceqbt","content_index":0,"text":"The user wants me to call read_value to retrieve the hidden value, then answer with JSON containing the value. Let me call the tool.","sequence_number":11}
+
+data: {"type":"response.content_part.done","output_index":0,"item_id":"rs_tmp_u9ob55ceqbt","content_index":0,"part":{"type":"reasoning_text","text":"The user wants me to call read_value to retrieve the hidden value, then answer with JSON containing the value. Let me call the tool."},"sequence_number":12}
+
+data: {"type":"response.output_item.done","output_index":0,"item":{"id":"rs_tmp_u9ob55ceqbt","type":"reasoning","status":"completed","content":[{"type":"reasoning_text","text":"The user wants me to call read_value to retrieve the hidden value, then answer with JSON containing the value. Let me call the tool."}],"summary":[],"format":"unknown"},"sequence_number":13}
+
+data: {"type":"response.output_item.added","output_index":1,"item":{"id":"fc_tmp_t2kjc3oxvul","type":"function_call","status":"in_progress","call_id":"chatcmpl-tool-b0e54eb73851615b","name":"read_value","arguments":""},"sequence_number":14}
+
+data: {"type":"response.function_call_arguments.delta","output_index":1,"item_id":"fc_tmp_t2kjc3oxvul","delta":"{}","sequence_number":15}
+
+data: {"type":"response.function_call_arguments.done","output_index":1,"item_id":"fc_tmp_t2kjc3oxvul","name":"read_value","arguments":"{}","sequence_number":16}
+
+data: {"type":"response.output_item.done","output_index":1,"item":{"id":"fc_tmp_t2kjc3oxvul","type":"function_call","status":"completed","call_id":"chatcmpl-tool-b0e54eb73851615b","name":"read_value","arguments":"{}"},"sequence_number":17}
+
+data: {"type":"response.completed","response":{"id":"gen-1791491601-T98IQkg4FlmtYNoDcBgg","object":"response","created_at":1791491601,"model":"deepseek/deepseek-v4.1-flash","status":"completed","completed_at":1791491603,"output":[{"id":"rs_tmp_u9ob55ceqbt","type":"reasoning","status":"completed","content":[{"type":"reasoning_text","text":"The user wants me to call read_value to retrieve the hidden value, then answer with JSON containing the value. Let me call the tool."}],"summary":[],"format":"unknown"},{"id":"fc_tmp_t2kjc3oxvul","type":"function_call","status":"completed","call_id":"chatcmpl-tool-b0e54eb73851615b","name":"read_value","arguments":"{}"}],"error":null,"incomplete_details":null,"tools":[{"type":"function","name":"read_value","description":"Retrieve the hidden value.","parameters":{"type":"object","properties":{},"required":[],"additionalProperties":false},"strict":null}],"tool_choice":"auto","parallel_tool_calls":true,"max_output_tokens":null,"temperature":1,"top_p":1,"presence_penalty":0,"frequency_penalty":0,"top_logprobs":0,"max_tool_calls":null,"metadata":{},"background":false,"previous_response_id":null,"service_tier":"default","truncation":"disabled","store":false,"instructions":"Technical diagnostic only. Call read_value to retrieve the hidden value. Never guess it. Then answer with JSON containing value.","text":{"format":{"type":"text"}},"reasoning":{"effort":"max","summary":"auto"},"safety_identifier":null,"prompt_cache_key":null,"prompt_cache_options":null,"usage":{"input_tokens":319,"input_tokens_details":{"cached_tokens":256},"output_tokens":51,"output_tokens_details":{"reasoning_tokens":28},"total_tokens":370,"cost":0.0000313152,"is_byok":false,"cost_details":{"upstream_inference_cost":0.0000313152,"upstream_inference_input_cost":0.0000098952,"upstream_inference_output_cost":0.00002142}}},"sequence_number":18}
+
+data: [DONE]
+

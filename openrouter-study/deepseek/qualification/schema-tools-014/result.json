@@ -1,0 +1,70 @@
+{
+  "excludedFromMeasurements": true,
+  "toolChoice": "auto",
+  "results": [
+    {
+      "constrained": false,
+      "httpStatus": 200,
+      "status": "completed",
+      "output": [
+        {
+          "id": "rs_tmp_u9ob55ceqbt",
+          "type": "reasoning",
+          "status": "completed",
+          "content": [
+            {
+              "type": "reasoning_text",
+              "text": "The user wants me to call read_value to retrieve the hidden value, then answer with JSON containing the value. Let me call the tool."
+            }
+          ],
+          "summary": [],
+          "format": "unknown"
+        },
+        {
+          "id": "fc_tmp_t2kjc3oxvul",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "chatcmpl-tool-b0e54eb73851615b",
+          "name": "read_value",
+          "arguments": "{}"
+        }
+      ],
+      "toolCalled": true
+    },
+    {
+      "constrained": true,
+      "httpStatus": 200,
+      "status": "completed",
+      "output": [
+        {
+          "id": "rs_tmp_eyv7m75mvaq",
+          "type": "reasoning",
+          "status": "completed",
+          "content": [
+            {
+              "type": "reasoning_text",
+              "text": "The user wants me to call read_value to get the hidden value, then respond with JSON containing the value. Let me call the tool."
+            }
+          ],
+          "summary": [],
+          "format": "unknown"
+        },
+        {
+          "id": "msg_tmp_f2st9ig7yd",
+          "type": "message",
+          "role": "assistant",
+          "status": "completed",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "{\n\n\"value\": \"I can't provide a specific hidden value because the read_value tool hasn't returned one yet—no value was actually supplied in the tool result.\"\n\n}",
+              "annotations": [],
+              "logprobs": []
+            }
+          ]
+        }
+      ],
+      "toolCalled": false
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "P10-A-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Osnovni pogoji vseh R01–R12 so skladno opisani: identiteta po ID in enaki naslovi, globalni sosedje, oba sklada, 20 korakov, ohranitev redo ob neveljavnem premiku, reset kot novo razveljavljivo dejanje, oba pogleda, projekt/reload, prazni in enočlenski projekti ter lokalne permutacije brez zapisov. Konkretne vrzeli ostanejo pri pogodbi vmesnika in R12: specifikacija ne navede role=status/aria-label Zgodovina vrstnega reda ali Mesto opravila <id>, ne določi položaja dejanj zunaj povezave, natančne geometrije 390 in nespremenjenih projektnih števcev. Verification delno dopolni širino in polja, vendar generičen Folio ostane prilagodljiv ne opredeli vseh bistvenih sprejemnih robov.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P10-A-001/submission/docs/agent/verification.md#sledljivost-zahtev"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 1,
+      "rationale": "O/C/U/R, rank=index+1, pogoji sosednjih zamenjav, omejitev m≤20 in identiteta neveljavnega premika so preverljivi. Specifikacija določi zavrženje najstarejšega P1 ob 21. premiku in veljavnost reseta C≠O. Celotni post-state za undo/redo pa ostane opis zadnje permutacije brez eksplicitnega odstranjevanja vrha ustreznega sklada ali omejene append funkcije, R09 stabilni podseznam je le opisni. Tudi podatkovna nespremenljivost, števci in geometrija nimajo konkretnih predikatov. Formalizacija je uporabna in delna; natančna pravilna izvedba v hooku ni dopolnilo specifikacijskih enačb.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Specifikacijska matrika združi vse R v eno vrstico s štirimi kodnimi datotekami in testno datoteko; verification poveže posamezne R z D01–D04 in številkami lastnih testov. Modelni dogodki potrdijo 5/5 ter 51/51. Povezave k konkretnim funkcijam/vrsticam manjkajo, nekaj dokaznih trditev je širših od testov: test 3 po 20 undo/redo preveri le mesto web-1 in števce, ne celotnih permutacij ali vseh vmesnih stanj brez izgube/podvajanj; test 2 ima v vsakem stolpcu le eno kartico in ne preveri relativnega reda več kartic. Verification ne ohrani prvotnih neuspelih zagonov in teh omejitev ne označi. Sledljivost je koristna, delna.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P10-A-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "runtime/runs/P10-A-001/submission/tests/agent/P10-agent.spec.ts:87",
+        "runtime/runs/P10-A-001/submission/tests/agent/P10-agent.spec.ts:106",
+        "runtime/runs/P10-A-001/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "useTaskOrder loči lokalno izvorno/trenutno permutacijo in oba sklada od objektov Task. Funkcijske posodobitve kopirajo spremenjena polja, neveljavna dejanja vrnejo prvotno stanje; move/reset omejita undo, undo/redo prenašata celotne permutacije. ProjectView upravlja podatke, nefiltrirane števce in prikaz, hook izpelje vrstni red po ID; key projekta določa življenjsko dobo. Tabla filtrira isti globalni red in izpelje globalna mesta. Skupna domenska logika se ne podvaja med pogledoma, gumba sta zunaj povezave. Projekcija uporablja find po ID za vsak element, vendar brez dodatne zahtevane omejitve hitrosti to ne podre jasne ločitve odgovornosti.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/src/taskOrder.ts",
+        "runtime/runs/P10-A-001/submission/src/App.tsx:11",
+        "runtime/runs/P10-A-001/submission/src/App.tsx:50",
+        "runtime/runs/P10-A-001/submission/src/App.tsx:101",
+        "runtime/runs/P10-A-001/submission/src/TaskBoard.tsx:13"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Pet potrjenih testov preveri polja po premiku, robne gumbe in prisilni neveljavni klik z nepraznim redo, vejo po novem premiku, pogled/podrobnosti, reset/undo, projekt/reload,0/1 opravilo, nepisanje API in dejansko geometrijo 390. Test meje uporablja 22 opravil in 21 različnih permutacij: končno mesto 2 po 20 undo pravilno razloči zavrženje najstarejšega od zavrženja najnovejšega, ker ciljno preveri prvo ohranjeno stanje. Vendar po undo/redo ne preveri vseh ID-jev ali vmesnih permutacij, oba sklada ob pogledu/podrobnostih nista neposredno preverjena, manjkata no-op reset z nepraznim redo in reset pri polnem skladu ter relativni red več kartic v istem statusnem stolpcu. ID-ji/naslovi so preprosti in različni, števci projekta niso dodatno preverjeni. Za najvišjo oceno ostanejo pomembne vrzeli.",
+      "evidence": [
+        "runtime/runs/P10-A-001/submission/tests/agent/P10-agent.spec.ts:58",
+        "runtime/runs/P10-A-001/submission/tests/agent/P10-agent.spec.ts:87",
+        "runtime/runs/P10-A-001/submission/tests/agent/P10-agent.spec.ts:106",
+        "runtime/runs/P10-A-001/submission/tests/agent/P10-agent.spec.ts:125",
+        "runtime/runs/P10-A-001/submission/tests/agent/P10-agent.spec.ts:149",
+        "runtime/runs/P10-A-001/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Ni potrjene končne funkcionalne napake: completed,70/70,12/12, dovoljenost/lint/types/build true, strogi uspeh true. Čas 482,642 s, popolni račun 0,12617703 USD za 32 zahtev. Vsebinske vrzeli v specifikaciji in lastnih dokazih ne spreminjajo avtomatiziranega funkcionalnega rezultata.",
+  "developmentFailureExample": {
+    "description": "Prvi lastni zagon item_23 ima 2 failed/3 passed: napačna uporaba toContainText s poljem nad eno vrstico in pričakovanje surovega datuma, nato napačen števec reseta 1 namesto 2. Testna popravka dosežeta 4/5, nadaljnji zagoni item_26/27 še pričakujejo datetime 2026-10-2 namesto 2026-10-02, item_29/30 pa po eni razveljavitvi napačno pričakujeta undo 1 namesto 0. Po popravkih testnih pričakovanj item_32 potrdi 5/5, item_34 full 51/51. Dopolnjen reload v istem testu potrdita item_37(5/5) in item_40(51/51). Ni potrjene razvojne napake aplikacijske implementacije v teh neuspehih; izvirni izpisi so ohranjeni.",
+    "evidence": [
+      "runtime/runs/P10-A-001/events.jsonl.gz",
+      "runtime/runs/P10-A-001/submission/tests/agent/P10-agent.spec.ts:70",
+      "runtime/runs/P10-A-001/submission/tests/agent/P10-agent.spec.ts:80",
+      "runtime/runs/P10-A-001/submission/tests/agent/P10-agent.spec.ts:130",
+      "runtime/runs/P10-A-001/submission/tests/agent/P10-agent.spec.ts:141"
+    ]
+  }
+}

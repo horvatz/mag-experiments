@@ -1,0 +1,29 @@
+Preberem projektna pravila, navodila naloge in predlogo specifikacije.
+Zdaj pregledam obstoječi vmesnik, API tipe in razvojne teste P06.
+Obstoječa koda je pregledna; dodatno si ogledam celoten `App` in razvite teste brez okrnjenega izpisa.
+Pripravim specifikacijo z sledljivostjo R01–R12, nato dodam CSV generatorski modul in vmesnik.
+Specifikacija je pripravljena. Sedaj vključim izvozne kontrole v `ProjectView` in jih slogovno umestim v Folio.
+Funkcija in vmesnik so na mestu. Dodam lastna enotska in UI preverjanja, ki pokrijajo obliko, stanje in reset.
+Popravim lastno preverjanje širine in nato poženem tipizacijo ter ESLint.
+Tipizacija je odkrila dve malo napaki: neuporabljen parameter in neobstoječi Playwright pričakovnik. Popravim ju.
+`apply_patch` trenutno ni izvedljiv zaradi omejitve okolja. Preverim pot orodja in nadaljujem z dovoljenim lokalnim urejanjem.
+Orodje v trenutni lupini ni več na voljo, zato naredim minimalni popratek z lokalnim skriptom in takoj ponovim preverjanje.
+Tipizacija in lint sta uspešna. Zdaj poženem vse lastne agente teste.
+Lastna preverjanja so zelena. Zdaj poženem skupne razvojne teste za namizni in mobilni pogled.
+Razvojni testi P06 so uspešni. Za konec poženem celoten `npm run check` (lint, build in vse teste).
+Celoten `npm run check` je uspešen (54/54). Zdaj dopolnim sledljivost specifikacije in zapišem dejansko preverjanje.
+Dopolnim še neposredni dokaz za „brez nove strani“ in nespremenjen prikaz po filtru, nato posodobim dokumentacijo.
+Zaradi omejitve here-doc v lupini uporabim minimalno skriptno zamenjavo besedila v testni datoteki.
+Prejšnji poskus je zaradi napake lupine izpraznil UI test. Obnovim ga neposredno z zaporedjem `printf`, brez here-doc.
+Vsi lastni testi so spet zeleni. Sedaj dopolnim sledljivost v specifikaciji in zapišem izvedena preverjanja.
+Dokumentacija je dopolnjena. Zadnji korak je ponovni celoten `npm run check` po vseh spremembah.
+Vse je uspešno. Še pregledam končne vrstične položaje za natančno predajo.
+Dodam še opombo o okoljski omejitvi pri urejanju, ki ni vplivala na rešitev.
+**Rezultat**
+- Implementiran nastavljiv izvoz CSV: kolone, filter, ločilo, BOM, CRLF, formula-escape in prenos brez zapisov (`src/App.tsx:14`, `src/csv.ts:16`, `src/csv.ts:27`, `src/csv.ts:42`).
+- Folio slog je razširjen z novim izvoznim panelom (`src/styles.css:56`).
+- Specifikacija in sledljivost R01–R12 sta pripravljeni (`docs/agent/specification.md:14`, `docs/agent/specification.md:31`).
+- Dodani lastni testi: 3 enotski in 5 UI preverjanj (`tests/agent/csv.spec.ts:15`, `tests/agent/ui.spec.ts:6`).
+- Preverjanja so zapisana v `docs/agent/verification.md:1`.
+- `npm run check`: uspešno; 54/54
+{"status":"completed","elapsedSeconds":255.554,"allowedChanges":true,"usage":{"input_tokens":1204801,"cached_input_tokens":1119616,"cache_write_input_tokens":0,"output_tokens":21651,"reasoning_output_tokens":20925}}

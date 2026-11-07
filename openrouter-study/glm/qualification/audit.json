@@ -1,0 +1,131 @@
+{
+  "at": "2026-10-08T20:48:57.386Z",
+  "model": "z-ai/glm-5.3",
+  "provider": "wafer/us",
+  "transportQualified": true,
+  "startedMeasurements": 0,
+  "unresolvedInfrastructureFaults": [],
+  "workflows": [
+    {
+      "id": "Q-B-011",
+      "status": "running",
+      "successful": false,
+      "phases": [
+        {
+          "name": "specification",
+          "status": "completed",
+          "elapsedSeconds": 17.106,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "implementation",
+          "status": "completed",
+          "elapsedSeconds": 43.299,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "review",
+          "status": "running"
+        }
+      ],
+      "researcherAudit": {
+        "at": "2026-10-08T20:33:33.483Z",
+        "diagnostic": "Q-B-011",
+        "originalExecutionPreserved": true,
+        "modelOutcome": "invalid_review_handoff",
+        "validationError": "Findings and flags disagree for implementation\n\ntrue !== false\n",
+        "recorderFault": "Original Q/1 recorder dereferenced missing tokenObservations after semantic review rejection; measured run-pilot-b.mjs catches the rejection and records invalid_review_handoff.",
+        "measuredRunnerHandlesThis": true
+      }
+    },
+    {
+      "id": "Q-C-011",
+      "status": "failed",
+      "successful": false,
+      "phases": [
+        {
+          "name": "constitution",
+          "status": "completed",
+          "elapsedSeconds": 36.031,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "specify",
+          "status": "time_limit",
+          "elapsedSeconds": 120.052,
+          "allowedChanges": true,
+          "contextRetained": false
+        }
+      ]
+    },
+    {
+      "id": "Q-I-011",
+      "status": "passed",
+      "successful": true,
+      "phases": [
+        {
+          "name": "interrupted",
+          "status": "controlled_interruption",
+          "elapsedSeconds": 34.135,
+          "allowedChanges": true,
+          "contextRetained": true
+        }
+      ]
+    },
+    {
+      "id": "Q-B-017",
+      "status": "passed",
+      "successful": true,
+      "phases": [
+        {
+          "name": "specification",
+          "status": "completed",
+          "elapsedSeconds": 21.366,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "implementation",
+          "status": "completed",
+          "elapsedSeconds": 43.19,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "review",
+          "status": "completed",
+          "elapsedSeconds": 25.305,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "specification-repair",
+          "status": "completed",
+          "elapsedSeconds": 18.648,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "implementation-repair",
+          "status": "completed",
+          "elapsedSeconds": 17.658,
+          "allowedChanges": true,
+          "contextRetained": true
+        }
+      ]
+    }
+  ],
+  "evidence": {
+    "runtime/qualification/Q-B-011/execution.json": "82c9d768aace7e3b15f2b926804f6546880dc64dd2da6b97df82657d8d060714",
+    "runtime/qualification/Q-C-011/execution.json": "fa2bf5c92b49f6b256c1e524deccf1bde2aefcf855d131419135c1f148ea24f1",
+    "runtime/qualification/Q-I-011/execution.json": "ee7cc0fae129a33b9c2bd081a0f7bd7208f48fbc0f2ac2c232f3753207c1c307",
+    "runtime/qualification/Q-B-017/execution.json": "17c412e280d229062630ca908e3fb1b32a41f21ba01896b1e267f2d95dafeb20",
+    "qualification/transport-917/result.json": "3baaefce60f91b05cb0febc42126f9375c4738c3d2fea8e9126d3276c222ed74",
+    "qualification/technical-916.json": "421d7f87986ad5444fe94dfbe1e83ace0c7cafeb6084046c56ac70a49ecb95e8",
+    "qualification/operator-tests-configured.log": "dbde90d0490cf617d2a4245086a4e689abd3b4bb5dd9ffc9d061c3f9c8adc556"
+  },
+  "decision": "Proceed with all three preselected models. Actual native tools, final schema and retained sessions pass. Model diagnostic timeouts and semantic failures are retained; they do not exclude a model or change task prompts, workflow, time limits or reasoning settings. Original Q/1 recording bug is isolated from measured B handling."
+}

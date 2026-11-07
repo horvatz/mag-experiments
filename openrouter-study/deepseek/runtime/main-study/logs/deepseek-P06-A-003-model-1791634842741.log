@@ -1,0 +1,36 @@
+Requirements and baseline are clear. I'll write the specification first, then implement the CSV export.
+
+
+Heredoc is blocked by the sandbox; using `apply_patch` instead.
+
+
+Now implementing the export module and controls.
+
+
+No `apply_patch` binary in this environment; I'll patch with a small Node script instead.
+
+
+Typecheck passes. Running the shared development tests now.
+
+
+Development tests pass. Adding my own agent tests for the uncovered requirements.
+
+
+Four agent tests need diagnosis; checkingthe failure details.
+The failures are my test bugs (`makeTask` defaults `projectId: 'web'`) plus two assertion issues. Fixing them.
+
+
+All 12 agent tests pass. Running the full `npm run check` now.
+
+
+All 58 checks pass. Writing the verification record.
+
+
+**Rezultat**
+Naloga P06 je izvedena po postopku A (en agent). Vse zahteve R01–R12 so implementirane in preverjene.
+
+**Spremembe**
+- `src/csv.ts` – čista logika: fiksni vrstni red stolpcev, filter, narekovanje, podvajanje `"`, CRLF, nevtralizacija formul `= + - @` za začetnimi presledki/tab/CR/LF.
+- `src/CsvExport.tsx` – kontrole `Stolpec <ime>`, `Filter izvoza`, `Ločilo CSV`, gumb `Izvozi CSV`; prenos prek Blob URL z BOM in imenom `folio-<projectId>.csv`, brez zapisov na API.
+- `src/App.tsx` – kontrola vgrajena v `ProjectView` (`key={project.id}` poskrbi za ponastavitev ob menjavi projekta); `
+{"status":"completed","elapsedSeconds":907.606,"allowedChanges":true,"usage":{"input_tokens":1863459,"cached_input_tokens":1791872,"cache_write_input_tokens":0,"output_tokens":39365,"reasoning_output_tokens":16560}}

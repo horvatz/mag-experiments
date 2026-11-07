@@ -1,0 +1,46 @@
+Začnem s pregledom pravil, navodil in strukture projekta.
+
+
+Pregledam izhodiščno kodo, tipe, strežnik in dizajn.
+
+
+Zdaj pregledam še preostale sloge in skupne teste, da ohranim skladnost.
+
+
+Zdaj imam dovolj konteksta. Napišem najprej specifikacijo, nato implementacijo.
+
+
+Pišem specifikacijo v `docs/agent/specification.md`.
+
+
+Uporabim `apply_patch` za datoteke (heredoc v peskovniku ni dovoljen).
+
+
+Specifikacija je zapisana. Zdaj implementiram logiko vrstnega reda in vmesnik.
+
+
+Zdaj dodam lastne teste v `tests/agent/`.
+
+
+Popravim nekaj napak v lastnih testih (pogled table/board in reset scenariji).
+
+
+Poženem lastne teste (projekt agent).
+
+
+Popravim pričakovanja v testih (števci, sekvenca za R07, reset števci).
+
+
+Lastni testi (9/9) so uspešni. Poženem celotno preverjanje `npm run check` in medtem pišem dokumentacijo.
+
+
+Vseh 55 preverjanj je uspešnih. Zapišem še `docs/agent/verification.md`.
+
+
+Naloga je zaključena. Povzetek:
+
+**Rezultat**
+- `npm run check` je uspešen: lint, tipi, gradnja in **55/55 preverjanj** (14 API/strežnik, 24 skupnih UI, 8 razvojnih P10, 9 lastnih).
+- Implementiran lokalni vrstni red z razveljavitvami: premiki gor/dol z globalnim sosedom, sklada razveljavitev/ponovitev (omejitev 20), reset na izhodišče kot eno dejanje, števec `Razveljavitve: U. Ponovitve: R.`, prazna in eno-opravilna projekta ostaneta uporabna.
+- Preglednica prikazuje globalni vrstni red (`Mesto opravila <id>`), tabla podzaporedja po stolpcih stanj; gumbi so zunaj povezave opravila. Vse spreme
+{"status":"completed","elapsedSeconds":1147.158,"allowedChanges":true,"usage":{"input_tokens":1856445,"cached_input_tokens":1715328,"cache_write_input_tokens":0,"output_tokens":50583,"reasoning_output_tokens":26498}}

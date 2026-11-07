@@ -1,0 +1,47 @@
+Začnem z branjem pravil in navodil naloge.
+
+
+Imam vso sliko. Zdaj najprej specifikacija, nato implementacija.
+
+
+Zdaj pišem specifikacijo v `docs/agent/specification.md`.
+
+
+Heredoc ni mogel ustvariti temp datoteke (omejena `/tmp`). Ponovim z `TMPDIR` v dovoljeni mapi `.tmp`.
+
+
+Uporabim `apply_patch` (priporočena pot) za pisanje datotek.
+
+
+Specifikacija je zapisana. Zdaj implementacija: `src/sortTasks.ts` + kontrole v `src/App.tsx` + slogi.
+Koda je na mestu. Hitro preverim tipe in lint, nato napišem lastne teste.
+
+
+Zdaj lastni testi v `tests/agent/`.
+
+
+Popravim tri teste (A03, A07, A10), kjer sem pustil nedoslednosti.
+
+
+Tipi in lint so čisti. Poženem razvojne teste P04 in lastne teste.
+
+
+En test je padel zaradi ponovnega `goto` na isti URL (brez ponovnega nalaganja). Razdelim ga na dva testa.
+
+
+Vsi ciljni testi tečejo. Popravim še naslov testa A14 in poženem celoten `npm run check`.
+
+
+Vse zeleno: 64/64. Zapišem še `docs/agent/verification.md` z dejanskimi rezultati.
+
+
+Končno stanje preverim še s seznamom datotek in povzetkom.
+
+
+Naloga P04 je zaključena po postopku A (en agent).
+
+**Rezultat**
+- Specifikacija: `docs/agent/specification.md` (R01–R12 s predikati, zgodovina sprememb 1.0 → 1.1).
+- Implementacija: `src/sortTasks.ts` (normalizacija NFD + odstranitev U+0300–U+036F + male črke, UTF-16 primerjava, rang statusov, stabilen tie-break po izvornem indeksu, `original` vedno vrne izvorno polje), kontrole v `src/App.tsx` (štirje `select` z imeni Primarni/Sekundarni ključ in smer, gumb `Izvorni vrstni red`, stanje v `ProjectView` z `key={project.id}`), slogi v `src/styles.css`.
+- Lastni testi: `tests/agent/P04-agent.spe
+{"status":"completed","elapsedSeconds":368.168,"allowedChanges":true,"usage":{"input_tokens":2069171,"cached_input_tokens":2027392,"cache_write_input_tokens":0,"output_tokens":44905,"reasoning_output_tokens":20381}}

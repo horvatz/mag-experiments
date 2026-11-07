@@ -1,0 +1,118 @@
+{
+  "at": "2026-10-08T20:48:57.388Z",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "provider": "deepinfra/fp8",
+  "transportQualified": true,
+  "startedMeasurements": 0,
+  "unresolvedInfrastructureFaults": [],
+  "workflows": [
+    {
+      "id": "Q-B-011",
+      "status": "passed",
+      "successful": true,
+      "phases": [
+        {
+          "name": "specification",
+          "status": "completed",
+          "elapsedSeconds": 33.299,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "implementation",
+          "status": "completed",
+          "elapsedSeconds": 30.95,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "review",
+          "status": "completed",
+          "elapsedSeconds": 10.493,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "specification-repair",
+          "status": "completed",
+          "elapsedSeconds": 72.522,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "implementation-repair",
+          "status": "completed",
+          "elapsedSeconds": 44.537,
+          "allowedChanges": true,
+          "contextRetained": true
+        }
+      ]
+    },
+    {
+      "id": "Q-C-011",
+      "status": "failed",
+      "successful": false,
+      "phases": [
+        {
+          "name": "constitution",
+          "status": "time_limit",
+          "elapsedSeconds": 120.052,
+          "allowedChanges": true,
+          "contextRetained": true
+        }
+      ]
+    },
+    {
+      "id": "Q-I-011",
+      "status": "passed",
+      "successful": true,
+      "phases": [
+        {
+          "name": "interrupted",
+          "status": "controlled_interruption",
+          "elapsedSeconds": 27.127,
+          "allowedChanges": true,
+          "contextRetained": true
+        }
+      ]
+    },
+    {
+      "id": "Q-B-018",
+      "status": "failed",
+      "successful": false,
+      "phases": [
+        {
+          "name": "specification",
+          "status": "completed",
+          "elapsedSeconds": 29.794,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "implementation",
+          "status": "completed",
+          "elapsedSeconds": 20.681,
+          "allowedChanges": true,
+          "contextRetained": true
+        },
+        {
+          "name": "review",
+          "status": "time_limit",
+          "elapsedSeconds": 120.051,
+          "allowedChanges": true,
+          "contextRetained": true
+        }
+      ]
+    }
+  ],
+  "evidence": {
+    "runtime/qualification/Q-B-011/execution.json": "8a28468248ad33565d8879ad60efc3649543bfd570a24b6abef934fcb39a0e4a",
+    "runtime/qualification/Q-C-011/execution.json": "ef05c64942578dd5d2bda954be7737edbb01e38d731a64a17259bb0897400e3f",
+    "runtime/qualification/Q-I-011/execution.json": "afc3d65b240b06f676911cb56f75969d56163a474e4e1e5e634ac5e91f96e02a",
+    "runtime/qualification/Q-B-018/execution.json": "97e9569f0a88cc707ee4d85e2c898d27d4eb33a07f61a0ded3257a1baebfad06",
+    "qualification/transport-917/result.json": "4ae6644e367ff24043e54e710fe10426608f7bd2077cc4c6a221980c64687f64",
+    "qualification/technical-916.json": "5342e355034d170b51381676ea7085d5e1fa06c2aa7853b823fa8db647ac5d9d",
+    "qualification/operator-tests-configured.log": "6540814896448163673703e6dc229807427a7593bf0949febd90400e1689ce54"
+  },
+  "decision": "Proceed with all three preselected models. Actual native tools, final schema and retained sessions pass. Model diagnostic timeouts and semantic failures are retained; they do not exclude a model or change task prompts, workflow, time limits or reasoning settings. Original Q/1 recording bug is isolated from measured B handling."
+}

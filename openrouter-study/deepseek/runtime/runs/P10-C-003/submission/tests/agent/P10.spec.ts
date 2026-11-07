@@ -1,0 +1,123 @@
+import { test, expect, mount, expectIds, webIds, click, board, table, project, readonly, makeTask, ids } from '../development/helpers.ts'
+
+test('R01: začetni vrstni red in globalna mesta', async ({ page }) => {
+  await mount(page)
+  await expectIds(page, webIds())
+  const expected = webIds()
+  for (const [index, id] of expected.entries()) {
+    await expect(page.getByLabel(`Mesto opravila ${id}`, { exact: true })).toHaveText(String(index + 1))
+  }
+  await expect(page.locator('[data-task-id]')).toHaveCount(8)
+})
+
+test('R02–R03: premik in robna onemogočena gumba', async ({ page }) => {
+  await mount(page)
+  await click(page, 'Premakni web-02 gor')
+  await expectIds(page, ['web-02', 'web-01', 'web-03', 'web-04', 'web-05', 'web-06', 'web-07', 'web-08'])
+  await expect(page.locator('[data-task-id="web-01"]')).toContainText('Ana Novak')
+  await expect(page.locator('[data-task-id="web-02"]')).toContainText('Luka Kovač')
+  await expect(page.getByRole('button', { name: 'Premakni web-02 gor', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Premakni web-08 dol', exact: true })).toBeDisabled()
+})
+
+test('R04–R05: razveljavitev in ponovitev', async ({ page }) => {
+  await mount(page)
+  await click(page, 'Premakni web-02 gor')
+  await click(page, 'Premakni web-03 gor')
+  await expectIds(page, ['web-02', 'web-03', 'web-01', 'web-04', 'web-05', 'web-06', 'web-07', 'web-08'])
+  await click(page, 'Razveljavi premik')
+  await click(page, 'Razveljavi premik')
+  await expectIds(page, webIds())
+  await click(page, 'Ponovi premik')
+  await click(page, 'Ponovi premik')
+  await expectIds(page, ['web-02', 'web-03', 'web-01', 'web-04', 'web-05', 'web-06', 'web-07', 'web-08'])
+  await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 2. Ponovitve: 0.')
+  await expect.poll(async () => (await ids(page)).sort()).toEqual([...webIds()].sort())
+})
+
+test('R06: nov premik zavrže ponovitve', async ({ page }) => {
+  await mount(page)
+  await click(page, 'Premakni web-02 gor')
+  await click(page, 'Razveljavi premik')
+  await expect(page.getByRole('button', { name: 'Ponovi premik', exact: true })).toBeEnabled()
+  await click(page, 'Premakni web-03 gor')
+  await expect(page.getByRole('button', { name: 'Ponovi premik', exact: true })).toBeDisabled()
+  await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 1. Ponovitve: 0.')
+})
+
+test('R07: meja 20 in ponovitve', async ({ page }) => {
+  await mount(page)
+  for (let step = 0; step < 21; step += 1) await click(page, step % 2 === 0 ? 'Premakni web-01 dol' : 'Premakni web-01 gor')
+  await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 20. Ponovitve: 0.')
+  await click(page, 'Razveljavi premik')
+  await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 19. Ponovitve: 1.')
+  await click(page, 'Ponovi premik')
+  await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 20. Ponovitve: 0.')
+})
+
+test('R08: začetni vrstni red', async ({ page }) => {
+  await mount(page)
+  await click(page, 'Premakni web-02 gor')
+  await click(page, 'Začetni vrstni red')
+  await expectIds(page, webIds())
+  await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 1. Ponovitve: 0.')
+  await expect(page.getByRole('button', { name: 'Ponovi premik', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Začetni vrstni red', exact: true })).toBeDisabled()
+})
+
+test('R09: tabla uporablja globalnega soseda', async ({ page }) => {
+  await mount(page)
+  await board(page)
+  await expect(page.getByLabel('Mesto opravila web-02', { exact: true })).toHaveText('2')
+  await click(page, 'Premakni web-02 gor')
+  await expect(page.getByLabel('Mesto opravila web-02', { exact: true })).toHaveText('1')
+  await expect(page.locator('.board-column.board-todo [data-task-id="web-02"]')).toBeVisible()
+  await table(page)
+  await expectIds(page, ['web-02', 'web-01', 'web-03', 'web-04', 'web-05', 'web-06', 'web-07', 'web-08'])
+})
+
+test('R10: pogled, podrobnosti, projekt, osvežitev', async ({ page }) => {
+  await mount(page)
+  await click(page, 'Premakni web-02 gor')
+  await page.locator('[data-task-id="web-01"]').getByRole('link').click()
+  await expect(page.getByRole('dialog')).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expectIds(page, ['web-02', 'web-01', 'web-03', 'web-04', 'web-05', 'web-06', 'web-07', 'web-08'])
+  await board(page)
+  await table(page)
+  await expectIds(page, ['web-02', 'web-01', 'web-03', 'web-04', 'web-05', 'web-06', 'web-07', 'web-08'])
+  await project(page, 'launch')
+  await project(page, 'web')
+  await expectIds(page, webIds())
+  await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 0. Ponovitve: 0.')
+  await click(page, 'Premakni web-02 gor')
+  await page.reload()
+  await expect(page.getByRole('heading', { name: 'Spletna prenova', exact: true })).toBeVisible()
+  await expectIds(page, webIds())
+})
+
+test('R11: prazni in enojni projekt', async ({ page }) => {
+  await mount(page, [])
+  await expect(page.getByText('V tem projektu še ni opravil')).toBeVisible()
+  await expect(page.getByRole('status', { name: 'Zgodovina vrstnega reda' })).toHaveText('Razveljavitve: 0. Ponovitve: 0.')
+  await expect(page.getByRole('button', { name: 'Razveljavi premik', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Ponovi premik', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Začetni vrstni red', exact: true })).toBeDisabled()
+  await mount(page, [makeTask('web-01')])
+  await expect(page.getByRole('button', { name: 'Premakni web-01 gor', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Premakni web-01 dol', exact: true })).toBeDisabled()
+})
+
+test('R12: brez zapisov, nespremenjena polja in 390 px', async ({ page }) => {
+  const writes = await mount(page)
+  const summaryBefore = await page.locator('[aria-label="Pregled stanj opravil"]').innerText()
+  await click(page, 'Premakni web-02 gor')
+  await click(page, 'Razveljavi premik')
+  await click(page, 'Ponovi premik')
+  await click(page, 'Začetni vrstni red')
+  await expect(page.locator('[aria-label="Pregled stanj opravil"]')).toHaveText(summaryBefore)
+  await readonly(page, writes)
+  await page.setViewportSize({ width: 390, height: 844 })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  await expect(page.locator('[data-task-id]')).toHaveCount(8)
+})

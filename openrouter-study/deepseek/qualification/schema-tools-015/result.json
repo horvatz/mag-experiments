@@ -1,0 +1,64 @@
+{
+  "excludedFromMeasurements": true,
+  "toolChoice": "auto",
+  "results": [
+    {
+      "constrained": false,
+      "httpStatus": 200,
+      "status": "completed",
+      "output": [
+        {
+          "id": "rs_tmp_q1wgoap01z",
+          "type": "reasoning",
+          "status": "completed",
+          "content": [
+            {
+              "type": "reasoning_text",
+              "text": "The user wants me to call read_value and then respond with JSON containing the value. Let me call the tool first."
+            }
+          ],
+          "summary": [],
+          "format": "unknown"
+        },
+        {
+          "id": "fc_tmp_6koropjartn",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "chatcmpl-tool-98490a0cb5b8eff3",
+          "name": "read_value",
+          "arguments": "{}"
+        }
+      ],
+      "toolCalled": true
+    },
+    {
+      "constrained": true,
+      "httpStatus": 200,
+      "status": "completed",
+      "output": [
+        {
+          "id": "rs_tmp_s76jmdqp71",
+          "type": "reasoning",
+          "status": "completed",
+          "content": [
+            {
+              "type": "reasoning_text",
+              "text": "The user wants me to call read_value to get the hidden value, then respond with JSON containing the value. Let me make the tool call."
+            }
+          ],
+          "summary": [],
+          "format": "unknown"
+        },
+        {
+          "id": "fc_tmp_8mqo5i9zpvr",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "chatcmpl-tool-adbe9b53cfbd5eb2",
+          "name": "read_value",
+          "arguments": "{}"
+        }
+      ],
+      "toolCalled": true
+    }
+  ]
+}

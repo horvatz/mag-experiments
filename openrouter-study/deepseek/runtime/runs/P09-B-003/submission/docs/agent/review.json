@@ -1,0 +1,27 @@
+{
+  "complete": true,
+  "checkedRequirements": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "R12"
+  ],
+  "unverified": [
+    "Končni (skriti) testi naloge niso dostopni; R01–R12 so preverjeni samo z 38 osnovnimi/API testi, 8 razvojnimi (D01–D04), 12 lastnimi testi in 3 dodatnimi neodvisnimi scenariji pregledovalnika.",
+    "Ob aktivnih filtrih in praznem projektu (M = 0) se prikaže izhodiščno sporočilo »V tem projektu še ni opravil«, ne »Ni zadetkov.«; pri M > 0 in N = 0 je »Ni zadetkov.« prikazan. Izhodiščni testi za prazen projekt zahtevajo izhodiščno sporočilo, zato te interpretacije ne štejem kot kršitev R11.",
+    "Vedenje ob zelo velikih naborih podatkov, med nedokončanim nalaganjem in ob sočasnih spremembah podatkov brez osvežitve ni preverjeno (izven obsega po navodilih).",
+    "Presledek v q se v fragment zapiše kot \"+\"; branje z URLSearchParams ga dekodira nazaj v presledek, zato je krog skladen z R06, a oblika zapisa ni izrecno predpisana in je skriti testi lahko preverjajo drugače."
+  ],
+  "specificationChangesRequired": false,
+  "codeChangesRequired": false,
+  "summary": "Neodvisni pregled je končan. Vseh 12 zahtev sem primerjal s specifikacijo, kodo, testi in verification.md. Samostojno sem zagnal npm run check (slog, tipi, gradnja; 58/58 zelenih: 38 osnovnih/API + 8 razvojnih D01–D04 + 12 lastnih), ločeno še razvojne in lastne teste (20/20) ter 3 dodatne scenarije (neposredna povezava na opravilo s parametri in board, zavržen osnutek ob odprtju podrobnosti, vrstni red znotraj stolpca table). Vseh 12 zahtev je izpolnjenih; konkretnih napak glede zahtev nisem našel, zato so ugotovitve prazne in zastavici false. Opomba: specification.md v razdelku »Izvedba in sledljivost« navaja načrtovane teste in oznake »Ni izvedeno« iz faze specifikacije, medtem ko so dejanski izidi in povezave na kodo v verification.md; povezava med dokumentoma ni izrecna, vendar sem dokaze preveril in dodatna sprememba specifikacije po moji presoji ni potrebna.",
+  "findings": []
+}

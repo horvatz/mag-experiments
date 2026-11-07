@@ -1,0 +1,4 @@
+- Ustvaril sem jedrnat izvedbeni načrt v `docs/agent/P07/plan.md:1`.
+- Načrt vključuje tehnični kontekst, arhitektura stanja, shrambo, vključitev v preglednico/tablo, Folio stile, teste in sledljivost.
+- Načrt ohranja infrastrukturo, javni API in potrjeni dizajn ter ne dodaja odvisnosti.
+- Preostanek faze: `989 s`.

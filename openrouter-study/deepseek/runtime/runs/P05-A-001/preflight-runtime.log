@@ -1,0 +1,76 @@
+
+> folio@0.1.0 lint
+> eslint .
+
+
+> folio@0.1.0 build
+> npm run typecheck && vite build
+
+
+> folio@0.1.0 typecheck
+> tsc --noEmit
+
+[36mvite v8.3.0 [32mbuilding client environment for production...[36m[39m
+transforming...
+✓ 1875 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.36 kB
+dist/assets/index-DGDHMV1h.css   12.60 kB │ gzip:  3.51 kB
+dist/assets/index-CAAmSzsC.js   239.29 kB │ gzip: 74.64 kB
+
+[32m✓ built in 227ms[39m
+
+Running 38 tests using 1 worker
+
+  ✓   1 [api] › tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (42ms)
+  ✓   2 [api] › tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (9ms)
+  ✓   3 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (5ms)
+  ✓   4 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (6ms)
+  ✓   5 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (4ms)
+  ✓   6 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (9ms)
+  ✓   7 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (5ms)
+  ✓   8 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (4ms)
+  ✓   9 [api] › tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [api] › tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (15ms)
+  ✓  11 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with success (9ms)
+  ✓  12 [api] › tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [api] › tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (7ms)
+  ✓  14 [api] › tests/api.spec.ts:91:1 › normal server does not expose test controls (8ms)
+  ✓  15 [desktop] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (493ms)
+  ✓  16 [desktop] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (503ms)
+  ✓  17 [desktop] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (535ms)
+  ✓  18 [desktop] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (652ms)
+  ✓  19 [desktop] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (449ms)
+  ✓  20 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (356ms)
+  ✓  21 [desktop] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (355ms)
+  ✓  22 [desktop] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (339ms)
+  ✓  23 [desktop] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (339ms)
+  ✓  24 [desktop] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (847ms)
+  ✓  25 [desktop] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (590ms)
+  ✓  26 [desktop] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (412ms)
+  ✓  27 [mobile] › tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (404ms)
+  ✓  28 [mobile] › tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (516ms)
+  ✓  29 [mobile] › tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (577ms)
+  ✓  30 [mobile] › tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (728ms)
+  ✓  31 [mobile] › tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (469ms)
+  ✓  32 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (410ms)
+  ✓  33 [mobile] › tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (407ms)
+  ✓  34 [mobile] › tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (359ms)
+  ✓  35 [mobile] › tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (359ms)
+  ✓  36 [mobile] › tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (881ms)
+  ✓  37 [mobile] › tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (696ms)
+  ✓  38 [mobile] › tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (493ms)
+
+  38 passed (13.4s)
+
+Listing tests:
+  [development-desktop] › development/P05.spec.ts:2:1 › D01: page size and next page
+  [development-desktop] › development/P05.spec.ts:3:1 › D02: last page and status
+  [development-desktop] › development/P05.spec.ts:4:1 › D03: filter before global board page
+  [development-desktop] › development/P05.spec.ts:5:1 › D04: size change resets and no writes
+  [development-mobile] › development/P05.spec.ts:2:1 › D01: page size and next page
+  [development-mobile] › development/P05.spec.ts:3:1 › D02: last page and status
+  [development-mobile] › development/P05.spec.ts:4:1 › D03: filter before global board page
+  [development-mobile] › development/P05.spec.ts:5:1 › D04: size change resets and no writes
+Total: 8 tests in 1 file

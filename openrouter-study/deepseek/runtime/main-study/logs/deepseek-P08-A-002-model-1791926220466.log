@@ -1,0 +1,44 @@
+I have the full picture. Writing the specification first, then implementing the deadline grouping and filters.
+
+
+Heredoc is blocked by the sandbox; using `apply_patch` for file writes.
+
+
+Spec is in place. Now the grouping logic module.
+
+
+Now wiring the state and filtered views into `App.tsx`.
+
+
+Now my own tests in `tests/agent/`, covering logic and UI boundaries.
+
+
+Implementation is in. Running typecheck and lint before the test suites.
+
+
+Typecheck and lint pass. Running the P08 development tests plus my own tests now.
+
+
+Two of my own tests had fixture arithmetic issues; the app logic and all 8 development checks pass. Fixing my tests.
+
+
+All 10 of my tests pass. Now running the full `npm run check` across all suites.
+
+
+
+
+Full `npm run check` passes: 56 tests including all 8 P08 development checks and my 10 agent tests. Updating spec traceability and writing the verification report.
+
+
+
+
+Final sanity check on the workspace state and changed files.
+
+
+Pilotna naloga P08 je zaključena. Vse zahteve R01–R12 so implementirane in preverjene.
+
+**Rezultat**
+- `docs/agent/specification.md` — specifikacija po skupni predlogi s predikati za R01–R12, sledljivostjo in zapisom popravkov.
+- `src/deadlines.ts` — čista koledarska logika: fiksni `REFERENCE_DATE = 2026-09-21`, ordinali prek `Date.UTC` (neodvisno od časovnega pasu/DST), `classifyTask`/`countGroups`/`filterTasks`.
+- `src/DeadlineFilter.tsx` — `input type=date` (Referenčni datum), `select` Pogled rokov (all/overdue/today/week/later/done), pet števcev z `aria-label="Število rokov <ključ>"` in `r
+{"status":"completed","elapsedSeconds":467.146,"allowedChanges":true,"usage":{"input_tokens":1327203,"cached_input_tokens":1274496,"cache_write_input_tokens":0,"output_tokens":38062,"reasoning_output_tokens":19296}}

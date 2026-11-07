@@ -1,0 +1,27 @@
+Prebral bom projektna pravila, navodila naloge in specifikacijsko predlogo.
+Zdaj preverim obstoječi vmesnik, vrste podatkov in razvojne teste, preden napišem specifikacijo.
+Obstoječa koda je obsežna; preberem ključne datoteke ločeno, da ohranim natančno sledljivost.
+Pregledal bom razvojne primere in slogovne razrede, nato zapišem specifikacijo z merljivimi pogoji.
+Specifikacija bo definirala enoten potrditveni model: URL določa potrjeno stanje, kontrolniki določajo osnutek.
+Specifikacija je pripravljena. Sedaj implementiram parsiranje hash URL-ja, filtriranje, zgodovino in nove kontrole.
+Prvi poskus patcha je zajedel okoljsko omejitev začasnih datotek; uporabim dovoljeni `.tmp` in ponovim spremembe.
+Jedro stanja je dodano; sedaj povežem povezave do opravil in podrobnosti s potrjenim pogledom.
+Implementacija je povezana. Zazenem tipizacijo in lint, predvsem da ujamem2 napaki.
+Tipi in lint čista. Sedaj dodam lastne Playwright teste, ki pokrijo zahteve, ki jih skupni primeri ne zajamejo.
+Lastni testi so dodani; zaganjam jih zdaj in po potrebi popravim ujete napake.
+Ujete so tri napake v pričakovanjih in ena produktovna: board s praznim rezultatom mora pokazati `Ni zadetkov`.
+Lastni testi sedaj izpolnjujejo pričakovani model. Zazenem še skupne razvojne teste na namizju in mobilni širini.
+Vse lastne primere usklajujem z board vrstnim redom po stolpcih. Zdaj izvedem celoten `npm run check`.
+Celotno preverjanje je uspešno (50/50). Zapišem še dokumentacijo dejanskih preverjanj in omejitev.
+Še utrdim robni primer: potrditev enakega stanja z drugačnim vrstnim redom URL-parametrov ne sme ustvariti nove zgodovine.
+Preverjanje po zadnjem robnem popravku je再次 uspešno. Zaključim s pregledom končnih datotek in referenc.
+**Rezultat**
+- Specifikacija R01–R12 je pripravljena v `docs/agent/specification.md:1`.
+- Implementirano je parsiranje hash URL-ja, normalizacija iskanja, filtriranje, urejanje, osnutek kontrol in zgodovina v `src/navigation.ts:23` ter `src/App.tsx:11`.
+- Povezave na tabli in podrobnosti ohranjajo potrjen pogled v `src/TaskBoard.tsx:26` in `src/TaskDetails.tsx:12`; Folio slog je dopolnjen v `src/styles.css:56`.
+- Dodani so lastni testi `tests/agent/P09-agent.spec.ts:11`.
+
+**Preverjanje**
+- `npm run check`: 50/50 uspešno (14 API, 24 izhodiščnih namiznih/mobilnih, 8 razvojnih P09, 4 lastni).
+- R
+{"status":"completed","elapsedSeconds":376.559,"allowedChanges":true,"usage":{"input_tokens":2733505,"cached_input_tokens":2684800,"cache_write_input_tokens":0,"output_tokens":35598,"reasoning_output_tokens":29153}}

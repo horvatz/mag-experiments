@@ -1,0 +1,3 @@
+To je majhna tehnična kvalifikacija izvajalnika Q, ne polna naloga Folio. Preberi task/instructions.md. Dokumente ohrani zelo kratke. Uporabi samo src/qualification.ts, docs/agent/ in dovoljene procesne datoteke; spoštuj meje dodeljene vloge. Izvedba testa je node task/qualification-check.mjs. Ne uporabljaj brskalnika, javnega interneta ali drugih agentov. Končaj takoj, ko opraviš korak.
+Nadaljuj kot prvotni implementer. Preberi docs/agent/review.json in trenutno specifikacijo z zgodovino. Popravi utemeljene napake v src/qualification.ts, zaženi javni test in dopolni verification.md. Specifikacije in pregleda ne spreminjaj.
+V končnem odgovoru navedi kontrolno besedo iz svoje prvotne seje (pri JSON jo vključi v summary). Ne ugibaj, če je ne pomniš.

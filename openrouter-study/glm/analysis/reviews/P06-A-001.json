@@ -1,0 +1,92 @@
+{
+  "id": "P06-A-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Vseh R01–R12 ima uporabna pravila: kanonične kolone, izvorni red, filter samo za izvoz, prazni izbor/rezultat, lokalni prenos z imenom in BOM, vedno citirane vrednosti, podvojeni narekovaji, obe ločili, končni CRLF, natančne štiri vodilne beline/predpone formul, Unicode/raw datum/status, pogled in reset projekta/reloada ter brez zapisov. Konkretna vrzel ostane v pogodbi vmesnika: dokument ne določi dostopnih imen Stolpec <ime>, Ločilo CSV in Filter izvoza ali zahteve po checkbox/HTML select kontrolah. Širino 390 omenja kot test v sledljivosti, ne opredeli pa izrecno neširjenja strani in dovoljenega notranjega drsenja obeh pogledov. Sklic na potrjeni videz teh sprejemnih pogojev ne nadomesti.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T/selected/COLUMNS/separator/filter in safe/csv imajo uporabne domene in preverljiva pravila. Onemogočenje je ekvivalenca praznega izbora ali filtriranega zaporedja; filtriranje ne spreminja prikaza T. Kanonični vrstni red, točno dovoljene predpone in vodilni znaki, dodan apostrof na začetek izvirnega niza, citiranje vseh polj ter podvojitev narekovajev določijo ključne korake serializacije. BOM in CRLF z zadnjo vrstico, ohranjanje notranjih prelomov/polj ter identiteta nastavitev med pogledoma in reset ob projektu/reloadu so jasno preverljivi. Začetna krajšava selected kot neprazna podmnožica je popravljena z izrecnim praznim primerom R03.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Vsaka R ima poimenovan dejanski test, kodne datoteke in potrjen full 49/49; verification resnično navede 3/3 lastne in razvojne 8/8. Toda večina zahtev kaže na isti široki test brez kodnih funkcij ali konkretnih odsekov, trditve so širše od dokazov. Reload sledi že privzetim nastavitvam po menjavi projekta, zato ne dokazuje reseta spremenjenih nastavitev. Mobilni test preveri le prazen projekt v preglednici. En unit primer zajame predpone in podatkovne kolone, ne vseh kombinacij ali negativnih belin. Zapis kot omejitev navede le druge brskalnike in trdi nerešenih zahtev ni; teh dokaznih vrzeli ter prejšnjih tipovnih zastojev ne ohrani. Izidi zagonov so resnični, povezave in omejitve delne.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P06-A-001/submission/docs/agent/verification.md#pokritje-zahtev",
+        "runtime/runs/P06-A-001/submission/docs/agent/verification.md#omejitve",
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:103",
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:117",
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:128",
+        "runtime/runs/P06-A-001/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "csvExport.ts loči čisto filtriranje, nevtralizacijo in CSV serializacijo od React kontrol/prenosa. exportColumns je skupni kanonični vir; toggleColumn vedno izpelje njegov podseznam ne glede na zaporedje klikov. ProjectView hrani samo tri nastavitve, izpelje izvožene vrstice in canExport ter isti predpogoj uporabi v gumbu/handlerju; vidni seznam in števci ostanejo celotni. Download uporabi Blob in začasno povezavo/objektni URL, ki ga sprosti. Ključ projekta upravlja reset in preklop pogleda ohrani instanco. Podatki in prejšnja polja se ne mutirajo, domenska logika se ne podvaja med pogledoma.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/src/csvExport.ts:3",
+        "runtime/runs/P06-A-001/submission/src/csvExport.ts:21",
+        "runtime/runs/P06-A-001/submission/src/csvExport.ts:25",
+        "runtime/runs/P06-A-001/submission/src/csvExport.ts:33",
+        "runtime/runs/P06-A-001/submission/src/csvExport.ts:37",
+        "runtime/runs/P06-A-001/submission/src/App.tsx:22",
+        "runtime/runs/P06-A-001/submission/src/App.tsx:35",
+        "runtime/runs/P06-A-001/submission/src/App.tsx:44",
+        "runtime/runs/P06-A-001/submission/src/App.tsx:169",
+        "runtime/runs/P06-A-001/submission/src/styles.css:66"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Trije dejansko uspešni testi z ročno zapisanimi pričakovanimi nizi in Buffer bajti zajamejo vse kolone, obratni izbor, prazni izbor/ponovno izbiro, vse filtre, obe ločili, ime/BOM/končni CRLF, citate/Unicode/vgrajeni CRLF, enake bajte med pogledoma, projekt, prazni rezultat/projekt, nepisanje in popup. Neposredni unit test preveri apostrof pred vsemi sedmimi podatkovnimi polji in štiri nevarne predpone z različnimi dovoljenimi vodilnimi belinami; pričakovanja niso ponovno izračunana s serializatorjem. Manjkajo zahtevni varni začetki NBSP/VT/FF ali apostrof, samostojna CR in LF v preneseni vsebini, več kot deset nesortiranih vrstic/enaki naslovi ter dejanski reset spremenjenih nastavitev ob reloadu. Širina 390 se preveri le v prazni preglednici, ne pri podatkih in tabli. Zbiralnik vseh zahtev se po reloadu izprazni, zato končno requests=[] ne dokazuje odsotnosti dodatnih GET med prejšnjimi izvozi; writes in popup ostaneta ločena uporabna dokaza. Unit test z neveljavnima statusom/datumom preverja generično funkcijo zunaj domene API, ne dodatnega veljavnega uporabniškega scenarija.",
+      "evidence": [
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:18",
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:39",
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:51",
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:65",
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:76",
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:92",
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:103",
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:117",
+        "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:128",
+        "runtime/runs/P06-A-001/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Ni potrjene končne funkcionalne napake: completed, 70/70, 12/12, dovoljenost/lint/types/build true, strogi uspeh true. Čas 215,037 s; popolni račun 0,131047027 USD za 27 zahtev. Lastni 3/3 in full 49/49 sta potrjena v item_35/37.",
+  "developmentFailureExample": {
+    "description": "Item_19 ustavi typecheck zaradi TS4104: filterTasks ob filter=all vrne readonly Task[], deklariral pa je mutable Task[]. Izvedeni popravek v poznejšem API input request-00014 spremeni povratni tip v readonly, item_24 potrdi tipe/lint. Prva dva lastna testa in razvojni 8/8 uspeta. Dodani unit primer za vse podatkovne kolone uporablja nevaren status/datum zunaj tipovne domene Task; item_31/32 ustavi TS2352. Zadnji popravek uporabi as unknown as Task, item_35 potrdi 3/3 ter item_37 full 49/49. To so razvojne tipovne napake, ne končni funkcionalni neuspehi; raziskovalec kode/testov ne spreminja.",
+    "evidence": [
+      "runtime/runs/P06-A-001/events.jsonl.gz",
+      "api/P06-A-001/model/request-00014.json.gz",
+      "runtime/runs/P06-A-001/submission/src/csvExport.ts:33",
+      "runtime/runs/P06-A-001/submission/tests/agent/p06.spec.ts:128",
+      "runtime/runs/P06-A-001/submission/docs/agent/verification.md"
+    ]
+  }
+}

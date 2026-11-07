@@ -1,0 +1,16 @@
+Q-B-011: specification
+Q-B-011: specification completed 17.106s
+Q-B-011: implementation
+Q-B-011: implementation completed 43.299s
+Q-B-011: review
+file:///Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/scripts/qualification.mjs:139
+metadata.usageComplete = metadata.phases.every(p => p.status === 'completed' && p.usage && p.tokenObservations.at(-1) && Object.entries(p.usage).every(([key, value]) => p.tokenObservations.at(-1).usage[key] === value))
+                                                                                                               ^
+
+TypeError: Cannot read properties of undefined (reading 'at')
+    at file:///Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/scripts/qualification.mjs:139:112
+    at Array.every (<anonymous>)
+    at file:///Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/scripts/qualification.mjs:139:42
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+Node.js v24.11.1

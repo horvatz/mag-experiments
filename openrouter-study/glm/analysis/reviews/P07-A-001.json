@@ -1,0 +1,113 @@
+{
+  "id": "P07-A-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-30T13:58:12.306815+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "68accf3522797ce2ded42a7ec02bee0acff079dc11b8a4c644d2fec016a65b51",
+  "limitation": "Presoja sedmih avtorskih datotek, native ukazov ter pozneje ohranjenih API klicev. Celotni arhivski file SHA256 se ujema. Presoja ni vrnjena merjeni seji; raziskovalec oddaje ne popravlja ali ponavlja.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Vseh R01–R12 ima jasno vedenjsko pravilo: identiteto gumba, strogo veljavnost ovojnice, UTF-16 zapis brez podatkov opravil, globalno množico, filter, praznino, projektno čiščenje, celotne in vidne števce, storage/no-echo ter izjeme in bralnost. Ostanejo vrzeli pogodbe vmesnika: točni imeni checkboxa in gumba za čiščenje ter role/status in aria-label števca niso preneseni v dokument. Tudi splošna domena nič/eno/več kot deset in zahtevanih 390 px ni izrecna; naveden je le ozki prikaz. Napačna implementacija mešanega ids se oceni ločeno, saj jo dokument pravilno prepove.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:9",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:17",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:20",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:26",
+        "runtime/tasks/P07/instructions.md#dogovor-o-vmesniku"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Pravila imajo uporabne predikate: članstvo in preklop le izbranega ID, množica nizov ter enkratni sortirani zapis; veljavnost zahteva version=1, array in vsak element niz. Filter ohrani API zaporedje, projektno čiščenje odstrani samo presek, X/M zajameta celoten projekt. Prehodi projekt/reload ohranijo množico in počistijo filter; storage uporablja enako validacijo brez zapisa, tuji ključ se ignorira. Ključne lastnosti so preverljive tudi zunaj sedmih lastnih scenarijev.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:17",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:19",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:21",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:24",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:27"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Dvanajst vrstic poveže pravila, konkretne module in poimenovane scenarije. Resnični item_54, item_56 in item_62 potrjujejo lastne7/7, razvojne8/8 ter skupne53/53. Toda R08 trdi preverjen reset filtra po menjavi projekta in reloadu, čeprav je pred obema filter že false. R11 povzame vse izjeme, lasten primer pa onemogoči že branje; samostojna napaka pisanja po uspešnem branju in opozorilo zato nista preverjena. Omejitve razkrijejo sintetični storage in Chromium, ostalih pomembnih nepokritih robov ne navedejo. Uspehi niso izmišljeni; dokazni obseg in razkritje nepreverjenega sta delna.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:34",
+        "runtime/runs/P07-A-001/submission/docs/agent/verification.md:9",
+        "runtime/runs/P07-A-001/submission/docs/agent/verification.md:26",
+        "runtime/runs/P07-A-001/submission/docs/agent/verification.md:29",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07.spec.ts:23",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07.spec.ts:66",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07.spec.ts:117",
+        "analysis/evidence/P07-A-001-checks.md#item_54",
+        "analysis/evidence/P07-A-001-checks.md#item_56",
+        "analysis/evidence/P07-A-001-checks.md#item_62"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "favorites.ts loči parser, serializacijo, globalno stanje in storage naročnino s čiščenjem; commit spreminja pomnilnik in samostojno lovi napako pisanja. App hrani globalne ID-je nad projektom, ProjectView pa lokalni filter in izpeljane sezname/števce; projektni key resetira filter. Tabla in preglednica dobita isto množico ter ločena gumba zunaj povezav. Ni podvojene shranjene projekcije ali API zapisa. Parserjeva delna validacija je konkretna funkcionalna napaka, ne nerazumljiva delitev odgovornosti.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/src/favorites.ts:5",
+        "runtime/runs/P07-A-001/submission/src/favorites.ts:19",
+        "runtime/runs/P07-A-001/submission/src/favorites.ts:37",
+        "runtime/runs/P07-A-001/submission/src/favorites.ts:46",
+        "runtime/runs/P07-A-001/submission/src/App.tsx:22",
+        "runtime/runs/P07-A-001/submission/src/App.tsx:111",
+        "runtime/runs/P07-A-001/submission/src/App.tsx:132",
+        "runtime/runs/P07-A-001/submission/src/TaskBoard.tsx:33"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Sedem dejansko uspešnih scenarijev preveri ločene ID-je, shranjevanje/reload, štiri neveljavne ovojnice brez prepisa, dvojne/neznane ID-je, projektno čiščenje, prazno preglednico, oba neprazna pogleda in podrobnosti, storage tuji ključ ter no-echo, nedostopno shrambo in 390 px. Tuji ključ začne pri web-03, zato je oracle razlikujoč; no-echo primerja dejanski localStorage. Vendar ids:[2] ne loči zavrnitve celote od filtriranja nenizov: manjka mešanica veljavnega niza in neniza, ki dejansko odpove. Ni adversarialnega UTF-16, 0/1/>10, praznega filtriranega preklopa na tablo, neprivzetega filtra pred projektom/reloadom ali neodvisne izjeme pisanja. null storage sledi že praznemu stanju, zato ne dokazuje dejanskega čiščenja. Koristen, a ne širok mejni nabor.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/tests/agent/P07.spec.ts:4",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07.spec.ts:30",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07.spec.ts:46",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07.spec.ts:79",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07.spec.ts:97",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07.spec.ts:110",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07.spec.ts:117",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07.spec.ts:131",
+        "analysis/evidence/P07-A-001-checks.md#item_62"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E04 na obeh širinah: favorites.ts:16 iz ids odstrani nenize in ohrani veljavni web-01; zahtevana zavrnitev celotnega mešanega zapisa zato odpove (pričakovano aria-pressed=false, dejansko true). E06 na obeh širinah: App:81 pred vejo table izbere prazno sporočilo, zato helper po preklopu ne najde območja Tabla opravil. Prazno sporočilo obstaja in filter ostane uporaben; to je ločena občutljivost ohranjenega območja, ne odsotnost sporočila. Končni izid ostane66/70 in10/12.",
+    "evidence": [
+      "runtime/runs/P07-A-001/submission/src/favorites.ts:16",
+      "runtime/runs/P07-A-001/submission/src/App.tsx:81",
+      "runtime/runs/P07-A-001/evaluation-summary.json",
+      "runtime/runs/P07-A-001/evaluation-tests.log"
+    ]
+  },
+  "finalFailureNote": "Completed471,038s; lint/tipi/gradnja in dovoljene spremembe true; strictfalse. Regresija38/38, razvojni8/8, holdout20/24. Ni ponovljene merjene izvedbe. Celoten račun0,27090248USD,61 zahtev istega Wafer:51finished in10client_aborted z usklajenimi računi. Vir runtime/runs/P07-A-001/api-cost.json.",
+  "developmentFailureExample": {
+    "description": "Zgodnji ohranjeni API klici pokažejo zavrnitve heredoc/apply_patch; poznejši zapisi dostavijo dokumente. Item_28 odkrije manjkajoči TaskDetails, item_31 pokvarjen import; poznejši ohranjeni typecheck uspe. Item_38/40 razkrijeta napačno ubežne narekovaje testov, item_46 typecheck uspe. Prvi lasten item_49 ima4fail/3pass: init script ob reloadu briše shrambo, napačen statusni oracle in dvoumen locator podrobnosti. Popravki ostanejo v testih; item_52 začasno postavi first na expect namesto locator, item_54 nato7/7, item_56 razvojne8/8 in item_62 full53/53. Ti zagoni ne odkrijejo mešanih ids ali praznega območja table.",
+    "evidence": [
+      "analysis/evidence/P07-A-001-checks.md#preserved-8",
+      "analysis/evidence/P07-A-001-checks.md#preserved-30",
+      "analysis/evidence/P07-A-001-checks.md#item_28",
+      "analysis/evidence/P07-A-001-checks.md#item_31",
+      "analysis/evidence/P07-A-001-checks.md#item_38",
+      "analysis/evidence/P07-A-001-checks.md#item_46",
+      "analysis/evidence/P07-A-001-checks.md#item_49",
+      "analysis/evidence/P07-A-001-checks.md#item_52",
+      "analysis/evidence/P07-A-001-checks.md#item_54",
+      "analysis/evidence/P07-A-001-checks.md#item_56",
+      "analysis/evidence/P07-A-001-checks.md#item_62"
+    ]
+  }
+}

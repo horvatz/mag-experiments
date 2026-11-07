@@ -1,0 +1,746 @@
+{
+  "id": "P05-A-002",
+  "task": "P05",
+  "evaluatedAt": "2026-10-11T15:09:01.588Z",
+  "baseline": {
+    "repository": "https://github.com/horvatz/mag-app.git",
+    "commit": "6dc1193f32a1fc00722fbc0983907d32b908cb51",
+    "taskVersion": "P05/1.0",
+    "kind": "main"
+  },
+  "procedure": "A",
+  "model": "z-ai/glm-5.3",
+  "reasoningEffort": "xhigh",
+  "executionStatus": "completed",
+  "elapsedSeconds": 429.773,
+  "usage": {
+    "input_tokens": 3376060,
+    "cached_input_tokens": 3329984,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 44473,
+    "reasoning_output_tokens": 43722
+  },
+  "usageComplete": true,
+  "observedUsageBeforeInterruption": null,
+  "allowedChanges": true,
+  "checks": [
+    {
+      "name": "lint",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.943,
+      "passed": true
+    },
+    {
+      "name": "types",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.687,
+      "passed": true
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 0.226,
+      "passed": true
+    },
+    {
+      "name": "tests",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedSeconds": 28.907,
+      "passed": true
+    }
+  ],
+  "groups": {
+    "regression": {
+      "passed": 38,
+      "total": 38
+    },
+    "development": {
+      "passed": 8,
+      "total": 8
+    },
+    "holdout": {
+      "passed": 24,
+      "total": 24
+    }
+  },
+  "tests": [
+    {
+      "title": "fixture IDs are unique and each project has three tasks",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "a successful update changes only the chosen record and fields",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"\",\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\" \\t\\r\\n\",\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\",\"status\":\"unknown\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":42,\"status\":\"done\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: {\"title\":\"Veljaven naslov\",\"status\":\"done\",\"projectId\":\"launch\"}",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "invalid update leaves all records unchanged: null",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "rejected save writes nothing and the next request can succeed",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "held request remains unchanged until released with success",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "held request remains unchanged until released with reject",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "reset cancels a pending save and restores a previously changed record",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "normal server does not expose test controls",
+      "project": "regression-api",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "projects show their own tasks and all three states",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "projects show their own tasks and all three states",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "duplicate titles open by ID, with complete details and keyboard dismissal",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "duplicate titles open by ID, with complete details and keyboard dismissal",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "direct task links survive refresh and browser back closes details",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "direct task links survive refresh and browser back closes details",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "a saved API change survives browser refresh and project navigation",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "a saved API change survives browser refresh and project navigation",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "unknown locations and task IDs show a recoverable state",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "unknown locations and task IDs show a recoverable state",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects can be retried",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects can be retried",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects/web/tasks can be retried",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "failed /api/projects/web/tasks can be retried",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty project keeps the navigation and shows an empty state",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty project keeps the navigation and shows an empty state",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "switching project during loading never shows the previous project tasks",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "switching project during loading never shows the previous project tasks",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board navigation preserves the view and opens duplicate titles by ID without writes",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board navigation preserves the view and opens duplicate titles by ID without writes",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board reflects saved states on refresh, including empty columns and duplicate titles",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "board reflects saved states on refresh, including empty columns and duplicate titles",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty board keeps all columns and supports switching back to the table",
+      "project": "regression-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "an empty board keeps all columns and supports switching back to the table",
+      "project": "regression-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D01: page size and next page",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D01: page size and next page",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D02: last page and status",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D02: last page and status",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D03: filter before global board page",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D03: filter before global board page",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D04: size change resets and no writes",
+      "project": "development-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "D04: size change resets and no writes",
+      "project": "development-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E01: R01 default full original sequence",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E01: R01 default full original sequence",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E02: R02 all fixed capacities partition without loss",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E02: R02 all fixed capacities partition without loss",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E03: R03 four navigation controls and disabled boundaries",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E03: R03 four navigation controls and disabled boundaries",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E04: R04 every size change resets even valid old page",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E04: R04 every size change resets even valid old page",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E05: R05 status filter precedes slicing and resets",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E05: R05 status filter precedes slicing and resets",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E06: R06 board groups only the global page",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E06: R06 board groups only the global page",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E07: R07 page, capacity and filter survive view and details",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E07: R07 page, capacity and filter survive view and details",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E08: R08 project and reload defaults without storage",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E08: R08 project and reload defaults without storage",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E09: R09 range and total arithmetic on short last page",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E09: R09 range and total arithmetic on short last page",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E10: R10 empty filter and project have page zero",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E10: R10 empty filter and project have page zero",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E11: R11 project summary and page column counts",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E11: R11 project summary and page column counts",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E12: R12 read-only and responsive navigation",
+      "project": "evaluation-desktop",
+      "status": "expected",
+      "errors": []
+    },
+    {
+      "title": "E12: R12 read-only and responsive navigation",
+      "project": "evaluation-mobile",
+      "status": "expected",
+      "errors": []
+    }
+  ],
+  "completeTestRun": true,
+  "allChecksPassed": true,
+  "evaluatorSourceHashes": {
+    "baseline.json": "4c7f3cbcc5e9f37b2398c8ec2c47544486939615a37d6c8bd6ae4634bce27e0a",
+    "evaluation/P01/acceptance.spec.ts": "5c8e24daf1f31f3d84614b5aab468c887ef057e005d363e785af3d0541eabb7e",
+    "evaluation/P01/checks.ts": "f32f377b2ec964cf7f6af846a188fbb62dafebbe56a2b9330e749a5d02b49b12",
+    "evaluation/P01/mutations.mjs": "9b0470ad59f80f02720abda854b7f7cccd48c6206da780a2ec36f0ab74ab80af",
+    "evaluation/P01/test-plan.md": "0ae224ae88ca0ba62229ccc81fdba8b3526082cbcc98bd6e76491e22d5058aaf",
+    "evaluation/P02/acceptance.spec.ts": "65986abcbdc0684726a750d11681cdff021c7345b0454f8b5d40fbf6f177dd4a",
+    "evaluation/P02/mutations.mjs": "c69d15cbb19a2faa6d36d98a62bb756e2bde83a471cdb5829ffe80287799ceea",
+    "evaluation/P03/acceptance.spec.ts": "30fab85ba716a6030038340754b087dfca59c4e700c1dc14d5edcc0bb33bec8d",
+    "evaluation/P03/mutations.mjs": "bd27e18f43a6a8172efbd1e5e00f7af46ca2a061300639103eaf99e9767b1b90",
+    "evaluation/P04/acceptance.spec.ts": "763da8cf9e87627815cb63551d66b5af0c867506ab4d5cd3a8d88c15b4bd1040",
+    "evaluation/P04/mutations.mjs": "97266a7d115943cd4dbc89397523336b7a6b9a3b74eaf93ac13463afe035242e",
+    "evaluation/P05/acceptance.spec.ts": "b980ba60c570cf4fa29ef03db6f7e48cbf8e2d25378282e285c3c62ed3e177bb",
+    "evaluation/P05/mutations.mjs": "35cf215f001fdfc303116d06b7cea8d8c12faccbfa797e898943b42ec92b1d78",
+    "evaluation/P06/acceptance.spec.ts": "68b547a244d9cc96b6a31e29789f2e7c1647b26ba1ee681d9b7a6e4debd0eb98",
+    "evaluation/P06/mutations.mjs": "e6bf679807d0023aca15da71cd74b5872f27d63a01a8e067977eafa9bf09837c",
+    "evaluation/P07/acceptance.spec.ts": "ec1b7ca1db20390cec1a61f6ccdaa5fb47870abcd935a9cd5ad62a52d1f436b0",
+    "evaluation/P07/mutations.mjs": "62328f48e8ecbd570b6fb501e26d5b032be1cb21f2e6c89344b2fc8735610700",
+    "evaluation/P08/acceptance.spec.ts": "23f6656844c9b7f95ef3ad2f0d401ade63e313f76006253cfd73fe1496d8af1b",
+    "evaluation/P08/mutations.mjs": "70da8cf09fac4a7b88839373d9b0cfdd9e099675bc6d115141fd529cc181d591",
+    "evaluation/P09/acceptance.spec.ts": "9f56c7a520197632816fd2aae76fb9b39352a8f9ce1cfd39541c033f92c3fcac",
+    "evaluation/P09/mutations.mjs": "3f3c14f5a19f92ac6943ada743eca29f3bdf267f8b2b118aa3a0936991884822",
+    "evaluation/P10/acceptance.spec.ts": "40d6bd7f5d1b7bf374b58e33ba07b98822340d385c925a7d77733b50d582f293",
+    "evaluation/P10/mutations.mjs": "6063ae6d5350ff804106affb93899cdf53fcf2d7d5c85607d7597758280252a2",
+    "package-lock.json": "5e3cae728c00882f4b8d93bb727b5e3ed26ef97f5ff3947b8e84f541825fd580",
+    "playwright.config.ts": "50803bdd8fe492c5295784c0ddb0efb87948109b534b811497fe5666cdc4d92b",
+    "playwright.main.config.ts": "1d1ee9dee7de479b16b167c590e6471227fda20878a60c804a790fbac93c4de3",
+    "playwright.p02.config.ts": "e62bef5e484937fc2202e9f1f2f8b71648f56546f0349a098e02e6f0fbd222d9",
+    "reference/main-common/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/main-common/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/main-common/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P01/overlay/src/App.tsx": "297671820e2ad1c9f02ccc681010a777338f10c4c34d37b498940276f97f62e8",
+    "reference/P01/overlay/src/editor.css": "6a223a9455d0e1f6fb35968c8303d413ec074e3fcf1b5d757fe57b790b2253bc",
+    "reference/P01/overlay/src/TaskDetails.tsx": "770f974aa554317030ad96fe8c91f86f1ac07d5980b2138ad9a28fc888053749",
+    "reference/P01/overlay/src/TaskEditor.tsx": "2f368f3acd7336c346e516762182f9ff7e41cf6870f6f6e6c9834bd2b6261d6b",
+    "reference/P01/overlay/src/useResource.ts": "4412578542fc274ee7aa4cbbf13e04e030553378db8b338c25dd297d90b86ba1",
+    "reference/P02/overlay/src/App.tsx": "cf9bb5b64aeb8d8b80ced85458b5c79cb4f1550a57dd630d3adacd2f39d302d7",
+    "reference/P02/overlay/src/bulk.css": "0c7b23536024a7c09b6dda36ee11dabf1f15e31ded571faf6d321dcbd5b1bb6f",
+    "reference/P02/overlay/src/BulkToolbar.tsx": "0e6c8914e7e167570979ec360f713bddc27c617c30d78920f06df7d4be12006b",
+    "reference/P02/overlay/src/TaskBoard.tsx": "cd56ad7178ca7f955a6998ebefeadabaf237bb0dd527e99e7dcc6c29d2911635",
+    "reference/P02/overlay/src/useBulkTasks.ts": "1d758a34b9104460cde0e508270b7ea71074e38b8930dda494405b33ba6c0eed",
+    "reference/P02/overlay/src/useResource.ts": "e503096d0c8bef22f7776aa92000d178ef9527b16c945550c35829a202c05eba",
+    "reference/P03/overlay/src/App.tsx": "6a84d61109520bbf601d9a316f1ee66fe8de7a8674a9e2cc5922dab88e15468a",
+    "reference/P03/overlay/src/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/P03/overlay/src/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/P03/overlay/src/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P03/overlay/src/TaskBoard.tsx": "efdfe4a6e56552136ec8fe23e143d62a89db15c8be02e274143b28d098a37b5f",
+    "reference/P03/overlay/src/TaskFeature.tsx": "be6ec137c66fa8040f02b8b042ee2d0af9838c3c8ca8434d0071aeda11e0402e",
+    "reference/P04/overlay/src/App.tsx": "6a84d61109520bbf601d9a316f1ee66fe8de7a8674a9e2cc5922dab88e15468a",
+    "reference/P04/overlay/src/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/P04/overlay/src/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/P04/overlay/src/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P04/overlay/src/TaskBoard.tsx": "efdfe4a6e56552136ec8fe23e143d62a89db15c8be02e274143b28d098a37b5f",
+    "reference/P04/overlay/src/TaskFeature.tsx": "1919b4e6c819d45064275093d297ffe4b9e3e844e434dc972e782f48543fcefd",
+    "reference/P05/overlay/src/App.tsx": "6a84d61109520bbf601d9a316f1ee66fe8de7a8674a9e2cc5922dab88e15468a",
+    "reference/P05/overlay/src/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/P05/overlay/src/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/P05/overlay/src/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P05/overlay/src/TaskBoard.tsx": "efdfe4a6e56552136ec8fe23e143d62a89db15c8be02e274143b28d098a37b5f",
+    "reference/P05/overlay/src/TaskFeature.tsx": "b4ebeb26129872ec0cccf1b61668acbcf501c6888bc360d524d41a4d75d54382",
+    "reference/P06/overlay/src/App.tsx": "6a84d61109520bbf601d9a316f1ee66fe8de7a8674a9e2cc5922dab88e15468a",
+    "reference/P06/overlay/src/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/P06/overlay/src/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/P06/overlay/src/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P06/overlay/src/TaskBoard.tsx": "efdfe4a6e56552136ec8fe23e143d62a89db15c8be02e274143b28d098a37b5f",
+    "reference/P06/overlay/src/TaskFeature.tsx": "0ac7c0178b38ec02f50fa42df14bac531400f6d3a19a2fdd056daa0c82ee7925",
+    "reference/P07/overlay/src/App.tsx": "6a84d61109520bbf601d9a316f1ee66fe8de7a8674a9e2cc5922dab88e15468a",
+    "reference/P07/overlay/src/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/P07/overlay/src/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/P07/overlay/src/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P07/overlay/src/TaskBoard.tsx": "efdfe4a6e56552136ec8fe23e143d62a89db15c8be02e274143b28d098a37b5f",
+    "reference/P07/overlay/src/TaskFeature.tsx": "bf5c94faed3782f42141c3922c23cac1d3506dd8429264971facdd9f59542954",
+    "reference/P08/overlay/src/App.tsx": "6a84d61109520bbf601d9a316f1ee66fe8de7a8674a9e2cc5922dab88e15468a",
+    "reference/P08/overlay/src/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/P08/overlay/src/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/P08/overlay/src/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P08/overlay/src/TaskBoard.tsx": "efdfe4a6e56552136ec8fe23e143d62a89db15c8be02e274143b28d098a37b5f",
+    "reference/P08/overlay/src/TaskFeature.tsx": "5356ef07f1821a004ab7db3d7dd02514fd30f2280ce1cfc4fca32c0d557ac216",
+    "reference/P09/overlay/src/App.tsx": "6a84d61109520bbf601d9a316f1ee66fe8de7a8674a9e2cc5922dab88e15468a",
+    "reference/P09/overlay/src/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/P09/overlay/src/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/P09/overlay/src/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P09/overlay/src/navigation.ts": "bf525d3831d9c7cb06674c406a5bbdcffc9938b9ae588b41a65eca04384d4eee",
+    "reference/P09/overlay/src/TaskBoard.tsx": "efdfe4a6e56552136ec8fe23e143d62a89db15c8be02e274143b28d098a37b5f",
+    "reference/P09/overlay/src/TaskFeature.tsx": "7411fcb208d0a231bf81848930496307f7e9929bc857a5e846ea737fbc0dbee1",
+    "reference/P10/overlay/src/App.tsx": "6a84d61109520bbf601d9a316f1ee66fe8de7a8674a9e2cc5922dab88e15468a",
+    "reference/P10/overlay/src/feature-types.ts": "7915aff30b0e23408f3bda0014212adf424ec87ce4340f3b68d0ff14600675ab",
+    "reference/P10/overlay/src/feature-utils.ts": "63d1cff32e9726fdfa2f8438f7d61014685fb635c98fb5309fa532e6f2e651f6",
+    "reference/P10/overlay/src/feature.css": "06b356e9636644daed2ad2f393270b5d87545b6ffcddafcdcfec7257e2714893",
+    "reference/P10/overlay/src/TaskBoard.tsx": "efdfe4a6e56552136ec8fe23e143d62a89db15c8be02e274143b28d098a37b5f",
+    "reference/P10/overlay/src/TaskFeature.tsx": "5f91949bc9bbe85f001dbf7cc518a66a0132ab3460075275f86ccc1eb8842849",
+    "scripts/analyze-main.mjs": "25a714a7a34fd510ee075f88b1760b991528be77f867ee8011f58b2723d846c8",
+    "scripts/archive-pilot.mjs": "45e0e9789138566578fd4e72dea9e2cc20734ef682947eade77388c6050137c4",
+    "scripts/check-mutations.mjs": "ec64fe2a70c8a9cbd8166d70d99b98841a8a27e13acf3b7b4360dfebbe6ac236",
+    "scripts/evaluate-pilot.mjs": "afb4f1f943574e4e842e87ff21eb1a6d609225d8f927e8d29d69d88f189f11b6",
+    "scripts/generate-main-shell.mjs": "3c93be73a04be57f2c021e64573ac7a5200a6185ee9a55e913d02db33a010281",
+    "scripts/main-design.mjs": "9983989b11dbd14b2a230f1a223260b5312fe55973134d469b43baca9ce654c0",
+    "scripts/main-design.test.mjs": "c974a6f8dee12ab72223f0bf009e179c22cea1518669adb6948f63bd000cd056",
+    "scripts/main-study.mjs": "2309749a4dc746378f6b474923cff84142fe3416ce7ba859dc101b8b69e3f9c8",
+    "scripts/main.mjs": "578845f029885da9782e20f152b239f5ea501178959ac9ba5770bf9d87e4102d",
+    "scripts/p02.mjs": "928b30cfa075894d5e4b5113f05600a779e578986b48ca6f1a096797508ac579",
+    "scripts/pilot-browser.mjs": "df09a4ef43b29640dccdc0ff084d61e171c460bf2ffccdc1e3dd84ca3561bb7c",
+    "scripts/pilot-tasks.mjs": "02d370eaf9309acedd46fcfa2a8995d6e4b91562749f9152a4450be1bbc97f9e",
+    "scripts/pilot-utils.mjs": "8c6310842a5c9d258fec0f4f7c31e2e7c1279a2ed7325083bfc251cf765d3c4e",
+    "scripts/pilot-utils.test.mjs": "82af1b8a354a1af656acc879a4bc3bf85c095e266663e655d963d52e2a603b70",
+    "scripts/preflight-pilot.mjs": "92a5aee444f4417b1f2167d8d36f2d91821d668f01515cfc5cd40e7efc709909",
+    "scripts/prepare-pilot.mjs": "d3e536a760c24dfec073fdc06f34b6d5065cf0cf76926fb25bd55b3736d40d34",
+    "scripts/prepare-reference.mjs": "ef3e7dc727b8386a43b1cf5165155726a21f85d486145168544be3be9592265b",
+    "scripts/procedure-b.mjs": "63d177166059ee4c47c65b2fab10069448acd2cda8af45d7c7417200b033d56f",
+    "scripts/procedure-c.mjs": "403d24273bb401558cc459d7810501f15e0f84a17d060f065de147967427f7cc",
+    "scripts/qualification.mjs": "c363699ae31fa4a96d21e44f6abe273f8543f946357f71727db29b5b1b39cfe0",
+    "scripts/reconcile-pilot-usage.mjs": "8beaead282ec4024c8047c7d39ef7d9f569f466d4015c66353045fb1cab64735",
+    "scripts/report-utils.mjs": "9fe7c0e240e53b8f239949157e6534d21a6090e5cbbb72d8110b054dac482617",
+    "scripts/run-pilot-b.mjs": "b8725fcc22317bed5fb82bb1c2cacf92a0ff4cb656b774c537f3ab7bd213867d",
+    "scripts/run-pilot-c.mjs": "79f288bdc2cd73e96df6619ccd4eaae231efec3bc1be4a230728f9ba5bf756c6",
+    "scripts/run-pilot.mjs": "c6e9d3dfda6c76435e58884598cf09c463c8f8a4c90d3230464f4869fd776964",
+    "scripts/start-app.mjs": "4e8b6bc1f40985384db605e409898fd03632d119614f391924229cd91fc2d90b",
+    "scripts/start-main.mjs": "e9072cbbf9e05ce656695ca06b68c2b03d159d5350558edf6922777720271ac3",
+    "scripts/start-p02.mjs": "2a90f896037149efb18dace8e6d25ca89a841d8f972f16543c6a4facea18beb7",
+    "scripts/verify-reference.mjs": "557a5c9b2fae293a29fec7d032c6cdc3a6bf2f5f5a2a5bc3562138f130a58679",
+    "support/types.ts": "27ecd2e574b2fa8c45e6f9bf5d9dec92a87e5d150008f64d9d126eee6474612b",
+    "tasks/main-catalog.json": "c379a01846c6de4ce931579e0c149c9e05facc72d7848d9f95fcb50d0a412f00",
+    "tasks/main-helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P01/development.spec.ts": "9e8bf7b3720a79da80ab85c20aa08a995c4073a31d0c41ddce3545eac8135d8b",
+    "tasks/P01/instructions.md": "e95677353f839479eeb7a83fc207c32668803a1aa6e4813e50ba5c64ea040dc4",
+    "tasks/P01/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "tasks/P02/baseline.json": "0c7e283c6fa98df6b4490f2a64b2d749aebdec49037b263ccd487bedb297f134",
+    "tasks/P02/development.spec.ts": "165adf8385d32f008b3b786d42b3558826382bbd4a9a8244fd05fb65d7718962",
+    "tasks/P02/helpers.ts": "ca32a8a47bd9ade681c5f1eb44f05e83a7a23a131c42131c2c33f9a1420018a6",
+    "tasks/P02/instructions.md": "44867f8d6f7b2525ab7af146cf86284f1e6c9dbf9f790c1241364d4a828dd056",
+    "tasks/P02/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "tasks/P03/baseline.json": "4446fe8b379eb67852d4fc844997faeeb97f3237096af3db790e2056472904da",
+    "tasks/P03/development.spec.ts": "49c6af03dc0a84814b5a3463fffa59f10a7ab9deb1860936983879b0b51ea077",
+    "tasks/P03/helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P03/instructions.md": "aa193964f981467b33842e58e2b2f7963ee0b3fdf30d1e7b57b21c33930991e8",
+    "tasks/P03/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "tasks/P04/baseline.json": "041565ea471ec34f4e6c79ed6cb444fe3c83e8eb44bf3396be61d5792cbe604b",
+    "tasks/P04/development.spec.ts": "3a9ce5f36c20836e7c402c0bb01fd74dad2f2b6564b39eff9d28833ae81119e0",
+    "tasks/P04/helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P04/instructions.md": "283ff8ec782420eadc52fff1d4eea3f20497c24137d3336cd36f241f515751b9",
+    "tasks/P04/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "tasks/P05/baseline.json": "5a980ecb734e7ee37dd2fb821b0df10f453da47314b4cfe69f1e577518c8ee82",
+    "tasks/P05/development.spec.ts": "3a3718d718ea0eaba809d60516705ceb5d4673415c9a4be7eed42cedd2887f65",
+    "tasks/P05/helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P05/instructions.md": "188f159f3d694fec3b69c48015bcbe7389c4fd29f67531ffb10ec48da5d12889",
+    "tasks/P05/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "tasks/P06/baseline.json": "b83545b071138ececf588ac0cfc67e3e762f497ea183bedefb73289a5e13b288",
+    "tasks/P06/development.spec.ts": "ddfb56b473ad0615810732241b93d069eded5d3974a8424c3e9cd2d84f421494",
+    "tasks/P06/helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P06/instructions.md": "dfaee26935505168cc1ac838bf14f4319444bf797375a7ade7dc64858cfb05b1",
+    "tasks/P06/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "tasks/P07/baseline.json": "a6081ea5cce3fe2aa2a4d902a6f44feaa5e53ed1e05e079442c4fcbbcc69b012",
+    "tasks/P07/development.spec.ts": "e9add268616553ac07e0b51a24257faafb077eb819a33100ae01dbe92034f318",
+    "tasks/P07/helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P07/instructions.md": "d171f2ca4aa100766fb11bc624a7fea4fa4effc1dbfefb21003db1525229e4bc",
+    "tasks/P07/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "tasks/P08/baseline.json": "4e7bdb28a976bf93da68c9f2f574f338871ca5f2f3d0ccee0b18fa220086b8ed",
+    "tasks/P08/development.spec.ts": "3412269b5d53fb1f053886ddaf99975842f3f0e5fb9fce81c52310e72a3ed712",
+    "tasks/P08/helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P08/instructions.md": "536cf912e31a7397ba7e63443be242b1bda4d9c164f7f6e93b5becfb85092548",
+    "tasks/P08/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "tasks/P09/baseline.json": "03171ae5e19b81a2856d9e02dbfb6b951ed0aa9b7833c786ba16cc49d81ea022",
+    "tasks/P09/development.spec.ts": "b6ce1792c0d760a9c6ee5baf05aeb885cb4cdaddf4b985725ae7dd3191fd144f",
+    "tasks/P09/helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P09/instructions.md": "c3175300770501d3035e2d74f6b4b85e7eb8c4ed5037857eb442570c648955f2",
+    "tasks/P09/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "tasks/P10/baseline.json": "eefde2988bb97f0466a37ee49e4938b28c1a7f33667968176ee4ae595df89348",
+    "tasks/P10/development.spec.ts": "185dcddf1610117be394cd3a70fe1d6d4b41b07c0fc3ed4cb370ce6cce53ab24",
+    "tasks/P10/helpers.ts": "dd0c7ebebc3021770d200a1def93cf4dca57501e8168c1aaa4f46f941cb0f241",
+    "tasks/P10/instructions.md": "00bf9a4526c970d0896f4a64406478fa0bc8b86436bc47fc29711b202de031ed",
+    "tasks/P10/specification-template.md": "06e09f3c57e11ce63c241efb7f23d993e39fd9a4157e4f8b4f35449b05ad9095",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-analyze/SKILL.md": "0b3261b13cc33537f24b3e1f6d5320694c348302c385d0046dc6b958cf2db6cb",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-checklist/SKILL.md": "7ac5cba31a27151a1a7b73f691bd478d42750ce2dd734701a07eb0e235ffbd94",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-clarify/SKILL.md": "f6acfbc82c96c0d91b2429fd0b51ce7df7f94b003d1b73acc54470d48bcc455e",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-constitution/SKILL.md": "1d1e7309b160d58ca45550e7afd2ec363fbeae6ff878daa775519b359e4cb966",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-converge/SKILL.md": "ba0b853dba470f414cdf9eae53200b8468bd639ecd92549a6d4e533af3da7521",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-implement/SKILL.md": "067b84a7cf042d9e5d9103735e237a814acf3da21a622dd9eecf6cd709220d0e",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-plan/SKILL.md": "5a5b0f811e49c55d3643f9a3915d03990fa8d308f13f6a3017101c2772742762",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-specify/SKILL.md": "4b9a371177b4b1ad60ea8204b62a6da3cb6ca375bae0f92cd08888de87a4ba04",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-tasks/SKILL.md": "1ce843e74629c61f49d82f13f59ca1624e6d86c74ab5e35b8ae59b33e5d7362c",
+    "vendor/spec-kit-1.0.8-lean/.agents/skills/speckit-taskstoissues/SKILL.md": "a349d410c180385215bf5180b13319bd8259199267af24917f4f4d0adcbb6ad2",
+    "vendor/spec-kit-1.0.8-lean/.specify/.gitignore": "8c908410d177a1ef3d0dee16d7ad55f2ac3333df3104c4d4adee1c9b82f1dbc1",
+    "vendor/spec-kit-1.0.8-lean/.specify/init-options.json": "1243c2f2ca87a00d64ceeea65bc881eed5e4e6bad2087111c882d2b3a1db058e",
+    "vendor/spec-kit-1.0.8-lean/.specify/integration.json": "d716503b4926d1e57b285cfc73992e21f182fdcf0070a6b0fadd2b3e4561fd21",
+    "vendor/spec-kit-1.0.8-lean/.specify/integrations/codex.manifest.json": "21924421d403f8a975d7a1e8a40135d5e2097f97aea814284922a212a12cbc8f",
+    "vendor/spec-kit-1.0.8-lean/.specify/integrations/speckit.manifest.json": "710cef86c46aa1b0dcc60791e80d55c04bb1b8cefbdc17d8cc1f9f5c8b04518c",
+    "vendor/spec-kit-1.0.8-lean/.specify/memory/.constitution-template.json": "8fc4b39294bae0c10d59547ad7d415b6f0e890d656cbf7171dd567f4e9054711",
+    "vendor/spec-kit-1.0.8-lean/.specify/memory/constitution.md": "ce7549540fa45543cca797a150201d868e64495fdff39dc38246fb17bd4024b3",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/.registry": "21ad948ebc7c035163d9982f9cf4e24893fe232067f328ccf44995a9a6a4335c",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/commands/speckit.constitution.md": "56ca2ffc2938d04285adc8e0a7cc33164d7f0b8538d5b8aa70791de6ddb9f0a0",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/commands/speckit.implement.md": "d50654ebfad997092a939d7020e546c48be47aa676c7ddeb90eb70b5cf20767c",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/commands/speckit.plan.md": "d4dbd594dc8ea9853583353cfc556ac419ffedf2300c207d4ce75c24debe2ab9",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/commands/speckit.specify.md": "9d68997ce418cc3293f66f946681bed0a33328c64a05757c0554ded19eec0ce2",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/commands/speckit.tasks.md": "b363acd5cdbc3312b2fa03c763913515947feb214702281fe13355401ebd0210",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/preset.yml": "d316b3ad5f41988d51fe2b7faedab9c942edc68b44cf6970d5e26ef5a8522751",
+    "vendor/spec-kit-1.0.8-lean/.specify/presets/lean/README.md": "7f7291892edc0fadcc18a027c7bc06ff6767ce08f21039876cd7f455be200536",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/check-prerequisites.sh": "13be175548848bd84e96a90cf9be87665c2e68603b2eaa3e19187e7ca8b4fcb0",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/common.sh": "fdfebd1274594eb3fbfccdf7968d5dd1243aaf244daf262d7c9d0c012c5d21a6",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/create-new-feature.sh": "f4244c6cf95025e5726669938e9152d4a557cc7c1e8b027a43cb4de72677da16",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/resolve-template.sh": "829e227096abc8bf0889889ec9f792f503ca5d395b7836a8a7eb739ee75214e7",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/setup-plan.sh": "d0bd298c026446f3c63167130d65e49e4aa4485de6bef18bcdfd57b19aa0de96",
+    "vendor/spec-kit-1.0.8-lean/.specify/scripts/bash/setup-tasks.sh": "0350b2def158c4dc333cd888fc5a3b10785b3d5c2cf936f93e910242ea9d507d",
+    "vendor/spec-kit-1.0.8-lean/.specify/templates/checklist-template.md": "70bbc48e884fab372ffb09e83e78ff983e28b69caebf8cd9964a02b6836683ac",
+    "vendor/spec-kit-1.0.8-lean/.specify/templates/constitution-template.md": "ce7549540fa45543cca797a150201d868e64495fdff39dc38246fb17bd4024b3",
+    "vendor/spec-kit-1.0.8-lean/.specify/templates/plan-template.md": "a828ad6206526574ab3fc99be6d0154588cb1c9774c5919d71b81ab5b2dbffa0",
+    "vendor/spec-kit-1.0.8-lean/.specify/templates/spec-template.md": "3945437fc35cd30a5b2bf7beea680337c3516826d3efa5a6b92c4a7eca1ba28e",
+    "vendor/spec-kit-1.0.8-lean/.specify/templates/tasks-template.md": "b0f527d41e546af0c31903e04f9b20965b6b497b573792198f663a64ce128863",
+    "vendor/spec-kit-1.0.8-lean/.specify/workflows/speckit/workflow.yml": "177761c5e7df28126beea043b5cb45aeaf7958090c022dc11ac71399422fcfbc",
+    "vendor/spec-kit-1.0.8-lean/.specify/workflows/workflow-registry.json": "babb2e21b11fffa0f104495c3973656207d0fc2610ae255ab114eff8dc718393",
+    "vendor/spec-kit-1.0.8-lean/LICENSE": "2510b446bc1f0cf9702453075d20cd88631e20e5642658edb7325d9c1eb534f7",
+    "vendor/spec-kit-1.0.8-lean/provenance.json": "2c54187df8c1f419ac013ab2d221dfd7f4c6d331479e913613078643c9e1c0f3",
+    "vendor/spec-kit-1.0.8-lean/setup-requirements.txt": "35dd32de5b80040e004c59d23224c18805f25f8b5c65b39bf3c96e67d062327f",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-analyze/SKILL.md": "0b3261b13cc33537f24b3e1f6d5320694c348302c385d0046dc6b958cf2db6cb",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-checklist/SKILL.md": "7ac5cba31a27151a1a7b73f691bd478d42750ce2dd734701a07eb0e235ffbd94",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-clarify/SKILL.md": "f6acfbc82c96c0d91b2429fd0b51ce7df7f94b003d1b73acc54470d48bcc455e",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-constitution/SKILL.md": "b2a6a979ef7511812b60cde4adb6f1c4a8b1b57314ea2f1861ebc3f4796bf377",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-converge/SKILL.md": "ba0b853dba470f414cdf9eae53200b8468bd639ecd92549a6d4e533af3da7521",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-implement/SKILL.md": "848a5c9eff7b99e348927cbde6c35378de9fea3fd317941f58fa0b0b79301eec",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-plan/SKILL.md": "db2406adfa50103fc04ca8109ac934cd715086fba64365fb404630a88c62bda5",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-specify/SKILL.md": "a505028de7f6489878696d6656c7d057f3a66119ebb8c0cc82d69fabb7b344ff",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-tasks/SKILL.md": "1086d7885df1188d00e7d5eb4715e678b4340b893e8f24ae748d823b13599a56",
+    "vendor/spec-kit-1.0.8/.agents/skills/speckit-taskstoissues/SKILL.md": "a349d410c180385215bf5180b13319bd8259199267af24917f4f4d0adcbb6ad2",
+    "vendor/spec-kit-1.0.8/.specify/.gitignore": "8c908410d177a1ef3d0dee16d7ad55f2ac3333df3104c4d4adee1c9b82f1dbc1",
+    "vendor/spec-kit-1.0.8/.specify/init-options.json": "1243c2f2ca87a00d64ceeea65bc881eed5e4e6bad2087111c882d2b3a1db058e",
+    "vendor/spec-kit-1.0.8/.specify/integration.json": "d716503b4926d1e57b285cfc73992e21f182fdcf0070a6b0fadd2b3e4561fd21",
+    "vendor/spec-kit-1.0.8/.specify/integrations/codex.manifest.json": "8639c4f3493d99ab35d01e1260ffb1b16de7926ea8d900e4dad10f6187e8b51e",
+    "vendor/spec-kit-1.0.8/.specify/integrations/speckit.manifest.json": "4d991e0164b715326ce7c14d6fd1099458d681a0d097a384c75b754d31abbf76",
+    "vendor/spec-kit-1.0.8/.specify/memory/.constitution-template.json": "8fc4b39294bae0c10d59547ad7d415b6f0e890d656cbf7171dd567f4e9054711",
+    "vendor/spec-kit-1.0.8/.specify/memory/constitution.md": "ce7549540fa45543cca797a150201d868e64495fdff39dc38246fb17bd4024b3",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/check-prerequisites.sh": "13be175548848bd84e96a90cf9be87665c2e68603b2eaa3e19187e7ca8b4fcb0",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/common.sh": "fdfebd1274594eb3fbfccdf7968d5dd1243aaf244daf262d7c9d0c012c5d21a6",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/create-new-feature.sh": "f4244c6cf95025e5726669938e9152d4a557cc7c1e8b027a43cb4de72677da16",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/resolve-template.sh": "829e227096abc8bf0889889ec9f792f503ca5d395b7836a8a7eb739ee75214e7",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/setup-plan.sh": "d0bd298c026446f3c63167130d65e49e4aa4485de6bef18bcdfd57b19aa0de96",
+    "vendor/spec-kit-1.0.8/.specify/scripts/bash/setup-tasks.sh": "0350b2def158c4dc333cd888fc5a3b10785b3d5c2cf936f93e910242ea9d507d",
+    "vendor/spec-kit-1.0.8/.specify/templates/checklist-template.md": "70bbc48e884fab372ffb09e83e78ff983e28b69caebf8cd9964a02b6836683ac",
+    "vendor/spec-kit-1.0.8/.specify/templates/constitution-template.md": "ce7549540fa45543cca797a150201d868e64495fdff39dc38246fb17bd4024b3",
+    "vendor/spec-kit-1.0.8/.specify/templates/plan-template.md": "a828ad6206526574ab3fc99be6d0154588cb1c9774c5919d71b81ab5b2dbffa0",
+    "vendor/spec-kit-1.0.8/.specify/templates/spec-template.md": "3945437fc35cd30a5b2bf7beea680337c3516826d3efa5a6b92c4a7eca1ba28e",
+    "vendor/spec-kit-1.0.8/.specify/templates/tasks-template.md": "b0f527d41e546af0c31903e04f9b20965b6b497b573792198f663a64ce128863",
+    "vendor/spec-kit-1.0.8/.specify/workflows/speckit/workflow.yml": "177761c5e7df28126beea043b5cb45aeaf7958090c022dc11ac71399422fcfbc",
+    "vendor/spec-kit-1.0.8/.specify/workflows/workflow-registry.json": "be54b02f3d66a36738dfef19afdf3c9c458de943ae3f3c5a2e9fe661d3e3ae16",
+    "vendor/spec-kit-1.0.8/LICENSE": "2510b446bc1f0cf9702453075d20cd88631e20e5642658edb7325d9c1eb534f7",
+    "vendor/spec-kit-1.0.8/provenance.json": "62e4491e0093b01dc4bb2e0ce3d8057bdaad9d8a5bbdc5e10c86313e4066f804",
+    "vendor/spec-kit-1.0.8/setup-requirements.txt": "35dd32de5b80040e004c59d23224c18805f25f8b5c65b39bf3c96e67d062327f"
+  },
+  "submissionSha256": "3bf73b524a58d51b2164aede3f42271fa0bf78896fa79411f8d7a88eb423a326",
+  "limitations": [
+    "One main-study run; comparisons require the predeclared task/repetition blocks.",
+    "Mobile tests emulate a phone in Chromium.",
+    "Recorded subscription token usage is not a monetary cost."
+  ]
+}

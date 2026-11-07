@@ -1,0 +1,123 @@
+{
+  "id": "P03-B-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-13",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Vseh sedem avtorskih datotek je v celoti prebranih. Pet predhodno prebranih datotek ima enake SHA kot končni arhiv; CSS in končni review sta doprebrana. Indeksiranih 67 native ukazov in 103 preservirani klici, dejanski testni izidi in popravki so preverjeni. Presoja ni vrnjena merjeni seji; lastni testi niso neodvisno končno vrednotenje.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Dokument določi vse R01–R12: štiri združena polja, natančno NFD/U+0300–U+036F normalizacijo, dobesedni AND besed, logični IN treh filtrov, strogo osebo in možnosti iz celotnega projekta. Določi enake vidne ID-je, števce, privzete prehode projekta/reload/clear, prazni rezultat in uporabnost obeh pogledov, prazni projekt, nespremenjene podatke, bralnost in 390 px. Vhod je splošni T_p; posebej priporoči 0/1/>10 in ohrani dostopne pogodbe. R12 je razdeljen čez fizične vrstice Markdown tabele, vsebina pa je prisotna.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:13",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:18",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:29",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:42",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:47",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:51",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:53",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:79"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Preverljiv predikat uporablja vsak neprazen normaliziran izraz kot dobesedni podniz skupnega haystacka in konjunkcijo s statusom ter strogo enakostjo osebe. T_p, M in N so definirani; celoprojektna množica oseb je neodvisna od filtriranja. R06–R11 ločijo ohranitev ob pogledu od ponastavitve pri projektu, reload in clear ter ohranijo vrstni red/polja/URL/shrambo. Formalizacija je uporabna za poljuben seznam, ne le konkretni testni primer.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:29",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:33",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:35",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:42",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:46",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:47",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:49",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:50",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:52"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Verification poveže posamične R z A01–A04/D01 in navede izvedene spremembe; native implementacija item_38/41/52 ter pregled item_34/36/38 potrjujejo lastne4/4, javne8/8 in full50/50. Toda A01 ne spremeni vrstnega reda besed, ob kombinaciji statusa/osebe ima prazno iskanje in ne razlikuje diakritično različnih oseb. A02 pred menjavo projekta že vrne status na all; clear v A04 spremeni samo iskanje. R02–R04/R07/R11 so zato povezani s preširokimi trditvami. Specifikacijska matrika ostane načrtovana, povezave do kode so splošne, omejitve in končni pregled ne razkrijejo manjkajočih 1/>10 in teh razlikujočih preverjanj.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:62",
+        "runtime/runs/P03-B-001/submission/docs/agent/specification.md:71",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md:30",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md:31",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md:32",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md:33",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md:36",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md:40",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md:45",
+        "runtime/runs/P03-B-001/submission/docs/agent/verification.md:50",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:16",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:26",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:33",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:87",
+        "runtime/runs/P03-B-001/submission/docs/agent/review.json:16",
+        "runtime/runs/P03-B-001/submission/docs/agent/review.json:23",
+        "runtime/runs/P03-B-001/phases/02-implementation/events.jsonl.gz",
+        "runtime/runs/P03-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čista normalizacija in ujemanje sta ločeni funkciji; ProjectView hrani tri lokalna stanja in eno izpeljavo visibleTasks za oba prikaza, vidne števce in status. Možnosti oseb so iz celotnega tasks, clear ima enoten dogodek in projektni key ponastavi instance. Pogled, navigacija in bralne podrobnosti ostanejo v obstoječih odgovornostih; prazna tabla dobi svoje sporočilo. Odzivni slogi kontrol so ločeni v CSS. Pomožni funkciji ostaneta v App.tsx, vendar brez podvajanja filtriranja ali prepletanja z zapisovanjem.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/src/App.tsx:13",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:27",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:32",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:36",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:41",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:46",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:99",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:100",
+        "runtime/runs/P03-B-001/submission/src/App.tsx:148",
+        "runtime/runs/P03-B-001/submission/src/styles.css:61",
+        "runtime/runs/P03-B-001/submission/src/styles.css:179"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Štirje dejansko uspešni testi imajo ročne pričakovane ID-je za normalizacijo, pozitivni AND id+oseba, dobesedna ločila, prazno iskanje, celoprojektne osebe tudi po status filtru, preklop projekta, vidne števce/stolpce in oba prikaza. Preverijo brez zadetkov v obeh pogledih, prazen projekt v preglednici, res spremenjene tri kontrole pred reload, odsotnost filtrov v URL/shrambi, podrobnosti, nič pisanj in dejansko širino pri390px prek readonly helperja. Ni singleton/>10, negativnega AND/ločil, permutacije besed ali razlikujočih Unicode oseb. Pred projektom je status že all; clear spremeni samo iskanje; preklop pogleda ima le dva aktivna filtra. Koristna pokritost ne doseže širokih mejnih preverjanj, predlaganih v specifikaciji.",
+      "evidence": [
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:3",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:10",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:23",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:26",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:33",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:43",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:59",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:65",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:73",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:87",
+        "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:96",
+        "runtime/runs/P03-B-001/phases/02-implementation/events.jsonl.gz",
+        "runtime/runs/P03-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Končna izvedba completed633,178s, vse tri faze completed brez repair. Neodvisno70/70 in12/12; lint/types/build,allowedChanges,completeTestRun in strictSuccess true. Arhivski API račun complete0,561336845USD/106zahtev. Razvojne napake testov so odpravljene; potrjene končne funkcionalne napake ni.",
+  "developmentFailureExample": {
+    "description": "Implementacija item_26/31 najprej pade zaradi napačnih lastnih pričakovanih oseb in vrstnega reda table po reload. Popravki preserviranih klicev53/55/57 spremenijo samo lastne teste: oseba/ID-ji/števci, preklop v preglednico, manjkajoči examples uvoz, toContain(regexp)→toMatch in reload po resetu podatkov istega projekta. Item_43/46 odkrijeta napačen DOM tip/generik evaluateAll; klica62/68 popravita tip. Končni item_38/41/52 potrjujejo4/8/50; pregled znova4/8/50. Zavrnjeni heredoci/apply_patch niso dostavljene spremembe. Pregled item_40 ima exit0 kljub SyntaxError zaradi literalnega končnega backslash-n v JSON; item_42 in strukturirana končna predaja dostavita veljaven review. Dokazana razvojna funkcionalna napaka aplikacije ni opažena.",
+    "evidence": [
+      "analysis/review-packets/P03-B-001.json",
+      "runtime/runs/P03-B-001/phases/02-implementation/events.jsonl.gz",
+      "runtime/runs/P03-B-001/phases/03-review/events.jsonl.gz",
+      "runtime/runs/P03-B-001/submission/docs/agent/verification.md:48",
+      "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:1",
+      "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:43",
+      "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:65",
+      "runtime/runs/P03-B-001/submission/tests/agent/P03.spec.ts:84"
+    ]
+  }
+}

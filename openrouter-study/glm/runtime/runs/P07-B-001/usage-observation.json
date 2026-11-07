@@ -1,0 +1,127 @@
+{
+  "id": "P07-B-001",
+  "observedAt": "2026-10-30T15:41:33.838Z",
+  "complete": true,
+  "roles": [
+    {
+      "role": "specification",
+      "session": "01a18d6f-26fa-74e1-81e8-3126c8610eda",
+      "lastTokenEventAt": "2026-10-30T15:40:14.826Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 793569,
+        "cached_input_tokens": 723392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 17547,
+        "reasoning_output_tokens": 17103
+      },
+      "phases": [
+        {
+          "name": "specification",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 423593,
+            "cached_input_tokens": 397312,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 14459,
+            "reasoning_output_tokens": 14193
+          },
+          "lastTokenEventAt": "2026-10-30T15:32:20.771Z",
+          "cumulativeMatchesCLI": true
+        },
+        {
+          "name": "specification-repair",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 793569,
+            "cached_input_tokens": 723392,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 17547,
+            "reasoning_output_tokens": 17103
+          },
+          "lastTokenEventAt": "2026-10-30T15:40:14.826Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    },
+    {
+      "role": "implementation",
+      "session": "01a18d70-cd29-7c80-bef8-ae28de02d3aa",
+      "lastTokenEventAt": "2026-10-30T15:41:00.592Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 2639867,
+        "cached_input_tokens": 2499200,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 25617,
+        "reasoning_output_tokens": 19198
+      },
+      "phases": [
+        {
+          "name": "implementation",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 2356927,
+            "cached_input_tokens": 2281920,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 23601,
+            "reasoning_output_tokens": 17384
+          },
+          "lastTokenEventAt": "2026-10-30T15:37:18.387Z",
+          "cumulativeMatchesCLI": true
+        },
+        {
+          "name": "implementation-repair",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 2639867,
+            "cached_input_tokens": 2499200,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 25617,
+            "reasoning_output_tokens": 19198
+          },
+          "lastTokenEventAt": "2026-10-30T15:41:00.592Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    },
+    {
+      "role": "review",
+      "session": "01a18d75-57f7-7081-a6ae-f7714f9be903",
+      "lastTokenEventAt": "2026-10-30T15:39:35.710Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 790586,
+        "cached_input_tokens": 753920,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 12106,
+        "reasoning_output_tokens": 11403
+      },
+      "phases": [
+        {
+          "name": "review",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 790586,
+            "cached_input_tokens": 753920,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 12106,
+            "reasoning_output_tokens": 11403
+          },
+          "lastTokenEventAt": "2026-10-30T15:39:35.710Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    }
+  ],
+  "usage": {
+    "input_tokens": 4224022,
+    "cached_input_tokens": 3976512,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 55270,
+    "reasoning_output_tokens": 47704
+  },
+  "observedUsageBeforeInterruption": null,
+  "method": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+  "note": "Cached input is included in input; reasoning output is included in output."
+}

@@ -1,0 +1,98 @@
+{
+  "id": "P09-B-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-31T21:49:43.059854+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "fed012cb9feb428dd7b076b5c58c91895396598952767f2569f18acd341f1ee9",
+  "limitation": "Prebranih vseh9 avtorskih datotek, native ukazi in ohranjeni poznejši API dokazi; arhivske vsote preverjene. Pregledovalna faza modela ni začeta zaradi HTTP404. Raziskovalec ni ponavljal funkcionalnih ali lastnih testov in ni vizualno pregledal ohranjene slike. Pet koristnih lastnih primerov je oddanih, njihov zagon ni opažen; presoja tega ne pretvori v uspešne teste.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija jasno opredeli R01–R12, URL obeh poti, vse štiri iskalne atribute, Unicode/dobesedno frazo, UTF-16/stabilnost, prve in neveljavne parametre, osnutek/atomsko potrditev, zgodovino, navigacijo, podrobnosti, reset, natančen števec/prazno besedilo, bralni API in390px. Konkretni vrzeli ostaneta: natančna tri dostopna imena kontrol prepušča splošnemu sklicu na dogovor in ne opredeli celotne podatkovne domene0/1/>10. Dejanska koda uporabi napačno ime Vrstni red, kar ustavi E03–E05; rezultatov ne spreminjamo zaradi razumevanja namena kontrole.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:31",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:41",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:58",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:67"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Ključni pogoji so preverljivi: normalizirani q mora biti podniz vsaj enega ločeno normaliziranega polja, status deluje po AND, original ohrani vrstni red in enaki normalizirani naslovi ostanejo stabilni po UTF-16. Prva pojavitev/neveljavne vrednosti, pasivno nespremenjen URL, osnutek brez sprememb, en zgodovinski vnos samo ob spremenjenem potrjenem stanju ter ohranitve pri pogledih/podrobnostih so jasno opredeljeni. Spec35–36 pravilno prepove dodatno zgodovino pri enakem stanju; dejanska implementacija primerja le novi hash in zato krši kanonizacijski rob. To je napaka izvedbe pravilnega pogoja, ne napačno formalizirano dovoljenje kot pri DeepSeek/P09-A-001.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:32",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:35",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:38",
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:24",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:25"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Specifikacija delno poveže skupineR01–R12 s pogoji, predvidenimi datotekami in scenariji ter odkrito pove, da so še neizvedeni. Verification ostane začetni načrt s trditvijo Ni še izvedenih preverjanj; ne beleži dejanskega razvojnega6/8 niti končnih povezav na pet lastnih primerov. Zato je sledljivost delna, ne izmišljena uspešna verifikacija. Arhivski native item_29 jasno pokaže razvojne mobilne napake; model do pregleda in posodobitve dokumenta zaradi HTTP404 ne pride.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:46",
+        "runtime/runs/P09-B-001/submission/docs/agent/verification.md:5",
+        "runtime/runs/P09-B-001/submission/docs/agent/verification.md:16",
+        "analysis/evidence/P09-B-001-checks.md#02-implementation-item_29"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "URL parser, normalizacija, skupno filtriranje/stabilno urejanje in gradniki povezav so zbrani v navigation.ts; oba pogleda dobita isti izpeljani seznam. useRoute memoizira razčlenjeno stanje po hash, App hrani samo osnutek in potrjuje skozi en commitFilter; ob poti useEffect obnovi osnutek. Podrobnosti in tabla prejemajo potrjen filter, projektna navigacija začne privzetega. Ni ločenega shranjenega rezultata ali kopij poslovnih pravil v obeh pogledih. Manjkajoča semantična primerjava pri potrditvi, prazno sporočilo v tabli in neodziven CSS so konkretne funkcionalne slabosti; odgovornosti in izpeljani podatki ostanejo razumljivo ločeni.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:16",
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:43",
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:82",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:11",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:25",
+        "runtime/runs/P09-B-001/submission/src/TaskBoard.tsx:13",
+        "runtime/runs/P09-B-001/submission/src/TaskDetails.tsx:9"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Pet napisanih dodatnih primerov smiselno pokrije Unicode/literalne metaznake, kombinacije filtrov, kodiranje URL, prve/neveljavne parametre, pasivno ohranitev URL, osnutek/ponovljeno potrditev in history.length, neuporabljen osnutek pred Nazaj, pogled/podrobnosti/Escape, drug projekt in390px s števcem/resetom/localStorage. Njihova izvedba ni opažena; dejansko je zagnan samo razvojni nabor6/8. Dve konkretni pričakovanji sta napačni: iskanje luka pričakuje tudi web-03 z Majo, neposredni status=done+Kováč pa pričakuje in_progress web-01. Manjkajo domena0/1/>10, prazen projekt in tabla, kanonizacija semantično enakega nekanoničnega URL, podvojena q/order in neveljavna prva veljavna druga vrednost, normalizirano različne izenačitve/adverzarni UTF-16, zapisovalne zahteve ter spreminjanje vseh treh kontrol pred potrditev. Naslov brez zapisov nima asercije metod API. Koristna napisana neizvedena preverjanja ostanejo1 po isti kalibraciji, ne dokaz uspeha.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/tests/agent/P09-implementation.spec.ts:31",
+        "runtime/runs/P09-B-001/submission/tests/agent/P09-implementation.spec.ts:41",
+        "runtime/runs/P09-B-001/submission/tests/agent/P09-implementation.spec.ts:53",
+        "runtime/runs/P09-B-001/submission/tests/agent/P09-implementation.spec.ts:81",
+        "runtime/runs/P09-B-001/submission/tests/agent/P09-implementation.spec.ts:97",
+        "analysis/evidence/P09-B-001-checks.md#02-implementation-item_29"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Execution_failed373,380s po specifikaciji148,216s in implementaciji223,683s; pregled ni začet. Neodvisno46/70(31/38regresija,6/8razvojni,9/24skriti),2/12(R08,R10),statične/allowed true,strictfalse. E03–E05 na obeh širinah ustavi napačno dostopno ime Vrstni red namesto Vrstni red v povezavi. DesktopE06 doda zgodovino3 namesto2 ob čiščenju istega stanja. E11 na obeh širinah nima Ni zadetkov. v tabli. Mobilne asercije dodatno pokažejo prelivanje in prestrezanje klikov. Te funkcionalne napake so ločene od končnega HTTP404 zaradi slikovnega vhoda.",
+    "evidence": [
+      "runtime/runs/P09-B-001/execution.json",
+      "runtime/runs/P09-B-001/evaluation-summary.json",
+      "runtime/runs/P09-B-001/submission/src/App.tsx:25",
+      "runtime/runs/P09-B-001/submission/src/App.tsx:67",
+      "runtime/runs/P09-B-001/submission/src/TaskBoard.tsx:14",
+      "runtime/runs/P09-B-001/submission/src/styles.css:57"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Native02-implementation-item_29 dejansko izvede lint/typecheck in8razvojnih preverjanj:6uspe, D02/D04 mobile odpovesta po30,1s zaradi prestrezanja klikov s form/select/sidebar; to ni osem uspehov. Model napove popravek mobilnega razporeda in odpre sliko neuspeha, vendar nadaljnja zahteva40 z input_image dobi HTTP404 No endpoints found that support image input, failed_routing_step Filter by Image Support. Popravek ni oddan. Lastnih pet primerov ni zagnanih, ni opaženega full zagona. Preserved44 popravi TypePage in ime statusa pred razvojnim zagonom; pričakovanj napačne luke/statusa ne popravi.",
+    "evidence": [
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_29",
+      "analysis/evidence/P09-B-001-checks.md#preserved-44",
+      "analysis/evidence/P09-B-001-checks.md#preserved-45",
+      "analysis/evidence/P09-B-001-checks.md#preserved-47",
+      "api/P09-B-001/model/api-ledger.jsonl"
+    ]
+  },
+  "finalFailureNote": "Execution_failed373,380s,46/70,2/12,strictfalse.9avtorskih datotek in5lastnih napisanih, neizvedenih primerov.40zahtev:39HTTP200 in1HTTP404;popoln račun0,130551901USD. V8 potrdi isto-provider CONNECTION_OK po arhivu in nadaljuje samo nezačeti169, ne ponovi168. Raziskovalec slike ni vizualno pregledal."
+}

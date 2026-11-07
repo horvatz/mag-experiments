@@ -1,0 +1,112 @@
+{
+  "id": "P09-A-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-31T20:04:57.226478+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "2d1453c7d36586da05330c3b2169ac895c2b76de610fe17c4a1706573f05d802",
+  "limitation": "V celoti je prebranih vseh8 dejansko oddanih avtorskih datotek; arhivske vsote so preverjene. Pregledani so native ukazi ter poznejši ohranjeni API dokazi, zlasti dejanski zagoni, začetne napake in popravki. Raziskovalec ne ponavlja testov, ne spreminja oddaje in presoje ne vrača merjeni seji.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija opredeli vseh R01–R12, dobesedno iskanje, UTF-16 in stabilnost, prve/neveljavne parametre, osnutek/potrditev, kanonizacijo, zgodovino, oba pogleda, podrobnosti in projektni reset. Konkretne vrzeli ostanejo: ne prenese natančnih treh dostopnih imen kontrol, za prazen rezultat izrecno navede »Ni zadetkov« brez zahtevane pike, domene nič/eno/več kot deset pa ne opredeli. Obvezni vmesniški pogoji zato niso v celoti skladno določeni, čeprav so dejanska imena treh kontrol v kodi pravilna.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:9",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:19",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:29",
+        "runtime/tasks/P09/instructions.md#dogovor-o-vmesniku",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:57"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Normalizacija, podniz posameznega polja in konjunkcija s statusom so preverljivi. Pravila določijo izvorni vrstni red, UTF-16 in stabilnost izenačitev, prve/neveljavne vrednosti in odsotnost pasivnega prepisovanja URL-ja. Osnutek je ločen od potrjenih filtrov; potrditev, ponovitev, navigacijske ohranitve in projektni reset imajo določene prehode. Neuspeh implementacije pri semantično enaki kanonizaciji ne izniči jasno navedenega predikata R05–R06, da se zgodovina doda samo ob spremembi potrjenega stanja.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:10",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:20",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:21",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:23",
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:24"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Tabela preverjanja našteje zahteve in A01–A04, moduli pa so navedeni skupinsko. Zadnja zagona50/50 sta resnična (item_55/item_61), ne izmišljena. Toda več konkretnih povezav pripisuje testom neobstoječa preverjanja: A02/A03 ne iščeta po odgovorni osebi ali ID, A04 nima reloada, A03 ne odpre neposredne povezave drugega projekta, A02 pa ne preveri posebnih ločil q. Oznaka R01–R11 kot pokritih »z več primeri« tako preseže dejanski obseg. Omejitev na dostopne teste je poštena, vendar navedenih lažnih povezav ne popravi; sledljivost ostane delna.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/docs/agent/specification.md:36",
+        "runtime/runs/P09-A-001/submission/docs/agent/verification.md:21",
+        "runtime/runs/P09-A-001/submission/docs/agent/verification.md:24",
+        "runtime/runs/P09-A-001/submission/docs/agent/verification.md:25",
+        "runtime/runs/P09-A-001/submission/docs/agent/verification.md:27",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09-agent.spec.ts:22",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09-agent.spec.ts:54",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09-agent.spec.ts:85",
+        "analysis/evidence/P09-A-001-checks.md#item_55",
+        "analysis/evidence/P09-A-001-checks.md#item_61"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "navigation.ts loči parser, skupne URL gradnike, naročnino hashchange s čiščenjem in čisto filterTasks brez mutiranja vhodov. ProjectView hrani osnutek, potrjeno stanje bere iz route in vidni seznam izpelje; isto polje poda tabeli in tabli, povzetki berejo izvorne naloge. TaskBoard in TaskDetails dosledno dobita potrjene filtre, projektni key ponastavi lokalno stanje. Odkriti napaki sta lokalni: commitFilter primerja surove parametre namesto učinkovitega stanja, prazno besedilo pa odstopa od pogodbe. Odgovornosti in tok podatkov ostanejo pregledno ločeni.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/src/navigation.ts:18",
+        "runtime/runs/P09-A-001/submission/src/navigation.ts:27",
+        "runtime/runs/P09-A-001/submission/src/navigation.ts:46",
+        "runtime/runs/P09-A-001/submission/src/navigation.ts:57",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:17",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:28",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:90",
+        "runtime/runs/P09-A-001/submission/src/App.tsx:139",
+        "runtime/runs/P09-A-001/submission/src/TaskBoard.tsx:13",
+        "runtime/runs/P09-A-001/submission/src/TaskDetails.tsx:9"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Štirje smiselni izvedeni scenariji pokrijejo normaliziran neposredni URL in veljavne podvojene parametre, skupno potrditev treh osnutkov, odložen prikaz, no-op zgodovino kanoničnega URL-ja, back/forward, reset, preklop pogledov, projektni reset, ID podrobnosti/Escape, prazen filtriran board in odsotnost zapisov. Pomembni robovi manjkajo: semantično enaka kanonizacija z neznanimi/privzetimi parametri, natančno prazno sporočilo s piko, neveljavne prve vrednosti, podvojen q, posebna ločila q, iskanje po ID/osebi, razvrščanje več zadetkov s stabilnimi izenačitvami, nič/eno/>10 in neuporabljen osnutek pred back/forward. A04 kljub naslovu nima nastavitve390px ali asercije širine in nima reloada. Končni50/50 teh robov ne dokaže.",
+      "evidence": [
+        "runtime/runs/P09-A-001/submission/tests/agent/P09-agent.spec.ts:11",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09-agent.spec.ts:22",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09-agent.spec.ts:54",
+        "runtime/runs/P09-A-001/submission/tests/agent/P09-agent.spec.ts:85",
+        "analysis/evidence/P09-A-001-checks.md#item_61"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Neodvisno66/70 in10/12. E06 na obeh širinah pričakuje nespremenjeno history.length pri prvi potrditvi že privzetega stanja z extra/status=all/order=original; prejme3 namesto2. App32–36 primerja surove parametre in nato pushState, zato kanonizacijo obravnava kot novo stanje. E11 na obeh širinah ne najde natančnega »Ni zadetkov.«, ker App90/93 uporabi besedilo brez pike. To je konkretno odstopanje izrecnega besedila; preostali koraki E11 se po tej napaki ne izvedejo, zato neuspeh ni samostojen dokaz dodatne napake reset zgodovine. Types/lint/build/allowed uspejo; izvirni arhiv se ne popravlja.",
+    "evidence": [
+      "runtime/runs/P09-A-001/evaluation-summary.json",
+      "runtime/runs/P09-A-001/evaluation-tests.log",
+      "runtime/runs/P09-A-001/submission/src/App.tsx:28",
+      "runtime/runs/P09-A-001/submission/src/navigation.ts:76",
+      "runtime/runs/P09-A-001/submission/src/App.tsx:90",
+      "runtime/runs/P09-A-001/submission/src/App.tsx:93"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Item_37 odkrije neuporabljeni import, item_40 manjkajoči test import. Prvi runnable item_42 ima0/4: napačno pričakovano vrednost q, napačen statusni zadetek, napačno sortirano pričakovanje projektnih ID ter resnično odsotno prazno sporočilo na boardu. preserved-36 doda prazno vejo v App in popravi tri testna pričakovanja. Poznejši item_46/48/52 imajo1/4,2/4,3/4 zaradi napačne uporabe .hash na nizu page.url() in pričakovanj vrstnega reda po stalnih stolpcih. Po testnih popravkih item_55 dejansko uspe50/50; pozni preserved-47 dodatno primerja serializirane surove query parametre, item_61 pa ponovno uspe50/50. Ta popravek še ne reši semantično enake kanonizacije v E06. Posameznih razvojnih napak ne pripisujemo enemu vzroku.",
+    "evidence": [
+      "analysis/evidence/P09-A-001-checks.md#item_37",
+      "analysis/evidence/P09-A-001-checks.md#item_40",
+      "analysis/evidence/P09-A-001-checks.md#item_42",
+      "analysis/evidence/P09-A-001-checks.md#preserved-36",
+      "analysis/evidence/P09-A-001-checks.md#item_46",
+      "analysis/evidence/P09-A-001-checks.md#item_48",
+      "analysis/evidence/P09-A-001-checks.md#item_52",
+      "analysis/evidence/P09-A-001-checks.md#item_55",
+      "analysis/evidence/P09-A-001-checks.md#preserved-47",
+      "analysis/evidence/P09-A-001-checks.md#item_61"
+    ]
+  },
+  "finalFailureNote": "Completed376,559s,66/70 in10/12,strictfalse.54HTTP200/response.completed Wafer zahtev:49finished,5client_aborted; popolni račun0,238224375USD. Dva dejanska polna zagona50/50, zadnji18,1s; po14API+24UI+8development+4own. Neodvisna ocena se ne nadomesti s samooceno."
+}

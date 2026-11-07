@@ -1,0 +1,103 @@
+{
+  "id": "P07-C-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-30",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "V celoti je prebranih vseh12 dejansko oddanih avtorskih datotek, preverjene arhivske vsote,52native ukazov in58 ohranjenih orodnih klicev. Raziskovalec ne spreminja oddaje ali ponavlja meritve; vsebinska presoja ni vrnjena merjeni seji.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Spec in načrt skladno navedeta R01–R12, obliko in strogo validacijo shrambe, UTF-16, neznane/podvojene ID-je, stabilni filter, oba pogleda, globalnost, projektno čiščenje, oba tipa števcev, dogodke brez povratnega zapisa in izjeme. Načrt dopolni točna imena kontrol, status ter390px. Ostanejo konkretne dokumentacijske vrzeli: opozorilo nikjer ne določi zahtevanega role=alert, ni izrecne ohranitve oznake Pregled stanj opravil in ni celovito opisana poljubna domena0/1/>10/Unicode. To so vrzeli dokumentacije, ne trditev, da ta pravilna vedenja v kodi manjkajo. Načrt27 izrecno ohrani data-task-id; to ne šteje za vrzel.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:31",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:41",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:64",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/plan.md:22",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/plan.md:49",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/plan.md:27"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "F in urejeni T_p sta definirana. Preklop je simetrična razlika, vidnost stabilen presek, čiščenje množična razlika z ID-ji celotnega projekta. Pravila določijo obnovitev/privzeti false, ohranitev pri pogledu, globalnost in ponastavitev pri projektu, strogo validacijo ter storage(null)/ignoriranje drugih ključev brez pisanja. Preverljiva sta tudi celoprojektni X/M in vidni stolpčni števci, ohranitev polj/API ter uporabno stanje ob izjemi. Posamične dokumentacijske vrzeli dostopnosti so ocenjene ločeno.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:17",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:19",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:24",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:40"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 2,
+      "rationale": "Matrika vsehR poveže konkretne module in poimenovane teste;64/64 pri npm run check ter18/18 lastnih potrdi native dnevnik, končni testi so jasno označeni kot neizvedeni. Povezave omogočajo preverjanje omejenega dosega: R06 teče samo v preglednici, R10 šteje kartice namesto besedila stolpčnih števcev, R08 osveži že neaktiven filter, R11 nima bralne izjeme. Oznaka uspešno in konvergenčni no actionable gaps ne dokazujeta izčrpnosti. Po isti kalibraciji kot Luna/P07-C-001 so neposredno preverljive povezave in resnično zapisani izidi2; omejena testna pokritost je ločeno1 pri lastnih preverjanjih.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:48",
+        "runtime/runs/P07-C-001/submission/docs/agent/P07/spec.md:53",
+        "runtime/runs/P07-C-001/submission/docs/agent/convergence.json:1",
+        "runtime/runs/P07-C-001/submission/tests/agent/P07/favorites.spec.ts:81",
+        "runtime/runs/P07-C-001/submission/tests/agent/P07/favorites.spec.ts:130",
+        "analysis/evidence/P07-C-001-checks.md#05-implement-item_42"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Hook loči validacijo/kanonični zapis, shranjevanje, dogodek in spremembe množice. App ima eno globalno množico in samostojen filter, vidna opravila/števci so izpeljani; tabla prejme podatke in callback. Pisanje je zunaj funkcionalnega React updaterja, poslušalec ima cleanup, UI izjemo prikaže ločeno. Podobna prikaza gumba v vrstici/kartici sta majhna in smiselna glede na strukturo. Lokalna napaka prazne table je konkretno navedena v končnem izidu, ne dokaz razpršene arhitekture.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:5",
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:35",
+        "runtime/runs/P07-C-001/submission/src/useFavorites.ts:53",
+        "runtime/runs/P07-C-001/submission/src/App.tsx:40",
+        "runtime/runs/P07-C-001/submission/src/App.tsx:124",
+        "runtime/runs/P07-C-001/submission/src/TaskBoard.tsx:13"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Osemnajst lastnih primerov dejansko uspe. Koristni so več neveljavnih oblik brez prepisovanja, neznani/tuji ID-ji pri čiščenju, aktiven filter pred menjavo projekta, oba prikaza/pravilen dialog, storage(null), dejansko nespremenjena shramba po dogodku, samostojna pisalna izjema, nespremenjeni API podatki in390px. Manjkajo zahtevni robovi: mešani veljavni+nenizni ids, UTF-16 ločilni podatki,0/1/>10/prazni projekti, prazni filter na tabli in bralna izjema. Reload je že z false; drug ključ je poslan iz praznega stanja. R10 ne preveri posameznih števcev. Široki koristni testi zato1, ne2.",
+      "evidence": [
+        "runtime/runs/P07-C-001/submission/tests/agent/P07/favorites.spec.ts:35",
+        "runtime/runs/P07-C-001/submission/tests/agent/P07/favorites.spec.ts:52",
+        "runtime/runs/P07-C-001/submission/tests/agent/P07/favorites.spec.ts:106",
+        "runtime/runs/P07-C-001/submission/tests/agent/P07/favorites.spec.ts:130",
+        "runtime/runs/P07-C-001/submission/tests/agent/P07/favorites.spec.ts:139",
+        "runtime/runs/P07-C-001/submission/tests/agent/P07/favorites.spec.ts:158",
+        "runtime/runs/P07-C-001/submission/tests/agent/P07/favorites.spec.ts:174",
+        "analysis/evidence/P07-C-001-checks.md#05-implement-item_36",
+        "analysis/evidence/P07-C-001-checks.md#05-implement-item_42"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E06 na obeh širinah ne najde besedila Ni priljubljenih opravil. po odstranitvi zadnjega priljubljenega na tabli. App izbere TaskBoard pred praznim filtriranim sporočilom; TaskBoard kaže le posamezna Ni opravil v tem stanju. Območje Tabla opravil obstaja, zato je to res manjkajoče zahtevano sporočilo, ne samo občutljivost na odsotno območje.68/70,11/12,strictfalse; statične/allowed kontrole uspejo.",
+    "evidence": [
+      "runtime/runs/P07-C-001/evaluation-summary.json",
+      "runtime/runs/P07-C-001/evaluation-tests.log",
+      "runtime/runs/P07-C-001/submission/src/App.tsx:91",
+      "runtime/runs/P07-C-001/submission/src/TaskBoard.tsx:22"
+    ]
+  },
+  "finalFailureNote": "Postopek completed413,027s; šest faz completed, konvergenca brez dodatnih nalog.63 zahtevHTTP200/completed priWafer/us; popolni račun0,353045248USD. Lastni18/18 in celotni64/64 vključujejo samo dostopna preverjanja; neodvisni končni izid ostane68/70,11/12. Brez raziskovalčevih posegov v merjeno oddajo.",
+  "developmentFailureExample": {
+    "description": "Začetni typecheck odkrije dobesedne escape znake in nato neuporabljen Check import; model popravi. Prvi lastni zagon14pass/4fail: trije page.evaluate ne poznajo KEY, četrti pričakuje malo shramba ob veliki Shramba. Popravi testni prenos ključa in besedilo,18/18 uspe. Prvi full check ustavi neuporabljeni KEY v lastnem testu/začasnem cache; odstrani const in rekonstruirljivi cache, nato full64/64. Zaključni statični heredoc kljub exit0 ne teče; naslednji node-e assertion uspe. To je preverjanje predstavljenosti oznak, ne dodatna funkcionalna pokritost.",
+    "evidence": [
+      "analysis/evidence/P07-C-001-checks.md#05-implement-item_23",
+      "analysis/evidence/P07-C-001-checks.md#05-implement-item_26",
+      "analysis/evidence/P07-C-001-checks.md#05-implement-item_32",
+      "analysis/evidence/P07-C-001-checks.md#05-implement-item_35",
+      "analysis/evidence/P07-C-001-checks.md#05-implement-item_38",
+      "analysis/evidence/P07-C-001-checks.md#05-implement-item_42",
+      "analysis/evidence/P07-C-001-checks.md#06-converge-item_5",
+      "analysis/evidence/P07-C-001-checks.md#06-converge-item_7"
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+Postopek C: ena seja, uradni Spec Kit 1.0.8; constitution → specify → plan → tasks → implement → converge. Ob novih nalogah največ ena dodatna implementacija in converge v isti skupni časovni meji. Pozivi in nastavitve so v procedure-c.json.

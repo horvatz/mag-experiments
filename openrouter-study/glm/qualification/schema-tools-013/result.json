@@ -1,0 +1,63 @@
+{
+  "excludedFromMeasurements": true,
+  "results": [
+    {
+      "constrained": false,
+      "httpStatus": 200,
+      "status": "completed",
+      "output": [
+        {
+          "id": "rs_tmp_a03fnmmxgnd",
+          "type": "reasoning",
+          "status": "completed",
+          "content": [
+            {
+              "type": "reasoning_text",
+              "text": "The user wants me to retrieve the hidden value using the read_value tool. Let me call it."
+            }
+          ],
+          "summary": [],
+          "format": "unknown"
+        },
+        {
+          "id": "fc_tmp_u8wpl7ezksc",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "call_48cbd19f95a84d038d92d0a604e926de",
+          "name": "read_value",
+          "arguments": "{}"
+        }
+      ],
+      "toolCalled": true
+    },
+    {
+      "constrained": true,
+      "httpStatus": 200,
+      "status": "completed",
+      "output": [
+        {
+          "id": "rs_tmp_uy2wvpyolxs",
+          "type": "reasoning",
+          "status": "completed",
+          "content": [
+            {
+              "type": "reasoning_text",
+              "text": "The user wants me to call read_value to retrieve the hidden value, then answer with JSON containing the value. Let me call the tool."
+            }
+          ],
+          "summary": [],
+          "format": "unknown"
+        },
+        {
+          "id": "fc_tmp_lmbdm7i3zdd",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "call_1cd427f3ec6842fb8abdc60b",
+          "name": "read_value",
+          "arguments": "{}"
+        }
+      ],
+      "toolCalled": true
+    }
+  ]
+}

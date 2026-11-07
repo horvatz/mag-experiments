@@ -1,0 +1,117 @@
+{
+  "id": "P09-B-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-31T21:00:13.147056+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "99c0f5c526bb1a1d685f6d1cab9fa9bbf17a052d79db8ae289a56c0d4e485719",
+  "limitation": "V celoti je prebranih vseh9 oddanih avtorskih datotek in preverjene arhivske vsote. Pregledani so native ukazi ter ohranjeni API dokazi o testih, spremembah in slikovnem HTTP422. Dve sliki ostaneta v nespremenjenem request50; raziskovalec ju ni vizualno pregledal in ne trdi, da ju je uspešno videl merjeni model. Nobenega ponovljenega zagona ali posega v oddajo.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Specifikacija opredeli vseh R01–R12, točna imena kontrol, celotno domeno0/1/>10, normalizacijo/UTF-16, stabilnost, prve/neveljavne parametre, osnutek, kanonizacijo, zgodovino, navigacijo, reset in omejitve zapisov. Konkretna vrzel je izrecna predpostavka100 ter R11: Ni zadetkov. omeji na N=0 in M>0, za prazen projekt pa zahteva samo ohranitev izhodiščnega sporočila. Vhodna R11 govori o praznem rezultatu ob dovoljeni prazni domeni; dodatno izhodiščno sporočilo ne zahteva opustitve novega. Uporabljena je ista razlaga kot v predhodni presoji Luna/P09-B-001, kjer je pregledovalec prav ta rob popravil. Gre za vrzel specifikacije po pregledu, ne za novo izmerjeno funkcionalno napako; izid70/70 ostaja.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:28",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:35",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:49",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:75",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:95",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:100",
+        "runtime/tasks/P09/instructions.md#zahteve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "C in D sta jasno ločena. norm, sub, match in visible določijo dobesedni podniz posameznega polja, statusno konjunkcijo, UTF-16 in stabilnost. Pravila branja, prve/neveljavne vrednosti, atomska potrditev in reset, primerjava potrjenega stanja ter opustitev osnutka ob navigaciji so preverljivi. R05/R06 pravilno razlikujeta spremembo C od same serializacije URL-ja; confirm to tudi loči z zamenjavo trenutnega vnosa pri semantično enaki kanonizaciji. Ključni prehodi in ohranjene lastnosti imajo uporabne predikate; zožitev praznega projekta je posebej ocenjena pri pokritosti.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:20",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:28",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:35",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:43",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:52",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:48"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Vseh dvanajst načrtovanih vrstic poveže pogoje in scenarije, specifikacija pošteno ne navaja svojih nezagnanih testov kot uspešnih. Toda stolpca kode in dokazov ostaneta pri »izpolni implementer«, verification.md pa izrecno trdi, da so preverjanja še neizvedena. Dejanski dnevniki so pozneje že potrdili14/14,8/8 in60/60. Po storitveni prekinitvi dokumenti zato ostanejo zastareli in ne povežejo nastale kode s končnimi izidi; pregledovalna faza se ni začela. Raziskovalčev prepis teh dokazov ne nadomesti modelove manjkajoče končne sledljivosti. To je delna sledljivost, ne izmišljena trditev o uspešnem zagonu.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:56",
+        "runtime/runs/P09-B-001/submission/docs/agent/specification.md:60",
+        "runtime/runs/P09-B-001/submission/docs/agent/verification.md:4",
+        "runtime/runs/P09-B-001/submission/docs/agent/verification.md:8",
+        "analysis/evidence/P09-B-001-checks.md#02-implementation-item_54",
+        "analysis/evidence/P09-B-001-checks.md#02-implementation-item_56",
+        "analysis/evidence/P09-B-001-checks.md#02-implementation-item_60",
+        "runtime/runs/P09-B-001/execution.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "navigation.ts loči tipe, normalizacijo, čisto projekcijo, parser in skupne URL gradnike. Izpeljani vidni seznam ne mutira API podatkov, ista projekcija napaja tabelo in tablo, povzetki ostanejo na izvornih opravilih. ProjectView hrani osnutek prek ločenega useDraft in ključa poti, potrjeni filtri so v URL-ju. confirm centralizira trim, semantično primerjavo in izbiro med novim ter zamenjanim zgodovinskim vnosom. TaskBoard/TaskDetails dosledno dobita stanje, projektni key ponastavi lokalne podatke. Odgovornosti in stanje so razločno ločeni tudi brez dodatne datoteke za vsak pripomoček.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:30",
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:39",
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:51",
+        "runtime/runs/P09-B-001/submission/src/navigation.ts:65",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:22",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:40",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:48",
+        "runtime/runs/P09-B-001/submission/src/App.tsx:115",
+        "runtime/runs/P09-B-001/submission/src/TaskBoard.tsx:13",
+        "runtime/runs/P09-B-001/submission/src/TaskDetails.tsx:9"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Štirinajst izvedenih scenarijev preveri iskalna polja, diakritiko in literalne metaznake, status/oba reda s fiksnimi enakimi naslovi, neveljavne parametre/podvojen q brez pasivnega prepisa, atomsko potrditev, kanonično no-op ponovitev, back/forward/reload, navigacijo in reset, števec,0/1/12 zapisov, shrambo/API in390px. Pomembni robovi ostanejo: kanonizacija z dodatnimi/privzetimi parametri brez spremembe C nima asercije history.length; R06 test spremeni q in status. Manjkajo nepotrjen osnutek pred back/forward, neveljavna prva status/order z veljavno drugo, različni nizi z enako normalizacijo, fraza prek meje polj in zahtevno kodiranje +/&/?/#. R11b preveri samo staro sporočilo pri praznem projektu;12 opravil preveri neurejeno, ne vrstnega reda. ID podrobnosti je lasten primer le za enega od enakih naslovov.14/14 in60/60 teh vrzeli ne odpravita.",
+      "evidence": [
+        "runtime/runs/P09-B-001/submission/tests/agent/view-state.spec.ts:8",
+        "runtime/runs/P09-B-001/submission/tests/agent/view-state.spec.ts:31",
+        "runtime/runs/P09-B-001/submission/tests/agent/view-state.spec.ts:46",
+        "runtime/runs/P09-B-001/submission/tests/agent/view-state.spec.ts:61",
+        "runtime/runs/P09-B-001/submission/tests/agent/view-state.spec.ts:81",
+        "runtime/runs/P09-B-001/submission/tests/agent/view-state.spec.ts:98",
+        "runtime/runs/P09-B-001/submission/tests/agent/view-state.spec.ts:126",
+        "runtime/runs/P09-B-001/submission/tests/agent/view-state.spec.ts:169",
+        "runtime/runs/P09-B-001/submission/tests/agent/view-state.spec.ts:181",
+        "runtime/runs/P09-B-001/submission/tests/agent/view-state.spec.ts:188",
+        "analysis/evidence/P09-B-001-checks.md#02-implementation-item_60"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "V določenem neodvisnem naboru funkcionalne napake ni:70/70 in12/12, vse statične kontrole in obseg uspejo. Postopek je execution_failed567,351s, ker request50 s slikovnima rezultatoma view_image prejme isto diagnosticirano DeepInfraHTTP422 »Input should be a valid string«, param messages.80.tool.content.str. Implementacija se prekine po393,223s; pregled ni začet,strictfalse. Request50 ohrani oba image_url brez sprememb. Popolni strošek ostaneNULL, znano0,0537828976USD in en nov neznani račun. V8 po preverjanju arhiva/izvirnih vhodov nadaljuje samo še nezačeti167;166 se ne ponovi.",
+    "evidence": [
+      "runtime/runs/P09-B-001/execution.json",
+      "runtime/runs/P09-B-001/evaluation-summary.json",
+      "runtime/runs/P09-B-001/api-cost.json",
+      "api/P09-B-001/model/api-ledger.jsonl",
+      "analysis/review-packets/P09-B-001.json"
+    ]
+  },
+  "developmentFailureExample": {
+    "description": "Prvi lasten item_49 ima10/12 kljub pipeline0: R11 pričakuje globalni API vrstni red na tabli s stalnimi stolpci, združeni R11b pa po zaporednih mount spremembah še pokaže prejšnji prazen vhod. preserved-52 spremeni samo testni potek/pričakovanja in razdeli robove0/1/12; item_54 potrdi14/14(5,8s), item_56 razvojne8/8. Item_58 se ustavi pri neuporabljenem ids, četudi tail vrne0; preserved-56 odstrani import in item_60 dejansko potrdi60/60(22,1s). Po začetnih neuspelih slikovnih pripravah preserved-62 zapiše numerični counter2od3 in širino390/390 ter izdela dve sliki; naknadni slikovni tool rezultati povzročijoHTTP422. Numerični izpis ni uspešen modelov pregled slik.",
+    "evidence": [
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_49",
+      "analysis/evidence/P09-B-001-checks.md#preserved-52",
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_54",
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_56",
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_58",
+      "analysis/evidence/P09-B-001-checks.md#preserved-56",
+      "analysis/evidence/P09-B-001-checks.md#02-implementation-item_60",
+      "analysis/evidence/P09-B-001-checks.md#preserved-62",
+      "api/P09-B-001/model/api-ledger.jsonl"
+    ]
+  },
+  "finalFailureNote": "execution_failed567,351s: specification172,633scompleted, implementation393,223sexecution_failed, brez pregleda. Neodvisno70/70,12/12;strictfalsezaradi postopka.49HTTP200/completed in zadnja50HTTP422; celota računaNULL, znano0,0537828976USD. Izidi ostanejo ohranjeni brez raziskovalčevega popravka."
+}

@@ -1,0 +1,823 @@
+[WebServer] (node:39906) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 70 tests using 1 worker
+
+(node:39907) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [regression-api] › .work/P03/baseline/tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (38ms)
+  ✓   2 [regression-api] › .work/P03/baseline/tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (7ms)
+  ✓   3 [regression-api] › .work/P03/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (7ms)
+  ✓   4 [regression-api] › .work/P03/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (5ms)
+  ✓   5 [regression-api] › .work/P03/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [regression-api] › .work/P03/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (4ms)
+  ✓   7 [regression-api] › .work/P03/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (5ms)
+  ✓   8 [regression-api] › .work/P03/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (4ms)
+  ✓   9 [regression-api] › .work/P03/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [regression-api] › .work/P03/baseline/tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (11ms)
+  ✓  11 [regression-api] › .work/P03/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with success (12ms)
+  ✓  12 [regression-api] › .work/P03/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (9ms)
+  ✓  13 [regression-api] › .work/P03/baseline/tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (11ms)
+  ✓  14 [regression-api] › .work/P03/baseline/tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:39909) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (542ms)
+  ✓  16 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (495ms)
+  ✓  17 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (502ms)
+  ✓  18 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (610ms)
+  ✓  19 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (437ms)
+  ✓  20 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (367ms)
+  ✓  21 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (349ms)
+  ✓  22 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (333ms)
+  ✓  23 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (332ms)
+  ✓  24 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (915ms)
+  ✓  25 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (624ms)
+  ✓  26 [regression-desktop] › .work/P03/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (412ms)
+(node:39982) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  27 [development-desktop] › tasks/P03/development.spec.ts:2:1 › D01: default list and literal normalized search (301ms)
+  ✓  28 [development-desktop] › tasks/P03/development.spec.ts:3:1 › D02: combined filters and view persistence (418ms)
+  ✓  29 [development-desktop] › tasks/P03/development.spec.ts:4:1 › D03: empty result and clear (306ms)
+  ✓  30 [development-desktop] › tasks/P03/development.spec.ts:5:1 › D04: counts and read-only behavior (266ms)
+(node:39991) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  31 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:3:1 › E01: R01 defaults preserve received order (5.3s)
+(node:40231) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  32 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:4:1 › E02: R02 normalization across all four fields (5.3s)
+(node:40287) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  33 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:5:1 › E03: R03 all tokens, cross fields and literal punctuation (5.3s)
+(node:40294) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  34 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:6:1 › E04: R04 three-way conjunction and exact owner (5.3s)
+(node:40380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  35 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:7:1 › E05: R05 owner options independent of active filters (350ms)
+  ✘  36 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:8:1 › E06: R06 same selection in both views and correct columns (5.3s)
+(node:40439) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  37 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:9:1 › E07: R07 project switch resets every filter (5.3s)
+(node:40446) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  38 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:10:1 › E08: R08 refresh resets and does not persist (5.3s)
+(node:40457) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  39 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:11:1 › E09: R09 result and state counts use visible selection (5.3s)
+(node:40514) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  40 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:12:1 › E10: R10 empty selection and genuinely empty project (5.3s)
+(node:40536) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  41 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:13:1 › E11: R11 clear atomically restores source order (5.3s)
+(node:40597) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  42 [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:14:1 › E12: R12 read-only details and responsive layout (5.3s)
+(node:40655) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (388ms)
+  ✓  44 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (539ms)
+  ✓  45 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (520ms)
+  ✓  46 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (629ms)
+  ✓  47 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (456ms)
+  ✓  48 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (402ms)
+  ✓  49 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (425ms)
+  ✓  50 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (354ms)
+  ✓  51 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (351ms)
+  ✓  52 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (874ms)
+  ✓  53 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (619ms)
+  ✓  54 [regression-mobile] › .work/P03/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (421ms)
+(node:40673) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  55 [development-mobile] › tasks/P03/development.spec.ts:2:1 › D01: default list and literal normalized search (316ms)
+  ✓  56 [development-mobile] › tasks/P03/development.spec.ts:3:1 › D02: combined filters and view persistence (460ms)
+  ✓  57 [development-mobile] › tasks/P03/development.spec.ts:4:1 › D03: empty result and clear (401ms)
+  ✓  58 [development-mobile] › tasks/P03/development.spec.ts:5:1 › D04: counts and read-only behavior (287ms)
+(node:40686) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  59 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:3:1 › E01: R01 defaults preserve received order (5.4s)
+(node:40739) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  60 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:4:1 › E02: R02 normalization across all four fields (5.3s)
+(node:40760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  61 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:5:1 › E03: R03 all tokens, cross fields and literal punctuation (5.4s)
+(node:40768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  62 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:6:1 › E04: R04 three-way conjunction and exact owner (5.3s)
+(node:40826) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  63 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:7:1 › E05: R05 owner options independent of active filters (427ms)
+  ✘  64 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:8:1 › E06: R06 same selection in both views and correct columns (5.3s)
+(node:40881) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  65 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:9:1 › E07: R07 project switch resets every filter (5.4s)
+(node:40906) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  66 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:10:1 › E08: R08 refresh resets and does not persist (5.4s)
+(node:41195) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  67 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:11:1 › E09: R09 result and state counts use visible selection (5.4s)
+(node:41206) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  68 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:12:1 › E10: R10 empty selection and genuinely empty project (5.3s)
+(node:41264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  69 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:13:1 › E11: R11 clear atomically restores source order (5.4s)
+(node:41318) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  70 [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:14:1 › E12: R12 read-only details and responsive layout (5.4s)
+
+
+  1) [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:3:1 › E01: R01 defaults preserve received order 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByRole('searchbox', { name: 'Išči opravila', exact: true })
+    Expected: ""
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByRole('searchbox', { name: 'Išči opravila', exact: true }) with timeout 5000ms
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      1 | import { test, expect, mount, makeTask, examples, webIds, expectIds, select, click, board, table, project, summary, columnIds, details, readonly } from '../../tasks/P03/helpers.ts'
+      2 | const search = (page: import('@playwright/test').Page) => page.getByRole('searchbox', { name: 'Išči opravila', exact: true })
+    > 3 | test('E01: R01 defaults preserve received order', async ({ page }) => { const data = [makeTask('z'),makeTask('a'),makeTask('m')]; await mount(page,data); await expectIds(page,['z','a','m']); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+        |                                                                                                                                                                                                                           ^
+      4 | test('E02: R02 normalization across all four fields', async ({ page }) => { await mount(page,[makeTask('č-ID',{title:'Jabolko',description:'Koš ČAJ',assignee:'ŽIVA'}),makeTask('x',{title:'Drugo'})]); for(const q of ['C-ID','kos','caj','ziva','JABOLKO']) { await search(page).fill(q); await expectIds(page,['č-ID']) } })
+      5 | test('E03: R03 all tokens, cross fields and literal punctuation', async ({ page }) => { await mount(page,[makeTask('one',{title:'A+B [x].',description:'Črta konec',assignee:'Neža'}),makeTask('two',{title:'A+B',description:'Črta'})]); await search(page).fill('  NEZA\tcrta  A+B '); await expectIds(page,['one']); await search(page).fill('[x].'); await expectIds(page,['one']); await search(page).fill('A+B nedosegljivo'); await expectIds(page,[]); await search(page).fill(' \t '); await expectIds(page,['one','two']) })
+      6 | test('E04: R04 three-way conjunction and exact owner', async ({ page }) => { await mount(page,[makeTask('a',{title:'Čaj',assignee:'Žan',status:'done'}),makeTask('b',{title:'Čaj',assignee:'Zan',status:'done'}),makeTask('c',{title:'Čaj',assignee:'Žan'}),makeTask('d',{title:'Kava',assignee:'Žan',status:'done'})]); await search(page).fill('caj'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Žan'); await expectIds(page,['a']) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:3:219
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E01-R01-defaults-preserve-received-order-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E01-R01-defaults-preserve-received-order-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E01-R01-defaults-preserve-received-order-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E01-R01-defaults-preserve-received-order-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:4:1 › E02: R02 normalization across all four fields 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      2 | const search = (page: import('@playwright/test').Page) => page.getByRole('searchbox', { name: 'Išči opravila', exact: true })
+      3 | test('E01: R01 defaults preserve received order', async ({ page }) => { const data = [makeTask('z'),makeTask('a'),makeTask('m')]; await mount(page,data); await expectIds(page,['z','a','m']); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+    > 4 | test('E02: R02 normalization across all four fields', async ({ page }) => { await mount(page,[makeTask('č-ID',{title:'Jabolko',description:'Koš ČAJ',assignee:'ŽIVA'}),makeTask('x',{title:'Drugo'})]); for(const q of ['C-ID','kos','caj','ziva','JABOLKO']) { await search(page).fill(q); await expectIds(page,['č-ID']) } })
+        |                                                                                                                                                                                                                                                                                    ^
+      5 | test('E03: R03 all tokens, cross fields and literal punctuation', async ({ page }) => { await mount(page,[makeTask('one',{title:'A+B [x].',description:'Črta konec',assignee:'Neža'}),makeTask('two',{title:'A+B',description:'Črta'})]); await search(page).fill('  NEZA\tcrta  A+B '); await expectIds(page,['one']); await search(page).fill('[x].'); await expectIds(page,['one']); await search(page).fill('A+B nedosegljivo'); await expectIds(page,[]); await search(page).fill(' \t '); await expectIds(page,['one','two']) })
+      6 | test('E04: R04 three-way conjunction and exact owner', async ({ page }) => { await mount(page,[makeTask('a',{title:'Čaj',assignee:'Žan',status:'done'}),makeTask('b',{title:'Čaj',assignee:'Zan',status:'done'}),makeTask('c',{title:'Čaj',assignee:'Žan'}),makeTask('d',{title:'Kava',assignee:'Žan',status:'done'})]); await search(page).fill('caj'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Žan'); await expectIds(page,['a']) })
+      7 | test('E05: R05 owner options independent of active filters', async ({ page }) => { await mount(page); await select(page,'Filter stanja','done'); const options=page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true}).locator('option'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač','Maja Zupan','Živa Kovač','Črt'].sort()); await project(page,'launch'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač'].sort()) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:4:276
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E02-R02-normalization-across-all-four-fields-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E02-R02-normalization-across-all-four-fields-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E02-R02-normalization-across-all-four-fields-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E02-R02-normalization-across-all-four-fields-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:5:1 › E03: R03 all tokens, cross fields and literal punctuation 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      3 | test('E01: R01 defaults preserve received order', async ({ page }) => { const data = [makeTask('z'),makeTask('a'),makeTask('m')]; await mount(page,data); await expectIds(page,['z','a','m']); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+      4 | test('E02: R02 normalization across all four fields', async ({ page }) => { await mount(page,[makeTask('č-ID',{title:'Jabolko',description:'Koš ČAJ',assignee:'ŽIVA'}),makeTask('x',{title:'Drugo'})]); for(const q of ['C-ID','kos','caj','ziva','JABOLKO']) { await search(page).fill(q); await expectIds(page,['č-ID']) } })
+    > 5 | test('E03: R03 all tokens, cross fields and literal punctuation', async ({ page }) => { await mount(page,[makeTask('one',{title:'A+B [x].',description:'Črta konec',assignee:'Neža'}),makeTask('two',{title:'A+B',description:'Črta'})]); await search(page).fill('  NEZA\tcrta  A+B '); await expectIds(page,['one']); await search(page).fill('[x].'); await expectIds(page,['one']); await search(page).fill('A+B nedosegljivo'); await expectIds(page,[]); await search(page).fill(' \t '); await expectIds(page,['one','two']) })
+        |                                                                                                                                                                                                                                                              ^
+      6 | test('E04: R04 three-way conjunction and exact owner', async ({ page }) => { await mount(page,[makeTask('a',{title:'Čaj',assignee:'Žan',status:'done'}),makeTask('b',{title:'Čaj',assignee:'Zan',status:'done'}),makeTask('c',{title:'Čaj',assignee:'Žan'}),makeTask('d',{title:'Kava',assignee:'Žan',status:'done'})]); await search(page).fill('caj'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Žan'); await expectIds(page,['a']) })
+      7 | test('E05: R05 owner options independent of active filters', async ({ page }) => { await mount(page); await select(page,'Filter stanja','done'); const options=page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true}).locator('option'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač','Maja Zupan','Živa Kovač','Črt'].sort()); await project(page,'launch'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač'].sort()) })
+      8 | test('E06: R06 same selection in both views and correct columns', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter odgovorne osebe','Ana Novak'); await expectIds(page,['web-01','web-03']); await board(page); await expectIds(page,['web-01','web-03'],false); await columnIds(page,'Pripravljeno',[]); await columnIds(page,'V delu',['web-01']); await columnIds(page,'Končano',['web-03']); await table(page); await expect(search(page)).toHaveValue('pregled'); await expectIds(page,['web-01','web-03']) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:5:254
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E03-R03-all-tok-69803-lds-and-literal-punctuation-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E03-R03-all-tok-69803-lds-and-literal-punctuation-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E03-R03-all-tok-69803-lds-and-literal-punctuation-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E03-R03-all-tok-69803-lds-and-literal-punctuation-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:6:1 › E04: R04 three-way conjunction and exact owner 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      4 | test('E02: R02 normalization across all four fields', async ({ page }) => { await mount(page,[makeTask('č-ID',{title:'Jabolko',description:'Koš ČAJ',assignee:'ŽIVA'}),makeTask('x',{title:'Drugo'})]); for(const q of ['C-ID','kos','caj','ziva','JABOLKO']) { await search(page).fill(q); await expectIds(page,['č-ID']) } })
+      5 | test('E03: R03 all tokens, cross fields and literal punctuation', async ({ page }) => { await mount(page,[makeTask('one',{title:'A+B [x].',description:'Črta konec',assignee:'Neža'}),makeTask('two',{title:'A+B',description:'Črta'})]); await search(page).fill('  NEZA\tcrta  A+B '); await expectIds(page,['one']); await search(page).fill('[x].'); await expectIds(page,['one']); await search(page).fill('A+B nedosegljivo'); await expectIds(page,[]); await search(page).fill(' \t '); await expectIds(page,['one','two']) })
+    > 6 | test('E04: R04 three-way conjunction and exact owner', async ({ page }) => { await mount(page,[makeTask('a',{title:'Čaj',assignee:'Žan',status:'done'}),makeTask('b',{title:'Čaj',assignee:'Zan',status:'done'}),makeTask('c',{title:'Čaj',assignee:'Žan'}),makeTask('d',{title:'Kava',assignee:'Žan',status:'done'})]); await search(page).fill('caj'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Žan'); await expectIds(page,['a']) })
+        |                                                                                                                                                                                                                                                                                                                                             ^
+      7 | test('E05: R05 owner options independent of active filters', async ({ page }) => { await mount(page); await select(page,'Filter stanja','done'); const options=page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true}).locator('option'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač','Maja Zupan','Živa Kovač','Črt'].sort()); await project(page,'launch'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač'].sort()) })
+      8 | test('E06: R06 same selection in both views and correct columns', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter odgovorne osebe','Ana Novak'); await expectIds(page,['web-01','web-03']); await board(page); await expectIds(page,['web-01','web-03'],false); await columnIds(page,'Pripravljeno',[]); await columnIds(page,'V delu',['web-01']); await columnIds(page,'Končano',['web-03']); await table(page); await expect(search(page)).toHaveValue('pregled'); await expectIds(page,['web-01','web-03']) })
+      9 | test('E07: R07 project switch resets every filter', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await project(page,'launch'); await expectIds(page,['launch-01','launch-02']); await expect(search(page)).toHaveValue(''); await project(page,'web'); await expectIds(page,webIds()) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:6:333
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E04-R04-three-way-conjunction-and-exact-owner-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E04-R04-three-way-conjunction-and-exact-owner-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E04-R04-three-way-conjunction-and-exact-owner-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E04-R04-three-way-conjunction-and-exact-owner-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:8:1 › E06: R06 same selection in both views and correct columns 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+       6 | test('E04: R04 three-way conjunction and exact owner', async ({ page }) => { await mount(page,[makeTask('a',{title:'Čaj',assignee:'Žan',status:'done'}),makeTask('b',{title:'Čaj',assignee:'Zan',status:'done'}),makeTask('c',{title:'Čaj',assignee:'Žan'}),makeTask('d',{title:'Kava',assignee:'Žan',status:'done'})]); await search(page).fill('caj'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Žan'); await expectIds(page,['a']) })
+       7 | test('E05: R05 owner options independent of active filters', async ({ page }) => { await mount(page); await select(page,'Filter stanja','done'); const options=page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true}).locator('option'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač','Maja Zupan','Živa Kovač','Črt'].sort()); await project(page,'launch'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač'].sort()) })
+    >  8 | test('E06: R06 same selection in both views and correct columns', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter odgovorne osebe','Ana Novak'); await expectIds(page,['web-01','web-03']); await board(page); await expectIds(page,['web-01','web-03'],false); await columnIds(page,'Pripravljeno',[]); await columnIds(page,'V delu',['web-01']); await columnIds(page,'Končano',['web-03']); await table(page); await expect(search(page)).toHaveValue('pregled'); await expectIds(page,['web-01','web-03']) })
+         |                                                                                                                               ^
+       9 | test('E07: R07 project switch resets every filter', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await project(page,'launch'); await expectIds(page,['launch-01','launch-02']); await expect(search(page)).toHaveValue(''); await project(page,'web'); await expectIds(page,webIds()) })
+      10 | test('E08: R08 refresh resets and does not persist', async ({ page }) => { await mount(page); const hash=new URL(page.url()).hash; await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); expect(new URL(page.url()).hash).toBe(hash); expect(await page.evaluate(()=>localStorage.length)).toBe(0); await page.reload(); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+      11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:8:127
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E06-R06-same-se-68aa2-h-views-and-correct-columns-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E06-R06-same-se-68aa2-h-views-and-correct-columns-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E06-R06-same-se-68aa2-h-views-and-correct-columns-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E06-R06-same-se-68aa2-h-views-and-correct-columns-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:9:1 › E07: R07 project switch resets every filter 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+       7 | test('E05: R05 owner options independent of active filters', async ({ page }) => { await mount(page); await select(page,'Filter stanja','done'); const options=page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true}).locator('option'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač','Maja Zupan','Živa Kovač','Črt'].sort()); await project(page,'launch'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač'].sort()) })
+       8 | test('E06: R06 same selection in both views and correct columns', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter odgovorne osebe','Ana Novak'); await expectIds(page,['web-01','web-03']); await board(page); await expectIds(page,['web-01','web-03'],false); await columnIds(page,'Pripravljeno',[]); await columnIds(page,'V delu',['web-01']); await columnIds(page,'Končano',['web-03']); await table(page); await expect(search(page)).toHaveValue('pregled'); await expectIds(page,['web-01','web-03']) })
+    >  9 | test('E07: R07 project switch resets every filter', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await project(page,'launch'); await expectIds(page,['launch-01','launch-02']); await expect(search(page)).toHaveValue(''); await project(page,'web'); await expectIds(page,webIds()) })
+         |                                                                                                                 ^
+      10 | test('E08: R08 refresh resets and does not persist', async ({ page }) => { await mount(page); const hash=new URL(page.url()).hash; await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); expect(new URL(page.url()).hash).toBe(hash); expect(await page.evaluate(()=>localStorage.length)).toBe(0); await page.reload(); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+      11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+      12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:9:113
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E07-R07-project-switch-resets-every-filter-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E07-R07-project-switch-resets-every-filter-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E07-R07-project-switch-resets-every-filter-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E07-R07-project-switch-resets-every-filter-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:10:1 › E08: R08 refresh resets and does not persist 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+       8 | test('E06: R06 same selection in both views and correct columns', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter odgovorne osebe','Ana Novak'); await expectIds(page,['web-01','web-03']); await board(page); await expectIds(page,['web-01','web-03'],false); await columnIds(page,'Pripravljeno',[]); await columnIds(page,'V delu',['web-01']); await columnIds(page,'Končano',['web-03']); await table(page); await expect(search(page)).toHaveValue('pregled'); await expectIds(page,['web-01','web-03']) })
+       9 | test('E07: R07 project switch resets every filter', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await project(page,'launch'); await expectIds(page,['launch-01','launch-02']); await expect(search(page)).toHaveValue(''); await project(page,'web'); await expectIds(page,webIds()) })
+    > 10 | test('E08: R08 refresh resets and does not persist', async ({ page }) => { await mount(page); const hash=new URL(page.url()).hash; await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); expect(new URL(page.url()).hash).toBe(hash); expect(await page.evaluate(()=>localStorage.length)).toBe(0); await page.reload(); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+         |                                                                                                                                                       ^
+      11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+      12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+      13 | test('E11: R11 clear atomically restores source order', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await click(page,'Počisti filtre'); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); for(const label of ['Filter stanja','Filter odgovorne osebe']) await expect(page.getByRole('combobox',{name:label,exact:true})).toHaveValue('all') })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:10:151
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E08-R08-refresh-resets-and-does-not-persist-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E08-R08-refresh-resets-and-does-not-persist-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E08-R08-refresh-resets-and-does-not-persist-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E08-R08-refresh-resets-and-does-not-persist-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:11:1 › E09: R09 result and state counts use visible selection 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+       9 | test('E07: R07 project switch resets every filter', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await project(page,'launch'); await expectIds(page,['launch-01','launch-02']); await expect(search(page)).toHaveValue(''); await project(page,'web'); await expectIds(page,webIds()) })
+      10 | test('E08: R08 refresh resets and does not persist', async ({ page }) => { await mount(page); const hash=new URL(page.url()).hash; await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); expect(new URL(page.url()).hash).toBe(hash); expect(await page.evaluate(()=>localStorage.length)).toBe(0); await page.reload(); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+    > 11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+         |                                                                                                                            ^
+      12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+      13 | test('E11: R11 clear atomically restores source order', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await click(page,'Počisti filtre'); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); for(const label of ['Filter stanja','Filter odgovorne osebe']) await expect(page.getByRole('combobox',{name:label,exact:true})).toHaveValue('all') })
+      14 | test('E12: R12 read-only details and responsive layout', async ({ page }) => { const writes=await mount(page); await search(page).fill('pregled'); await details(page,'web-02'); await board(page); await details(page,'web-03'); await click(page,'Počisti filtre'); await readonly(page,writes) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:11:124
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E09-R09-result--b3cc0-ounts-use-visible-selection-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E09-R09-result--b3cc0-ounts-use-visible-selection-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E09-R09-result--b3cc0-ounts-use-visible-selection-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E09-R09-result--b3cc0-ounts-use-visible-selection-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:12:1 › E10: R10 empty selection and genuinely empty project 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      10 | test('E08: R08 refresh resets and does not persist', async ({ page }) => { await mount(page); const hash=new URL(page.url()).hash; await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); expect(new URL(page.url()).hash).toBe(hash); expect(await page.evaluate(()=>localStorage.length)).toBe(0); await page.reload(); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+      11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+    > 12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+         |                                                                                                                                                                  ^
+      13 | test('E11: R11 clear atomically restores source order', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await click(page,'Počisti filtre'); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); for(const label of ['Filter stanja','Filter odgovorne osebe']) await expect(page.getByRole('combobox',{name:label,exact:true})).toHaveValue('all') })
+      14 | test('E12: R12 read-only details and responsive layout', async ({ page }) => { const writes=await mount(page); await search(page).fill('pregled'); await details(page,'web-02'); await board(page); await details(page,'web-03'); await click(page,'Počisti filtre'); await readonly(page,writes) })
+      15 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:12:162
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E10-R10-empty-s-b9a2d-and-genuinely-empty-project-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E10-R10-empty-s-b9a2d-and-genuinely-empty-project-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E10-R10-empty-s-b9a2d-and-genuinely-empty-project-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E10-R10-empty-s-b9a2d-and-genuinely-empty-project-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:13:1 › E11: R11 clear atomically restores source order 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+      12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+    > 13 | test('E11: R11 clear atomically restores source order', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await click(page,'Počisti filtre'); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); for(const label of ['Filter stanja','Filter odgovorne osebe']) await expect(page.getByRole('combobox',{name:label,exact:true})).toHaveValue('all') })
+         |                                                                                                                     ^
+      14 | test('E12: R12 read-only details and responsive layout', async ({ page }) => { const writes=await mount(page); await search(page).fill('pregled'); await details(page,'web-02'); await board(page); await details(page,'web-03'); await click(page,'Počisti filtre'); await readonly(page,writes) })
+      15 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:13:117
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E11-R11-clear-atomically-restores-source-order-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E11-R11-clear-atomically-restores-source-order-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E11-R11-clear-atomically-restores-source-order-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E11-R11-clear-atomically-restores-source-order-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:14:1 › E12: R12 read-only details and responsive layout 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+      13 | test('E11: R11 clear atomically restores source order', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await click(page,'Počisti filtre'); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); for(const label of ['Filter stanja','Filter odgovorne osebe']) await expect(page.getByRole('combobox',{name:label,exact:true})).toHaveValue('all') })
+    > 14 | test('E12: R12 read-only details and responsive layout', async ({ page }) => { const writes=await mount(page); await search(page).fill('pregled'); await details(page,'web-02'); await board(page); await details(page,'web-03'); await click(page,'Počisti filtre'); await readonly(page,writes) })
+         |                                                                                                                                   ^
+      15 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:14:131
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E12-R12-read-only-details-and-responsive-layout-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E12-R12-read-only-details-and-responsive-layout-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E12-R12-read-only-details-and-responsive-layout-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E12-R12-read-only-details-and-responsive-layout-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:3:1 › E01: R01 defaults preserve received order 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByRole('searchbox', { name: 'Išči opravila', exact: true })
+    Expected: ""
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByRole('searchbox', { name: 'Išči opravila', exact: true }) with timeout 5000ms
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      1 | import { test, expect, mount, makeTask, examples, webIds, expectIds, select, click, board, table, project, summary, columnIds, details, readonly } from '../../tasks/P03/helpers.ts'
+      2 | const search = (page: import('@playwright/test').Page) => page.getByRole('searchbox', { name: 'Išči opravila', exact: true })
+    > 3 | test('E01: R01 defaults preserve received order', async ({ page }) => { const data = [makeTask('z'),makeTask('a'),makeTask('m')]; await mount(page,data); await expectIds(page,['z','a','m']); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+        |                                                                                                                                                                                                                           ^
+      4 | test('E02: R02 normalization across all four fields', async ({ page }) => { await mount(page,[makeTask('č-ID',{title:'Jabolko',description:'Koš ČAJ',assignee:'ŽIVA'}),makeTask('x',{title:'Drugo'})]); for(const q of ['C-ID','kos','caj','ziva','JABOLKO']) { await search(page).fill(q); await expectIds(page,['č-ID']) } })
+      5 | test('E03: R03 all tokens, cross fields and literal punctuation', async ({ page }) => { await mount(page,[makeTask('one',{title:'A+B [x].',description:'Črta konec',assignee:'Neža'}),makeTask('two',{title:'A+B',description:'Črta'})]); await search(page).fill('  NEZA\tcrta  A+B '); await expectIds(page,['one']); await search(page).fill('[x].'); await expectIds(page,['one']); await search(page).fill('A+B nedosegljivo'); await expectIds(page,[]); await search(page).fill(' \t '); await expectIds(page,['one','two']) })
+      6 | test('E04: R04 three-way conjunction and exact owner', async ({ page }) => { await mount(page,[makeTask('a',{title:'Čaj',assignee:'Žan',status:'done'}),makeTask('b',{title:'Čaj',assignee:'Zan',status:'done'}),makeTask('c',{title:'Čaj',assignee:'Žan'}),makeTask('d',{title:'Kava',assignee:'Žan',status:'done'})]); await search(page).fill('caj'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Žan'); await expectIds(page,['a']) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:3:219
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E01-R01-defaults-preserve-received-order-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E01-R01-defaults-preserve-received-order-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E01-R01-defaults-preserve-received-order-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E01-R01-defaults-preserve-received-order-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:4:1 › E02: R02 normalization across all four fields 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      2 | const search = (page: import('@playwright/test').Page) => page.getByRole('searchbox', { name: 'Išči opravila', exact: true })
+      3 | test('E01: R01 defaults preserve received order', async ({ page }) => { const data = [makeTask('z'),makeTask('a'),makeTask('m')]; await mount(page,data); await expectIds(page,['z','a','m']); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+    > 4 | test('E02: R02 normalization across all four fields', async ({ page }) => { await mount(page,[makeTask('č-ID',{title:'Jabolko',description:'Koš ČAJ',assignee:'ŽIVA'}),makeTask('x',{title:'Drugo'})]); for(const q of ['C-ID','kos','caj','ziva','JABOLKO']) { await search(page).fill(q); await expectIds(page,['č-ID']) } })
+        |                                                                                                                                                                                                                                                                                    ^
+      5 | test('E03: R03 all tokens, cross fields and literal punctuation', async ({ page }) => { await mount(page,[makeTask('one',{title:'A+B [x].',description:'Črta konec',assignee:'Neža'}),makeTask('two',{title:'A+B',description:'Črta'})]); await search(page).fill('  NEZA\tcrta  A+B '); await expectIds(page,['one']); await search(page).fill('[x].'); await expectIds(page,['one']); await search(page).fill('A+B nedosegljivo'); await expectIds(page,[]); await search(page).fill(' \t '); await expectIds(page,['one','two']) })
+      6 | test('E04: R04 three-way conjunction and exact owner', async ({ page }) => { await mount(page,[makeTask('a',{title:'Čaj',assignee:'Žan',status:'done'}),makeTask('b',{title:'Čaj',assignee:'Zan',status:'done'}),makeTask('c',{title:'Čaj',assignee:'Žan'}),makeTask('d',{title:'Kava',assignee:'Žan',status:'done'})]); await search(page).fill('caj'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Žan'); await expectIds(page,['a']) })
+      7 | test('E05: R05 owner options independent of active filters', async ({ page }) => { await mount(page); await select(page,'Filter stanja','done'); const options=page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true}).locator('option'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač','Maja Zupan','Živa Kovač','Črt'].sort()); await project(page,'launch'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač'].sort()) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:4:276
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E02-R02-normalization-across-all-four-fields-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E02-R02-normalization-across-all-four-fields-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E02-R02-normalization-across-all-four-fields-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E02-R02-normalization-across-all-four-fields-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:5:1 › E03: R03 all tokens, cross fields and literal punctuation 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      3 | test('E01: R01 defaults preserve received order', async ({ page }) => { const data = [makeTask('z'),makeTask('a'),makeTask('m')]; await mount(page,data); await expectIds(page,['z','a','m']); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+      4 | test('E02: R02 normalization across all four fields', async ({ page }) => { await mount(page,[makeTask('č-ID',{title:'Jabolko',description:'Koš ČAJ',assignee:'ŽIVA'}),makeTask('x',{title:'Drugo'})]); for(const q of ['C-ID','kos','caj','ziva','JABOLKO']) { await search(page).fill(q); await expectIds(page,['č-ID']) } })
+    > 5 | test('E03: R03 all tokens, cross fields and literal punctuation', async ({ page }) => { await mount(page,[makeTask('one',{title:'A+B [x].',description:'Črta konec',assignee:'Neža'}),makeTask('two',{title:'A+B',description:'Črta'})]); await search(page).fill('  NEZA\tcrta  A+B '); await expectIds(page,['one']); await search(page).fill('[x].'); await expectIds(page,['one']); await search(page).fill('A+B nedosegljivo'); await expectIds(page,[]); await search(page).fill(' \t '); await expectIds(page,['one','two']) })
+        |                                                                                                                                                                                                                                                              ^
+      6 | test('E04: R04 three-way conjunction and exact owner', async ({ page }) => { await mount(page,[makeTask('a',{title:'Čaj',assignee:'Žan',status:'done'}),makeTask('b',{title:'Čaj',assignee:'Zan',status:'done'}),makeTask('c',{title:'Čaj',assignee:'Žan'}),makeTask('d',{title:'Kava',assignee:'Žan',status:'done'})]); await search(page).fill('caj'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Žan'); await expectIds(page,['a']) })
+      7 | test('E05: R05 owner options independent of active filters', async ({ page }) => { await mount(page); await select(page,'Filter stanja','done'); const options=page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true}).locator('option'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač','Maja Zupan','Živa Kovač','Črt'].sort()); await project(page,'launch'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač'].sort()) })
+      8 | test('E06: R06 same selection in both views and correct columns', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter odgovorne osebe','Ana Novak'); await expectIds(page,['web-01','web-03']); await board(page); await expectIds(page,['web-01','web-03'],false); await columnIds(page,'Pripravljeno',[]); await columnIds(page,'V delu',['web-01']); await columnIds(page,'Končano',['web-03']); await table(page); await expect(search(page)).toHaveValue('pregled'); await expectIds(page,['web-01','web-03']) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:5:254
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E03-R03-all-tok-69803-lds-and-literal-punctuation-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E03-R03-all-tok-69803-lds-and-literal-punctuation-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E03-R03-all-tok-69803-lds-and-literal-punctuation-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E03-R03-all-tok-69803-lds-and-literal-punctuation-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:6:1 › E04: R04 three-way conjunction and exact owner 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      4 | test('E02: R02 normalization across all four fields', async ({ page }) => { await mount(page,[makeTask('č-ID',{title:'Jabolko',description:'Koš ČAJ',assignee:'ŽIVA'}),makeTask('x',{title:'Drugo'})]); for(const q of ['C-ID','kos','caj','ziva','JABOLKO']) { await search(page).fill(q); await expectIds(page,['č-ID']) } })
+      5 | test('E03: R03 all tokens, cross fields and literal punctuation', async ({ page }) => { await mount(page,[makeTask('one',{title:'A+B [x].',description:'Črta konec',assignee:'Neža'}),makeTask('two',{title:'A+B',description:'Črta'})]); await search(page).fill('  NEZA\tcrta  A+B '); await expectIds(page,['one']); await search(page).fill('[x].'); await expectIds(page,['one']); await search(page).fill('A+B nedosegljivo'); await expectIds(page,[]); await search(page).fill(' \t '); await expectIds(page,['one','two']) })
+    > 6 | test('E04: R04 three-way conjunction and exact owner', async ({ page }) => { await mount(page,[makeTask('a',{title:'Čaj',assignee:'Žan',status:'done'}),makeTask('b',{title:'Čaj',assignee:'Zan',status:'done'}),makeTask('c',{title:'Čaj',assignee:'Žan'}),makeTask('d',{title:'Kava',assignee:'Žan',status:'done'})]); await search(page).fill('caj'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Žan'); await expectIds(page,['a']) })
+        |                                                                                                                                                                                                                                                                                                                                             ^
+      7 | test('E05: R05 owner options independent of active filters', async ({ page }) => { await mount(page); await select(page,'Filter stanja','done'); const options=page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true}).locator('option'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač','Maja Zupan','Živa Kovač','Črt'].sort()); await project(page,'launch'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač'].sort()) })
+      8 | test('E06: R06 same selection in both views and correct columns', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter odgovorne osebe','Ana Novak'); await expectIds(page,['web-01','web-03']); await board(page); await expectIds(page,['web-01','web-03'],false); await columnIds(page,'Pripravljeno',[]); await columnIds(page,'V delu',['web-01']); await columnIds(page,'Končano',['web-03']); await table(page); await expect(search(page)).toHaveValue('pregled'); await expectIds(page,['web-01','web-03']) })
+      9 | test('E07: R07 project switch resets every filter', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await project(page,'launch'); await expectIds(page,['launch-01','launch-02']); await expect(search(page)).toHaveValue(''); await project(page,'web'); await expectIds(page,webIds()) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:6:333
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E04-R04-three-way-conjunction-and-exact-owner-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E04-R04-three-way-conjunction-and-exact-owner-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E04-R04-three-way-conjunction-and-exact-owner-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E04-R04-three-way-conjunction-and-exact-owner-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:8:1 › E06: R06 same selection in both views and correct columns 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+       6 | test('E04: R04 three-way conjunction and exact owner', async ({ page }) => { await mount(page,[makeTask('a',{title:'Čaj',assignee:'Žan',status:'done'}),makeTask('b',{title:'Čaj',assignee:'Zan',status:'done'}),makeTask('c',{title:'Čaj',assignee:'Žan'}),makeTask('d',{title:'Kava',assignee:'Žan',status:'done'})]); await search(page).fill('caj'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Žan'); await expectIds(page,['a']) })
+       7 | test('E05: R05 owner options independent of active filters', async ({ page }) => { await mount(page); await select(page,'Filter stanja','done'); const options=page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true}).locator('option'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač','Maja Zupan','Živa Kovač','Črt'].sort()); await project(page,'launch'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač'].sort()) })
+    >  8 | test('E06: R06 same selection in both views and correct columns', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter odgovorne osebe','Ana Novak'); await expectIds(page,['web-01','web-03']); await board(page); await expectIds(page,['web-01','web-03'],false); await columnIds(page,'Pripravljeno',[]); await columnIds(page,'V delu',['web-01']); await columnIds(page,'Končano',['web-03']); await table(page); await expect(search(page)).toHaveValue('pregled'); await expectIds(page,['web-01','web-03']) })
+         |                                                                                                                               ^
+       9 | test('E07: R07 project switch resets every filter', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await project(page,'launch'); await expectIds(page,['launch-01','launch-02']); await expect(search(page)).toHaveValue(''); await project(page,'web'); await expectIds(page,webIds()) })
+      10 | test('E08: R08 refresh resets and does not persist', async ({ page }) => { await mount(page); const hash=new URL(page.url()).hash; await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); expect(new URL(page.url()).hash).toBe(hash); expect(await page.evaluate(()=>localStorage.length)).toBe(0); await page.reload(); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+      11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:8:127
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E06-R06-same-se-68aa2-h-views-and-correct-columns-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E06-R06-same-se-68aa2-h-views-and-correct-columns-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E06-R06-same-se-68aa2-h-views-and-correct-columns-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E06-R06-same-se-68aa2-h-views-and-correct-columns-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:9:1 › E07: R07 project switch resets every filter 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+       7 | test('E05: R05 owner options independent of active filters', async ({ page }) => { await mount(page); await select(page,'Filter stanja','done'); const options=page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true}).locator('option'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač','Maja Zupan','Živa Kovač','Črt'].sort()); await project(page,'launch'); expect((await options.evaluateAll(nodes=>nodes.map(n=>(n as HTMLOptionElement).value))).sort()).toEqual(['all','Ana Novak','Luka Kovač'].sort()) })
+       8 | test('E06: R06 same selection in both views and correct columns', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter odgovorne osebe','Ana Novak'); await expectIds(page,['web-01','web-03']); await board(page); await expectIds(page,['web-01','web-03'],false); await columnIds(page,'Pripravljeno',[]); await columnIds(page,'V delu',['web-01']); await columnIds(page,'Končano',['web-03']); await table(page); await expect(search(page)).toHaveValue('pregled'); await expectIds(page,['web-01','web-03']) })
+    >  9 | test('E07: R07 project switch resets every filter', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await project(page,'launch'); await expectIds(page,['launch-01','launch-02']); await expect(search(page)).toHaveValue(''); await project(page,'web'); await expectIds(page,webIds()) })
+         |                                                                                                                 ^
+      10 | test('E08: R08 refresh resets and does not persist', async ({ page }) => { await mount(page); const hash=new URL(page.url()).hash; await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); expect(new URL(page.url()).hash).toBe(hash); expect(await page.evaluate(()=>localStorage.length)).toBe(0); await page.reload(); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+      11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+      12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:9:113
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E07-R07-project-switch-resets-every-filter-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E07-R07-project-switch-resets-every-filter-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E07-R07-project-switch-resets-every-filter-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E07-R07-project-switch-resets-every-filter-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:10:1 › E08: R08 refresh resets and does not persist 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+       8 | test('E06: R06 same selection in both views and correct columns', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter odgovorne osebe','Ana Novak'); await expectIds(page,['web-01','web-03']); await board(page); await expectIds(page,['web-01','web-03'],false); await columnIds(page,'Pripravljeno',[]); await columnIds(page,'V delu',['web-01']); await columnIds(page,'Končano',['web-03']); await table(page); await expect(search(page)).toHaveValue('pregled'); await expectIds(page,['web-01','web-03']) })
+       9 | test('E07: R07 project switch resets every filter', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await project(page,'launch'); await expectIds(page,['launch-01','launch-02']); await expect(search(page)).toHaveValue(''); await project(page,'web'); await expectIds(page,webIds()) })
+    > 10 | test('E08: R08 refresh resets and does not persist', async ({ page }) => { await mount(page); const hash=new URL(page.url()).hash; await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); expect(new URL(page.url()).hash).toBe(hash); expect(await page.evaluate(()=>localStorage.length)).toBe(0); await page.reload(); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+         |                                                                                                                                                       ^
+      11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+      12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+      13 | test('E11: R11 clear atomically restores source order', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await click(page,'Počisti filtre'); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); for(const label of ['Filter stanja','Filter odgovorne osebe']) await expect(page.getByRole('combobox',{name:label,exact:true})).toHaveValue('all') })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:10:151
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E08-R08-refresh-resets-and-does-not-persist-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E08-R08-refresh-resets-and-does-not-persist-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E08-R08-refresh-resets-and-does-not-persist-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E08-R08-refresh-resets-and-does-not-persist-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:11:1 › E09: R09 result and state counts use visible selection 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+       9 | test('E07: R07 project switch resets every filter', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await project(page,'launch'); await expectIds(page,['launch-01','launch-02']); await expect(search(page)).toHaveValue(''); await project(page,'web'); await expectIds(page,webIds()) })
+      10 | test('E08: R08 refresh resets and does not persist', async ({ page }) => { await mount(page); const hash=new URL(page.url()).hash; await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); expect(new URL(page.url()).hash).toBe(hash); expect(await page.evaluate(()=>localStorage.length)).toBe(0); await page.reload(); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+    > 11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+         |                                                                                                                            ^
+      12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+      13 | test('E11: R11 clear atomically restores source order', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await click(page,'Počisti filtre'); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); for(const label of ['Filter stanja','Filter odgovorne osebe']) await expect(page.getByRole('combobox',{name:label,exact:true})).toHaveValue('all') })
+      14 | test('E12: R12 read-only details and responsive layout', async ({ page }) => { const writes=await mount(page); await search(page).fill('pregled'); await details(page,'web-02'); await board(page); await details(page,'web-03'); await click(page,'Počisti filtre'); await readonly(page,writes) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:11:124
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E09-R09-result--b3cc0-ounts-use-visible-selection-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E09-R09-result--b3cc0-ounts-use-visible-selection-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E09-R09-result--b3cc0-ounts-use-visible-selection-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E09-R09-result--b3cc0-ounts-use-visible-selection-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:12:1 › E10: R10 empty selection and genuinely empty project 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      10 | test('E08: R08 refresh resets and does not persist', async ({ page }) => { await mount(page); const hash=new URL(page.url()).hash; await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); expect(new URL(page.url()).hash).toBe(hash); expect(await page.evaluate(()=>localStorage.length)).toBe(0); await page.reload(); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); await expect(page.getByRole('combobox',{name:'Filter stanja',exact:true})).toHaveValue('all'); await expect(page.getByRole('combobox',{name:'Filter odgovorne osebe',exact:true})).toHaveValue('all') })
+      11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+    > 12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+         |                                                                                                                                                                  ^
+      13 | test('E11: R11 clear atomically restores source order', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await click(page,'Počisti filtre'); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); for(const label of ['Filter stanja','Filter odgovorne osebe']) await expect(page.getByRole('combobox',{name:label,exact:true})).toHaveValue('all') })
+      14 | test('E12: R12 read-only details and responsive layout', async ({ page }) => { const writes=await mount(page); await search(page).fill('pregled'); await details(page,'web-02'); await board(page); await details(page,'web-03'); await click(page,'Počisti filtre'); await readonly(page,writes) })
+      15 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:12:162
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E10-R10-empty-s-b9a2d-and-genuinely-empty-project-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E10-R10-empty-s-b9a2d-and-genuinely-empty-project-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E10-R10-empty-s-b9a2d-and-genuinely-empty-project-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E10-R10-empty-s-b9a2d-and-genuinely-empty-project-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:13:1 › E11: R11 clear atomically restores source order 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      11 | test('E09: R09 result and state counts use visible selection', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 3 od 8.'); await summary(page,[1,1,1]); await board(page); for(const name of ['Pripravljeno','V delu','Končano']) await expect(page.getByRole('region',{name,exact:true}).getByText('1',{exact:true})).toBeVisible(); await select(page,'Filter stanja','done'); await summary(page,[0,0,1]) })
+      12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+    > 13 | test('E11: R11 clear atomically restores source order', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await click(page,'Počisti filtre'); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); for(const label of ['Filter stanja','Filter odgovorne osebe']) await expect(page.getByRole('combobox',{name:label,exact:true})).toHaveValue('all') })
+         |                                                                                                                     ^
+      14 | test('E12: R12 read-only details and responsive layout', async ({ page }) => { const writes=await mount(page); await search(page).fill('pregled'); await details(page,'web-02'); await board(page); await details(page,'web-03'); await click(page,'Počisti filtre'); await readonly(page,writes) })
+      15 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:13:117
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E11-R11-clear-atomically-restores-source-order-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E11-R11-clear-atomically-restores-source-order-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E11-R11-clear-atomically-restores-source-order-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E11-R11-clear-atomically-restores-source-order-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:14:1 › E12: R12 read-only details and responsive layout 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('searchbox', { name: 'Išči opravila', exact: true })
+
+
+      12 | test('E10: R10 empty selection and genuinely empty project', async ({ page }) => { await mount(page,examples.filter(t=>t.projectId==='web')); await search(page).fill('neobstojece'); await expectIds(page,[]); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await board(page); await expect(page.getByText('Ni zadetkov.',{exact:true})).toBeVisible(); await project(page,'launch'); await expect(page.getByRole('status',{name:'Rezultati filtriranja'})).toHaveText('Prikazano: 0 od 0.'); await table(page); await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible() })
+      13 | test('E11: R11 clear atomically restores source order', async ({ page }) => { await mount(page); await search(page).fill('pregled'); await select(page,'Filter stanja','done'); await select(page,'Filter odgovorne osebe','Ana Novak'); await click(page,'Počisti filtre'); await expectIds(page,webIds()); await expect(search(page)).toHaveValue(''); for(const label of ['Filter stanja','Filter odgovorne osebe']) await expect(page.getByRole('combobox',{name:label,exact:true})).toHaveValue('all') })
+    > 14 | test('E12: R12 read-only details and responsive layout', async ({ page }) => { const writes=await mount(page); await search(page).fill('pregled'); await details(page,'web-02'); await board(page); await details(page,'web-03'); await click(page,'Počisti filtre'); await readonly(page,writes) })
+         |                                                                                                                                   ^
+      15 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/glm/runtime/evaluation/P03/acceptance.spec.ts:14:131
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E12-R12-read-only-details-and-responsive-layout-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E12-R12-read-only-details-and-responsive-layout-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E12-R12-read-only-details-and-responsive-layout-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P03-C-001/evaluation-artifacts/acceptance-E12-R12-read-only-details-and-responsive-layout-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22 failed
+    [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:3:1 › E01: R01 defaults preserve received order 
+    [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:4:1 › E02: R02 normalization across all four fields 
+    [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:5:1 › E03: R03 all tokens, cross fields and literal punctuation 
+    [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:6:1 › E04: R04 three-way conjunction and exact owner 
+    [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:8:1 › E06: R06 same selection in both views and correct columns 
+    [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:9:1 › E07: R07 project switch resets every filter 
+    [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:10:1 › E08: R08 refresh resets and does not persist 
+    [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:11:1 › E09: R09 result and state counts use visible selection 
+    [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:12:1 › E10: R10 empty selection and genuinely empty project 
+    [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:13:1 › E11: R11 clear atomically restores source order 
+    [evaluation-desktop] › evaluation/P03/acceptance.spec.ts:14:1 › E12: R12 read-only details and responsive layout 
+    [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:3:1 › E01: R01 defaults preserve received order 
+    [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:4:1 › E02: R02 normalization across all four fields 
+    [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:5:1 › E03: R03 all tokens, cross fields and literal punctuation 
+    [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:6:1 › E04: R04 three-way conjunction and exact owner 
+    [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:8:1 › E06: R06 same selection in both views and correct columns 
+    [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:9:1 › E07: R07 project switch resets every filter 
+    [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:10:1 › E08: R08 refresh resets and does not persist 
+    [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:11:1 › E09: R09 result and state counts use visible selection 
+    [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:12:1 › E10: R10 empty selection and genuinely empty project 
+    [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:13:1 › E11: R11 clear atomically restores source order 
+    [evaluation-mobile] › evaluation/P03/acceptance.spec.ts:14:1 › E12: R12 read-only details and responsive layout 
+  48 passed (2.3m)

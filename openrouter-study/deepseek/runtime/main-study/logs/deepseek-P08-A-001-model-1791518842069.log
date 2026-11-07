@@ -1,0 +1,30 @@
+I have the requirements and baseline constraints. Now checking styles and baseline verification docs, then I'll write the specification.
+
+
+Now I'll write the specification document.
+
+
+Heredoc writes are blocked; I'll use `apply_patch` for all files.
+
+
+Spec written. Now the implementation: pure date logic first, then App wiring and styles.
+
+
+Now the agent test suite covering gaps beyond the development tests.
+
+
+Implementation and tests are in. Running typecheck and lint now.
+
+
+All 20 targeted checks pass. Now the full `npm run check` (baseline 38 + P08 development 8 + agent 12).
+
+
+All 58 checks pass. Writing the verification record now.
+
+
+Pilotna naloga P08 je zaključena v okviru časovne omejitve.
+
+**Rezultat**
+- Specifikacija: `docs/agent/specification.md` (R01–R12 s predikati, sledljivostjo in zapisom sprememb — zahtev med izvedbo ni bilo treba spreminjati).
+- Implementacija: `src/dueGroups.ts` (koledarska logika v UTC), `src/App.tsx` (referenčni datum `2026-09-21`, izbirnik `Pogled rokov` all/overdue/today/week/later/done, pet števcev z `aria-label="Število rokov <ključ>"`, filtriranje preglednice in table, opozorilo ob praznem datumu z ohranjenim zadnjim veljavnim izračunom), `src/styles.css` (odzivna orodna vrstica in pets
+{"status":"completed","elapsedSeconds":676.417,"allowedChanges":true,"usage":{"input_tokens":1000371,"cached_input_tokens":960128,"cache_write_input_tokens":0,"output_tokens":39124,"reasoning_output_tokens":21094}}

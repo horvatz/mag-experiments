@@ -1,0 +1,45 @@
+{
+  "id": "P04-A-003",
+  "observedAt": "2026-10-11T10:58:37.696Z",
+  "complete": true,
+  "roles": [
+    {
+      "role": "agent",
+      "session": "01a12a91-abad-74c3-95af-c0f0d657089b",
+      "lastTokenEventAt": "2026-10-11T10:58:22.559Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 1599029,
+        "cached_input_tokens": 1522048,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 44559,
+        "reasoning_output_tokens": 23032
+      },
+      "phases": [
+        {
+          "name": "agent",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 1599029,
+            "cached_input_tokens": 1522048,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 44559,
+            "reasoning_output_tokens": 23032
+          },
+          "lastTokenEventAt": "2026-10-11T10:58:22.559Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    }
+  ],
+  "usage": {
+    "input_tokens": 1599029,
+    "cached_input_tokens": 1522048,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 44559,
+    "reasoning_output_tokens": 23032
+  },
+  "observedUsageBeforeInterruption": null,
+  "method": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+  "note": "Cached input is included in input; reasoning output is included in output."
+}

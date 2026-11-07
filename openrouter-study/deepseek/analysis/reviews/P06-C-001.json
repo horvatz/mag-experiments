@@ -1,0 +1,86 @@
+{
+  "id": "P06-C-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "reviewStatus": "partial-authored-submission",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija jasno pokrije vseh R01–R12: izvorni red in privzete nastavitve, kanonične kolone ne glede na klike, oba prazna pogoja, filter samo izvoza, ime/BOM/lokalni prenos, obe ločili, vse celice citirane z podvojenimi narekovaji in CRLF tudi na koncu. Nevtralizacija uporablja točno štiri vodilne znake in štiri predznake ter apostrof pred izvirnim nizom; ostala polja/Unicode se ohranijo. Pogledi ohranijo nastavitve, projekt/reload jih ponastavita, zaporedni izvozi uporabijo trenutne vrednosti. Dogovor vmesnika določi vse dostopne oznake, ohranjene data-task-id/ARIA, dejanja zunaj povezav in neširjenje obeh pogledov pri 390; različni/prazni nabori so v obsegu.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#zahteve-in-pravila",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T, urejeni K, S, D in F ločijo podatke od nastavitev; T_F je stabilno filtrirano zaporedje in glava je K presek S v redu K. Dovoljenje je ekvivalenca nepraznih kolon in T_F. Pravila prehodov določijo ponovni izračun pri S/F, naslednji izvoz pri D, identiteto S/D/F med pogledoma in reset vseh treh ob projektu/reloadu; izvoz ohrani polja in prikaz T. R06–R09 določijo natančen deterministični postopek citiranja, nevtralizacije in sestave datoteke, čeprav ni zapisan kot ena sama formula CSV. Ključni pogoji in ohranjene lastnosti so preverljivi, ne odvisni od posameznega razvojnega primera.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#zahteve-in-pravila",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/plan.md#zasnova-in-odločitve"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Specifikacija ima vseh dvanajst vrstic, načrt imenuje predvidene funkcije in datoteke, T001–T012 pa skupine R povežejo s predvideno implementacijo in testi. Vse naloge ostanejo neoznačene, matrične celice se določi med izvedbo so prazne in verification navaja v izvajanju brez dejanskih rezultatov. Kode in lastnih testov ni, zato gre za uporabno načrtovano sledljivost, ne za končno povezavo zahteva–koda–izvedeni dokaz. Dokument ne izmišlja uspešnih testov. Faza implementacije doseže rok in konvergenca se ne začne.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/plan.md#preverjanje-zahtev",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/tasks.md#faza-4-preverjanje-in-predaja",
+        "runtime/runs/P06-C-001/submission/docs/agent/verification.md#sledljivost-zahtev",
+        "analysis/review-packets/P06-C-001.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": null,
+      "rationale": "Končni inventar in execution potrdita samo šest avtorskih dokumentacijskih/metapodatkovnih datotek. Src je nespremenjen; csv.ts in ExportControls.tsx sta le v načrtu. Organizacije izhodiščnega programa ne pripišemo modelu, dokumentacijske zasnove pa ne ocenimo kot že dostavljeno implementacijo. Dimenzija ostane manjkajoča.",
+      "evidence": [
+        "runtime/runs/P06-C-001/execution.json",
+        "runtime/runs/P06-C-001/archive-complete.json",
+        "analysis/review-packets/P06-C-001.json"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 0,
+      "rationale": "Lastni testi so samo predvideni v T006–T009; ni avtorskih testnih datotek in ni lastnega funkcionalnega zagona, typecheck/lint/build ali skupnih testov. V verification so vsi koraki neoznačeni in rezultati v izvajanju. Branje dokumentov, preverjanje njihovega zapisa in izpis časovnega proračuna ne dokazujejo nove funkcionalnosti. Ker je avtorska dokumentacijska oddaja prisotna, odsotnost smiselnih dodatnih preverjanj pomeni 0, ne manjkajoče celotne oddaje.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/tasks.md#faza-3-lastni-testi",
+        "runtime/runs/P06-C-001/submission/docs/agent/verification.md#stanje-izvedbe",
+        "analysis/review-packets/P06-C-001.json",
+        "runtime/runs/P06-C-001/phases/05-implement/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "Neodvisni D01 ne najde Izvozi CSV, ker aplikacijska koda ni spremenjena. Izhodišče uspe 38/38 regresijskih, 0/8 razvojnih in 0/24 skritih preverjanj; dokazanih 0/12 zahtev. Lint/types/build/allowed true, strogi uspeh false. Phase_time_limit po 1080,536 s, brez konvergence. Štiri pripravljalne faze skupaj 807,333 s, implementacija 270,595 s/SIGKILL. To je nedostavljena funkcionalnost pri zamrznjenem časovnem proračunu, ne opazovan hrošč avtorske kode.",
+    "evidence": [
+      "runtime/runs/P06-C-001/evaluation-summary.json",
+      "runtime/runs/P06-C-001/execution.json",
+      "analysis/review-packets/P06-C-001.json"
+    ]
+  },
+  "finalFailureNote": "Zadnja zahteva 29 je HTTP 200/client_aborted ob faznem roku, 130,971 s brez končnega odziva. Ni izrecne napake API in vzrok odsotnosti končnega odgovora ni potrjen. Račun v arhivu je delni, znana spodnja meja 0,0328741 USD za 29 zahtev; 29 sprva neznana. Oddaje ne dopolnjujemo ali ponavljamo. Poznejši zunanji račun ob 02:48:45 UTC je popoln, 0,046152819 USD. Generation za zahtevo 29 izkaže 7.759 izhodnih tokenov in finishReason null: generiranje je potekalo, zaključnega odgovora pred rokom ni. To ne potrdi natančnega vzroka; prvotni arhivirani delni račun ostane nespremenjen.",
+  "developmentFailureExample": null,
+  "developmentFailureNote": "Ni avtorske aplikacijske kode ali lastnega funkcionalnega zagona, zato ni potrjene razvojne funkcionalne napake. Začetni heredoc zapisi ustave so zavrnjeni, poznejši printf dokument dostavi; ta prilagoditev in neuspela glob preiskava sta v izvirnih dogodkih ohranjeni.",
+  "costReconciliation": {
+    "at": "2026-10-09T02:48:45.258Z",
+    "source": "api/P06-C-001/model/api-cost.json",
+    "complete": true,
+    "costUSD": 0.04615281900000001,
+    "knownCostUSD": 0.04615281900000001,
+    "originalArchivePreserved": true
+  }
+}

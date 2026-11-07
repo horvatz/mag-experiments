@@ -1,0 +1,3 @@
+To je majhna tehnična kvalifikacija izvajalnika Q, ne polna naloga Folio. Preberi task/instructions.md. Dokumente ohrani zelo kratke. Uporabi samo src/qualification.ts, docs/agent/ in dovoljene procesne datoteke; spoštuj meje dodeljene vloge. Izvedba testa je node task/qualification-check.mjs. Ne uporabljaj brskalnika, javnega interneta ali drugih agentov. Končaj takoj, ko opraviš korak.
+Preberi specifikacijo, implementiraj funkcijo shift v src/qualification.ts, zaženi javni test in zapiši kratek docs/agent/verification.md. Specifikacije ne spreminjaj.
+Zapomni si neobčutljivo kontrolno besedo silver-fern-82. Ne zapiši je v datoteke in je zdaj ne ponavljaj. Poznejše nadaljevanje te bo vprašalo po njej.

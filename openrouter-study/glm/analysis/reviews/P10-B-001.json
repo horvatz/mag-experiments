@@ -1,0 +1,94 @@
+{
+  "id": "P10-B-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "R01–R12 določijo izvorni red po ID, globalnega soseda in mesta, nespremenjena polja/status/števce, robno identiteto, oba sklada, omejitev 20 z odstranitvijo najstarejšega, vejo po undo ter razveljavljiv reset/no-op. Preklop pogleda in podrobnosti ohranita stanje, projekt/reload ga ponastavita. Natančni status/ARIA, 0/1, enaki naslovi, ločene kontrole, bralni API in geometrija 390 px z notranjim drsenjem obeh pogledov so opredeljeni. Manjša uvodna navedba treh pogledov ne nasprotuje pravilom dveh prikazov in podrobnosti.",
+      "evidence": [
+        "runtime/runs/P10-B-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P10-B-001/submission/docs/agent/specification.md#stanje-in-prehodi",
+        "runtime/runs/P10-B-001/submission/docs/agent/specification.md#izhodišče-v-kodi",
+        "runtime/runs/P10-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "initial/current/undo/redo imajo jasne domene. Predpogoji veljavnih premikov, sosednja zamenjava, identiteta neveljavnih dejanj in push trenutne permutacije pred spremembo so preverljivi. pop odstrani vrh pri undo/redo, nova veja in reset izpraznita redo. slice(-20) in pravilo odstranitve najstarejšega določita mejo, reset ob current=initial ohrani vse stanje. Permutacija enkratnih ID in nespremenjena polja sta izrecni ohranitvi, tabla uporablja statusne podsezname globalnega reda.",
+      "evidence": [
+        "runtime/runs/P10-B-001/submission/docs/agent/specification.md#stanje-in-prehodi",
+        "runtime/runs/P10-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Verification poveže vsako R z dejanskim oštevilčenim lastnim testom in resnično potrdi 7/7, razvojne 8/8 in full 53/53; pregledovalec zagone neodvisno ponovi. Nedostopni končni testi so pošteno označeni. Specifikacijska matrika ostane načrt s simbolnimi neobstoječimi imeni testov in nekaterimi načrtovanimi imeni kode, namesto dejanskimi izidi. Verification za test 1 trdi oba premika in robno nespremenjenost zgodovine, čeprav izvede le gor in disabled preverjanje; za test 6 trdi reset ob refreshu, čeprav reload sledi že ponastavljenemu projektu. Vrzeli pomembnih orakljev niso označene in pregled jih ne odkrije. Povezave zato ostanejo delne, uspešni zagoni niso izmišljeni.",
+      "evidence": [
+        "runtime/runs/P10-B-001/submission/docs/agent/specification.md#izvedba-in-sledljivost",
+        "runtime/runs/P10-B-001/submission/docs/agent/verification.md#requirement-traceability",
+        "runtime/runs/P10-B-001/submission/docs/agent/verification.md#verification-results",
+        "runtime/runs/P10-B-001/submission/docs/agent/review.json",
+        "runtime/runs/P10-B-001/submission/tests/agent/P10-order.spec.ts:6",
+        "runtime/runs/P10-B-001/submission/tests/agent/P10-order.spec.ts:86",
+        "runtime/runs/P10-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Eno lokalno OrderState hrani le permutacijo in sklada; začetni red, Map po ID, urejen seznam in statusni števci so izpeljani. Funkcionalni React prehodi uporabljajo prejšnje stanje, sosednja zamenjava kopijo, robovi pa isto stanje. ProjectView je skupni lastnik dejanj za tabelo in tablo; TaskBoard izpelje stabilne statusne podsezname ter globalna mesta in uporablja skupni callback. Projektni key ponastavi lokalnost, pogled/podrobnosti ohranita instanco. Domenski prehodi so razumljivo ločeni od izrisa, čeprav ostanejo v isti datoteki; findIndex za mesta v tabli je manj učinkovita podrobnost brez potrjene funkcionalne napake.",
+      "evidence": [
+        "runtime/runs/P10-B-001/submission/src/App.tsx:13",
+        "runtime/runs/P10-B-001/submission/src/App.tsx:21",
+        "runtime/runs/P10-B-001/submission/src/App.tsx:28",
+        "runtime/runs/P10-B-001/submission/src/App.tsx:46",
+        "runtime/runs/P10-B-001/submission/src/App.tsx:60",
+        "runtime/runs/P10-B-001/submission/src/App.tsx:84",
+        "runtime/runs/P10-B-001/submission/src/App.tsx:172",
+        "runtime/runs/P10-B-001/submission/src/TaskBoard.tsx:13",
+        "runtime/runs/P10-B-001/submission/src/TaskBoard.tsx:26"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Sedem dejansko uspešnih testov zajame začetne ID/ranke in enake naslove, permutacije skozi več undo/redo, novo vejo, reset/undo, globalnega soseda in statusne stolpce, 0/1, projekt/pogled/podrobnosti, bralni API, števce ter geometrijo preglednice pri 390 px. Test meje naredi 21 različnih premikov nad 22 opravili, toda po 20 undo preveri samo velikosti skladov, ne permutacije ali mesta. Končni redo in velikosti ne razločijo odstranitve najstarejšega od najnovejšega; manjka orakelj na spodnji meji. Ni dejanskega robnega klika z nepraznim redo, no-op reseta z redo, reseta pri polnem skladu, nepraznega redo skozi poglede/podrobnosti, reloada iz spremenjenega reda ali table pri 390. To so vrzeli dokazov, ne potrjene končne funkcionalne napake.",
+      "evidence": [
+        "runtime/runs/P10-B-001/submission/tests/agent/P10-order.spec.ts:6",
+        "runtime/runs/P10-B-001/submission/tests/agent/P10-order.spec.ts:24",
+        "runtime/runs/P10-B-001/submission/tests/agent/P10-order.spec.ts:55",
+        "runtime/runs/P10-B-001/submission/tests/agent/P10-order.spec.ts:67",
+        "runtime/runs/P10-B-001/submission/tests/agent/P10-order.spec.ts:76",
+        "runtime/runs/P10-B-001/submission/tests/agent/P10-order.spec.ts:86",
+        "runtime/runs/P10-B-001/submission/tests/agent/P10-order.spec.ts:113",
+        "runtime/runs/P10-B-001/input-overrides/tests/development/helpers.ts",
+        "runtime/runs/P10-B-001/phases/02-implementation/events.jsonl.gz",
+        "runtime/runs/P10-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Ni potrjene končne funkcionalne napake: completed, 70/70, 12/12, dovoljenost/lint/types/build true, strogi uspeh true. Tri faze 162,072/440,905/128,483 s, skupaj 733,025 s. Pregled je veljaven in ne zahteva popravkov. Popolni račun 0,310566993 USD za 82 zahtev.",
+  "developmentFailureExample": {
+    "description": "Prvotna swappedOrder vedno uporabi index-1 tudi za dol; ohranjeni API input request-00031 vsebuje izveden zapis te kode, request-00043 pa popravek v smerno zamenjavo in funkcionalne posodobitve. Verification zato pravilno omeni popravljeno napako soseda. Zraven so popravljene napake lastnih testov: napačni statusni števci, pričakovanja zgodovine/permutacij, robni ID, ponovni mount in nepovezana zahteva za Izvozi CSV. Item_24 ima 6 neuspehov, item_37 5/2, item_45 2/5; item_47 potrdi 7/7, item_50 razvojne 8/8, item_52 full 53/53, pregledovalec item_21/24 to ponovi. Raziskovalec oddaje ne spreminja ali ponavlja.",
+    "evidence": [
+      "runtime/runs/P10-B-001/phases/02-implementation/events.jsonl.gz",
+      "runtime/runs/P10-B-001/phases/03-review/events.jsonl.gz",
+      "api/P10-B-001/model/request-00031.json.gz",
+      "api/P10-B-001/model/request-00043.json.gz",
+      "runtime/runs/P10-B-001/submission/docs/agent/verification.md:39",
+      "runtime/runs/P10-B-001/submission/src/App.tsx:21",
+      "runtime/runs/P10-B-001/submission/tests/agent/P10-order.spec.ts:55"
+    ]
+  }
+}

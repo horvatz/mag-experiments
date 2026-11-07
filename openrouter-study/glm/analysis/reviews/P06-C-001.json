@@ -1,0 +1,89 @@
+{
+  "id": "P06-C-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Vseh šest faz je completed, toda konvergenca začne odgovor z ✅ Converge namesto zahtevanega JSON. Invalid_stage_handoff ostane primarni rezultat; nobene predaje ne popravljamo ali ponavljamo.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 1,
+      "rationale": "Vseh R01–R12 ima uporabna pravila za izvorni red, kanonične kolone, prazni izbor/rezultat, lokalni prenos, BOM, obe ločili, citiranje in podvojene narekovaje, končni CRLF, natančne vodilne beline/predpone formul, Unicode/raw datum/status, ohranitev pogleda in reset projekta/reloada ter odsotnost zapisov. Specifikacija pa ne določi checkbox/HTML select kontrol in dostopnih imen Stolpec <ime>, Ločilo CSV ter Filter izvoza. Natančno pogodbo o ohranjenih data-task-id/ARIA in mobilni širini obeh pogledov nadomesti splošen sklic na obstoječe dogovore. Plan sicer omeni preprečitev širjenja pri 390 px, ne opredeli pa izrecno obeh pogledov in dovoljenega notranjega drsenja. Trditev, da razporeditev in nedoločena besedila niso predpisani, teh izrecnih zahtev ne nadomesti.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md:18",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md:45",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md:60",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md:105",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/plan.md:19"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "P/T/C/d/f/v imajo opredeljene domene. Kanonični vrstni red ni odvisen od klikov, filter spremeni samo izvoženo zaporedje, preklop pogleda ohrani C/d/f, projekt in reload jih ponastavita. Pogoja nepraznih kolon in filtriranega rezultata določita omogočenje, izvoz pa ohrani stanje in podatke. Serializacija je opisana z natančno določeno transformacijo: apostrof na začetek izvirnega niza le ob štirih predponah po točno dovoljenih začetnih znakih, citiranje vsake glave/vrednosti, podvojitev narekovajev, BOM in CRLF tudi na koncu. Ključne lastnosti so splošne in preverljive, čeprav niso zapisane kot ena sama matematična funkcija CSV.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md:20",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md:45",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md:68"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "R01–R12 poveže z dejanskimi imeni treh lastnih testov in datotekami; verification navaja potrjena 3/3 in check 49/49 ter odkrito neizvedeno zunanje okolje. Toda povezave ostanejo večinoma na ravni datotek, brez konkretnih delov/funkcij. Trditve Uspešno in vsi T označeni x precenijo preverjanje: test ne izvede praznega filtriranega rezultata, reset ob reloadu preveri samo za spremenjeno ločilo, ozka širina se preveri samo v preglednici. Tako R04/R11/T007/T009 niso v celoti podprti z navedenim testom. To so delne povezave in preširoki sklepi, ne izmišljeni izidi dejansko izvedene zbirke.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/spec.md:86",
+        "runtime/runs/P06-C-001/submission/docs/agent/P06/tasks.md:17",
+        "runtime/runs/P06-C-001/submission/docs/agent/verification.md:12",
+        "runtime/runs/P06-C-001/submission/tests/agent/p06-export.spec.ts:96",
+        "runtime/runs/P06-C-001/phases/05-implement/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "csv.ts loči čiste funkcije filtriranja, nevtralizacije, citiranja in oblikovanja vsebine/Blob/imen od React kontrol ter prenosa. CSV_COLUMNS je skupni kanonični vir; serijski vrstni red ponovno izpelje iz njega, ne iz vrstnega reda Set. ProjectView hrani samo nastavitve in izpelje exportedTasks/canExport, medtem ko prikaz in števci ostanejo vezani na celotna opravila. Set se kopira pred spremembo. Gumb in handler uporabljata isti predpogoj, objektni URL se sprosti. Ključ projekta upravlja ponastavitev, pogled ohrani komponento. Odgovornosti in izpeljani podatki so dosledni brez podvajanja domenske logike med pogledoma.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/src/csv.ts:3",
+        "runtime/runs/P06-C-001/submission/src/csv.ts:8",
+        "runtime/runs/P06-C-001/submission/src/csv.ts:16",
+        "runtime/runs/P06-C-001/submission/src/csv.ts:20",
+        "runtime/runs/P06-C-001/submission/src/App.tsx:12",
+        "runtime/runs/P06-C-001/submission/src/App.tsx:25",
+        "runtime/runs/P06-C-001/submission/src/App.tsx:34",
+        "runtime/runs/P06-C-001/submission/src/App.tsx:157"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Trije potrjeni testi uporabljajo ročno zapisana pričakovanja in dejanske bajte prenosa: ime/BOM, citati/Unicode/vgrajeni CRLF, nevarne predpone in štiri vodilne beline, obratni izbor vseh kolon, prazni izbor/ponovno izbiro, done filter ob nespremenjenem prikazu, obe ločili, enake bajte med pogledoma, projekt in reload ločila, prazen projekt, brez zapisov/popup ter 390 px. Neposredni test serializatorja je neodvisen orakelj, vendar naslov every textual data column presega primer: status in datum sta običajna veljavna niza. Manjkajo delni podizbor kolon, drugi statusni filtri in prazen filtrirani rezultat, zahtevni varni začetki NBSP/VT/FF/apostrof, več kot deset nesortiranih vrstic/enaki naslovi, reset spremenjenih kolon/filtra ob reloadu in tabla pri 390 px. Zbiralnik beleži samo zapise, zato ne dokazuje odsotnosti dodatnih GET ob izvozu. To so pomembne vrzeli lastnih dokazov ob sicer uspešni končni funkcionalnosti.",
+      "evidence": [
+        "runtime/runs/P06-C-001/submission/tests/agent/p06-export.spec.ts:21",
+        "runtime/runs/P06-C-001/submission/tests/agent/p06-export.spec.ts:46",
+        "runtime/runs/P06-C-001/submission/tests/agent/p06-export.spec.ts:60",
+        "runtime/runs/P06-C-001/submission/tests/agent/p06-export.spec.ts:78",
+        "runtime/runs/P06-C-001/submission/tests/agent/p06-export.spec.ts:96",
+        "runtime/runs/P06-C-001/submission/tests/agent/p06-export.spec.ts:133",
+        "runtime/runs/P06-C-001/phases/05-implement/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Ni potrjene končne funkcionalne napake: 70/70, 12/12, dovoljenost/lint/types/build true. Invalid_stage_handoff po 595,143 s zaradi končnega besedila ✅ Converge namesto JSON; vseh šest faz completed. Lastni 3/3 in check 49/49 potrjena v item_56/58. Arhiv in izid ostaneta nespremenjena.",
+  "developmentFailureExample": {
+    "description": "Več poskusov zapisovanja ima Python SyntaxError, tudi ob izhodu 0 zaradi nadaljnjih ukazov. Item_34/44 pokažeta TS2345 za mutable string[] kolon in TS2349 zaradi napačne konkatenacije. Item_49: 2 failed/1 passed, ker download.path ni dostopen pri oddaljenem brskalniku; model preide na createReadStream. Item_51/53: 1 failed/2 passed zaradi vejic v pričakovanju projektnega izvoza po resetu na podpičje. Item_55 popravek povzroči sintaktično napako testa, item_56 jo odpravi in potrdi 3/3; item_58 potrdi check 49/49. To so razvojne napake modela/testov, ne raziskovalčevi popravki ali končni funkcionalni neuspehi.",
+    "evidence": [
+      "runtime/runs/P06-C-001/phases/05-implement/events.jsonl.gz",
+      "runtime/runs/P06-C-001/submission/tests/agent/p06-export.spec.ts:46",
+      "runtime/runs/P06-C-001/submission/tests/agent/p06-export.spec.ts:132",
+      "runtime/runs/P06-C-001/phases/06-converge/result.json",
+      "analysis/review-packets/P06-C-001.json"
+    ]
+  }
+}

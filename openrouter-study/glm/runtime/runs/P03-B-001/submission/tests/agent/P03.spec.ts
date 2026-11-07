@@ -1,0 +1,97 @@
+import { examples, expect, test, mount, expectIds, webIds, select, board, table, click, project, summary, columnIds, readonly, details } from '../development/helpers.ts'
+
+test('A01: normalized literal search in every task field', async ({ page }) => {
+  await mount(page)
+  const search = page.getByRole('searchbox', { name: 'Išči opravila' })
+
+  await search.fill('ČAS za PREGLED')
+  await expectIds(page, ['web-01'])
+  await search.fill('cas za pregled')
+  await expectIds(page, ['web-01'])
+  await search.fill('web-04 Maja')
+  await expectIds(page, ['web-04'])
+  await search.fill('Zapis, "citat"')
+  await expectIds(page, ['web-06'])
+  await search.fill('   ')
+  await expectIds(page, webIds())
+
+  await select(page, 'Filter stanja', 'done')
+  await select(page, 'Filter odgovorne osebe', 'Živa Kovač')
+  await expectIds(page, ['web-06'])
+})
+
+test('A02: complete people list and project switch reset', async ({ page }) => {
+  await mount(page)
+  const personFilter = page.locator('#task-person-filter')
+  const statusFilter = page.locator('#task-status-filter')
+
+  await select(page, 'Filter stanja', 'done')
+  await expect(await personFilter.locator('option').evaluateAll(nodes => nodes.map(node => (node as HTMLOptionElement).value))).toEqual(['all', 'Ana Novak', 'Luka Kovač', 'Maja Zupan', 'Živa Kovač', 'Črt'])
+  await select(page, 'Filter stanja', 'all')
+  await page.getByRole('searchbox', { name: 'Išči opravila' }).fill('10')
+  await select(page, 'Filter odgovorne osebe', 'Maja Zupan')
+  await expectIds(page, ['web-04'])
+
+  await project(page, 'launch')
+  await expect(page.getByRole('searchbox', { name: 'Išči opravila' })).toHaveValue('')
+  await expect(statusFilter).toHaveValue('all')
+  await expect(personFilter).toHaveValue('all')
+  await expect(await personFilter.locator('option').evaluateAll(nodes => nodes.map(node => (node as HTMLOptionElement).value))).toEqual(['all', 'Ana Novak', 'Luka Kovač'])
+  await expectIds(page, ['launch-01', 'launch-02'])
+})
+
+test('A03: both views, visible counts, no results and empty project', async ({ page }) => {
+  await mount(page)
+  await page.getByRole('searchbox', { name: 'Išči opravila' }).fill('Maja')
+  await select(page, 'Filter odgovorne osebe', 'Maja Zupan')
+  await expectIds(page, ['web-04', 'web-08'])
+  await expect(page.getByRole('status', { name: 'Rezultati filtriranja' })).toHaveText('Prikazano: 2 od 8.')
+  await summary(page, [2, 0, 0])
+  await board(page)
+  await expectIds(page, ['web-04', 'web-08'])
+  await columnIds(page, 'Pripravljeno', ['web-04', 'web-08'])
+  await columnIds(page, 'V delu', [])
+  await columnIds(page, 'Končano', [])
+  await table(page)
+  await expectIds(page, ['web-04', 'web-08'])
+
+  await page.getByRole('searchbox', { name: 'Išči opravila' }).fill('neobstojece')
+  await expect(page.getByRole('status', { name: 'Rezultati filtriranja' })).toHaveText('Prikazano: 0 od 8.')
+  await summary(page, [0, 0, 0])
+  await expect(page.getByText('Ni zadetkov.', { exact: true })).toBeVisible()
+  await board(page)
+  await expect(page.getByText('Ni zadetkov.', { exact: true })).toBeVisible()
+
+  await mount(page, examples.filter(task => task.projectId === 'launch'))
+  await page.reload()
+  await expect(page.getByRole('heading', { name: 'Spletna prenova', exact: true })).toBeVisible()
+  await expect(page.getByRole('status', { name: 'Rezultati filtriranja' })).toHaveText('Prikazano: 0 od 0.')
+  await expect(page.getByRole('heading', { name: 'V tem projektu še ni opravil' })).toBeVisible()
+  await expectIds(page, [])
+})
+
+test('A04: refresh defaults, no persistence, clear, navigation and read-only layout', async ({ page }) => {
+  const writes = await mount(page)
+  await page.getByRole('searchbox', { name: 'Išči opravila' }).fill('alfa')
+  await select(page, 'Filter stanja', 'in_progress')
+  await select(page, 'Filter odgovorne osebe', 'Maja Zupan')
+  await board(page)
+
+  await page.reload()
+  await table(page)
+  await expectIds(page, webIds())
+  await expect(page.getByRole('searchbox', { name: 'Išči opravila' })).toHaveValue('')
+  await expect(page.locator('#task-status-filter')).toHaveValue('all')
+  await expect(page.locator('#task-person-filter')).toHaveValue('all')
+  await expect(new URL(page.url()).hash).not.toMatch(/(?:^|[?&])(?:q|status|person)=/)
+  await expect(await page.evaluate(() => [localStorage.length, sessionStorage.length, document.cookie.length])).toEqual([0, 0, 0])
+
+  await page.getByRole('searchbox', { name: 'Išči opravila' }).fill('Pregled')
+  await click(page, 'Počisti filtre')
+  await expectIds(page, webIds())
+  await expect(page.getByRole('status', { name: 'Rezultati filtriranja' })).toHaveText('Prikazano: 8 od 8.')
+
+  await details(page, 'web-03')
+  await page.setViewportSize({ width: 390, height: 844 })
+  await readonly(page, writes)
+})

@@ -1,0 +1,1229 @@
+[WebServer] (node:93036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 70 tests using 1 worker
+
+(node:93037) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [regression-api] › .work/P08/baseline/tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (44ms)
+  ✓   2 [regression-api] › .work/P08/baseline/tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (8ms)
+  ✓   3 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (7ms)
+  ✓   4 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (5ms)
+  ✓   5 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (4ms)
+  ✓   7 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (5ms)
+  ✓   8 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (5ms)
+  ✓   9 [regression-api] › .work/P08/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [regression-api] › .work/P08/baseline/tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (11ms)
+  ✓  11 [regression-api] › .work/P08/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with success (13ms)
+  ✓  12 [regression-api] › .work/P08/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (9ms)
+  ✓  13 [regression-api] › .work/P08/baseline/tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (12ms)
+  ✓  14 [regression-api] › .work/P08/baseline/tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:93039) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (460ms)
+  ✓  16 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (475ms)
+  ✓  17 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (489ms)
+  ✓  18 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (628ms)
+  ✓  19 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (452ms)
+  ✓  20 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (332ms)
+  ✓  21 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (351ms)
+  ✓  22 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (332ms)
+  ✓  23 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (313ms)
+  ✓  24 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (815ms)
+  ✓  25 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (566ms)
+  ✓  26 [regression-desktop] › .work/P08/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (402ms)
+(node:93062) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  27 [development-desktop] › tasks/P08/development.spec.ts:2:1 › D01: fixed anchor and overdue tasks (5.3s)
+(node:93071) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  28 [development-desktop] › tasks/P08/development.spec.ts:3:1 › D02: inclusive week boundary (5.3s)
+(node:93309) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  29 [development-desktop] › tasks/P08/development.spec.ts:4:1 › D03: empty draft retains last valid classification (5.3s)
+(node:93319) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  30 [development-desktop] › tasks/P08/development.spec.ts:5:1 › D04: done group, board and no writes (5.3s)
+(node:93324) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  31 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:6:1 › E01: R01 fixed date independent of system clock (5.3s)
+(node:93334) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  32 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:7:1 › E02: R02 completed tasks never enter open groups (5.3s)
+(node:93339) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  33 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:8:1 › E03: R03 strict past and exact today boundaries (5.3s)
+(node:93349) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  34 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:9:1 › E04: R04 inclusive seventh day and exclusive eighth (5.3s)
+(node:93354) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  35 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:10:1 › E05: R05 calendar month year leap and DST boundaries (5.3s)
+(node:93364) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  36 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:11:1 › E06: R06 counters remain whole-project under filters (5.3s)
+(node:93371) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  37 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:12:1 › E07: R07 source-relative order for every group (5.3s)
+(node:93381) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  38 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:13:1 › E08: R08 changed anchor and empty draft keep filter (5.3s)
+(node:93390) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  39 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:14:1 › E09: R09 both views preserve empty draft and last valid anchor (5.3s)
+(node:93396) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  40 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:15:1 › E10: R10 project and refresh reset local state (5.3s)
+(node:93405) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  41 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project (5.3s)
+(node:93411) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  42 [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:17:1 › E12: R12 valid leap dates remain unchanged and no writes (5.3s)
+(node:93420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (360ms)
+  ✓  44 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (464ms)
+  ✓  45 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (491ms)
+  ✓  46 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (697ms)
+  ✓  47 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (427ms)
+  ✓  48 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (381ms)
+  ✓  49 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (381ms)
+  ✓  50 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (332ms)
+  ✓  51 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (330ms)
+  ✓  52 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (847ms)
+  ✓  53 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (641ms)
+  ✓  54 [regression-mobile] › .work/P08/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (450ms)
+(node:93437) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  55 [development-mobile] › tasks/P08/development.spec.ts:2:1 › D01: fixed anchor and overdue tasks (5.3s)
+(node:93679) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  56 [development-mobile] › tasks/P08/development.spec.ts:3:1 › D02: inclusive week boundary (5.3s)
+(node:93685) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  57 [development-mobile] › tasks/P08/development.spec.ts:4:1 › D03: empty draft retains last valid classification (5.3s)
+(node:93696) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  58 [development-mobile] › tasks/P08/development.spec.ts:5:1 › D04: done group, board and no writes (5.3s)
+(node:93702) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  59 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:6:1 › E01: R01 fixed date independent of system clock (5.3s)
+(node:93711) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  60 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:7:1 › E02: R02 completed tasks never enter open groups (5.3s)
+(node:93721) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  61 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:8:1 › E03: R03 strict past and exact today boundaries (5.3s)
+(node:93727) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  62 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:9:1 › E04: R04 inclusive seventh day and exclusive eighth (5.3s)
+(node:93736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  63 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:10:1 › E05: R05 calendar month year leap and DST boundaries (5.3s)
+(node:93743) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  64 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:11:1 › E06: R06 counters remain whole-project under filters (5.3s)
+(node:93752) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  65 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:12:1 › E07: R07 source-relative order for every group (5.3s)
+(node:93991) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  66 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:13:1 › E08: R08 changed anchor and empty draft keep filter (5.3s)
+(node:94002) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  67 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:14:1 › E09: R09 both views preserve empty draft and last valid anchor (5.3s)
+(node:94008) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  68 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:15:1 › E10: R10 project and refresh reset local state (5.3s)
+(node:94017) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  69 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project (5.3s)
+(node:94023) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  70 [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:17:1 › E12: R12 valid leap dates remain unchanged and no writes (5.4s)
+
+
+  1) [development-desktop] › tasks/P08/development.spec.ts:2:1 › D01: fixed anchor and overdue tasks 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Referenčni datum', { exact: true })
+    Expected: "2026-09-21"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Referenčni datum', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Referenčni datum', { exact: true })
+
+
+      1 | import { test, expect, mount, select, expectIds, board, readonly } from './helpers.ts'
+    > 2 | test('D01: fixed anchor and overdue tasks', async ({ page }) => { await mount(page); await expect(page.getByLabel('Referenčni datum', { exact: true })).toHaveValue('2026-09-21'); await select(page, 'Pogled rokov', 'overdue'); await expectIds(page, ['web-01', 'web-07']) })
+        |                                                                                                                                                         ^
+      3 | test('D02: inclusive week boundary', async ({ page }) => { await mount(page); await select(page, 'Pogled rokov', 'week'); await expectIds(page, ['web-02', 'web-04']); await expect(page.getByLabel('Število rokov week', { exact: true })).toHaveText('2') })
+      4 | test('D03: empty draft retains last valid classification', async ({ page }) => { await mount(page); await select(page, 'Pogled rokov', 'overdue'); await page.getByLabel('Referenčni datum', { exact: true }).fill(''); await expect(page.getByRole('alert')).toContainText('Vnesi veljaven referenčni datum.'); await expectIds(page, ['web-01', 'web-07']); await page.getByLabel('Referenčni datum', { exact: true }).fill('2026-09-20'); await expect(page.getByRole('alert')).toHaveCount(0); await expectIds(page, ['web-01']) })
+      5 | test('D04: done group, board and no writes', async ({ page }) => { const writes = await mount(page); await select(page, 'Pogled rokov', 'done'); await board(page); await expectIds(page, ['web-03', 'web-06']); await readonly(page, writes) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/development.spec.ts:2:153
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D01-fixed-anchor-and-overdue-tasks-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/development-D01-fixed-anchor-and-overdue-tasks-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D01-fixed-anchor-and-overdue-tasks-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/development-D01-fixed-anchor-and-overdue-tasks-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [development-desktop] › tasks/P08/development.spec.ts:3:1 › D02: inclusive week boundary ──────
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/development.spec.ts:3:85
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D02-inclusive-week-boundary-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/development-D02-inclusive-week-boundary-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D02-inclusive-week-boundary-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/development-D02-inclusive-week-boundary-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [development-desktop] › tasks/P08/development.spec.ts:4:1 › D03: empty draft retains last valid classification 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/development.spec.ts:4:107
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D03-empty-draf-b3e48-s-last-valid-classification-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/development-D03-empty-draf-b3e48-s-last-valid-classification-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D03-empty-draf-b3e48-s-last-valid-classification-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/development-D03-empty-draf-b3e48-s-last-valid-classification-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [development-desktop] › tasks/P08/development.spec.ts:5:1 › D04: done group, board and no writes 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/development.spec.ts:5:108
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D04-done-group-board-and-no-writes-development-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/development-D04-done-group-board-and-no-writes-development-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D04-done-group-board-and-no-writes-development-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/development-D04-done-group-board-and-no-writes-development-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:6:1 › E01: R01 fixed date independent of system clock 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Referenčni datum', { exact: true })
+    Expected: "2026-09-21"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Referenčni datum', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Referenčni datum', { exact: true })
+
+
+      4 | async function counts(page:Page,values:number[]) { for(const [i,key] of ['overdue','today','week','later','done'].entries())await expect(page.getByLabel('Število rokov '+key,{exact:true})).toHaveText(String(values[i])) }
+      5 | const data=[makeTask('past',{dueDate:'2026-09-20'}),makeTask('now',{dueDate:'2026-09-21'}),makeTask('next',{dueDate:'2026-09-22'}),makeTask('last',{dueDate:'2026-09-28',status:'in_progress'}),makeTask('later',{dueDate:'2026-09-29'}),makeTask('done-past',{status:'done',dueDate:'2000-01-01'}),makeTask('done-now',{status:'done',dueDate:'2026-09-21'}),makeTask('done-future',{status:'done',dueDate:'2030-01-01'})]
+    > 6 | test('E01: R01 fixed date independent of system clock',async({page})=>{await page.clock.setFixedTime(new Date('2034-12-31T23:59:00Z'));await mount(page,data);await expect(date(page)).toHaveValue('2026-09-21');await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('all');await expectIds(page,webIds(data))})
+        |                                                                                                                                                                                        ^
+      7 | test('E02: R02 completed tasks never enter open groups',async({page})=>{await mount(page,data);await select(page,'Pogled rokov','done');await expectIds(page,['done-past','done-now','done-future']);await counts(page,[1,1,2,1,3]);await date(page).fill('1999-12-31');await expectIds(page,['done-past','done-now','done-future'])})
+      8 | test('E03: R03 strict past and exact today boundaries',async({page})=>{await mount(page,data);await select(page,'Pogled rokov','overdue');await expectIds(page,['past']);await select(page,'Pogled rokov','today');await expectIds(page,['now']);await date(page).fill('2026-09-22');await expectIds(page,['next'])})
+      9 | test('E04: R04 inclusive seventh day and exclusive eighth',async({page})=>{await mount(page,data);await select(page,'Pogled rokov','week');await expectIds(page,['next','last']);await select(page,'Pogled rokov','later');await expectIds(page,['later']);await counts(page,[1,1,2,1,3])})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:6:184
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E01-R01-fixed-date-independent-of-system-clock-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E01-R01-fixed-date-independent-of-system-clock-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E01-R01-fixed-date-independent-of-system-clock-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E01-R01-fixed-date-independent-of-system-clock-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:7:1 › E02: R02 completed tasks never enter open groups 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:7:102
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E02-R02-completed-tasks-never-enter-open-groups-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E02-R02-completed-tasks-never-enter-open-groups-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E02-R02-completed-tasks-never-enter-open-groups-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E02-R02-completed-tasks-never-enter-open-groups-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:8:1 › E03: R03 strict past and exact today boundaries 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:8:101
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E03-R03-strict-past-and-exact-today-boundaries-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E03-R03-strict-past-and-exact-today-boundaries-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E03-R03-strict-past-and-exact-today-boundaries-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E03-R03-strict-past-and-exact-today-boundaries-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:9:1 › E04: R04 inclusive seventh day and exclusive eighth 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:9:105
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E04-R04-inclusi-acbc0-th-day-and-exclusive-eighth-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E04-R04-inclusi-acbc0-th-day-and-exclusive-eighth-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E04-R04-inclusi-acbc0-th-day-and-exclusive-eighth-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E04-R04-inclusi-acbc0-th-day-and-exclusive-eighth-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:10:1 › E05: R05 calendar month year leap and DST boundaries 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:10:439
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E05-R05-calenda-1dbbe-ear-leap-and-DST-boundaries-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E05-R05-calenda-1dbbe-ear-leap-and-DST-boundaries-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E05-R05-calenda-1dbbe-ear-leap-and-DST-boundaries-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E05-R05-calenda-1dbbe-ear-leap-and-DST-boundaries-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:11:1 › E06: R06 counters remain whole-project under filters 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:11:166
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E06-R06-counter-ec4cf-whole-project-under-filters-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E06-R06-counter-ec4cf-whole-project-under-filters-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E06-R06-counter-ec4cf-whole-project-under-filters-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E06-R06-counter-ec4cf-whole-project-under-filters-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:12:1 › E07: R07 source-relative order for every group 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:12:281
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E07-R07-source-relative-order-for-every-group-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E07-R07-source-relative-order-for-every-group-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E07-R07-source-relative-order-for-every-group-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E07-R07-source-relative-order-for-every-group-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:13:1 › E08: R08 changed anchor and empty draft keep filter 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:13:105
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E08-R08-changed-e4ea0-and-empty-draft-keep-filter-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E08-R08-changed-e4ea0-and-empty-draft-keep-filter-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E08-R08-changed-e4ea0-and-empty-draft-keep-filter-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E08-R08-changed-e4ea0-and-empty-draft-keep-filter-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:14:1 › E09: R09 both views preserve empty draft and last valid anchor 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Referenčni datum', { exact: true })
+
+
+      12 | test('E07: R07 source-relative order for every group',async({page})=>{await mount(page,[...data].reverse());for(const [key,ids]of [['overdue',['past']],['today',['now']],['week',['last','next']],['later',['later']],['done',['done-future','done-now','done-past']]] as const){await select(page,'Pogled rokov',key);await expectIds(page,[...ids])}await select(page,'Pogled rokov','all');await expectIds(page,webIds(data).reverse())})
+      13 | test('E08: R08 changed anchor and empty draft keep filter',async({page})=>{await mount(page,data);await select(page,'Pogled rokov','today');await date(page).fill('2026-09-22');await expectIds(page,['next']);await date(page).fill('');await expect(page.getByRole('alert')).toContainText('Vnesi veljaven referenčni datum.');await expectIds(page,['next']);await counts(page,[2,1,2,0,3]);await date(page).fill('2026-09-28');await expectIds(page,['last']);await expect(page.getByRole('alert')).toHaveCount(0);await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('today')})
+    > 14 | test('E09: R09 both views preserve empty draft and last valid anchor',async({page})=>{await mount(page,data);await date(page).fill('2026-09-22');await select(page,'Pogled rokov','today');await date(page).fill('');await board(page);await expectIds(page,['next']);await expect(date(page)).toHaveValue('');await table(page);await expectIds(page,['next']);await expect(page.getByRole('alert')).toBeVisible()})
+         |                                                                                                                               ^
+      15 | test('E10: R10 project and refresh reset local state',async({page})=>{await mount(page,[...data,makeTask('l',{projectId:'launch'})]);await date(page).fill('2030-01-01');await select(page,'Pogled rokov','overdue');await project(page,'launch');await expect(date(page)).toHaveValue('2026-09-21');await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('all');await project(page,'web');await date(page).fill('2030-01-01');await page.reload();await expect(date(page)).toHaveValue('2026-09-21');await expectIds(page,webIds(data));expect(await page.evaluate(()=>localStorage.length)).toBe(0)})
+      16 | test('E11: R11 empty groups and empty project',async({page})=>{await mount(page,[makeTask('one')]);await select(page,'Pogled rokov','week');await expectIds(page,[]);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await select(page,'Pogled rokov','all');await expectIds(page,['one']);await project(page,'launch');await counts(page,[0,0,0,0,0]);await table(page);await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible()})
+      17 | test('E12: R12 valid leap dates remain unchanged and no writes',async({page})=>{const writes=await mount(page,[makeTask('leap',{dueDate:'2028-02-29'})]);await date(page).fill('2028-02-28');await select(page,'Pogled rokov','week');await expect(page.locator('[data-task-id="leap"] time')).toHaveAttribute('datetime','2028-02-29');await details(page,'leap');await board(page);await readonly(page,writes)})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:14:127
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E09-R09-both-vi-d75f8-draft-and-last-valid-anchor-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E09-R09-both-vi-d75f8-draft-and-last-valid-anchor-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E09-R09-both-vi-d75f8-draft-and-last-valid-anchor-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E09-R09-both-vi-d75f8-draft-and-last-valid-anchor-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:15:1 › E10: R10 project and refresh reset local state 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Referenčni datum', { exact: true })
+
+
+      13 | test('E08: R08 changed anchor and empty draft keep filter',async({page})=>{await mount(page,data);await select(page,'Pogled rokov','today');await date(page).fill('2026-09-22');await expectIds(page,['next']);await date(page).fill('');await expect(page.getByRole('alert')).toContainText('Vnesi veljaven referenčni datum.');await expectIds(page,['next']);await counts(page,[2,1,2,0,3]);await date(page).fill('2026-09-28');await expectIds(page,['last']);await expect(page.getByRole('alert')).toHaveCount(0);await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('today')})
+      14 | test('E09: R09 both views preserve empty draft and last valid anchor',async({page})=>{await mount(page,data);await date(page).fill('2026-09-22');await select(page,'Pogled rokov','today');await date(page).fill('');await board(page);await expectIds(page,['next']);await expect(date(page)).toHaveValue('');await table(page);await expectIds(page,['next']);await expect(page.getByRole('alert')).toBeVisible()})
+    > 15 | test('E10: R10 project and refresh reset local state',async({page})=>{await mount(page,[...data,makeTask('l',{projectId:'launch'})]);await date(page).fill('2030-01-01');await select(page,'Pogled rokov','overdue');await project(page,'launch');await expect(date(page)).toHaveValue('2026-09-21');await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('all');await project(page,'web');await date(page).fill('2030-01-01');await page.reload();await expect(date(page)).toHaveValue('2026-09-21');await expectIds(page,webIds(data));expect(await page.evaluate(()=>localStorage.length)).toBe(0)})
+         |                                                                                                                                                       ^
+      16 | test('E11: R11 empty groups and empty project',async({page})=>{await mount(page,[makeTask('one')]);await select(page,'Pogled rokov','week');await expectIds(page,[]);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await select(page,'Pogled rokov','all');await expectIds(page,['one']);await project(page,'launch');await counts(page,[0,0,0,0,0]);await table(page);await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible()})
+      17 | test('E12: R12 valid leap dates remain unchanged and no writes',async({page})=>{const writes=await mount(page,[makeTask('leap',{dueDate:'2028-02-29'})]);await date(page).fill('2028-02-28');await select(page,'Pogled rokov','week');await expect(page.locator('[data-task-id="leap"] time')).toHaveAttribute('datetime','2028-02-29');await details(page,'leap');await board(page);await readonly(page,writes)})
+      18 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:15:151
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E10-R10-project-and-refresh-reset-local-state-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E10-R10-project-and-refresh-reset-local-state-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E10-R10-project-and-refresh-reset-local-state-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E10-R10-project-and-refresh-reset-local-state-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:16:106
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:17:1 › E12: R12 valid leap dates remain unchanged and no writes 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Referenčni datum', { exact: true })
+
+
+      15 | test('E10: R10 project and refresh reset local state',async({page})=>{await mount(page,[...data,makeTask('l',{projectId:'launch'})]);await date(page).fill('2030-01-01');await select(page,'Pogled rokov','overdue');await project(page,'launch');await expect(date(page)).toHaveValue('2026-09-21');await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('all');await project(page,'web');await date(page).fill('2030-01-01');await page.reload();await expect(date(page)).toHaveValue('2026-09-21');await expectIds(page,webIds(data));expect(await page.evaluate(()=>localStorage.length)).toBe(0)})
+      16 | test('E11: R11 empty groups and empty project',async({page})=>{await mount(page,[makeTask('one')]);await select(page,'Pogled rokov','week');await expectIds(page,[]);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await select(page,'Pogled rokov','all');await expectIds(page,['one']);await project(page,'launch');await counts(page,[0,0,0,0,0]);await table(page);await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible()})
+    > 17 | test('E12: R12 valid leap dates remain unchanged and no writes',async({page})=>{const writes=await mount(page,[makeTask('leap',{dueDate:'2028-02-29'})]);await date(page).fill('2028-02-28');await select(page,'Pogled rokov','week');await expect(page.locator('[data-task-id="leap"] time')).toHaveAttribute('datetime','2028-02-29');await details(page,'leap');await board(page);await readonly(page,writes)})
+         |                                                                                                                                                                           ^
+      18 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:17:171
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E12-R12-valid-l-72f6e-ain-unchanged-and-no-writes-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E12-R12-valid-l-72f6e-ain-unchanged-and-no-writes-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E12-R12-valid-l-72f6e-ain-unchanged-and-no-writes-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E12-R12-valid-l-72f6e-ain-unchanged-and-no-writes-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [development-mobile] › tasks/P08/development.spec.ts:2:1 › D01: fixed anchor and overdue tasks 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Referenčni datum', { exact: true })
+    Expected: "2026-09-21"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Referenčni datum', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Referenčni datum', { exact: true })
+
+
+      1 | import { test, expect, mount, select, expectIds, board, readonly } from './helpers.ts'
+    > 2 | test('D01: fixed anchor and overdue tasks', async ({ page }) => { await mount(page); await expect(page.getByLabel('Referenčni datum', { exact: true })).toHaveValue('2026-09-21'); await select(page, 'Pogled rokov', 'overdue'); await expectIds(page, ['web-01', 'web-07']) })
+        |                                                                                                                                                         ^
+      3 | test('D02: inclusive week boundary', async ({ page }) => { await mount(page); await select(page, 'Pogled rokov', 'week'); await expectIds(page, ['web-02', 'web-04']); await expect(page.getByLabel('Število rokov week', { exact: true })).toHaveText('2') })
+      4 | test('D03: empty draft retains last valid classification', async ({ page }) => { await mount(page); await select(page, 'Pogled rokov', 'overdue'); await page.getByLabel('Referenčni datum', { exact: true }).fill(''); await expect(page.getByRole('alert')).toContainText('Vnesi veljaven referenčni datum.'); await expectIds(page, ['web-01', 'web-07']); await page.getByLabel('Referenčni datum', { exact: true }).fill('2026-09-20'); await expect(page.getByRole('alert')).toHaveCount(0); await expectIds(page, ['web-01']) })
+      5 | test('D04: done group, board and no writes', async ({ page }) => { const writes = await mount(page); await select(page, 'Pogled rokov', 'done'); await board(page); await expectIds(page, ['web-03', 'web-06']); await readonly(page, writes) })
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/development.spec.ts:2:153
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D01-fixed-anchor-and-overdue-tasks-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/development-D01-fixed-anchor-and-overdue-tasks-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D01-fixed-anchor-and-overdue-tasks-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/development-D01-fixed-anchor-and-overdue-tasks-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [development-mobile] › tasks/P08/development.spec.ts:3:1 › D02: inclusive week boundary ──────
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/development.spec.ts:3:85
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D02-inclusive-week-boundary-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/development-D02-inclusive-week-boundary-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D02-inclusive-week-boundary-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/development-D02-inclusive-week-boundary-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [development-mobile] › tasks/P08/development.spec.ts:4:1 › D03: empty draft retains last valid classification 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/development.spec.ts:4:107
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D03-empty-draf-b3e48-s-last-valid-classification-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/development-D03-empty-draf-b3e48-s-last-valid-classification-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D03-empty-draf-b3e48-s-last-valid-classification-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/development-D03-empty-draf-b3e48-s-last-valid-classification-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [development-mobile] › tasks/P08/development.spec.ts:5:1 › D04: done group, board and no writes 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/development.spec.ts:5:108
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D04-done-group-board-and-no-writes-development-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/development-D04-done-group-board-and-no-writes-development-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/development-D04-done-group-board-and-no-writes-development-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/development-D04-done-group-board-and-no-writes-development-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:6:1 › E01: R01 fixed date independent of system clock 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Referenčni datum', { exact: true })
+    Expected: "2026-09-21"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Referenčni datum', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Referenčni datum', { exact: true })
+
+
+      4 | async function counts(page:Page,values:number[]) { for(const [i,key] of ['overdue','today','week','later','done'].entries())await expect(page.getByLabel('Število rokov '+key,{exact:true})).toHaveText(String(values[i])) }
+      5 | const data=[makeTask('past',{dueDate:'2026-09-20'}),makeTask('now',{dueDate:'2026-09-21'}),makeTask('next',{dueDate:'2026-09-22'}),makeTask('last',{dueDate:'2026-09-28',status:'in_progress'}),makeTask('later',{dueDate:'2026-09-29'}),makeTask('done-past',{status:'done',dueDate:'2000-01-01'}),makeTask('done-now',{status:'done',dueDate:'2026-09-21'}),makeTask('done-future',{status:'done',dueDate:'2030-01-01'})]
+    > 6 | test('E01: R01 fixed date independent of system clock',async({page})=>{await page.clock.setFixedTime(new Date('2034-12-31T23:59:00Z'));await mount(page,data);await expect(date(page)).toHaveValue('2026-09-21');await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('all');await expectIds(page,webIds(data))})
+        |                                                                                                                                                                                        ^
+      7 | test('E02: R02 completed tasks never enter open groups',async({page})=>{await mount(page,data);await select(page,'Pogled rokov','done');await expectIds(page,['done-past','done-now','done-future']);await counts(page,[1,1,2,1,3]);await date(page).fill('1999-12-31');await expectIds(page,['done-past','done-now','done-future'])})
+      8 | test('E03: R03 strict past and exact today boundaries',async({page})=>{await mount(page,data);await select(page,'Pogled rokov','overdue');await expectIds(page,['past']);await select(page,'Pogled rokov','today');await expectIds(page,['now']);await date(page).fill('2026-09-22');await expectIds(page,['next'])})
+      9 | test('E04: R04 inclusive seventh day and exclusive eighth',async({page})=>{await mount(page,data);await select(page,'Pogled rokov','week');await expectIds(page,['next','last']);await select(page,'Pogled rokov','later');await expectIds(page,['later']);await counts(page,[1,1,2,1,3])})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:6:184
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E01-R01-fixed-date-independent-of-system-clock-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E01-R01-fixed-date-independent-of-system-clock-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E01-R01-fixed-date-independent-of-system-clock-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E01-R01-fixed-date-independent-of-system-clock-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:7:1 › E02: R02 completed tasks never enter open groups 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:7:102
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E02-R02-completed-tasks-never-enter-open-groups-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E02-R02-completed-tasks-never-enter-open-groups-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E02-R02-completed-tasks-never-enter-open-groups-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E02-R02-completed-tasks-never-enter-open-groups-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:8:1 › E03: R03 strict past and exact today boundaries 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:8:101
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E03-R03-strict-past-and-exact-today-boundaries-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E03-R03-strict-past-and-exact-today-boundaries-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E03-R03-strict-past-and-exact-today-boundaries-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E03-R03-strict-past-and-exact-today-boundaries-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:9:1 › E04: R04 inclusive seventh day and exclusive eighth 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:9:105
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E04-R04-inclusi-acbc0-th-day-and-exclusive-eighth-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E04-R04-inclusi-acbc0-th-day-and-exclusive-eighth-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E04-R04-inclusi-acbc0-th-day-and-exclusive-eighth-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E04-R04-inclusi-acbc0-th-day-and-exclusive-eighth-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  25) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:10:1 › E05: R05 calendar month year leap and DST boundaries 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:10:439
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E05-R05-calenda-1dbbe-ear-leap-and-DST-boundaries-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E05-R05-calenda-1dbbe-ear-leap-and-DST-boundaries-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E05-R05-calenda-1dbbe-ear-leap-and-DST-boundaries-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E05-R05-calenda-1dbbe-ear-leap-and-DST-boundaries-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  26) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:11:1 › E06: R06 counters remain whole-project under filters 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:11:166
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E06-R06-counter-ec4cf-whole-project-under-filters-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E06-R06-counter-ec4cf-whole-project-under-filters-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E06-R06-counter-ec4cf-whole-project-under-filters-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E06-R06-counter-ec4cf-whole-project-under-filters-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  27) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:12:1 › E07: R07 source-relative order for every group 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:12:281
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E07-R07-source-relative-order-for-every-group-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E07-R07-source-relative-order-for-every-group-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E07-R07-source-relative-order-for-every-group-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E07-R07-source-relative-order-for-every-group-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  28) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:13:1 › E08: R08 changed anchor and empty draft keep filter 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:13:105
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E08-R08-changed-e4ea0-and-empty-draft-keep-filter-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E08-R08-changed-e4ea0-and-empty-draft-keep-filter-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E08-R08-changed-e4ea0-and-empty-draft-keep-filter-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E08-R08-changed-e4ea0-and-empty-draft-keep-filter-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  29) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:14:1 › E09: R09 both views preserve empty draft and last valid anchor 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Referenčni datum', { exact: true })
+
+
+      12 | test('E07: R07 source-relative order for every group',async({page})=>{await mount(page,[...data].reverse());for(const [key,ids]of [['overdue',['past']],['today',['now']],['week',['last','next']],['later',['later']],['done',['done-future','done-now','done-past']]] as const){await select(page,'Pogled rokov',key);await expectIds(page,[...ids])}await select(page,'Pogled rokov','all');await expectIds(page,webIds(data).reverse())})
+      13 | test('E08: R08 changed anchor and empty draft keep filter',async({page})=>{await mount(page,data);await select(page,'Pogled rokov','today');await date(page).fill('2026-09-22');await expectIds(page,['next']);await date(page).fill('');await expect(page.getByRole('alert')).toContainText('Vnesi veljaven referenčni datum.');await expectIds(page,['next']);await counts(page,[2,1,2,0,3]);await date(page).fill('2026-09-28');await expectIds(page,['last']);await expect(page.getByRole('alert')).toHaveCount(0);await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('today')})
+    > 14 | test('E09: R09 both views preserve empty draft and last valid anchor',async({page})=>{await mount(page,data);await date(page).fill('2026-09-22');await select(page,'Pogled rokov','today');await date(page).fill('');await board(page);await expectIds(page,['next']);await expect(date(page)).toHaveValue('');await table(page);await expectIds(page,['next']);await expect(page.getByRole('alert')).toBeVisible()})
+         |                                                                                                                               ^
+      15 | test('E10: R10 project and refresh reset local state',async({page})=>{await mount(page,[...data,makeTask('l',{projectId:'launch'})]);await date(page).fill('2030-01-01');await select(page,'Pogled rokov','overdue');await project(page,'launch');await expect(date(page)).toHaveValue('2026-09-21');await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('all');await project(page,'web');await date(page).fill('2030-01-01');await page.reload();await expect(date(page)).toHaveValue('2026-09-21');await expectIds(page,webIds(data));expect(await page.evaluate(()=>localStorage.length)).toBe(0)})
+      16 | test('E11: R11 empty groups and empty project',async({page})=>{await mount(page,[makeTask('one')]);await select(page,'Pogled rokov','week');await expectIds(page,[]);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await select(page,'Pogled rokov','all');await expectIds(page,['one']);await project(page,'launch');await counts(page,[0,0,0,0,0]);await table(page);await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible()})
+      17 | test('E12: R12 valid leap dates remain unchanged and no writes',async({page})=>{const writes=await mount(page,[makeTask('leap',{dueDate:'2028-02-29'})]);await date(page).fill('2028-02-28');await select(page,'Pogled rokov','week');await expect(page.locator('[data-task-id="leap"] time')).toHaveAttribute('datetime','2028-02-29');await details(page,'leap');await board(page);await readonly(page,writes)})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:14:127
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E09-R09-both-vi-d75f8-draft-and-last-valid-anchor-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E09-R09-both-vi-d75f8-draft-and-last-valid-anchor-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E09-R09-both-vi-d75f8-draft-and-last-valid-anchor-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E09-R09-both-vi-d75f8-draft-and-last-valid-anchor-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  30) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:15:1 › E10: R10 project and refresh reset local state 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Referenčni datum', { exact: true })
+
+
+      13 | test('E08: R08 changed anchor and empty draft keep filter',async({page})=>{await mount(page,data);await select(page,'Pogled rokov','today');await date(page).fill('2026-09-22');await expectIds(page,['next']);await date(page).fill('');await expect(page.getByRole('alert')).toContainText('Vnesi veljaven referenčni datum.');await expectIds(page,['next']);await counts(page,[2,1,2,0,3]);await date(page).fill('2026-09-28');await expectIds(page,['last']);await expect(page.getByRole('alert')).toHaveCount(0);await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('today')})
+      14 | test('E09: R09 both views preserve empty draft and last valid anchor',async({page})=>{await mount(page,data);await date(page).fill('2026-09-22');await select(page,'Pogled rokov','today');await date(page).fill('');await board(page);await expectIds(page,['next']);await expect(date(page)).toHaveValue('');await table(page);await expectIds(page,['next']);await expect(page.getByRole('alert')).toBeVisible()})
+    > 15 | test('E10: R10 project and refresh reset local state',async({page})=>{await mount(page,[...data,makeTask('l',{projectId:'launch'})]);await date(page).fill('2030-01-01');await select(page,'Pogled rokov','overdue');await project(page,'launch');await expect(date(page)).toHaveValue('2026-09-21');await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('all');await project(page,'web');await date(page).fill('2030-01-01');await page.reload();await expect(date(page)).toHaveValue('2026-09-21');await expectIds(page,webIds(data));expect(await page.evaluate(()=>localStorage.length)).toBe(0)})
+         |                                                                                                                                                       ^
+      16 | test('E11: R11 empty groups and empty project',async({page})=>{await mount(page,[makeTask('one')]);await select(page,'Pogled rokov','week');await expectIds(page,[]);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await select(page,'Pogled rokov','all');await expectIds(page,['one']);await project(page,'launch');await counts(page,[0,0,0,0,0]);await table(page);await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible()})
+      17 | test('E12: R12 valid leap dates remain unchanged and no writes',async({page})=>{const writes=await mount(page,[makeTask('leap',{dueDate:'2028-02-29'})]);await date(page).fill('2028-02-28');await select(page,'Pogled rokov','week');await expect(page.locator('[data-task-id="leap"] time')).toHaveAttribute('datetime','2028-02-29');await details(page,'leap');await board(page);await readonly(page,writes)})
+      18 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:15:151
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E10-R10-project-and-refresh-reset-local-state-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E10-R10-project-and-refresh-reset-local-state-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E10-R10-project-and-refresh-reset-local-state-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E10-R10-project-and-refresh-reset-local-state-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  31) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project 
+
+    TimeoutError: locator.selectOption: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Pogled rokov', exact: true })
+
+
+       at tasks/P08/helpers.ts:48
+
+      46 | export async function board(page: Page) { await page.getByRole('button', { name: 'Tabla', exact: true }).click(); await expect(page.getByRole('region', { name: 'Tabla opravil' })).toBeVisible() }
+      47 | export async function table(page: Page) { await page.getByRole('button', { name: 'Preglednica', exact: true }).click(); await expect(page.getByRole('button', { name: 'Preglednica', exact: true })).toHaveAttribute('aria-pressed', 'true') }
+    > 48 | export const select = (page: Page, name: string, value: string) => page.getByRole('combobox', { name, exact: true }).selectOption(value)
+         |                                                                                                                      ^
+      49 | export const click = (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click()
+      50 | export async function project(page: Page, id: 'web' | 'launch') {
+      51 |   const name = id === 'web' ? 'Spletna prenova' : 'Jesenska kampanja'
+        at select (/Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/tasks/P08/helpers.ts:48:118)
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:16:106
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E11-R11-empty-groups-and-empty-project-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32) [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:17:1 › E12: R12 valid leap dates remain unchanged and no writes 
+
+    TimeoutError: locator.fill: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Referenčni datum', { exact: true })
+
+
+      15 | test('E10: R10 project and refresh reset local state',async({page})=>{await mount(page,[...data,makeTask('l',{projectId:'launch'})]);await date(page).fill('2030-01-01');await select(page,'Pogled rokov','overdue');await project(page,'launch');await expect(date(page)).toHaveValue('2026-09-21');await expect(page.getByRole('combobox',{name:'Pogled rokov',exact:true})).toHaveValue('all');await project(page,'web');await date(page).fill('2030-01-01');await page.reload();await expect(date(page)).toHaveValue('2026-09-21');await expectIds(page,webIds(data));expect(await page.evaluate(()=>localStorage.length)).toBe(0)})
+      16 | test('E11: R11 empty groups and empty project',async({page})=>{await mount(page,[makeTask('one')]);await select(page,'Pogled rokov','week');await expectIds(page,[]);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await board(page);await expect(page.getByText('Ni opravil v izbrani skupini.',{exact:true})).toBeVisible();await select(page,'Pogled rokov','all');await expectIds(page,['one']);await project(page,'launch');await counts(page,[0,0,0,0,0]);await table(page);await expect(page.getByRole('heading',{name:'V tem projektu še ni opravil'})).toBeVisible()})
+    > 17 | test('E12: R12 valid leap dates remain unchanged and no writes',async({page})=>{const writes=await mount(page,[makeTask('leap',{dueDate:'2028-02-29'})]);await date(page).fill('2028-02-28');await select(page,'Pogled rokov','week');await expect(page.locator('[data-task-id="leap"] time')).toHaveAttribute('datetime','2028-02-29');await details(page,'leap');await board(page);await readonly(page,writes)})
+         |                                                                                                                                                                           ^
+      18 |
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P08/acceptance.spec.ts:17:171
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E12-R12-valid-l-72f6e-ain-unchanged-and-no-writes-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E12-R12-valid-l-72f6e-ain-unchanged-and-no-writes-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E12-R12-valid-l-72f6e-ain-unchanged-and-no-writes-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P08-C-003/evaluation-artifacts/acceptance-E12-R12-valid-l-72f6e-ain-unchanged-and-no-writes-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32 failed
+    [development-desktop] › tasks/P08/development.spec.ts:2:1 › D01: fixed anchor and overdue tasks 
+    [development-desktop] › tasks/P08/development.spec.ts:3:1 › D02: inclusive week boundary ───────
+    [development-desktop] › tasks/P08/development.spec.ts:4:1 › D03: empty draft retains last valid classification 
+    [development-desktop] › tasks/P08/development.spec.ts:5:1 › D04: done group, board and no writes 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:6:1 › E01: R01 fixed date independent of system clock 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:7:1 › E02: R02 completed tasks never enter open groups 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:8:1 › E03: R03 strict past and exact today boundaries 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:9:1 › E04: R04 inclusive seventh day and exclusive eighth 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:10:1 › E05: R05 calendar month year leap and DST boundaries 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:11:1 › E06: R06 counters remain whole-project under filters 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:12:1 › E07: R07 source-relative order for every group 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:13:1 › E08: R08 changed anchor and empty draft keep filter 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:14:1 › E09: R09 both views preserve empty draft and last valid anchor 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:15:1 › E10: R10 project and refresh reset local state 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project 
+    [evaluation-desktop] › evaluation/P08/acceptance.spec.ts:17:1 › E12: R12 valid leap dates remain unchanged and no writes 
+    [development-mobile] › tasks/P08/development.spec.ts:2:1 › D01: fixed anchor and overdue tasks ─
+    [development-mobile] › tasks/P08/development.spec.ts:3:1 › D02: inclusive week boundary ────────
+    [development-mobile] › tasks/P08/development.spec.ts:4:1 › D03: empty draft retains last valid classification 
+    [development-mobile] › tasks/P08/development.spec.ts:5:1 › D04: done group, board and no writes 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:6:1 › E01: R01 fixed date independent of system clock 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:7:1 › E02: R02 completed tasks never enter open groups 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:8:1 › E03: R03 strict past and exact today boundaries 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:9:1 › E04: R04 inclusive seventh day and exclusive eighth 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:10:1 › E05: R05 calendar month year leap and DST boundaries 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:11:1 › E06: R06 counters remain whole-project under filters 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:12:1 › E07: R07 source-relative order for every group 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:13:1 › E08: R08 changed anchor and empty draft keep filter 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:14:1 › E09: R09 both views preserve empty draft and last valid anchor 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:15:1 › E10: R10 project and refresh reset local state 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:16:1 › E11: R11 empty groups and empty project 
+    [evaluation-mobile] › evaluation/P08/acceptance.spec.ts:17:1 › E12: R12 valid leap dates remain unchanged and no writes 
+  38 passed (3.2m)

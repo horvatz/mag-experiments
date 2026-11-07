@@ -1,0 +1,3 @@
+# Pregled — P08 (neodvisna primerjava R01–R12)
+
+Pregledal sem specifikacijo, kodo (`src/deadline.ts`, `src/App.tsx`, `src/TaskBoard.tsx`, `src/navigation.ts`), razvojne teste D01–D04, lastne teste `tests/agent/p08.spec.ts` in `verification.md`. Vseh 12 zahtev je po kodi in opisani izvedbi pokritih; konkretnih odstopanj nisem nasel. Neodvisno sem zagnal `npx tsc --noEmit` (uspesno). Celotnega `npm run check` in vedenjskih testov nisem ponovno izvajal; te omejitve so v `unverified` v `review.json`. Zastavici `specificationChangesRequired` in `codeChangesRequired` ostaneta false, `findings` je prazen.

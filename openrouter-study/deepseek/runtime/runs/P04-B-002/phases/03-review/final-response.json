@@ -1,0 +1,15 @@
+```json
+{
+  "complete": true,
+  "checkedRequirements": ["R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08", "R09", "R10", "R11", "R12"],
+  "unverified": [
+    "Končni (skriti) testi naloge niso dostopni; preverjeni so vsi dostopni testi: osnovni/API, razvojni D01-D04 (desktop in mobilni) ter lastni agentni.",
+    "Ročni vizualni pregled v brskalniku ni bil izveden; videz in odzivnost pri 390 pikslih sta preverjena avtomatsko (Playwright prek chromium.connect).",
+    "Git v peskovniku ni dostopen, zato stanja commita nisem preverjal; obseg sprememb je ugotovljen iz vsebine in časov datotek."
+  ],
+  "specificationChangesRequired": false,
+  "codeChangesRequired": false,
+  "summary": "Neodvisni pregled R01-R12: specifikacija, koda, testi in verification.md so skladni z zahtevami. Sam sem ponovno zagnal npm run check (slog, tipi, gradnja, 60/60 testov) ter ločeno razvojne in agentne teste; vsi uspešni. Spremembe so omejene na src/, tests/agent/ in docs/agent/. Konkretnih napak glede zahtev nisem našel, zato obe zastavici ostaneta false in findings prazen.",
+  "findings": []
+}
+```

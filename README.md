@@ -10,9 +10,29 @@ Repozitorij vsebuje skupna navodila, razvojne teste, ločeno referenčno rešite
 in končna preverjanja. Namenjen je avtorju raziskave. Agentom pri primerjavi
 ne priključimo tega repozitorija ali nadrejene mape `mag`.
 
+## Rezultati za magistrsko
+
+Analiza na veji `main` obsega **288 izvedb in 96 vsebinskih presoj** za
+GPT-6 Astra, GPT-6 Luna, GLM-5.3 in DeepSeek V4.1 Flash. Vsak model ima 72
+izvedb na nalogah P03–P10. Vse začete izvedbe vključenih modelov, tudi
+neuspele in prekinjene, so v zbirki. Presoje vzorca ponovitve 001 so
+AI-podprte in neslepe.
+
+- [Poročilo PDF](outputs/01a10e33-388d-7fb1-b33e-a32a923bff0b/primerjava-modelov.pdf)
+- [Preglednica meritev, presoj in parjenih razlik](outputs/01a10e33-388d-7fb1-b33e-a32a923bff0b/primerjava-modelov.xlsx)
+- [Strojno berljivi rezultati](openrouter-study/analysis/comparison.json) in [preverjanje arhivov](openrouter-study/analysis/evidence-audit.json)
+- [Arhivi Astra](runs/), [Luna](luna-study/runtime/runs/),
+  [GLM](openrouter-study/glm/runtime/runs/) in [DeepSeek](openrouter-study/deepseek/runtime/runs/)
+
+Izbor štirih modelov je uredniška odločitev po meritvah. Celotna prvotna
+zbirka s petimi modeli, vključno z Qwen3.5-9B, je na
+[arhivski veji](https://github.com/horvatz/mag-experiments/tree/zan/meritve-s-qwen).
+Razlike med modeli so opisne, saj so se razlikovali tudi ponudniki,
+odjemalci in čas izvedbe.
+
 ## Glavna raziskava P03–P10
 
-Po naročilu avtorja je obseg glavne zbirke 8 nalog × 3 postopki × 3
+Po naročilu avtorja je obseg izvirne zbirke Astra 8 nalog × 3 postopki × 3
 ponovitve = 72 izvedb. P01/P02 sta zaključena pilota in ostajata ločena.
 Tehnična kvalifikacija povratnih zank B/C in prekinitve je zaključena;
 [rezultati kvalifikacije](docs/qualification-results.md) vsebujejo dokazila.

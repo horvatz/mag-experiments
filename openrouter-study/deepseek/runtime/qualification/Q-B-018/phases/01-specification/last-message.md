@@ -1,0 +1,1 @@
+Opravljeno. `docs/agent/specification.md` vsebuje obe zahtevi (R01, R02) in točno vrstico `Q01: result[i] = input[i] + 1` (vrstica 18). Koda ni bila napisana in test ni bil izveden, skladno z navodili.

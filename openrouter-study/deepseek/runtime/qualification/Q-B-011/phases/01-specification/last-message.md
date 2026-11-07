@@ -1,0 +1,1 @@
+Končano. `docs/agent/specification.md` vsebuje oba pogoja (R01, R02) in točno vrstico `Q01: result[i] = input[i] + 1`. Kode nisem pisal, zato `task/qualification-check.mjs` trenutno še ne more uspeti (manjka `src/qualification.ts`).

@@ -1,0 +1,100 @@
+{
+  "id": "P10-C-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Implementacija doseže fazni rok, zato konvergenca ni začeta. Ocenjena je nespremenjena arhivirana vsebina; uspeh funkcionalnosti ne nadomesti veljavnega zaključka postopka. Dokumenti C v mapi značilnosti so po rubriki enakovredni.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "R01–R12 skladno pokrijejo globalni red po ID, enake naslove in poljubno število vključno z 0/1, sosednjo zamenjavo in identiteto robnega dejanja, oba sklada, zavrženje najstarejšega po 20, vejo po undo, razveljavljiv reset ter no-op pri izvoru. Določeni so oba pogleda s stalnimi statusnimi podseznami, življenjska doba projekta/podrobnosti/reload, exact status in ARIA, ločenost gumbov od povezave, nespremenjena polja/števci, lokalnost in geometrija 390. Sočasne spremembe in trajna shramba so pošteno zunaj obsega.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#zahteve-in-pravila",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#dogovor-o-vmesniku",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#odprta-vprašanja-in-omejitve"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T/T0/U/R in poz(id) imajo razložene simbole. Premik definira sosednjo zamenjavo, undo/redo obnovitev vrha in odstranitev ustreznega sklada ter dodajanje prejšnjega T. R07 dopolni krajšavo do meje z omejitvijo 20 in izrecnim zavrženjem najstarejšega; reset je pogojen s T≠T0, neveljavno dejanje ohrani celotno zgodovino. Ohranjeni so ID-ji, polja, status in relativni red stolpcev. Pravila so splošna, ne zgolj posamezne testne vrednosti.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Specifikacija ima eno skupno vrstico vseh R z datotekami, verification pa vsako R poveže z imenovanimi A01–A12/D01–D04 in izidi. Item_34 dejansko potrdi vseh 58 testov; tipi in lint so preverjeni, build je v verification odkrito naveden kot neizveden. Manjkajo povezave posameznih R do konkretnih kodnih funkcij; tasks.md hkrati označi vseh 14 nalog kot dokončanih, tudi T012 z gradnjo in T014 s praznim delivery.md. Dokaz R06 govori o robnem kliku, A05 pa samo preveri disabled; A09 trdi oba sklada, a redo ostane 0. Začetni testni neuspehi in popravki niso dokumentirani. Povezave so koristne, toda delne in mestoma premočne.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/spec.md#izvedba-in-sledljivost",
+        "runtime/runs/P10-C-001/submission/docs/agent/verification.md#izvedena-preverjanja",
+        "runtime/runs/P10-C-001/submission/docs/agent/verification.md#sledljivost-zahtev-r01r12",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/tasks.md#polish",
+        "runtime/runs/P10-C-001/submission/docs/agent/P10/delivery.md",
+        "runtime/runs/P10-C-001/phases/05-implement/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "order.ts loči čiste nemutirajoče prehode premika, undo, redo, reseta, primerjavo reda in omejitev sklada. ProjectView upravlja lokalno stanje in izpelje Map ID→Task, urejeni seznam ter nespremenjene statusne števce. OrderControls je prikazna komponenta, tabela in tabla uporabljata skupen globalni red/premik; tabla izpelje mesta in statusne podsezname. Ključ projekta zagotovi novo stanje ob menjavi, podrobnosti in pogled ohranijo isto instanco. Odgovornosti ostanejo razpoznavne brez znatnega podvajanja domenske logike.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/src/order.ts:15",
+        "runtime/runs/P10-C-001/submission/src/order.ts:26",
+        "runtime/runs/P10-C-001/submission/src/order.ts:30",
+        "runtime/runs/P10-C-001/submission/src/App.tsx:13",
+        "runtime/runs/P10-C-001/submission/src/App.tsx:26",
+        "runtime/runs/P10-C-001/submission/src/App.tsx:119",
+        "runtime/runs/P10-C-001/submission/src/TaskBoard.tsx:14",
+        "runtime/runs/P10-C-001/submission/src/OrderControls.tsx:12"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Dvanajst potrjenih lastnih testov zajame 8 opravil z enakimi naslovi/Unicode, celotne permutacije po premikih in več undo, vejo, reset/undo, statusne podsezname z več karticami, globalnega soseda na tabli, projekt/reload, podrobnosti, 0/1 opravilo, brez zapisov in dejansko širino 390 v obeh pogledih. A07 pa pri 21 potezah izmenjuje web-02 gor/dol, torej le dve permutaciji. Po 20 undo pravilno preveri prvo premaknjeno permutacijo, zato razloči preprosto napačno ohranitev prvih 20 namesto zadnjih 20 posnetkov. Po 20 redo preveri končno stanje. Dvostanjski vzorec brez vmesnih orakljev ne dokazuje pravilnega zaporedja vseh notranjih posnetkov ali zgodovine več različnih permutacij. A05 ne sproži robnega dejanja in preveri redo šele po veljavnem premiku, ko je že 0. A09 ne preveri nepraznega redo, A02 primerja le status namesto vseh polj. Manjkajo reset ob polnem skladu, no-op reset z nepraznim redo, večje domene in zahtevni ID-ji. To so vrzeli lastnih dokazov, ne potrjene končne funkcionalne napake.",
+      "evidence": [
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:3",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:12",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:33",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:48",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:60",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:72",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:87",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:100",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:115",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:129",
+        "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:145",
+        "runtime/runs/P10-C-001/phases/05-implement/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Ni potrjene končne funkcionalne napake: 70/70, 12/12 in dovoljenost/lint/types/build true. Strogi uspeh false zaradi phase_time_limit v implementaciji (627,578 s); skupaj 1081,144 s, prve štiri faze completed, konvergenca ni začeta. Račun v arhivu je delni: znana spodnja meja 0,0689976306 USD za 77 zahtev, zahteva 77 neznana ob prekinitvi. Native poraba nepopolna. Izrecnih napak odziva API ni; zaključni neizvedeni zapis se ne dopolnjuje in meritev se ne ponavlja. Poznejša uskladitev zunaj arhiva izkaže popolni račun 0,085498588 USD; prvotni delni račun ostaja nespremenjen.",
+  "developmentFailureExample": {
+    "description": "Prvi lastni zagon item_28 ima 3 failed/9 passed: A05 poskuša klikniti disabled gumb, A08 primerja celotno besedilo kartice z ID-jem, A11 ponovno mounta isti hash brez osvežitve. Item_31 popravi testni mount z about:blank, uporabo podatkovnih ID-jev in preverjanje disabled. Item_32 ima še 1 failed/11 passed zaradi napačne pričakovane permutacije v A05. Item_33 popravi pričakovanje, item_34 potrdi full 58/58. Pred tem heredoc tudi po nastavitvi TMPDIR odpove; model uspešno preide na zapis prek PTY. Raziskovalec ne posega v popravke.",
+    "evidence": [
+      "runtime/runs/P10-C-001/phases/04-tasks/events.jsonl.gz",
+      "runtime/runs/P10-C-001/phases/05-implement/events.jsonl.gz",
+      "runtime/runs/P10-C-001/submission/tests/agent/helpers.ts:21",
+      "runtime/runs/P10-C-001/submission/tests/agent/P10.spec.ts:48",
+      "analysis/review-packets/P10-C-001.json"
+    ]
+  },
+  "costReconciliation": {
+    "at": "2026-10-09T00:50:42.678Z",
+    "source": "api/P10-C-001/model/api-cost.json",
+    "complete": true,
+    "costUSD": 0.08549858799999999,
+    "knownCostUSD": 0.08549858799999999,
+    "originalArchivePreserved": true
+  }
+}

@@ -1,0 +1,22 @@
+Prebral bom projektna pravila in specifikacijo, nato pripravim specifikacijo pred implementacijo.
+Zahteve so jasne. Zdaj pregledam obstoječi vmesnik, API tipe in razvojne teste, da specifikacija pokriva dejansko arhitekturo.
+Arhitektura je enostavna: lokalno stanje permutacij lahko dodamo v `ProjectView`, položaj pa izračunamo iz globalnega vrstnega reda. Pred spremembo kode zapisem specifikacijo s sledljivostjo do R01–R12.
+`apply_patch` v tem okolju ni izvedljiv, zato bom spremembe zapisal z lokalnim Node skriptom in nato takoj preveril vsebino.
+Specifikacija je pripravljena. Zdaj dodam lokalno zgodovino, globalne meste in gumba na preglednico ter tablo, obnovim pa tudi obstoječe povezave in podrobnosti.
+Osnovna implementacija je na mestu. Najprej poženem typecheck in lint, da zajem morebitne tipovne ali hook napake pred pisanjem testov.
+Typecheck in lint sta čista. Zdaj dodam lastne Playwright preglede za zgodovino, mehke robove, tablo, podrobnosti, reset in omejitev 20 razveljavitev.
+Lastni statični pregledi so zdaj čisti. Zaganjam samo agentske teste, da zgodaj ujamem vedenjske napake pred celotnim `check`.
+Pet testov je uspešnih; neuspehi kažejo predvsem napačna pričakovanja v mojih testih (števci stanj, vrstni red premikov v testu meje). Preverim še A08 in natančno popravim teste ali morebitne funkcionalne napake.
+Sedem od devetih testov je uspešnih; preostala dva sta napaki v testih, ne v funkcionalnosti. Popravim pričakovani števec in stabilnejši scenarij 21 premikov.
+Vedenjski testi so zdaj zeleni. Pred skupnim preverjanjem le uskladim narekovaje novih datotek z obstoječim slogom in ponovim lint/typecheck.
+Slog je usklajen. Zdaj poženem skupne razvojne teste na namizni in mobilni različici, nato še celotni `npm run check`.
+Celotni `npm run check` je uspešen: 55/55 preverjanj. Zdaj v specifikaciji dopolnim sledljivost z dejanskimi rezultati in zapišem končno poročilo o preverjanju.
+Dokumentacija je dopolnjena. Nazadnje preverim končne vrstične reference in morebitne nehote ostale spremembe izven dovoljenih map.
+**Rezultat**
+- Implementiral sem lokalni vrstni red, razveljavitve, ponovitve in reset v `src/App.tsx:12`.
+- Dodal sem globalna mesta in gumba za premik v `src/TaskOrderControls.tsx:15`, vključno z besedilnim statusom in onemogočenimi robnimi dejanji.
+- Tabla ohranja stalne stolpce stanj, prikazuje globalna mesta in uporablja globalnega soseda v `src/TaskBoard.tsx:31`.
+- Slog sem dopolnil v `src/styles.css:66`.
+- Specifikacija: `docs/agent/specification.md:1`; poročilo o preverjanju: `docs/agent/verification.md:1`.
+- Lastni testi pokrivajo vrstni red, zgodovino, reset, tablo, podrobnosti, menj
+{"status":"completed","elapsedSeconds":382.296,"allowedChanges":true,"usage":{"input_tokens":1951281,"cached_input_tokens":1815040,"cache_write_input_tokens":0,"output_tokens":34696,"reasoning_output_tokens":33962}}

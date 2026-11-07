@@ -1,0 +1,4 @@
+- Ustvaril sem zaporedne naloge `T001`–`T013` v `docs/agent/P07/tasks.md:1`.
+- Naloge pokrivajo shrambo, vmesnik preglednice/table, filter, dogodke, napake, lastne Playwright teste, skupne teste in sledljivost.
+- Preveril sem zahtevano obliko 13 opravil in odsotnost zaključnih presledkov.
+- Kode še nisem implementiral. Preostanek faze: `912 s`.

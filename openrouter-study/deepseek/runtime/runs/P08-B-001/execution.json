@@ -1,0 +1,197 @@
+{
+  "id": "P08-B-001",
+  "procedure": "B",
+  "startedAt": "2026-10-09T05:46:28.777Z",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reasoningEffort": "xhigh",
+  "limitSeconds": 1200,
+  "status": "completed_with_phase_time_limit",
+  "cli": "/Users/zan/Documents/mag/experiments/luna-study/runtime/.work/tools/codex-0.158.0-alpha.2.1/CodexCLI.app/Contents/MacOS/codex",
+  "cliVersion": "codex-cli 0.158.0-alpha.2.1",
+  "phases": [
+    {
+      "name": "specification",
+      "role": "specification",
+      "resumed": false,
+      "startedAt": "2026-10-09T05:46:29.000Z",
+      "limitSeconds": 360,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a11f32-db20-7ad2-8465-11e011f74b3e",
+      "finishedAt": "2026-10-09T05:52:29.038Z",
+      "elapsedSeconds": 360.037,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [
+        {
+          "path": "docs/agent/specification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "implementation",
+      "role": "implementation",
+      "resumed": false,
+      "startedAt": "2026-10-09T05:52:29.553Z",
+      "limitSeconds": 479.446,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a11f38-5b8a-7d00-a9ff-b6e9601f4584",
+      "finishedAt": "2026-10-09T06:00:29.038Z",
+      "elapsedSeconds": 479.483,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [
+        {
+          "path": "docs/agent/verification.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/App.tsx",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/deadline.ts",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "src/styles.css",
+          "allowed": true,
+          "kind": "modified",
+          "roleAllowed": true
+        },
+        {
+          "path": "tests/agent/p08.spec.ts",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    },
+    {
+      "name": "review",
+      "role": "review",
+      "resumed": false,
+      "startedAt": "2026-10-09T06:00:29.547Z",
+      "limitSeconds": 239.451,
+      "status": "phase_time_limit",
+      "usage": null,
+      "threadId": "01a11f3f-ae88-7150-aafb-abd9d06132f4",
+      "finishedAt": "2026-10-09T06:04:29.033Z",
+      "elapsedSeconds": 239.485,
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "fileChanges": [
+        {
+          "path": "docs/agent/review.json",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        },
+        {
+          "path": "docs/agent/review.md",
+          "allowed": true,
+          "kind": "added",
+          "roleAllowed": true
+        }
+      ],
+      "allowedChanges": true,
+      "rejectedSymlinks": []
+    }
+  ],
+  "sessions": {
+    "specification": "01a11f32-db20-7ad2-8465-11e011f74b3e",
+    "implementation": "01a11f38-5b8a-7d00-a9ff-b6e9601f4584",
+    "review": "01a11f3f-ae88-7150-aafb-abd9d06132f4"
+  },
+  "intervention": "No operator hints, code edits or hidden-test feedback during execution; deterministic handoffs only.",
+  "usage": null,
+  "monetaryCost": null,
+  "costNote": "OpenRouter API; provider usage and invoiced cost are recorded separately by the researcher relay.",
+  "review": {
+    "complete": true,
+    "checkedRequirements": [
+      "R01",
+      "R02",
+      "R03",
+      "R04",
+      "R05",
+      "R06",
+      "R07",
+      "R08",
+      "R09",
+      "R10",
+      "R11",
+      "R12"
+    ],
+    "unverified": [
+      "npm run check ni bil ponovno izveden v celoti (lint, gradnja, vsi testi); neodvisno sem izvedel le npx tsc --noEmit (uspesno).",
+      "Vedenjskih testov Playwright nisem ponovno zagnal; ocena temelji na branju kode in zapisu verification.md.",
+      "Končni ocenjevalni testi niso dostopni; preverjanje se opira na razvojne D01-D04 in lastne teste tests/agent/p08.spec.ts."
+    ],
+    "specificationChangesRequired": false,
+    "codeChangesRequired": false,
+    "summary": "Pregledal sem specifikacijo, kodo (src/deadline.ts, src/App.tsx, src/TaskBoard.tsx, src/navigation.ts), razvojne teste D01-D04, lastne teste in verification.md ter vseh 12 zahtev primerjal z implementacijo. Vse zahteve so izpolnjene: R01 fiksni REFERENCE_DATE 2026-09-21 in view all; R02 done prednost pred rokoms; R03/R04 predikati overdue/today/week/later z mejami REF, REF+1..REF+7; R05 UTC koledarska aritmetika in leksikografske primerjave; R06 stevci nad celotnim projektom neodvisni od filtra; R07 filter ohranja izvorni vrstni red in ne spreminja podatkov; R08 takojsen preracun z ohranjenim filtrom in opozorilom role=alert; R09 enaki filtrirani ID-ji v preglednici in tabli ob ohranjenem stanju; R10 ponastavitev ob menjavi projekta/osvezitvi brez trajne shrambe in URL-ja; R11 pet nicel za prazen projekt in sporocilo prazne skupine; R12 samo bralni GET /api/ (PATCH v api.ts je izhodiscni in se ne uporablja), ohranjen Folio in sirina 390 pik. Dogovor o vmesniku (oznake, aria-label stevcev, imena skupin, data-task-id, Pregled stanj opravil) je upostevan. Konkretnih ugotovitev ni, zato sta zastavici false in findings prazen.",
+    "findings": []
+  },
+  "finishedAt": "2026-10-09T06:04:29.317Z",
+  "elapsedSeconds": 1080.535,
+  "usageNote": "Raw CLI usage is recorded per phase. Aggregate is withheld if a resumed session requires reconciliation or any phase lacks a final usage event.",
+  "fileChanges": [
+    {
+      "path": "docs/agent/review.json",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "docs/agent/review.md",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "docs/agent/specification.md",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "docs/agent/verification.md",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "src/App.tsx",
+      "allowed": true,
+      "kind": "modified"
+    },
+    {
+      "path": "src/deadline.ts",
+      "allowed": true,
+      "kind": "added"
+    },
+    {
+      "path": "src/styles.css",
+      "allowed": true,
+      "kind": "modified"
+    },
+    {
+      "path": "tests/agent/p08.spec.ts",
+      "allowed": true,
+      "kind": "added"
+    }
+  ],
+  "rejectedSymlinks": [],
+  "allowedChanges": true
+}

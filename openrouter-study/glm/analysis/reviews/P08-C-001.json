@@ -1,0 +1,100 @@
+{
+  "id": "P08-C-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "limitation": "Presoja desetih dejansko dostavljenih avtorskih datotek in izvirnih ter preserviranih orodnih dokazov. Uspeh osmih lastnih testov pred zadnjim popravkom ni dokaz njihovega uspeha na končni oddaji. Arhiv, časovna omejitev in končni rezultati se ne spreminjajo.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija in načrt skladno opredelita R01–R12: fiksni datum/all, dejanske statuse, done prednost, koledarske meje, celoprojektne števce, stabilne ID-je, vseh šest izborov, veljaven/prazen/ponovno veljaven vnos ter ohranitev besedila in filtra med pogledoma. Projekt/reload ponastavita samo novo lokalno stanje; ni trajne shrambe ali novih URL parametrov. Natančno določi kontrole, pet imen/aria-label, izhodiščne stolpce in Folio pri 390 px. Načrt izrecno zahteva prazno sporočilo v obeh pogledih. Manjša literalna neskladnost je izpuščena pika v opozorilu specifikacije/načrta; ta je v končni kodi popravljena. Bistvena pravila in robovi so opredeljeni, končna napaka prazne table pa ostane ločen funkcionalni izid.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:15",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:37",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:65",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:80",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/plan.md:27"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "Urejeni group(t,R) ima done prvo, nato D<R, D=R, koledarske dneve 1–7 in šele sicer later; zadnji sicer ne prekriva prejšnjih vej. visible in count sta preverljiva predikata, števec velja za celotni projekt pred filtrom, izvorni vrstni red pa je invarianta. Pravila ločijo veljavno referenco od osnutka, ohranijo filter in zadnji veljavni izračun ob praznem vnosu ter izrecno ohranijo besedilo pri preklopu. Menjava projekta/osvežitev imata določeni začetni vrednosti brez predpisa ponastavitve obstoječega pogleda. Koledarski dayAdd je opredeljen neodvisno od ure, pasu in DST.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:37",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:48",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:60",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:88"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Načrt in naloge povežeta odgovornosti z dejanskim dueDates.ts, ProjectView in tests/agent/P08.spec.ts; lastni naslovi poimenujejo R01–R12. Specifikacijska matrika pa ostane načrtovana in večinoma skupinska, brez posodobljenih konkretnih funkcij/testnih izidov. Vse naloge ostanejo neoznačene, feature verification vsebuje začetni zapis preverjanja še niso izvedena, čeprav dnevniki dokazujejo več dejanskih zagonov. To je zastarel, nedokončan zapis, ne lažna trditev uspeha. Končni root verification manjka in po zadnjem popravku ni potrjenega celovitega uspeha; uporabne povezave zato ostanejo delne.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/spec.md:93",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/plan.md:35",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/tasks.md:7",
+        "runtime/runs/P08-C-001/submission/docs/agent/P08/verification.md:5",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:133",
+        "analysis/review-packets/P08-C-001.json"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "Čisti dueDates.ts loči koledarsko dodajanje, klasifikacijo, stabilni filter in celoprojektno štetje. ProjectView loči osnutek, zadnjo veljavno referenco, opozorilo in filter; vidna opravila ter števci so izpeljani iz istih podatkov in pravil. Ključ projekta upravlja reset, obstoječi view ostane zunanje stanje in se ob preklopu ne ponovno inicializira. Obe predstavitvi dobita isti filtrirani seznam, TaskBoard ohrani obstoječe stolpce. Manjkajoče prazno sporočilo v board veji je konkretna funkcionalna napaka, ne znatno podvajanje ali zmedena organizacija odgovornosti.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/src/dueDates.ts:8",
+        "runtime/runs/P08-C-001/submission/src/dueDates.ts:17",
+        "runtime/runs/P08-C-001/submission/src/dueDates.ts:25",
+        "runtime/runs/P08-C-001/submission/src/dueDates.ts:30",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:21",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:31",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:78",
+        "runtime/runs/P08-C-001/submission/src/App.tsx:122"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Osem dejansko izvedenih scenarijev doseže 8/8 v item_46: ročni ID-ji/števci, -1/0/+1/+7/+8, navadni/prestopni februar in prehod leta, vseh šest izborov, celoprojektni števci, spremenjena referenca/prazen vnos/nov veljaven vnos, oba prikaza, res spremenjen reload in menjava projekta, prazni projekt/skupina ter bralnost. Vrzeli so pomembne: done je le pred referenco; ni različnih pasov/ure ali nabora več kot desetih opravil; prazni osnutek ni preklopljen med pogledoma, prazna skupina je preverjena samo v preglednici in 390 px samo tam. URL preveri le dve imenovani spremenljivki. Zadnja popravljena pika v kodi tudi naredi končni lastni toHaveText brez pike zastarel; novi celoviti zagon item_50 nima potrjenega zaključka. Koristni izvršeni robovi zato niso popolna končna lastna verifikacija.",
+      "evidence": [
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:43",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:62",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:102",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:133",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:157",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:186",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:209",
+        "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:224",
+        "runtime/runs/P08-C-001/phases/05-implement/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E11 odpove pri obeh širinah: preglednica prazne skupine pokaže zahtevano sporočilo, po kliku Tabla pa App:78 neposredno izriše TaskBoard z nič opravili in sporočila Ni opravil v izbrani skupini. ni več. Območje table in stolpci ostanejo, zato gre za manjkajoče sporočilo, ne odstranitev board regije kot pri nekaterih drugih oddajah. Končni izid 68/70, 11/12, lint/types/build/allowed true; postopek phase_time_limit po 1080,961 s in brez converge. Prvotni poskus ni ponovljen ali popravljen.",
+    "evidence": [
+      "runtime/runs/P08-C-001/evaluation-tests.log",
+      "runtime/runs/P08-C-001/evaluation-summary.json",
+      "runtime/runs/P08-C-001/execution.json",
+      "runtime/runs/P08-C-001/submission/src/App.tsx:78"
+    ]
+  },
+  "finalFailureNote": "Priprava štirih faz 387,402 s, implementacija 690,529 s doseže fazno omejitev z rezerviranimi 120 s za konvergenco, ki se ne začne. Popolni evidentirani račun 1,020470894 USD za 99 zahtev; običajna časovna omejitev ni izrecna napaka storitve. Arhiv dokazuje dodano piko, zadnji lastni/full uspeh po tem popravku pa ni potrjen.",
+  "developmentFailureExample": {
+    "description": "Ohranjeni so invalid patch, shell/sintaktične in TS napake ter več lastnih neuspehov. Item_38 ima 5 failed/3 passed zaradi napačne namestitve mock podatkov, toHaveValues na več option elementih in napačnih datumskih orakljev. Model popravi testne podatke/oraklje in čakanje na DOM; item_46 potrdi 8/8. Nato item_48 res odkrije manjkajočo piko v aplikaciji: 2 razvojna D03 neuspeha pri 52 uspehih. Item_50 začne popravek in nov check; končna oddaja ima piko, vendar ni completed dogodka tega ukaza, zato končnega 54/54 ali 8/8 ne trdimo.",
+    "evidence": [
+      "runtime/runs/P08-C-001/phases/05-implement/events.jsonl.gz",
+      "analysis/review-packets/P08-C-001.json",
+      "runtime/runs/P08-C-001/submission/src/App.tsx:60",
+      "runtime/runs/P08-C-001/submission/tests/agent/P08.spec.ts:148"
+    ]
+  }
+}

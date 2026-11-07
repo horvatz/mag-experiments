@@ -1,0 +1,15 @@
+.feature-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; padding: 16px 0; }
+.feature-controls label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: var(--text-secondary, #63665e); }
+.feature-controls input:not([type=checkbox]), .feature-controls select { min-height: 36px; max-width: 100%; min-width: 0; border: 1px solid var(--border, #dddfd7); border-radius: 8px; background: var(--surface, #fff); padding: 6px 9px; font: inherit; color: var(--text, #272a23); }
+.feature-controls button, .feature-row-actions button { min-height: 34px; border: 1px solid var(--border, #dddfd7); border-radius: 8px; background: var(--surface, #fff); color: var(--text, #272a23); padding: 6px 10px; font: inherit; cursor: pointer; }
+.feature-controls button:disabled, .feature-row-actions button:disabled { opacity: .45; cursor: not-allowed; }
+.feature-controls button:focus-visible, .feature-controls input:focus-visible, .feature-controls select:focus-visible, .feature-row-actions button:focus-visible { outline: 2px solid #697c41; outline-offset: 2px; }
+.feature-controls .feature-check { flex-direction: row; align-items: center; gap: 6px; }
+.feature-controls fieldset { display: flex; flex-wrap: wrap; gap: 12px; border: 1px solid var(--border, #dddfd7); border-radius: 8px; min-width: 0; padding: 10px; }
+.feature-controls legend { padding: 0 5px; font-size: 13px; }
+.feature-controls [role=status], .feature-controls [role=alert], .feature-controls .feature-message { flex-basis: 100%; margin: 0; font-size: 13px; }
+.feature-row-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 5px 0; font-size: 12px; }
+.board-cards .feature-row-actions { padding: 6px 10px 10px; }
+.feature-count { display: flex; flex-direction: column; gap: 3px; padding: 8px 12px; border: 1px solid var(--border, #dddfd7); border-radius: 8px; font-size: 12px; }
+.feature-count strong { font-size: 20px; }
+@media (max-width: 600px) { .feature-controls { gap: 10px; } .feature-controls label { max-width: 100%; } .feature-controls input[type=search] { width: 100%; } }

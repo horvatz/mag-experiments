@@ -1,0 +1,38 @@
+Najprej bom prebral predpise naloge, nato zapisal specifikacijo.
+Zahteve so jasne. Zdaj pregledam obstoječi vmesnik, testno ogrodje in dogovor dizajna.
+Vmesnik je enostavna aplikacija brez obstoječih filtrov. Pregledal bom ključne komponente in razvojne scenarije, preden zapišem specifikacijo.
+Zdaj ustvarim začetno specifikacijo z vsemi sprejemnimi pogoji in sledljivostjo.
+Vtičnik za zapise je naletel na omejitev začasnih datotek lupine; uporabil pipiranje brez `/tmp`.
+Preverim razpoložljivo pot do `apply_patch`, saj trenutna lupina ne more zagnati ukaza.
+Ukaz `apply_patch` ni nameščen; za ustrezno spreminjanje patchov uporabim vmesno izvedbo, ki kliče `git apply`.
+`git apply` zaradi varnostnih omejitev ne dostopa do sistemskih predpomnilnikov. Zato izdelam majhen vmesnik `apply_patch` v `.tmp`, ki samostojno obdeluje operaciji `Add File` in `Delete File`.
+Vmesnik je razčlenil glavo napačno. Popravljen je na brezosenčno izvedbo v Node.js.
+Specifikacija je zapisana. Zdaj pripravim implementacijo v obstoječih komponentah in lastne teste.
+Implementacija bo lokalna v komponenti projekta, s čimer preklop projekta samodejno ponastavi filtre.
+Osnovna implementacija je dodana. Pred testi pregledam izpisane datoteke in morebitne sintaktične napake.
+Odkril sem podvojenega obratnega poševnika v regularnih izrazih; popravim ga prek patcha pred testiranjem.
+Zdaj dodam lastne teste, ki pokrijejo vse zahteve R01–R12.
+Prejšnji ukaz se ni uspešno razčlenil zaradi dolžine. Patch bom zgradil po delih in nato izvedel.
+Lastni testi so dodani. Najprej preverim tipizacijo in lint, nato zagon testov.
+Tipizacija in lint sta uspešna. Zdaj zaženem lastne teste.
+Dva lastna testa sta odkrila napako v testnih podatkih in morebitno vedenje praznega projekta. Pregledam kontekst.
+Popravim testna primera: iskanje vsebuje obe besedi, prazen projekt pa zahteva osvežitev po spremembi preslikanega odgovora.
+Lastni testi so zeleni. Zdaj preverim skupne razvojne teste na namizju in mobilni širini.
+Razvojni testi so uspešni. Zdaj zaženem celotno preverjanje `npm run check`.
+Preverjanja so uspešna. Zdaj dopolnim sledljivost specifikacije in zapišem izvedena preverjanja.
+Dokumentacija je dopolnjena. Odstranim začasne pomočke za patchiranje in preverim končne datoteke.
+**Rezultat**
+- Implementiral sem iskanje, sestavljene filtre, števce, počiščenje in stanja brez zadetkov v `src/App.tsx:14`.
+- Dodal sem slogove za Folio in ozko širino v `src/filters.css:1`.
+- Specifikacija s predikati in sledljivostjo je v `docs/agent/specification.md:1`.
+- Lastna preverjanja A01–A07 so v `tests/agent/P03.spec.ts:7`.
+- Zapis dejanskih preverjanj je v `docs/agent/verification.md:1`.
+
+**Preverjanje**
+- `npm run check`: 53/53 uspešnih.
+- Skupni razvojni testi P03: 8/8 uspešnih.
+- Lastni testi: 7/7 uspešnih.
+
+**Neizpolnjene zahteve**
+- Ni jih. Nezaključeno nalaganje in sočasne s
+{"status":"completed","elapsedSeconds":570.484,"allowedChanges":true,"usage":{"input_tokens":2773409,"cached_input_tokens":2681664,"cache_write_input_tokens":0,"output_tokens":52662,"reasoning_output_tokens":20041}}

@@ -1,0 +1,84 @@
+{
+  "id": "P05-B-001",
+  "model": "z-ai/glm-5.3",
+  "reviewedAt": "2026-10-09",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Vse R01–R12 in bistveni robovi so skladno opredeljeni: poljubni podatki in izvorni vrstni red, filter pred globalnim odsekom, enak vhod za oba pogleda, lokalno stanje brez URL/shrambe, ohranitve pri podrobnostih in ponastavitve, natančne dostopne oznake/status, prazni rezultati, ločeni števci, read-only API ter geometrija 390 px. Napake/nalaganje in nedostopni končni testi so izrecno omejeni.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#vhodi-dejanja-in-izidi",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#zahteve-in-pravila",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#izvedba-in-sledljivost"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "T/F/N/S/Y/P/A/B imajo uporabne in skladne enačbe, vključno z ničelnimi vejami in polodprtim slice. Opredeljene so meje strani/gumbov, reset ob velikosti/filtru, ohranitev vrstnega reda in stanja, skupni globalni odsek za tablo ter projektni in lokalni števci. Napovedani prehodi so preverljivi tudi pri all in praznem rezultatu.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#stanje-in-predikati",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md#zahteve-in-pravila"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Specifikacijska matrika poveže skupine R z načrtovanimi scenariji in kodnimi deli, verification pa pošteno navaja dejanske zagone. Pregledovalec sam potrdi 8/8 lastnih, 8/8 razvojnih in 54/54; zahteva dopolnitev sledljivosti. Popravek doda splošen odstavek z datoteko in seštevki, vendar ne posodobi posameznih vrstic matrike: te še napotujejo le na tests/agent/ in zgodovinski Ni izvedeno v fazi specifikacije. Ne loči dejansko izvedenega razreza velikosti 2 od načrtovanih splošnih razrezov 5/10 in primerov poljubnih ID-jev. Dokazi so resnični in nedostopni testi označeni, povezave po posameznih zahtevah ostanejo delne.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md:59",
+        "runtime/runs/P05-B-001/submission/docs/agent/specification.md:75",
+        "runtime/runs/P05-B-001/submission/docs/agent/verification.md",
+        "runtime/runs/P05-B-001/submission/docs/agent/review.json",
+        "runtime/runs/P05-B-001/phases/03-review/events.jsonl.gz",
+        "runtime/runs/P05-B-001/phases/05-implementation-repair/events.jsonl.gz"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "ProjectView dosledno loči tri lokalna stanja od izpeljanih podatkov: nefiltriran seznam in števci, filter, število strani, veljavna trenutna stran, vidni odsek in status. Oba pogleda dobita isti vidni odsek brez podvajanja straničenja; key projekta zagotovi reset. Poti, podatkovni tipi in obstoječa podatkovna plast ostanejo nespremenjeni, slogi kontrol so ločeni. Majhen skupni helper firstPage ni redundantno shranjeno stanje.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/src/App.tsx:14",
+        "runtime/runs/P05-B-001/submission/src/App.tsx:19",
+        "runtime/runs/P05-B-001/submission/src/App.tsx:30",
+        "runtime/runs/P05-B-001/submission/src/App.tsx:92",
+        "runtime/runs/P05-B-001/submission/src/App.tsx:142",
+        "runtime/runs/P05-B-001/submission/src/styles.css"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Osem koristnih preverjanj zajame 11 opravil, unijo šestih odsekov velikosti 2 v izvornem vrstnem redu brez podvajanj, zadnji kratek odsek, velikost 5, vse filtre, prazni/singleton primer, oba pogleda in podrobnosti, projekt/reload, števce, read-only API in dejansko geometrijo 390 px. Izvedba 8/8 je večkrat potrjena v modelnih dogodkih. Manjkajo celotne razdelitve velikosti 5 in 10 nad desetimi opravili, zahtevni ID-ji/enaki naslovi ter reset z dejanske višje strani pri reloadu in projektu (pred projektom filter že vrne na prvo stran; reload primer ima samo dve opravili). To so pomembni robovi za višjo oceno, ne potrjena napaka končne funkcionalnosti.",
+      "evidence": [
+        "runtime/runs/P05-B-001/submission/tests/agent/P05.spec.ts:5",
+        "runtime/runs/P05-B-001/submission/tests/agent/P05.spec.ts:23",
+        "runtime/runs/P05-B-001/submission/tests/agent/P05.spec.ts:74",
+        "runtime/runs/P05-B-001/submission/tests/agent/P05.spec.ts:102",
+        "runtime/runs/P05-B-001/submission/tests/agent/P05.spec.ts:133",
+        "runtime/runs/P05-B-001/submission/tests/agent/P05.spec.ts:160",
+        "runtime/runs/P05-B-001/phases/02-implementation/events.jsonl.gz",
+        "runtime/runs/P05-B-001/phases/03-review/events.jsonl.gz"
+      ]
+    }
+  ],
+  "finalFailureExample": null,
+  "finalFailureNote": "Ni potrjene končne funkcionalne napake: completed, 70/70, 12/12, dovoljenost/lint/types/build true, strogi uspeh true. Čas 938,34 s, popoln obračun 0,514479579 USD za 120 zahtev. Pregled zahteva dokumentacijski popravek; ta in implementacijska obravnava sta zaključena brez sprememb kode.",
+  "developmentFailureExample": {
+    "description": "Prvi lastni zagon item_45 ima 3 failed/4 passed: pri all in velikosti 5 test napačno pričakuje vseh šest ID-jev; ponovna mount v istem testu ohrani prazni filter; števci table se berejo brez preklopa na tablo. Item_47 popravi pričakovanje prvega odseka, razdeli prazni scenarij v ločen test in doda preklop. Item_48 in poznejši zagoni potrdijo 8/8, full check 54/54. Pred tem so popravljene shell/patch in tipovne napake testov. Ob zaključni obravnavi npm run check ustavijo zasedena vrata 5174; začasna lokalna konfiguracija ponovno uporabi dejanski testni strežnik in potrdi vseh 54. Verification to odkrito zabeleži. Raziskovalec kode ali testov ne spreminja.",
+    "evidence": [
+      "runtime/runs/P05-B-001/phases/02-implementation/events.jsonl.gz",
+      "runtime/runs/P05-B-001/phases/05-implementation-repair/events.jsonl.gz",
+      "runtime/runs/P05-B-001/submission/docs/agent/verification.md",
+      "runtime/runs/P05-B-001/submission/tests/agent/P05.spec.ts:63"
+    ]
+  }
+}

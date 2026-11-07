@@ -1,0 +1,1 @@
+Zaključeno: kratka načela za R01 in R02 so zapisana v `.specify/memory/constitution.md:1`. Koda ni bila spremenjena; test ni bil zagnan, ker ta korak zahteva samo ustavo.

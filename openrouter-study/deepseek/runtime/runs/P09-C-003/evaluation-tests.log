@@ -1,0 +1,159 @@
+[WebServer] (node:21605) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 70 tests using 1 worker
+
+(node:21606) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [regression-api] › .work/P09/baseline/tests/api.spec.ts:10:1 › fixture IDs are unique and each project has three tasks (36ms)
+  ✓   2 [regression-api] › .work/P09/baseline/tests/api.spec.ts:27:1 › a successful update changes only the chosen record and fields (8ms)
+  ✓   3 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"","status":"done"} (7ms)
+  ✓   4 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":" \t\r\n","status":"done"} (5ms)
+  ✓   5 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"unknown"} (5ms)
+  ✓   6 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov"} (4ms)
+  ✓   7 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":42,"status":"done"} (4ms)
+  ✓   8 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: {"title":"Veljaven naslov","status":"done","projectId":"launch"} (5ms)
+  ✓   9 [regression-api] › .work/P09/baseline/tests/api.spec.ts:47:3 › invalid update leaves all records unchanged: null (5ms)
+  ✓  10 [regression-api] › .work/P09/baseline/tests/api.spec.ts:55:1 › rejected save writes nothing and the next request can succeed (11ms)
+  ✓  11 [regression-api] › .work/P09/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with success (12ms)
+  ✓  12 [regression-api] › .work/P09/baseline/tests/api.spec.ts:66:3 › held request remains unchanged until released with reject (8ms)
+  ✓  13 [regression-api] › .work/P09/baseline/tests/api.spec.ts:80:1 › reset cancels a pending save and restores a previously changed record (10ms)
+  ✓  14 [regression-api] › .work/P09/baseline/tests/api.spec.ts:91:1 › normal server does not expose test controls (6ms)
+(node:21608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (454ms)
+  ✓  16 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (479ms)
+  ✓  17 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (528ms)
+  ✓  18 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (602ms)
+  ✓  19 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (457ms)
+  ✓  20 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (371ms)
+  ✓  21 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (334ms)
+  ✓  22 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (379ms)
+  ✓  23 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (386ms)
+  ✓  24 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (988ms)
+  ✓  25 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (658ms)
+  ✓  26 [regression-desktop] › .work/P09/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (401ms)
+(node:21626) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  27 [development-desktop] › tasks/P09/development.spec.ts:2:1 › D01: direct filtered URL (265ms)
+  ✓  28 [development-desktop] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation (300ms)
+  ✓  29 [development-desktop] › tasks/P09/development.spec.ts:4:1 › D03: board and reload preserve committed state (493ms)
+  ✓  30 [development-desktop] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes (365ms)
+(node:21634) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  31 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state (350ms)
+  ✓  32 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field (384ms)
+  ✓  33 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting (337ms)
+  ✓  34 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:7:1 › E04: R04 first parameter wins, invalid values default, no passive rewrite (283ms)
+  ✓  35 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit (367ms)
+  ✘  36 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit (303ms)
+(node:21656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  37 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh (574ms)
+  ✓  38 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:11:1 › E08: R08 view changes preserve committed state and discard draft (381ms)
+  ✓  39 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID (520ms)
+  ✓  40 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:13:1 › E10: R10 project navigation resets while direct URL honors params (331ms)
+  ✓  41 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count (382ms)
+  ✓  42 [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout (466ms)
+(node:21666) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:8:1 › projects show their own tasks and all three states (383ms)
+  ✓  44 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:24:1 › duplicate titles open by ID, with complete details and keyboard dismissal (475ms)
+  ✓  45 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:50:1 › direct task links survive refresh and browser back closes details (523ms)
+  ✓  46 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:62:1 › a saved API change survives browser refresh and project navigation (660ms)
+  ✓  47 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:79:1 › unknown locations and task IDs show a recoverable state (453ms)
+  ✓  48 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects can be retried (400ms)
+  ✓  49 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:96:3 › failed /api/projects/web/tasks can be retried (400ms)
+  ✓  50 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:111:1 › an empty project keeps the navigation and shows an empty state (352ms)
+  ✓  51 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:120:1 › switching project during loading never shows the previous project tasks (351ms)
+  ✓  52 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:136:1 › board navigation preserves the view and opens duplicate titles by ID without writes (901ms)
+  ✓  53 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:174:1 › board reflects saved states on refresh, including empty columns and duplicate titles (645ms)
+  ✓  54 [regression-mobile] › .work/P09/baseline/tests/baseline.spec.ts:193:1 › an empty board keeps all columns and supports switching back to the table (471ms)
+(node:21682) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  55 [development-mobile] › tasks/P09/development.spec.ts:2:1 › D01: direct filtered URL (341ms)
+  ✓  56 [development-mobile] › tasks/P09/development.spec.ts:3:1 › D02: draft only applies on confirmation (373ms)
+  ✓  57 [development-mobile] › tasks/P09/development.spec.ts:4:1 › D03: board and reload preserve committed state (560ms)
+  ✓  58 [development-mobile] › tasks/P09/development.spec.ts:5:1 › D04: reset and no writes (371ms)
+(node:21690) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  59 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:4:1 › E01: R01 direct project and detail routes apply state (368ms)
+  ✓  60 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:5:1 › E02: R02 one normalized literal phrase within a single field (389ms)
+  ✓  61 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:6:1 › E03: R03 status conjunction and stable title sorting (354ms)
+  ✓  62 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:7:1 › E04: R04 first parameter wins, invalid values default, no passive rewrite (301ms)
+  ✓  63 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:8:1 › E05: R05 draft changes nothing until one atomic history commit (385ms)
+  ✘  64 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit (322ms)
+(node:21702) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  65 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:10:1 › E07: R07 back forward restore controls results and refresh (623ms)
+  ✓  66 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:11:1 › E08: R08 view changes preserve committed state and discard draft (419ms)
+  ✓  67 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:12:1 › E09: R09 details preserve params view and correct duplicate ID (503ms)
+  ✓  68 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:13:1 › E10: R10 project navigation resets while direct URL honors params (369ms)
+  ✓  69 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:14:1 › E11: R11 reset history, empty message and whole-project count (401ms)
+  ✓  70 [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:15:1 › E12: R12 local read-only behavior and responsive layout (552ms)
+
+
+  1) [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "view=board"
+    Received: "view=board&extra=remove&status=all&order=original"
+
+       7 | test('E04: R04 first parameter wins, invalid values default, no passive rewrite',async({page})=>{const hash='#/projects/web?status=invalid&status=done&order=bad&order=title-desc&q=pregled&q=other&extra=%23';await mount(page,undefined,hash);await expectIds(page,['web-01','web-02','web-03']);expect(new URL(page.url()).hash).toBe(hash);await expect(page.getByRole('combobox',{name:'Stanje v povezavi',exact:true})).toHaveValue('all');await expect(page.getByRole('combobox',{name:'Vrstni red v povezavi',exact:true})).toHaveValue('original')})
+       8 | test('E05: R05 draft changes nothing until one atomic history commit',async({page})=>{await mount(page);const before=page.url(),length=await page.evaluate(()=>history.length);await search(page).fill('pregled');await select(page,'Stanje v povezavi','done');await select(page,'Vrstni red v povezavi','title-desc');await expectIds(page,webIds());expect(page.url()).toBe(before);expect(await page.evaluate(()=>history.length)).toBe(length);await click(page,'Uporabi pogled');await expectIds(page,['web-03']);expect(await page.evaluate(()=>history.length)).toBe(length+1);await page.goBack();await expectIds(page,webIds());await expect(search(page)).toHaveValue('')})
+    >  9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page.evaluate(()=>history.length)).toBe(length);await search(page).fill('  Čaj + & ? #  ');await click(page,'Uporabi pogled');await expect(search(page)).toHaveValue('Čaj + & ? #');expect(params(page).get('q')).toBe('Čaj + & ? #');expect(params(page).get('view')).toBe('board');const committed=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(await page.evaluate(()=>history.length)).toBe(committed)})
+         |                                                                                                                                                                                                                                                                                                             ^
+      10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+      11 | test('E08: R08 view changes preserve committed state and discard draft',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&order=title-desc');await search(page).fill('uncommitted');await board(page);await expectIds(page,['web-03']);await expect(search(page)).toHaveValue('pregled');expect(params(page).get('order')).toBe('title-desc');await select(page,'Stanje v povezavi','todo');await table(page);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done');await expectIds(page,['web-03'])})
+      12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id="web-03"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P09/acceptance.spec.ts:9:301
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-C-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-C-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-C-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-C-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "view=board"
+    Received: "view=board&extra=remove&status=all&order=original"
+
+       7 | test('E04: R04 first parameter wins, invalid values default, no passive rewrite',async({page})=>{const hash='#/projects/web?status=invalid&status=done&order=bad&order=title-desc&q=pregled&q=other&extra=%23';await mount(page,undefined,hash);await expectIds(page,['web-01','web-02','web-03']);expect(new URL(page.url()).hash).toBe(hash);await expect(page.getByRole('combobox',{name:'Stanje v povezavi',exact:true})).toHaveValue('all');await expect(page.getByRole('combobox',{name:'Vrstni red v povezavi',exact:true})).toHaveValue('original')})
+       8 | test('E05: R05 draft changes nothing until one atomic history commit',async({page})=>{await mount(page);const before=page.url(),length=await page.evaluate(()=>history.length);await search(page).fill('pregled');await select(page,'Stanje v povezavi','done');await select(page,'Vrstni red v povezavi','title-desc');await expectIds(page,webIds());expect(page.url()).toBe(before);expect(await page.evaluate(()=>history.length)).toBe(length);await click(page,'Uporabi pogled');await expectIds(page,['web-03']);expect(await page.evaluate(()=>history.length)).toBe(length+1);await page.goBack();await expectIds(page,webIds());await expect(search(page)).toHaveValue('')})
+    >  9 | test('E06: R06 trim encoding canonical defaults and repeated commit',async({page})=>{await mount(page,undefined,'#/projects/web?view=board&extra=remove&status=all&order=original');const length=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(params(page).toString()).toBe('view=board');expect(await page.evaluate(()=>history.length)).toBe(length);await search(page).fill('  Čaj + & ? #  ');await click(page,'Uporabi pogled');await expect(search(page)).toHaveValue('Čaj + & ? #');expect(params(page).get('q')).toBe('Čaj + & ? #');expect(params(page).get('view')).toBe('board');const committed=await page.evaluate(()=>history.length);await click(page,'Uporabi pogled');expect(await page.evaluate(()=>history.length)).toBe(committed)})
+         |                                                                                                                                                                                                                                                                                                             ^
+      10 | test('E07: R07 back forward restore controls results and refresh',async({page})=>{await mount(page);await select(page,'Stanje v povezavi','todo');await click(page,'Uporabi pogled');await expectIds(page,['web-02','web-04','web-07','web-08']);await select(page,'Stanje v povezavi','done');await click(page,'Uporabi pogled');await expectIds(page,['web-03','web-06']);await search(page).fill('uncommitted');await page.goBack();await expectIds(page,['web-02','web-04','web-07','web-08']);await expect(search(page)).toHaveValue('');await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('todo');await page.goForward();await expectIds(page,['web-03','web-06']);await page.reload();await expectIds(page,['web-03','web-06']);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done')})
+      11 | test('E08: R08 view changes preserve committed state and discard draft',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&status=done&order=title-desc');await search(page).fill('uncommitted');await board(page);await expectIds(page,['web-03']);await expect(search(page)).toHaveValue('pregled');expect(params(page).get('order')).toBe('title-desc');await select(page,'Stanje v povezavi','todo');await table(page);await expect(page.getByRole('combobox',{name:'Stanje v povezavi'})).toHaveValue('done');await expectIds(page,['web-03'])})
+      12 | test('E09: R09 details preserve params view and correct duplicate ID',async({page})=>{await mount(page,undefined,'#/projects/web?q=pregled&order=title-desc&view=board');await search(page).fill('draft');await details(page,'web-02');await expect(search(page)).toHaveValue('pregled');expect(params(page).get('view')).toBe('board');expect(params(page).get('order')).toBe('title-desc');await page.locator('[data-task-id="web-03"]').getByRole('link').click();await expect(page.getByRole('dialog').getByText('Ana Novak',{exact:true})).toBeVisible();await click(page,'Zapri podrobnosti');expect(params(page).get('q')).toBe('pregled');await expectIds(page,['web-01','web-02','web-03'],false)})
+        at /Users/zan/Documents/mag/experiments/openrouter-study/deepseek/runtime/evaluation/P09/acceptance.spec.ts:9:301
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .work/pilots/P09-C-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .work/pilots/P09-C-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    .work/pilots/P09-C-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace .work/pilots/P09-C-003/evaluation-artifacts/acceptance-E06-R06-trim-en-25f29-efaults-and-repeated-commit-evaluation-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [evaluation-desktop] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+    [evaluation-mobile] › evaluation/P09/acceptance.spec.ts:9:1 › E06: R06 trim encoding canonical defaults and repeated commit 
+  68 passed (27.7s)

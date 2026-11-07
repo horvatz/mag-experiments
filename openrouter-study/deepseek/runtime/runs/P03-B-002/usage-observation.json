@@ -1,0 +1,95 @@
+{
+  "id": "P03-B-002",
+  "observedAt": "2026-10-09T06:36:30.464Z",
+  "complete": false,
+  "roles": [
+    {
+      "role": "specification",
+      "session": "01a11f4f-f944-74f1-92a2-d77b44201c0e",
+      "lastTokenEventAt": "2026-10-09T06:23:45.927Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 239812,
+        "cached_input_tokens": 215808,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 17973,
+        "reasoning_output_tokens": 4358
+      },
+      "phases": [
+        {
+          "name": "specification",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 239812,
+            "cached_input_tokens": 215808,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 17973,
+            "reasoning_output_tokens": 4358
+          },
+          "lastTokenEventAt": "2026-10-09T06:23:45.927Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    },
+    {
+      "role": "implementation",
+      "session": "01a11f55-031d-7b53-9e70-5500d0de0c98",
+      "lastTokenEventAt": "2026-10-09T06:31:19.879Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 873136,
+        "cached_input_tokens": 807552,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 24847,
+        "reasoning_output_tokens": 13561
+      },
+      "phases": [
+        {
+          "name": "implementation",
+          "status": "completed",
+          "cliUsage": {
+            "input_tokens": 873136,
+            "cached_input_tokens": 807552,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 24847,
+            "reasoning_output_tokens": 13561
+          },
+          "lastTokenEventAt": "2026-10-09T06:31:19.879Z",
+          "cumulativeMatchesCLI": true
+        }
+      ],
+      "complete": true
+    },
+    {
+      "role": "review",
+      "session": "01a11f5b-f043-7af0-bde6-a8732cae4955",
+      "lastTokenEventAt": "2026-10-09T06:36:10.578Z",
+      "observedCumulativeUsage": {
+        "input_tokens": 277632,
+        "cached_input_tokens": 216192,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 14121,
+        "reasoning_output_tokens": 11293
+      },
+      "phases": [
+        {
+          "name": "review",
+          "status": "phase_time_limit",
+          "cliUsage": null,
+          "lastTokenEventAt": "2026-10-09T06:36:10.578Z",
+          "cumulativeMatchesCLI": false
+        }
+      ],
+      "complete": false
+    }
+  ],
+  "usage": null,
+  "observedUsageBeforeInterruption": {
+    "input_tokens": 1390580,
+    "cached_input_tokens": 1239552,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 56941,
+    "reasoning_output_tokens": 29212
+  },
+  "method": "For each exact role session, compare CLI turn.completed with the last cumulative token_count before that phase ended. Sum the final cumulative total once per distinct session, never once per resumed phase.",
+  "note": "Incomplete events are a partial observation, not zero or a complete token total. No monetary cost is inferred."
+}

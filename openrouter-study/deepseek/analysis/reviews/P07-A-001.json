@@ -1,0 +1,118 @@
+{
+  "id": "P07-A-001",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reviewedAt": "2026-10-30T14:11:48.050269+00:00",
+  "reviewer": "Codex (raziskovalčev pomočnik; ni merjena seja)",
+  "method": "AI-podprta, neslepa vsebinska presoja",
+  "rubric": "runtime/docs/main-rubric.md M/1.0",
+  "selection": "Vnaprej določena ponovitev 001; izbor ni odvisen od uspeha.",
+  "humanReview": null,
+  "interRaterAgreement": null,
+  "archiveReceiptSha256": "b466e09e75c94df4070c77cc40bf8243658b0b1736763254b803ab9425b38705",
+  "limitation": "Prebranih vseh devet avtorskih datotek, popis native ukazov, dejanski zagoni in poznejši API orodni izidi. Celotni arhivski SHA256 pregled uspe. Presoja ni vrnjena merjeni seji; oddaja se ne popravlja ali ponavlja.",
+  "dimensions": [
+    {
+      "dimension": "specificationCoverage",
+      "score": 2,
+      "rationale": "Specifikacija skladno opredeli R01–R12, točne gumbe/checkbox in števec, globalno množico, strogo veljavnost ids, UTF-16 zapis, neznane ID-je, projektno čiščenje, filter in praznino, ohranitve ter ponastavitve. Storage vključuje null/tuji ključ/no-echo ter obe izjemi z opozorilom in pomnilnikom. Loči vidne stolpce od celotnega projektnega povzetka; izrecno ohrani data-task-id in bralnost. Prazni projekt je dopolnjen z A12. Ohranitev območja prazne table ni izrecno razdelana; objektivni neuspeh je naveden ločeno.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:16",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:30",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:40",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:49",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:83"
+      ]
+    },
+    {
+      "dimension": "predicatesInvariants",
+      "score": 2,
+      "rationale": "F, izvorni T, projektni presek K in prikazana stabilna projekcija so ločeni. Pravila določijo enkraten UTF-16 zapis, strogo zavrnitev katerikoli neniz, razliko F brez projektnih ID-jev, kardinalnosti X/M, disabled pri praznem preseku ter prehode filtra/projekta/reloada. Dogodek ima točen ključ, validacijo in prepoved povratnega zapisa. Gre za preverljive lastnosti, ne le imena testov.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:30",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:41",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:43",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:47",
+        "runtime/runs/P07-A-001/submission/docs/agent/specification.md:50"
+      ]
+    },
+    {
+      "dimension": "traceability",
+      "score": 1,
+      "rationale": "Vseh dvanajst vrstic poveže pravila, konkretne funkcije in A/D scenarije. Navedeni20/20 in58/58 sta resnična; po pozni spremembi opozorila uspe še12/12 in58/58. Vendar R07 pripiše podrobnosti D01/A06, ki ju ne odpreta; R08 pripiše reset filtra po reloadu A06, kjer je filter po vrnitvi iz drugega projekta že false. R11 posploši obe izjemi, čeprav A09 hkrati pokvari getItem in setItem ter ima alert že pred klikom. Sintetični storage in nedostopni holdout sta odkrito navedena, ti konkretni nepokriti pogoji pa niso. Zato so povezave in razkritje nepreverjenega delni.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/docs/agent/verification.md:9",
+        "runtime/runs/P07-A-001/submission/docs/agent/verification.md:30",
+        "runtime/runs/P07-A-001/submission/docs/agent/verification.md:49",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07-agent.spec.ts:97",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07-agent.spec.ts:140",
+        "runtime/tasks/P07/development.spec.ts:2",
+        "analysis/evidence/P07-A-001-checks.md#item_48",
+        "analysis/evidence/P07-A-001-checks.md#item_50",
+        "analysis/evidence/P07-A-001-checks.md#item_57",
+        "analysis/evidence/P07-A-001-checks.md#item_59"
+      ]
+    },
+    {
+      "dimension": "codeOrganization",
+      "score": 2,
+      "rationale": "favorites.ts loči parser/serializacijo, varno branje/pisanje in globalni hook. Aktualno množico drži ref, zapis se izvede zunaj React updaterja; storage poslušalec se počisti. ProjectView hrani lokalni filter in izpelje vidna opravila, projektni key ga ponastavi, App ohrani globalno stanje. Skupni FavoriteButton je zunaj povezav v obeh pogledih, oba uporabljata isto projekcijo. Ni podvojenega shranjenega rezultata ali API zapisov. Napačna veja prazne table je konkretna funkcionalna vrzel.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/src/favorites.ts:5",
+        "runtime/runs/P07-A-001/submission/src/favorites.ts:25",
+        "runtime/runs/P07-A-001/submission/src/favorites.ts:49",
+        "runtime/runs/P07-A-001/submission/src/favorites.ts:68",
+        "runtime/runs/P07-A-001/submission/src/FavoriteButton.tsx:3",
+        "runtime/runs/P07-A-001/submission/src/App.tsx:13",
+        "runtime/runs/P07-A-001/submission/src/App.tsx:79",
+        "runtime/runs/P07-A-001/submission/src/App.tsx:102",
+        "runtime/runs/P07-A-001/submission/src/TaskBoard.tsx:27"
+      ]
+    },
+    {
+      "dimension": "ownChecks",
+      "score": 1,
+      "rationale": "Dvanajst uspešnih testov pokrije negativne ovojnice tudi z mešanimi ids, brez začetnega prepisa, dedupe/neznane ID-je, oba pogleda, res aktiven filter pred menjavo projekta, projektno čiščenje, razlikujoč tuji ključ, no-echo prek dejanske shrambe ter null iz nepraznega stanja. Doda prazen projekt, enaka naslova in390px. Pomembni robovi ostanejo: ni singleton/>10 ali adversarialnega UTF-16, več vidnih priljubljenih za vrstni red in popolno projektno čiščenje pod filtrom, prazne filtrirane table, reload iz aktivnega filtra ali neodvisne napake pisanja. A06 ne odpre podrobnosti, A11 ob enakih naslovih preveri le celotni števec. Testi so koristni in najdejo pravo razvojno napako, niso pa široka mejna matrika.",
+      "evidence": [
+        "runtime/runs/P07-A-001/submission/tests/agent/P07-agent.spec.ts:17",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07-agent.spec.ts:34",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07-agent.spec.ts:58",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07-agent.spec.ts:81",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07-agent.spec.ts:97",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07-agent.spec.ts:125",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07-agent.spec.ts:140",
+        "runtime/runs/P07-A-001/submission/tests/agent/P07-agent.spec.ts:173",
+        "runtime/runs/P07-A-001/submission/tests/agent/helpers.ts:25",
+        "analysis/evidence/P07-A-001-checks.md#item_59"
+      ]
+    }
+  ],
+  "finalFailureExample": {
+    "description": "E06 odpove na obeh širinah: App:55 najprej izbere noVisibleFavorites in pokaže prazno sporočilo, zato po preklopu ne izriše TaskBoard/območja Tabla opravil. Sporočilo in kontrola filtra ostaneta uporabna; to ni odsotnost sporočila, temveč že dokumentirana občutljivost ohranjenega območja. Izid ostane68/70 in11/12 brez strogega uspeha.",
+    "evidence": [
+      "runtime/runs/P07-A-001/submission/src/App.tsx:55",
+      "runtime/runs/P07-A-001/submission/src/TaskBoard.tsx:15",
+      "runtime/runs/P07-A-001/evaluation-summary.json",
+      "runtime/runs/P07-A-001/evaluation-tests.log"
+    ]
+  },
+  "finalFailureNote": "Completed504,434s; vse statične kontrole in dovoljene spremembe true. Regresija38/38, razvojni8/8, holdout22/24. Celoten račun0,036590868USD;39HTTP200/completed/finished pri deepinfra/fp8. Brez merjene ponovitve.",
+  "developmentFailureExample": {
+    "description": "Zgodnja heredoca imata exit0 kljub zavrnitvi in prazni specifikaciji; poznejši apply_patch dokument dejansko dostavi. Item_38 ima3fail/8pass kljub pipeline0. Item_40 pokaže, da preglednica mapira tasks namesto visibleTasks; preserved-28 popravi dejansko aplikacijo. Ločitev dvojnega mounta A11 v dva testa odpravi stale fixture. Item_44 ima1fail/11pass; item_45 odkrije napačen statusni oracle za web-01, preserved-32 popravi test. Item_48 potrdi20/20 in item_50 full58/58. Pozna sprememba besedila alerta in dodatna asercija ohranita12/12 v item_57 in58/58 v item_59. Napake produkcijske projekcije so ločene od testnih predpostavk in napak pisalnih ukazov.",
+    "evidence": [
+      "analysis/evidence/P07-A-001-checks.md#preserved-10",
+      "analysis/evidence/P07-A-001-checks.md#preserved-13",
+      "analysis/evidence/P07-A-001-checks.md#preserved-14",
+      "analysis/evidence/P07-A-001-checks.md#item_38",
+      "analysis/evidence/P07-A-001-checks.md#item_40",
+      "analysis/evidence/P07-A-001-checks.md#preserved-28",
+      "analysis/evidence/P07-A-001-checks.md#preserved-29",
+      "analysis/evidence/P07-A-001-checks.md#item_44",
+      "analysis/evidence/P07-A-001-checks.md#item_45",
+      "analysis/evidence/P07-A-001-checks.md#preserved-32",
+      "analysis/evidence/P07-A-001-checks.md#item_48",
+      "analysis/evidence/P07-A-001-checks.md#item_50",
+      "analysis/evidence/P07-A-001-checks.md#item_57",
+      "analysis/evidence/P07-A-001-checks.md#item_59"
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+Začenjam tehnično preverjanje prekinitve.
+
