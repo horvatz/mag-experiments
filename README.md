@@ -10,6 +10,8 @@ Repozitorij vsebuje skupna navodila, razvojne teste, ločeno referenčno rešite
 in končna preverjanja. Namenjen je avtorju raziskave. Agentom pri primerjavi
 ne priključimo tega repozitorija ali nadrejene mape `mag`.
 
+Za pomoč pri pripravi tega repozitorija je bil uporabljen model GPT-6 Astra.
+
 ## Rezultati za magistrsko
 
 Analiza na veji `main` obsega **288 izvedb in 96 vsebinskih presoj** za
